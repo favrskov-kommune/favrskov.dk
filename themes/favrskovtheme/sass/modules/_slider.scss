@@ -1,0 +1,479 @@
+//------------------------------------------------------------------------------
+// Slider
+.front-slider {
+  position: relative;
+  margin-bottom: 62px;
+  .gallery {
+    max-height: 490px;
+
+    img {
+      max-width: none;
+    }
+  }
+}
+
+//  Main slides
+.swiper-content {
+
+  .content {
+    padding: 0;
+  }
+
+  .short-about {
+    @include transition-property(all);
+    @include transition-timing-function(ease-in);
+    @include transition-duration(.1s);
+
+    background-color: $lightgrey;
+    color: $gray;
+    padding: 26px 22px 21px 17px;
+    width: 336px;
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    z-index: 10;
+
+    a {
+      text-indent: -999em;
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9;
+      // IE bug fix with transparent links which have position absolute
+      background: url('about:blank');
+    }
+
+    .headline {
+      border-top: 4px solid $slatgrayLight;
+      border-bottom: 1px solid $slatgrayLight;
+      padding: 16px 5px;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: $sans-strict;
+      @include font-size(40);
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      @include font-size(16);
+      margin-bottom: 10px;
+    }
+
+    &:hover {
+      color: $liteGray;
+      cursor: pointer;
+    }
+  }
+}
+
+//  Navigation
+.pane-slider-slider-nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.slide-controls {
+  position: relative;
+  padding: 0;
+
+  .slider-nav-container {
+    border-top: 4px solid $slatgrayLight;
+  }
+
+  .view-content {
+    background: $lightgrey;
+    float: right;
+    color: $gray;
+    max-width: 245px;
+    width: 100%;
+    position: relative;
+    margin-top: 30px;
+    z-index: 2;
+    padding: 20px 15px;
+
+    li {
+      cursor: pointer;
+      border-bottom: 1px solid $slatgrayLight;
+
+      &:hover,
+      &.active-nav {
+        .overlay {
+          background: rgba($liteGray, .6);
+          display: block;
+          width: 109px;
+          height: 71px;
+          float: left;
+          position: absolute;
+        }
+        .description {
+          color: $liteGray;
+        }
+      }
+      .image {
+        float: left;
+        min-width: 109px;
+      }
+    }
+
+     .inner {
+        display: table;
+        height: 70px;
+        width: 100%;
+        padding: 12px 0;
+      }
+
+      .description {
+        @include font-size(16);
+        line-height: 1.4;
+        font-family: $sans-med-strict;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: left;
+        padding-left: 11px;
+        color: $gray;
+        width: 100%;
+      }
+  }
+}
+
+
+
+//------------------------------------------------------------------------------
+//  Nodes slider
+
+// Slides
+.view-subject-subpages .swiper-slide {
+  float: left;
+  img {
+    display: block;
+  }
+}
+.image-description,
+.video-descrition,
+.node-slide-description {
+  background-color: $grayLighter;
+  @include font-size(14);
+  line-height: 1.4;
+
+  p {
+    padding: 10px 18px;
+  }
+
+  .photographer {
+    padding: 10px 18px 0;
+    font-style: italic;
+    @include font-size(12);
+  }
+}
+
+// Pagination
+.pagination {
+  height: 12px;
+  right: 133px;
+  bottom: 77px;
+  min-width: 300px;
+  position: absolute;
+  text-align: right;
+
+  span {
+    cursor: pointer;
+    height: 11px;
+    @include border-radius(11px);
+    @include inline-block(top);
+    margin-left: 5px;
+    width: 11px;
+    @include sprite(-100px, -330px);
+
+    &:hover {
+      background-position: -100px -343px;
+    }
+  }
+
+  .swiper-active-switch {
+    background-position: -100px -343px;
+  }
+}
+// Node slider pagination
+.view-subject-subpages {
+  .pagination {
+    top: 307px;
+  }
+}
+
+// Navigation
+.node-slider-nav {
+  top: 284px;
+  height: 34px;
+  position: absolute;
+  right: 19px;
+
+  a {
+    display: block;
+    float: left;
+    height: 34px;
+    margin-left: 15px;
+    text-indent: -999px;
+    width: 34px;
+    @include sprite(0, 0);
+    @include transition-duration(0s);
+  }
+
+  .arrow-left {
+    background-position: -100px -285px;
+
+    &:hover {
+      background-position: -100px -250px;
+    }
+  }
+
+  .arrow-right {
+    background-position: -135px -285px;
+
+    &:hover {
+      background-position: -135px -250px;
+    }
+  }
+}
+
+.view-slider .pagination {
+  bottom: 25px;
+  right: 116px;
+}
+
+.view-display-id-slider_with_nav .pagination{
+  bottom: 25px;
+  right: 116px;
+  position: absolute;
+}
+
+.view-display-id-slider_with_nav {
+  .content {
+    padding: 0;
+  }
+}
+
+// Prev next block
+  .nav-btn {
+    @include transition-property(all);
+    @include transition-timing-function(ease-in);
+    @include transition-duration(.1s);
+    @include sprite(-93px, -371px, rgba($black, .4));
+
+    // background-color: rgba($black, .4);
+    display: block;
+    height: 48px;
+    margin-top: -24px;
+    position: absolute;
+    text-indent: -999em;
+    top: 50%;
+    width: 30px;
+    z-index: 10;
+
+    .lt-ie9 & {
+      background: url(../images/sprite.png) no-repeat;
+      background-position: -93px -371px;
+      background-color: $black;
+    }
+    &:hover {
+      background-color: rgba($black, .6)
+    }
+  }
+
+  .arrow-right {
+    right: 0;
+    background-position: -132px -371px;
+
+    .lt-ie9 & {
+      background-position: -132px -371px;
+    }
+  }
+
+// Slider with Navigation
+.about-slide {
+    @include transition-property(all);
+    @include transition-timing-function(ease-in);
+    @include transition-duration(.1s);
+    background: $white;
+    color: $gray;
+    padding: 26px 22px 21px 17px;
+    width: 336px;
+    position: absolute;
+    top: 137px;
+    left: 0;
+    z-index: 10;
+
+    a {
+      text-indent: -999em;
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9;
+      // IE bug fix with transparent links which have position absolute
+      background: url('about:blank');
+    }
+
+    .headline {
+      padding: 16px 5px;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: $sans-med-strict;
+      @include font-size(43);
+      color: $darkGray;
+    }
+
+    h2 {
+      @include font-size(16);
+      margin-bottom: 10px;
+    }
+
+    &:hover {
+      color: $liteGray;
+      cursor: pointer;
+    }
+}
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+
+// Screen---- max-width(980px)
+@include at-breakpoint($tablet) {
+  .slide-controls {
+    .view-content {
+      max-width: 100px;
+
+      .description {
+        display: none;
+      }
+    }
+  }
+    // Node slider navigation
+  .node-slider-nav {
+    top: 20px;
+  }
+
+  .view-subject-subpages .pagination {
+    top: 44px;
+  }
+}
+
+
+// Tableet port ----max-width(767px)
+@include at-breakpoint($tablet-port) {
+  .swiper-content {
+    .short-about {
+      max-width: 250px;
+      h1 {
+        @include font-size(25);
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .swiper-nav-container .about-slide {
+    top: 0;
+    max-width: 100%;
+    padding: 10px;
+    width: 100%;
+    background: rgba($white, .8);
+    @include box-sizing(border-box);
+
+    .headline {
+      padding: 0;
+    }
+  }
+}
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+
+  // Slider navigation
+
+  .slide-controls {
+
+    .slider-nav-container {
+      height: 263px;
+      border: 0 none;
+    }
+
+    .swiper-nav  .swiper-slide {
+      height: 65px !important;
+    }
+
+    .view-content {
+      max-width: 100px;
+      padding: 0 0 0 1px;
+      margin: 0;
+
+      .inner {
+        padding: 0;
+      }
+
+      .description {
+        display: none;
+      }
+    }
+  }
+
+.swiper-content,
+.swiper-nav-container {
+  height: 263px !important;
+    .swiper-wrapper,
+    .swiper-slide {
+      height: 263px !important;
+    }
+
+    // About slide text block
+    .short-about{
+      padding: 10px;
+      max-width: 150px;
+
+      .headline {
+        border: 0 none;
+        padding: 0;
+      }
+
+      h1 {
+        @include font-size(16);
+        margin-bottom: 10px;
+      }
+      h2 {
+        @include font-size(11);
+      }
+    }
+  }
+
+  .pagination {
+    top: 66%;
+  }
+
+  // Slider with navigation
+  .swiper-nav-container .about-slide {
+    h1 {
+      @include font-size(17);
+      line-height: 17px;
+    }
+
+  }
+}
+
+// Phone port -----max-width(320px)
+@include at-breakpoint($phone-port) {
+   .pagination {
+    top: 59%;
+  }
+}
+

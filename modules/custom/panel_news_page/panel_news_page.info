@@ -1,0 +1,15 @@
+name = Panel News page
+core = 7.x
+package = Panels
+version = 7.x-1.0
+project = panel_news_page
+dependencies[] = ctools
+dependencies[] = ctools_custom_content
+dependencies[] = page_manager
+datestamp = 1384870968
+features[ctools][] = ctools_custom_content:ctools_content:1
+features[ctools][] = page_manager:pages_default:1
+features[ctools_custom_content][] = custom_share_used_on_news_pages
+features[features_api][] = api:2
+features[page_manager_handlers][] = node_view_panel_context_7
+features[page_manager_pages][] = news_page

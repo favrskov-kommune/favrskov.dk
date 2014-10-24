@@ -1,0 +1,40 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-12 14:08+0200\n"
+"PO-Revision-Date: 2013-09-12 15:10+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: content_type_self_service.features.field_instance.inc:42;324
+msgid "Displayed Title"
+msgstr "Vist Overskrift"
+
+#: content_type_self_service.features.field_instance.inc:253;327
+msgid "Require login"
+msgstr "Kræver login"
+
+#: content_type_self_service.features.field_instance.inc:300;328
+msgid "Teaser"
+msgstr "Manchet"
+
+#: content_type_self_service.features.inc:23
+msgid "Self Service"
+msgstr "Selvbetjening"
+
+#: content_type_self_service.features.inc:27
+msgid "Title"
+msgstr "Overskrift"
+
+#: content_type_self_service.info:0
+msgid "Content Type Self Service"
+msgstr "Indholdstype Selvbetjening"
+
+#: content_type_self_service.info:0
+msgid "Content Types"
+msgstr "Indholdstyper"

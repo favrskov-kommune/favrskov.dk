@@ -1,0 +1,10 @@
+name = Domain Menu Permissions
+description = Allows domain administrator to edit a domain's assigned main menu without the need for global menu administration privileges
+package = Domain Access
+core = 7.x
+dependencies[] = domain
+dependencies[] = menu
+
+version = "7.x-0.1"
+core = "7.x"
+

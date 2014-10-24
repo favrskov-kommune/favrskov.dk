@@ -1,0 +1,155 @@
+//------------------------------------------------------------------------------
+// Combibox pane;
+.combi {
+  height: auto !important;
+  max-width: 1200px;
+}
+.combi-row {
+  .swiper-slide {
+    width: 240px !important;
+    float: left;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  // All links styles
+  a {
+    display: block;
+    font-family: $sans;
+    line-height: 1.2;
+    padding: 65px 20px 20px;
+
+    @include links($white, $white);
+    @include font-size(15);
+  }
+
+  // Block color styles
+  .gray {
+    background-color: #eee;
+
+    .box-info {
+      background-color: darken(#eee, 10%);
+    }
+
+    a {
+      color: #5e6a6a;
+    }
+    // Change icon color to green
+    [class^='icon-'] {
+      color: #bdc135;
+    }
+  }
+
+  .red {
+    background-color: #e52043;
+    .box-info {
+      background-color: darken(#e52043, 10%);
+    }
+  }
+  .green {
+    background-color: #bdc135;
+    .box-info {
+      background-color: darken(#bdc135, 10%);
+    }
+  }
+  .cold-blue {
+    background-color: #aed0d5;
+
+    .box-info {
+      background-color: darken(#aed0d5, 10%);
+    }
+
+    a {
+      color: #5e6a6a;
+    }
+  }
+}
+
+.combi-box  {
+  height: 241px;
+  position: relative;
+  width: 241px;
+  background: #f0f0f0;
+
+  @extend %animate;
+  @include transition-duration(.2s);
+
+  // Images
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    @extend %animate;
+  }
+
+  // Icons
+  [class^='icon-']{
+    position: absolute;
+    z-index: 1;
+    color: $white;
+    left: 15px;
+    top: 15px;
+
+    @include font-size(37);
+    @extend %animate;
+  }
+
+  // Instagram icon
+  .icon-instagram-box {
+    color: #aed0d5;
+  }
+
+  // About box
+  .box-info {
+    color: $white;
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    padding: 15px;
+    width: 100%;
+    z-index: 2;
+
+    @extend %animate;
+    @include transition-duration(.3s);
+    @include box-sizing(border-box);
+  }
+
+
+  &:hover {
+    .box-info {
+      opacity: 1;
+    }
+  }
+}
+
+.combi-box:hover {
+
+  &.red {
+    [class^='icon']{
+      color: darken(#e52043, 30%);
+    }
+  }
+  &.green {
+    [class^='icon']{
+      color: darken(#bdc135, 30%);
+    }
+  }
+  &.gray {
+    [class^='icon']{
+      color: darken(#eee, 30%);
+    }
+  }
+  &.cold-blue {
+    [class^='icon']{
+      color: darken(#aed0d5, 30%);
+    }
+  }
+  // Hide image for instagram
+  img {
+    opacity: 0;
+  }
+}
+

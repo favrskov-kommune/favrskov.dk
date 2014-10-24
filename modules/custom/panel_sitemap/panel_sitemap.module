@@ -1,0 +1,34 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Sitemap feature.
+ */
+
+include_once 'panel_sitemap.features.inc';
+
+/**
+ * Implements hook_block_info().
+ *
+ * Adds information about sitemap block.
+ */
+function panel_sitemap_block_info() {
+  $blocks['sitemap'] = array(
+    'info' => t('Sitemap'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ * Renders sitemap block.
+ */
+function panel_sitemap_block_view() {
+  $block = array();
+
+  $block['content'] = theme('site_map');
+
+  return $block;
+}

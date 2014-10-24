@@ -1,0 +1,13 @@
+name = MailChimp Groups
+package = MailChimp
+core = 7.x
+
+version = 7.x-1.0
+project = mailchimp_groups
+
+configure = admin/config/services/mailchimp/groups
+
+dependencies[] = ctools
+dependencies[] = mailchimp
+dependencies[] = mailchimp_campaign
+dependencies[] = mailchimp_lists

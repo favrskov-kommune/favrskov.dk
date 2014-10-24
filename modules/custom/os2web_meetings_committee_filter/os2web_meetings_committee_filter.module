@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OS2Web Meetings Committee filter feature.
+ */
+
+include_once 'os2web_meetings_committee_filter.features.inc';

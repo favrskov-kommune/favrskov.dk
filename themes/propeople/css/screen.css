@@ -1,0 +1,890 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 67, ../sass/mixins-var/_mixins.scss */
+hr {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+/* line 71, ../sass/mixins-var/_mixins.scss */
+.form-text,
+.form-textarea, .no-border, .form-submit,
+.btn-main {
+  border: 0 none;
+}
+
+/* line 75, ../sass/mixins-var/_mixins.scss */
+.no-padding {
+  padding: 0;
+}
+
+/* line 78, ../sass/mixins-var/_mixins.scss */
+.no-margin {
+  margin: 0;
+}
+
+/* line 82, ../sass/mixins-var/_mixins.scss */
+.tc, .centered {
+  text-align: center;
+}
+
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+/* line 17, ../sass/base/_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 27, ../sass/base/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 30, ../sass/base/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 33, ../sass/base/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 36, ../sass/base/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 40, ../sass/base/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 44, ../sass/base/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 3, ../sass/base/_global.scss */
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+/* line 10, ../sass/base/_global.scss */
+body {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  font-family: Helvetica, Arial, sans-serif;
+  word-wrap: break-word;
+}
+
+/* line 16, ../sass/base/_global.scss */
+.group {
+  zoom: 1;
+  /* For IE 6/7 (trigger hasLayout) */
+}
+/* line 20, ../sass/base/_global.scss */
+.group:before, .group:after {
+  content: "";
+  display: table;
+}
+/* line 25, ../sass/base/_global.scss */
+.group:after {
+  clear: both;
+}
+
+/* line 32, ../sass/base/_global.scss */
+.preloader,
+.preloader-overlay,
+.custom-throbber {
+  display: none;
+}
+
+/*
+ Hide pane titles
+*/
+/* line 40, ../sass/base/_global.scss */
+.hide-title h2.pane-title {
+  display: none;
+}
+
+/* line 51, ../sass/base/_global.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: bold;
+}
+
+/*
+  Reset base styles for all lists
+*/
+/* line 58, ../sass/base/_global.scss */
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* line 64, ../sass/base/_global.scss */
+a {
+  outline: medium none;
+  color: #98dff8;
+  text-decoration: none;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+/* line 25, ../sass/mixins-var/_mixins.scss */
+a:hover {
+  color: white;
+}
+/* line 71, ../sass/base/_global.scss */
+a:focus {
+  outline: medium none;
+}
+/* line 74, ../sass/base/_global.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 84, ../sass/base/_global.scss */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="search"] {
+  min-height: 22px;
+}
+
+/* line 89, ../sass/base/_global.scss */
+.form-text,
+.form-textarea {
+  border: 1px solid transparent;
+}
+/* line 94, ../sass/base/_global.scss */
+.form-text:hover, .form-text:focus,
+.form-textarea:hover,
+.form-textarea:focus {
+  outline: none;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+  border: 1px solid #fff;
+}
+
+/* line 101, ../sass/base/_global.scss */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* line 106, ../sass/base/_global.scss */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+/* Text */
+/* line 111, ../sass/base/_global.scss */
+.tr {
+  text-align: right;
+}
+
+/* line 114, ../sass/base/_global.scss */
+hr {
+  border-top: 0 none;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 119, ../sass/base/_global.scss */
+hr.half {
+  width: 50%;
+}
+
+/*
+  IE 9.0 and less versions
+*/
+/* line 130, ../sass/base/_global.scss */
+.ajax-message {
+  text-align: center;
+  color: #ec0045;
+  display: none;
+}
+
+/*
+  Normlal browsers
+*/
+/* line 140, ../sass/base/_global.scss */
+.ajax-progress-throbber {
+  margin: 0 auto 16px;
+  display: block;
+  width: 34px;
+}
+
+/* line 148, ../sass/base/_global.scss */
+.front .custom-throbber {
+  display: block;
+}
+
+/* line 163, ../sass/base/_global.scss */
+.pane-pane-messages .tabs {
+  margin: 20px 0;
+}
+/* line 169, ../sass/base/_global.scss */
+.pane-pane-messages .status,
+.pane-pane-messages .warning,
+.pane-pane-messages .error,
+.pane-pane-messages .alert-block {
+  color: white;
+  display: block;
+  left: 0;
+  position: absolute;
+  top: 0;
+  padding: 15px 55px 15px 30px;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 999;
+}
+/* line 181, ../sass/base/_global.scss */
+.pane-pane-messages .status .krumo-root,
+.pane-pane-messages .warning .krumo-root,
+.pane-pane-messages .error .krumo-root,
+.pane-pane-messages .alert-block .krumo-root {
+  color: black;
+}
+/* line 185, ../sass/base/_global.scss */
+.pane-pane-messages .status a,
+.pane-pane-messages .warning a,
+.pane-pane-messages .error a,
+.pane-pane-messages .alert-block a {
+  color: black;
+}
+
+/*
+ * Reset borders and paddings/margins
+*/
+/*
+ * Image replacement
+ */
+/* line 216, ../sass/base/_global.scss */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback
+  *text-indent: -9999px;*/
+}
+
+/* line 224, ../sass/base/_global.scss */
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+/* line 235, ../sass/base/_global.scss */
+.hidden {
+  visibility: hidden;
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+/* line 244, ../sass/base/_global.scss */
+.element-invisible,
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+/* line 261, ../sass/base/_global.scss */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+/* line 274, ../sass/base/_global.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* Responsive */
+/* line 1, ../sass/base/_tabs.scss */
+.tabs {
+  float: left;
+  margin: 40px 0;
+  width: 100%;
+  float: left;
+  margin-right: 1.84502%;
+  display: inline;
+}
+/* line 6, ../sass/base/_tabs.scss */
+.tabs .element-invisible {
+  display: none;
+  visibility: hidden;
+}
+/* line 11, ../sass/base/_tabs.scss */
+.tabs ul {
+  overflow: hidden;
+  border-bottom: 1px solid #ec0045;
+}
+/* line 14, ../sass/base/_tabs.scss */
+.tabs ul li {
+  float: left;
+  margin: 0;
+  padding: 0;
+  border-right: 1px solid white;
+}
+/* line 20, ../sass/base/_tabs.scss */
+.tabs ul li a {
+  display: block;
+  padding: 10px 15px !important;
+  color: white;
+  text-decoration: none;
+}
+/* line 25, ../sass/mixins-var/_mixins.scss */
+.tabs ul li a:hover {
+  color: white;
+}
+/* line 26, ../sass/base/_tabs.scss */
+.tabs ul li:hover {
+  background-color: #3c3c3c;
+}
+/* line 30, ../sass/base/_tabs.scss */
+.tabs ul li.active {
+  background-color: #000;
+}
+
+/* line 4, ../sass/partials/_menu.scss */
+.primary-links {
+  margin: 0;
+  overflow: hidden;
+}
+/* line 8, ../sass/partials/_menu.scss */
+.primary-links li {
+  float: left;
+  margin: 0;
+}
+/* line 12, ../sass/partials/_menu.scss */
+.primary-links li.first a {
+  padding-left: 0;
+}
+/* line 17, ../sass/partials/_menu.scss */
+.primary-links a {
+  display: block;
+  padding-right: 25px;
+  line-height: 28px;
+  font-size: 17px;
+  font-size: 1.0625rem;
+  color: #ec0045;
+  text-decoration: none;
+}
+/* line 25, ../sass/mixins-var/_mixins.scss */
+.primary-links a:hover {
+  color: black;
+}
+/* line 24, ../sass/partials/_menu.scss */
+.primary-links a.active {
+  color: black;
+  text-decoration: none;
+}
+/* line 25, ../sass/mixins-var/_mixins.scss */
+.primary-links a.active:hover {
+  color: black;
+}
+
+/* line 7, ../sass/partials/_header.scss */
+.front #header {
+  min-height: 102px;
+}
+
+/* line 4, ../sass/partials/_wysiwyg.scss */
+article.content {
+  margin-bottom: 50px;
+}
+/* line 13, ../sass/partials/_wysiwyg.scss */
+article.content h2,
+article.content h3,
+article.content h4,
+article.content h5,
+article.content h5,
+article.content h6 {
+  line-height: 1.2;
+  margin: 20px 0;
+}
+/* line 18, ../sass/partials/_wysiwyg.scss */
+article.content h2 {
+  font-size: 45px;
+  font-size: 2.8125rem;
+}
+/* line 19, ../sass/partials/_wysiwyg.scss */
+article.content h3 {
+  font-size: 40px;
+  font-size: 2.5rem;
+}
+/* line 20, ../sass/partials/_wysiwyg.scss */
+article.content h4 {
+  font-size: 35px;
+  font-size: 2.1875rem;
+}
+/* line 21, ../sass/partials/_wysiwyg.scss */
+article.content h5 {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+/* line 22, ../sass/partials/_wysiwyg.scss */
+article.content h6 {
+  font-size: 25px;
+  font-size: 1.5625rem;
+}
+/* line 26, ../sass/partials/_wysiwyg.scss */
+article.content p {
+  font-weight: 200;
+  margin: 0 0 30px;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+/* line 32, ../sass/partials/_wysiwyg.scss */
+article.content .seo-tags {
+  display: none;
+}
+/* line 38, ../sass/partials/_wysiwyg.scss */
+article.content ol,
+article.content ul {
+  padding-left: 30px;
+  margin: 20px 0;
+}
+/* line 41, ../sass/partials/_wysiwyg.scss */
+article.content ol li,
+article.content ul li {
+  list-style-position: outside;
+  line-height: 1.5;
+}
+/* line 47, ../sass/partials/_wysiwyg.scss */
+article.content ol li {
+  list-style-type: decimal;
+}
+/* line 50, ../sass/partials/_wysiwyg.scss */
+article.content ul li {
+  list-style-type: square;
+}
+/* line 57, ../sass/partials/_wysiwyg.scss */
+article.content .player iframe {
+  width: 100%;
+}
+
+/* line 64, ../sass/partials/_wysiwyg.scss */
+code {
+  line-height: 1.5;
+  font-size: 13.8px;
+  font-size: 0.8625rem;
+  white-space: pre-wrap;
+}
+
+/* Responsive */
+/* line 2, ../sass/partials/_buttons.scss */
+.btn,
+.more-link {
+  color: white;
+}
+/* line 6, ../sass/partials/_buttons.scss */
+.btn:active, .btn:focus,
+.more-link:active,
+.more-link:focus {
+  outline: none;
+}
+
+/* line 13, ../sass/partials/_buttons.scss */
+.form-submit,
+.btn-main {
+  background: transparent;
+  background-color: #98dff8;
+  color: #586464;
+  cursor: pointer;
+  padding: 8px 29px 7px;
+}
+/* line 21, ../sass/partials/_buttons.scss */
+.form-submit:hover,
+.btn-main:hover {
+  background-color: #608c9c;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+/* line 28, ../sass/partials/_buttons.scss */
+.form-submit.tapped,
+.btn-main.tapped {
+  background: transparent;
+  background-color: #ec0045;
+  color: white;
+}
+/* line 35, ../sass/partials/_buttons.scss */
+.form-submit.tapped:hover, .form-submit.tapped:active, .form-submit.tapped:focus,
+.btn-main.tapped:hover,
+.btn-main.tapped:active,
+.btn-main.tapped:focus {
+  background: transparent;
+  background-color: #ec0045;
+  color: white;
+}
+
+/* line 7, ../sass/partials/_login.scss */
+.page-user .control-group.error .control-label {
+  color: black;
+}
+/* line 10, ../sass/partials/_login.scss */
+.page-user .control-group.error .help-block {
+  color: gray;
+}
+/* line 15, ../sass/partials/_login.scss */
+.page-user .control-group.error input,
+.page-user .control-group.error textarea {
+  border-color: #ec0045;
+}
+/* line 20, ../sass/partials/_login.scss */
+.page-user .nav-tabs {
+  border: 0 none;
+  text-align: center;
+  margin: 0 0 40px;
+}
+/* line 25, ../sass/partials/_login.scss */
+.page-user .nav-tabs li {
+  float: none;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+}
+/* line 30, ../sass/partials/_login.scss */
+.page-user .nav-tabs a {
+  background: #ec0045;
+  border: 0;
+  color: white;
+  margin-bottom: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+/* line 39, ../sass/partials/_login.scss */
+.page-user .nav-tabs .active a,
+.page-user .nav-tabs a:hover {
+  background: #999999;
+  border: none;
+  color: white;
+}
+/* line 51, ../sass/partials/_login.scss */
+.page-user .form-item-name,
+.page-user .form-item-pass {
+  margin-bottom: 20px;
+}
+/* line 54, ../sass/partials/_login.scss */
+.page-user .form-text {
+  height: 25px;
+  padding: 2%;
+  max-width: 96%;
+  margin: 0 0 5px;
+  background: white;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+/* line 89, ../sass/mixins-var/_mixins.scss */
+.page-user .form-text.placeholder {
+  color: #a8a8a8;
+}
+/* line 92, ../sass/mixins-var/_mixins.scss */
+.page-user .form-text:-moz-placeholder {
+  color: #a8a8a8;
+}
+/* line 95, ../sass/mixins-var/_mixins.scss */
+.page-user .form-text::-webkit-input-placeholder {
+  color: #a8a8a8;
+}
+/* line 64, ../sass/partials/_login.scss */
+.page-user .form-required {
+  color: #ec0045;
+}
+/* line 68, ../sass/partials/_login.scss */
+.page-user .help-block {
+  margin: 3px 0 15px;
+  color: gray;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-size: 0.6875rem;
+}
+/* line 75, ../sass/partials/_login.scss */
+.page-user .pane-pane-messages .alert-block {
+  margin: 0 auto 40px;
+  max-width: 30%;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+
+/* line 85, ../sass/partials/_login.scss */
+#user-register-form,
+#user-pass,
+#user-login {
+  color: white;
+  background-color: #586464;
+  border: 1px solid #f2f2f2;
+  margin: 0 auto 60px;
+  max-width: 355px;
+  padding: 20px;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+/* line 96, ../sass/partials/_login.scss */
+#user-register-form label,
+#user-pass label,
+#user-login label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+/* line 103, ../sass/partials/_login.scss */
+#user-register-form .description,
+#user-pass .description,
+#user-login .description {
+  display: none;
+}
+
+/* line 112, ../sass/partials/_login.scss */
+#user-register-form .form-text,
+#user-pass .form-text {
+  margin-bottom: 15px;
+}
+
+/* line 118, ../sass/partials/_login.scss */
+#user-register-form #edit-account .form-text {
+  margin-bottom: 0;
+}
+/* line 122, ../sass/partials/_login.scss */
+#user-register-form .field-type-list-integer .selectboxit {
+  margin: 0 0 15px;
+}
+
+/* line 132, ../sass/partials/_login.scss */
+#user-profile-form {
+  background-color: #e4e4e4;
+  max-width: 50%;
+  margin: 0 auto 60px;
+  padding: 2%;
+  /* Input type file */
+  /* Account setting */
+}
+/* line 139, ../sass/partials/_login.scss */
+#user-profile-form .form-wrapper {
+  background-color: #e4e4e4;
+  margin-bottom: 10px;
+  margin: 0 1% 1% 0;
+}
+/* line 143, ../sass/partials/_login.scss */
+#user-profile-form .form-wrapper legend {
+  line-height: 1.3;
+  margin: 0 -12px;
+  padding: 11px;
+  width: 100%;
+}
+/* line 152, ../sass/partials/_login.scss */
+#user-profile-form #edit-submit {
+  margin: 25px auto 5pc;
+  display: block;
+}
+/* line 157, ../sass/partials/_login.scss */
+#user-profile-form .selectboxit {
+  margin-top: 5px;
+}
+/* line 161, ../sass/partials/_login.scss */
+#user-profile-form .tips {
+  font-size: 11px;
+  font-size: 0.6875rem;
+}
+/* line 167, ../sass/partials/_login.scss */
+#user-profile-form *[type="file"] {
+  height: auto;
+}
+/* line 173, ../sass/partials/_login.scss */
+#user-profile-form #edit-account {
+  /*Current password*/
+  /* New password */
+}
+/* line 177, ../sass/partials/_login.scss */
+#user-profile-form #edit-account .form-item-current-pass,
+#user-profile-form #edit-account .form-item-mail {
+  max-width: 50%;
+  float: left;
+}
+/* line 181, ../sass/partials/_login.scss */
+#user-profile-form #edit-account .form-item-mail {
+  max-width: 50%;
+}
+/* line 186, ../sass/partials/_login.scss */
+#user-profile-form #edit-account .form-item-pass {
+  background-color: #f8f8f8;
+  clear: both;
+  padding: 1%;
+  position: relative;
+}
+/* line 194, ../sass/partials/_login.scss */
+#user-profile-form #edit-account .form-item-pass .confirm-parent,
+#user-profile-form #edit-account .form-item-pass .password-parent {
+  position: relative;
+}
+/* line 198, ../sass/partials/_login.scss */
+#user-profile-form #edit-account .form-item-pass .confirm-parent .password-confirm,
+#user-profile-form #edit-account .form-item-pass .confirm-parent .password-strength,
+#user-profile-form #edit-account .form-item-pass .password-parent .password-confirm,
+#user-profile-form #edit-account .form-item-pass .password-parent .password-strength {
+  position: absolute;
+  right: 0;
+  top: 9px;
+  max-width: 38%;
+}
+/* line 204, ../sass/partials/_login.scss */
+#user-profile-form #edit-account .form-item-pass .confirm-parent .password-confirm .error,
+#user-profile-form #edit-account .form-item-pass .confirm-parent .password-strength .error,
+#user-profile-form #edit-account .form-item-pass .password-parent .password-confirm .error,
+#user-profile-form #edit-account .form-item-pass .password-parent .password-strength .error {
+  color: #ec0045;
+  font-weight: bold;
+}
+/* line 208, ../sass/partials/_login.scss */
+#user-profile-form #edit-account .form-item-pass .confirm-parent .password-confirm .ok,
+#user-profile-form #edit-account .form-item-pass .confirm-parent .password-strength .ok,
+#user-profile-form #edit-account .form-item-pass .password-parent .password-confirm .ok,
+#user-profile-form #edit-account .form-item-pass .password-parent .password-strength .ok {
+  color: #47c965;
+  font-weight: bold;
+}
+/* line 213, ../sass/partials/_login.scss */
+#user-profile-form #edit-account .form-item-pass .confirm-parent input.password-confirm,
+#user-profile-form #edit-account .form-item-pass .password-parent input.password-confirm {
+  max-width: 95%;
+  position: static;
+}
+/* line 219, ../sass/partials/_login.scss */
+#user-profile-form #edit-account .form-item-pass .password-suggestions {
+  background-color: #fefff6;
+  border: 0 none;
+  font-weight: bold;
+  padding: 4%;
+  position: absolute;
+  max-width: 45%;
+  right: 0;
+  bottom: 150px;
+  font-size: 11px;
+  font-size: 0.6875rem;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 8px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 8px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 8px;
+}
+/* line 231, ../sass/partials/_login.scss */
+#user-profile-form #edit-account .form-item-pass .password-suggestions li {
+  font-weight: normal;
+  margin-left: 10px;
+  list-style-type: square;
+}

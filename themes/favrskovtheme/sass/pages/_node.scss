@@ -1,0 +1,1299 @@
+//------------------------------------------------------------------------------
+// Node page
+
+.lt-ie9 .media-image {
+  max-width: 100%;
+}
+
+.dynamic-background {
+  &.node-type-news,
+  &.node-type-article,
+  &.node-type-newsletter,
+  &.node-type-video-element {
+    .header {
+      min-height: 130px;
+      margin-bottom: 240px;
+    }
+
+    .main-wrapper {
+      background: $white;
+    }
+
+    @include at-breakpoint(891px 12) {
+      .content-container {
+        max-width: 1050px;
+        margin: -220px auto 0;
+        background: $white;
+      }
+    }
+  }
+}
+
+.domain-roskilde-stag-propeople-com-ua {
+  &.node-type-news,
+  &.node-type-article,
+  &.node-type-newsletter,
+  &.node-type-video-element {
+    .header {
+      min-height: 50px;
+      margin-bottom: 0;
+    }
+
+    .main-wrapper {
+      background: url(../images/pat.png);
+    }
+
+    @include at-breakpoint(891px 12) {
+      .content-container {
+        margin: 0 auto;
+        max-width: none;
+      }
+    }
+  }
+}
+
+.panel-nodes {
+  .node-content {
+    @include span-columns(7, 12);
+  }
+  .sidebar {
+    @include span-columns(4 omega, 12);
+  }
+}
+
+// Event node view separate styles
+.node-type-os2web-kultunaut-event .pane-node-body {
+  margin-top: 40px;
+}
+// ----------------------------------
+// Global node styles
+.banner-content,
+.node-content {
+  // Set global node text color
+  color: $gray;
+  margin-bottom: 40px;
+
+  @extend .group;
+
+  // Header
+  h1 {
+    @include font-size(50);
+    font-family: $sans-bold-strict;
+    color: $slategrey;
+    margin-bottom: 30px;
+  }
+
+  // Teaser
+  .teaser {
+    clear: both;
+    line-height: 1.3;
+    margin: 30px 0;
+    @include font-size(24);
+  }
+
+  // Node Content
+  .node-body {
+   @include font-size(16);
+   line-height: 1.4;
+
+   h2,
+   h3,
+   h4 {
+    font-family: $sans-med-strict;
+   }
+
+   h2 { @include font-size(22); }
+   h3 { @include font-size(20); }
+   h4 { @include font-size(18); }
+
+    p {
+      margin-bottom: 22px;
+    }
+  }
+
+  // Global links styles
+  // a {
+  //   @include links($red, $slategrey);
+  // }
+
+  // Node type event
+  .event-date,
+  .event-time,
+  .location {
+    @include font-size(16);
+    font-family: $sans-med-strict;
+    line-height: 1.4;
+    margin-bottom: 5px;
+  }
+}
+
+// ----------------------------------
+// Embeded video
+.video {
+  object,
+  iframe,
+  & > div {
+    max-width: 100%;
+  }
+}
+.video p {
+  display: none;
+}
+
+.video-descrition {
+  margin-bottom: 30px;
+}
+
+// -----------------------------------------------------------------------------
+// Responsive table
+.tablefield,
+.pane-pane-hearing-responses {
+  margin-bottom: 30px;
+
+  thead {
+    font-family: $sans-med-strict;
+    tr {
+      background-color: #595959;
+      @include font-size(20);
+    }
+  }
+
+  th {
+    border: 0 none;
+    color: $white;
+    padding: 9px 10px;
+    text-align: left;
+    font-family: $sans-med-strict;
+    font-weight: normal;
+  }
+
+  td {
+    background-color: #eee;
+    border: 1px solid #fff;
+    padding: 9px 10px;
+    text-align: left;
+
+    @include font-size(14);
+    line-height: 1.2;
+  }
+}
+
+// Hearing table
+.pane-pane-hearing-responses {
+  form {
+    margin-bottom: 20px;
+  }
+  // Form select
+  .form-type-select {
+    label {
+      margin-right: 10px;
+      @include inline-block();
+    }
+  }
+  .selector {
+    margin: 10px 0 20px;
+    @include inline-block();
+  }
+
+  // Table header
+  .pane-title {
+    @include font-size(22);
+    margin-bottom: 20px;
+  }
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+}
+// Hearing list pane
+// ----------------------------------
+.pane-hearings-hearings-list-pane {
+  .views-table thead th {
+    padding: 0;
+  }
+}
+#views-exposed-form-hearings-hearings-list-pane {
+  label {
+    margin: 23px 10px 10px 0;
+    min-width: 160px;
+    text-transform: uppercase;
+    @include inline-block(top);
+  }
+
+  .views-widget {
+    @include inline-block();
+    margin: 10px 0;
+  }
+}
+
+// ----------------------------------
+// Factbox
+.factbox {
+  border-bottom: 1px solid $slategrey;
+  margin: 40px 0;
+
+  .fact-item {
+    margin-bottom: 20px;
+  }
+
+  // Fact
+  .fact {
+    overflow: hidden;
+  }
+
+  // Image
+  .image {
+    float: right;
+    text-align: right;
+    margin: 0 0 30px 30px;
+
+    img {
+      display: block;
+    }
+  }
+
+  .image-description {
+    @include inline-block();
+    max-width: 130px;
+    min-width: 130px;
+    min-height: 20px;
+    padding: 10px;
+    text-align: left;
+    @include font-size(12);
+  }
+
+  // Related content
+  .related-content {
+    border-bottom: 0 none;
+    margin: 0;
+    padding: 0;
+  }
+
+  h3 {
+    @include font-size(30);
+    margin-bottom: 18px;
+    line-height: 1.2;
+    color: $gray;
+  }
+  .node-body {
+    padding: 0;
+    border: 0 none;
+    @include font-size(15);
+    line-height: 1.4;
+    margin: 0;
+    color: $def-color;
+  }
+}
+
+
+// ----------------------------------
+// Embeded node
+.embedded {
+  @include font-size(16);
+  line-height: 1.4;
+  border-bottom: 1px solid $slategrey;
+  margin-bottom: 40px;
+
+  // Main title
+  h2 {
+    @include font-size(30);
+    font-family: $sans-bold-strict;
+    margin-bottom: 30px;
+  }
+
+  // Submitted (hide)
+  .submitted { display: none }
+
+  // ----------------------------------
+  //Content
+  .content {
+    border-top: 4px solid $slategrey;
+    border-bottom: 3px solid $slategrey;
+
+    // Header
+    & > div {
+      margin-bottom: 20px;
+    }
+
+    .node-body {
+      border: 0 none;
+      padding: 0;
+      margin-bottom: 20px;
+
+     .field-items {
+      padding: 15px;
+
+     }
+    }
+    // Micro artticle
+    .microArticle {
+      @include font-size(15);
+      border-bottom: 1px solid $slatgrayLight;
+
+      // Title
+      h2.mArticle {
+        background: #eee url(../images/plus-minus.png) no-repeat 94.5% 17px;
+        display: block;
+        @include font-size(16);
+        cursor: pointer;
+        margin: 0;
+        padding: 20px 10% 16px 19px;
+        line-height: 1.2;
+        @include transition-duration(.1s);
+
+
+        &.open {
+          background: #fff url(../images/plus-minus.png) no-repeat 94.5% -175px;
+        }
+      }
+
+      p {
+        line-height: 1.4;
+        @include font-size(15);
+      }
+
+
+
+      .mArticle {
+        background: $white;
+        display: none;
+        padding: 15px;
+
+        &.open {
+          display: block;
+        }
+
+        .state {
+          display: none;
+        }
+      }
+    }
+
+    .recommended,
+    .legislation,
+    .os2web-selfservice {
+      padding-top: 15px;
+      h3,
+      h4 {
+        @include font-size(22);
+        font-family: $sans-med-strict;
+      }
+
+      h4 {
+        @include font-size(18);
+        & + ul {
+          margin-bottom: 20px;
+        }
+      }
+
+      ul + h4 {
+        margin-bottom: 0;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+    }
+
+  }
+}
+
+// ----------------------------------
+// Automatic related contnet
+.automated-related-content {
+  clear: both;
+  border-bottom: 1px solid $slategrey;
+  margin-bottom: 50px;
+
+  .pane-title {
+    @include font-size(30);
+  }
+}
+
+// ----------------------------------
+// related-content
+.pane-node-field-related-content {
+  @include span-columns(12, 12);
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid $slategrey;
+  clear: both;
+
+  .pane-title {
+    @include font-size(30);
+  }
+}
+
+.related-content {
+  margin: 30px 0;
+
+  a {
+    display: block;
+    margin-bottom: 15px;
+    @include font-size(16);
+
+    &:before {
+      content: '\e802';
+      display: inline-block;
+      font-family: "fontello";
+      width: 1em;
+      margin-right: 5px;
+    }
+  }
+}
+
+
+// ----------------------------------
+//  Phone book
+.node-content .pane-node-field-contact-information {
+  border-bottom: 1px solid $slategrey;
+  margin-bottom: 40px;
+
+  @include span-columns(12, 12);
+
+  .pane-title {
+    @include font-size(30);
+    font-family: $sans-bold-strict;
+    margin-bottom: 27px;
+  }
+}
+
+.contact-item {
+  margin-bottom: 40px;
+}
+
+.node-contacts {
+  line-height: 1.7;
+  @include font-size(15);
+  @include span-columns(7,7);
+
+  .contact-info {
+    @include span-columns(5, 7);
+  }
+  .image {
+    @include span-columns(2 omega, 7);
+    overflow: hidden;
+    margin-top: 6px;
+  }
+
+
+  // Contacts
+  .contact-info {
+    .view-map,
+    .check-email {
+      font-family: $sans-med-strict;
+    }
+
+    .label {
+      font-family: $sans-bold-strict;
+    }
+
+    .facebook-field {
+      a {display: inline;}
+    }
+
+    .view-map {
+      margin-top: 28px;
+    }
+  }
+
+  // Schedule
+  .schedule-date {
+    margin-right: 21px;
+  }
+
+}
+
+// ----------------------------------
+// Last updated
+
+.pane-node-updated {
+  margin-top: 28px;
+  @include font-size(15);
+  color: $slategrey;
+  clear: left;
+
+  h2 {
+    float: left;
+    margin-right: 12px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+.field-name-field-self-service {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid $slategrey;
+}
+
+.no-self-service-border {
+  margin-bottom: 0;
+  border: 0;
+}
+
+// Selfservices
+.self-service {
+  background-color: #3C4650;
+  overflow: hidden;
+  margin-top: 8px;
+  position: relative;
+  @include border-radius(8px);
+
+  a {
+    @include links($white, $white);
+    display: block;
+    padding: 21px 105px 17px 20px;
+    overflow: hidden;
+  }
+
+  .title,
+  .teaser,
+  .require-type {
+    display: block;
+    margin: 0;
+  }
+
+  .require-type {
+    height: 46px;
+    position: absolute;
+    right: 38px;
+    top: 50%;
+    margin-top: -23px;
+    width: 60px;
+    @include sprite(-92px, -160px);
+  }
+
+  .title {
+    @include font-size(22);
+    margin-bottom: 4px;
+  }
+  .teaser {
+    @include font-size(16);
+  }
+
+  // Require login
+  &.require-login {
+    background-color: $red;
+    .require-type {
+      background-position: -168px -160px;
+
+    }
+    &:hover {
+      background: #999;
+    }
+  }
+
+  @include transition-property(background);
+  @include transition-timing-function(ease-in);
+  @include transition-duration(.1s);
+
+  &:hover {
+    background: #999;
+  }
+}
+
+// Banner links
+.benner-links-group {
+  padding-bottom: 40px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid $slategrey;
+}
+
+.banner-link {
+  margin-bottom: 10px;
+}
+
+.green-background {
+  background-color: #6e7d5a;
+}
+
+.blue-background {
+  background-color: #98dff8;
+}
+
+// -----------------------------------------------------------------------------
+// ESDH documents
+.pane-display-documents-list,
+.pane-display-documents-list-grouped {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #586464;
+
+  // Title
+  .pane-title {
+    @include font-size(30);
+    font-family: $sans-bold-strict;
+    margin-bottom: 31px;
+    color: $gray;
+  }
+
+  h3{
+    margin-bottom: 10px;
+    margin-top: 5px;
+    @include font-size(20);
+  }
+
+  // List
+
+  ul {
+    margin-bottom: 40px;
+  }
+
+  li {
+    margin-bottom: 10px;
+    @include font-size(16);
+  }
+}
+
+.node-content {
+  // Hearing dates
+  .pane-node-field-hearing-end-date,
+  .pane-node-field-hearing-start-date {
+    .field-label {
+      min-width: 125px;
+    }
+    .field-type-datetime {
+      @include font-size(15);
+    }
+    .field-item {
+      text-transform: lowercase;
+    }
+
+    margin-bottom: 10px;
+  }
+
+  // Image link
+  .imgae-link {
+    clear: both;
+    float: left;
+    margin: 40px 0;
+    width: 100%;
+    
+    .right { text-align: right; }
+    .center { text-align: center; }
+    a {
+      @include inline-block();
+      max-width: 100%;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Side bar
+ .sidebar {
+  margin-top: 65px;
+  position: relative;
+
+  // Menu global styles
+
+    .menu-name-main-menu,
+    .menu-block-main-menu {
+      margin: 22px 0 35px;
+      padding: 30px 19px 22px;
+
+      h2 {
+        @include font-size(22);
+        background-color: $cyan;
+        border-top: 4px solid $slatgrayLight;
+        border-bottom: 1px solid $slatgrayLight;
+        color: $gray;
+        font-family: $sans-med-strict;
+        padding: 15px 13px 12px;
+      }
+
+      li {
+        border-bottom: 1px solid $slatgrayLight;
+      }
+
+      & > .menu > .first {
+        border-top: 1px solid $slatgrayLight;
+      }
+
+      a {
+        display: block;
+        padding: 15px 11px;
+        @include font-size(16);
+      }
+    }
+
+    .menu {
+      .menu {
+        li {
+          border-bottom: 0;
+        }
+
+        a {
+          @include font-size(15);
+        }
+
+        .menu {
+          background: #E4F8FC;
+        }
+        .menu a {
+          padding-left: 42px;
+          background-position: 25px -410px;
+        }
+      }
+    }
+}
+
+// Main site menu styles
+.domain-roskilde-stag-propeople-com-ua .sidebar {
+  .menu-name-main-menu,
+  .menu-block-main-menu {
+    background: #d6f2fc;
+
+    a {
+      @include links($gray, $gray);
+
+      &:hover {
+        background-color: $cyan;
+        color: $white;
+      }
+    }
+
+    .active-trail > a {
+      background-color: $cyan;
+      color: $white;
+
+      &:hover {
+        color: $white;
+      }
+    }
+
+  }
+
+  // Submenu styles
+  .menu {
+    .menu {
+      .active-trail {
+        @include links($gray, $gray);
+        background-color: $white;
+      }
+
+      a {
+        padding-left: 26px;
+        @include sprite(9px, -410px);
+
+         &:hover {
+          background-color: $white;
+          color: $gray;
+        }
+      }
+
+      // Third level
+      .menu {
+        background: white;
+
+         a {
+            padding-left: 25px;
+         }
+
+         .active-trail {
+          background: $cyan;
+          color: $white;
+         }
+      }
+    }
+  }
+}
+
+// Multisite menu
+.sidebar {
+// Menu
+  .menu-name-main-menu,
+  .menu-block-main-menu {
+    background: #eee;
+
+    // Links
+    a:hover {
+      background-color: #989e9e;
+      color: $white;
+    }
+
+    // Active link
+    .active-trail > a {
+      background-color: #eee;
+      font-family: $sans-bold-strict;
+      @include links($gray, $gray);
+      @include font-size(18);
+    }
+  }
+
+  // Submenu
+  .menu {
+    .menu {
+
+      a {
+        background: transparent;
+        padding-left: 15px;
+
+        &:hover {
+          background-color: #e0e0e0;
+          color: $gray;
+        }
+      }
+
+      .active-trail {
+        background-color: #e3e3e3;
+        @include font-size(15);
+      }
+
+      // Third level
+      .menu {
+        background: transparent;
+
+         a {
+          padding-left: 25px;
+         }
+
+         .active-trail {
+          background: #cfcfcf;
+         }
+      }
+    }
+  }
+}
+// <-- Multisite Menu END;
+
+// Share
+.node-share {
+  padding-top: 30px;
+  margin-bottom: 40px;
+  position: relative;
+
+  .addthis_toolbox {
+    display: none;
+    &.animated {
+      display: block;
+    }
+  }
+
+  // Print
+  .print_data {
+    margin-left: 66px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+  }
+
+  // Share
+  .toggle-share {
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-transform: uppercase;
+  }
+
+  // Susbcribe
+  .subscribe {
+    margin-left: 161px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+  }
+
+  .addthis_default_style .at300b {
+    padding: 0 5px;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Publications
+.pane-node-field-publications {
+  @include span-columns(12, 12);
+  margin-bottom: 50px;
+}
+
+.publications {
+  h1 {
+    @include font-size(30);
+  }
+
+  // Content
+  .publication-item {
+    margin-bottom: 1px;
+    @include font-size(16);
+    padding: 30px;
+    background-color: #fafafa;
+  }
+
+  // Image
+  .publication-image {
+    margin: 0 20px 0 0;
+  }
+
+  .publication-image,
+  .publication-body {
+    @include inline-block();
+    vertical-align: top;
+  }
+  .publication-body {
+    max-width: 330px;
+  }
+
+  .publication-body {
+    & > h3,
+    & > a h3 {
+      margin: 0 0 5px 0;
+    }
+  }
+  // description
+  .decription {
+    margin-bottom: 10px;
+    line-height: 1.4;
+
+    .file a {
+      background: url(../images/file.png) no-repeat left center;
+    }
+  }
+
+  // File
+  .file {
+    position: relative;
+    img {
+      display: none;
+    }
+    display: block;
+
+    a {
+      background: url(../images/pdf-icon.png) no-repeat left center;
+      display: block;
+      padding-left: 30px;
+      min-height: 30px;
+      padding-top: 12px;
+      line-height: 1.5;
+    }
+  }
+
+  // Popup info window
+
+  .target-popup {
+    color: $white;
+    position: absolute;
+    top: -70px;
+    left: -8px;
+    @include inline-block();
+    @include font-size(13);
+
+    .new-window,
+    .same-window {
+      background-color: $slategrey;
+      cursor: pointer;
+      padding: 10px;
+      @include border-radius(0 0 5px 5px);
+
+      &:hover {
+        background: $slatgrayDark;
+      }
+    }
+    .new-window {
+      @include border-radius(5px 5px 0 0);
+    }
+
+    .same-window {
+      &:after {
+        top: 100%;
+        left: 11px;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(88, 100, 100, 0);
+        border-top-color: #586464;
+        border-width: 7px;
+      }
+
+      &:hover:after {
+        border-top-color: $slatgrayDark;
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// GIS
+.gis {
+  background: #f0f0f0;
+  padding: 20px;
+  margin-bottom: 30px;
+  @include border-radius(10px);
+
+  input {
+    padding: 10px 15px;
+    height: 33px;
+    @include box-sizing(border-box);
+    width: 100%;
+  }
+
+  // Error
+  .ajax-progress + .result .error {
+    @include font-size(16);
+    color: $red;
+    margin: 5px 0 0;
+  }
+
+  // Results
+  .result {
+    ul,
+    ol {
+      padding: 0;
+      margin: 20px 0 0;
+      @include border-radius(5px);
+
+      li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background: $white;
+        padding: 20px 10px;
+      }
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .gis-image {
+      overflow: hidden;
+    }
+
+    .image-scale,
+    .image-legend {
+      @include inline-block(top);
+    }
+
+    .images-legend {
+      text-align: right;
+    }
+
+    span {
+      width: 50%;
+      display: block;
+      float: left;
+    }
+
+    div {
+      margin-bottom: 5px;
+      overflow: hidden;
+    }
+
+    .label {
+      font-family: $sans-med-strict;
+    }
+
+    span,
+    .label {
+      @include at-breakpoint(12 320px) {
+        @include font-size(12);
+        width: 45%;
+      }
+    }
+    .label {
+      @include at-breakpoint(12 320px) {
+        @include font-size(12);
+        width: 55%;
+      }
+    }
+
+  }
+}
+
+.not-front .ui-widget-content {
+  background: $white;
+  @include box-shadow(rgba($black, .4) 0 2px 4px);
+
+  li {
+    cursor: pointer;
+  }
+  a {
+    padding: 10px;
+    @include font-size(14);
+    line-height: 1.2;
+    @include transition-duration(.05s);
+
+    &:hover {
+      @include links($white, $white);
+      background: $red;
+    }
+  }
+
+  // Tabel styles fix
+  &.ui-datepicker td a {
+    padding: .2em;
+  }
+
+  .ui-datepicker-prev,
+  .ui-datepicker-next {
+    background: url(../images/date-picker-nav.png) no-repeat;
+    padding: 0;
+    width: 25px;
+    @include transition-duration(0s);
+
+    &:hover {
+      background: url(../images/date-picker-nav.png) no-repeat;
+    }
+  }
+
+  .ui-datepicker-next {
+    background-position: -27px 0;
+
+    &:hover {
+      background: url(../images/date-picker-nav.png) no-repeat -27px;
+    }
+  }
+}
+
+
+// Table bellow article content
+.pane-article-below-body-mini-panel {
+  .pane-title {
+    @include font-size(30);
+    margin-bottom: 18px;
+    line-height: 1.2;
+    color: $gray;
+  }
+
+  .views-exposed-widgets {
+    label {
+      vertical-align: top;
+      margin-top: 12px;
+      min-width: 120px;
+    }
+    .views-exposed-widget {
+      margin-right: 10px;
+
+      // Form item
+      .form-text{
+        margin-bottom: 5px;
+        max-width: 90px;
+      }
+    }
+
+    // Submit button
+    .views-submit-button {
+      vertical-align: top;
+      margin: 0 0 0 2px;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+// Publcation fix for responsive
+@include at-breakpoint(12 1000px) {
+ .publications {
+    .publication-body {
+      max-width: 500px;
+    }
+    .publication-image {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// Tableet port ----max-width(767px)
+@include at-breakpoint($tablet-port) {
+  .panel-nodes {
+    .node-content {
+      @include span-columns(12, 12);
+    }
+    .sidebar {
+      @include span-columns(12, 12);
+    }
+  }
+
+  .publications {
+    .publication-body {
+      max-width: 400px;
+    }
+  }
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+  // ----------------------------------
+  // Global node styles
+  .node-content {
+    h1 {
+      @include font-size(40);
+    }
+
+    .teaser {
+      @include font-size(18);
+    }
+    .node-body {
+      @include font-size(15);
+    }
+  }
+
+  // Embedded
+  .embedded {
+    @include font-size(15);
+
+    h2 {
+      @include font-size(36);
+    }
+
+    .content {
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+    }
+  }
+
+  // ----------------------------------
+  // Factobox
+
+  .factbox {
+    .image {
+      margin-left: 30px;
+    }
+    h1 {
+      @include font-size(22);
+    }
+  }
+
+  // ----------------------------------
+  // Selfservices
+  .node-body .self-service {
+    .title {
+      @include font-size(19);
+    }
+
+    .teaser {
+      @include font-size(14);
+    }
+  }
+
+  // ----------------------------------
+  // Phone book
+  .node-contacts {
+    .contact-info {
+      @include span-columns(7, 7);
+    }
+    .schedule {
+      @include span-columns(7, 7);
+      @include remove-omega;
+    }
+  }
+
+  // -----------------------------------
+  // Publications
+  .publications .file a {
+    max-width: 200px;
+  }
+}
+
+// Phone port -----max-width(320px)
+@include at-breakpoint($phone-port) {
+
+}
+/*
+*/

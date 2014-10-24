@@ -1,0 +1,15 @@
+name = Config FICS ESDH
+description = Configuration for the FICS ESDH integration
+core = 7.x
+package = Config
+php = 5.2.4
+version = 7.x-1.1
+project = config_fics_esdh
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = os2web_fics_esdh_approved_committees
+features[variable][] = os2web_fics_esdh_cp_destination_path
+features[variable][] = os2web_fics_esdh_cp_path
+features[variable][] = os2web_fics_esdh_mm_path

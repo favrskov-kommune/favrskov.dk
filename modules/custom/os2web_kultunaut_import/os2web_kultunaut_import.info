@@ -1,0 +1,10 @@
+name = OS2web Kultunaut Import
+core = 7.x
+package = OS2Web
+version = 7.x-1.0
+project = os2web_kultunaut_import
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:1
+features[page_manager_handlers][] = node_view_panel_context_16
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][page_manager] = page_manager

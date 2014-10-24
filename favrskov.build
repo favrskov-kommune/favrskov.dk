@@ -1,0 +1,13 @@
+core = 7.x
+api = 2
+
+; Core
+projects[drupal][type] = core
+projects[drupal][version] = 7.32
+
+; Installation profile
+
+projects[favrskov][type] = "profile"
+projects[favrskov][download][type] = "git"
+projects[favrskov][download][url] = "ssh://git@git.propeople.com.ua:2200/kommunes/favrskov.git"
+projects[favrskov][download][branch] = "master"

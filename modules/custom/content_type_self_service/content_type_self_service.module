@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Content Type Self Service feature.
+ */
+
+include_once 'content_type_self_service.features.inc';

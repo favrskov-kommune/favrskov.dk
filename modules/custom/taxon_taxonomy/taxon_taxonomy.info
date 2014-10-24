@@ -1,0 +1,8 @@
+name = Taxon Taxonomy Field
+description = Classifies a text according to a taxonomy and interacts with a taxonomy field.
+core = 7.x
+files[] = taxon_taxonomy.module
+
+dependencies[] = ckeditor
+
+configure = admin/config/content/taxon-taxonomy

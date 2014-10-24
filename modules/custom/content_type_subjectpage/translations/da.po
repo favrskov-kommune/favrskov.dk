@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-12 14:15+0200\n"
+"PO-Revision-Date: 2013-09-12 15:16+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: content_type_subjectpage.features.field_instance.inc:42;276
+msgid "Editorial responsibility"
+msgstr "Redaktionel ansvarlig"
+
+#: content_type_subjectpage.features.field_instance.inc:95;277
+msgid "Taxonomy, KLE"
+msgstr "Taksonomi, KLE"
+
+#: content_type_subjectpage.features.field_instance.inc:143;279
+msgid "Taxonomy, local"
+msgstr "Taksonomi, lokal"
+
+#: content_type_subjectpage.features.field_instance.inc:191;278
+msgid "Taxonomy, Subject Area"
+msgstr "Taksonomi, Emne område"
+
+#: content_type_subjectpage.features.field_instance.inc:240;280
+msgid "Top image"
+msgstr "Top billede"
+
+#: content_type_subjectpage.features.inc:23
+msgid "Subjectpage"
+msgstr "Emne område"
+
+#: content_type_subjectpage.features.inc:27
+msgid "Title"
+msgstr "Overskrift"
+
+#: content_type_subjectpage.info:0
+msgid "Content Type Subjectpage"
+msgstr "Indholdstype Emne område"
+
+#: content_type_subjectpage.info:0
+msgid "Content Types"
+msgstr "Indholdstyper"

@@ -1,0 +1,74 @@
+//------------------------------------------------------------------------------
+// WYSIWYG styles
+
+article.content {
+  margin-bottom: 50px;
+
+  // Headings
+  h2,
+  h3,
+  h4,
+  h5,
+  h5,
+  h6 {
+    line-height: 1.2;
+    margin: 20px 0;
+  }
+
+  h2 {  @include font-size(45);  }
+  h3 {  @include font-size(40);  }
+  h4 {  @include font-size(35);  }
+  h5 {  @include font-size(30);  }
+  h6 {  @include font-size(25);  }
+
+
+  // Text contnet styles
+  p {
+    font-weight: 200;
+    margin: 0 0 30px;
+    @include font-size(15);
+    line-height: 1.5;
+  }
+  .seo-tags {
+    display: none;
+  }
+
+  // List
+  ol,
+  ul {
+    padding-left: 30px;
+    margin: 20px 0;
+     li {
+      list-style-position: outside;
+      line-height: 1.5;
+     }
+  }
+
+  ol li {
+    list-style-type: decimal;
+  }
+  ul li {
+    list-style-type: square;
+  }
+
+
+  // Video styles
+  .player{
+    iframe {
+      width: 100%;
+    }
+  }
+}
+
+// Tag code styles
+code {
+  line-height: 1.5;
+  @include font-size(13.8);
+  white-space: pre-wrap;
+}
+
+//------------------------------------------------------------------------------
+
+/* Responsive */
+
+//------------------------------------------------------------------------------

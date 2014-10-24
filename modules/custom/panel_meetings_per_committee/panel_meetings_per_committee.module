@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Meetings per Committee feature.
+ */
+
+include_once 'panel_meetings_per_committee.features.inc';

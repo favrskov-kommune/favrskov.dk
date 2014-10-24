@@ -1,0 +1,82 @@
+<?php
+/**
+ * @file
+ * Code for the Views News feature.
+ */
+
+include_once 'views_news.features.inc';
+
+/**
+ * Return our custom formats.
+ *
+ * @return
+ * info about custom formats
+ */
+function views_news_date_formats_get_names() {
+  static $names = array('news_date' => 'd. F Y', 'year' => 'Y');
+  return $names;
+}
+
+/**
+ * Implements hook_date_formats().
+ */
+function views_news_date_formats() {
+  $formats = array();
+  $names = views_news_date_formats_get_names();
+
+  foreach ($names as $key => $value) {
+    $formats[] = array(
+      'type' => $key,
+      'format' => $value,
+      'locales' => array(),
+    );
+  }
+
+  return $formats;
+}
+
+/**
+ * Implements hook_date_format_types().
+ */
+function views_news_date_format_types() {
+  $types = array();
+  $names = views_news_date_formats_get_names();
+
+  foreach ($names as $key => $value) {
+    $types[$key] = t($key);
+  }
+
+  return $types;
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function views_news_flush_caches() {
+  $names = views_news_date_formats_get_names();
+  foreach ($names as $key => $value) {
+    $formats = system_get_date_formats($key);
+    variable_set('date_format_' . $key, $value);
+
+    foreach ($formats as $format) {
+      if (!empty($format['dfid'])) {
+        system_date_format_delete($format['dfid']);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_more().
+ *
+ * Removes unnecessary params form view more link URL.
+ *
+ * @param $vars
+ * The variables array
+ */
+function views_news_preprocess_views_more(&$vars, $hook) {
+  if ($vars['view']->name == 'news') {
+    $vars['more_url'] = !empty($vars['view']->override_path) ?
+      $vars['view']->override_path : $vars['more_url'];
+  }
+}

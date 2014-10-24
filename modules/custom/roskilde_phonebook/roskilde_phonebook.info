@@ -1,0 +1,6 @@
+name = Roskilde Phone Book
+description = Custom hacks for the phone book functionality on the website including redirects from old phone book URL's.
+core = 7.x
+package = Roskilde Kommune
+version = 7.x-0.0
+dependencies[] = feeds

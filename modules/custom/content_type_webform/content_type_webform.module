@@ -1,0 +1,21 @@
+<?php
+/**
+ * @file
+ * Code for the Content Type Webform feature.
+ */
+
+include_once 'content_type_webform.features.inc';
+
+function content_type_webform_form_alter(&$form, &$form_state, $form_id) {
+  if (strpos($form_id, 'webform_client_form_') !== FALSE) {
+    $form['#validate'][] = 'content_type_webform_custom_validate';
+  }
+}
+
+function content_type_webform_custom_validate($form, &$form_state) {
+  if (form_get_errors()) {
+    array_unshift($_SESSION['messages']['error'], t("The application is NOT sent"));
+    return FALSE;
+  }
+  return TRUE;
+}

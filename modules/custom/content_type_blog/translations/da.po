@@ -1,0 +1,72 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-12 13:26+0200\n"
+"PO-Revision-Date: 2013-09-12 14:28+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: content_type_blog.features.field_instance.inc:588
+msgid "Body"
+msgstr "Brødtekst"
+
+#: content_type_blog.features.field_instance.inc:589
+msgid "Image / thumbnail"
+msgstr "Billede / thumbnail"
+
+#: content_type_blog.features.field_instance.inc:590
+msgid "Image description"
+msgstr "Billedtekst"
+
+#: content_type_blog.features.field_instance.inc:591
+msgid "Taxonomy, KLE"
+msgstr "Taksonomi, KLE"
+
+#: content_type_blog.features.field_instance.inc:592
+msgid "Taxonomy, Location"
+msgstr "Taksonomi, lokation"
+
+#: content_type_blog.features.field_instance.inc:593
+msgid "Taxonomy, Subject Area"
+msgstr "Taksonomi, Emne område"
+
+#: content_type_blog.features.field_instance.inc:594
+msgid "Taxonomy, local"
+msgstr "Taksonomi, lokal"
+
+#: content_type_blog.features.field_instance.inc:595
+msgid "Teaser"
+msgstr "Manchet"
+
+#: content_type_blog.features.field_instance.inc:596
+msgid "Video"
+msgstr "Video"
+
+#: content_type_blog.features.field_instance.inc:597
+msgid "Video description"
+msgstr "Videobeskrivelse"
+
+#: content_type_blog.features.inc:23
+msgid "Blog"
+msgstr "Blog indlæg"
+
+#: content_type_blog.features.inc:27
+msgid "Title"
+msgstr "Overskrift"
+
+#: content_type_blog.info:0
+msgid "Content Type Blog"
+msgstr "Indholdstype Blog"
+
+#: content_type_blog.info:0
+msgid "Content Types"
+msgstr "Indholdstyper"
+
+#: panel_blog_page.module:20
+msgid "Name Namesen..."
+msgstr "Navn Navnesen..."

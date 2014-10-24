@@ -1,0 +1,12 @@
+name = Config theme
+description = Settings for Favrskov theme
+core = 7.x
+package = Config
+php = 5.2.4
+version = 7.x-1.0
+project = config_theme
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = theme_favrskovtheme_settings_settings

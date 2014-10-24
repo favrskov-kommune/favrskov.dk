@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-12 13:18+0200\n"
+"PO-Revision-Date: 2013-09-12 14:21+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: content_type_banner_element.features.field_instance.inc:38;222
+msgid "Image"
+msgstr "Billede"
+
+#: content_type_banner_element.features.field_instance.inc:95;223
+msgid "Image alt text"
+msgstr "Alt tekst"
+
+#: content_type_banner_element.features.field_instance.inc:140;224
+msgid "Link"
+msgstr "Link"
+
+#: content_type_banner_element.features.field_instance.inc:203;225
+msgid "Transperent overlay"
+msgstr "Transperent lag"
+
+#: content_type_banner_element.features.inc:23
+msgid "Banner element"
+msgstr "Banner element"
+
+#: content_type_banner_element.features.inc:27
+msgid "Title"
+msgstr "Overskrift"
+
+#: content_type_banner_element.info:0
+msgid "Content Type Banner element"
+msgstr "Indholdstype Banner element"
+
+#: content_type_banner_element.info:0
+msgid "Content Types"
+msgstr "Indholdstyper"

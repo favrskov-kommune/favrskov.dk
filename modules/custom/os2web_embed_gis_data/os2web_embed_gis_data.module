@@ -1,0 +1,205 @@
+<?php
+/**
+ * @file
+ * Code for the OS2Web Embed GIS Data module.
+ */
+
+/**
+ * Implements hook_ckeditor_plugin.
+ */
+function os2web_embed_gis_data_ckeditor_plugin() {
+  return array(
+    'gis' => array(
+      'name' => 'gis',
+      'desc' => t('Embed of GIS data'),
+      'path' => drupal_get_path('module', 'os2web_embed_gis_data') . '/plugins/os2web_embed_gis_data/',
+    )
+  );
+}
+
+/**
+ * Implements hook_filter_info.
+ */
+function os2web_embed_gis_data_filter_info() {
+  $filters['os2web_embed_gis_data'] = array(
+    'title' => t('Embed GIS data'),
+    'description' => t('By including the syntax {os2web_embed_gis_data:aws_area_code=value;aws_resource=value;aws_noadrspec=value;aws_limit=value;gis_case_type=value}, this filter will embed GIS data'),
+    'prepare callback' => 'os2web_embed_gis_data_filter_prepare',
+    'process callback' => 'os2web_embed_gis_data_filter_process',
+    'tips callback' => 'os2web_embed_gis_data_filter_tips',
+    'cache' => FALSE,
+  );
+
+  return $filters;
+}
+
+/**
+ * Prepare callback for hook_filter
+ */
+function os2web_embed_gis_data_filter_prepare($text, $filter, $format, $langcode, $cache, $cache_id) {
+  return $text;
+}
+
+/**
+ * Process callback for hook_filter
+ */
+function os2web_embed_gis_data_filter_process($text, $filter, $format, $langcode, $cache, $cache_id) {
+  return preg_replace_callback('/\{os2web_embed_gis_data:aws_area_code=([\w,]*);aws_resource=([a-zA-Z]*);aws_noadrspec=([a-z]*);aws_limit=(\d*);gis_case_type=([a-zA-Z]*)\}/', '_os2web_embed_gis_data_make_replacements', $text);
+}
+
+/**
+ * Tips callback for hook_filter
+ */
+function os2web_embed_gis_data_filter_tips($filter, $format, $long) {
+  return t('{os2web_embed_gis_data:aws_area_code=value;aws_resource=value;aws_noadrspec=value;aws_limit=value;gis_case_type=value} - Insert a GIS data');
+}
+
+/**
+ * Provides the replacement html to be rendered in place of the embed code.
+ * Does not handle nested embeds.
+ *
+ * @param $matches
+ *    numeric node id that has been captured by preg_replace_callback
+ * @return
+ *    The rendered HTML replacing the embed code
+ */
+function _os2web_embed_gis_data_make_replacements($matches) {
+
+  drupal_add_library('system', 'ui.autocomplete');
+  drupal_add_js('https://smartadresse.dk/js/jquery.spatialfind.js', 'external');
+
+  $area = $matches[1];
+  $resource = $matches[2];
+  $noadrspec = (bool) $matches[3];
+  $limit = (int) $matches[4];
+  $sagstype = $matches[5];
+
+  $search_id = drupal_html_id('search');
+  $result_id = drupal_html_id('result');
+  $ajax_progress_id = drupal_html_id('ajax-progress');
+
+  $smartadresse_options = array(
+    'apikey' => variable_get('os2web_embed_gis_aws_api_key', ''),
+    'resource' => $resource,
+    'area' => $area,
+    'limit' => $limit,
+    'noadrspec' => $noadrspec
+  );
+
+  $gis_options = array(
+    'os2web_embed_gis_service_url' => variable_get('os2web_embed_gis_service_url', ''),
+    'os2web_embed_gis_service_tmp_url' => variable_get('os2web_embed_gis_service_tmp_url', ''),
+    'sagstype' => $sagstype,
+  );
+
+  drupal_add_js(drupal_get_path('module', 'os2web_embed_gis_data') . '/js/os2web_embed_gis_data.js', array('type' => 'file'));
+  drupal_add_js(array(
+    'embedGisData' => array(
+      $search_id => array(
+        'smartadresse' => $smartadresse_options,
+        'gis' => $gis_options
+      )
+    )
+  ), 'setting', array('scope' => 'footer'));
+
+  return '<input type="text" id="' . $search_id . '" name="search" size="80" /><div id="' . $ajax_progress_id . '" class="ajax-progress" style="display: none;"><div class="throbber"></div></div><div id="' . $result_id . '" class="result"></div>';
+}
+
+function os2web_embed_gis_data_js_alter(&$javascript) {
+  if (!empty($javascript['profiles/favrskov/modules/custom/os2web_embed_gis_data/js/os2web_embed_gis_data.js'])) {
+    unset($javascript['profiles/favrskov/modules/contrib/apachesolr_autocomplete/apachesolr_autocomplete.js']);
+    unset($javascript['profiles/favrskov/modules/contrib/apachesolr_autocomplete/jquery-autocomplete/jquery.autocomplete.js']);
+  }
+}
+
+/**
+ * Implements hook_menu.
+ */
+function os2web_embed_gis_data_menu() {
+  $items = array();
+  $items['admin/config/os2web'] = array(
+    'title' => 'OS2Web settings',
+    'description' => 'OS2Web integrations settings',
+    'position' => 'right',
+    'weight' => -10,
+    'page callback' => 'system_admin_menu_block_page',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+    'access arguments' => array('administer site configuration'),
+  );
+
+  $items['admin/config/os2web/gis/settings'] = array(
+    'title' => 'OS2Web - GIS settings',
+    'description' => 'Manage OS2Web - GIS settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('os2web_embed_gis_data_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'weight' => 10
+  );
+
+  $items['os2web/gis'] = array(
+    'title' => 'GIS service proxy',
+    'type' => MENU_CALLBACK,
+    'page callback' => 'os2web_embed_gis_data_get_ajax',
+    'page arguments' => array('all'),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'os2web_embed_gis_data_ajax_callback',
+    'weight' => 10
+  );
+
+  return $items;
+}
+
+/**
+ * Return the OS2Web - GIS settings form.
+ */
+function os2web_embed_gis_data_settings_form($form, $form_state) {
+  $form['os2web_embed_gis_service_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('GIS Service URL'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('os2web_embed_gis_service_url', ''),
+    '#description' => t('The URL of GIS service.'),
+  );
+
+  $form['os2web_embed_gis_service_tmp_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('GIS Service Tmp URL'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('os2web_embed_gis_service_tmp_url', ''),
+    '#description' => t('The URL where GIS map images are stored.'),
+  );
+
+  $form['os2web_embed_gis_aws_api_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('AWS API Key'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('os2web_embed_gis_aws_api_key', ''),
+    '#description' => t('The API key added in all requests to the AWS service.'),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Get JSON data form GIS service.
+ */
+function os2web_embed_gis_data_get_ajax($args) {
+  $url = variable_get('os2web_embed_gis_service_url', '');
+  $url .= '&geometri=' . urlencode($_GET['geometri']);
+  $url .= '&outputformat=' . urlencode($_GET['outputformat']);
+  $url .= '&sagstype=' . urlencode($_GET['sagstype']);
+  $ch = curl_init($url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+  return curl_exec($ch);
+}
+
+/**
+ * Return AJAX resonse to GIS data processing.
+ */
+function os2web_embed_gis_data_ajax_callback($page_callback_result) {
+  drupal_add_http_header('Content-Type', 'application/json; charset=utf-8');
+  print $page_callback_result;
+  return ajax_footer();
+}

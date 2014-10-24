@@ -1,0 +1,14 @@
+name = View Slider
+core = 7.x
+package = Views
+php = 5.2.4
+version = 7.x-1.0
+project = view_slider
+dependencies[] = fe_nodequeue
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = views:views_default:3.0
+features[fe_nodequeue][] = front_page_slider
+features[features_api][] = api:2
+features[views_view][] = slider
+features_exclude[dependencies][ctools] = ctools

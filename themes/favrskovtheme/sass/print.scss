@@ -1,0 +1,143 @@
+/* Welcome to Compass. Use this file to define print styles.
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+
+
+#header,
+#sliding-popup,
+.breadcrumb,
+.sidebar,
+#toolbar,
+.pagination,
+.view-slider,
+.swiper-container,
+.view-subject-subpages,
+.page,
+.node-slider-nav,
+.field-name-field-self-service,
+.pane-node-field-bannerlink,
+.embedded .submitted,
+.submitted,
+.state,
+.video-descrition,
+.pane-node-comment-form,
+iframe,
+object,
+.links,
+.pager  {
+  display: none;
+  visibility: hidden;
+  height: 0;
+  line-height: 0;
+}
+
+#node-content {
+  width: 100%;
+  background: red;
+  float: none;
+  word-wrap: break-word;
+
+  & > .video {
+    display: none;
+  }
+}
+
+
+.faq > ul,
+.faq > ul > li,
+.swiper-slide {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.answer {
+  display: block !important;
+}
+
+.main-wrapper {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+
+  .teaser {
+    font-style: italic;
+  }
+
+  h1 { font-size: 27px; }
+  h2 { font-size: 23px; }
+  h3 { font-size: 20px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 15px; }
+  h6 { font-size: 13px; }
+
+  a { color: #a00a14; }
+
+  .faq h1 {
+    font-size: 22px;
+  }
+
+  .pane-node-updated h2 {
+    font-size: 14px;
+    display: inline;
+  }
+
+  .permalink {
+    display: none;
+  }
+}
+
+#footer {
+  background-color: #ccc;
+  display: table;
+  margin-top: 30px;
+  border-top: 2px solid #000;
+  font-size: 13px;
+
+  h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  .logo,
+  .social,
+  .nav {
+    display: none;
+  }
+
+  section {
+    display: table-cell;
+    width: 33%;
+  }
+}
+
+.meetings-collapsed-list li {
+  list-style: none;
+  margin: 0;
+  padding: 0 !important;
+
+  .meetnig-title {
+    display: none;
+  }
+
+  .file {
+    display: block;
+  }
+}
+
+.meetings-collapsed-list .meeting-body {
+  display: block;
+  padding: 0;
+
+  h1 {
+    font-size: 26px;
+  }
+  h2 {
+    font-size: 19px;
+  }
+}
+
+.page-node-response #footer {
+    display: none;
+}
+

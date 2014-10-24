@@ -1,0 +1,345 @@
+<?php
+
+/**
+ *  Number of hearing responses (webform submissions) to return on page.
+ */
+define("HEARING_RESPONSES_PER_PAGE", 10);
+
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function pane_hearing_responses_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools') {
+    return 'plugins/' . $plugin_type;
+  }
+}
+
+/**
+ * Implements hook_responses_menu().
+ */
+function pane_hearing_responses_menu() {
+  $items['ajax/hearing-responses/%'] = array(
+    'title' => 'Hearing responses',
+    'page callback' => 'pane_hearing_responses_pager_ajax_callback',
+    'page arguments' => array(2),
+    'type' => MENU_CALLBACK,
+    'delivery callback' => 'ajax_deliver',
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Adds checkbox 'Use as a submissions filter' to webform components of type 'select'.
+ * If checkbox is checked then this webform component field will be used as filter on hearing responses view.
+ * Also adds checkbox 'Use in responses view' to show this webform component on hearing responses view.
+ */
+function pane_hearing_responses_form_webform_component_edit_form_alter(&$form, &$form_state, $form_id, $node) {
+  $form['extra']['submission_field'] = array(
+    '#title' => t('Use in responses view'),
+    '#type' => 'checkbox',
+    '#default_value' => $form_state['build_info']['args'][1]['extra']['submission_field'],
+  );
+
+  if ($form_state['build_info']['args'][1]['type'] == 'select') {
+    $form['extra']['submission_filter'] = array(
+      '#title' => t('Use as a submissions filter'),
+      '#type' => 'checkbox',
+      '#default_value' => $form_state['build_info']['args'][1]['extra']['submission_filter'],
+    );
+  }
+
+  if ($form_state['build_info']['args'][1]['type'] == 'file') {
+    $form['extra']['new_window'] = array(
+      '#title' => t('Open in a new window'),
+      '#type' => 'checkbox',
+      '#default_value' => $form_state['build_info']['args'][1]['extra']['new_window'],
+    );
+  }
+}
+
+
+/**
+ * Returns output for hearing responses (webform submissions) view.
+ * It is the listing of responses with pagination but without filters.
+ *
+ * @param $webform_id int Id of the webform
+ * @param $filter_components array Array of webform components(fields) for which filtering is available
+ * @param $filter_values array Array with keys as name of filter field and values as value of filter field
+ * @return string Hearing responses (webform submissions) view
+ */
+function pane_hearing_responses_get_view($webform_id, $filter_components = array(), $filter_values = array()) {
+  $webform_node = node_load($webform_id);
+
+  $hearing_responses_data = pane_hearing_responses_get_hearing_responses($webform_node, $filter_components, $filter_values);
+  $table_header = pane_hearing_responses_get_displaying_webform_components_properties($webform_node, 'name');
+
+  if (!empty($table_header)) {
+    array_push($table_header, t('Date'));
+    array_push($table_header, t('View'));
+  }
+
+  $result = '<div id="hearing-table">';
+
+  $result .= theme('table', array(
+    'rows' => $hearing_responses_data,
+    'header' => $table_header,
+    'empty' => t('No hearing responses found')
+  ));
+
+  $result .= theme('pager') . '</div>';
+
+  return $result;
+}
+
+/**
+ * Return array of hearing responses(webform submissions) filtered by $filter_values.
+ *
+ * @param $webform_node stdClass Webform object
+ * @param $filter_components array Array of webform components(fields) for which filtering is available
+ * @param $filter_values array Array with keys as name of filter field and values as value of filter field
+ *
+ * @return array Array of the hearing responses(webform submissions) for given webform filtered by $filter_values.
+ */
+function pane_hearing_responses_get_hearing_responses($webform_node, $filter_components, $filter_values) {
+  $filtered_nids = pane_hearing_responses_get_filtered_sids($webform_node->nid, $filter_components, $filter_values);
+  $cids = pane_hearing_responses_get_displaying_webform_components_properties($webform_node, 'cid');
+
+  if (empty($cids)) {
+    return array();
+  }
+
+  $query = db_select('webform_submitted_data', 'sd')->extend('PagerDefault');
+  $query->fields('sd', array('data', 'sid', 'cid'))
+    ->condition('sd.nid', $webform_node->nid, '=')
+    ->condition('sd.cid', $cids, 'IN')
+    ->limit(HEARING_RESPONSES_PER_PAGE * count($cids))
+    ->element(0);
+
+  $query->leftJoin('webform_component', 'wc', 'sd.nid = wc.nid AND sd.cid = wc.cid');
+
+  // Add post date
+  $query->leftJoin('webform_submissions', 'ws', 'sd.nid = ws.nid AND sd.sid = ws.sid');
+  $query->fields('ws', array('submitted'));
+
+  $query->fields('wc', array('type'));
+
+  if (is_array($filtered_nids)) {
+    if (empty($filtered_nids)) {
+      return array();
+    }
+    $query->condition('sd.sid', $filtered_nids, 'IN');
+  }
+
+  $query->orderBy('ws.sid', 'DESC');
+  $result = $query->execute()->fetchAll();
+
+  return pane_hearing_responses_prepare_hearing_responses_for_theme_table($result, $webform_node, $cids);
+}
+
+
+/**
+ * Return webform submissions ids(sids) filtered by $filters values.
+ *
+ * @param $webform_id int Id of the webform
+ * @param $filter_components array Array of webform components(fields) for which filtering is available
+ *  are taken from GET parameters
+ * @param $filter_values array Array with keys as name of filter field and values as value of filter field
+ *  If filter value is 'any' then we do not filter by this field
+ * @return array|null Array of submissions ids or NULL if $filter_values parameter is empty
+ */
+function pane_hearing_responses_get_filtered_sids($webform_id, $filter_components, $filter_values) {
+  $filters_without_any_value = 0;
+  $submissions_ids_data = array();
+  $submissions_ids = array();
+
+  $query = db_select('webform_submitted_data', 'sd');
+  $query->fields('sd', array('sid', 'cid'))
+    ->condition('sd.nid', $webform_id, '=');
+
+  $or = db_or();
+  foreach ($filter_components as $filter) {
+    if (isset($_REQUEST[$filter['form_key']]) || isset($filter_values[$filter['form_key']])) {
+      $value = isset($_GET[$filter['form_key']]) ? $_REQUEST[$filter['form_key']] : $filter_values[$filter['form_key']];
+      if ($value != 'any') {
+        $filters_without_any_value++;
+        $and = db_and();
+        $and->condition('sd.cid', $filter['cid'], '=');
+        $and->condition('sd.data', $value, '=');
+        $or->condition($and);
+      }
+    }
+  }
+  if ($or->count() != 0) {
+    $query->condition($or);
+    $submissions_ids_data_query = $query->execute();
+    foreach ($submissions_ids_data_query as $value) {
+      $submissions_ids_data[$value->sid]++;
+    }
+    foreach ($submissions_ids_data as $key => $val) {
+      if ($val == $filters_without_any_value) {
+        $submissions_ids[] = $key;
+      }
+    }
+    return $submissions_ids;
+  }
+  else {
+    return NULL;
+  }
+}
+
+/**
+ * Return array of webform components properties that must be displayed on hearing responses view.
+ *
+ * @param $webform_node stdClass Webform object
+ * @param $webform_property string Property to return
+ * @return array Array of webform components ids(cids) that must be displayed on hearing responses view
+ */
+function pane_hearing_responses_get_displaying_webform_components_properties($webform_node, $webform_property) {
+  $result = array();
+
+  foreach ($webform_node->webform['components'] as $component) {
+    if ($component['extra']['submission_field'] == 1) {
+      $result[$component['cid']] = $component[$webform_property];
+    }
+  }
+
+  ksort($result);
+  return $result;
+}
+
+/**
+ * Converts array of hearing responses(webform submissions) atomic data in
+ *  array of hearing responses (webform submissions) complex data.
+ * Also adds links to submission node, converts file ids to file links, converts keys of select list to values.
+ * E.g. array( array('sid' => 'sid1', 'cid' =>'0', 'data' => 'Data_1_0'),  array('sid' => '1', 'cid' =>'1', 'data' => 'Data_1_1'),
+ *  array('sid' => 'sid2', 'cid' =>'0', 'data' => 'Data_2_0'), array('sid' => 'sid2', 'cid' =>'1', 'data' => 'Data_2_1')) converts to
+ * array('sid1' => array('Data_1_0', 'Data_1_1'), 'sid2' => array('Data_2_0', 'Data_2_1'))
+ *
+ * @param $hearing_responses_data array Hearing responses(webform submissions) atomic data
+ * @param $webform_node stdClass Webform object
+ * @return array Array of hearing responses (webform submissions) complex data
+ */
+function pane_hearing_responses_prepare_hearing_responses_for_theme_table($hearing_responses_data, $webform_node, $cids) {
+  $result = array();
+
+  foreach ($hearing_responses_data as $hearing_response_data) {
+    switch ($hearing_response_data->type) {
+      case 'select':
+        $items = $webform_node->webform['components'][$hearing_response_data->cid]['extra']['items'];
+        $select_options = _webform_select_options_from_text($items);
+        $result[$hearing_response_data->sid][$hearing_response_data->cid] = $select_options[$hearing_response_data->data];
+        break;
+      case 'file':
+        if (!empty($hearing_response_data->data)) {
+          $attr = array();
+          $new_window = $webform_node->webform['components'][$hearing_response_data->cid]['extra']['new_window'];
+          if ($new_window) {
+            $attr['attributes'] = array('target' => '_blank');
+          }
+          $file = file_load($hearing_response_data->data);
+          $file_url = file_create_url($file->uri);
+          $result[$hearing_response_data->sid][(int) $hearing_response_data->cid] = l(t('File link'), $file_url, $attr);
+        }
+        break;
+      default:
+        $result[$hearing_response_data->sid][$hearing_response_data->cid] = $hearing_response_data->data;
+    }
+
+    $result[$hearing_response_data->sid][100] = format_date($hearing_response_data->submitted, 'update_date');
+
+  }
+
+  foreach ($result as $key => &$value) {
+    foreach ($cids as $cid) {
+      if (!isset($value[$cid])) {
+        $value[$cid] = '';
+      }
+    }
+
+    $result[$key][] = l(t('View'), 'node/' . $webform_node->nid . '/response/' . $key);
+
+    ksort($result[$key]);
+  }
+
+
+  return $result;
+}
+
+/**
+ * Ajax callback for pager links on hearing responses view.
+ * Returns hearing responses view without filters.
+ */
+function pane_hearing_responses_pager_ajax_callback($webform_id) {
+  $_GET['page'] = $_POST['page'];
+  $html = pane_hearing_responses_get_view($webform_id);
+  $result = array('#type' => 'ajax');
+  $result['#commands'][] = ajax_command_replace('#hearing-table', $html);
+  return $result;
+}
+
+/**
+ * Form with filters for hearing responses.
+ */
+function pane_hearing_responses_filter_form($form, &$form_state, $components, $webform_id) {
+  $form = array();
+
+  foreach ($components as $filter) {
+    $webform_options = array('any' => t('-- Any --'));
+    $webform_options = $webform_options + _webform_select_options($filter);
+
+    $form['filters'][$filter['form_key']] = array(
+      '#title' => $filter['name'],
+      '#type' => 'select',
+      '#options' => $webform_options,
+      '#default_value' => isset($_GET[$filter['form_key']]) ? $_GET[$filter['form_key']] : '',
+    );
+
+    $form['webform_id'] = array(
+      '#type' => 'value',
+      '#value' => $webform_id,
+    );
+
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Update search'),
+      '#ajax' => array(
+        'callback' => 'pane_hearing_responses_filter_form_submit_callback',
+        'wrapper' => 'hearing-table',
+        'method' => 'replace',
+        'effect' => 'fade',
+      ),
+    );
+  }
+  return $form;
+}
+
+
+/**
+ * Ajax callback for hearing responses form.
+ * Filters hearing responses(webform submissions) and return hearing responses view without filters.
+ */
+function pane_hearing_responses_filter_form_submit_callback($form, $form_state) {
+  $webform_id = $form_state['values']['webform_id'];
+  $filter_components = pane_hearing_responses_get_filter_components($webform_id);
+  return pane_hearing_responses_get_view($webform_id, $filter_components, $form_state['values']);
+}
+
+/**
+ * Returns webform components that have checked 'Use as submission filter' checkbox.
+ *
+ * @param $webform_id int Webform id
+ * @return array Array of webform components
+ */
+function pane_hearing_responses_get_filter_components($webform_id) {
+  $result = array();
+  $webform_node = node_load($webform_id);
+  foreach ($webform_node->webform['components'] as $component) {
+    if ($component['type'] == 'select' && $component['extra']['submission_filter'] == 1) {
+      $result[] = $component;
+    }
+  }
+  return $result;
+}

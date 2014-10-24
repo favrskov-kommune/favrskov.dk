@@ -1,0 +1,91 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+//------------------------------------------------------------------------------
+// Mixin from compass
+
+@import "susy";
+@import "compass/css3";
+
+@import "compass/typography/text/force-wrap";
+@import "compass/typography/text";
+
+
+//------------------------------------------------------------------------------
+// Mixins & variables
+
+@import "mixins-var/variables";
+@import "mixins-var/mixins";
+
+
+//------------------------------------------------------------------------------
+//Base
+@import "base/reset";
+@import "base/global";
+@import "base/layout";
+@import "base/tabs";
+
+
+
+//------------------------------------------------------------------------------
+// Modules
+@import "modules/slider";
+@import "modules/swiper";
+
+
+//------------------------------------------------------------------------------
+// Particles
+
+// @import "partials/menu";
+@import "partials/header";
+@import "partials/footer";
+@import "partials/wysiwyg";
+@import "partials/buttons";
+@import "partials/login";
+@import "partials/pager";
+@import "partials/faq";
+@import "partials/banner-element";
+@import "partials/slider-element";
+@import "partials/load-more";
+@import "partials/breadcrumbs";
+@import "partials/comments";
+@import "partials/cookie-msg";
+@import "partials/selectbox";
+@import "partials/combibox";
+@import "partials/help-tips";
+
+//------------------------------------------------------------------------------
+// Pages
+@import "pages/front";
+@import "pages/search";
+@import "pages/subject";
+@import "pages/subscribe";
+@import "pages/events";
+@import "pages/videos";
+@import "pages/node";
+@import "pages/onecolumn-node";
+@import "pages/job";
+@import "pages/news";
+@import "pages/system";
+@import "pages/import";
+@import "pages/user-page";
+@import "pages/sitemap";
+@import "pages/node-contacts";
+@import "pages/form-confirmation";
+@import "pages/borgerdk-article-page";
+@import "pages/published-case-page";
+@import "pages/meetings-page";
+@import "pages/os2web-kultunaut-import";
+@import "pages/taxonomy-page";
+
+// list pages
+@import "pages/list-page";
+@import "pages/job-list";
+@import "pages/meeting-page";
+
+//------------------------------------------------------------------------------
+// Color schemes
+@import "partials/color-schemes";
+

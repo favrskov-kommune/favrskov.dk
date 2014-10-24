@@ -1,0 +1,155 @@
+/*
+  Here present fixes for Internet explorer 9.0
+  and less versions
+*/
+/* line 8, ../sass/ie.scss */
+.ie10 .ajax-message,
+.ie9 .ajax-message,
+.lt-ie9 .ajax-message {
+  display: block;
+}
+/* line 11, ../sass/ie.scss */
+.ie10 .ajax-progress-throbber,
+.ie9 .ajax-progress-throbber,
+.lt-ie9 .ajax-progress-throbber {
+  display: none;
+}
+/* line 15, ../sass/ie.scss */
+.ie10 .job-node .webform-client-form .form-managed-file .form-file,
+.ie9 .job-node .webform-client-form .form-managed-file .form-file,
+.lt-ie9 .job-node .webform-client-form .form-managed-file .form-file {
+  position: static;
+  left: 0;
+  opacity: 1;
+  z-index: 0;
+  width: 100%;
+  height: 22px;
+}
+/* line 23, ../sass/ie.scss */
+.ie10 .job-node .webform-client-form .form-managed-file .form-file.error,
+.ie9 .job-node .webform-client-form .form-managed-file .form-file.error,
+.lt-ie9 .job-node .webform-client-form .form-managed-file .form-file.error {
+  background: transparent;
+}
+
+/* line 32, ../sass/ie.scss */
+.no-js .primary-links a:active,
+.no-js .primary-links a:focus {
+  background: none;
+}
+
+/*
+  Here present fixes for Front page in
+  Internet explorer version less than 9.0
+*/
+/* line 41, ../sass/ie.scss */
+.lt-ie9 {
+  /* Feedback form */
+}
+/* line 43, ../sass/ie.scss */
+.lt-ie9 .html5page {
+  min-width: 1124px;
+}
+/* line 48, ../sass/ie.scss */
+.lt-ie9 .html5page .front .underlay,
+.lt-ie9 .html5page .custom-throbber,
+.lt-ie9 .html5page .preloader {
+  display: none;
+}
+/* line 58, ../sass/ie.scss */
+.lt-ie9 .map-info div {
+  display: none;
+}
+/* line 61, ../sass/ie.scss */
+.lt-ie9 .map-info div.active, .lt-ie9 .map-info div.default {
+  display: block;
+}
+/* line 68, ../sass/ie.scss */
+.lt-ie9 .process-illustration li {
+  background: url(../images/ie/circles-sprite.png) no-repeat;
+}
+/* line 72, ../sass/ie.scss */
+.lt-ie9 .process-illustration .creative {
+  background-position: -246px 0;
+}
+/* line 75, ../sass/ie.scss */
+.lt-ie9 .process-illustration .strategy {
+  background-position: 0 1px;
+}
+/* line 78, ../sass/ie.scss */
+.lt-ie9 .process-illustration .technology {
+  background-position: -500px 0;
+}
+/* line 92, ../sass/ie.scss */
+.lt-ie9 .page-clients .third,
+.lt-ie9 .about-service .third,
+.lt-ie9 .users-list .fourth,
+.lt-ie9 .about-ppl .second,
+.lt-ie9 .fourth,
+.lt-ie9 .third,
+.lt-ie9 .news-scroll-list {
+  margin-right: 0;
+}
+/* line 100, ../sass/ie.scss */
+.lt-ie9 .profile blockquote {
+  background: url(../images/ie/pink-bg.png);
+  font-size: 25px;
+}
+/* line 105, ../sass/ie.scss */
+.lt-ie9 .profile .social-links {
+  background: url(../images/ie/dark-gray-bg.png);
+  width: 30%;
+}
+/* line 108, ../sass/ie.scss */
+.lt-ie9 .profile .social-links a {
+  font-size: 14px;
+}
+/* line 117, ../sass/ie.scss */
+.lt-ie9 .dropdown-menu {
+  border: 0 none;
+  border-top: 1px solid #000;
+  width: 100%;
+}
+/* line 124, ../sass/ie.scss */
+.lt-ie9 .dropdown-menu .active > a,
+.lt-ie9 .dropdown-menu .active > a:hover,
+.lt-ie9 .dropdown-menu a:hover {
+  filter: none;
+}
+/* line 134, ../sass/ie.scss */
+.lt-ie9 .pane-contact-form {
+  background: url(../images/ie/black-box-bg.png);
+}
+/* line 136, ../sass/ie.scss */
+.lt-ie9 .pane-contact-form .contact-form {
+  background: url(../images/ie/black-box-bg.png);
+}
+/* line 142, ../sass/ie.scss */
+.lt-ie9 .form-text {
+  min-height: 5px;
+}
+/* line 148, ../sass/ie.scss */
+.lt-ie9 #edit-search-text-wrapper .form-text,
+.lt-ie9 .comment-form .form-text {
+  min-height: 5px;
+  line-height: 38px;
+}
+/* line 151, ../sass/ie.scss */
+.lt-ie9 #edit-search-text-wrapper .form-text:focus,
+.lt-ie9 .comment-form .form-text:focus {
+  outline: none;
+}
+/* line 155, ../sass/ie.scss */
+.lt-ie9 #edit-search-text-wrapper textarea,
+.lt-ie9 .comment-form textarea {
+  padding: 10px 12px;
+}
+/* line 157, ../sass/ie.scss */
+.lt-ie9 #edit-search-text-wrapper textarea:focus,
+.lt-ie9 .comment-form textarea:focus {
+  outline: none;
+}
+/* line 166, ../sass/ie.scss */
+.lt-ie9 .front-map .pane-contact-form {
+  left: 20px;
+}

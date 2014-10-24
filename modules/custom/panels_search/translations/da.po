@@ -1,0 +1,17 @@
+msgid "Please enter some keywords."
+msgstr "Indtast venligst nogle søgeord."
+
+msgid "Most popular searches"
+msgstr "Mest populærer søgninger"
+
+msgid "Filter by Content type"
+msgstr "Filtrer efter Indholdstype"
+
+msgid "Filter by Subject area"
+msgstr "Filtrer efter Emne område"
+
+msgid "Filter by Commitee"
+msgstr "Filtrer efter Udvalg"
+
+msgid "Search for phonebooks"
+msgstr "Søg i kontaktoplysninger"

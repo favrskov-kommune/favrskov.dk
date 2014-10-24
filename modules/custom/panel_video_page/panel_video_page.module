@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Video page feature.
+ */
+
+include_once 'panel_video_page.features.inc';

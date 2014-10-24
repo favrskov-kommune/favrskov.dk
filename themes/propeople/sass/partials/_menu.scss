@@ -1,0 +1,36 @@
+//------------------------------------------------------------------------------
+// Primary menu
+
+.primary-links {
+  margin: 0;
+  overflow: hidden;
+
+  li {
+    float: left;
+    margin: 0;
+
+    &.first a {
+      padding-left: 0;
+    }
+  }
+
+  a {
+    display: block;
+    padding-right: 25px;
+    line-height: 28px;
+    @include font-size(17);
+    @include links($pink, $black);
+
+    &.active {
+      @include links($black, $black);
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+@include at-breakpoint($phone-land) {
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Slider page feature.
+ */
+
+include_once 'panel_slider_page.features.inc';

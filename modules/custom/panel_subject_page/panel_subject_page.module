@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Subject page feature.
+ */
+
+include_once 'panel_subject_page.features.inc';

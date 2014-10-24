@@ -1,0 +1,124 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  views_news.views_default.inc: n/a
+#  views_news.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-11-04 12:28+0100\n"
+"PO-Revision-Date: 2013-11-04 13:31+0200\n"
+"Last-Translator: \n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: views_news.views_default.inc:485
+msgid "Master"
+msgstr ""
+
+#: views_news.views_default.inc:486
+msgid "Aktuelt"
+msgstr ""
+
+#: views_news.views_default.inc:487
+msgid "See all"
+msgstr "Se alle"
+
+#: views_news.views_default.inc:488
+msgid "Apply"
+msgstr ""
+
+#: views_news.views_default.inc:489
+msgid "Reset"
+msgstr ""
+
+#: views_news.views_default.inc:490
+msgid "Sort by"
+msgstr ""
+
+#: views_news.views_default.inc:491
+msgid "Asc"
+msgstr ""
+
+#: views_news.views_default.inc:492
+msgid "Desc"
+msgstr ""
+
+#: views_news.views_default.inc:493
+msgid "No results"
+msgstr ""
+
+#: views_news.views_default.inc:494
+msgid "term"
+msgstr ""
+
+#: views_news.views_default.inc:495
+msgid "All"
+msgstr "alle"
+
+#: views_news.views_default.inc:496
+msgid "News block"
+msgstr ""
+
+#: views_news.views_default.inc:497
+msgid "more"
+msgstr ""
+
+#: views_news.views_default.inc:498
+msgid "View panes"
+msgstr ""
+
+#: views_news.views_default.inc:499
+msgid "News list"
+msgstr ""
+
+#: views_news.views_default.inc:500
+msgid "Items per page"
+msgstr ""
+
+#: views_news.views_default.inc:501
+msgid "- All -"
+msgstr ""
+
+#: views_news.views_default.inc:502
+msgid "Offset"
+msgstr ""
+
+#: views_news.views_default.inc:503
+msgid "« first"
+msgstr ""
+
+#: views_news.views_default.inc:504
+msgid "‹ previous"
+msgstr ""
+
+#: views_news.views_default.inc:505
+msgid "next ›"
+msgstr ""
+
+#: views_news.views_default.inc:506
+msgid "last »"
+msgstr ""
+
+#: views_news.views_default.inc:507
+msgid "News year filter"
+msgstr ""
+
+#: views_news.views_default.inc:508
+msgid "Arkiv"
+msgstr ""
+
+#: views_news.info:0
+msgid "Views News"
+msgstr ""
+
+#: views_news.info:0
+msgid "Views"
+msgstr ""

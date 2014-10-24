@@ -1,0 +1,14 @@
+name = Config Autoarch
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_autoarch
+dependencies[] = autoarch
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[user_permission][] = administer autoarch settings
+features[variable][] = autoarch_date_granularity
+features[variable][] = autoarch_node_types

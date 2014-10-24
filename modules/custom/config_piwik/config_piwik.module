@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Config Piwik feature.
+ */
+
+include_once 'config_piwik.features.inc';

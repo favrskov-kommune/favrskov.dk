@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the RSS News feature.
+ */
+
+include_once 'rss_news.features.inc';

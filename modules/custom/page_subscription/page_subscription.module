@@ -1,0 +1,224 @@
+<?php
+/**
+ * @file
+ * Page subscription module.
+ */
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function page_subscription_ctools_plugin_directory($module, $plugin_type) {
+  if (!empty($module)) {
+    return 'plugins/' . $plugin_type;
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function page_subscription_menu() {
+  $items = array();
+
+  $items['admin/config/services/page-subscription'] = array(
+    'title' => 'Page subscription',
+    'description' => 'Manage MailChimp Groupings and Groups settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('page_subscription_settings_form'),
+    'access arguments' => array('administer mailchimp'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'includes/page_subscription.admin.inc',
+    'weight' => 0,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_cronapi().
+ */
+function page_subscription_cronapi($op, $job = NULL) {
+  // Create cron job
+  $items['page_subscription_mailchimp_cron'] = array(
+    'description' => 'Send Page Subscription updates',
+    'rule' => '0 18 * * *', // on 18:00
+    'callback' => 'page_subscription_campaign'
+  );
+
+  return $items;
+}
+
+/**
+ * Function creates mailchimp campaign.
+ * @param $view updated nodes
+ * @param $type name of type
+ * @param $grouping_id to send
+ * @param null $subject campaign subject
+ * @param null $intro campaign intro text
+ */
+function _page_subscription_campaign_create($view, $type, $grouping_id, $subject, $intro) {
+  $mcapi = mailchimp_get_api_object();
+
+  $options = array(
+    'title' => $subject,
+    'subject' => $subject,
+    'list_id' => variable_get('page_subscription_list_id', ''),
+    'from_email' => variable_get('mailchimp_from_email', ''),
+    'from_name' => variable_get('mailchimp_from_name', ''),
+    'template_id' => variable_get('page_subscription_template_id', '')
+  );
+
+  $template = array(
+    'html_date' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => date('j M Y')
+    ),
+    'html_subject' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => $subject
+    ),
+    'html_intro' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => $intro
+    ),
+    'html_updates' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => $view->render($type . '_pane')
+    ),
+  );
+
+  switch ($type) {
+    case 'jobs':
+      $field = 'field_field_position_category';
+      break;
+    case 'meetings':
+      $field = 'field_field_os2web_meetings_committee';
+      break;
+    case 'articles':
+      $field = 'field_field_update_category';
+      break;
+    case 'hearings':
+      $field = 'field_field_hearing_category';
+      break;
+    default:
+      $field = NULL;
+  }
+
+  $groups = array();
+  foreach ($view->result as $row) {
+    $group = $row->{$field}[0]['raw']['taxonomy_term']->name;
+    $groups[$group] = addcslashes($group, ',');
+  }
+
+  $opts = array(
+    'match' => 'any',
+    'conditions' => array(
+      array(
+        'field' => "interests-$grouping_id",
+        'op' => 'one',
+        'value' => implode(',', $groups),
+      )
+    )
+  );
+
+  $grouping_test = $mcapi->campaignSegmentTest(variable_get('page_subscription_list_id', ''), $opts);
+
+  $campaign_id = NULL;
+  if ($grouping_test) {
+    // Create campaign
+    $campaign_id = mailchimp_campaign_save_campaign($template, $options);
+
+    // Set group options
+    if ($campaign_id) {
+      $mcapi->campaignUpdate($campaign_id, 'segment_opts', $opts);
+    }
+  }
+
+  if ($mcapi->errorCode) {
+    // Display and log error, if any.
+
+    $mcapiErrorMessage = 'MailChimp error code: %errorCode, MailChimp error message: %errorMessage.';
+    $mcapiErrorVariables = array(
+      '%errorCode' => $mcapi->errorCode,
+      '%errorMessage' => $mcapi->errorMessage
+    );
+
+    $variables = array();
+
+    $human = t('MailChimp error.', $variables) . ' ' . t($mcapiErrorMessage, $mcapiErrorVariables);
+    drupal_set_message($human, 'error');
+
+    $watchdog = 'MailChimp error.' . ' ' . $mcapiErrorMessage;
+    $variables = $variables + $mcapiErrorVariables;
+    watchdog('page_subscription', $watchdog, $variables, WATCHDOG_ERROR);
+  }
+
+  if ($campaign_id) {
+    if ($type == 'articles') {
+      foreach ($view->result as $row) {
+        $node = node_load($row->nid);
+        $node_wrapper = entity_metadata_wrapper('node', $node);
+        $node_wrapper->field_send_update->set(FALSE);
+        $node_wrapper->save();
+      }
+    }
+
+    mailchimp_campaign_send_campaign(new MailChimpCampaign(array('mc_campaign_id' => $campaign_id)));
+  }
+}
+
+/**
+ * Generate Page subscription updates.
+ */
+function page_subscription_campaign() {
+  // List of types to send
+  $updates = array(
+    'jobs' => 3,
+    'meetings' => 15,
+    'articles' => 24,
+    'hearings' => 25,
+  );
+
+  $mcapi = mailchimp_get_api_object();
+  $groupings = $mcapi->listInterestGroupings(variable_get('page_subscription_list_id', ''));
+
+  foreach ($updates as $type => $vid) {
+    // If only one grouping used for type
+    if ($grouping_id = variable_get('mailchimp_groups_taxonomy_parent_grouping_id_' . $vid, NULL)) {
+      $view = views_get_view('page_subscription');
+      $view->set_display($type . '_pane');
+      $view->set_title('New Display Title');
+      $view->execute();
+
+      if (!empty($view->result)) {
+        $subject = variable_get('page_subscription_' . $type . '_subject', NULL);
+        $intro = variable_get('page_subscription_' . $type . '_intro', NULL);
+
+        if ($subject) {
+          _page_subscription_campaign_create($view, $type, $grouping_id, $subject, $intro);
+        }
+      }
+    }
+    else {
+      $tree = taxonomy_get_tree($vid, 0, 1, TRUE);
+
+      foreach ($tree as $term) {
+        $view = views_get_view('page_subscription');
+        $view->set_display($type . '_pane');
+
+        // Set parent grouping
+        $view->set_exposed_input(array('term_node_tid_depth' => $term->tid));
+        $view->execute();
+
+        if (!empty($view->result)) {
+          $grouping_id = field_get_items('taxonomy_term', $term, 'field_mailchimp_grouping_id');
+          $subject = field_get_items('taxonomy_term', $term, 'field_email_subject');
+          $intro = field_get_items('taxonomy_term', $term, 'field_email_body_intro_text');
+
+          if ($grouping_id && $subject) {
+            _page_subscription_campaign_create($view, $type, $grouping_id[0]['value'], $subject[0]['value'], $intro[0]['value']);
+          }
+        }
+      }
+    }
+  }
+}

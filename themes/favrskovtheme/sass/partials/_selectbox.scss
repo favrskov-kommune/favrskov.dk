@@ -1,0 +1,79 @@
+//------------------------------------------------------------------------------
+// Selecbox styles
+
+.job-listing .views-exposed-widgets {
+  margin-bottom: 46px;
+
+  label,
+  .views-widget {
+    @include inline-block();
+  }
+
+  label {
+    color: $gray;
+    font-family: $sans-med-strict;
+    text-transform: uppercase;
+    @include font-size(14);
+    margin: 3px 13px 0 0;
+  }
+}
+
+
+/* Select */
+.selector {
+  background: #e6e6e6 url(../images/red-arrow.png) no-repeat 155px center;
+  color: $red;
+  cursor: pointer;
+  display: block;
+  line-height: 1.2;
+  position: relative;
+  @include border-radius(4px);
+  min-width: 184px;
+  max-width: 184px;
+  outline: none;
+  overflow: hidden;
+
+  span {
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 19px;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    padding: 9px 25px 9px 10px;
+    max-width: 145px;
+  }
+
+  select {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    border: none;
+    background: none;
+    position: absolute;
+    height: 100%;
+    top: 2px;
+    left: 0px;
+    width: 100%;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+
+// Responsive
+
+// -----------------------------------------------------------------------------
+@include at-breakpoint($tablet-port) {
+  .views-exposed-widgets {
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .views-exposed-widget {
+      margin-bottom: 20px;
+    }
+  }
+}

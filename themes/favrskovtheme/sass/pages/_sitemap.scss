@@ -1,0 +1,30 @@
+//------------------------------------------------------------------------------
+// Site map
+.site-map-menus {
+  font-family: $sans-strict;
+
+  .title {
+    @include font-size(30);
+    margin-bottom: 20px;
+    font-family: $sans-med-strict;
+  }
+
+  li {
+    line-height: 1.5;
+    color: $red;
+  }
+
+  .site-map-menu > li {
+    padding: 2px 0 2px 15px;
+
+    list-style-type: disc;
+    list-style-position: inside;
+
+    a { @include font-size(16); }
+
+    .site-map-menu > li  {
+      border-bottom: 0 none;
+      a { @include font-size(13); }
+    }
+  }
+}

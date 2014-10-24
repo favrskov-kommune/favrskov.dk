@@ -1,0 +1,99 @@
+<?php
+/**
+ * @file
+ * config_theme_key.features.inc
+ */
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function config_theme_key_ctools_plugin_api() {
+  list($module, $api) = func_get_args();
+  if ($module == "elysia_cron" && $api == "default_elysia_cron_rules") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
+}
+
+/**
+ * Implements hook_themekey_features_rule_chain().
+ */
+function config_theme_key_themekey_features_rule_chain() {
+if (!defined('THEMEKEY_PAGECACHE_UNSUPPORTED')) {
+    define('THEMEKEY_PAGECACHE_UNSUPPORTED', 0);
+    define('THEMEKEY_PAGECACHE_SUPPORTED', 1);
+    define('THEMEKEY_PAGECACHE_TIMEBASED', 2);
+  }
+$rules = array(
+  0 => array(
+    'rule' => array(
+      'property' => 'user:role',
+      'operator' => '=',
+      'value' => 'anonymous user',
+      'theme' => 'favrskovtheme',
+      'enabled' => 1,
+      'wildcards' => 'a:0:{}',
+      'module' => 'config_theme_key',
+    ),
+    'string' => '"user:role = anonymous user >>> favrskovtheme"',
+    'childs' => array(),
+  ),
+  1 => array(
+    'rule' => array(
+      'property' => 'drupal:get_q',
+      'operator' => '=',
+      'value' => 'admin/config/system/cron/execute/mailchimp_cron',
+      'theme' => 'favrskovtheme',
+      'enabled' => 1,
+      'wildcards' => 'a:0:{}',
+      'module' => 'config_theme_key',
+    ),
+    'string' => '"drupal:get_q = admin/config/system/cron/execute/mailchimp_cron >>> favrskovtheme"',
+    'childs' => array(),
+  ),
+  2 => array(
+    'rule' => array(
+      'property' => 'drupal:get_q',
+      'operator' => '=',
+      'value' => 'admin/config/system/cron/execute/page_subscription_mailchimp_cron',
+      'theme' => 'favrskovtheme',
+      'enabled' => 1,
+      'wildcards' => 'a:0:{}',
+      'module' => 'config_theme_key',
+    ),
+    'string' => '"drupal:get_q = admin/config/system/cron/execute/page_subscription_mailchimp_cron >>> favrskovtheme"',
+    'childs' => array(),
+  ),
+  3 => array(
+    'rule' => array(
+      'property' => 'system:query_param',
+      'operator' => '*',
+      'value' => 'theme=favrskovtheme',
+      'theme' => 'favrskovtheme',
+      'enabled' => 1,
+      'wildcards' => 'a:0:{}',
+      'module' => 'config_theme_key',
+    ),
+    'string' => '"system:query_param * theme=favrskovtheme >>> favrskovtheme"',
+    'childs' => array(),
+  ),
+  4 => array(
+    'rule' => array(
+      'property' => 'drupal:path_is_admin',
+      'operator' => '=',
+      'value' => 'true',
+      'theme' => 'seven',
+      'enabled' => 1,
+      'wildcards' => 'a:0:{}',
+      'module' => 'config_theme_key',
+    ),
+    'string' => '"drupal:path_is_admin = true >>> seven"',
+    'childs' => array(),
+  ),
+);
+
+return $rules;
+}

@@ -1,0 +1,250 @@
+//------------------------------------------------------------------------------
+// LOGIN
+.page-user {
+
+  // colorized errors
+  .control-group.error {
+    .control-label {
+      color: $black;
+    }
+    .help-block {
+    color: lighten($def-color, 30%);
+    }
+
+    input,
+    textarea {
+      border-color: $pink;
+    }
+  }
+
+  .nav-tabs {
+    border: 0 none;
+    text-align: center;
+    margin: 0 0 40px;
+
+    li {
+      float: none;
+      @include inline-block(top);
+    }
+
+    a {
+      background: $pink;
+      border: 0;
+      color: $white;
+      margin-bottom: 0;
+      @include border-radius(0);
+    }
+
+    .active a,
+    a:hover {
+      background: $gray;
+      border: none;
+      color: $white;
+     }
+  }
+
+
+  //----------------------------------------------------------------------------
+  // Base style
+
+  .form-item-name,
+  .form-item-pass {
+    margin-bottom: 20px;
+  }
+  .form-text {
+    height: 25px;
+    padding: 2%;
+    max-width: 96%;
+    margin: 0 0 5px;
+    background: $white;
+    @include font-size(18);
+    @include placeholder(#a8a8a8);
+  }
+
+  .form-required {
+    color: $pink;
+  }
+
+  .help-block {
+    margin: 3px 0 15px;
+    color: lighten($def-color, 30%);
+    font-family: $font-sans;
+    @include font-size(11);
+  }
+
+  .pane-pane-messages .alert-block {
+    margin: 0 auto 40px;
+    max-width: 30%;
+    @include border-radius(0);
+  }
+}
+
+// Forms
+#user-register-form,
+#user-pass,
+#user-login {
+  color: $white;
+  background-color: $slategrey;
+  border: 1px solid $grayLight;
+  margin: 0 auto 60px;
+  max-width: 355px;
+  padding: 20px;
+  @include transition-property(all);
+  @include transition-timing-function(ease-in);
+  @include transition-duration(.4s);
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    @include font-size(14);
+  }
+
+  .description {
+    display: none;
+  }
+}
+
+
+
+#user-register-form,
+#user-pass {
+  .form-text{
+    margin-bottom: 15px;
+  }
+}
+
+#user-register-form {
+  #edit-account .form-text {
+  margin-bottom: 0;
+  }
+  .field-type-list-integer {
+    .selectboxit {
+      margin: 0 0 15px;
+    }
+  }
+}
+
+
+//------------------------------------------------------------------------------
+// User Edit form
+
+#user-profile-form {
+  background-color: #e4e4e4;
+  max-width: 50%;
+  margin: 0 auto 60px;
+  padding: 2%;
+
+
+  .form-wrapper {
+    background-color: #e4e4e4;
+    margin-bottom: 10px;
+    margin: 0 1% 1% 0;
+    legend {
+
+      line-height: 1.3;
+      margin: 0 -12px;
+      padding: 11px;
+      width: 100%;
+    }
+  }
+
+  #edit-submit {
+      margin: 25px auto 5pc;
+      display: block;
+    }
+
+  .selectboxit {
+    margin-top: 5px;
+  }
+
+  .tips {
+    @include font-size(11);
+  }
+
+  /* Input type file */
+
+  *[type="file"]{
+    height: auto;
+  }
+
+
+  /* Account setting */
+  #edit-account {
+
+    /*Current password*/
+    .form-item-current-pass,
+    .form-item-mail {
+      max-width: 50%;
+      float: left;
+    }
+    .form-item-mail {
+      max-width: 50%;
+    }
+
+    /* New password */
+    .form-item-pass {
+      background-color: #f8f8f8;
+      clear: both;
+      padding: 1%;
+      position: relative;
+
+
+      .confirm-parent,
+      .password-parent {
+        position: relative;
+
+        .password-confirm,
+        .password-strength {
+          position: absolute;
+          right: 0;
+          top: 9px;
+          max-width: 38%;
+
+          .error {
+            color: $pink;
+            font-weight: bold;
+          }
+          .ok {
+            color: #47c965;
+            font-weight: bold;
+          }
+        }
+        input.password-confirm {
+          max-width: 95%;
+          position: static;
+        }
+      }
+
+      .password-suggestions {
+        background-color: #fefff6;
+        border: 0 none;
+        font-weight: bold;
+        padding: 4%;
+        position: absolute;
+        max-width: 45%;
+        right: 0;
+        bottom: 150px;
+        @include font-size(11);
+        @include box-shadow(rgba(0,0,0,.3)  0 0 8px);
+
+        li {
+          font-weight: normal;
+          margin-left: 10px;
+          list-style-type: square;
+        }
+
+      }
+    }
+  }
+
+
+
+}
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+

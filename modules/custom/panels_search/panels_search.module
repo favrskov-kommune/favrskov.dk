@@ -1,0 +1,100 @@
+<?php
+/**
+ * @file
+ * Code for the Panels Search feature.
+ */
+define('SOLR_SEARCH_PAGE', '/soegning');
+
+include_once 'panels_search.features.inc';
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ * Customize apache solr search form.
+ */
+function panels_search_form_apachesolr_panels_search_form_alter(&$form, $form_state) {
+  $element = & $form['apachesolr_panels_search_form'];
+  $element['#size'] = 50;
+  $element['#placeholder'] = t('Search');
+
+  $form['search_phonebooks'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Search for phonebooks'),
+    '#weight' => 1000,
+    '#default_value' => !empty($_GET['phonebooks']) ? 1 : 0,
+  );
+
+  if (module_exists('domain')) {
+    $domain = domain_get_domain();
+    if ($domain['domain_id'] != domain_default_id()) {
+      unset($form['search_phonebooks']);
+    }
+  }
+
+  $form['search_meetings'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Search for meetings'),
+    '#weight' => 1001,
+    '#default_value' => !empty($_GET['meetings']) ? 1 : 0,
+  );
+
+  $form['save_filters'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Retain current filters'),
+    '#weight' => 1002,
+    '#default_value' => !empty($_GET['retain']) ? 1 : 0,
+  );
+
+  $form['#submit'] = array('panels_search_search_form_submit');
+  apachesolr_autocomplete_do_alter($element);
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ */
+function panels_search_form_apachesolr_panels_search_block_alter(&$form, $form_state) {
+  $element = & $form['apachesolr_panels_search_form'];
+  $element['#size'] = 76;
+  $element['#placeholder'] = t('Search');
+  apachesolr_autocomplete_do_alter($element);
+}
+
+/**
+ * Search submit callback.
+ *
+ * Keeps filter selection on search form on form submit if checkbox is checked.
+ * Adds get params to page with information about to search or not to search by meetings.
+ *
+ * @see apachesolr_panels_search_block_form_submit().
+ */
+function panels_search_search_form_submit(&$form, $form_state) {
+  $query = array();
+  if ($form_state['input']['save_filters'] == 1) {
+    $query = (array) drupal_get_query_parameters();
+    $query += array('retain' => TRUE);
+  }
+
+  $query['meetings'] = $form_state['input']['search_meetings'] == 1 ? TRUE : FALSE;
+  $query['phonebooks'] = $form_state['input']['search_phonebooks'] == 1 ? TRUE : FALSE;
+
+  $form_state['values']['search_block_form'] = $form_state['values']['apachesolr_panels_search_form'];
+  $form_state['values']['apachesolr_panels_search_block'] = $form_state['values']['apachesolr_panels_search_form'];
+  search_box_form_submit($form, $form_state);
+  if (!empty( $form_state['input']['apachesolr_panels_search_form'])){
+  drupal_goto(arg(0) . '/' . $form_state['input']['apachesolr_panels_search_form'], array('query' => $query));
+  }
+  else{
+    drupal_goto(arg(0), array('query' => $query));
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Replace links in solr stats block so they will link to our custom search page.
+ */
+function panels_search_preprocess_apachesolr_stats_block(&$variables) {
+  foreach ($variables['links'] as &$link) {
+    $link = str_replace('/search/apachesolr_search', SOLR_SEARCH_PAGE, $link);
+  }
+}

@@ -1,0 +1,385 @@
+<?php
+
+/**
+ * @file
+ * domain_menu_permissions.module: Restrict users only to manage menus of domains they are assigned on.
+ */
+
+/**
+ * Implements hook_menu_alter().
+ */
+function domain_menu_permissions_menu_alter(&$items) {
+  $items['admin/structure/menu']['page callback'] = '_domain_menu_permissions_menu_overview_page';
+  $items['admin/structure/menu']['access callback'] = '_domain_menu_permissions_access';
+  unset($items['admin/structure/menu']['access arguments']);
+  $items['admin/structure/menu/manage/%menu']['access callback'] = '_domain_menu_permissions_menu_access';
+  $items['admin/structure/menu/manage/%menu']['access arguments'] = array(4);
+  $items['admin/structure/menu/manage/%menu/add']['access callback'] = '_domain_menu_permissions_menu_access';
+  $items['admin/structure/menu/manage/%menu/add']['access arguments'] = array(4);
+  $items['admin/structure/menu/item/%menu_link/edit']['access callback'] = '_domain_menu_permissions_menu_access';
+  $items['admin/structure/menu/item/%menu_link/edit']['access arguments'] = array(4);
+  $items['admin/structure/menu/item/%menu_link/reset']['access callback'] = '_domain_menu_permissions_menu_access';
+  $items['admin/structure/menu/item/%menu_link/reset']['access arguments'] = array(4);
+  $items['admin/structure/menu/item/%menu_link/delete']['access callback'] = '_domain_menu_permissions_menu_access';
+  $items['admin/structure/menu/item/%menu_link/delete']['access arguments'] = array(4);
+}
+
+/**
+ * Implements hook_permission().
+ */
+function domain_menu_permissions_permission() {
+  if (module_exists('menu')) {
+    $perms = array(
+      'edit domain menu' => array(
+        'title' => t('Edit menu domain'),
+        'description' => t('Users can edit the (domain-specific) menu on domains they are assigned to'),
+      ),
+    );
+  }
+  return $perms;
+}
+
+/**
+ * Wrapper function for user_access:
+ *
+ * Checks if user is menu admin or has permission to edit a domains menu
+ *
+ * @param string $perm Permission name.
+ * @param int $domain_id Id of the domain.
+ * @return boolean TRUE if user can edit menu on selected domain.
+ */
+function _domain_menu_permissions_access($perm = NULL, $domain_id = NULL) {
+  global $user;
+  if (user_access('administer menu')) {
+    return TRUE;
+  }
+  if (user_access('edit domain menu')) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+
+/**
+ * Determine if user is assigned to a domain.
+ *
+ * @param stdClass $user User object.
+ * @param int $domain_id Id of the domain.
+ * @return boolean TRUE if user have access to domain.
+ */
+function domain_menu_permissions_isuserindomain($user, $domain_id = NULL) {
+  if (is_null($domain_id)) {
+    $domain = domain_get_domain();
+    $domain_id = $domain['domain_id'];
+  }
+  $domains = domain_get_user_domains($user);
+  if (!empty($domains)) {
+    return in_array($domain_id, domain_get_user_domains($user), TRUE);
+  }
+  return TRUE;
+}
+
+
+/**
+ * Try to return domain id by menu object.
+ *
+ * @param array $menu Menu object.
+ * @return int|boolean Domain id or FALSE if menu not assigned to domain.
+ */
+function _domain_menu_permissions_get_domain_id_from_menu($menu) {
+  $domains = domain_domains();
+  foreach ($domains as $domain) {
+    if ($menu['menu_name'] == domain_conf_variable_get($domain['domain_id'], 'menu_main_links_source')
+      || $menu['menu_name'] == domain_conf_variable_get($domain['domain_id'], 'menu_secondary_links_source')
+    ) {
+      return $domain['domain_id'];
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Permissions to administer menus and its menu links assigned to domain.
+ *
+ * @param array $menu Menu object.
+ * @return boolean TRUE if user can edit menu.
+ */
+function _domain_menu_permissions_menu_access($menu) {
+  $domain = domain_get_domain();
+  global $user;
+  if (domain_menu_permissions_isuserindomain($user, _domain_menu_permissions_get_domain_id_from_menu($menu))
+    && _domain_menu_permissions_access('edit domain menu', $domain['domain_id'])
+  ) {
+    return TRUE;
+  }
+  return user_access('administer menu');
+}
+
+
+/**
+ * Building the Menu Overview Table, only showing menus the current user has access to.
+ *
+ * @see menu_overview_page().
+ */
+function _domain_menu_permissions_menu_overview_page() {
+  if (user_access('administer menu')) {
+    return menu_overview_page();
+  }
+
+  $result = db_query("SELECT * FROM {menu_custom} ORDER BY title", array(), array('fetch' => PDO::FETCH_ASSOC));
+  $header = array(t('Title'), array('data' => t('Operations'), 'colspan' => '2'));
+  $rows = array();
+  foreach ($result as $menu) {
+    if (_domain_menu_permissions_menu_access($menu)) {
+      $row = array(
+        theme('menu_admin_overview', array(
+          'title' => $menu['title'],
+          'name' => $menu['menu_name'],
+          'description' => $menu['description']
+        ))
+      );
+      $row[] = array('data' => l(t('list links'), 'admin/structure/menu/manage/' . $menu['menu_name']));
+      $row[] = array('data' => l(t('add link'), 'admin/structure/menu/manage/' . $menu['menu_name'] . '/add'));
+      $rows[] = $row;
+    }
+  }
+
+  return theme('table', array('header' => $header, 'rows' => $rows));
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ *
+ * In order to override menu.module's implementation of form_node_form_alter() we change the execution order of that hook
+ *
+ */
+function domain_menu_permissions_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'form_node_form_alter' && is_array($implementations)) {
+    unset($implementations['menu']);
+  }
+  if ($hook == 'form_menu_edit_item_alter' && is_array($implementations)) {
+    unset($implementations['menu']);
+  }
+  if ($hook == 'parent_options' && is_array($implementations)) {
+    unset($implementations['menu']);
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * Adds menu item fields to the node form.
+ *
+ * @see menu_form_node_form_alter().
+ */
+
+function domain_menu_permissions_form_node_form_alter(&$form, $form_state) {
+  // Generate a list of possible parents (not including this link or descendants).
+  // @todo This must be handled in a #process handler.
+  $link = $form['#node']->menu;
+  $type = $form['#node']->type;
+
+  // menu_parent_options() is goofy and can actually handle either a menu link
+  // or a node type both as second argument. Pick based on whether there is
+  // a link already (menu_node_prepare() sets mlid default to 0).
+  $options = menu_parent_options(menu_get_menus(), $link['mlid'] ? $link : $type, $type);
+
+  // If no possible parent menu items were found, there is nothing to display.
+  if (empty($options)) {
+    return;
+  }
+
+  $form['menu'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Menu settings'),
+    '#access' => user_access('edit domain menu'),
+    '#collapsible' => TRUE,
+    '#collapsed' => !$link['link_title'],
+    '#group' => 'additional_settings',
+    '#attached' => array(
+      'js' => array(drupal_get_path('module', 'menu') . '/menu.js'),
+    ),
+    '#tree' => TRUE,
+    '#weight' => -2,
+    '#attributes' => array('class' => array('menu-link-form')),
+  );
+
+  $form['menu']['enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Provide a menu link'),
+    '#default_value' => (int) (bool) $link['mlid'],
+  );
+  $form['menu']['link'] = array(
+    '#type' => 'container',
+    '#parents' => array('menu'),
+    '#states' => array(
+      'invisible' => array(
+        'input[name="menu[enabled]"]' => array('checked' => FALSE),
+      ),
+    ),
+  );
+
+  // Populate the element with the link data.
+  foreach (array(
+             'mlid',
+             'module',
+             'hidden',
+             'has_children',
+             'customized',
+             'options',
+             'expanded',
+             'hidden',
+             'parent_depth_limit'
+           ) as $key) {
+    $form['menu']['link'][$key] = array('#type' => 'value', '#value' => $link[$key]);
+  }
+
+  $form['menu']['link']['link_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Menu link title'),
+    '#default_value' => $link['link_title'],
+  );
+
+  $form['menu']['link']['description'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Description'),
+    '#default_value' => isset($link['options']['attributes']['title']) ? $link['options']['attributes']['title'] : '',
+    '#rows' => 1,
+    '#description' => t('Shown when hovering over the menu link.'),
+  );
+
+  $default = ($link['mlid'] ? $link['menu_name'] . ':' . $link['plid'] : variable_get('menu_parent_' . $type, 'main-menu:0'));
+  // If the current parent menu item is not present in options, use the first
+  // available option as default value.
+  // @todo User should not be allowed to access menu link settings in such a
+  // case.
+  if (!isset($options[$default])) {
+    $array = array_keys($options);
+    $default = reset($array);
+  }
+  $form['menu']['link']['parent'] = array(
+    '#type' => 'select',
+    '#title' => t('Parent item'),
+    '#default_value' => $default,
+    '#options' => $options,
+    '#attributes' => array('class' => array('menu-parent-select')),
+  );
+  $form['menu']['link']['weight'] = array(
+    '#type' => 'weight',
+    '#title' => t('Weight'),
+    '#delta' => 50,
+    '#default_value' => $link['weight'],
+    '#description' => t('Menu links with smaller weights are displayed before links with larger weights.'),
+  );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Checking access for menu link add/edit pages.
+ */
+function domain_menu_permissions_form_menu_edit_item_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['parent']) && !user_access('administer menu') && _domain_menu_permissions_filter_parent_options($form)) {
+    $option_keys = array_keys($form['parent']['#options']);
+    if (empty($form['mlid']['#value']) && !in_array($form['parent']['#default_value'], $option_keys)) {
+      $form['parent']['#default_value'] = $option_keys[0];
+    }
+  }
+}
+
+/**
+ * Remove every menu as parent option except the domain's main links source.
+ *
+ * @param array $element The form element.
+ * @return boolean TRUE if parent options are not empty.
+ */
+function _domain_menu_permissions_filter_parent_options(&$element) {
+  $domain = domain_get_domain();
+  if (is_array($element['parent']['#options'])) {
+    $has_mlid = !empty($element['mlid']['#value']);
+    $default_value = $element['parent']['#default_value'];
+    $option_keys = array_keys($element['parent']['#options']);
+    foreach ($option_keys as $option_key) {
+      list($menu, $item) = explode(':', $option_key);
+      if (!_domain_menu_permissions_menu_access(array('menu_name' => $menu))
+        && _domain_menu_permissions_access('edit domain menu', $domain['domain_id'])
+      ) {
+        unset($element['parent']['#options'][$option_key]);
+        if ($has_mlid && ($option_key == $default_value)) {
+          return FALSE;
+        }
+      }
+    }
+    return count($element['parent']['#options']) > 0;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_ctools_plugin_post_alter().
+ *
+ * Change render function of 'Administer menu' plugin on dashboard.
+ */
+function domain_menu_permissions_ctools_plugin_post_alter(&$plugin, &$info) {
+
+  // Override a function defined by the plugin.
+  if (!empty($plugin['title']) && $plugin['title'] == t('Admin - Menus')) {
+    $plugin['render callback'] = 'domain_menu_permissions_menus_render';
+  }
+}
+
+/**
+ * Render function for 'Admin - Menus' block.
+ */
+function domain_menu_permissions_menus_render($subtype, $conf, $args, &$context) {
+  if (!module_exists('menu')) {
+    return;
+  }
+  $items = array();
+  global $user;
+
+  $menus = menu_get_menus();
+  $options = array('query' => array('destination' => 'admin/dashboard'));
+  $header = array(
+    array('data' => t('Menu')),
+    array('data' => t('Operations'), 'colspan' => 3)
+  );
+  $rows = array();
+
+  foreach ($menus as $menu_name => $menu) {
+    if (array_key_exists($menu_name, $conf['menus'])) {
+      if ($conf['menus'][$menu_name] === $menu_name &&
+        domain_menu_permissions_isuserindomain($user, _domain_menu_permissions_get_domain_id_from_menu(array('menu_name' => $menu_name)))
+      ) {
+        $rows[] = array(
+          'data' => array(
+            t($menu),
+            l(t('Configure'), 'admin/structure/menu/manage/' . $menu_name . '/edit', $options),
+            l(t('Manage links'), 'admin/structure/menu/manage/' . $menu_name, $options),
+            l(t('Add new link'), 'admin/structure/menu/manage/' . $menu_name . '/add', $options),
+          ),
+        );
+      }
+    }
+  }
+
+  if (empty($rows)) {
+    $rows[] = array(
+      array(
+        'data' => t('There are no menus to display.'),
+        'colspan' => 4,
+      )
+    );
+  }
+
+  // Build a link to the menu admin UI.
+  $link = l(t('Menu administration'), 'admin/structure/menu');
+
+  $block = new stdClass();
+  $block->title = t('Administer Menus');
+  $block->module = t('total_control');
+  $block->content = theme('total_control_admin_table', array('header' => $header, 'rows' => $rows, 'link' => $link));
+
+  return $block;
+
+}

@@ -1,0 +1,192 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  os2web_event_calendar.features.field_instance.inc: n/a
+#  os2web_event_calendar.features.inc: n/a
+#  os2web_event_calendar.features.taxonomy.inc: n/a
+#  os2web_event_calendar.views_default.inc: n/a
+#  os2web_event_calendar.module: n/a
+#  os2web_event_calendar.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-12 14:19+0200\n"
+"PO-Revision-Date: 2013-09-12 15:24+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: os2web_event_calendar.features.field_instance.inc:39;861
+msgid "Body"
+msgstr "Brødtekst"
+
+#: os2web_event_calendar.features.field_instance.inc:80;867
+msgid "Location address"
+msgstr "Sted adresse"
+
+#: os2web_event_calendar.features.field_instance.inc:160;870
+msgid "Start date - End date"
+msgstr "Startdato - Slutdato"
+
+#: os2web_event_calendar.features.field_instance.inc:209;863
+msgid "Editorial responsibility"
+msgstr "Redaktionel ansvarlig"
+
+#: os2web_event_calendar.features.field_instance.inc:258;864
+msgid "Free event"
+msgstr "Gratis arrangement"
+
+#: os2web_event_calendar.features.field_instance.inc:299;865
+msgid "Image / thumbnail"
+msgstr "Billede / thumbnail"
+
+#: os2web_event_calendar.features.field_instance.inc:360;866
+msgid "Image description"
+msgstr "Billedtekst"
+
+#: os2web_event_calendar.features.field_instance.inc:434;868
+msgid "Location name"
+msgstr "Sted navn"
+
+#: os2web_event_calendar.features.field_instance.inc:508;869
+msgid "Price"
+msgstr "Pris"
+
+#: os2web_event_calendar.features.field_instance.inc:582;871
+msgid "Taxonomy, Category"
+msgstr "Taksonomi, Kategori"
+
+#: os2web_event_calendar.features.field_instance.inc:619;872
+msgid "Teaser"
+msgstr "Manchet"
+
+#: os2web_event_calendar.features.field_instance.inc:693;873
+msgid "Video"
+msgstr "Video"
+
+#: os2web_event_calendar.features.field_instance.inc:767;874
+msgid "Video description"
+msgstr "Videobeskrivelse"
+
+#: os2web_event_calendar.features.field_instance.inc:838;862
+msgid "Color"
+msgstr "Farve"
+
+#: os2web_event_calendar.features.inc:30
+msgid "OS2web Event Calendar"
+msgstr "OS2web Arrangementskalender"
+
+#: os2web_event_calendar.features.inc:34
+msgid "Titel"
+msgstr "Overskrift"
+
+#: os2web_event_calendar.features.taxonomy.inc:13
+msgid "OS2web Event Calendar - Categories"
+msgstr "OS2web Arrangementskalender - Kategorier"
+
+#: os2web_event_calendar.views_default.inc:330
+msgid "Master"
+msgstr "Master"
+
+#: os2web_event_calendar.views_default.inc:331 os2web_event_calendar.module:19
+msgid "View all"
+msgstr "Vis alle"
+
+#: os2web_event_calendar.views_default.inc:332
+msgid "Apply"
+msgstr "Udfør"
+
+#: os2web_event_calendar.views_default.inc:333
+msgid "Reset"
+msgstr "Gendan"
+
+#: os2web_event_calendar.views_default.inc:334
+msgid "Sort by"
+msgstr "Sortér efter"
+
+#: os2web_event_calendar.views_default.inc:335
+msgid "Asc"
+msgstr "Stigende"
+
+#: os2web_event_calendar.views_default.inc:336
+msgid "Desc"
+msgstr "Faldende"
+
+#: os2web_event_calendar.views_default.inc:337
+msgid "Items per page"
+msgstr "Antal elementer"
+
+#: os2web_event_calendar.views_default.inc:338
+msgid "- All -"
+msgstr "- Alle -"
+
+#: os2web_event_calendar.views_default.inc:339
+msgid "Offset"
+msgstr "Forskydning"
+
+#: os2web_event_calendar.views_default.inc:340
+msgid "« first"
+msgstr "« første"
+
+#: os2web_event_calendar.views_default.inc:341
+msgid "‹ previous"
+msgstr "‹ forrige"
+
+#: os2web_event_calendar.views_default.inc:342
+msgid "next ›"
+msgstr "næste ›"
+
+#: os2web_event_calendar.views_default.inc:343
+msgid "last »"
+msgstr "sidste »"
+
+#: os2web_event_calendar.views_default.inc:344
+msgid "term"
+msgstr "term"
+
+#: os2web_event_calendar.views_default.inc:345
+msgid "Free"
+msgstr "Gratis"
+
+#: os2web_event_calendar.views_default.inc:346
+msgid "[field_os2web_ec_color-rgb] "
+msgstr ""
+
+#: os2web_event_calendar.views_default.inc:347
+msgid "Start date - End date - end date (field_os2web_ec_date:value2)"
+msgstr ""
+
+#: os2web_event_calendar.views_default.inc:348
+msgid "Listing pane"
+msgstr ""
+
+#: os2web_event_calendar.views_default.inc:349
+msgid "View panes"
+msgstr "View panes"
+
+#: os2web_event_calendar.views_default.inc:350
+msgid "Deck pane"
+msgstr ""
+
+#: os2web_event_calendar.views_default.inc:351
+msgid "more"
+msgstr "mere"
+
+#: os2web_event_calendar.views_default.inc:352
+msgid "All"
+msgstr "Alle"
+
+#: os2web_event_calendar.info:0
+msgid "OS2Web Event Calendar"
+msgstr "OS2web Arrangementskalender"
+
+#: os2web_event_calendar.info:0
+msgid "OS2Web"
+msgstr "OS2web"

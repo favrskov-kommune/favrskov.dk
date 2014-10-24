@@ -1,0 +1,40 @@
+//------------------------------------------------------------------------------
+// Job page
+.node-type-os2web-hr-manager-job {
+  .field-type-datetime {
+    margin-bottom: 15px;
+  }
+}
+.job-footer {
+  margin: 30px 0;
+  padding: 0 0 25px;
+  border-bottom: 1px solid $slategrey;
+
+  a {
+    background: $red;
+    margin-bottom: 15px;
+    padding: 10px 23px;
+    @include inline-block();
+    @include font-size(16);
+    @include links($white, $white);
+    @include border-radius(5px);
+
+    &:hover {
+      background: $slategrey;
+    }
+  }
+}
+
+.node-content {
+  .field-type-datetime {
+    @include font-size(14);
+
+    .field-label {
+      float: left;
+      margin-right: 15px;
+    }
+  }
+}
+
+
+

@@ -1,0 +1,1 @@
+<span class="teaser"><?php print render($items);?></span>

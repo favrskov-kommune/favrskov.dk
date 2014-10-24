@@ -1,0 +1,116 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  content_type_news.features.field_instance.inc: n/a
+#  content_type_news.features.inc: n/a
+#  content_type_news.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-12 13:56+0200\n"
+"PO-Revision-Date: 2013-09-12 14:57+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: content_type_news.features.field_instance.inc:46;1029
+msgid "Body"
+msgstr "Brødtekst"
+
+#: content_type_news.features.field_instance.inc:125;1028
+msgctxt "type:news:author"
+msgid "Author"
+msgstr "Byline"
+
+#: content_type_news.features.field_instance.inc:179;1030
+msgid "Contact Information"
+msgstr "Kontakt oplysninger"
+
+#: content_type_news.features.field_instance.inc:238;1031
+msgid "Date"
+msgstr "Dato"
+
+#: content_type_news.features.field_instance.inc:294;1032
+msgid "Editorial responsibility"
+msgstr "Redaktionel ansvarlig"
+
+#: content_type_news.features.field_instance.inc:349;1033
+msgid "FAQ"
+msgstr "Spørgsmål og svar"
+
+#: content_type_news.features.field_instance.inc:402;1035
+msgid "Image description"
+msgstr "Billedtekst"
+
+#: content_type_news.features.field_instance.inc:455;1034
+msgid "Image / thumbnail"
+msgstr "Billede / thumbnail"
+
+#: content_type_news.features.field_instance.inc:522;1036
+msgid "Related boxes"
+msgstr "Relaterede bokse"
+
+#: content_type_news.features.field_instance.inc:575;1037
+msgid "Related content"
+msgstr "Relateret indhold"
+
+#: content_type_news.features.field_instance.inc:630;1038
+msgid "Self Service"
+msgstr "Selvbetjening"
+
+#: content_type_news.features.field_instance.inc:683;1039
+msgid "Taxonomy, KLE"
+msgstr "Taksonomi, KLE"
+
+#: content_type_news.features.field_instance.inc:731;1042
+msgid "Taxonomy, local"
+msgstr "Taksonomi, lokal"
+
+#: content_type_news.features.field_instance.inc:779;1040
+msgid "Taxonomy, Location"
+msgstr "Taksonomi, lokation"
+
+#: content_type_news.features.field_instance.inc:827;1041
+msgid "Taxonomy, Subject Area"
+msgstr "Taksonomi, Emne område"
+
+#: content_type_news.features.field_instance.inc:875;1043
+msgid "Teaser"
+msgstr "Manchet"
+
+#: content_type_news.features.field_instance.inc:926;1044
+msgid "Video"
+msgstr "Video"
+
+#: content_type_news.features.field_instance.inc:1004;1045
+msgid "Video description"
+msgstr "Videobeskrivelse"
+
+#: content_type_news.features.inc:23
+msgid "News"
+msgstr "Nyheder"
+
+#: content_type_news.features.inc:27
+msgid "Title"
+msgstr "Overskrift"
+
+#: content_type_news.info:0
+msgid "Content Type News"
+msgstr "Indholdstype Nyheder"
+
+#: content_type_news.info:0
+msgid "Content Types"
+msgstr "Indholdstyper"
+
+msgid "Title length should not exceed 60 characters"
+msgstr "Overskrift længde bør ikke overstige 60 tegn"
+
+msgid "Byline"
+msgstr "Af"

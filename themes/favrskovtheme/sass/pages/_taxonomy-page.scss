@@ -1,0 +1,47 @@
+//------------------------------------------------------------------------------
+// Taxonomy page
+.page-taxonomy-term .pane-taxonomy-term {
+  .pane-title{
+    @include font-size(35);
+    font-family: $sans-med-strict;
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    @include font-size(24);
+    font-family: $sans-med-strict;
+    margin-bottom: 20px;
+  }
+
+  // View items styles
+  .view-content {
+    .views-row {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid $slategrey;
+    }
+  }
+
+  .links {
+
+    li {
+      @include inline-block();
+      margin-right: 10px;
+      background: $red;
+      padding: 10px 15px;
+      @include box-sizing(border-box);
+      @include border-radius(7px);
+      @include inline-block();
+      @include font-size(14);
+
+      a {
+        @include links($white, $white);
+      }
+
+
+      &:hover {
+        background: $gray;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Banner page feature.
+ */
+
+include_once 'panel_banner_page.features.inc';

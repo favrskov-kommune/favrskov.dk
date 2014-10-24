@@ -1,0 +1,68 @@
+<?php
+/**
+ * @file
+ * Code for the Views Banners feature.
+ */
+
+include_once 'views_banners.features.inc';
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function views_banners_views_pre_render(&$view) {
+  if ($view->name == 'banners') {
+    foreach ($view->result as &$result) {
+      $result->field_field_image[0]['rendered']['#item']['title'] = $result->field_field_image_alt_text[0]['rendered']['#markup'];
+    }
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function views_banners_field_formatter_info() {
+  return array(
+    'link_target' => array(
+      'label' => t('Link target attribute'),
+      'field types' => array('link_field'),
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function views_banners_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $elements = array();
+  foreach ($items as $delta => $item) {
+    $elements[$delta] = array(
+      '#theme' => 'link_formatter_link_target',
+      '#element' => $item,
+      '#field' => $instance,
+      '#display' => $display,
+    );
+  }
+  return $elements;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function views_banners_theme() {
+  return array(
+    'link_formatter_link_target' => array(
+      'variables' => array('element' => NULL),
+    ),
+  );
+}
+
+/**
+ * Theme function for outputting value of 'target' attribute of Link field.
+ */
+function theme_link_formatter_link_target($vars) {
+  $link_options = $vars['element'];
+  if (isset($link_options['attributes']['target'])) {
+    return $link_options['attributes']['target'];
+  }
+}

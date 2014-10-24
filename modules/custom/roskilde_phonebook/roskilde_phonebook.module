@@ -1,0 +1,75 @@
+<?php
+/**
+ * @file
+ * Custom hacks for the phone book functionality on the website
+ * including redirects from old phone book URL's.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function roskilde_phonebook_menu() {
+  $items['webtop/site.aspx'] = array(
+    'title' => 'Redirect of old phone book card URL',
+    'access callback' => TRUE,
+    'page callback' => 'roskilde_phonebook_redirect',
+    'page arguments' => array('website'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['webtop/viskontakt.asp'] = array(
+    'title' => 'Redirect of old phone book card URL',
+    'access callback' => TRUE,
+    'page callback' => 'roskilde_phonebook_redirect',
+    'page arguments' => array('intranet'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Menu callback for redirecting old URL's to the new URL.
+ *
+ * @param string $type
+ *   The URL type
+ */
+function roskilde_phonebook_redirect($type) {
+  $card_id = 0;
+
+  switch ($type) {
+    case 'website':
+      if (isset($_GET['p']) && $_GET['p'] == '3855' && isset($_GET['KontaktID']) && !empty($_GET['KontaktID']) && is_numeric($_GET['KontaktID'])) {
+        $card_id = $_GET['KontaktID'];
+      }
+    case 'intranet':
+      if (isset($_GET['KontaktID']) && !empty($_GET['KontaktID']) && is_numeric($_GET['KontaktID'])) {
+        $card_id = $_GET['KontaktID'];
+      }
+  }
+
+  if ($card_id) {
+    $node_id = db_select('feeds_item', 'i')
+      ->fields('i', array('entity_id'))
+      ->condition('entity_type', 'node')
+      ->condition('id', 'phone_book_import')
+      ->condition('guid', $card_id)
+      ->execute()->fetchField();
+
+    if ($node_id) {
+      $node = node_load($node_id);
+      if (is_object($node)) {
+        drupal_goto('node/' . $node->nid, array(), 301);
+      }
+    }
+ }
+
+  return  MENU_NOT_FOUND;
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function roskilde_phonebook_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'feeds_tamper' && $plugin_type == 'plugins') {
+    return 'plugins';
+  }
+}

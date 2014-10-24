@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Content Type Slider element feature.
+ */
+
+include_once 'content_type_slider_element.features.inc';

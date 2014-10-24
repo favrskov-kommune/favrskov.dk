@@ -1,0 +1,225 @@
+//------------------------------------------------------------------------------
+// 404 page
+.page-page-404,
+.page-page-403 {
+   background-color: $slategrey;
+}
+
+.errors-page {
+  margin-top: 100px;
+  @include container(12,12);
+
+  // Layout
+  .left-side {
+    @include span-columns(6,12);
+    padding-top: 65px;
+  }
+  .right-side{
+    @include span-columns(6 omega,12);
+  }
+
+  .page-content {
+    padding: 80px 0 50px;
+    overflow: hidden;
+  }
+
+  // Logo styles
+  .logo {
+    @include span-columns(6, 6);
+    text-align: center;
+    margin-bottom: 50px;
+
+    img {
+      @include inline-block();
+    }
+  }
+
+  // Nav search
+  .nav-search {
+    @include span-columns(6, 6);
+    position: relative;
+    margin-left: 0;
+
+    .search {
+      @include span-columns(6, 6);
+      max-width: 350px;
+      position: relative;
+      margin: 0 auto;
+      float: none;
+      display: block;
+    }
+
+    .form-text {
+      padding: 9px 10% 9px 4%;
+      max-width: 86%;
+      // @include sprite(10px, -52px, $white);
+    }
+
+    .form-submit {
+      @include sprite(21px, 8px);
+      position: absolute;
+      right: 0;
+      top: 0;
+      text-indent: -999em;
+      text-transform: uppercase;
+      height: 36px;
+      width: 60px;
+      @include transition-duration(0s);
+
+      &:hover {
+        background-position: -26px 8px;
+      }
+    }
+  }
+
+  // Text content wrapper
+  .page-error-info {
+    padding-top: 200px;
+  }
+
+  .big-msg {
+    color: $white;
+    display: block;
+    font-family: $sans-bold-strict;
+    margin-bottom: 20px;
+  }
+
+  .small {
+    @include font-size(70);
+    font-weight: 200;
+    font-family: $sans-strict;
+  }
+
+  .description {
+    display: block;
+    color: $white;
+    @include font-size(15);
+    line-height: 1.5;
+    font-family: $sans-strict;
+    font-weight: 200;
+  }
+}
+
+//----------------------------------------------------------------------------
+// Maintenance page
+
+.maintenance-page {
+  header {
+    margin-bottom: 180px;
+    .gray-line {
+      background-color: $gray;
+      height: 30px;
+    }
+  }
+
+  .highlighted {
+    background: url('../images/maintenance-pic.png') no-repeat left center;
+    max-width: 530px;
+    margin: 0 auto 150px;
+    min-height: 235px;
+    padding: 15px 0 0 260px;
+
+    h1 {
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      @include font-size(25);
+    }
+    p {
+      font-weight: 200;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      @include font-size(16);
+
+    }
+
+    .logotype {
+      margin-top: 35px;
+      float: right;
+    }
+  }
+}
+
+
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+@include at-breakpoint($tablet){
+  .errors-page {
+    // Message
+    .small {
+      @include font-size(60);
+    }
+  }
+}
+
+@include at-breakpoint($tablet-port) {
+  .errors-page {
+    // Go back button
+    .back-msg {
+      margin-top: 40px;
+    }
+    // Layouts
+    .left-side {
+      @include span-columns(12, 12);
+      margin-bottom: 40px;
+    }
+    .right-side{
+      @include span-columns(12 omega, 12);
+    }
+
+    .nav-search {
+      .search {
+        position: relative;
+        bottom: 0;
+      }
+    }
+
+    .page-content {
+      padding-top: 30px;
+      text-align: center;
+    }
+
+    .small {
+      @include font-size(60);
+    }
+  }
+}
+
+@include at-breakpoint($phone-land) {
+  .errors-page {
+
+    // Content
+    .page-content {
+      padding: 0px 40px 40px;
+    }
+
+    .nav-search {
+      background-color: transparent;
+      position: static;
+
+      .search {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+      }
+    }
+
+    .small {
+      display: block;
+      @include font-size(40);
+      margin-bottom: 20px;
+    }
+
+    // Description
+    .description {
+      @include font-size(16);
+    }
+  }
+}

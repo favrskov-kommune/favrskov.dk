@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel webform page feature.
+ */
+
+include_once 'panel_webform_page.features.inc';

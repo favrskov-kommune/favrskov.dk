@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+//  FAQ content
+.banner-content {
+  @include font-size(16);
+  line-height: 1.4;
+
+  .image,
+  .banner-alt-text {
+    margin-bottom: 20px;
+  }
+
+  .image {
+    padding: 5px;
+    img {
+      border: 5px solid #f5f5f5;
+    }
+  }
+
+  .field-label {
+    font-family: $sans-med-strict;
+  }
+}

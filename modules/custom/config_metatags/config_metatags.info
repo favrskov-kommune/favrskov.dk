@@ -1,0 +1,9 @@
+name = Config Metatags
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_metatags
+dependencies[] = metatag
+dependencies[] = metatag_opengraph
+features[features_api][] = api:2
+features[metatag][] = node

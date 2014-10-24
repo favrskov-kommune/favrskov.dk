@@ -1,0 +1,438 @@
+// Color picker fix
+.colorpicker {
+  input[type='text']{
+    padding: 0;
+    height: 11px;
+    right: 15px;
+    top: 5px;
+    @include font-size(11);
+  }
+}
+
+// Color Schemes
+
+@mixin changeTitleColor($color){
+  // Slider with navigation
+  // ----------------------------------
+  .about-slide h1 {
+    color: $color;
+  }
+
+  // Subject grid
+  // ----------------------------------
+  .subject-grid {
+   h3 a {
+      color: $color;
+    }
+  }
+
+   // Events, News, Matrix view
+  .date a,
+  .pane-title {
+    color: $color;
+  }
+
+  // Banners blocks
+  // ----------------------------------
+  .view-banners .banner-link a {
+    color: rgba($color, .8);
+  }
+}
+
+// Mixin which switched Links color in Header
+
+@mixin switchHeaderColorLinks($color, $isWhite:false) {
+    .nav-search li a {
+
+      @if $isWhite == false{
+          color: $color;
+        }
+      @else {
+          color: $white;
+      }
+
+
+      &:hover,
+      &.active,
+      &.active:hover {
+        @if $isWhite == false{
+          color: lighten($color, 40%);
+        }
+        @else {
+          text-decoration: underline;
+        }
+      }
+    }
+
+
+}
+
+// Mixin which switched colors styles
+@mixin switchColorScheme($color, $isWhite:false) {
+
+  @if $isWhite == false {
+    // Video pane
+    // ----------------------------------
+    .video-pane {
+      [class^='icon-'] {
+        color: $color;
+      }
+      .video-items li:hover [class^='icon-'] {
+        color: $white;
+      }
+    }
+
+    // Subject grid
+    // ----------------------------------
+    .subject-grid {
+      .taxonomy-pic {
+        background-color: $color;
+      }
+      .taxonomy:hover h3,
+      .taxonomy:hover h4 {
+        a:hover {
+          color: $color;
+        }
+      }
+    }
+
+    // Map front page
+    // ----------------------------------
+    .map {
+      background: $color;
+      .description {
+        background: $color;
+      }
+
+      .locations-list a {
+        @include links($color, $gray);
+      }
+    }
+  }
+
+  // Spacial styles for white scheme
+  @else {
+    // Video pane
+    // ----------------------------------
+    .video-pane {
+      [class^='icon-'] {
+        color: $white;
+      }
+      .video-items li:hover [class^='icon-'] {
+        color: $dark-grey;
+      }
+    }
+
+
+    // Map front page
+    // ----------------------------------
+    .map {
+      background: $white;
+      .description {
+        background: $white;
+
+        p,
+        h1 {
+          color: $black;
+        }
+      }
+
+      .locations-list a {
+        @include links($black, $gray);
+      }
+    }
+  }
+
+  // Slider with navigation
+  // ----------------------------------
+  .about-slide {
+    background: $color;
+  }
+
+  // Events block
+  // ----------------------------------
+  .news,
+  .events,
+  .matrix-view {
+    article {
+      color: $color;
+      border-bottom-color: $color;
+    }
+    // Time
+    .date time {
+      border: 1px solid $color;
+      color: $color;
+    }
+
+    // Header border
+    header:before {
+      background: $color;
+    }
+  }
+
+  // Events and Matrix blocks
+  // ----------------------------------
+  .events,
+  .matrix-view {
+    //  Date
+    .date {
+      top: -30px;
+      background: transparent;
+
+      time {
+        background: transparent;
+        padding-top: 10px;
+      }
+    }
+
+    // Top Border
+    header {
+      border-top: 0 none;
+      margin-top: 41px;
+
+      &:before {
+        height: 2px;
+        top: -2px;
+      }
+    }
+  } // <-- Events END
+
+  .news {
+    border: 0 none;
+  }
+
+
+  // Latest news
+  // ----------------------------------
+  .news {
+    article {
+      border-top: 2px solid $color;
+      border-bottom-color: $color;
+    }
+  }
+
+
+
+  // Banners block
+  // ----------------------------------
+  .view-banners .banner-link a {
+    background: rgba($color, .8);
+  }
+  .banners-list li:hover a {
+    background: rgba($color, .7);
+  }
+
+  // Teasers
+  // ----------------------------------
+  .teasers h2 a {
+    color: $color;
+  }
+}
+
+// Transparent background
+.transparent {
+  // Events block
+  // ----------------------------------
+  & > div,
+  & > section {
+    background: transparent;
+  }
+}
+
+// Pane title colors
+// ----------------------------------------------------------------------------- Pane title colors
+
+// Dark Blue
+// ----------------------------------------------------------------------------- Dark Blue
+.dark-blue-title {
+  @include changeTitleColor($deepBlue);
+}
+
+div.dark-blue-content a,
+.dark-blue-content .banners a {
+  color: $deepBlue;
+}
+
+// Pink
+// ----------------------------------
+.pink-title {
+  @include changeTitleColor($pink);
+}
+
+div.pink-content a,
+.pink-content .banners a {
+  color: $pink;
+}
+
+// Dark Grey
+// ----------------------------------------------------------------------------- Dark Grey
+.dark-title {
+  @include changeTitleColor($dark-grey);
+}
+
+div.grey-content a,
+.grey-content .banners a {
+  color: $dark-grey;
+}
+
+// Grey
+// ----------------------------------------------------------------------------- Grey
+.grey-title {
+  @include changeTitleColor($gray);
+}
+
+div.grey-content a,
+.grey-content .banners a {
+  color: $gray;
+}
+
+// White
+// ----------------------------------------------------------------------------- White
+.white-title {
+  @include changeTitleColor($white);
+}
+
+div.white-content a,
+.white-content .banners a {
+  color: $white;
+}
+
+// Yellow
+// ----------------------------------
+.yellow-title {
+  @include changeTitleColor($dirty-yellow);
+}
+
+div.yellow-content a,
+.yellow-content .banners a {
+  color: $dirty-yellow;
+}
+
+// Blue (Violet)
+// ----------------------------------
+.blue-title {
+  @include changeTitleColor($violet);
+}
+
+div.blue-content a,
+.blue-content .banners a {
+  color: $violet;
+}
+
+
+// Salat Green
+// ----------------------------------
+.green-title {
+  @include changeTitleColor($salatGreen);
+}
+
+div.green-content a,
+.green-content .banners a {
+  color: $salatGreen;
+}
+
+// Fern Green
+// ----------------------------------
+.fern-green-title {
+  @include changeTitleColor($fern-green);
+}
+
+div.fern-green-content a,
+.fern-green-content .banners a {
+  color: $fern-green;
+}
+
+// Red
+// ----------------------------------
+.red-title {
+  @include changeTitleColor($redRoskilde);
+}
+
+div.red-content a,
+.red-content .banners a {
+  color: $redRoskilde;
+}
+
+// Orange
+// ----------------------------------
+.orange-title {
+  @include changeTitleColor($orange);
+}
+
+div.orange-content a,
+.orange-content .banners a {
+  color: $orange;
+}
+
+// ----------------------------------------------------------------------------- Blue Scheme
+.dark-blue-scheme { @include switchColorScheme($deepBlue); }
+
+// ----------------------------------------------------------------------------- Dark Grey Scheme
+.dark-scheme { @include switchColorScheme($dark-grey); }
+
+// ----------------------------------------------------------------------------- Grey Scheme
+.grey-scheme { @include switchColorScheme($gray); }
+
+// ----------------------------------------------------------------------------- Blue (Violet) Scheme
+.blue-scheme { @include switchColorScheme($violet); }
+
+// ----------------------------------------------------------------------------- Pink Scheme
+.pink-scheme { @include switchColorScheme($pink); }
+
+// ----------------------------------------------------------------------------- Salat Green Scheme
+.green-scheme { @include switchColorScheme($salatGreen); }
+
+// ----------------------------------------------------------------------------- Fern Green Scheme
+.fern-green-scheme { @include switchColorScheme($fern-green); }
+
+// ----------------------------------------------------------------------------- Yellow Scheme
+.yellow-scheme { @include switchColorScheme($yellow); }
+
+// ----------------------------------------------------------------------------- Red Scheme
+.red-scheme { @include switchColorScheme($redRoskilde); }
+
+// ----------------------------------------------------------------------------- White Scheme
+.white-scheme { @include switchColorScheme($white, $isWhite: true); }
+
+// ----------------------------------------------------------------------------- Red Scheme
+.orange-scheme { @include switchColorScheme($orange); }
+
+
+// -----------------------------------------------------------------------------
+
+// Site header links
+
+// -----------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------- Red Scheme
+.header-red-scheme  { @include switchHeaderColorLinks($redRoskilde); }
+
+// ----------------------------------------------------------------------------- Blue Scheme
+.header-dark-blue-scheme { @include switchHeaderColorLinks($deepBlue); }
+
+// ----------------------------------------------------------------------------- Dark Grey Scheme
+.header-dark-scheme { @include switchHeaderColorLinks($dark-grey); }
+
+// ----------------------------------------------------------------------------- Grey Scheme
+.header-grey-scheme { @include switchHeaderColorLinks($gray, $isWhite: true); }
+
+// ----------------------------------------------------------------------------- White Scheme
+.header-white-scheme { @include switchHeaderColorLinks($white, $isWhite: true); }
+
+// ----------------------------------------------------------------------------- Yellow Scheme
+.header-yellow-scheme { @include switchHeaderColorLinks($yellow); }
+
+// ----------------------------------------------------------------------------- Violet Scheme
+.header-violet-scheme { @include switchHeaderColorLinks($violet); }
+
+// ----------------------------------------------------------------------------- Pink Scheme
+.header-pink-scheme { @include switchHeaderColorLinks($pink); }
+
+// ----------------------------------------------------------------------------- Fern Green Scheme
+.header-fern-green-scheme { @include switchHeaderColorLinks($fern-green); }
+
+// ----------------------------------------------------------------------------- Salat Green Scheme
+.header-salat-green-scheme { @include switchHeaderColorLinks($salatGreen); }
+
+// ----------------------------------------------------------------------------- Salat Green Scheme
+.header-orange-scheme { @include switchHeaderColorLinks($orange); }

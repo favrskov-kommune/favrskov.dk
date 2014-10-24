@@ -1,0 +1,346 @@
+//------------------------------------------------------------------------------
+// Videos page
+
+
+//---------------------------------------
+// Main video element styles
+.main-video {
+  @include container();
+
+  // header
+  h1 {
+    color: #576464;
+    font-family: $sans-bold-strict;
+    @include font-size(55);
+    margin: 0 0 38px;
+    padding-top: 40px;
+  }
+
+  .embedded-video {
+    @extend %respondvideo;
+  }
+
+  .video-description {
+    color: $gray;
+    line-height: 1.4;
+    background: $grayLighter;
+    padding: 12px 0 9px;
+    margin-bottom: 17px;
+    @include font-size(16);
+    width: 100%;
+
+    h2,
+    span {
+      margin-left: 17px;
+    }
+
+    h2 {
+      @include font-size(22);
+      font-family: $sans-med-strict;
+      margin-top: 6px;
+    }
+  }
+
+  // Video description bellow main video element
+  .short-about-video {
+    color: $gray;
+    @include font-size(17);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  // Video details
+  .video-datials {
+    color: $liteGray;
+    @include font-size(15);
+
+    p { margin-bottom: 6px; }
+  }
+}
+
+
+//---------------------------------------
+// Video elements list view
+
+// Specify filters margin
+.video-views {
+  .views-exposed-widgets {
+    margin-bottom: 0;
+  }
+  .view-filters {
+    margin-bottom: 29px;
+  }
+}
+
+// Video list view
+.video-views {
+  padding: 0 0 11px;
+
+  // Remove extra space between elements
+  .view-content {
+    font-size: 0;
+    line-height: 0;
+  }
+
+  // Fix display of admin links
+  .contextual-links {
+    @include font-size(13);
+    line-height: 1.4;
+  }
+
+  // Lists main styles
+  .view-content li {
+    @include span-columns(4, 12);
+    @include nth-omega(3n);
+    float: none;
+    @include inline-block(top);
+    position: relative;
+    margin-bottom: 31px;
+
+    &:nth-child(3n) {
+      float: none;
+      margin-right: 0;
+    }
+
+    & > a {
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      text-indent: -999em;
+      text-transform: uppercase;
+    }
+
+    &:hover a,
+    &:hover article {
+      color: #999;
+    }
+  }
+
+  // Video main content styles
+  article {
+    @extend %animate;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 20px;
+    color: $gray;
+    line-height: 1.4;
+    max-height: 100%;
+
+    h1 {
+      @include font-size(22);
+      margin: 12px 0 10px;
+      line-height: 1.1;
+      font-family: $sans-med-strict;
+    }
+
+    a {
+      @include links($gray, #999);
+      display: block;
+    }
+
+    // Special styles for links in element footer
+    footer a {
+      @include links(#999, #999);
+      @include font-size(14);
+      font-family: $sans-med-strict;
+      margin-bottom: 2px;
+
+      span {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  // Video thumb
+  .video-thumb {
+    margin-bottom: 8px;
+  }
+
+  // Category
+  .category {
+    @include font-size(15);
+    font-family: $sans-med;
+    text-align: right;
+    width: 100%;
+
+    a { @include links(#999, $gray); }
+  }
+
+  // Eelement Body
+  p {
+    @include font-size(16);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  // Pager
+  .item-list {
+    clear: both;
+  }
+}
+
+// -----------------------------------------------------------------------------
+.video-pane {
+  padding: 50px 0;
+  background: $white;
+
+  // All links inside of block
+  a,
+  img {
+    display: block;
+  }
+
+  // Laytout
+  .video-items li {
+    @include span-columns(4, 12);
+    position: relative;
+
+
+    img {
+      max-width: 100%;
+    }
+
+    &:hover {
+      [class^='icon-'] {
+        color: #aed0d5;
+      }
+
+      a {
+        color: $liteGray;
+      }
+    }
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  // Video thumnb
+  .video-thumb {
+    position: relative;
+  }
+
+  // Link
+  .video-link {
+    background: url('about:blank');
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    text-indent: -999em;
+    top: 0;
+    width: 100%;
+  }
+
+  // Icon
+  // Icons
+  [class^='icon-'] {
+    color: #f6f6f6;
+
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    @include translate(-50%, -50%);
+    @include font-size(70);
+    @include transition-property(all);
+    @include transition-timing-function(ease-in);
+    @include transition-duration(.2s);
+
+    &.lt-ie9 {
+      // Here add fix for IE, crap
+      // margin: -80px 0 0 -50px;
+    }
+  }
+
+  // Header
+  h3 {
+    font-family: $sans-med-strict;
+    @include font-size(23);
+    line-height: 1.2;
+    margin: 17px 0;
+
+    a {
+      color: $gray;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+
+
+@include at-breakpoint($tablet-port) {
+
+  .main-video {
+  // header
+    h1 {
+      @include font-size(30);
+    }
+  }
+
+  .video-views {
+    .view-content li {
+      @include span-columns(6, 12);
+      @include remove-nth-omega(3n);
+      float: none;
+
+      &:nth-child(2n) {
+        margin-right: 0;
+        float: none;
+      }
+    }
+  }
+
+  // Video pane
+  .video-pane {
+    .video-items li {
+      @include span-columns(6, 12);
+      @include remove-nth-omega(3n);
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@include at-breakpoint($phone-land) {
+
+  .main-video {
+  // header
+    h1 {
+      @include font-size(30);
+    }
+  }
+
+  .video-views {
+    .view-content li {
+      @include span-columns(12, 12);
+
+      .video-thumb {
+        text-align: center;
+        img {
+          @include inline-block;
+        }
+      }
+    }
+  }
+
+  // Video pane
+  .video-pane {
+    .video-items li {
+      @include span-columns(12, 12);
+      text-align: center;
+    }
+
+    .video-thumb {
+      margin: 0 auto;
+      max-width: 349px;
+    }
+  }
+}

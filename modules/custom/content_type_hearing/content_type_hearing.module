@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Code for the Content Type Hearing feature.
+ */
+
+include_once 'content_type_hearing.features.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function content_type_hearing_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools') {
+    return 'plugins/' . $plugin_type;
+  }
+}

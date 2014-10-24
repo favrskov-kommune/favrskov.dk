@@ -1,0 +1,17 @@
+name = Feeds Social Directory Import
+core = 7.x
+package = Feeds
+version = 7.x-1.0
+project = feeds_social_directory_import
+dependencies[] = ctools
+dependencies[] = feeds
+dependencies[] = feeds_tamper
+features[ctools][] = feeds:feeds_importer_default:1
+features[ctools][] = feeds_tamper:feeds_tamper_default:2
+features[features_api][] = api:2
+features[feeds_importer][] = os2web_social_directory_importer
+features[feeds_tamper][] = os2web_social_directory_importer-xpathparser_10-explode
+features[feeds_tamper][] = os2web_social_directory_importer-xpathparser_10-trim
+features[feeds_tamper][] = os2web_social_directory_importer-xpathparser_6-trim
+features[feeds_tamper][] = os2web_social_directory_importer-xpathparser_8-explode
+features[feeds_tamper][] = os2web_social_directory_importer-xpathparser_8-trim

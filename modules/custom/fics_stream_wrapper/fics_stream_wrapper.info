@@ -1,0 +1,3 @@
+name = FICS Stream wrapper
+description = Declare a stream wrapper for FICS directory.
+core = 7.x

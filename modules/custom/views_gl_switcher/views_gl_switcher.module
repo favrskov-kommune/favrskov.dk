@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Code for Views Grid/List Switcher module
+ *
+ * This is the main module file for Views Grid/List Switcher.
+ */
+
+/**
+ * Implements hook_views_plugins_alter().
+ */
+function views_gl_switcher_views_plugins_alter(&$plugins) {
+  // Altering default HTML list style
+  $plugins['style']['list']['path'] = drupal_get_path('module', 'views_gl_switcher') . '/includes';
+  $plugins['style']['list']['file'] = 'views_plugin_style_gl_switcher.inc';
+  $plugins['style']['list']['handler'] = 'views_plugin_style_gl_switcher';
+
+  $plugins['style']['list']['theme path'] = drupal_get_path('module', 'views_gl_switcher') . '/theme';
+  $plugins['style']['list']['theme file'] = 'views_gl_switcher_theme.inc';
+  $plugins['style']['list']['theme'] = 'views_view_gl_switcher';
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function views_gl_switcher_theme_registry_alter(&$theme_registry) {
+  // Configure theme path
+  $theme_registry['views_view_gl_switcher']['theme path'] = drupal_get_path('module', 'views_gl_switcher');
+}

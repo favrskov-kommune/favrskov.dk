@@ -1,0 +1,8 @@
+name = Views Grid/List Switcher
+description = Provides the opportunity to switch layout of HTML list.
+core = 7.x
+package = Views
+dependencies[] = views
+files[] = includes/views_plugin_style_gl_switcher.inc
+files[] = theme/views_gl_switcher_theme.inc
+files[] = theme/views-view-gl-switcher.tpl.php

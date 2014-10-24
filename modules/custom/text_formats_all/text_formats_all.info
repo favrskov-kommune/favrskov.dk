@@ -1,0 +1,17 @@
+name = Text Formats All
+core = 7.x
+package = Text Formats
+version = 7.x-1.0
+project = text_formats_all
+dependencies[] = features
+dependencies[] = filter
+dependencies[] = node_embed
+dependencies[] = os2web_embed_gis_data
+dependencies[] = pathologic
+dependencies[] = token_filter
+features[features_api][] = api:2
+features[filter][] = custom_tokens_no_filters_
+features[filter][] = filtered_html
+features[filter][] = full_html
+features[filter][] = plain_text
+features[filter][] = video_html

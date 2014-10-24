@@ -1,0 +1,13 @@
+//------------------------------------------------------------------------------
+// Breadcrumbs
+.breadcrumb {
+  margin-bottom: 20px;
+
+  a {
+    @include links($liteGray, $red);
+    text-transform: uppercase;
+    @include font-size(12);
+    font-family: $sans-strict;
+  }
+}
+

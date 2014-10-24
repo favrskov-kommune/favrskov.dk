@@ -1,0 +1,14 @@
+name = Media Picture
+core = 7.x
+package = Media
+php = 5.2.4
+version = 7.x-1.0
+project = media_picture
+dependencies[] = ctools
+dependencies[] = picture
+features[ctools][] = picture:default_picture_mapping:1
+features[features_api][] = api:2
+features[picture_mapping][] = blogs
+features[picture_mapping][] = front_banners
+features[picture_mapping][] = slider
+features[picture_mapping][] = subject_image

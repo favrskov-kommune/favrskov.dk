@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feeds Phone Book import feature.
+ */
+
+include_once 'feeds_phone_book_import.features.inc';

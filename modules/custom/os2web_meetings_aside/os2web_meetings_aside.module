@@ -1,0 +1,28 @@
+<?php
+/**
+ * @file
+ * Code for the OS2Web Meetings Aside feature.
+ */
+
+include_once 'os2web_meetings_aside.features.inc';
+
+/**
+ * Implements hook_views_query_alter().
+ * Solves 2 problems:
+ *  - Views contextual filters for date do not support '>', '<' operations. So we do it manually.
+ *  - Views contextual filters for date expects date to be timezone converted.
+ */
+function os2web_meetings_aside_views_query_alter(&$view, &$query) {
+  if ($view->name == 'os2web_meetings_aside') {
+    if (isset($query->where[0]['conditions'][1])){
+      $date_condition = &$query->where[0]['conditions'][1]['field'];
+      $date_condition = preg_replace('/SEC_TO_TIME\(\d+\)/', 'SEC_TO_TIME(0)', $date_condition);
+      if ($view->current_display == 'panel_pane_1') {
+        $date_condition = str_replace(array('>=', '<='), '<', $date_condition);
+      }
+      else {
+        $date_condition = str_replace(array('>=', '<='), '>', $date_condition);
+      }
+    }
+  }
+}

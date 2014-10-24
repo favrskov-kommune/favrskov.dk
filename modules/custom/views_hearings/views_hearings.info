@@ -1,0 +1,13 @@
+name = Views Hearings
+core = 7.x
+package = Views
+version = 7.x-1.0
+project = views_hearings
+dependencies[] = views
+dependencies[] = views_content
+dependencies[] = views_load_more
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = hearings
+features[views_view][] = hearings_location
+features_exclude[dependencies][ctools] = ctools

@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file
+ * Code for the View Slider feature.
+ */
+
+include_once 'view_slider.features.inc';
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function view_slider_views_pre_render(&$view) {
+  if ($view->name == 'slider') {
+    foreach($view->result as $id => &$result)
+    if(!empty($result->field_field_image_alt_text[0]['raw']['value'])) {
+      $result->field_field_image[0]['rendered']['#item']['title'] = $result->field_field_image_alt_text[0]['raw']['value'];
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<?php
+/**
+ * @file
+ * Code for the Config Node view permissions feature.
+ */
+
+include_once 'config_node_view_permissions.features.inc';
+
+/**
+ * Implements hook_node_access().
+ */
+function config_node_view_permissions_node_access($node, $op, $account) {
+  $type = is_string($node) ? $node : $node->type;
+
+  if (node_view_permissions_check_node_type_activation($type)) {
+    if ($op == 'view') {
+      if (user_access('view any ' . $type . ' content', $account) || (user_access('view own ' . $type . ' content', $account) && ($account->uid == $node->uid))) {
+        return NODE_ACCESS_ALLOW;
+      }
+      return NODE_ACCESS_DENY;
+    }
+  }
+
+  return NODE_ACCESS_IGNORE;
+}

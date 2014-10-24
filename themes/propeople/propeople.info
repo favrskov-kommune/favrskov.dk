@@ -1,0 +1,36 @@
+
+;----------// Theme Information
+
+  name        = Propeople
+  description = Propeople clean theme
+  core        = 7.x
+  release     = 7.x-3.x
+  engine      = phptemplate
+  screenshot  = screenshot.png
+
+
+;----------// Stylesheets
+
+  stylesheets[screen][] = css/screen.css
+  stylesheets[screen][]  = css/ie.css
+
+; stylesheets[print][] = css/print.css
+
+
+;----------// Scripts
+
+  scripts[] = js/init.js
+
+
+
+;----------// Custom Layout Plugins
+  ;Panels layout plugins
+   plugins[panels][layouts] = plugins/layouts
+
+settings[toggle_name] = 0
+settings[toggle_search] = 1
+
+
+
+; Mobile settings
+settings[zentropy_mobile_viewport] = 'width=device-width, target-densitydpi=160dpi, initial-scale=1.0'

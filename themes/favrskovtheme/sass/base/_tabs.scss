@@ -1,0 +1,51 @@
+.tabs {
+    background-color: #1871B6;
+    @include span-columns(12, 12);
+    margin: 30px 0 -20px;
+    position: relative;
+    z-index: 10;
+
+    li {
+      float: left;
+      margin: 0;
+      padding: 0;
+      // border-right: 1px solid $white;
+      a {
+        display: block;
+        padding: 10px 15px !important;
+        @include links($white, $white);
+      }
+
+      &:hover {
+        background-color: #48B416;
+      }
+
+      &.active {
+        background-color: #48B416;
+      }
+    }
+}
+
+
+// Hearing node page. Button "Clone"
+
+.pane-page-actions {
+  @include container();
+  position: relative;
+
+  a {
+    color: $white !important;
+    background: #48B416;
+    display: block;
+    position: absolute;
+    top: 43px;
+    right: 58px;
+    padding: 10px;
+    @include border-radius(4px);
+    z-index: 10;
+
+    &:hover {
+      background: #1871B6;
+    }
+  }
+}

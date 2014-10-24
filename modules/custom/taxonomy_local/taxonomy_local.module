@@ -1,0 +1,36 @@
+<?php
+/**
+ * @file
+ * Code for the Taxonomy Local feature.
+ *
+ * Contains formatter for taxonomy references to output synonyms of the terms.
+ */
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function taxonomy_local_field_formatter_info() {
+  return array(
+    'taxonomy_term_synonyms' => array(
+      'label' => t('Synonyms'),
+      'field types' => array('taxonomy_term_reference'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function taxonomy_local_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $formatted = "";
+  foreach ($items as $item) {
+    $term = taxonomy_term_load($item['tid']);
+    $synonyms = synonyms_get_term_synonyms($term);
+    foreach ($synonyms as $synonym) {
+      $formatted .= $synonym['value'] . ' ';
+    }
+    $formatted .= $term->name . ' ';
+  }
+  $element[0]['#markup'] = $formatted;
+  return $element;
+}

@@ -1,0 +1,26 @@
+//------------------------------------------------------------------------------
+// News page
+.node-type-news .node-content {
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  h1,
+  .breadcrumb {
+    clear: both;
+  }
+}
+.panel-nodes {
+  .author {
+    float: right;
+    margin-bottom: 10px;
+    @include font-size(15);
+  }
+  .posted-by {
+    margin-left: 5px;
+  }
+
+  .manual-date {
+    @include font-size(15);
+  }
+}

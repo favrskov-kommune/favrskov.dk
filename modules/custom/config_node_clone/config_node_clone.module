@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Code for the Config Node Clone feature.
+ */
+
+include_once 'config_node_clone.features.inc';
+
+function config_node_clone_form_webform_node_form_alter(&$form, &$form_state, $form_id) {
+  if (module_exists('clone') && ($form['nid']['#value'])) {
+    $link = "node/{$form['nid']['#value']}/clone/" . clone_token_to_arg();
+
+    $form['clone_link'] = array(
+      '#markup' => l('Clone webform', $link),
+      '#weight' => -50
+    );
+  }
+}

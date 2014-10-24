@@ -1,0 +1,42 @@
+//------------------------------------------------------------------------------
+// Node type Published Case
+.node-type-os2web-case-publishing-case,
+.node-type-os2web-case-publishing-document {
+
+  .node-content {
+    font-family: $sans;
+    line-height: 1.4;
+    @include font-size(16);
+
+    .field-type-datetime {
+      @include font-size(16);
+
+      .field-label {
+        margin-right: 0;
+      }
+    }
+  }
+
+  h1 {
+    @include font-size(35);
+  }
+
+  .field {
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    h2 {
+      margin-bottom: 10px;
+    }
+  }
+
+  .field-label {
+    float: left;
+    min-width: 140px;
+    font-family: $sans-med-strict;
+  }
+
+  .field-items {
+    overflow: hidden;
+  }
+}

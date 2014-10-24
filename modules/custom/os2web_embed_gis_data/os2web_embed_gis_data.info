@@ -1,0 +1,7 @@
+name = OS2Web Embed GIS Data
+core = 7.x
+package = OS2Web - GIS
+version = 7.x-1.0
+project = os2web_embed_gis_data
+dependencies[] = filter
+dependencies[] = ckeditor

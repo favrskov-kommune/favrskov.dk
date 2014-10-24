@@ -1,0 +1,170 @@
+/*
+  Here present fixes for Internet explorer 9.0
+  and less versions
+*/
+.ie10,
+.ie9,
+.lt-ie9 {
+  .ajax-message {
+    display: block;
+  }
+  .ajax-progress-throbber {
+    display: none;
+  }
+
+  .job-node .webform-client-form .form-managed-file .form-file {
+    position: static;
+    left: 0;
+    opacity: 1;
+    z-index: 0;
+    width: 100%;
+    height: 22px;
+
+    &.error {
+      background: transparent;
+    }
+  }
+}
+
+.no-js {
+  .primary-links {
+    a:active,
+    a:focus {
+      background: none;
+    }
+  }
+}
+/*
+  Here present fixes for Front page in
+  Internet explorer version less than 9.0
+*/
+.lt-ie9 {
+
+.html5page {
+  min-width: 1124px;
+
+  .front .underlay,
+  .custom-throbber,
+  .preloader {
+    display: none;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+// Map
+
+  .map-info {
+    div {
+      display: none;
+      &.active,
+      &.default {
+        display: block;
+      }
+    }
+  }
+
+.process-illustration {
+  li {
+    background: url(../images/ie/circles-sprite.png) no-repeat;
+  }
+
+  .creative {
+    background-position: -246px 0;
+  }
+  .strategy {
+    background-position: 0 1px;
+  }
+  .technology {
+   background-position: -500px 0;
+  }
+
+}
+
+
+//  Global nth chid Fixes for IE 8
+.page-clients .third,
+.about-service .third,
+.users-list .fourth,
+.about-ppl .second,
+.fourth,
+.third,
+.news-scroll-list {
+  margin-right: 0;
+}
+
+//------------------------------------------------------------------------------
+// User profile page
+
+  .profile {
+    blockquote {
+      background: url(../images/ie/pink-bg.png);
+      font-size: 25px;
+    }
+
+    .social-links {
+      background: url(../images/ie/dark-gray-bg.png);
+      width: 30%;
+      a {
+        font-size: 14px;
+      }
+    }
+  }
+
+//------------------------------------------------------------------------------
+// Modules/ SelectBoxIt
+
+  .dropdown-menu {
+    border: 0 none;
+    border-top: 1px solid #000;
+    width: 100%;
+
+    .active > a,
+    .active > a:hover,
+    a:hover {
+      filter: none;
+    }
+  }
+
+
+//------------------------------------------------------------------------------
+// Services
+
+    /* Feedback form */
+    .pane-contact-form {
+      background: url(../images/ie/black-box-bg.png);
+      .contact-form {
+        background: url(../images/ie/black-box-bg.png);
+
+      }
+    }
+
+ .form-text {
+    min-height: 5px;
+  }
+
+  #edit-search-text-wrapper,
+  .comment-form {
+    .form-text {
+      min-height: 5px;
+      line-height: 38px;
+      &:focus {
+        outline: none;
+      }
+    }
+    textarea {
+      padding: 10px 12px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+//------------------------------------------------------------------------------
+// Services
+
+  .front-map .pane-contact-form {
+    left: 20px;
+  }
+
+} //<-- END of .lt-i9

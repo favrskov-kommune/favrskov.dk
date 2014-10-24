@@ -1,0 +1,215 @@
+@import "compass/css3";
+
+/*
+  Here present fixes for Front page in
+  Internet explorer version less than 9.0
+*/
+.ie9 {
+  // Checkbox
+  .form-item-save-filters {
+    .option,
+    .form-checkbox {
+      line-height: 1.3;
+    }
+  }
+
+}
+.lt-ie9 {
+  // cancel max width for old browsers
+
+  img {
+    max-width: none;
+  }
+
+  // nth-childs
+  .remove-mr {
+    margin-right: 0 !important;
+  }
+  // Taxonomy
+  .subject-grid li .taxonomy-pic {
+    background: transparent url(../images/ie/tax-bg.png) no-repeat -1px -1px;
+  }
+  // Green taxonomy
+  .green .subject-grid li .taxonomy-pic {
+    background: transparent url(../images/ie/tax-bg.png) no-repeat -1px -91px;
+  }
+  .subject-grid .taxonomy:hover .taxonomy-pic {
+    background: transparent url(../images/ie/tax-bg.png) no-repeat -90px -1px;
+    background-color: transparent;
+  }
+
+  //Front bottom banners
+  .view-banners .banner-link  a {
+    background: url(../images/ie/black-transp.png);
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    @include box-sizing(content-box);
+
+    &:hover {
+      background: url(../images/ie/gray-transp.png);
+    }
+  }
+  .view-banners .banners-list img {
+    width: 100%;
+  }
+
+  // Slider
+  .swiper-slide .overlay {
+    background: url(../images/ie/gray-transp.png);
+  }
+
+  // Slider controls
+  .slide-controls {
+    .view-content {
+
+      .description {
+        padding-top: 15px;
+        zoom: 1;
+      }
+    }
+  }
+
+  // Events list
+  .events-list .switch {
+    top: 16px;
+  }
+
+  // Search
+  // Search form
+
+  // Checkbox
+  .form-item-save-filters {
+    .option,
+    .form-checkbox {
+      line-height: 1.4;
+    }
+  }
+
+  // Filters
+  .search-filters .facetapi-facetapi-links li {
+    height: 100%;
+  }
+  .search-filters .item-list a.facetapi-active{
+    padding: 0;
+    height: 100%;
+  }
+  .search-filters .pane-block {
+    zoom: 1;
+  }
+
+  // Fieldsets
+  .webform-component-fieldset {
+    legend {
+      padding:  10px;
+    }
+  }
+
+  // Node fixes
+  .embedded {
+    .content {
+      min-width: 566px;
+    }
+  }
+
+  // Select element
+  .table-list {
+    .views-widget,
+    .form-type-select {
+      max-width: 184px;
+    }
+  }
+  .selector {
+    padding: 0 0 0 10px;
+    background: #e6e6e6 url(../images/red-arrow.png) no-repeat 165px center;
+    span {
+      height: 36px;
+      line-height: 36px;
+      padding: 0;
+    }
+    select {
+      width: auto;
+      max-height: 35px;
+    }
+  }
+
+  // Factbox image
+  .factbox .image {
+    max-width: 150px;
+  }
+
+} //<-- END of .lt-i9
+
+
+/*
+  Here present fixes for Front page in
+  Internet explorer version less than 8.0
+*/
+.lt-ie8 {
+
+  // Slider
+  .pane-slider-slider-nav {
+     z-index: 10;
+  }
+  // Footer
+  .footer-wrapper .social .show-menu {
+    height: 25px;
+
+    &.open span {
+      top: -12px;
+    }
+  }
+
+  // Search page
+  // Top form
+  .search .pane-apachesolr-form {
+    .form-submit {
+      margin-top: 1px;
+      padding: 8px 10px;
+    }
+  }
+  // Pager
+  .item-list .pager {
+    li {
+      margin-right: 4px;
+      float: left;
+
+      &.pager-current {
+        padding-right: 4px;
+      }
+    }
+  }
+
+  // Loadmore
+  .item-list .pager.pager-load-more {
+    float: left;
+    width: 100%;
+
+    .arrow  {
+      height: 20px;
+      background-position: -51px -60px;
+    }
+  }
+
+  // Events list
+  .events-list .switch {
+    top: -68px;
+  }
+
+  // Selecbox styles
+  .views-exposed-widgets {
+    label,
+     .views-widget {
+      vertical-align: middle;
+    }
+  }
+
+  // Vacancy table list
+  .job-listing {
+    table tr td {
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+
+} //<-- END of .lt-i8

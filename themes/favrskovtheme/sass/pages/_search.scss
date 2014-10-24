@@ -1,0 +1,342 @@
+//------------------------------------------------------------------------------
+// Search page
+.search {
+
+  // Pattern background
+  .main-wrapper {
+    padding-top: 30px;
+    background: url(../images/pat.png);
+  }
+  .content-container {
+    background: $white;
+  }
+
+  // Layout
+
+  .found {
+    @include span-columns(7, 12);
+  }
+
+  .search-filters {
+    @include span-columns(4 omega, 12);
+  }
+
+
+  // Headline
+  .content-container h1 {
+    @include font-size(55);
+    font-family: $sans-bold-strict;
+    color: $slategrey;
+    margin: 30px 0;
+  }
+
+  // Search form
+  .pane-apachesolr-form {
+    background: $lightgrey;
+    @include border-radius(5px);
+    padding: 30px;
+    margin-bottom: 30px;
+    overflow: hidden;
+
+    .form-item {
+      float: left;
+    }
+
+    // Search field
+    .apachesolr-autocomplete {
+      padding: 10px 15px;
+      @include inline-block();
+      margin: 0 10px 10px 0;
+      background: $white;
+    }
+
+    // Search button
+    .form-submit {
+      background-color: #608c9c;
+      color: $white;
+      padding: 10px 30px;
+      margin: 0;
+      display: inline-block;
+      @include border-radius(5px);
+      @include transition-duration(.2s);
+
+      &:hover {
+        background-color: $slategrey;
+      }
+    }
+  }
+
+  // Checkbox
+  .form-type-checkbox {
+    clear: both;
+    float: none;
+    margin-top: 15px;
+
+    .option,
+    .form-checkbox {
+      float: left;
+      margin: 2px 10px 0 0;
+      @include font-size(14);
+    }
+  }
+
+  //  Results list
+  .pane-apachesolr-result {
+    // Title
+    h2 {
+      @include font-size(30);
+      border-bottom: 1px solid $lightgrey;
+      font-family: $sans-med-strict;
+      color: $slategrey;
+      padding: 0 0 10px;
+    }
+
+    // No results list
+    ul {
+      @include font-size(15);
+      line-height: 1.5;
+      margin: 40px 0;
+      color: $slategrey;
+    }
+
+    // List
+    .search-result {
+      padding: 15px 0;
+      @include font-size(14);
+      line-height: 1.5;
+      border-bottom: 1px solid $lightgrey;
+      overflow: hidden;
+
+      // time
+      time {
+        @include font-size(12);
+        color: $liteGray;
+        letter-spacing: -.05em;
+      }
+
+      // title
+      .title {
+        @include font-size(22);
+        line-height: 1;
+        margin: 5px 0;
+        font-family: $sans-med-strict;
+
+        a { @include links($red, $slatgrayDark)}
+      }
+
+      // Content
+      .search-snippet-info {
+        margin-bottom: 5px;
+      }
+
+      // type
+      .search-content-type {
+        float: left;
+        background-color: $lightgrey;
+        padding: 2px 10px;
+        @include font-size(13);
+        @include border-radius(3px);
+      }
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+// Aside
+// Filters
+.btn-filters {
+  display: none;
+  width: 50px;
+  height: 50px;
+  text-indent: -999em;
+  cursor: pointer;
+  background: rgba($slategrey, .8) url(../images/sprite.png) no-repeat 3px -253px;
+}
+
+.search-filters {
+  padding-top: 115px;
+
+  .pane-block {
+    background: $lightgrey;
+    @include border-radius(5px);
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    @include font-size(16);
+    font-family: $sans-med-strict;
+    color: $slategrey;
+    padding: 0 0 10px;
+  }
+
+  // Filter list
+
+  .item-list {
+    li {
+      border-bottom: 1px solid #ccc;
+      position: relative;
+    }
+
+    a {
+    padding: 5px;
+    display: block;
+    @include links($red, $gray);
+    @include font-size(14);
+
+    &:hover,
+    &.active {
+      background-color: #e0e0e0;
+      @include links($slatgrayDark, $slatgrayDark);
+    }
+
+    &.facetapi-inactive {
+      background: url(../images/filters-icons.png) no-repeat 95% -94px;
+      padding-right: 25px;
+
+      &:hover {
+        background: #e0e0e0 url(../images/filters-icons.png) no-repeat 95% -182px;
+      }
+    }
+
+    &.facetapi-active {
+      text-indent: -999em;
+      position: absolute;
+      width: 100%;
+      padding: 5px 0;
+      background: url(../images/filters-icons.png) no-repeat 95% 8px;
+      @include transition-duration(0s);
+      @include font-size(16);
+
+      &:hover {
+        background: url(../images/filters-icons.png) no-repeat 95% 8px;
+      }
+
+      & + .active-filter {
+        padding-right: 25px;
+      }
+    }
+  }
+
+    .active-filter {
+      padding: 5px;
+      display: block;
+      background-color: #e0e0e0;
+    }
+  }
+
+  img {
+    position: absolute;
+    right: 15px;
+    top: 4px;
+  }
+  .sort {
+    float: left;
+    margin: 4px 10px 0 0;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+// Screen---- max-width(980px)
+@include at-breakpoint($tablet) {
+  .search {
+    .pane-apachesolr-form{
+
+      .form-type-textfield {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .apachesolr-autocomplete {
+        max-width: 95%;
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+// Tableet land ----max-width(871px)
+@include at-breakpoint($tablet-land) {
+
+}
+
+// Tableet port ----max-width(767px)
+@include at-breakpoint($tablet-port) {
+  .search {
+
+    // Layout
+    .found {
+      @include span-columns(12, 12);
+    }
+    .search-filters {
+      @include span-columns(9, 12);
+    }
+
+
+
+
+    // Filters
+    // Button
+    .btn-filters {
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: -10px;
+    }
+
+    // Filter results
+    .filter-results {
+      background-color: rgba($slategrey, .8);
+      padding: 20px;
+      display: none;
+      position: absolute;
+      top: 40px;
+      right: 10px;
+
+      &.animated {
+        display: block;
+      }
+    }
+
+    .search-filters {
+      position: absolute;
+      top: 310px;
+      right: 0;
+    }
+  }
+}
+
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+  .search {
+    .pane-apachesolr-form .apachesolr-autocomplete {
+      max-width: 90%;
+    }
+  }
+}
+
+
+
+// Phone port -----max-width(320px)
+@include at-breakpoint($phone-port) {
+   .search {
+    // Layout
+    .search-filters {
+      @include span-columns(9, 12);
+    }
+
+    .pane-apachesolr-form .apachesolr-autocomplete {
+      max-width: 85%;
+    }
+  }
+}
+

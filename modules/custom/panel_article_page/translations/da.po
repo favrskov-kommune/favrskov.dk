@@ -1,0 +1,49 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  panel_article_page.pages_default.inc: n/a
+#  panel_article_page.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-10-08 11:54+0200\n"
+"PO-Revision-Date: 2013-10-08 12:54+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: panel_article_page.pages_default.inc:487
+msgid "Contacts"
+msgstr "Kontakt"
+
+#: panel_article_page.pages_default.inc:589
+msgid "See also"
+msgstr "Se også"
+
+#: panel_article_page.pages_default.inc:657
+msgid "Share"
+msgstr "Del"
+
+
+#: panel_article_page.info:0
+msgid "Panels"
+msgstr "Paneler"
+
+msgid "Last updated"
+msgstr "Sidst opdateret"
+
+msgid "Submitted by !username on !datetime"
+msgstr "Oprettet af !username on !datetime"
+
+msgid "See more"
+msgstr "Se også"
+
+msgid "Subscribe"
+msgstr "Tilmeld"

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Header mini panel feature.
+ */
+
+include_once 'panel_header_mini_panel.features.inc';

@@ -1,0 +1,11 @@
+msgid "Search for meetings"
+msgstr "Søg i dagsordener og referater"
+
+msgid "Latest meetings"
+msgstr "Seneste referater"
+
+msgid "Upcoming events"
+msgstr "Kommende møder med publicerede agendaer"
+
+msgid "Upcoming meetings"
+msgstr "Kommende møder"

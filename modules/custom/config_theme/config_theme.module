@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Config theme feature.
+ */
+
+include_once 'config_theme.features.inc';

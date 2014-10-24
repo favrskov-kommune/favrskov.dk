@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Fields Shared feature.
+ */
+
+include_once 'fields_shared.features.inc';

@@ -1,0 +1,14 @@
+name = Config cookie compliance
+core = 7.x
+package = Config
+php = 5.2.4
+version = 7.x-1.0
+project = config_cookie_compliance
+dependencies[] = ctools
+dependencies[] = eu_cookie_compliance
+dependencies[] = strongarm
+datestamp = 1381241852
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = eu_cookie_compliance_da
+features[variable][] = eu_cookie_compliance_en
