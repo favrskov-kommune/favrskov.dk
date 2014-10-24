@@ -1,0 +1,23 @@
+name = Panel Header mini panel
+core = 7.x
+package = Panels
+php = 5.2.4
+version = 7.x-1.0
+project = panel_header_mini_panel
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = menu
+dependencies[] = panels_mini
+dependencies[] = strongarm
+datestamp = 1378121533
+features[ctools][] = panels_mini:panels_default:1
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[menu_custom][] = main-menu
+features[menu_links][] = main-menu:<front>
+features[menu_links][] = main-menu:http://www.google.com?q=english
+features[menu_links][] = main-menu:http://www.google.com?q=erhverv
+features[menu_links][] = main-menu:http://www.google.com?q=kommunen
+features[menu_links][] = main-menu:http://www.google.com?q=kontakt
+features[panels_mini][] = header_mini_panel
+features[variable][] = apachesolr_panels_search_page

@@ -1,0 +1,466 @@
+//------------------------------------------------------------------------------
+//Page
+html {
+  height: 100%;
+}
+
+html, body {
+  -webkit-font-smoothing: antialiased;
+  @include transition-property(all);
+  @include transition-timing-function(ease-in);
+  @include transition-duration(.2s);
+}
+
+body {
+  @include font-size();
+  font-family: $sans;
+  word-wrap: break-word;
+  background-repeat: no-repeat;
+  background-position: center top;
+
+}
+
+// Colorpicker fix
+.colorpicker {
+  z-index: 1001;
+}
+//------------------------------------------------------------------------------
+// Pattern background
+
+.search,
+.panel-list,
+.panel-nodes,
+.events-list-page {
+
+  .main-wrapper {
+    padding-top: 30px;
+    background: url(../images/pat.png);
+  }
+  .content-container {
+    background: $white;
+  }
+  .content-container {
+    padding-top: 28px;
+  }
+
+   .breadcrumb {
+    margin-bottom: 25px;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Ajax throbber
+.ajax-progress {
+  margin-top: 50px;
+}
+
+.ajax-progress .throbber {
+  width: 24px;
+  height: 24px;
+  text-indent: -999em;
+  display: block;
+  background: url(../images/ajax-loader.gif) no-repeat center;
+
+  & + .message {
+    display: none;
+  }
+}
+
+.contextual-links-wrapper .contextual-links-trigger {
+  text-indent: -999em;
+}
+
+//------------------------------------------------------------------------------
+// Responsive dimensions
+$tablet:        12 980px;
+$tablet-land:   12 890px;
+$tablet-port:   12 768px;
+$phone-land:    12 480px;
+$phone-port:    12 320px;
+
+
+.group {
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.preloader,
+.preloader-overlay,
+.custom-throbber  {
+  display: none;
+}
+
+/*
+ Hide pane titles
+*/
+.hide-title {
+  h2.pane-title {
+   display: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  // font-weight: bold;
+}
+
+/*
+  Reset base styles for all lists
+*/
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+//  Global links styles
+a {
+  outline: medium none;
+  @include transition-property(all);
+  @include transition-timing-function(ease-in);
+  @include transition-duration(.1s);
+  @include links($red, $gray);
+
+  // Violet color scheme
+  body.violet & { @include links($violet, $gray); }
+  // Dark Grey color scheme
+  body.dark-grey & { @include links($dark-grey, $gray); }
+  // Gray color scheme
+  body.grey & { @include links($gray, $liteGray); }
+  // Dirty Yellow
+  body.yellow & { @include links($dirty-yellow, $liteGray); }
+  // Deep Blue
+  body.blue & { @include links($deepBlue, $liteGray); }
+  // Pink
+  body.pink & { @include links($pink, $liteGray); }
+  // Salat
+  body.salat-green & { @include links($salatGreen, $liteGray); }
+
+  &:focus {
+    outline: medium none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Status messages styles
+.drupal-system {
+  @include span-columns(12,12);
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="search"] {
+  border: 0 none;
+  color: $slatgrayLight;
+  margin: 0;
+  height: 17px;
+  max-width: 100%;
+  padding: 9px 0;
+  @include font-size(14);
+  @include border-radius(5px);
+}
+
+input[type="text"]::-ms-clear {
+    display: none;
+}
+
+.form-text,
+.form-textarea {
+  border: 1px solid transparent;
+  @extend %no-border;
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  width: 100%;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px $white inset !important;
+}
+
+/* Text */
+.tr { text-align: right; }
+.tc { @extend %centered; }
+
+  hr {
+    border-top: 0 none;
+    @extend %border-bottom;
+    margin-left: auto;
+    margin-right: auto;
+    &.half {
+      width: 50%;
+    }
+  }
+
+//------------------------------------------------------------------------------
+// Font Icons
+@font-face {
+  font-family: 'fontello';
+  src: url('../font-icns/fontello.eot?24256973');
+  src: url('../font-icns/fontello.eot?24256973#iefix') format('embedded-opentype'),
+       url('../font-icns/fontello.woff?24256973') format('woff'),
+       url('../font-icns/fontello.ttf?24256973') format('truetype'),
+       url('../font-icns/fontello.svg?24256973#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../font-icns/flaticon.eot");
+  src: url("../font-icns/flaticon.eot#iefix") format("embedded-opentype"),
+  url("../font-icns/flaticon.woff") format("woff"),
+  url("../font-icns/flaticon.ttf") format("truetype"),
+  url("../font-icns/flaticon.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+ [class^="icon-"]:before,
+ [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+}
+
+// Twitter
+[class^="icon-twitter"]:before,
+[class*="icon-twitter"]:before {
+  content: '\e803';
+}
+
+// Facebook
+[class^="icon-facebook"]:before,
+[class*="icon-facebook"]:before {
+  content: '\e805';
+}
+
+// Instagram
+[class^="icon-instagram"]:before,
+[class*="icon-instagram"]:before {
+  content: '\e804';
+}
+
+// Youtube
+[class^="icon-youtube"]:before,
+[class*="icon-youtube"]:before {
+  content: "\e000";
+  font-family: Flaticon;
+}
+
+
+.icon-play:before { content: '\e801'; }
+.icon-left-open:before { content: '\e806'; }
+.icon-right-open:before { content: '\e802'; }
+.icon-right-open-big:before { content: '\e807'; }
+
+
+/*
+  IE 9.0 and less versions
+*/
+.ajax-message {
+  text-align: center;
+  color: $pink;
+  display: none;
+}
+
+
+/*
+  Normlal browsers
+*/
+.ajax-progress-throbber {
+  margin: 0 auto 16px;
+  display: block;
+  width: 34px;
+}
+
+
+.front {
+  .custom-throbber {
+    display: block;
+  }
+}
+
+
+
+//------------------------------------------------------------------------------
+// Empty views
+.view-empty {
+  background-color: #8ebe8a;
+  color: $white;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-family: $sans;
+  @include font-size(14);
+}
+
+
+
+//------------------------------------------------------------------------------
+// Warning, Tabs, Message pane
+.messages {
+
+  &.status,
+  &.warning,
+  &.error,
+  &.alert-block {
+    color: $white;
+    display: block;
+    padding: 15px;
+    @include font-size(15);
+    @include box-sizing(border-box);
+
+    .krumo-root {
+      color: $black;
+    }
+
+    a {
+      color: $black;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+
+  &.error {
+    background-color: #be8f8a;
+  }
+  &.warning {
+    background-color: #d8d29d;
+  }
+  &.status {
+    background-color: #8ebe8a;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+// Helper classes
+
+/*
+ * Reset borders and paddings/margins
+*/
+  .centered {
+    @extend %centered;
+  }
+  .no-border {
+    @extend %no-border;
+  }
+  .no-padding {
+    @extend %no-padding;
+  }
+  .no-margin {
+    @extend %no-margin;
+  }
+
+
+/*
+ * Image replacement
+ */
+
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback
+  *text-indent: -9999px;*/
+}
+
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+  visibility: hidden;
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.element-invisible,
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}

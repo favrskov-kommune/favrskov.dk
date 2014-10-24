@@ -1,0 +1,14 @@
+msgid "Access denied"
+msgstr "Du kan ikke få adgang til siden"
+
+msgid "We're sorry, but you unfortunately do not have access to the selected page."
+msgstr "Vi beklager, men du har desværre ikke adgang til den valgte side."
+
+msgid "Be aware of the search function at the top right, which might help you find what you are looking for."
+msgstr "Vær opmærksom på søgefunktionen øverst til højre, som måske kan hjælpe dig med at finde, hvad du søger."
+
+msgid "Clicking <a href='/'>here</a>, you will come to the front page."
+msgstr "Hvis du klikker <a href='/'>her</a>, kommer du til forsiden."
+
+msgid "403 error"
+msgstr "403 fejl"

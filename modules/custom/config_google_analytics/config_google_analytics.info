@@ -1,0 +1,11 @@
+name = Config Google analytics
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_google_analytics
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = googleanalytics_account
+features[variable][] = googleanalytics_js_scope

@@ -1,0 +1,35 @@
+.tabs {
+  float: left;
+  margin: 40px 0;
+  @include span-columns(16, 16);
+
+  .element-invisible {
+    display: none;
+    visibility: hidden;
+  }
+
+  ul {
+    overflow: hidden;
+    border-bottom: 1px solid #ec0045;
+    li {
+      float: left;
+
+      margin: 0;
+      padding: 0;
+      border-right: 1px solid $white;
+      a {
+        display: block;
+        padding: 10px 15px !important;
+        @include links($white, $white);
+      }
+
+      &:hover {
+        background-color: #3c3c3c;
+      }
+
+      &.active {
+        background-color:#000;
+      }
+    }
+  }
+}

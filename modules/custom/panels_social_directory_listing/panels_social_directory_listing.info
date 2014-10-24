@@ -1,0 +1,12 @@
+name = Panels Social Directory Listing
+core = 7.x
+package = Panels
+php = 5.2.4
+version = 7.x-1.0
+project = panels_social_directory_listing
+dependencies[] = ctools
+dependencies[] = page_manager
+datestamp = 1377596048
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:2
+features[page_manager_pages][] = os2web_social_directory_association_list

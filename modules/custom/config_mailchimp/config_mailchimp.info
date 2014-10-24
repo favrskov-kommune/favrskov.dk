@@ -1,0 +1,15 @@
+name = Config MailChimp
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_mailchimp
+dependencies[] = ctools
+dependencies[] = mailchimp
+dependencies[] = mailchimp_campaign
+dependencies[] = mailchimp_lists
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[mailchimp_list][] = nyheder_fra_roskilde_kommune
+features[variable][] = mailchimp_batch_limit
+features[variable][] = mailchimp_use_secure

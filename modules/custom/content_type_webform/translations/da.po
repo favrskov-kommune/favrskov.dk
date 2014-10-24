@@ -1,0 +1,113 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  content_type_webform.features.field_instance.inc: n/a
+#  content_type_webform.features.inc: n/a
+#  content_type_webform.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-12 14:17+0200\n"
+"PO-Revision-Date: 2013-09-12 15:17+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: content_type_webform.features.field_instance.inc:913
+msgid "Body"
+msgstr "Brødtekst"
+
+#: content_type_webform.features.field_instance.inc:914
+msgid "Contact Information"
+msgstr "Kontakt oplysninger"
+
+#: content_type_webform.features.field_instance.inc:915
+msgid "Editorial responsibility"
+msgstr "Redaktionel ansvarlig"
+
+#: content_type_webform.features.field_instance.inc:916
+msgid "FAQ"
+msgstr "Spørgsmål og svar"
+
+#: content_type_webform.features.field_instance.inc:917
+msgid "Image / thumbnail"
+msgstr "Billede / thumbnail"
+
+#: content_type_webform.features.field_instance.inc:918
+msgid "Image description"
+msgstr "Billedtekst"
+
+#: content_type_webform.features.field_instance.inc:919
+msgid "Related boxes"
+msgstr "Relaterede bokse"
+
+#: content_type_webform.features.field_instance.inc:920
+msgid "Related content"
+msgstr "Relateret indhold"
+
+#: content_type_webform.features.field_instance.inc:921
+msgid "Self Service"
+msgstr "Selvbetjening"
+
+#: content_type_webform.features.field_instance.inc:922
+msgid "Taxonomy, KLE"
+msgstr "Taksonomi, KLE"
+
+#: content_type_webform.features.field_instance.inc:923
+msgid "Taxonomy, Location"
+msgstr "Taksonomi, lokation"
+
+#: content_type_webform.features.field_instance.inc:924
+msgid "Taxonomy, Subject Area"
+msgstr "Taksonomi, Emne område"
+
+#: content_type_webform.features.field_instance.inc:925
+msgid "Taxonomy, local"
+msgstr "Taksonomi, lokal"
+
+#: content_type_webform.features.field_instance.inc:926
+msgid "Teaser"
+msgstr "Manchet"
+
+#: content_type_webform.features.field_instance.inc:927
+msgid "Video"
+msgstr "Video"
+
+#: content_type_webform.features.field_instance.inc:928
+msgid "Video description"
+msgstr "Videobeskrivelse"
+
+#: content_type_webform.features.inc:23
+msgid "Webform"
+msgstr "Webformular"
+
+#: content_type_webform.features.inc:25
+msgid ""
+"Create a new form or questionnaire accessible to users. Submission results "
+"and statistics are recorded and accessible to privileged users."
+msgstr ""
+"Opret en ny formular eller et nyt spørgeskema. Resultater og statistik "
+"gemmes og er tilgængelige for priviligerede brugere."
+
+#: content_type_webform.features.inc:27
+msgid "Title"
+msgstr "Overskrift"
+
+#: content_type_webform.info:0
+msgid "Content Type Webform"
+msgstr "Indholdstype Webformular"
+
+#: content_type_webform.info:0
+msgid "Content Types"
+msgstr "Indholdstyper"
+
+#: content_type_webform.module:17
+msgid "The application is NOT sent"
+msgstr "Ansøgningen er IKKE sendt"

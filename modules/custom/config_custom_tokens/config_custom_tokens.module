@@ -1,0 +1,36 @@
+<?php
+
+
+/**
+ * Implements hook_morm_alter().
+ *
+ * Adds afterbuild function for custom tokens textarea when adding or edit custom token.
+ */
+function config_custom_tokens_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#form_id'] === 'token_custom_edit_form') {
+    $form['content']['#after_build'][] = 'config_custom_tokens_remove_text_formats';
+  }
+}
+
+/**
+ * Afterbuild callback for custom tokens add/edit form.
+ *
+ * Removes unnecessary text formats from select list.
+ *
+ * @param $form
+ *   Custom tokens add/edit form.
+ *
+ * @return array
+ *   Customized form without unnecessary text formats.
+ */
+function config_custom_tokens_remove_text_formats(&$form) {
+  if (isset($form['format'])) {
+    foreach ($form['format']['format']['#options'] as $key => $format) {
+      if ($key !== 'custom_tokens_no_filters_') {
+        unset ($form['format']['format']['#options'][$key]);
+      }
+    }
+    $form['format']['format']['#value'] = 'custom_tokens_no_filters_';
+  }
+  return $form;
+}

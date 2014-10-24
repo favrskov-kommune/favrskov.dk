@@ -1,0 +1,152 @@
+//------------------------------------------------------------------------------
+// Meeting node page
+.node-type-os2web-meetings-meeting {
+  .node-content {
+    @include font-size(16);
+    line-height: 1.4;
+
+    .label {
+      font-family: $sans-med-strict;
+    }
+  }
+}
+
+
+//------------------------------------------------------------------------------
+// Metting list page
+
+//base class in body added in panel general settings
+.meetings-listing {
+  //Date field
+  .container-inline-date {
+    .form-item {
+      margin: 0;
+      @include inline-block();
+      vertical-align: middle;
+      position: relative;
+    }
+
+    //  Date description
+    .description {
+      color: $gray;
+      @include font-size(12);
+      margin-top: 5px;
+    }
+  }
+
+  // Filters
+  .views-exposed-widget {
+    margin-bottom: 15px;
+    width: 100%;
+
+    label {
+      min-width: 170px;
+    }
+  }
+
+  // Submit button
+  .views-submit-button {
+    clear: both;
+    float: left;
+  }
+
+  // Header links
+  thead .views-field {
+    color: $white;
+    padding: 10px 0 10px 22px;
+    @include font-size(18);
+    text-align: left;
+  }
+
+  // Pane headers
+  .pane-title {
+    color: $gray;
+    @include font-size(20);
+    margin-bottom: 20px;
+  }
+
+  // View table
+  .views-table a {
+    @include font-size(16);
+  }
+}
+
+//------------------------------------------------------------------------------
+// Metting node page
+.meetings-collapsed-list {
+  border-top: 4px solid #586464;
+  border-bottom: 3px solid #586464;
+  margin: 40px 0;
+
+  li {
+    border-bottom: 1px solid $slatgrayLight;
+  }
+
+  // Title
+  .meetnig-title {
+    background: #eee url(../images/plus-minus.png) no-repeat 94.5% 17px;
+    @include font-size(15);
+    cursor: pointer;
+    margin: 0;
+    padding: 20px 10% 16px 19px;
+    line-height: 1.2;
+    @include transition-duration(.1s);
+
+    &.open {
+      background: #fff url(../images/plus-minus.png) no-repeat 94.5% -175px;
+    }
+  }
+
+  // Content
+  // Tabels
+  table {
+    table-layout: fixed;
+    margin-bottom: 30px;
+    width: 100%;
+
+    td {
+      border: 1px solid #ccc;
+      padding: 5px;
+      white-space: normal;
+      width: auto;
+      @include font-size(13);
+
+    }
+  }
+
+  .meeting-body {
+    background: $white;
+    padding: 15px;
+    display: none;
+
+    .file {
+      display: block;
+
+      img {
+        @include inline-block();
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+    }
+
+    h1 {
+      @include font-size(26);
+    }
+  }
+
+  // Hide unnecessary element
+  .state {
+    display: none;
+  }
+}
+
+@include at-breakpoint(12px 980px) {
+  .meetings-listing {
+    //Date field
+    .container-inline-date .description {
+      position: static;
+      margin-top: 5px;
+    }
+  }
+}
+

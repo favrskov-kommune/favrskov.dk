@@ -1,0 +1,44 @@
+//------------------------------------------------------------------------------
+// Subpage page
+.subpage {
+  .article {
+    @include span-columns(7, 12);
+  }
+
+  .sidebar {
+     @include span-columns(4 omega, 12);
+  }
+}
+
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+/*
+// Screen---- max-width(980px)
+@include at-breakpoint($tablet) {
+
+}
+
+// Tableet land ----max-width(871px)
+@include at-breakpoint($tablet-land) {
+
+}
+
+// Tableet port ----max-width(767px)
+@include at-breakpoint($tablet-port) {
+
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+
+}
+
+// Phone port -----max-width(320px)
+@include at-breakpoint($phone-port) {
+
+}
+*/

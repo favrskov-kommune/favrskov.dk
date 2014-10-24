@@ -1,0 +1,366 @@
+<?php
+/**
+ * @file
+ * MailChimp groups module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function mailchimp_groups_menu() {
+  $items = array();
+
+  // Settings tab for MailChimp
+  $items['admin/config/services/mailchimp/groups'] = array(
+    'title' => 'Groupings and Groups',
+    'description' => 'Manage MailChimp Groupings and Groups settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mailchimp_groups_settings_form'),
+    'access arguments' => array('administer mailchimp'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'includes/mailchimp_groups.admin.inc',
+    'weight' => -10,
+  );
+
+  return $items;
+}
+
+/**
+ * Function determine term correspondence to MailChimp Groups.
+ * @param $term
+ * @param $parent pass parent to calling function
+ * @return string MailChimp type
+ */
+function _mailchimp_groups_term_get_type($term, &$parent) {
+  $parents = taxonomy_get_parents($term->tid);
+  $parent = reset($parents);
+
+  $parent_grouping = variable_get('mailchimp_groups_taxonomy_parent_grouping_id_' . $term->vid, NULL);
+
+  if (empty($parent) && empty($parent_grouping)) {
+    return 'grouping';
+  }
+  else {
+    return 'group';
+  }
+}
+
+/**
+ * Transfer term actions to MailChimp
+ * @param $term
+ * @param $op operation to proceed, available values 'insert', 'update' or 'delete'
+ */
+function mailchimp_groups_save($term, $op) {
+  $mailchimp_type = _mailchimp_groups_term_get_type($term, $parent);
+
+  $mcapi = mailchimp_get_api_object();
+  $list_id = variable_get('mailchimp_groups_list_id', '');
+
+  switch ($op) {
+    case 'insert':
+      switch ($mailchimp_type) {
+        case 'grouping':
+          $grouping_id = $mcapi->listInterestGroupingAdd($list_id, $term->name, $type = 'checkboxes', $groups = array('dummy'));
+
+          if ($grouping_id) {
+            $term->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'] = $grouping_id;
+            taxonomy_term_save($term);
+          }
+          break;
+        case 'group':
+          $parent_grouping_id = variable_get('mailchimp_groups_taxonomy_parent_grouping_id_' . $term->vid, NULL);
+          $grouping_id = !empty($parent_grouping_id) ? $parent_grouping_id : $parent->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'];
+
+          if ($grouping_id) {
+            $mcapi->listInterestGroupAdd($list_id, $term->name, $grouping_id);
+
+            // @todo: Better way to remove dummy.
+            $children = ($parent) ? taxonomy_get_children($parent->tid, variable_get('mailchimp_groups_taxonomy_vid', 0)) : taxonomy_get_tree($term->vid);
+            if (count($children) == 1) {
+              $mcapi->listInterestGroupDel($list_id, 'dummy', $grouping_id);
+            }
+          }
+          break;
+      }
+      break;
+    case 'update':
+      switch ($mailchimp_type) {
+        case 'grouping':
+          $grouping_id = $term->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'];
+
+          if ($grouping_id) {
+            $mcapi->listInterestGroupingUpdate($grouping_id, 'name', $term->name);
+          }
+          break;
+        case 'group':
+          $parent_grouping_id = variable_get('mailchimp_groups_taxonomy_parent_grouping_id_' . $term->vid, NULL);
+          $grouping_id = !empty($parent_grouping_id) ? $parent_grouping_id : $parent->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'];
+          if ($grouping_id && $term->name != $term->original->name) {
+            $mcapi->listInterestGroupUpdate($list_id, $term->original->name, $term->name, $grouping_id);
+          }
+          break;
+      }
+      break;
+    case 'delete':
+      switch ($mailchimp_type) {
+        case 'grouping':
+          $grouping_id = $term->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'];
+          if ($grouping_id) {
+            $mcapi->listInterestGroupingDel($grouping_id);
+          }
+          break;
+        case 'group':
+          $parent_grouping_id = variable_get('mailchimp_groups_taxonomy_parent_grouping_id_' . $term->vid, NULL);
+          $grouping_id = !empty($parent_grouping_id) ? $parent_grouping_id : $parent->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'];
+          if ($grouping_id) {
+            $mcapi->listInterestGroupDel($list_id, $term->name, $grouping_id);
+
+            // @todo: Better way to add dummy.
+            $children = ($parent) ? taxonomy_get_children($parent->tid, variable_get('mailchimp_groups_taxonomy_vid', 0)) : taxonomy_get_tree($term->vid);
+            if (empty($children)) {
+              $mcapi->listInterestGroupAdd($list_id, 'dummy', $grouping_id);
+            }
+          }
+          break;
+      }
+      break;
+  }
+
+  if ($mcapi->errorCode) {
+    // Display and log error, if any.
+    $message = 'MailChimp error.';
+
+    $mcapiErrorMessage = 'MailChimp error code: %errorCode, MailChimp error message: %errorMessage.';
+    $mcapiErrorVariables = array(
+      '%errorCode' => $mcapi->errorCode,
+      '%errorMessage' => $mcapi->errorMessage
+    );
+
+    $variables = array();
+
+    $human = t($message, $variables) . ' ' . t($mcapiErrorMessage, $mcapiErrorVariables);
+    drupal_set_message($human, 'error');
+
+    $watchdog = $message . ' ' . $mcapiErrorMessage;
+    $variables = $variables + $mcapiErrorVariables;
+    watchdog('mailchimp_groups', $watchdog, $variables, WATCHDOG_ERROR);
+  }
+  else {
+    drupal_set_message(t('MailChimp Groups updated.'));
+  }
+
+  // clear mailchimp list cache
+  cache_clear_all('mailchimp_lists', 'cache');
+}
+
+/**
+ * Implements hook_taxonomy_term_insert().
+ */
+function mailchimp_groups_taxonomy_term_insert($term) {
+  if (in_array($term->vid, variable_get('mailchimp_groups_taxonomy_vocabularies', array()))
+  && !$term->hide_from_mailchimp) {
+    mailchimp_groups_save($term, 'insert');
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_update().
+ */
+function mailchimp_groups_taxonomy_term_update($term) {
+  if (in_array($term->vid, variable_get('mailchimp_groups_taxonomy_vocabularies', array()))) {
+    if ($term->hide_from_mailchimp) {
+      mailchimp_groups_save($term, 'delete');
+    }
+    else {
+      if (mailchimp_groups_is_term_in_list($term->name)) {
+        mailchimp_groups_save($term, 'update');
+      }
+      else {
+        mailchimp_groups_save($term, 'insert');
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_delete().
+ */
+function mailchimp_groups_taxonomy_term_delete($term) {
+  if (in_array($term->vid, variable_get('mailchimp_groups_taxonomy_vocabularies', array()))) {
+    mailchimp_groups_save($term, 'delete');
+  }
+}
+
+function mailchimp_groups_is_term_in_list($termname) {
+  $list_id = variable_get('page_subscription_list_id', '');
+  $list = current(mailchimp_get_lists(array($list_id)));
+
+  foreach ($list['intgroups'] as $intgroup) {
+    foreach ($intgroup['groups'] as $group) {
+      if ($group['name'] == $termname) {
+        return TRUE;
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_taxonomy_term_load().
+ */
+function mailchimp_groups_taxonomy_term_load($terms) {
+  if (is_object($terms) && in_array($terms->vid, variable_get('mailchimp_groups_taxonomy_vocabularies', array()))) {
+    $term = &current($terms);
+    $term->hide_from_mailchimp = !mailchimp_groups_is_term_in_list($term->name);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function mailchimp_groups_form_taxonomy_form_term_alter(&$form, &$form_state, $form_id) {
+  $form['field_mailchimp_grouping_id']['#disabled'] = TRUE;
+
+  if (is_object($form['#term']) && !empty($form['#term']->hide_from_mailchimp)) {
+    $hide_from_mailchimp = $form['#term']->hide_from_mailchimp;
+  }
+  elseif (is_array($form['#term']) && !empty($form['#term']['hide_from_mailchimp'])) {
+    $hide_from_mailchimp = $form['#term']['hide_from_mailchimp'];
+  }
+  else {
+    $hide_from_mailchimp = 0;
+  }
+
+  if (!isset($form['confirm'])) {
+    // Checkbox for deleting this term from mailchimp
+    $form['hide_from_mailchimp'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Hide from Mailchimp'),
+      '#default_value' => $hide_from_mailchimp
+    );
+  }
+}
+
+/**
+ * Implement hook_form_FORM_ID_alter().
+ */
+function mailchimp_groups_form_mailchimp_lists_user_subscribe_form_alter(&$form, &$form_state, $form_id) {
+  $form['mailchimp_lists']['mailchimp_page_subscription']['mergevars']['EMAIL']['#type'] = 'hidden';
+  $form['mailchimp_lists']['mailchimp_page_subscription']['mergevars']['EMAIL']['#required'] = FALSE;
+  $form['mailchimp_lists']['mailchimp_page_subscription']['mergevars']['NAME']['#type'] = 'hidden';
+  $form['mailchimp_lists']['mailchimp_page_subscription']['mergevars']['NAME']['#required'] = FALSE;
+
+  foreach ($form['mailchimp_lists'] as &$list) {
+    foreach ($list['interest_groups'] as $interest_group_id => &$interest_group) {
+      if (is_numeric($interest_group_id) && is_array($interest_group)) {
+        $interest_group['#options'] = array('all' => t('Select all')) + $interest_group['#options'];
+      }
+    }
+  }
+
+  array_unshift($form['#submit'], 'mailchimp_groups_form_mailchimp_lists_user_subscribe_form_submit');
+}
+
+/**
+ * Custom submit mailchimp_lists_user_subscribe_form.
+ */
+function mailchimp_groups_form_mailchimp_lists_user_subscribe_form_submit($form, &$form_state) {
+  $form_state['values']['mailchimp_lists']['mailchimp_page_subscription']['mergevars'] = $form_state['values']['mailchimp_lists']['mailchimp_nyheder_fra_roskilde_kommune']['mergevars'];
+
+  foreach ($form_state['values']['mailchimp_lists'] as &$list) {
+    foreach ($list['interest_groups'] as &$interest_group) {
+      unset($interest_group['all']);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+/*function mailchimp_groups_form_taxonomy_overview_terms_alter(&$form, &$form_state, $form_id) {
+  array_unshift($form['#submit'], 'mailchimp_groups_form_taxonomy_overview_terms_submit');
+}*/
+
+/**
+ * Custom submit for taxonomy_overview_terms form.
+ * Handle terms drag&drop and call corresponding MCAPI functions.
+ * @todo: Is this needed? If YES then needs to test and fix bugs.
+ */
+/*function mailchimp_groups_form_taxonomy_overview_terms_submit($form, &$form_state) {
+//  @todo: Check vid.
+  if ($form_state['triggering_element']['#value'] == t('Reset to alphabetical')) {
+    return;
+  }
+
+  // Sort term order based on weight.
+  uasort($form_state['values'], 'drupal_sort_weight');
+
+  $changed_terms = array();
+  $tree = taxonomy_get_tree($form['#vocabulary']->vid);
+
+  if (empty($tree)) {
+    return;
+  }
+
+  // Assign any new parents.
+  foreach ($form_state['values'] as $tid => $values) {
+    if (isset($form[$tid]['#term'])) {
+      $term = $form[$tid]['#term'];
+      // Update any changed parents.
+      if ($values['parent'] != $term['parent']) {
+        $term['parent_old'] = $term['parent'];
+        $term['parent'] = $values['parent'];
+        $changed_terms[$term['tid']] = $term;
+      }
+    }
+  }
+
+  $mcapi = mailchimp_get_api_object();
+  $list_id = variable_get('mailchimp_groups_list_id', '');
+
+  foreach ($changed_terms as $changed) {
+    $term = (object) $changed;
+
+    $mailchimp_type = _mailchimp_groups_term_get_type($term->parent);
+    $mailchimp_type_old = _mailchimp_groups_term_get_type($term->old_parent);
+
+    if ($mailchimp_type == $mailchimp_type_old) {
+      // Old grouping_id
+      $old_parent = taxonomy_term_load($term->parent);
+      $grouping_id_old = $old_parent->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'];
+
+      // New grouping_id
+      $parent = taxonomy_term_load($term->parent);
+      $grouping_id_new = $parent->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'];
+
+      $mcapi->listInterestGroupDel($list_id, $term->name, $grouping_id_old);
+      $mcapi->listInterestGroupAdd($list_id, $term->name, $grouping_id_new);
+      // @todo: Better way to remove dummy.
+      $mcapi->listInterestGroupDel($list_id, 'dummy', $grouping_id_new);
+    }
+    elseif ($mailchimp_type_old == 'grouping') {
+      // Old grouping_id
+      $old_term = taxonomy_term_load($term->tid);
+      $grouping_id_old = $old_term->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'];
+
+      // New grouping_id
+      $parent = taxonomy_term_load($term->parent);
+      $grouping_id_new = $parent->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'];
+
+      $mcapi->listInterestGroupingDel($grouping_id_old);
+      $mcapi->listInterestGroupAdd($list_id, $term->name, $grouping_id_new);
+      // @todo: Better way to remove dummy.
+      $mcapi->listInterestGroupDel($list_id, 'dummy', $grouping_id_new);
+    }
+    elseif ($mailchimp_type_old == 'group') {
+      // Old grouping_id
+      $old_parent = taxonomy_term_load($term->parent);
+      $grouping_id_old = $old_parent->field_mailchimp_grouping_id[LANGUAGE_NONE][0]['value'];
+
+      $mcapi->listInterestGroupDel($list_id, $term->name, $grouping_id_old);
+      // @todo: Putting dummy into grouping.
+      $mcapi->listInterestGroupingAdd($list_id, $term->name, $type = 'checkboxes', $groups = array('dummy'));
+    }
+  }
+}*/

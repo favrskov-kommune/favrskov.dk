@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Config cookie compliance feature.
+ */
+
+include_once 'config_cookie_compliance.features.inc';

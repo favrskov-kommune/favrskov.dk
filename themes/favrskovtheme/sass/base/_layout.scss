@@ -1,0 +1,68 @@
+
+//------------------------------------------------------------------------------
+// Grid settings
+
+$total-columns  : 12;              // a 16-column grid
+$column-width   : 68px;            // each column is 4em wide
+$gutter-width   : 15px;            // 1em gutters between columns
+$grid-padding   : 0;  // grid-padding equal to gutters
+
+
+//------------------------------------------------------------------------------
+// Global layout
+
+//------------------------------------------------------------------------------
+// Header
+.content,
+.header-content {
+  @include container();
+  padding-bottom: 24px;
+  position: relative;
+  min-width: 280px;
+}
+
+.header-content {
+  padding-bottom: 0;
+}
+
+// Main site header layout
+.domain-roskilde-stag-propeople-com-ua {
+  .logo {
+    margin-top: 27px;
+    @include span-columns(5, 12);
+  }
+  .nav-search {
+    @include span-columns(7 omega, 12);
+  }
+}
+
+.logo {
+  @include span-columns(3, 12);
+}
+
+// Header IE
+.lt-ie9 {
+  .content,
+  .header-content {
+    min-width: 990px;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+
+/* Responsive */
+
+//------------------------------------------------------------------------------
+
+@include at-breakpoint($tablet) {
+  $grid-padding: 3%;
+
+  .content,
+  .header-content {
+    @include container();
+  }
+}
+
+
+

@@ -1,0 +1,311 @@
+<?php
+/**
+ * @file
+ * Code for the Config MailChimp feature.
+ */
+
+include_once 'config_mailchimp.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function config_mailchimp_menu() {
+  // Settings tab for MailChimp
+  $items['admin/config/services/mailchimp/settings'] = array(
+    'title' => 'Roskilde Settings',
+    'description' => 'Manage MailChimp settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('config_mailchimp_settings_form'),
+    'access arguments' => array('administer mailchimp'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'includes/config_mailchimp.admin.inc',
+    'weight' => -100
+  );
+
+  return $items;
+}
+
+/**
+ * Implement hook_form_FORM_ID_alter().
+ */
+function config_mailchimp_form_newsletter_node_form_alter(&$form, &$form_state, $form_id) {
+  // Make Created in MailChimp time readonly
+  $form['field_created_in_mailchimp_time']['#disabled'] = TRUE;
+  $form['field_mailchimp_campaign_id']['#disabled'] = TRUE;
+
+  $mcapi = mailchimp_get_api_object();
+  $groupings = $mcapi->listInterestGroupings(variable_get('mailchimp_list_id', ''));
+
+  // Create options list
+  $size = count($groupings);
+  $options = array();
+  if ($size != 0) {
+    foreach ($groupings as $grouping) {
+      $options[$grouping['name']] = array();
+      foreach ($grouping['groups'] as $group) {
+        $key = $grouping['id'] . '-' . $group['name'];
+        $options[$grouping['name']][$key] = $group['name'];
+        $size++;
+      }
+    }
+  }
+
+  // Set options
+  $language = $form['field_interest_groups']['#language'];
+  $form['field_interest_groups'][$language]['#options'] = $options;
+  $form['field_interest_groups'][$language]['#multiple'] = TRUE;
+  $form['field_interest_groups'][$language]['#size'] = $size <= 20 ? $size : 20;
+
+  // Set default values
+  if (!empty($form['#node']->field_interest_groups)) {
+    foreach ($form['#node']->field_interest_groups[$language] as $value) {
+      $form['field_interest_groups'][$language]['#default_value'][] = $value['value'];
+    }
+  }
+
+  // Add theme argument
+  if (strpos($form['#action'], '?') !== FALSE) {
+    $form['#action'] .= '&theme=favrskovtheme';
+  }
+  else {
+    $form['#action'] .= '?theme=favrskovtheme';
+  }
+}
+
+/**
+ * Implements hook_cronapi().
+ */
+function config_mailchimp_cronapi($op, $job = NULL) {
+  // Create cron job
+  $items['mailchimp_cron'] = array(
+    'description' => 'Send MailChimp Campaign every 5 minutes',
+    'rule' => '*/5 * * * *', // every 5 minutes
+    'callback' => 'config_mailchimp_campaign'
+  );
+
+  return $items;
+}
+
+/**
+ * Return options for MailChimp campaign
+ */
+function config_mailchimp_prepare_options($row) {
+  $options = array(
+    'title' => $row->node_title,
+    'subject' => $row->node_title,
+    'list_id' => variable_get('mailchimp_list_id', ''),
+    'from_email' => variable_get('mailchimp_from_email', ''),
+    'from_name' => variable_get('mailchimp_from_name', ''),
+    'template_id' => $row->field_field_mailchimp_template_id[0]['raw']['value']
+  );
+
+  return $options;
+}
+
+/**
+ * Return template for MailChimp campaign
+ */
+function config_mailchimp_prepare_template($view, $index) {
+  $related_news = $view->render_field('view', $index);
+
+  $related_events = $view->render_field('view_1', $index);
+
+  $related_links = $view->render_field('view_2', $index);
+
+  $main_story_link = $view->render_field('field_main_story_image_link', $index);
+
+  // Use view html to output, change it when template will be done
+  $template = array(
+    'html_date' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => $view->render_field('field_date_string', $index)
+    ),
+    'html_main_story_image' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => l(trim($view->render_field('field_main_story_image', $index), '"'), $main_story_link, array(
+        'html' => TRUE,
+        'absolute' => TRUE
+      ))
+
+    ),
+    'html_main_story_title' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => l($view->render_field('field_main_story_title', $index), $main_story_link, array(
+        'html' => TRUE,
+        'absolute' => TRUE,
+        'attributes' => array('style' => 'color:#586464; text-decoration:none;')
+      ))
+    ),
+    'html_main_story_body' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => $view->render_field('body', $index)
+    ),
+    'html_related_news' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => $related_news
+    ),
+    'html_related_events' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => $related_events
+    ),
+    'html_related_links' => array(
+      'format' => 'mailchimp_campaign',
+      'value' => $related_links
+    ),
+  );
+
+  return $template;
+}
+
+/**
+ * Return group options for MailChimp campaign
+ */
+function config_mailchimp_prepare_group_opts($node) {
+  $groupings = !empty($node->field_interest_groups[$node->language]) ? $node->field_interest_groups[$node->language] : NULL;
+
+  $opts = NULL;
+  if ($groupings) {
+    $groups = array();
+
+    foreach ($groupings as $value) {
+      $grouping = explode("-", $value['value']);
+      $groups[$grouping[0]][] = $grouping[1];
+    }
+
+    $conditions = array();
+
+    foreach ($groups as $id => $value) {
+      $conditions[] = array(
+        'field' => "interests-$id",
+        'op' => 'one',
+        'value' => implode(',', $value)
+      );
+    }
+
+    $opts = array(
+      'match' => 'any',
+      'conditions' => $conditions
+    );
+
+  }
+
+  return $opts;
+}
+
+/**
+ * If there Newsletters to be send then send it.
+ */
+function config_mailchimp_campaign() {
+  // Use view to get newsletter list that should be send
+  $view = views_get_view('view_newsletter');
+  $view->set_display('newsletter_list');
+  $view->execute();
+  $newsletters = $view->result;
+
+  // If there is some newsletters to send then do it
+  if (!empty($newsletters)) {
+    $mcapi = mailchimp_get_api_object();
+
+    $campaign_ids = array();
+
+    foreach ($newsletters as $index => $row) {
+      $view->row_index = $index;
+
+      // Set options
+      $options = config_mailchimp_prepare_options($row);
+      $template = config_mailchimp_prepare_template($view, $index);
+
+      // Set group options
+      $node = $row->_field_data['nid']['entity'];
+      $opts = config_mailchimp_prepare_group_opts($node);
+
+      if ($opts) {
+        $grouping_test = $mcapi->campaignSegmentTest(variable_get('mailchimp_list_id', ''), $opts);
+      }
+
+      if ($mcapi->errorCode) {
+        // Display and log error, if any.
+        $message = 'MailChimp error. The campaign was not saved.';
+        _mailchimp_campaign_mcapi_error_message($mcapi, $message);
+      }
+      else {
+        // Create campaign
+        $campaign_id = mailchimp_campaign_save_campaign($template, $options);
+
+        // Set group options
+        $mcapi->campaignUpdate($campaign_id, 'segment_opts', $opts);
+
+        $campaign_ids[] = $campaign_id;
+
+        // Set "Created in MailChimp" time and "Campaign id" in Node
+        $node->field_created_in_mailchimp_time[LANGUAGE_NONE][0] = array(
+          'value' => date("Y-m-d H:i:s", time()),
+          'timezone' => 'Europe/Copenhagen',
+          'timezone_db' => 'Europe/Copenhagen',
+          'date_type' => 'datetime'
+        );
+        $node->field_mailchimp_campaign_id[LANGUAGE_NONE][0]['value'] = $campaign_id;
+
+        node_save($node);
+      }
+    }
+
+    cache_clear_all('mailchimp_campaign_campaigns', 'cache');
+  }
+
+  // Send all new campaigns
+  /*$campaigns = mailchimp_campaign_load_multiple($campaign_ids);
+  foreach ($campaigns as $campaign) {
+    mailchimp_campaign_send_campaign($campaign);
+  }*/
+}
+
+function config_mailchimp_node_access_records($node) {
+  if ($node->type === 'newsletter' && !empty($node->field_mailchimp_campaign_id[LANGUAGE_NONE])) {
+    // Apply Theme Key rules againg
+    drupal_static_reset('themekey_custom_theme');
+    menu_set_custom_theme();
+
+    // Use view to get newsletter to update
+    $view = views_get_view('view_newsletter');
+    $view->set_display('newsletter_update');
+    $view->set_exposed_input(array('nid' => $node->nid));
+    $view->execute();
+    $newsletters = $view->result;
+
+    if (!empty($newsletters)) {
+      $mcapi = mailchimp_get_api_object();
+
+      foreach ($newsletters as $index => $row) {
+        // Get Campaign id
+        $campaign_id = $node->field_mailchimp_campaign_id[LANGUAGE_NONE][0]['value'];
+
+        // Set options
+        $options = config_mailchimp_prepare_options($row);
+        $template = config_mailchimp_prepare_template($view, $index);
+
+        // Set group options
+        $opts = config_mailchimp_prepare_group_opts($node);
+
+        if ($opts) {
+          $grouping_test = $mcapi->campaignSegmentTest(variable_get('mailchimp_list_id', ''), $opts);
+        }
+
+        if ($mcapi->errorCode) {
+          // Display and log error, if any.
+          $message = 'MailChimp error. The campaign was not saved.';
+          _mailchimp_campaign_mcapi_error_message($mcapi, $message);
+        }
+        else {
+          // Update campaign
+          mailchimp_campaign_save_campaign($template, $options, $campaign_id);
+
+          // Update group options
+          $mcapi->campaignUpdate($campaign_id, 'segment_opts', $opts);
+        }
+      }
+
+      cache_clear_all('mailchimp_campaign_campaigns', 'cache');
+    }
+  }
+}

@@ -1,0 +1,44 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  taxonomy_page_subscription_category.features.field_instance.inc: n/a
+#  taxonomy_page_subscription_category.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-05-15 13:32+0200\n"
+"PO-Revision-Date: 2014-05-15 14:33+0200\n"
+"Last-Translator: \n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: taxonomy_page_subscription_category.features.field_instance.inc:30;307
+msgid "E-mail body intro text"
+msgstr "E-mail crop intro test"
+
+#: taxonomy_page_subscription_category.features.field_instance.inc:114;308
+msgid "E-mail subject"
+msgstr "E-mail emne"
+
+#: taxonomy_page_subscription_category.features.field_instance.inc:201;310
+msgid "mailchimp_grouping_id"
+msgstr ""
+
+#: taxonomy_page_subscription_category.features.field_instance.inc:238;309
+msgid "Subscribe page description"
+msgstr "Abonner sidebeskrivelse"
+
+#: taxonomy_page_subscription_category.info:0
+msgid "Taxonomy Page subscription category"
+msgstr ""
+
+#: taxonomy_page_subscription_category.info:0
+msgid "Taxonomies"
+msgstr ""

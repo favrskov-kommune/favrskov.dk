@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Subscription page feature.
+ */
+
+include_once 'panel_subscription_page.features.inc';

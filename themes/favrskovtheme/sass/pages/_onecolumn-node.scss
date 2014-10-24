@@ -1,0 +1,89 @@
+//------------------------------------------------------------------------------
+// Blogs page
+.panel-onecolumn-nodes {
+  .content-container {
+    margin-top: 50px;
+  }
+
+  // Slider view
+  .view-subject-subpages {
+    clear: both;
+  }
+  .swiper-container {
+    margin: 0;
+    max-width: 565px;
+  }
+
+  // Share and print
+  .pane-print-print-links {
+    position: absolute;
+    top: 0;
+    right: 65px;
+    text-transform: uppercase;
+  }
+
+  .toggle-share {
+    right: 0;
+    left: auto;
+  }
+
+  .addthis_toolbox {
+    position: absolute;
+    right: 0;
+    top: 25px;
+  }
+
+    // Share
+  .toggle-share {
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-transform: uppercase;
+  }
+
+  .addthis_default_style .at300b {
+    padding: 0 5px;
+  }
+
+  .node-share {
+    padding-top: 20px;
+
+    .addthis_toolbox {
+      display: none;
+      &.animated {
+        display: block;
+      }
+    }
+  }
+
+  // Publications (Change width to full)
+  .publication-body {
+    max-width: 700px;
+  }
+}
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+// Publcation fix for responsive
+@include at-breakpoint(12 1000px) {
+
+}
+
+// Tableet port ----max-width(767px)
+@include at-breakpoint($tablet-port) {
+
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+
+}

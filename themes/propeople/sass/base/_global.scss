@@ -1,0 +1,276 @@
+//------------------------------------------------------------------------------
+//Page
+html, body {
+  -webkit-font-smoothing: antialiased;
+  @include transition-property(all);
+  @include transition-timing-function(ease-in);
+  @include transition-duration(.2s);
+}
+
+body {
+  @include font-size();
+  font-family: $sans;
+  word-wrap: break-word;
+}
+
+.group {
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.preloader,
+.preloader-overlay,
+.custom-throbber  {
+  display: none;
+}
+
+/*
+ Hide pane titles
+*/
+.hide-title {
+  h2.pane-title {
+   display: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: bold;
+}
+
+/*
+  Reset base styles for all lists
+*/
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  outline: medium none;
+  @include links($cyan, $white);
+  @include transition-property(all);
+  @include transition-timing-function(ease-in);
+  @include transition-duration(.1s);
+
+  &:focus {
+    outline: medium none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="search"] {
+  min-height: 22px;
+}
+
+.form-text,
+.form-textarea {
+  border: 1px solid transparent;
+  @extend %no-border;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    @include box-shadow(0px 1px 4px 0px rgba(0, 0, 0, 0.15));
+    border: 1px solid #fff;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px $white inset !important;
+}
+
+/* Text */
+.tr { text-align: right; }
+.tc { @extend %centered; }
+
+  hr {
+    border-top: 0 none;
+    @extend %border-bottom;
+    margin-left: auto;
+    margin-right: auto;
+    &.half {
+      width: 50%;
+    }
+  }
+
+//------------------------------------------------------------------------------
+// Thrrobber
+
+/*
+  IE 9.0 and less versions
+*/
+.ajax-message {
+  text-align: center;
+  color: $pink;
+  display: none;
+}
+
+
+/*
+  Normlal browsers
+*/
+.ajax-progress-throbber {
+  margin: 0 auto 16px;
+  display: block;
+  width: 34px;
+}
+
+
+.front {
+  .custom-throbber {
+    display: block;
+  }
+}
+
+
+
+//------------------------------------------------------------------------------
+// Video overlay
+
+
+
+//------------------------------------------------------------------------------
+// Warning, Tabs, Message pane
+.pane-pane-messages {
+  .tabs {
+    margin: 20px 0;
+  }
+  .status,
+  .warning,
+  .error,
+  .alert-block {
+    color: $white;
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 0;
+    padding: 15px 55px 15px 30px;
+    @include font-size(15);
+    @include box-sizing(border-box);
+    width: 100%;
+    z-index: 999;
+
+    .krumo-root {
+      color: $black;
+    }
+
+    a {
+      color: $black;
+    }
+
+  }
+}
+
+//------------------------------------------------------------------------------
+// Helper classes
+
+/*
+ * Reset borders and paddings/margins
+*/
+  .centered {
+    @extend %centered;
+  }
+  .no-border {
+    @extend %no-border;
+  }
+  .no-padding {
+    @extend %no-padding;
+  }
+  .no-margin {
+    @extend %no-margin;
+  }
+
+
+/*
+ * Image replacement
+ */
+
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback
+  *text-indent: -9999px;*/
+}
+
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+  visibility: hidden;
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.element-invisible,
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}

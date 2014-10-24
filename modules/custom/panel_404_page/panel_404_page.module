@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel 404 page feature.
+ */
+
+include_once 'panel_404_page.features.inc';

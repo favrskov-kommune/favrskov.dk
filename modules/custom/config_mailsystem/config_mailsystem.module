@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Config MailSystem feature.
+ */
+
+include_once 'config_mailsystem.features.inc';

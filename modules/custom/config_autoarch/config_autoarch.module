@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Config Autoarch feature.
+ */
+
+include_once 'config_autoarch.features.inc';

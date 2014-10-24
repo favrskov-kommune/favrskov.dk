@@ -1,0 +1,35 @@
+//------------------------------------------------------------------------------
+// Node type borger DK Article
+
+.node-type-borger-dk-article {
+  .submitted {
+    display: none;
+  }
+
+  .node-borger-dk-article {
+    font-family: $sans;
+    line-height: 1.4;
+    @include font-size(16);
+
+    // Hide author
+    .byline {
+      display: none;
+    }
+
+    // Section elements
+    .shortlist,
+    .legislation,
+    .recommended,
+    .os2web-header,
+    .os2web-selfservice {
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      @include font-size(30);
+      font-family: $sans-med-strict;
+      line-height: 1.2;
+      margin: 20px 0;
+    }
+  }
+}

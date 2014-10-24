@@ -1,0 +1,17 @@
+name = Config Panelizer
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_panelizer
+dependencies[] = ctools
+dependencies[] = panelizer
+dependencies[] = strongarm
+features[ctools][] = panelizer:panelizer:1
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[panelizer_defaults][] = node:frontpage:default
+features[panelizer_defaults][] = node:location:default
+features[panelizer_defaults][] = node:subjectpage:default
+features[variable][] = panelizer_defaults_node_frontpage
+features[variable][] = panelizer_defaults_node_location
+features[variable][] = panelizer_defaults_node_subjectpage

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel publishing case feature.
+ */
+
+include_once 'panel_publishing_case.features.inc';

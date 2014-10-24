@@ -1,0 +1,65 @@
+//------------------------------------------------------------------------------
+// Node contacts
+
+// ----------------------------------
+//  Phone book separate node
+
+.node-type-phone-book .contact-info {
+  @include span-columns(12, 12);
+
+  .node-contacts {
+    @include span-columns(7,7);
+
+    .contact-info {
+      @include span-columns(7, 7);
+    }
+  }
+
+  & > h2 {
+    @include font-size(50);
+    font-family: $sans-bold-strict;
+    color: $slategrey;
+    margin-bottom: 30px;
+
+    @include at-breakpoint($phone-land) {
+      @include font-size(40);
+    }
+  }
+
+  // Stuff info
+  .stuff-info {
+    margin-top: 30px;
+
+    h2 {
+      @include font-size(30);
+      color: $gray;
+    }
+
+    // Case if Table appear
+
+    table {
+
+      td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #eee;
+      }
+
+      tr {
+          border-bottom: 1px solid #fff;
+          @include transition-duration(.1s);
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.node-type-phone-book {
+  .short-contact-details,
+  .short-contact-details-fields {
+    overflow: hidden;
+  }
+}

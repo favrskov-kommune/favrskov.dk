@@ -1,0 +1,250 @@
+//------------------------------------------------------------------------------
+// Blogs page
+.panel-list {
+  .list-content {
+    @include span-columns(7, 12);
+  }
+  .list-sidebar {
+    @include span-columns(4 omega, 12);
+  }
+}
+
+.list-content {
+  // Header
+  .pane-page-title {
+    border-bottom: 1px solid #d4d7d7;
+    color: $slategrey;
+    font-family: $sans-bold-strict;
+    margin-bottom: 35px;
+    padding-bottom: 20px;
+    @include font-size(50);
+  }
+
+  .view-content > h3 {
+    @include font-size(14);
+    color: $slategrey;
+    margin-bottom: 20px;
+  }
+}
+
+// List elements
+.list-elements {
+  li {
+    padding: 0 0 40px 0;
+    margin-bottom: 40px;
+    border-bottom: 1px solid $lightgrey;
+  }
+
+  // Content
+
+  // Header
+  header {
+    margin: 0 0 15px;
+    @include font-size(14);
+    line-height: 1.3;
+
+    a {
+      @include links($slategrey, $red);
+    }
+  }
+
+  h1 {
+    @include  font-size(38);
+    font-family: $sans-bold-strict;
+    line-height: 1;
+    margin: 0 0 10px;
+
+    a {
+      @include links($slategrey, $red);
+    }
+  }
+
+  .general-info {
+    @include span-columns(8, 12);
+  }
+
+  // Comments styles if comments are present
+  .comments-counter {
+    @include span-columns(4 omega, 12);
+    text-align: right;
+
+    a {
+      display: block;
+      float: right;
+      padding-left: 25px;
+      @include sprite(-235px, -1px);
+    }
+  }
+
+  // Image
+  img {
+    margin-bottom: 20px;
+  }
+  // Text
+  p {
+    @include font-size(16);
+    line-height: 1.4;
+  }
+}
+
+// Sidebar
+.list-sidebar,
+.node-content + .sidebar {
+  padding-top: 160px;
+
+  // Headlines
+  h2 {
+    @include font-size(24);
+    font-family: $sans-med-strict;
+    margin-bottom: 20px;
+    color: $def-color;
+  }
+
+  // Filter by month
+  .sidebar-filters,
+  .pane-blogs-filters,
+  .pane-blogs-blog-month-filter {
+    border-bottom: 1px solid $lightgrey;
+    padding: 0 0 40px;
+    margin-bottom: 40px;
+
+    .view-content a {
+      line-height: 1.5;
+      margin-bottom: 10px;
+      @include font-size(15);
+      @include inline-block();
+    }
+
+    .active-category {
+      color: $slategrey;
+      background: #dcdede;
+      padding: 2px 8px;
+      margin-left: -8px;
+    }
+  }
+}
+
+// News social links
+.list-sidebar .social-links {
+  @extend .group;
+  margin-bottom: 35px;
+
+  li {
+    color: $cyan;
+    float: left;
+    margin-right: 15px;
+    @include font-size(37);
+    position: relative;
+    width: 37px;
+    height: 37px;
+
+    &:hover {
+      color: $gray;
+    }
+  }
+
+  .ext {
+    text-indent: -999em;
+    display: block;
+    position: absolute;
+    width: 37px;
+    height: 37px;
+    top: 0;
+    z-index: 10;
+  }
+
+  // Yout tube icon fix
+  .youtube {
+    &:before {
+      color: $white;
+      height: 100%;
+      line-height: 1.7;
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+      @include font-size(22);
+    }
+
+    &:after {
+      background: $cyan;
+      content: '';
+      height: 37px;
+      position: absolute;
+      left: 0;
+      @include border-radius(37px);
+      width: 37px;
+    }
+
+    &:hover:after {
+      background: $gray;
+    }
+  }
+}
+
+
+.node-content + .sidebar {
+  padding-top: 0;
+}
+
+ //  Link see all
+.see-all-link {
+  margin-bottom: 35px;
+  @include font-size(17);
+}
+
+.pane-go-back-link {
+  @include font-size(17);
+  margin-bottom: 30px;
+}
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+// Tableet port ----max-width(767px)
+@include at-breakpoint($tablet-port) {
+  // Layout
+  .panel-list {
+    .list-content {
+      @include span-columns(12 omega, 12);
+    }
+    .list-sidebar {
+      @include span-columns(12, 12);
+    }
+  }
+
+  // Main content
+  .list-elements {
+    h1 {
+      @include font-size(32);
+    }
+  }
+
+  // Sidebar
+  .list-sidebar {
+    padding-top: 80px;
+  }
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+  .list-elements {
+    // Main content
+    .general-info {
+      @include span-columns(12, 12);
+      margin-bottom: 10px;
+    }
+
+    .comments-counter {
+      @include span-columns(12, 12);
+      @include remove-omega;
+      text-align: left;
+
+      a {
+        float: none;
+      }
+    }
+  }
+}

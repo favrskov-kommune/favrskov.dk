@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OS2Web Social Directory feature.
+ */
+
+include_once 'os2web_social_directory.features.inc';

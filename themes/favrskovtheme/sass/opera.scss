@@ -1,0 +1,44 @@
+/*
+  Here present fixes for Front page in
+  Internet explorer version less than 9.0
+*/
+.opera {
+
+  // nth-childs
+  .remove-mr {
+    margin-right: 0 !important;
+  }
+
+  // Taxonomy
+  .subject-grid .taxonomy-list .taxonomy:nth-child(4n) { float: left; }
+  .subject-grid .taxonomy-list .taxonomy { margin-right: 12px; }
+
+  // Tableet port ----max-width(767px)
+  @media (max-width: 980px){
+     // Subject grid
+    .subject-grid .taxonomy-list .taxonomy:nth-child(2n) {
+      margin-right: 0;
+    }
+
+  }
+
+
+  .subject-grid li .taxonomy-pic {
+    background: transparent url(../images/ie/tax-bg.png) no-repeat -1px -1px;
+  }
+  .subject-grid .taxonomy:hover .taxonomy-pic {
+    background: transparent url(../images/ie/tax-bg.png) no-repeat -90px -1px;
+    background-color: transparent;
+  }
+
+
+  // Events
+  .events .view-content li:nth-child(3n) { float: left; }
+
+  // Banners
+  .banners-list li:nth-child(3n) { float: left; }
+
+  // News
+  .news li:nth-child(4n) { float: left; }
+
+} //<-- END of OPERA

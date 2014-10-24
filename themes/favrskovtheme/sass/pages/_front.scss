@@ -1,0 +1,955 @@
+//------------------------------------------------------------------------------
+// Front page
+
+//------------------------------------------------------------------------------
+// Subject grid
+
+
+.subject-grid {
+  background: url(../images/pat.png);
+  border-bottom: 1px solid $slategrey;
+  margin-bottom: 46px;
+
+  .taxonomy-list {
+    padding-top: 36px;
+  }
+
+  .taxonomy {
+    font-size: 0;
+    @include span-columns(4, 12);
+    @include inline-block(top);
+    vertical-align: top;
+    margin-bottom: 35px;
+    float: none;
+    text-align: center;
+    position: relative;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+
+    .global-link {
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .taxonomy:hover {
+      a {
+        color: $liteGray;
+
+        &:hover {
+          color: $red;
+
+          // Colors theme
+          .violet      & { color: $violet; }
+          .dark-grey   & { color: $dark-grey; }
+          .grey        & { color: $gray; }
+          .yellow      & { color: $dirty-yellow; }
+          .blue        & { color: $deepBlue; }
+          .pink        & { color: $pink; }
+          .salat-green & { color: $salatGreen; }
+        }
+      }
+
+      .taxonomy-pic {
+        background-color: $liteGray;
+      }
+    }
+
+  // Header
+  h3 {
+    @include font-size(22);
+    margin-bottom: 8px;
+  }
+
+  // Subheaders
+  h4 {
+    @include font-size(15);
+    font-weight: normal;
+    margin-bottom: 8px;
+    font-family: $sans-med-strict;
+    a {
+      @include links($def-color, $liteGray);
+    }
+  }
+
+  .contextual-links a {
+    line-height: 1;
+    @include font-size(12);
+  }
+}
+
+.front {
+  .subject-grid {
+    .taxonomy {
+      font-size: 0;
+      @include span-columns(3, 12);
+      @include inline-block(top);
+      vertical-align: top;
+      margin-bottom: 35px;
+      float: none;
+      text-align: center;
+      position: relative;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+
+// Taxonomy Image on Subject-grid
+.taxonomy-pic {
+  margin: 0 auto 15px;
+  height: 80px;
+  @include border-radius(80px);
+  background-color: $red;
+  width: 80px;
+
+  // Colors theme
+  .violet      & { background-color: $violet; }
+  .dark-grey   & { background-color: $dark-grey; }
+  .grey        & { background-color: $gray; }
+  .yellow      & { background-color: $dirty-yellow; }
+  .blue        & { background-color: $deepBlue; }
+  .pink        & { background-color: $pink; }
+  .salat-green & { background-color: $salatGreen; }
+
+  @include transition-duration(.2s);
+
+  a {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  img {
+    position: relative;
+    top: 19px;
+  }
+}
+
+//------------------------------------------------------------------------------
+/*
+  Slider
+
+  For hte slider using library - Flexslider
+  Styles in the next folder:
+  ../sass/modules/_flexslider.scss
+
+*/
+
+//  Fix more link position for admin
+.admin-menu {
+  .events .more-link,
+  .news .more-link {
+    top: -50px;
+  }
+}
+
+.matrix-view,
+.video-pane,
+.events,
+.news {
+  .more-link {
+    position: absolute;
+    right: 12px;
+    top: 2px;
+    font-family: $sansLight;
+    text-transform: uppercase;
+  }
+
+  a {
+    @include links($gray, #999);
+  }
+
+  .date a {
+    @include links(#999, #999);
+    @include font-size(14);
+    text-transform: lowercase;
+    font-family: $sans-med-strict;
+  }
+
+  article {
+    @extend %animate;
+
+     h1 {
+      @include font-size(22);
+      margin: 15px 0;
+      line-height: 1.1;
+      font-family: $sans-med-strict;
+    }
+  }
+}
+
+// Titles
+.matrix-view,
+.video-pane,
+.events,
+.news{
+.pane-title {
+    @include font-size(30);
+    margin-bottom: 36px;
+    padding-right: 80px;
+    color: $gray;
+    font-family: $sans-bold-strict;
+  }
+}
+
+//------------------------------------------------------------------------------
+// News
+.news {
+  background-color: $lightgrey;
+  padding: 40px 0 20px;
+  margin-bottom: 70px;
+  .content {
+    padding-bottom: 4px;
+  }
+  .news-item {
+    @include span-columns(3, 12);
+    @include nth-omega(4n);
+    position: relative;
+    margin-bottom: 20px;
+
+    .global-link {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    &:hover a,
+    &:hover article {
+      color: #999;
+    }
+  }
+
+  article {
+    border-top: 8px solid $gray;
+    border-bottom: 2px solid $gray;
+    padding: 18px 5px 18px 0;
+    color: $gray;
+    min-height: 211px;
+
+    p {
+      @include font-size(16);
+      line-height: 1.4;
+      font-family: $sans-strict;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+// Events
+.matrix-view,
+.events {
+  background: $white;
+  padding: 70px 0 11px;
+
+   .view-content li {
+    @include span-columns(4, 12);
+    @include nth-omega(3n);
+    position: relative;
+    margin-bottom: 30px;
+
+    & > a {
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      text-indent: -999em;
+      text-transform: uppercase;
+    }
+
+    &:hover a,
+    &:hover article {
+      color: #999;
+    }
+  }
+
+  article {
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+    min-height: 330px;
+    max-height: 330px;
+    overflow: hidden;
+    color: $gray;
+    line-height: 1.4;
+
+    a {
+      display: block;
+    }
+
+    footer a {
+      display: inline;
+    }
+  }
+
+  header {
+    position: relative;
+    margin-top: 34px;
+    padding-top: 41px;
+    // border-top: 8px solid #ccc;
+
+    // top boreder
+    &:before {
+      background-color: #ccc;
+      content: '';
+      height: 8px;
+      position: absolute;
+      right: 0;
+      top: -8px;
+      width: 80%;
+    }
+
+    .date {
+      position: absolute;
+      width: 50px;
+      top: -36px;
+      font-family: $sans-med-strict;
+      letter-spacing: -.05em;
+    }
+
+    .day {
+      @include font-size(20);
+      display: block;
+    }
+    .month {
+      @include font-size(16);
+    }
+
+    .date time {
+      background: $red;
+      color: $white;
+      display: block;
+      @include font-size(16);
+      height: 35px;
+      padding: 11px 5px 10px;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1;
+      width: 40px;
+    }
+  }
+
+  .category {
+    position: absolute;
+    right: 8px;
+    top: 18px;
+    @include font-size(14);
+    font-family: $sans-med;
+
+    a { @include links(#999, $gray); }
+  }
+
+  .element-content,
+  p {
+    @include font-size(16);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  footer {
+    p {
+      font-family: $sans-med;
+      @include font-size(17);
+      margin-bottom: 2px;
+      line-height: 1.4;
+    }
+  }
+
+  // Pager
+  .item-list {
+    clear: both;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Map
+
+// Map bg
+.map-wrap {
+  width: 60%;
+  left: 40%;
+  background: $red url('../images/front-map.png') no-repeat center;
+  height: 250px;
+  position: absolute;
+}
+
+.map {
+  background: $red;
+  height: 250px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 72px;
+
+  // Violet color scheme
+  .violet & { background: $violet; }
+  // Dark Grey color scheme
+  .dark-grey & { background: $dark-grey; }
+  // Grey color scheme
+  .grey & { background: $gray; }
+  // Yellow color scheme
+  .yellow & { background: $dirty-yellow; }
+  // Blue color scheme
+  .blue & { background: $deepBlue; }
+  // Pink color scheme
+  .pink & { background: $pink; }
+  // Salat green color scheme
+  .salat-green & { background: $salatGreen; }
+
+  //  Description from the left
+  .description {
+    @include span-columns(5, 12);
+    background: $red;
+    color: $white;
+    height: 200px;
+    padding-bottom: 50px;
+    max-height: 250px;
+
+    // Violet color scheme
+    .violet & { background: $violet; }
+    // Dark Grey color scheme
+    .dark-grey & { background: $dark-grey; }
+    // Grey color scheme
+    .grey & { background: $gray; }
+    // Yellow color scheme
+    .yellow & { background: $dirty-yellow; }
+    // Blue color scheme
+    .blue & { background: $deepBlue; }
+    // Pink color scheme
+    .pink & { background: $pink; }
+    // Salat green color scheme
+    .salat-green & { background: $salatGreen; }
+
+    p,
+    h1 {
+      overflow: hidden;
+      padding-right: 70px;
+    }
+
+    h1 {
+      font-family: $sans-med-strict;
+      margin: 67px 0 19px;
+      max-height: 60px;
+      @include font-size(30);
+
+    }
+
+    p {
+      @include font-size(16);
+      line-height: 1.4;
+      max-height: 70px;
+    }
+  }
+}
+
+// Locations list
+.map .view-empty,
+.locations-list {
+  @include span-columns(6 omega, 12);
+  @include pre(1);
+  margin-top: 84px;
+
+  li {
+    @include span-columns(3, 6);
+    @include nth-omega(2n);
+    margin-bottom: 13px;
+  }
+
+  a {
+    line-height: 1;
+    @include font-size(18);
+  }
+}
+.map .view-empty {
+  padding: 20px 0;
+
+  p {
+    padding: 0 20px;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Bototom banners
+.view-banners {
+  padding-bottom: 0;
+  margin: 0 auto 33px;
+  padding-top: 70px;
+
+  .banner-link {
+    margin-bottom: 0;
+
+    a {
+      display: block;
+      background: rgba($def-color, .6);
+      min-height: 44px;
+      padding: 33px 5% 30px;
+      width: 100%;
+      @include box-sizing(border-box);
+      @include font-size(22);
+      @include links($white, $white);
+
+      &:before {
+        font-family: "fontello";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+
+        display: inline-block;
+        text-decoration: inherit;
+        width: 1em;
+        text-align: center;
+        content: '\e807';
+        color: $white;
+        float: right;
+        line-height: 23px;
+        @include font-size(30);
+      }
+    }
+  }
+
+  a + .banner-link {
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    margin-bottom: 0;
+
+    a {
+      padding: 22px 5% 20px;
+    }
+    a:before {
+      display: none;
+    }
+  }
+}
+
+.banners-list {
+  margin-bottom: 33px;
+  font-size: 0;
+
+  li {
+    @include span-columns(4, 12);
+    @include nth-omega(3n);
+    position: relative;
+    margin-bottom: 37px;
+    float: none;
+    @include inline-block();
+    vertical-align: bottom;
+
+    &:nth-child(3n) {
+      float: none;
+    }
+
+    &:hover a {
+      background: rgba($gray, .6);
+    }
+  }
+  a {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+
+
+
+// Matrix view
+.matrix-view {
+  font-size: 0;
+  line-height: 0;
+
+  // Switcher
+  .switch {
+    top: 0;
+
+    a {
+      display: block;
+      text-indent: -999em;
+      text-transform: uppercase;
+    }
+  }
+  .pane-title {
+    line-height: 1.2;
+  }
+
+  .contextual-links {
+    @include font-size(13);
+  }
+
+  .matrix-item {
+    .category,
+    h1 {
+      @include transition-duration(.1s);
+    }
+  }
+
+}
+
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+// Screen---- max-width(980px)
+@include at-breakpoint($tablet) {
+  // Subject grid
+  .subject-grid {
+    h3 {
+      @include font-size(19);
+    }
+    h4 {
+      @include font-size(13);
+    }
+  }
+
+  // Events and Matrix view
+  .events,
+  .matrix-view  {
+    // Single line in header
+    header:before {
+      width: 90%;
+    }
+  }
+
+  // News
+  .news .pane-title {
+    border-bottom: 2px solid $gray;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+  }
+
+  .news .news-list {
+    .news-item {
+      @include span-columns(6, 12);
+      @include nth-omega(2n);
+
+      margin-bottom: 20px;
+    }
+    article {
+      min-height: 180px;
+      border-top: 0 none;
+    }
+  }
+
+  //  Map
+  .map {
+    .locations-list {
+      margin-top: 84px;
+      a { @include font-size(19); }
+    }
+  }
+}
+
+// Tableet land ----max-width(871px)
+@include at-breakpoint($tablet-land) {
+  // Subject grid
+  .front .subject-grid,
+  .subject-grid {
+    h3 {
+      @include font-size(24);
+    }
+    h4 {
+      @include font-size(15);
+    }
+
+    .taxonomy {
+      @include span-columns(6, 12);
+      float: none;
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  // Events
+  .matrix-view,
+  .events {
+    padding-bottom: 0;
+
+    .item-list  li {
+      @include span-columns(12, 12);
+      @include remove-nth-omega(3n);
+      margin-bottom: 30px;
+    }
+
+    article {
+      border-bottom: 0 none;
+      max-height: 1000px;
+      min-height: 130px;
+      padding-bottom: 0;
+
+      p,
+      h1,
+      footer {
+        margin-left: 65px;
+      }
+
+      footer p {
+        margin-left: 0;
+      }
+      footer {
+        padding-bottom: 20px;
+        border-bottom: 2px solid #ccc;
+      }
+    }
+  }
+
+  //  Map
+  .map {
+    .locations-list {
+      margin-top: 44px;
+
+      li {
+        @include span-columns(6, 6);
+        @include remove-nth-omega(2n);
+        margin-bottom: 10px;
+      }
+
+      a {
+        @include font-size(20);
+      }
+    }
+  }
+}
+
+// Tablet port ----max-width(768px)
+@include at-breakpoint($tablet-port) {
+  // Subject grid
+  .front .subject-grid,
+  .subject-grid {
+
+    h3 {
+      @include font-size(24);
+    }
+    h4 {
+      @include font-size(15);
+    }
+
+    .taxonomy {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      display: block;
+      text-align: left;
+      width: 100%;
+
+      &:nth-child(2n) {
+        margin-right: auto;
+      }
+
+      .taxonomy-pic {
+        margin-bottom: 0;
+      }
+
+      .tax-pic {
+        @include inline-block(middle);
+        margin-right: 5%;
+        text-align: center;
+        width: 20%;
+      }
+
+      .tax-description {
+        @include inline-block(top);
+        max-width: 75%;
+      }
+    }
+  }
+
+  // News
+  .news .news-list {
+    .news-item {
+      @include span-columns(12, 12);
+    }
+    article {
+      min-height: 10px;
+    }
+  }
+
+  //  Map
+  .map {
+    // Description
+    .description {
+      p,h1 {
+        padding-right: 10px;
+      }
+      h1 {
+        @include font-size(18);
+        max-height: 53px;
+      }
+      p {
+        @include font-size(14);
+        max-height: 95px;
+      }
+    }
+
+    // Location list
+    .locations-list {
+      margin-top: 44px;
+
+      a { @include font-size(18); }
+    }
+  }
+
+  //----------------------------------------------------------------------------
+  // Bototom banners
+  .banners-list {
+
+    li {
+      @include span-columns(12, 12);
+      @include remove-nth-omega(3n);
+      margin-bottom: 30px;
+      overflow: hidden;
+      margin-right: 0;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .banner-link a {
+      padding: 15px 5%;
+    }
+  }
+}
+
+
+@include at-breakpoint(12 640px) {
+  // Events and Matrix view
+  .events,
+  .matrix-view  {
+    // Single line in header
+    header:before {
+      width: 85%;
+    }
+  }
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+  // Subject grid
+  .front .subject-grid,
+  .subject-grid {
+    h3 {
+      @include font-size(18);
+    }
+    h4 {
+      @include font-size(13);
+    }
+  }
+
+  // News, events titles
+  .events,
+  .news {
+    .pane-title {
+      @include font-size(25);
+    }
+  }
+
+  //  Map
+  .map {
+    // Description
+    .description {
+      h1 {
+        margin-top: 44px;
+      }
+      p {
+        @include font-size(14);
+      }
+    }
+
+    // Location list
+    .locations-list {
+      a { @include font-size(16); }
+    }
+  }
+
+  //----------------------------------------------------------------------------
+  // Bototom banners
+ .banners-list  .banner-link a {
+    padding: 15px 5%;
+    @include font-size(16);
+  }
+}
+
+@include at-breakpoint(12 420px) {
+  // Events and Matrix view
+  .events,
+  .matrix-view  {
+    // Single line in header
+    header:before {
+      width: 80%;
+    }
+  }
+}
+
+// Phone port -----max-width(320px)
+@include at-breakpoint($phone-port) {
+  // Subject grid
+  .front .subject-grid,
+  .subject-grid {
+
+    .taxonomy {
+      margin: 0 0 20px 0;
+
+      .tax-pic {
+        margin-right: 15%;
+        text-align: center;
+        width: 20%;
+      }
+
+      .tax-description {
+        max-width: 65%;
+      }
+    }
+
+    h3 {
+      @include font-size(17);
+    }
+    h4 {
+      @include font-size(12);
+    }
+  }
+
+  // Events and Matrix view
+  .events,
+  .matrix-view  {
+    // Single line in header
+    header:before {
+      width: 77%;
+    }
+  }
+
+  //  Map
+  .map {
+    // Description
+    .description {
+      h1 {
+        margin-top: 44px;
+        @include font-size(14);
+      }
+      p {
+        @include font-size(14);
+      }
+    }
+
+    // Location list
+    .locations-list {
+      a { @include font-size(14); }
+    }
+  }
+}

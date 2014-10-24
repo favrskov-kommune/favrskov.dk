@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * Implements hook_stream_wrappers.
+ */
+function fics_stream_wrapper_stream_wrappers() {
+  return array(
+    'fics' => array(
+      'name' => t('FICS'),
+      'class' => 'FICSStreamWrapper',
+      'description' => t('Provides fics  path.'),
+      'type' => STREAM_WRAPPERS_LOCAL_HIDDEN,
+    ),
+  );
+}
+
+
+/**
+ * FICS (fics://) stream wrapper class.
+ *
+ * Provides support for storing fics documents with the Drupal file
+ * interface.
+ */
+class FICSStreamWrapper extends DrupalPublicStreamWrapper {
+
+  /**
+   * Implements abstract public function getDirectoryPath()
+   */
+  public function getDirectoryPath() {
+    return parent::getDirectoryPath() . '/fics';
+  }
+
+  function getExternalUrl() {
+    $path = str_replace('\\', '/', $this->getTarget());
+    return $GLOBALS['base_url'] . '/' . self::getDirectoryPath() . '/' . drupal_encode_path($path);
+  }
+}
+

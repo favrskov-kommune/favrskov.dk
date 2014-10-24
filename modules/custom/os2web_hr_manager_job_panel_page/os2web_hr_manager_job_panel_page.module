@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OS2web HR-Manager Job panel page feature.
+ */
+
+include_once 'os2web_hr_manager_job_panel_page.features.inc';

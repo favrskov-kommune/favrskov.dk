@@ -1,0 +1,45 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  panel_hearing_page.pages_default.inc: n/a
+#  panel_hearing_page.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-07-23 15:31+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: panel_hearing_page.pages_default.inc:377
+msgid "Send response"
+msgstr "Send svar"
+
+#: panel_hearing_page.pages_default.inc:654
+msgid "Share"
+msgstr "Del"
+
+#: panel_hearing_page.pages_default.inc:660
+msgid "Print"
+msgstr "Udscriv"
+
+#: panel_hearing_page.pages_default.inc:661
+msgid "Subscribe"
+msgstr "Tilmeld"
+
+#: panel_hearing_page.info:0
+msgid "Panel Hearing page"
+msgstr ""
+
+#: panel_hearing_page.info:0
+msgid "Panels"
+msgstr ""
+

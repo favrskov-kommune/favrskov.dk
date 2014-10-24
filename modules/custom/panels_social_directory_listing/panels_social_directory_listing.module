@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panels Social Directory Listing feature.
+ */
+
+include_once 'panels_social_directory_listing.features.inc';

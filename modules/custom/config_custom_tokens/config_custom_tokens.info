@@ -1,0 +1,7 @@
+name = Config Custom Tokens
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_custom_tokens
+dependencies[] = text_formats_all
+features[features_api][] = api:2

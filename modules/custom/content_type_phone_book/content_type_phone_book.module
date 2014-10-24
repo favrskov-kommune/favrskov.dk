@@ -1,0 +1,107 @@
+<?php
+/**
+ * @file
+ * Code for the Content Type Phone Book feature.
+ */
+
+include_once 'content_type_phone_book.features.inc';
+
+/**
+ * Implements hook_field_formatter_info().
+ *
+ * Registers telephone number formatter for text fields, and date formatter for date in phonebook.
+ */
+function content_type_phone_book_field_formatter_info() {
+  return array(
+    'telephone_formatter' => array(
+      'label' => t('Telephone'),
+      'field types' => array('text'),
+    ),
+    'phone_book_date' => array(
+      'label' => t('Phone book date'),
+      'field types' => array('date', 'datestamp', 'datetime'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ *
+ * Contains render function for telephone number formatter, and phone book date formatter.
+ */
+function content_type_phone_book_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  switch ($display['type']) {
+    case 'telephone_formatter' :
+      $element = array();
+      foreach ($items as $delta => $item) {
+        $value = $item['value'];
+        $length = strlen($value);
+        for ($index = 2; $index < $length; $index += 2) {
+          $value = substr($value, 0, $index) . ' ' . substr($value, $index, strlen($value));
+          $index++;
+          $length++;
+        }
+        $element[$delta]['#markup'] = "<span>" . $value . "</span>";
+      }
+      return $element;
+      break;
+    case 'phone_book_date' :
+      $element = array();
+      $saved_timezone = date_default_timezone_get();
+      foreach ($items as $delta => $item) {
+        $timezone = $item['timezone'];
+        $timezone_db = $item['timezone_db'];
+        date_default_timezone_set($timezone_db);
+
+        $time = strtotime($item['value']);
+        $time2 = strtotime($item['value2']);
+        $day = strtolower(format_date($time, 'custom', 'l', $timezone));
+        $day2 = strtolower(format_date($time2, 'custom', 'l', $timezone));
+        $hours = strtolower(format_date($time, 'custom', 'H.i', $timezone));
+        $hours2 = strtolower(format_date($time2, 'custom', 'H.i', $timezone));
+        if ($day !== $day2) {
+          $element[$delta]['#markup'] = $day . ' - ' . $day2 . " kl." . $hours . ' - ' . $hours2;
+        }
+        else {
+          $element[$delta]['#markup'] = $day . " kl." . $hours . ' - ' . $hours2;
+        }
+      }
+      date_default_timezone_set($saved_timezone);
+      return $element;
+      break;
+    default:
+      // Will never happen.
+  }
+}
+
+/**
+ * Implements hook_node_validate().
+ *
+ * Adds custom validation for telephone fields.
+ */
+function content_type_phone_book_node_validate($node, $form, &$form_state) {
+  if ($node->type === 'phone_book') {
+    content_type_phone_book_check_telephone_number($node, 'field_phone_book_phone', t('Phone number'));
+    content_type_phone_book_check_telephone_number($node, 'field_phone_book_cell_phone', t('Cell phone'));
+  }
+}
+
+/**
+ * Validation callback for telephone numbers.
+ *
+ * @param $node
+ *   Node to be validated.
+ * @param $field_name
+ *   Machine name of the field in node.
+ * @param $human_name
+ *   Human name of the field in node.
+ */
+function content_type_phone_book_check_telephone_number($node, $field_name, $human_name) {
+  $telephone = field_get_items('node', $node, $field_name);
+  $telephone = $telephone[0]['value'];
+
+  if (!preg_match('/^[0-9]{0,8}$/', $telephone)) {
+    form_set_error($field_name, t("The field '@name' must be numeric and have maximum length 8.",
+      array('@name' => $human_name)));
+  }
+}

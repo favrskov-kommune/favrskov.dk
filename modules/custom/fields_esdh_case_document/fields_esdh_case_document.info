@@ -1,0 +1,17 @@
+name = Fields ESDH Case & Document
+description = Adding ESDH case and document fields to article and news content types.
+core = 7.x
+package = Content Types
+php = 5.2.4
+version = 7.x-1.1
+project = fields_esdh_case_document
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = os2web_case_publishing
+features[features_api][] = api:2
+features[field_base][] = field_fics_esdh_cases
+features[field_base][] = field_fics_esdh_documents
+features[field_instance][] = node-article-field_fics_esdh_cases
+features[field_instance][] = node-article-field_fics_esdh_documents
+features[field_instance][] = node-news-field_fics_esdh_cases
+features[field_instance][] = node-news-field_fics_esdh_documents

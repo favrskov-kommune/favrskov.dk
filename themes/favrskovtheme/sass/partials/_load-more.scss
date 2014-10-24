@@ -1,0 +1,52 @@
+//---------------------------------------------------------------------- Pager
+.item-list .pager.pager-load-more {
+  overflow: hidden;
+  margin: 0 ;
+  font-family: $sans-strict;
+
+  .pager-next {
+    float: none;
+    width: 100%;
+
+    &:hover a {
+      color: white;
+    }
+  }
+
+   a {
+    background-color: $red;
+    display: block;
+    height: 38px;
+    @include links($white, $white);
+    @include font-size(14);
+    padding: 0;
+    line-height: 39px;
+    text-align: center;
+    text-transform: uppercase;
+    @include border-radius(4px);
+
+    &:hover {
+      background-color: $gray;
+    }
+  }
+
+  .arrow {
+    width: 15px;
+    height: 30px;
+    background-color: $black;
+    margin-left: 7px;
+    @include sprite(-52px, -58px);
+    @include inline-block();
+  }
+
+  // Ajax throbber
+  .ajax-progress {
+    margin-top: 50px;
+  }
+
+  .ajax-progress .throbber {
+    width: 24px;
+    height: 24px;
+    background: url(../images/ajax-loader.gif) no-repeat center;
+  }
+}

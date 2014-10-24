@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Views Page subscription feature.
+ */
+
+include_once 'views_page_subscription.features.inc';

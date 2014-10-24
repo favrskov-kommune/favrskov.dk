@@ -1,0 +1,257 @@
+//------------------------------------------------------------------------------
+// Location page
+// As location page used the same layout as Subject page, just extend some
+// styles from subkect page
+.node-type-location .panel-subject {
+  .news {
+    margin-bottom: 70px;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+// Subject page
+.panel-subject {
+  .news {
+    margin-bottom: 0;
+  }
+
+  // Events view
+  .events,
+  .matrix-view {
+    margin-top: 50px;
+  }
+}
+
+.popular,
+.panel-subject .teasers {
+  background: url(../images/pat.png);
+}
+
+.popular,
+.pane-node-field-top-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.pane-node-field-top-image {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.popular {
+  font-family: $sans-med;
+
+  img {
+    max-width: none;
+    display: block;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .articles {
+    @include span-columns(7, 12);
+    max-width: 535px;
+    background: $white;
+    margin: 36px 0 0 -37px;
+    padding: 25px 0;
+
+    & > div {
+      padding: 0 37px;
+    }
+  }
+
+  h1 {
+    color: $slategrey;
+    font-size: 50px;
+    margin-bottom: 34px;
+    font-family: $sans-bold-strict;
+  }
+
+  h2 {
+    color: $gray;
+    @include font-size(22);
+    margin-bottom: 14px;
+  }
+
+  .group li {
+    @include span-columns(6, 12);
+    @include nth-omega(2n);
+
+    a {
+      @include font-size(15);
+      line-height: 24px;
+    }
+  }
+
+}
+
+// Teasers list
+//  Contain short teser info
+// Layout - 4 column by default
+
+.teasers {
+  padding-top: 65px;
+  @include font-size(0);
+  line-height: 0;
+
+// Admin links fix
+  .contextual-links a {
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 0.25em 1em 0.25em 0.5em;
+  }
+
+  // Items list
+  .subject-item {
+    @include nth-omega(4n);
+    @include span-columns(3, 12);
+    @include inline-block();
+    @include transition-duration(.2s);
+    @include transition-property(all);
+
+    float: none;
+    margin-bottom: 20px;
+    min-height: 240px;
+    vertical-align: top;
+    position: relative;
+
+    & > a {
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+
+    &:nth-child(4n) {
+      float: none;
+    }
+  }
+  // Content of the each element
+  .subject-item-content {
+    padding: 30px;
+  }
+
+  a {
+    display: block;
+  }
+
+  //  Title
+  h2 {
+    @include font-size(22);
+    line-height: 1.2;
+    font-family: $sans-med-strict;
+    margin-bottom: 20px;
+  }
+
+  // Body
+  p {
+    @include font-size(15);
+    line-height: 1.4;
+    a {
+      @include links($def-color, $gray);
+    }
+  }
+}
+
+.news {
+  border-top: 2px solid #818a8a;
+}
+
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+
+@include at-breakpoint(12 1080px) {
+  .popular {
+    .articles {
+      margin-left: 0;
+    }
+  }
+}
+
+// Tableet land ----max-width(871px)
+@include at-breakpoint($tablet-land) {
+  .popular {
+    .articles {
+      @include span-columns(12, 12);
+      max-width: 100%;
+      background: rgba($white, .75);
+    }
+  }
+}
+
+@include at-breakpoint(12 580px) {
+  .popular {
+    h1 {
+      font-size: 40px;
+    }
+    .breadcrumb {
+      margin-bottom: 33px;
+    }
+  }
+}
+
+// Tableet port ----max-width(767px)
+@include at-breakpoint($tablet-port) {
+  // Teasers list
+  // Layout - 2 columns
+  .teasers {
+    padding-left: 3%;
+    padding-right: 3%;
+
+    .subject-item {
+      @include span-columns(6, 12);
+      @include remove-nth-omega(3n);
+      @include nth-omega(2n);
+      min-height: 100px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+//  --max-width(600px)
+@include at-breakpoint(12 600px) {
+  // Teasers list
+  // Layout - 1 column
+  .teasers {
+    .subject-item {
+      @include span-columns(12, 12);
+      @include remove-nth-omega(2n);
+      min-height: 40px;
+    }
+  }
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+  .popular {
+    h1 {
+      font-size: 30px;
+      margin-bottom: 22px;
+    }
+
+    li {
+      @include span-columns(12, 12);
+      @include remove-nth-omega(2n);
+    }
+
+    .articles {
+      padding: 18px 0;
+      height: 263px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 17px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Code for the View Blogs feature.
+ */
+
+include_once 'view_blogs.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter.
+ */
+function view_blogs_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['field_taxonomy_subject_area_tid'])) {
+    $form['field_taxonomy_subject_area_tid']['#options']['All'] = '';
+  }
+}

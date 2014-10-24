@@ -1,0 +1,319 @@
+<?php
+
+
+/**
+ * Implements hook_menu().
+ */
+function taxon_taxonomy_menu() {
+  $items = array();
+
+  $items['taxon-taxonomy'] = array(
+    'title'            => 'Taxon',
+    'description'      => '',
+    'page callback'    => 'taxon_proxy',
+    'access arguments' => array('access content'),
+    'type'             => MENU_CALLBACK,
+  );
+
+	$items['admin/config/content/taxon-taxonomy'] = array(
+	  'title' => 'Taxon Taxonomy Field',
+	  'description' => 'Configuration for the Taxon Taxonomy Field module.',
+	  'page callback' => 'drupal_get_form',
+	  'page arguments' => array('_taxon_taxonomy_admin_form'),
+	  'access arguments' => array('administer taxon taxononmy'),
+	  'type' => MENU_NORMAL_ITEM,
+	);
+	
+  return $items;
+}
+
+function taxon_taxonomy_permission() {
+  return array(
+    'administer taxon taxononmy' => array(
+      'title' => t('Taxon Taxonomy Field administration'),
+      'description' => t(''),
+    ));
+}
+
+/**
+ * Implements hook_help().
+ */
+function taxon_taxonomy_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#taxon_taxonomy':
+      module_load_include('inc', 'taxon_taxonomy');
+      
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides the connection to your existing Taxon web service.') . '</p>';
+      $output .= '<p>' . t('You can read more about Taxon and the Taxon Taxonomy Field module at ') . '<a target = "_blank" href = "http://www.taxon.dk">www.taxon.dk</a>.' . '</p>';
+      
+      return $output;
+  }
+}
+
+/*
+  The administration form.
+*/
+function _taxon_taxonomy_admin_form($form, &$form_state) {
+
+	$form['taxon_taxonomy_lookup_file'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Lookup taxonomy for Taxon'),
+	'#description' => t('The path and filename for the lookup taxonomy for Taxon.'),
+	'#size' => 40,
+	'#maxlength' => 120,
+	'#required' => TRUE,
+	'#default_value' => variable_get('taxon_taxonomy_lookup_file'),
+	);
+
+	$form['taxon_taxonomy_taxon_url'] = array(
+	'#type' => 'textfield',
+	'#title' => t('The URL for Taxon'),
+	'#description' => t('The URL where we can find the Taxon web service.'),
+	'#size' => 40,
+	'#maxlength' => 120,
+	'#required' => TRUE,
+	'#default_value' => variable_get('taxon_taxonomy_taxon_url'),
+	);
+
+	$number_results_returned = variable_get('taxon_taxonomy_number_results_returned') != "" ? variable_get('taxon_taxonomy_number_results_returned') : "5";
+
+	$form['taxon_taxonomy_number_results_returned'] = array(
+	'#type' => 'textfield',
+	'#title' => t('The number of returned results'),
+	'#description' => t('The number of results to return from Taxon.'),
+	'#size' => 40,
+	'#maxlength' => 120,
+	'#required' => TRUE,
+	'#default_value' => $number_results_returned,
+	);
+
+	$form['taxon_taxonomy_field_name'] = array(
+	'#type' => 'textfield',
+	'#title' => t('The name of the taxonomy field'),
+	'#description' => t('The name of the taxonomy field where the results from Taxon is added or removed. Use a # for ids, e.g. #taxonomy-tag-id and . for classes, e.g. .taxonomy-tags-class'),
+	'#size' => 40,
+	'#maxlength' => 120,
+	'#required' => TRUE,
+	'#default_value' => variable_get('taxon_taxonomy_field_name'),
+	);
+
+	$selected_image = variable_get('taxon_taxonomy_selected_image') != "" ? variable_get('taxon_taxonomy_selected_image') : "/sites/all/modules/taxon_taxonomy/images/selected_png";
+	
+	$form['taxon_taxonomy_selected_image'] = array(
+	'#type' => 'textfield',
+	'#title' => t('The path to the selected image'),
+	'#description' => t('The path relative to Drupal home directory to the image used when a Taxon class is selected.'),
+	'#size' => 40,
+	'#maxlength' => 120,
+	'#required' => TRUE,
+	'#default_value' => $selected_image,
+	);
+
+	$not_selected_image = variable_get('taxon_taxonomy_not_selected_image') != "" ? variable_get('taxon_taxonomy_not_selected_image') : "/sites/all/modules/taxon_taxonomy/images/not_selected_png";
+	
+	$form['taxon_taxonomy_not_selected_image'] = array(
+	'#type' => 'textfield',
+	'#title' => t('The path to the not-selected image'),
+	'#description' => t('The path relative to Drupal home directory to the image used when a Taxon class is not selected.'),
+	'#size' => 40,
+	'#maxlength' => 120,
+	'#required' => TRUE,
+	'#default_value' => $not_selected_image,
+	);
+
+	$wait_image = variable_get('taxon_taxonomy_wait_image') != "" ? variable_get('taxon_taxonomy_wait_image') : "/sites/all/modules/taxon_taxonomy/images/wait.gif";
+	
+	$form['taxon_taxonomy_wait_image'] = array(
+	'#type' => 'textfield',
+	'#title' => t('The path to the wait image'),
+	'#description' => t('The path relative to Drupal home directory to the image used when waiting for Taxon to return the results. Usually an animated GIF.'),
+	'#size' => 40,
+	'#maxlength' => 120,
+	'#required' => TRUE,
+	'#default_value' => $wait_image,
+	);
+
+	$button_text = variable_get('taxon_taxonomy_button_text') != "" ? variable_get('taxon_taxonomy_button_text') : "Classify with Taxon";
+	
+	$form['taxon_taxonomy_button_text'] = array(
+	'#type' => 'textfield',
+	'#title' => t('The text on the Taxon button'),
+	'#description' => t('The text on the Taxon button.'),
+	'#size' => 40,
+	'#maxlength' => 120,
+	'#required' => TRUE,
+	'#default_value' => $button_text,
+	);
+	
+	$button_text_wait = variable_get('taxon_taxonomy_button_text_wait') != "" ? variable_get('taxon_taxonomy_button_text_wait') : "Classifying ...";
+		
+	$form['taxon_taxonomy_button_text_wait'] = array(
+	'#type' => 'textfield',
+	'#title' => t('The text on the Taxon button while waiting'),
+	'#description' => t('The text on the Taxon button while waiting for Taxon to return results.'),
+	'#size' => 40,
+	'#maxlength' => 120,
+	'#required' => TRUE,
+	'#default_value' => $button_text_wait,
+	);
+
+	$ckeditor_field = variable_get('taxon_taxonomy_ckeditor_field') != "" ? variable_get('taxon_taxonomy_ckeditor_field') : "edit-body-en-0-value";
+		
+	$form['taxon_taxonomy_ckeditor_field'] = array(
+	'#type' => 'textfield',
+	'#title' => t('The id of the CKEditors text field'),
+	'#description' => t('The id of the CKEditors text field.'),
+	'#size' => 40,
+	'#maxlength' => 120,
+	'#required' => TRUE,
+	'#default_value' => $ckeditor_field,
+	);	
+
+	// Submit button
+	$form['submit'] = array(
+	'#type' => 'submit',
+	'#value' => t('Save settings'),
+	);
+
+	return $form;
+}
+
+/*
+ Save configuration settings for Taxon Taxonomy module.
+*/
+
+function _taxon_taxonomy_admin_form_submit($form, &$form_state) {
+
+	variable_set('taxon_taxonomy_lookup_file', $form_state['values']['taxon_taxonomy_lookup_file']);
+	variable_set('taxon_taxonomy_taxon_url', $form_state['values']['taxon_taxonomy_taxon_url']);
+	variable_set('taxon_taxonomy_number_results_returned', $form_state['values']['taxon_taxonomy_number_results_returned']);
+	variable_set('taxon_taxonomy_field_name', $form_state['values']['taxon_taxonomy_field_name']);
+	variable_set('taxon_taxonomy_selected_image', $form_state['values']['taxon_taxonomy_selected_image']);
+	variable_set('taxon_taxonomy_not_selected_image', $form_state['values']['taxon_taxonomy_not_selected_image']);
+	variable_set('taxon_taxonomy_wait_image', $form_state['values']['taxon_taxonomy_wait_image']);
+	variable_set('taxon_taxonomy_button_text', $form_state['values']['taxon_taxonomy_button_text']);
+	variable_set('taxon_taxonomy_button_text_wait', $form_state['values']['taxon_taxonomy_button_text_wait']);
+	variable_set('taxon_taxonomy_ckeditor_field', $form_state['values']['taxon_taxonomy_ckeditor_field']);
+	
+	drupal_set_message(t('The settings have been saved'));
+}
+
+function taxon_proxy()
+{
+	$taxonomy = $_POST['taxonomy'];
+	$text = $_POST['text'];
+
+	$text = preg_replace("/<\s*script[^>]*>[\s\S]*?<\/script[^>]*>/", " ", $text);
+	$text = preg_replace("/<\s*style[^>]*>[\s\S]*?<\/style[^>]*>/", " ", $text);
+	$text = preg_replace("/<\!--[\s\S]*?-->/", " ", $text);
+	$text = preg_replace("/<[^>]*>/", " ", $text);
+	$text = preg_replace("/\\n/", " ", $text);
+
+	mb_internal_encoding("UTF-8");
+
+	$text = html_entity_decode($text, ENT_COMPAT | ENT_HTML401 , 'UTF-8');
+	
+	//set POST variables
+	$url = variable_get('taxon_taxonomy_taxon_url');
+	$number_results_returned  = variable_get('taxon_taxonomy_number_results_returned');
+	
+	$fields = array(
+            'taxonomy' => urlencode($taxonomy),
+            'text' => urlencode("$text"),
+            'settings' => urlencode(json_encode(array("numberResultsReturned" => $number_results_returned)))
+        );
+
+	$fields_string = "";
+
+	//url-ify the data for the POST
+	foreach($fields as $key => $value)
+	{ 
+		$fields_string .= $key . '=' . $value . '&'; 
+	}
+
+	rtrim($fields_string, '&');
+
+	//open connection
+	$ch = curl_init();
+
+	//set the url, number of POST vars, POST data
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_POST, count($fields));
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+	//execute post
+	$taxonomy_taxon = curl_exec($ch);
+
+	//close connection
+	curl_close($ch);
+
+	$json = json_decode($taxonomy_taxon);
+		
+	foreach($json as $classid => $class)
+	{
+		$classtitle = $class->{'title'};
+
+		$classtitle = html_entity_decode($classtitle);
+
+		print("$classid $classtitle\n");
+	}
+	
+	// Return empty so no theming
+	return;   	
+}
+
+/*
+	If you are using overlays for your administration, use the hook
+	below. 
+*/
+//function taxon_taxonomy_overlay_child_initialize() {
+
+/*
+	If you are not using overlays, one way to include the javascript files
+	and settings is to use the hook below.
+	Another approach is to copy and paste the code into template.php.
+*/
+
+function taxon_taxonomy_init() {	
+	global $user;
+
+	// Only include Taxon if the user is logged in.
+	if($user->uid)
+	{
+		// Add our custom JavaScript.
+		drupal_add_js(drupal_get_path('module', 'taxon_taxonomy') . '/js/taxon_taxonomy.js',
+			array(
+		     'type' => 'file',
+		     'preprocess' => FALSE,
+		     'weight' => '9999',
+		   )
+		);	
+		drupal_add_css(drupal_get_path('module', 'taxon_taxonomy') . '/css/taxon_taxonomy.css', 
+			array(
+		     'type' => 'file',
+		     'media' => 'screen',
+		     'preprocess' => FALSE,
+		     'weight' => '9999',
+		   )
+		);	
+	
+		drupal_add_js(
+			array(
+				'taxon_taxonomy' => 
+					array(
+						'taxonomy_name' => variable_get('taxon_taxonomy_lookup_file'),
+						'field_name' => variable_get('taxon_taxonomy_field_name'),
+						'selected_image' => variable_get('taxon_taxonomy_selected_image'),
+						'not_selected_image' => variable_get('taxon_taxonomy_not_selected_image'),
+						'wait_image' => variable_get('taxon_taxonomy_wait_image'),
+						'button_text' => variable_get('taxon_taxonomy_button_text'),
+						'button_text_wait' => variable_get('taxon_taxonomy_button_text_wait'),					
+						'ckeditor_field' => variable_get('taxon_taxonomy_ckeditor_field'),	
+						)
+					), 
+			'setting'
+		);
+	}
+}

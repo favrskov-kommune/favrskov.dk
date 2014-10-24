@@ -1,0 +1,5 @@
+name = Config Pane styles
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_pane_styles

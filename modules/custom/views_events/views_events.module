@@ -1,0 +1,92 @@
+<?php
+/**
+ * @file
+ * Code for the Views Events feature.
+ */
+
+include_once 'views_events.features.inc';
+
+
+/**
+ * Return our custom formats.
+ *
+ * @return
+ * info about custom formats
+ */
+function views_events_date_formats_get_names() {
+  static $names = array('event_front_date' => 'd M');
+  return $names;
+}
+
+/**
+ * Implements hook_preprocess_views_more().
+ *
+ * Removes unnecessary params form view more link URL.
+ *
+ * @param $vars
+ * The variables array
+ */
+function views_events_preprocess_views_more(&$vars, $hook) {
+  if ($vars['view']->name == 'events') {
+    $vars['more_url'] = !empty($vars['view']->override_path) ?
+      $vars['view']->override_path : $vars['more_url'];
+  }
+}
+
+/**
+ * Implements hook_date_formats().
+ */
+function views_events_date_formats() {
+  $formats = array();
+  $names = views_events_date_formats_get_names();
+
+  foreach ($names as $key => $value) {
+    $formats[] = array(
+      'type' => $key,
+      'format' => $value,
+      'locales' => array(),
+    );
+  }
+
+  return $formats;
+}
+
+/**
+ * Implements hook_date_format_types().
+ */
+function views_events_date_format_types() {
+  $types = array();
+  $names = views_events_date_formats_get_names();
+
+  foreach ($names as $key => $value) {
+    $types[$key] = t($key);
+  }
+
+  return $types;
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function views_events_flush_caches() {
+  $names = views_events_date_formats_get_names();
+  foreach ($names as $key => $value) {
+    $formats = system_get_date_formats($key);
+    variable_set('date_format_' . $key, $value);
+
+    foreach ($formats as $format) {
+      if (!empty($format['dfid'])) {
+        system_date_format_delete($format['dfid']);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter.
+ */
+function views_events_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['field_kultunaut_event_category_tid'])) {
+    $form['field_kultunaut_event_category_tid']['#options']['All'] = t('View all');
+  }
+}

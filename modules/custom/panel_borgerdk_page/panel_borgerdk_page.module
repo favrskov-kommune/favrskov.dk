@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel BorgerDK Page feature.
+ */
+
+include_once 'panel_borgerdk_page.features.inc';

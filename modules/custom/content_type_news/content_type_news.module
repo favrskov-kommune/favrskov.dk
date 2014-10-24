@@ -1,0 +1,56 @@
+<?php
+/**
+ * @file
+ * Code for the Content Type News feature.
+ *
+ * News can be sent to archive. (Auto Archiver module)
+ */
+
+include_once 'content_type_news.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter.
+ */
+function content_type_news_form_news_node_form_alter(&$form, &$form_state, $form_id) {
+  $language = $form['field_author']['#language'];
+  if (empty($form['field_author'][$language][0]['value']['#default_value'])) {
+    $form['field_author'][$language][0]['value']['#default_value'] = $form['author']['name']['#default_value'];
+  }
+  $form['#submit'][] = 'content_type_news_form_news_node_form_submit';
+  $form['#validate'][] = 'content_type_news_form_news_node_form_validate';
+  $form['archive']['#collapsible'] = FALSE;
+  
+  // Show single checkbox instad of radio
+  $form['archive']['archive_state_check'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Actual'),
+    '#default_value' => $form['archive']['archive_state']['#default_value'] == 'actual' ? 1 : 0
+  );
+  hide($form['archive']['archive_option']);
+  hide($form['archive']['archive_date']);
+  hide($form['archive']['archive_state']);
+}
+
+/**
+ * Validation callback on news node saving.
+ */
+function content_type_news_form_news_node_form_validate(&$form, &$form_state) {
+  $title = $form['title'];
+  if (strlen($title['#value']) > 60) {
+    form_error($title, t('Title length should not exceed 60 characters'));
+  }
+}
+
+/**
+ * Submit callback on news node saving.
+ */
+function content_type_news_form_news_node_form_submit(&$form, &$form_state) {
+  $language = $form['language']['#value'];
+  if (empty($form_state['values']['field_date'][$language][0]['value'])){
+    $form_state['values']['field_date'][$language][0]['value'] = date("Y-m-d H:i:s", $form_state['values']['created']);
+    $form_state['values']['field_date'][$language][0]['value2'] = date("Y-m-d H:i:s", $form_state['values']['created']);
+  }
+
+  // Set Archive state depending of checkbox
+  $form_state['values']['archive_state'] = $form_state['values']['archive_state_check'] ? 'actual' : 'archive';
+}

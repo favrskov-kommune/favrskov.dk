@@ -1,0 +1,8 @@
+name = Panels Aside menu block
+core = 7.x
+package = Panels
+version = 7.x-1.0
+project = panels_aside_menu_block
+dependencies[] = domain_menu_block
+features[domain_menu_block][] = main_menu
+features[features_api][] = api:2

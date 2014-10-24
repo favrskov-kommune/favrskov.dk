@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Config Borger.dk feature.
+ */
+
+include_once 'config_borger_dk.features.inc';

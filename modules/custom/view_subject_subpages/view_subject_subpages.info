@@ -1,0 +1,14 @@
+name = View Subject subpages
+core = 7.x
+package = Views
+version = 7.x-1.0
+project = view_subject_subpages
+dependencies[] = menu_node
+dependencies[] = menu_node_views
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = custom_ckeditor_node_embed
+features[views_view][] = subject_subpages
+features_exclude[dependencies][ctools] = ctools

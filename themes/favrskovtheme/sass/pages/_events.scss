@@ -1,0 +1,244 @@
+//------------------------------------------------------------------------------
+// Events page
+.video-views,
+.events-list {
+  // Filters
+  .view-filters {
+    @include span-columns(12, 12);
+    margin-bottom: 44px;
+
+    .filter-description,
+    .toggle-filters {
+      display: none;
+    }
+
+    .form-type-bef-link {
+      float: left;
+      margin-right: 25px;
+
+      &.selected a,
+      &.selected a:hover {
+        border-top: 6px solid $red;
+      }
+
+      a {
+        border-top: 6px solid transparent;
+        padding-top: 7px;
+        text-transform: uppercase;
+        display: block;
+        @include font-size(14);
+        font-family: $sans-med-strict;
+
+        &:hover {
+          border-top: 6px solid $red;
+          color: $red;
+        }
+      }
+    }
+
+    .views-submit-button {
+      display: none;
+    }
+  }
+}
+
+
+.events-list {
+  .events {
+    position: relative;
+    padding: 0;
+  }
+
+  h1 {
+    @include font-size(55);
+    font-family: $sans-bold-strict;
+    color: $slategrey;
+    margin: 0 0 37px;
+  }
+
+  .view-content {
+    // position: relative;
+    @include span-columns(12,12);
+  }
+
+  // Switcher
+  .switch {
+    right: 0;
+    top: 4px;
+    overflow: hidden;
+    position: absolute;
+
+    a {
+      width: 21px;
+      height: 21px;
+      display: block;
+      text-indent: -999em;
+      margin-left: 8px;
+      float: left;
+      @include transition-duration(0.1s);
+      @include sprite(-100px, 0);
+
+      &.grid.active,
+      &.grid:hover {
+        background-position: -130px 0;
+      }
+
+      &.list {
+        background-position: -160px 0;
+
+        &.active,
+        &:hover { background-position: -190px 0; }
+      }
+    }
+  }
+
+  // List styles
+  .item-list.list li {
+    @include span-columns(12, 12);
+
+    article {
+      min-height: 100px;
+      height: auto;
+      border-bottom: 0 none;
+
+      p,
+      h1,
+      footer {
+        margin-left: 65px;
+      }
+      footer p {
+        margin-left: 0;
+      }
+      footer {
+        padding-bottom: 20px;
+        border-bottom: 2px solid #ccc;
+      }
+
+    }
+  }
+
+
+}
+
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+
+// Screen---- max-width(980px)
+@include at-breakpoint($tablet) {
+
+}
+
+// Tableet land ----max-width(871px)
+@include at-breakpoint($tablet-land) {
+  .events-list {
+    .item-list  li {
+      @include span-columns(6, 12);
+      @include remove-nth-omega(3n);
+      @include nth-omega(2n);
+      margin-bottom: 30px;
+    }
+  }
+}
+
+// Tableet port ----max-width(767px)
+@include at-breakpoint($tablet-port) {
+  .events-list {
+    .item-list  li {
+      @include span-columns(12, 12);
+      @include remove-nth-omega(3n);
+      @include remove-nth-omega(2n);
+    }
+
+    .switch {
+      display: none;
+    }
+
+    .view-filters {
+      background: $slatgrayDark;
+      height: 50px;
+      position: relative;
+
+      // Desciption
+      .filter-description {
+        display: block;
+        color: $white;
+        margin-left: 80px;
+        line-height: 50px;
+        @include font-size(18);
+      }
+
+      // Mobile bitton
+      .toggle-filters {
+        display: block;
+        width: 60px;
+        height: 50px;
+        text-indent: -999em;
+        position: absolute;
+        left: 0;
+        @include sprite(7px, -252px);
+        background-color: $cyan;
+      }
+
+      .form-type-select {
+        background: $slatgrayDark;
+        position: absolute;
+        top: 50px;
+        width: 200px;
+        z-index: 5;
+        display: none;
+
+        &.open {
+          display: block;
+        }
+      }
+
+      .form-type-bef-link {
+        margin-right: 0;
+        @include font-size(15);
+        float: none;
+          border-top: 1px solid $slatgrayLight;
+          border-bottom: 1px solid #303939;
+
+        &.selected a {
+          background: $slatgrayLight;
+          border: 0 none;
+        }
+
+        .selected,
+        a {
+          padding: 15px 10px;
+          margin: 0;
+          border: 0 none;
+          @include links($cyan, $white);
+        }
+
+
+      }
+    }
+  }
+
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+  .events-list {
+    // Header
+    h1 {
+      @include font-size(40);
+    }
+
+
+  }
+}
+
+// Phone port -----max-width(320px)
+@include at-breakpoint($phone-port) {
+
+}
+/*
+*/

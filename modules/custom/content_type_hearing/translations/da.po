@@ -1,0 +1,148 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  content_type_hearing.features.field_instance.inc: n/a
+#  content_type_hearing.features.inc: n/a
+#  content_type_hearing.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-06-06 13:21+0200\n"
+"PO-Revision-Date: 2014-06-06 14:51+0200\n"
+"Last-Translator: \n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: content_type_hearing.features.field_instance.inc:39;1514
+msgid "Body"
+msgstr "Brødtekst"
+
+#: content_type_hearing.features.field_instance.inc:80;1513
+msgid "Bannerlink"
+msgstr ""
+
+#: content_type_hearing.features.field_instance.inc:126;1515
+msgid "BorgerDK"
+msgstr "BorgerDK"
+
+#: content_type_hearing.features.field_instance.inc:172;1516
+msgid "Contact Information"
+msgstr "Kontakt oplysninger"
+
+#: content_type_hearing.features.field_instance.inc:218;1519
+msgid "Editorial responsibility"
+msgstr "Redaktionel ansvarlig"
+
+#: content_type_hearing.features.field_instance.inc:264;1520
+msgid "FAQ"
+msgstr "Spørgsmål og svar"
+
+#: content_type_hearing.features.field_instance.inc:312;1517
+msgid "ESDH cases"
+msgstr ""
+
+#: content_type_hearing.features.field_instance.inc:360;1518
+msgid "ESDH documents"
+msgstr ""
+
+#: content_type_hearing.features.field_instance.inc:406;1521
+msgid "Hearing Category"
+msgstr "Høring Kategori"
+
+#: content_type_hearing.features.field_instance.inc:451;1522
+msgid "Hearing end date"
+msgstr "Høring slutdato"
+
+#: content_type_hearing.features.field_instance.inc:507;1523
+msgid "Hearing start date"
+msgstr "Høring startdato"
+
+#: content_type_hearing.features.field_instance.inc:561;1524
+msgid "Hide node update date"
+msgstr "Skjul node opdateringsdato"
+
+#: content_type_hearing.features.field_instance.inc:601;1526
+msgid "Image description"
+msgstr "Billedtekst"
+
+#: content_type_hearing.features.field_instance.inc:693;1525
+msgid "Image / thumbnail"
+msgstr "Billede / thumbnail"
+
+#: content_type_hearing.features.field_instance.inc:761;1527
+msgid "Publications"
+msgstr "Publikationer"
+
+#: content_type_hearing.features.field_instance.inc:800;1528
+msgid "Publications title"
+msgstr "Publikationer titel"
+
+#: content_type_hearing.features.field_instance.inc:888;1529
+msgid "Related boxes"
+msgstr "Relaterede bokse"
+
+#: content_type_hearing.features.field_instance.inc:934;1530
+msgid "Related content"
+msgstr "Relateret indhold"
+
+#: content_type_hearing.features.field_instance.inc:980;1531
+msgid "Self Service"
+msgstr "Selvbetjening"
+
+#: content_type_hearing.features.field_instance.inc:1065;1532
+msgid "Table"
+msgstr "Tabel"
+
+#: content_type_hearing.features.field_instance.inc:1104;1533
+msgid "Taxonomy, KLE"
+msgstr "Taksonomi, KLE"
+
+#: content_type_hearing.features.field_instance.inc:1145;1536
+msgid "Taxonomy, local"
+msgstr "Taksonomi, lokal"
+
+#: content_type_hearing.features.field_instance.inc:1186;1534
+msgid "Taxonomy, Location"
+msgstr "Taksonomi, lokation"
+
+#: content_type_hearing.features.field_instance.inc:1225;1535
+msgid "Taxonomy, Subject Area"
+msgstr "Taksonomi, Emneområde"
+
+#: content_type_hearing.features.field_instance.inc:1264;1537
+msgid "Teaser"
+msgstr "Manchet"
+
+#: content_type_hearing.features.field_instance.inc:1354;1538
+msgid "Video"
+msgstr "Video"
+
+#: content_type_hearing.features.field_instance.inc:1444;1539
+msgid "Video description"
+msgstr "Videobeskrivelse"
+
+#: content_type_hearing.features.inc:23
+msgid "Hearing"
+msgstr "Høring"
+
+#: content_type_hearing.features.inc:27
+msgid "Title"
+msgstr "Overskrift"
+
+#: content_type_hearing.info:0
+msgid "Content Type Hearing"
+msgstr ""
+
+#: content_type_hearing.info:0
+msgid "Content Types"
+msgstr "Indholdstyper"
+
+msgid "Hearing responses"
+msgstr "Høringssvar"

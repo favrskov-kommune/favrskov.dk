@@ -1,0 +1,130 @@
+// -----------------------------------------------------------------------------
+//  FAQ content
+
+//separate page
+.node-faq-content,
+//inside of articele
+.faq {
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid $slategrey;
+  clear: both;
+
+  header h2 {
+    @include font-size(30);
+    font-family: $sans-bold-strict;
+    margin-bottom: 31px;
+    color: $gray;
+  }
+
+  h2 {
+    @include font-size(16);
+    font-family: $sans-med-strict;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    border-top: 4px solid $slategrey;
+    border-bottom: 3px solid $slategrey;
+  }
+
+  li {
+    border-bottom: 1px solid $slategrey;
+  }
+
+  .question {
+    background-color: #eeeef0;
+    cursor: pointer;
+    padding: 20px 80px 16px 19px;
+    margin: 0;
+    @include font-size(16);
+    font-family: $sans-med-strict;
+    position: relative;
+
+    &.open {
+      background-color: $white;
+      .state {background-position: -212px -250px;}
+    }
+
+    .state {
+      top: 50%;
+      margin-top: -10px;
+    }
+  }
+
+  .state {
+    display: block;
+    height: 20px;
+    position: absolute;
+    text-indent: -999em;
+    width: 20px;
+    right: 30px;
+    @include sprite(-190px, -250px);
+  }
+
+  .answer {
+    padding: 4px 20px 27px;
+    display: none;
+    position: relative;
+    line-height: 1.4;
+
+    h2,
+    h3,
+    h4 {
+      font-family: $sans-med-strict;
+      margin-bottom: 10px;
+    }
+
+    h2 { @include font-size(22); }
+    h3 { @include font-size(20); }
+    h4 { @include font-size(18); }
+
+    ul, ol, p {
+      margin-bottom: 20px;
+      border: 0 none;
+    }
+    ul li,
+    ol li {
+      border: 0 none;
+      list-style-position: outside;
+      line-height: 1.2;
+      margin: 0 0 10px 16px;
+    }
+
+    ol li {
+      list-style-type: decimal;
+    }
+
+    ul li {
+      list-style-type: disc;
+    }
+
+    p {
+      margin-bottom: 20px;
+      line-height: 1.4;
+      @include font-size(15);
+    }
+
+    li {
+      line-height: 1.4;
+      @include font-size(15);
+    }
+
+    .state {
+      bottom: 10px;
+      background-position: -212px -250px;
+    }
+
+  }
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+  // ----------------------------------
+  //  FAQ content
+  .faq {
+    h1 {
+      @include font-size(30);
+    }
+  }
+}

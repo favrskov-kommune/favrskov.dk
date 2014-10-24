@@ -1,0 +1,110 @@
+<?php
+/**
+ * @file
+ * Code for the OS2Web Event Calendar feature.
+ *
+ * @author Yaroslav Kharchnko <undertext.2010@gmail.com>
+ */
+
+include_once 'os2web_event_calendar.features.inc';
+
+
+/**
+ * Implements hook_form_FORMNAME_alter().
+ *
+ * Change 'select all' label for category select form.
+ */
+function os2web_event_calendar_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#id'] === 'views-exposed-form-os2web-event-calendar-list-panel-pane-1') {
+    $form['ecategory']['#options']['All'] = t('View all');
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * Removes unnecessary columns from sql query for right distinct functionality.
+ */
+function os2web_event_calendar_views_query_alter(&$view, &$query) {
+  if ($view->name === 'os2web_event_calendar_list') {
+    unset($query->fields['field_data_field_os2web_ec_date_field_os2web_ec_date_value']);
+    unset($query->fields['field_data_field_os2web_ec_date_delta']);
+    unset($query->fields['date_delta_field_os2web_ec_date2']);
+    $query->orderby[0]['field'] = 'field_data_field_os2web_ec_date.field_os2web_ec_date_value';
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_more().
+ *
+ * Removes unnecessary params form view more link URL.
+ */
+function os2web_event_calendar_preprocess_views_more(&$vars, $hook) {
+  if ($vars['view']->name == 'os2web_event_calendar_list') {
+    $vars['more_url'] = !empty($vars['view']->override_path) ?
+      $vars['view']->override_path : $vars['more_url'];
+  }
+}
+
+/**
+ * Return our custom formats.
+ *
+ * @return
+ * info about custom formats
+ */
+function os2web_event_calendar_date_formats_get_names() {
+  static $names = array(
+    'calendar_event_front_date' => 'd. M',
+    'ec_date' => 'l d. M Y G'
+  );
+  return $names;
+}
+
+/**
+ * Implements hook_date_formats().
+ */
+function os2web_event_calendar_date_formats() {
+  $formats = array();
+  $names = os2web_event_calendar_date_formats_get_names();
+
+  foreach ($names as $key => $value) {
+    $formats[] = array(
+      'type' => $key,
+      'format' => $value,
+      'locales' => array(),
+    );
+  }
+
+  return $formats;
+}
+
+/**
+ * Implements hook_date_format_types().
+ */
+function os2web_event_calendar_date_format_types() {
+  $types = array();
+  $names = os2web_event_calendar_date_formats_get_names();
+
+  foreach ($names as $key => $value) {
+    $types[$key] = t($key);
+  }
+
+  return $types;
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function os2web_event_calendar_flush_caches() {
+  $names = os2web_event_calendar_date_formats_get_names();
+  foreach ($names as $key => $value) {
+    $formats = system_get_date_formats($key);
+    variable_set('date_format_' . $key, $value);
+
+    foreach ($formats as $format) {
+      if (!empty($format['dfid'])) {
+        system_date_format_delete($format['dfid']);
+      }
+    }
+  }
+}

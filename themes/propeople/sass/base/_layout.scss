@@ -1,0 +1,54 @@
+//------------------------------------------------------------------------------
+// Responsive dimensions
+$wide-screen:   1399px 16 1201px;
+$medium-screen: 1200px 16 1101px;
+$desktop:       1100px 16 840px ;
+$tablet-land:   16 960px;
+$tablet:        16 839px;
+$tablet-port:   16 767px;
+$phone-land:    16 480px;
+$phone-port:    16 320px;
+
+//------------------------------------------------------------------------------
+// Grid settings
+
+$total-columns  : 16;              // a 16-column grid
+$column-width   : 49px;            // each column is 4em wide
+$gutter-width   : 20px;            // 1em gutters between columns
+$grid-padding   : 0;  // grid-padding equal to gutters
+
+
+//------------------------------------------------------------------------------
+// Global layout
+
+
+
+
+
+
+//------------------------------------------------------------------------------
+
+/* Responsive */
+
+//------------------------------------------------------------------------------
+
+@include at-breakpoint($wide-screen) {
+
+}
+
+@include at-breakpoint($desktop) {
+
+}
+
+@include at-breakpoint($tablet-land) {
+
+}
+
+@include at-breakpoint($tablet) {
+
+}
+
+@include at-breakpoint($tablet-port) {
+
+}
+

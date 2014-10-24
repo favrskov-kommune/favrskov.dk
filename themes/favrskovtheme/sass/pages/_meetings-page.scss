@@ -1,0 +1,71 @@
+//------------------------------------------------------------------------------
+// Node type Meetings pages
+
+.node-type-os2web-meetings-bullet,
+.node-type-os2web-meetings-bullet-attach {
+
+  .submitted {
+    display: none;
+  }
+
+  .pane-node-content {
+    font-family: $sans;
+    line-height: 1.4;
+    @include font-size(16);
+
+    & > li {
+      list-style-type: none;
+    }
+
+    // Hide author
+    .byline {
+      display: none;
+    }
+
+    .bullet-body {
+      margin-top: 30px;
+
+       h1 {
+        @include font-size(20);
+      }
+
+      table {
+        margin-bottom: 30px;
+
+        thead {
+          font-family: $sans-med-strict;
+          tr {
+            background-color: #595959;
+            @include font-size(20);
+          }
+        }
+
+        th {
+          border: 0 none;
+          color: $white;
+          font-family: $sans-med-strict;
+          font-weight: normal;
+        }
+
+        td {
+          background-color: #eee;
+          border: 1px solid #fff;
+          padding: 5px;
+          @include font-size(14);
+          line-height: 1.2;
+        }
+      }
+    }
+
+    h2,
+    h3 {
+      @include font-size(30);
+      font-family: $sans-med-strict;
+      line-height: 1.2;
+      margin: 20px 0;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+  }
+}

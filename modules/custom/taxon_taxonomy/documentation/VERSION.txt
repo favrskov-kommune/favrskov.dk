@@ -1,0 +1,22 @@
+This is taxon_taxonomy 2.1.1
+
+-------------------------------------------------------------------------------
+Change log
+-------------------------------------------------------------------------------
+2.1.1 - 13/05-2013
+	Added permissions and dependencies
+	Addad help page
+	
+2.1 - 02/04-2013
+	Bumped version
+	
+2.0.1 - 15/11-2012
+	Fixed bug in hook_menu naming.
+	Fixed bug in adding javascript and css.
+
+2.0 - 01/11-2012
+	Added field for taxonomy name on admin page.
+
+
+1.0 - 01/08-2012
+	Initial release

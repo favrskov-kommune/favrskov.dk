@@ -1,0 +1,66 @@
+//------------------------------------------------------------------------------
+// Confirmation form page
+.page-node-done {
+  background: url(../images/vawe.png) repeat-x bottom;
+  background-color: $slategrey;
+
+  .links,
+  .webform-confirmation {
+    background-color: $white;
+    color: #666;
+    @include container();
+    max-width: 400px;
+    padding: 50px 2%;
+    margin-top: 100px;
+    @include box-shadow(0 4px 3px 1px rgba(0,0,0, .4));
+
+    p {
+      @include font-size(16);
+      font-family: $sans-strict;
+      line-height: 1.4;
+      margin-bottom: 5px;
+    }
+  }
+
+  .links {
+    text-align: center;
+    padding-top: 0;
+    margin-top: 0;
+
+    a {
+      background: $red;
+      padding: 15px 30px;
+      @include box-sizing(border-box);
+      @include border-radius(10px);
+      @include inline-block();
+      @include font-size(20);
+      @include links($white, $white);
+
+      &:hover {
+        background: $gray;
+      }
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+
+@include at-breakpoint(12 500px) {
+  .page-node-done {
+    .links,
+    .webform-confirmation {
+      @include box-sizing(border-box);
+      padding: 30px 5%;
+      max-width: 300px;
+    }
+
+    .webform-confirmation {
+      margin-top: 50px;
+    }
+  }
+}

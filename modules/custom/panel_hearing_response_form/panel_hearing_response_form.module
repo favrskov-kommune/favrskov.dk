@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Hearing response form feature.
+ */
+
+include_once 'panel_hearing_response_form.features.inc';

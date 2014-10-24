@@ -1,0 +1,57 @@
+  //---------------------------------------------------------------------- Pager
+  .item-list .pager {
+    overflow: hidden;
+    margin: 30px 0;
+    text-align: center;
+    @include font-size(15);
+    font-family: $sans-strict;
+
+    li {
+      @include inline-block(middle);
+      margin: 0;
+
+      &.pager-current {
+        @include inline-block(middle);
+        padding: 5px 7px;
+      }
+      a {
+        padding: 5px 7px;
+        display: block;
+        // @include links($red, $white);
+      }
+
+      &.pager-last,
+      &.pager-first {
+        display: none;
+      }
+
+      &.pager-previous,
+      &.pager-next {
+        text-transform: lowercase;
+
+        font-weight: bold;
+        &:hover  {
+          background-color: transparent;
+          a { color: $gray;}
+
+        }
+      }
+
+      &.pager-next {
+        float: right;
+      }
+
+      &.pager-previous {
+        float: left;
+      }
+
+      &:hover,
+      &.pager-current {
+        color: $white;
+        background-color: $red;
+        cursor: default;
+      }
+
+
+    }
+  }

@@ -1,0 +1,27 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-10-08 15:41+0200\n"
+"PO-Revision-Date: 2013-10-08 16:43+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+
+
+msgid "OK, I agree"
+msgstr "Ja, jeg accepterer"
+
+msgid "No, give me more info"
+msgstr "Nej, jeg ønsker at lære mere"
+
+msgid "More info about cookies"
+msgstr "Mere information om cookies"
+
+msgid "Hide this message"
+msgstr "Skjul denne meddelelse"
+

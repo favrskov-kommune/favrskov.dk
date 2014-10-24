@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Meetings listing feature.
+ */
+
+include_once 'panel_meetings_listing.features.inc';
+
+function panel_meetings_listing_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && ($plugin_type == 'content_types' || $plugin_type == 'access')) {
+    return 'plugins/' . $plugin_type;
+  }
+}
+
+function panel_meetings_listing_views_default_views_alter(&$views) {
+  if (isset($views['os2web_meetings_light'])) {
+    $views['os2web_meetings_light']->display['page']->display_options['enabled'] = FALSE;
+  }
+}

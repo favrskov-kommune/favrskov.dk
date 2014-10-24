@@ -1,0 +1,159 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  os2web_hrmanager_job.features.field_instance.inc: n/a
+#  os2web_hrmanager_job.views_default.inc: n/a
+#  os2web_hrmanager_job.features.inc: n/a
+#  os2web_hrmanager_job.feeds_importer_default.inc: n/a
+#  os2web_hrmanager_job.features.taxonomy.inc: n/a
+#  os2web_hrmanager_job.pages_default.inc: n/a
+#  os2web_hrmanager_job.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-12 14:34+0200\n"
+"PO-Revision-Date: 2013-09-12 15:38+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: os2web_hrmanager_job.features.field_instance.inc:46;353
+msgid "Body"
+msgstr "Brødtekst"
+
+#: os2web_hrmanager_job.features.field_instance.inc:93;350
+msgid "Advertisement Url"
+msgstr "Annonce Url"
+
+#: os2web_hrmanager_job.features.field_instance.inc:163;351
+#: os2web_hrmanager_job.views_default.inc:140
+msgid "Application Due"
+msgstr "Ansøgningsfrist"
+
+#: os2web_hrmanager_job.features.field_instance.inc:217;352
+msgid "Application Form Url"
+msgstr ""
+
+#: os2web_hrmanager_job.features.field_instance.inc:286;354
+msgid "ID"
+msgstr "ID"
+
+#: os2web_hrmanager_job.features.field_instance.inc:334;355
+#: os2web_hrmanager_job.views_default.inc:141
+msgid "Position Category"
+msgstr "Stilling Kategori"
+
+#: os2web_hrmanager_job.features.inc:38
+#: os2web_hrmanager_job.feeds_importer_default.inc:18
+msgid "OS2web HR-Manager Job"
+msgstr "OS2web Stillingsopslag"
+
+#: os2web_hrmanager_job.features.inc:42
+msgid "Title"
+msgstr "Overskrift"
+
+#: os2web_hrmanager_job.features.taxonomy.inc:13
+msgid "OS2web HR-Manager Job - Position categories"
+msgstr ""
+
+#: os2web_hrmanager_job.pages_default.inc:16
+msgid "Job List Page"
+msgstr ""
+
+#: os2web_hrmanager_job.views_default.inc:125;282
+msgid "Master"
+msgstr "Master"
+
+#: os2web_hrmanager_job.views_default.inc:126;284
+msgid "more"
+msgstr "mere"
+
+#: os2web_hrmanager_job.views_default.inc:127;285
+msgid "Apply"
+msgstr "Udfør"
+
+#: os2web_hrmanager_job.views_default.inc:128;286
+msgid "Reset"
+msgstr "Gendan"
+
+#: os2web_hrmanager_job.views_default.inc:129;287
+msgid "Sort by"
+msgstr "Sortér efter"
+
+#: os2web_hrmanager_job.views_default.inc:130;288
+msgid "Asc"
+msgstr "Stigende"
+
+#: os2web_hrmanager_job.views_default.inc:131;289
+msgid "Desc"
+msgstr "Faldende"
+
+#: os2web_hrmanager_job.views_default.inc:132;290
+msgid "Items per page"
+msgstr "Antal elementer"
+
+#: os2web_hrmanager_job.views_default.inc:133;291
+msgid "- All -"
+msgstr "- Alle -"
+
+#: os2web_hrmanager_job.views_default.inc:134;292
+msgid "Offset"
+msgstr "Forskydning"
+
+#: os2web_hrmanager_job.views_default.inc:135;293
+msgid "« first"
+msgstr "« første"
+
+#: os2web_hrmanager_job.views_default.inc:136;294
+msgid "‹ previous"
+msgstr "‹ forrige"
+
+#: os2web_hrmanager_job.views_default.inc:137;295
+msgid "next ›"
+msgstr "næste ›"
+
+#: os2web_hrmanager_job.views_default.inc:138;296
+msgid "last »"
+msgstr "sidste »"
+
+#: os2web_hrmanager_job.views_default.inc:139
+msgctxt "job"
+msgid "Position"
+msgstr "Stilling"
+
+#: os2web_hrmanager_job.views_default.inc:142
+msgid "Jobs List"
+msgstr ""
+
+#: os2web_hrmanager_job.views_default.inc:143
+msgid "View panes"
+msgstr "View panes"
+
+#: os2web_hrmanager_job.views_default.inc:283
+msgid "Jobs feed"
+msgstr ""
+
+#: os2web_hrmanager_job.views_default.inc:297
+msgid "Jobs RSS feed"
+msgstr ""
+
+#: os2web_hrmanager_job.info:0
+msgid "OS2Web HR-Manager Job"
+msgstr "OS2web Stillingsopslag"
+
+#: os2web_hrmanager_job.info:0
+msgid "OS2Web"
+msgstr "OS2web"
+
+msgid "Vacancies"
+msgstr "Ledige stillinger"
+
+msgid "Apply for the job"
+msgstr "Ansøg om stillingen her"

@@ -1,0 +1,103 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  content_type_newsletter.features.field_instance.inc: n/a
+#  content_type_newsletter.features.inc: n/a
+#  content_type_newsletter.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-27 14:13+0200\n"
+"PO-Revision-Date: 2013-09-27 15:20+0200\n"
+"Last-Translator: \n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: content_type_newsletter.features.field_instance.inc:133;809
+msgid "Main story body"
+msgstr "Hovedhistorie brødtekst"
+
+#: content_type_newsletter.features.field_instance.inc:180;236;318;382;463;525;604;646;696;737;795
+msgid ""
+"Content limited to @limit characters, remaining: <strong>@remaining</strong>"
+msgstr ""
+"Indhold er begrænset til @ grænse tegn tilbage: <strong> @ resterende </ "
+"strong>"
+
+#: content_type_newsletter.features.field_instance.inc:219;807
+msgid "Created in MailChimp time"
+msgstr "Tidspunkt for oprettelse i MailChimp"
+
+#: content_type_newsletter.features.field_instance.inc:269;808
+msgid "Date string"
+msgstr "Dato tekst"
+
+#: content_type_newsletter.features.field_instance.inc:351;810
+msgid "Main story image"
+msgstr "Hovedhistorie billede"
+
+#: content_type_newsletter.features.field_instance.inc:635;815
+msgid "Related events"
+msgstr "Relaterede arrangementer"
+
+#: content_type_newsletter.features.field_instance.inc:726;818
+msgid "Related news"
+msgstr "Relaterede nyheder"
+
+#: content_type_newsletter.features.field_instance.inc:778;819
+msgid "Send time"
+msgstr "Udsendings tidspunkt"
+
+#: content_type_newsletter.features.field_instance.inc:811
+msgid "Main story image description"
+msgstr "Hovedhistorie billedtekst"
+
+#: content_type_newsletter.features.field_instance.inc:812
+msgid "Main story image link"
+msgstr "Hovedhistorie billedlink"
+
+#: content_type_newsletter.features.field_instance.inc:813
+msgid "Main story title"
+msgstr "Hovedhistorie overskrift"
+
+#: content_type_newsletter.features.field_instance.inc:814
+msgid "Related content"
+msgstr "Relateret indhold"
+
+#: content_type_newsletter.features.field_instance.inc:816
+msgid "Related link"
+msgstr "Relaterede link"
+
+#: content_type_newsletter.features.field_instance.inc:817
+msgid "Related links"
+msgstr "Relaterede links"
+
+#: content_type_newsletter.features.inc:23
+msgid "Newsletter"
+msgstr "Nyhedsbrev"
+
+#: content_type_newsletter.features.inc:27
+msgid "Subject"
+msgstr "Emne"
+
+msgid "Interest groups"
+msgstr "Interest groups"
+
+#: content_type_newsletter.info:0
+msgid "Content Type Newsletter"
+msgstr "Indholdstype Nyhedsbrev"
+
+#: content_type_newsletter.info:0
+msgid "Content Types"
+msgstr "Indholdstyper"
+
+#: content_type_newsletter.info:0
+msgid "MailChimp campaign id"
+msgstr "MailChimp kampagne id"

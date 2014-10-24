@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel 403 page feature.
+ */
+
+include_once 'panel_403_page.features.inc';

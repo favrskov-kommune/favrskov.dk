@@ -1,0 +1,18 @@
+#taxon-results
+{
+}
+
+#taxon-results .taxon-result
+{
+	background-color: #f0f0f0;
+	border:2px solid #d0d0d0;
+	border-radius :5px;
+	-moz-border-radius: 5px;
+	padding: 1px;
+}
+
+#taxon-results .taxon-results-result img
+{
+	margin-right: 5px;
+}
+

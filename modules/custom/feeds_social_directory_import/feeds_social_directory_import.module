@@ -1,0 +1,45 @@
+<?php
+/**
+ * @file
+ * Code for the Feeds Social Directory Import feature.
+ */
+
+include_once 'feeds_social_directory_import.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function feeds_social_directory_import_menu()
+{
+    $items = array();
+    $items['import/sd'] = array(
+        'page callback' => 'feeds_social_directory_import_invoke',
+        'access arguments' => array('access administration pages'),
+        'type' => MENU_NORMAL_ITEM,
+    );
+
+    return $items;
+}
+
+
+/**
+ * Callback for import of all social directory entities.
+ */
+function feeds_social_directory_import_invoke()
+{
+    $htmlDoc = new DOMDocument();
+    $htmlDoc->loadHTMLFile('http://www.roskilde.dk/webtop/site.aspx?p=6102');
+    $xpathDoc = new DOMXPath($htmlDoc);
+    $result_table = $xpathDoc->query("//*[@class = 'TableSearchAddressContentFrm']/tr/td/a");
+
+    for ($i = 1; $i < $result_table->length; $i++) {
+        $url = $result_table->item($i)->attributes->getNamedItem("href")->textContent;
+        if (!empty($url)) {
+            $feed_source = feeds_source('os2web_social_directory_importer');
+            $config = $feed_source->getConfig();
+            $config['FeedsHTTPFetcher']['source'] = $url;
+            $feed_source->setConfig($config);
+            $feed_source->import();
+        }
+    }
+}

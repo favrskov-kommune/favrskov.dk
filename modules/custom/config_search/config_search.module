@@ -1,0 +1,160 @@
+<?php
+/**
+ * @file
+ * Code for the Config Search feature.
+ */
+
+include_once 'config_search.features.inc';
+
+
+/**
+ * Implements hook_menu_alter().
+ *
+ * Disable standard search pages.
+ *
+ * @param $items
+ *  menu items
+ */
+function config_search_menu_alter(&$items) {
+  unset($items['search/user']);
+  unset($items['search/node']);
+}
+
+
+/**
+ * Implements hook_apachesolr_process_results().
+ *
+ * Nodes of type 'self_service' links to external url field of this node, not to node page.
+ * Nodes of type 'kultunaut_event' links to external event url, not to node page.
+ *
+ * @param array $results
+ *   The returned search results.
+ * @param DrupalSolrQueryInterface $query
+ *   The query for which we want to process the results from
+ */
+function config_search_apachesolr_process_results(array &$results, DrupalSolrQueryInterface $query) {
+  foreach ($results as $id => $result) {
+    switch ($result['fields']['bundle']) {
+      case 'self_service':
+      case 'bannerlink':
+        $results[$id]['link'] = $result['fields']['ts_field_external_url'];
+        break;
+      case 'os2web_kultunaut_event':
+        $results[$id]['link'] = $result['fields']['ts_field_kultunaut_url'];
+        break;
+    }
+  }
+}
+
+/**
+ * Implements hook_apachesolr_index_document_build_ENTITY_TYPE().
+ *
+ * Adds custom fields to solr index.
+ * Also replaces title with displayed title for Self Service.
+ *
+ * @param ApacheSolrDocument $document
+ * @param object $entity
+ * @param string $env_id
+ *   The machine name of the environment.
+ */
+function config_search_apachesolr_index_document_build_node(ApacheSolrDocument $document, $entity, $env_id) {
+  switch ($entity->type) {
+    case 'self_service':
+    case 'bannerlink':
+      $external_url = field_get_items('node', $entity, 'field_external_link');
+      $document->addField('ts_field_external_url', $external_url[0]['url']);
+
+      $admin_label = field_get_items('node', $entity, 'field_displayed_title');
+      $document->setField('label', $admin_label[0]['value']);
+      $document->setField('tos_content_extra', '(' . $admin_label[0]['value'] . ')');
+      break;
+    case 'os2web_kultunaut_event':
+      $url = field_get_items('node', $entity, 'field_kultunaut_event_url');
+      $document->addField('ts_field_kultunaut_url', $url[0]['value']);
+      break;
+  }
+}
+
+/**
+ * Implements hook_apachesolr_query_prepare().
+ *
+ * Adds additional fields to return by solr.
+ * Also contains logic to search or not to search by meeting nodes, phonebooks.
+ *
+ * @param DrupalSolrQueryInterface $query
+ *  An object implementing DrupalSolrQueryInterface.
+ */
+function config_search_apachesolr_query_prepare($query) {
+  $bundles = array();
+  $query->addParam('fl', 'ts_field_external_url');
+  $query->addParam('fl', 'ts_field_kultunaut_url');
+
+  //Add some boost for nodes with newer creation date.
+  $query->addParam('bf', 'recip(ms(NOW,ds_created),3.16e-11,4,4)^10.0');
+
+  if (!empty($_GET['meetings'])) {
+   $bundles[] = 'os2web_meetings_meeting';
+   $bundles[] = 'document';
+  }
+
+  if (!empty($_GET['phonebooks'])) {
+    $bundles[] = 'phone_book';
+  }
+  // Restrict searchable content types.
+  if (!empty($bundles)){
+    $query->addParam('fq', 'bundle:(' .  implode(' OR ', $bundles) .')');
+  }else{
+    $query->addParam('fq', '-bundle:(os2web_meetings_meeting OR document OR phone_book)');
+  }
+}
+
+/**
+ * Implements hook_apachesolr_query_alter().
+ *
+ * Adds compability of solr panels with solr multilingual module.
+ *
+ * @param DrupalSolrQueryInterface $query
+ *   An object implementing DrupalSolrQueryInterface. No need for &.
+ */
+function config_search_apachesolr_query_alter($query) {
+  $query->addContext(array('page_id' => apachesolr_search_default_search_page()));
+}
+
+/**
+ * Implements hook_node_view().
+ *
+ * Removes from indexing titles for Self Service, Bannerlink, FAQ, and Factbox.
+ */
+function config_search_node_view($node, $view_mode, $langcode) {
+  static $not_indexed_title_bundles = array('self_service', 'faq', 'factbox', 'bannerlink');
+  if ($view_mode === 'search_index') {
+    if (in_array($node->type, $not_indexed_title_bundles)) {
+      $node->title = '';
+    }
+  }
+}
+
+/**
+ * Implements hook_node_view_alter().
+ *
+ * Removes Contextual links from indexing for embedded content types.
+ */
+function config_search_node_view_alter(&$build) {
+  if ($build['#view_mode'] === 'search_index') {
+    if (isset($build['#contextual_links'])) {
+      unset($build['#contextual_links']);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ *
+ * Allow solr to index files in 'os2web_meetings_bullet', but do not index nodes itself.
+ */
+function config_search_entity_info_alter(array &$entity_info) {
+  $entity_info['node']['bundles']['os2web_meetings_bullet']['apachesolr']['document callback'] = array('apachesolr_attachments_node_solr_document');
+  $entity_info['node']['bundles']['os2web_meetings_bullet_attach']['apachesolr']['document callback'] = array('apachesolr_attachments_node_solr_document');
+}
+
+

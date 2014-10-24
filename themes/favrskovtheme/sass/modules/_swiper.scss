@@ -1,0 +1,123 @@
+//Basic Swiper Styles
+
+.swiper-container,
+.swiper-nav-container {
+  img {
+    max-width: none;
+    display: block;
+  }
+
+  background-color: #f0f0f0;
+  height: 488px;
+  margin: 0 auto;
+  max-width: 1200px;
+  position:relative;
+  overflow:hidden;
+  @include backface-visibility(hidden);
+  // Fix of Webkit flickering
+  z-index:1;
+}
+
+// Node slider
+.view-subject-subpages .swiper-container {
+  background: transparent;
+  clear: both;
+  height: auto;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  @include backface-visibility(hidden);
+  z-index: 1;
+
+  img {
+    width: 100%;
+  }
+}
+
+.view-subject-subpages .swiper-container {
+  .swiper-wrapper {
+    overflow: hidden;
+  }
+}
+
+.swiper-nav .swiper-slide {
+  position: relative;
+}
+
+
+.swiper-wrapper,
+.swiper-nav-wrapper {
+  position:relative;
+
+  // @include transition-property(transform, left, top);
+  @include transition-duration(0s);
+  @include transform(translate3d(0px, 0, 0));
+  @include transition-timing-function(ease);
+
+}
+
+.slider-wrapper {
+  height: 800px;
+}
+
+.slider-slide {
+  height: 100px;
+}
+.swiper-free-mode > .swiper-wrapper {
+  @include transition-timing-function(ease-out);
+  margin: 0 auto;
+}
+
+.swiper-content,
+.swiper-nav-wrapper {
+  .swiper-slide {
+    float: left;
+    height: 490px;
+  }
+}
+
+
+/* IE10 Windows Phone 8 Fixes */
+.swiper-wp8-horizontal {
+  -ms-touch-action: pan-y;
+}
+.swiper-wp8-vertical {
+  -ms-touch-action: pan-x;
+}
+
+//Your custom styles, here you need to specify container's and slide's
+// sizes, pagination, etc.
+.slider-nav-container {
+  /* Specify Swiper's Size: */
+  height: 384px;
+}
+
+.swiper-nav .swiper-slide {
+  /* Specify Slides's Size: */
+  width: 100%;
+  height:94px !important;
+}
+.swiper-slide-active {
+  /* Specific active slide styling: */
+
+}
+.swiper-slide-visible {
+  /* Specific visible slide styling: */
+
+}
+
+//Pagination Styles
+.swiper-pagination-switch {
+  /* Stylize pagination button: */
+
+}
+.swiper-active-switch {
+  /* Specific active button style: */
+
+}
+.swiper-visible-switch {
+  /* Specific visible button style: */
+
+}
+
+

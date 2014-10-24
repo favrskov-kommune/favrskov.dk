@@ -1,0 +1,83 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  page_subscription.module: n/a
+#  page_subscription.info: n/a
+#  plugins/content_types/page_subscription_form_pane.inc: n/a
+#  includes/page_subscription.admin.inc: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-05-28 11:12+0200\n"
+"PO-Revision-Date: 2014-05-28 12:13+0200\n"
+"Last-Translator: \n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: page_subscription.module:116
+msgid "MailChimp error."
+msgstr ""
+
+#: page_subscription.module:23 page_subscription.info:0
+#: plugins/content_types/page_subscription_form_pane.inc:49
+msgid "Page subscription"
+msgstr "Sideabonnement"
+
+#: page_subscription.module:24
+msgid "Manage MailChimp Groupings and Groups settings."
+msgstr ""
+
+#: page_subscription.info:0
+msgid "Propeople"
+msgstr ""
+
+#: includes/page_subscription.admin.inc:14
+msgid "List ID"
+msgstr ""
+
+#: includes/page_subscription.admin.inc:17
+msgid "List id to use."
+msgstr ""
+
+#: includes/page_subscription.admin.inc:22
+msgid "Template ID"
+msgstr ""
+
+#: includes/page_subscription.admin.inc:25
+msgid "Template id to use."
+msgstr ""
+
+#: includes/page_subscription.admin.inc:30
+msgid "Jobs E-mail subject"
+msgstr "Jobs E-mail emne"
+
+#: includes/page_subscription.admin.inc:37
+msgid "Jobs E-mail body intro text"
+msgstr "Jobs E-mail crop intro test"
+
+#: includes/page_subscription.admin.inc:44
+msgid "Meetings E-mail subject"
+msgstr "Meetings E-mail emne"
+
+#: includes/page_subscription.admin.inc:51
+msgid "Meetings E-mail body intro text"
+msgstr "Meetings E-mail krop intro tekst"
+
+#: plugins/content_types/page_subscription_form_pane.inc:13
+msgid "Mailchimp Subscription Form"
+msgstr ""
+
+#: plugins/content_types/page_subscription_form_pane.inc:14
+msgid "ProPeople"
+msgstr ""
+
+#: plugins/content_types/page_subscription_form_pane.inc:48
+msgid "Newsletter"
+msgstr "Nyhedsbrev"

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Config nodequeue feature.
+ */
+
+include_once 'config_nodequeue.features.inc';

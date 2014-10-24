@@ -1,0 +1,14 @@
+msgid "Page not found"
+msgstr "Siden blev ikke fundet"
+
+msgid "The page you&rsquo;re looking for isn&rsquo;t here."
+msgstr ""
+
+msgid "We're sorry, but the system could not find what you demand. It may be that the page is not found, the page is moved or the link is mistyped."
+msgstr "Vi beklager, men systemet kunne ikke finde, det du efterspurgte. Det kan skyldes, at siden ikke findes, at siden er flyttet eller at linket er skrevet forkert."
+
+msgid "Be aware of the search function at the top right, which might help you find what you are looking for."
+msgstr "Vær opmærksom på søgefunktionen øverst til højre, som måske kan hjælpe dig med at finde, hvad du søger."
+
+msgid "Clicking <a href='/'>here</a>, you will come to the front page."
+msgstr "Hvis du klikker <a href='/'>her</a>, kommer du til forsiden."

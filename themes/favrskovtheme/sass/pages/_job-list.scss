@@ -1,0 +1,349 @@
+//------------------------------------------------------------------------------
+// Job-list page
+
+.table-content {
+  h1 {
+    color: $gray;
+    margin-bottom: 48px;
+    text-transform: uppercase;
+    @include font-size(22);
+  }
+}
+//Header of the page
+.main-headline {
+  @include font-size(45);
+  font-family: $sans-med-strict;
+  color: $slategrey;
+  margin-bottom: 65px;
+}
+
+// Job list, table in general (class was added inside of the view)
+.pane-article-below-body-mini-panel,
+.job-listing {
+  .views-table {
+    border: 0 none;
+    @include font-size(14);
+    color: $gray;
+    margin-bottom: 30px;
+    width: 100%;
+
+    // Links inside of the table
+    a {
+      display: block;
+      padding: 10px 22px 7px;
+      position: relative;
+      @include links($gray, $gray);
+      @include font-size(16);
+
+      img {
+        margin-left: 20px;
+      }
+    }
+    .date-display-single {
+      @include font-size(16);
+      text-align: right;
+      display: block;
+      padding-right: 26px;
+    }
+
+    // Mouse over the line
+    tr:hover {
+      background-color: #cce7fc;
+
+      a,
+      span {
+        color: #1189D0;
+      }
+    }
+
+    // set column width to 70%
+    td {
+      width: 70%;
+      &+td {
+        width: 30%
+      }
+    }
+
+   thead {
+    font-family: $sans-med-strict;
+    text-align: left;
+
+    // Header row
+    tr {
+      background-color: #595959;
+      border: 0 none;
+      color: $white;
+
+      &:hover {
+        background-color: #595959;
+
+        a { color: $white; }
+      }
+
+      a {
+        color: $white;
+
+        &:hover {
+          color: $white;
+          background-color: $red;
+        }
+      }
+    }
+
+      //First th
+      .th-first a,
+      th:first-child a {
+        padding-left: 22px;
+      }
+
+      // Header links
+      a {
+        padding-left: 22px;
+        padding-bottom: 10px;
+        @include font-size(22);
+        text-align: left;
+      }
+    }
+  }
+
+  table tr {
+    background-color: #eee;
+    border-bottom: 1px solid #fff;
+    @include transition-duration(.1s);
+  }
+
+
+
+  // **
+  // * Datepicker styles
+  // *
+  .ui-datepicker-calendar {
+    // Table header row
+    th {
+      background-color: #1189D0;
+      color: $white;
+    }
+    // Rows
+    tr {
+      border: 0 none;
+    }
+
+    // Columns
+    td {
+      background-color: #fff;
+      border: 1px solid #e6e6e6;
+      width: auto;
+      padding: 0;
+    }
+
+    // links
+    .ui-state-default {
+      color: $gray;
+      padding: .4em .2em;
+      text-align: center;
+      @include font-size(12);
+
+      &:hover,
+      &.ui-state-active {
+        background-color: $red;
+        color: $white;
+      }
+    }
+  }
+}
+// Job listing content
+.job-listing + div + .job-listing .views-table {
+  th {
+    padding: 0;
+    a img {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      margin-top: -7px;
+    }
+
+    a {
+      @include font-size(20);
+      padding-right: 28px;
+      position: relative;
+    }
+  }
+
+  td + td {
+    padding-left: 20px;
+  }
+}
+// Table after body content
+.pane-article-below-body-mini-panel .views-table {
+  th {
+    padding: 10px 0 10px 22px;
+    @include font-size(20);
+    text-align: left;
+
+    a img {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      margin-top: -7px;
+    }
+
+    a {
+      padding-right: 28px;
+      position: relative;
+    }
+  }
+}
+
+// Table data on the page
+.table-content {
+  margin-bottom: 39px
+}
+
+
+
+.job-listing {
+  .list-content {
+    margin-bottom: 40px;
+  }
+
+  // Top Filters
+  .views-exposed-form {
+    position: relative;
+
+    .ajax-progress {
+      position: absolute;
+      right: 0;
+      top: 4px;
+    }
+  }
+
+  .views-exposed-widgets,
+  .view-os2web-meetings-light {
+    margin-bottom: 30px;
+
+    select {
+      width: 100%;
+    }
+  }
+
+  // Single widget
+  .views-exposed-widget {
+    @include inline-block();
+    vertical-align: middle;
+    margin-right: 48px;
+
+    .form-text {
+      background-color: #e6e6e6;
+      color: $gray;
+      max-width: 164px;
+      padding: 10px;
+      @include border-radius(4px);
+    }
+  }
+
+  .list-sidebar {
+    .views-exposed-widgets {
+      margin-bottom: 30px;
+
+      label {
+        display: block;
+        color: $gray;
+        margin-bottom: 10px;
+        @include font-size(14);
+      }
+
+      select {
+        width: 100%;
+      }
+    }
+    .form-submit {
+      margin-top: 20px;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+
+// Responsive
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// max width 768px
+@include at-breakpoint(12px 980px) {
+  .table-list .views-exposed-widget {
+    margin: 0 0 10px 0;
+    width: 100%;
+
+    label {
+      min-width: 170px;
+    }
+  }
+}
+
+@include at-breakpoint($tablet) {
+  .job-list {
+    table a,
+    table thead a,
+    //First th
+    thead .th-first a,
+    thead th:first-child a,
+    .field-type-datetime {
+      padding: 10px 10px 7px;
+      @include font-size(15);
+    }
+    // Arrow
+    table a img {
+      margin-left: 10px;
+    }
+    table td {
+      width: 60%;
+    }
+  }
+}
+
+// max width 480px
+@include at-breakpoint($phone-land) {
+  // Make label full width and add space after it
+  .job-listing .views-exposed-widgets label {
+    display: block;
+    margin-bottom: 9px;
+  }
+
+  .job-list table td,
+  .job-list table th {
+    max-width: 120px;
+    @include font-size(13);
+    line-height: 1.4;
+
+    a {
+      @include font-size(13);
+    }
+
+    &+td {
+        width: 120px;
+      }
+  }
+
+
+  .job-list,
+  .pane-article-below-body-mini-panel .pane-hearings-hearings-list-pane,
+  .pane-hearings-hearings-list-pane .views-table {
+    table a,
+    thead a,
+    table thead a,
+    thead .th-first a,
+    thead th:first-child a,
+    .field-type-datetime {
+      padding: 10px 5px 7px;
+      @include font-size(13);
+    }
+
+    table a img {
+      display: none;
+    }
+  }
+
+  .pane-article-below-body-mini-panel .pane-hearings-hearings-list-pane table td {
+    padding: 0;
+  }
+}

@@ -1,0 +1,105 @@
+<?php
+/**
+ * @file
+ * Code for the Config Media feature.
+ *
+ * @author Yaroslav Kharchenko <undertext.2010@gmail.com>
+ */
+
+include_once 'config_media.features.inc';
+
+/**
+ * Implements hook_views_default_views_alter().
+ *
+ * Removing default media view. We do not need it as we have AWESOME media browser plus.
+ * Adding tags filter to media folder view.
+ */
+function config_media_views_default_views_alter(&$views) {
+  if (isset($views['media_default'])) {
+    unset($views['media_default']);
+  }
+
+  if (isset($views['media_browser_plus'])) {
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['id'] = 'field_tags_tid';
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['table'] = 'field_data_field_tags';
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['field'] = 'field_tags_tid';
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['value'] = '';
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['exposed'] = TRUE;
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['expose']['operator_id'] = 'field_tags_tid_op';
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['expose']['label'] = 'Tags';
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['expose']['operator'] = 'field_tags_tid_op';
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['expose']['identifier'] = 'field_tags_tid';
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['expose']['remember_roles'] = array(
+      2 => '2',
+      1 => 0,
+    );
+    $views['media_browser_plus']->display['default']->display_options['filters']['field_tags_tid']['vocabulary'] = 'media_tags';
+  }
+}
+
+/**
+ * Implements hook_file_displays_alter().
+ *
+ * It is now the only one possible way to ovverride file display settings.
+ */
+function config_media_file_displays_alter(&$displays, $file, $view_mode) {
+  if (in_array($file->type, array('audio', 'video')) && in_array($view_mode, array('default', 'teaser'))) {
+    $displays["file_field_file_{$file->type}"]['status'] = FALSE;
+    $displays['file_field_file_default']['status']['status'] = TRUE;
+  }
+}
+
+
+/**
+ * Implements hook_file_default_types_alter().
+ *
+ * Bound *.ppsx files and binary files to Document file type.
+ */
+function config_media_file_default_types_alter(&$types) {
+  $types['document']->mimetypes[] = 'application/vnd.openxmlformats-officedocument.presentationml.slideshow';
+  $types['document']->mimetypes[] = 'application/octet-stream';
+}
+
+/**
+ * Implements hook_media_format_form_alter().
+ *
+ * Removes unnecessary form elements from media embed form.
+ */
+function config_media_media_format_form_prepare_alter(&$form, &$form_state, $file) {
+  unset($form['options']['fields']['field_file_image_photographer']);
+  unset($form['options']['fields']['redirect']);
+  unset($form['options']['fields']['field_tags']);
+  unset($form['options']['fields']['field_folder']);
+}
+
+/**
+ * Implements hook_media_element_info_alter().
+ *
+ * Adds prerender callback for textfields handled via CKeditor.
+ */
+function config_media_element_info_alter(&$types) {
+  $types['text_format']['#pre_render'][] = 'config_media_pre_render_text_format';
+}
+
+/**
+ * Prerender callback.
+ *
+ * Adds js that adds possibility for editor to edit link title when embed a file (media embed plugin).
+ */
+function config_media_pre_render_text_format($element) {
+  if (isset($element['#format'])) {
+    drupal_add_js(drupal_get_path('module', 'config_media') . '/config_media.js',
+      array('type' => 'file', 'scope' => 'footer', 'weight' => 100));
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_admin_paths().
+ */
+function config_media_admin_paths() {
+  $paths = array(
+    'media/*' => TRUE,
+  );
+  return $paths;
+}

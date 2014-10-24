@@ -1,0 +1,49 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+//------------------------------------------------------------------------------
+// Mixin from compass
+
+@import "susy";
+@import "compass/css3";
+
+@import "compass/typography/text/force-wrap";
+@import "compass/typography/text";
+
+
+//------------------------------------------------------------------------------
+// Mixins & variables
+
+@import "mixins-var/variables";
+@import "mixins-var/mixins";
+
+
+//------------------------------------------------------------------------------
+//Base
+@import "base/reset";
+@import "base/global";
+@import "base/layout";
+@import "base/tabs";
+
+
+//------------------------------------------------------------------------------
+// Modules
+
+
+
+//------------------------------------------------------------------------------
+// Particles
+
+@import "partials/menu";
+@import "partials/header";
+@import "partials/footer";
+@import "partials/wysiwyg";
+@import "partials/buttons";
+@import "partials/login";
+
+//------------------------------------------------------------------------------
+// Pages
+@import "pages/front";
+@import "pages/system";

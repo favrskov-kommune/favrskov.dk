@@ -1,0 +1,323 @@
+//------------------------------------------------------------------------------
+// Footer
+.footer-wrapper {
+  background: url(../images/vawe.png) repeat-x bottom;
+  background-color: $slategrey;
+  padding: 55px 0 0;
+  font-family: $sans-med-strict;
+
+  a {
+    @include links($cyan, $white);
+  }
+
+  .content {
+    padding-bottom: 182px;
+  }
+
+  .nav,
+  section {
+    @include span-columns(3, 12);
+    @include nth-omega(4n);
+  }
+  .policy {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+  }
+
+  h2 {
+    color: $white;
+    @include font-size(22);
+    margin-bottom: 33px;
+  }
+
+  // Logo
+  .logo {
+    margin-top: 0;
+
+    img {
+      max-width: 180px;
+    }
+
+    .back-homepage {
+      display: block;
+      width: 200px;
+      height: 65px;
+      @include sprite(-265px, 0);
+      text-indent: -999em;
+    }
+
+  }
+
+  // Contacts
+  .contacts {
+    color: $white;
+    @include font-size(16);
+    h1 {
+      @include font-size(22);
+      margin-bottom: 33px;
+    }
+
+    .tel,
+    p {
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+    .tel {
+      display: block;
+      margin-bottom: 6px;
+    }
+  }
+
+
+  // Links
+  .nav {
+    .pane-title {
+      color: $white;
+    }
+
+     a {
+      @include font-size(16);
+      line-height: 1.7;
+    }
+  }
+
+  // Social
+  .social {
+    position: relative;
+
+     h2 {
+        margin-bottom: 43px;
+      }
+
+    // Menu
+
+    .show-menu {
+      background: $white;
+      display: block;
+      padding: 6px 10px;
+      @include border-radius(6px);
+      @include font-size(14);
+      @include links($gray, $gray);
+      position: relative;
+      line-height: 1.7;
+      z-index: 10;
+
+      span {
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 13px solid #ccc;
+
+        position: absolute;
+        right: 9px;
+        top: 12px;
+      }
+
+      &:hover span {
+        border-top: 13px solid $cyan;
+      }
+
+      &.open {
+
+        &:hover span {
+          border-bottom: 13px solid $cyan;
+        }
+        span {
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
+          border-bottom: 13px solid #ccc;
+          border-top:0;
+          top: 12px;
+        }
+      }
+    }
+
+    .menu {
+      position: absolute;
+      background: $slatgrayDark;
+      width: 90%;
+      padding: 11px 5% 6px;
+      display: none;
+      @include border-radius(5px);
+      @include font-size(15);
+
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      margin-top: -5px;
+
+      &.open {
+        display: block;
+      }
+
+      li {
+        border-top: 1px solid $slatgrayLight;
+        border-bottom: 1px solid #303939;
+
+
+        a {
+          display: block;
+          padding: 5px 0;
+        }
+
+        &.first {
+          border-top: 0 none;
+        }
+        &.last {
+          border-bottom: 0 none;
+        }
+      }
+    }
+
+    //  Links
+
+    .social-links {
+      margin-top: 44px;
+
+      li {
+        float: left;
+        position: relative;
+        text-indent: -9999px;
+        width: 37px;
+        height: 37px;
+        margin-right: 11px;
+
+        a {
+          height: 38px;
+          width: 38px;
+          display: block;
+          @include transition-duration(0s);
+          &:hover {
+            color: $white;
+          }
+        }
+        [class^='icon-']{
+          z-index: 1;
+          color: $cyan;
+
+          @include font-size(37);
+          @extend %animate;
+          &:before {
+            text-indent: 9999px;
+          }
+        }
+      }
+    }
+  }
+
+  // Policy
+  .policy {
+
+    .content {
+      padding-bottom: 15px;
+    }
+    ul {
+      @include span-columns(3 omega, 12);
+    }
+
+    li {
+      @include inline-block();
+      margin-right: 27px;
+
+      &+li {
+        margin-right: 0;
+      }
+
+      a {
+        @include font-size(14);
+      }
+    }
+  }
+}
+
+//Style for musicon.dk
+.domain-musicon-dk {
+  .footer-wrapper {
+    .social-links {
+      li [class^='icon-'] {
+        color: $white;
+      }
+      li a:hover {
+        color: #610b1a;
+      }
+    }
+  }
+}
+
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+
+
+// Tableet land ----max-width(871px)
+@include at-breakpoint($tablet-land) {
+  .footer-wrapper {
+    .logo {
+      @include span-columns(12,12);
+    }
+
+    .social,
+    .nav,
+    .contacts {
+      @include span-columns(4, 12);
+    }
+    .policy ul {
+      @include span-columns(4 omega, 12);
+    }
+
+    // Logo
+    .logo .back-homepage {
+      margin-bottom: 60px;
+    }
+  }
+}
+
+// Tableet port ----max-width(767px)
+@include at-breakpoint($tablet-port) {
+  .footer-wrapper {
+    .nav,
+    .contacts {
+      @include span-columns(6, 12);
+      @include remove-nth-omega(4n);
+      @include nth-omega(2n);
+    }
+
+    .social {
+      @include span-columns(6, 12);
+      @include remove-nth-omega(4n);
+      clear: both;
+    }
+  }
+
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+  .footer-wrapper {
+    & >.content {
+      padding-bottom: 100px;
+    }
+    .social,
+    .nav,
+    .contacts {
+      @include span-columns(12, 12);
+      @include remove-nth-omega(4n);
+      @include nth-omega(2n);
+      margin-bottom: 50px;
+    }
+
+    .policy ul {
+      @include span-columns(12 omega, 12);
+      text-align: right;
+    }
+  }
+}
+
+// Phone port -----max-width(320px)
+@include at-breakpoint($phone-port) {
+
+}
+

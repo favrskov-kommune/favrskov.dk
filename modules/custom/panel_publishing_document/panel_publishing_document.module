@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel publishing document feature.
+ */
+
+include_once 'panel_publishing_document.features.inc';

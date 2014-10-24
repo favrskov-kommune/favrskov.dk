@@ -1,0 +1,418 @@
+<?php
+
+/**
+ * Code for pane_social_combi module.
+ * Contains API calls to twitter, facebook, instagram.
+ */
+
+//OAuth2 keys for instagram, facebook, twitter
+define('INSTAGRAM_TOKEN', 'fc841d5340a94deeb4a99a3f96f8ef9d');
+
+define('FACEBOOK_ACCESS_TOKEN', '228602337346811|40553cb335ee10435a5b549ba0db8c9e');
+
+define('TWITTER_ACCESS_TOKEN', '175696666-ZF3PKdyYO8Q8Ex8Nh9km3fQP5tgpdhbSKinKxQqZ');
+define('TWITTER_TOKEN_SECRET', 'iM9qm6UR0UnOHe8smETTPDOYOfwLgQCVH47epPPTfRvO3');
+define('TWITTER_CONSUMER_KEY', 'je9PwJvJ7C2WxvKRtmrEmYIh6');
+define('TWITTER_CONSUMER_SECRET', 'jx6fIXAjGwJMtJgxbh30cPqwulNfw3HSuAt0iRn8UDbOKhYkBp');
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function pane_social_combi_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools') {
+    return 'plugins/' . $plugin_type;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function pane_social_combi_theme($existing, $type, $theme, $path) {
+  return array(
+    'combi_box' => array(
+      'variables' => array(
+        'box' => NULL,
+      ),
+      'template' => 'combi_box',
+    ),
+
+  );
+}
+
+/**
+ * Returns most recent facebook posts from user or group profile.
+ *
+ * @param $names
+ *  User or group names delimited by coma.
+ * @param $scope
+ *  Parameter to determine what to return : user posts or all user feed.
+ *  Possible values: 'feed', 'posts'.
+ * @param $count
+ *  Count of posts to return
+ * @return array
+ *  Most recent facebook posts from user or group profiles.
+ */
+function pane_social_combi_get_fb_posts($names, $scope, $count) {
+  $posts = array();
+
+  $user_names = explode(',', $names);
+  $count_per_user = $count / count($user_names);
+  foreach ($user_names as $user_name) {
+    $url = "https://graph.facebook.com/" . trim($user_name) . "/$scope?method=GET&format=json&suppress_http_code=1&access_token=" .
+      FACEBOOK_ACCESS_TOKEN . "&limit=$count_per_user" . "&locale=da_DK";
+
+    $options = array(
+      CURLOPT_URL => $url,
+      CURLOPT_RETURNTRANSFER => TRUE,
+      CURLOPT_TIMEOUT => 20,
+    );
+
+    $feed = curl_init();
+    curl_setopt_array($feed, $options);
+
+    $result = curl_exec($feed);
+    curl_close($feed);
+
+    if ($count < $count_per_user) {
+      $count_per_user = (int) $count;
+    }
+    $data = json_decode($result)->data;
+
+    foreach ($data as $info) {
+      $text = !empty($info->message) ? $info->message : (!empty($info->description) ? $info->description : $info->story);
+      $post = array(
+        'text' => text_summary($text, NULL, 200),
+        'url' => 'http://www.facebook.com/' . substr($info->id, 0, strpos($info->id, '_')) .
+          '/posts/' . substr($info->id, strpos($info->id, '_') + 1),
+        'class' => 'facebook-box',
+        'time' => strtotime($info->updated_time),
+      );
+
+      $posts[] = $post;
+    }
+    $count -= count($data);
+  }
+  return $posts;
+
+}
+
+/**
+ * Returns most recent instagram pictures from user profile or by hash tag.
+ *
+ * @param $type
+ *  Determine how to find instagrams: by hashtags or by username.
+ *  Possible values: 'getUserMedia', 'getTagMedia'.
+ * @param $name
+ *  Instagram username or tag to grab pictures from
+ * @param $count
+ *  Count of pictures to return
+ * @return array
+ *  Most recent instagram pictures from user profile or by tag.
+ */
+function pane_social_combi_get_instagrams($type, $name, $count) {
+  $instagrams = array();
+  $instagram_api = new Instagram(INSTAGRAM_TOKEN);
+  $user_names = explode(',', $name);
+  $count_per_user = floor($count / count($user_names));
+
+  foreach ($user_names as $user_name) {
+    switch ($type) {
+      case 'getUserMedia':
+        $users = $instagram_api->searchUser(trim($user_name))->data;
+        if (isset($users[0])) {
+          $user_id = $users[0]->id;
+          if ($count < $count_per_user) {
+            $count_per_user = (int) $count;
+          }
+          $result = $instagram_api->getUserMedia($user_id, $count_per_user)->data;
+          $count -= count($result);
+        }
+        break;
+      case 'getTagMedia' :
+        $result = $instagram_api->getTagMedia(trim($user_name), $count_per_user)->data;
+        $count -= count($result);
+    }
+    foreach ($result as $info) {
+      $instagram = array(
+        'image' => $info->images->low_resolution->url,
+        'url' => $info->link,
+        'class' => 'instagram-box',
+        'username' => '@' . $info->user->username,
+        'text' => $info->caption->text,
+        'time_ago' => t('!interval ago', array('!interval' => _social_format_interval(time() - $info->created_time, 1))),
+        'time' => $info->created_time,
+      );
+      $instagrams[] = $instagram;
+    }
+
+  }
+  return $instagrams;
+}
+
+/**
+ * Get random color.
+ * @return string
+ *  Random color name
+ */
+function pane_social_combi_get_color() {
+  static $colors = array('gray', 'green', 'red', 'cold-blue');
+  $color = next($colors);
+  if ($color == FALSE) {
+    $color = reset($colors);
+  }
+  return $color;
+}
+
+/**
+ * Compare function to sort tweets,instagrams, facebook posts by date.
+ */
+function pane_social_combi_cmp($a, $b) {
+  return $a['time'] - $b['time'];
+}
+
+/**
+ * Returns tweets, facebook posts, instagram pictures all together.
+ */
+function pane_social_get_merged_social_data($conf) {
+  $tweets = array();
+  $instagrams = array();
+  $posts = array();
+
+  $sources_count = $conf['show_instagram'] + $conf['show_twitter'] + $conf['show_facebook'];
+  $all = (int) $conf['row_count'] * $conf['col_count'];
+  $count = (int) ($all / $sources_count);
+
+  if ($conf['show_instagram'] == 1) {
+    $instagrams = $instagram_user = $instagram_tag = array();
+
+    $count_user = count(explode(',', $conf['instagram_user']));
+    $count_tag = count(explode(',' , $conf['instagram_tag']));
+
+    $count_user_instagrams = (floor($count / ($count_user + $count_tag)) * $count_user);
+
+    if (!empty($conf['instagram_user'])) {
+      $instagram_user = pane_social_combi_get_instagrams(
+        'getUserMedia',
+        $conf['instagram_user'],
+        $count_user_instagrams
+      );
+    }
+
+    if (!empty($conf['instagram_tag'])) {
+      $instagram_tag = pane_social_combi_get_instagrams(
+        'getTagMedia',
+        $conf['instagram_tag'],
+        ($count - count($instagram_user))
+      );
+    }
+
+    $instagrams = array_merge($instagram_user, $instagram_tag);
+    $all -= count($instagrams);
+  }
+
+  if ($conf['show_twitter'] == 1) {
+    $tweets = $tweets_user = $tweets_tag = array();
+
+    $count_user = count(explode(',', $conf['twitter_user']));
+    $count_tag = count(explode(',' , $conf['twitter_tag']));
+
+    $count_user_tweets = (floor($count / ($count_user + $count_tag)) * $count_user);
+
+    if (!empty($conf['twitter_user'])) {
+      $tweets_user = pane_social_combi_get_tweets('statuses/user_timeline', $conf['twitter_user'], $count_user_tweets);
+    }
+    if (!empty($conf['twitter_tag'])) {
+      $tweets_tag = pane_social_combi_get_tweets('search/tweets', $conf['twitter_tag'], ($count - count($tweets_user)));
+    }
+
+    $tweets = array_merge($tweets_user, $tweets_tag);
+    $all -= count($tweets);
+  }
+
+  if ($conf['show_facebook'] == 1) {
+    $scope = $conf['facebook_scope'] == 1 ? 'feed' : 'posts';
+    $posts = pane_social_combi_get_fb_posts($conf['facebook_user'], $scope, $all);
+  }
+    
+  $data = pane_social_combi_merge_data($tweets, $instagrams, $posts);
+  return $data;
+}
+
+/**
+ * Merge data from twitter, facebook, instagram in one.
+ *
+ * @param $tweets
+ *  Twitter data
+ * @param $instagrams
+ *  Instagram data
+ * @param $posts
+ *  Facebook posts
+ * @return array
+ *  Merged data
+ */
+function pane_social_combi_merge_data($tweets, $instagrams, $posts) {
+  $data = array_merge($tweets, $instagrams, $posts);
+  $data_new = array();
+  usort($data, 'pane_social_combi_cmp');
+
+  while (!empty($data)) {
+    $one = array_pop($data);
+    if ($one) {
+      $one['color'] = pane_social_combi_get_color();
+      $data_new[] = $one;
+    }
+    $two = array_pop($data);
+    if ($two) {
+      $two['color'] = pane_social_combi_get_color();
+      $data_new[] = $two;
+    }
+    $three = array_pop($data);
+    if ($three) {
+      $three['color'] = pane_social_combi_get_color();
+      $data_new[] = $three;
+    }
+  }
+
+  return $data_new;
+}
+
+/**
+ * Returns most recent tweets by query
+ * @param $type
+ *  Twitter API method
+ * @param $search
+ *  Query parameter
+ * @param $count
+ *  Count of tweets to return
+ * @return array
+ *  Most recent tweets by query
+ */
+function pane_social_combi_get_tweets($type, $search, $count) {
+  $url = 'https://api.twitter.com/1.1/' . $type . '.json';
+  $tweets = array();
+  $settings = array(
+    'oauth_access_token' => TWITTER_ACCESS_TOKEN,
+    'oauth_access_token_secret' => TWITTER_TOKEN_SECRET,
+    'consumer_key' => TWITTER_CONSUMER_KEY,
+    'consumer_secret' => TWITTER_CONSUMER_SECRET
+  );
+  $twitter_api = new TwitterAPIExchange($settings);
+  $requestMethod = 'GET';
+  $user_names = explode(',', $search);
+  $count_per_user = floor($count / count($user_names));
+
+  foreach ($user_names as $user_name) {
+    if ($count < $count_per_user) {
+      $count_per_user = (int) $count;
+    }
+    switch ($type) {
+      case 'statuses/user_timeline':
+        $query = "?screen_name=" . trim($user_name) . '&count=' . $count_per_user;
+        break;
+      case 'search/tweets':
+        $query = "?q=" . trim($user_name) . '&count=' . $count_per_user;
+    }
+
+    $result = json_decode($twitter_api->setGetfield($query)
+      ->buildOauth($url, $requestMethod)
+      ->performRequest());
+
+    if (!$result) {
+      return array();
+    }
+
+    if (property_exists($result, 'statuses')) {
+      $result = $result->statuses;
+    }
+    $count -= count($result);
+
+    foreach ($result as $info) {
+      $datetime = new DateTime($info->created_at);
+      $datetime->setTimezone(new DateTimeZone('Europe/Zurich'));
+      $tweet = array(
+        'text' => $info->text,
+        'url' => 'https://twitter.com/' . $info->user->screen_name . '/status/' . $info->id,
+        'class' => 'twitter-box',
+        'username' => '@' . $info->user->screen_name,
+        'time_ago' => t('!interval ago', array('!interval' => _social_format_interval(time() - $datetime->format('U'), 1))),
+        'time' => strtotime($info->created_at),
+      );
+      $tweets[] = $tweet;
+    }
+  }
+
+  return $tweets;
+}
+
+/**
+ * Formats a time interval with the requested granularity.
+ *
+ * @param $interval
+ *   The length of the interval in seconds.
+ * @param $granularity
+ *   How many different units to display in the string.
+ * @param $langcode
+ *   Optional language code to translate to a language other than
+ *   what is used to display the page.
+ *
+ * @return string
+ *   A translated string representation of the interval.
+ */
+function _social_format_interval($interval, $granularity = 2, $langcode = NULL) {
+  $units = array(
+    '1 day|@count days' => 86400,
+    '1 hour|@count hours' => 3600,
+    '1 min|@count min' => 60,
+    '1 sec|@count sec' => 1
+  );
+  $output = '';
+  foreach ($units as $key => $value) {
+    $key = explode('|', $key);
+    if ($interval >= $value) {
+      $output .= ($output ? ' ' : '') . format_plural(floor($interval / $value), $key[0], $key[1], array(), array('langcode' => $langcode));
+      $interval %= $value;
+      $granularity--;
+    }
+
+    if ($granularity == 0) {
+      break;
+    }
+  }
+  return $output ? $output : t('0 sec', array(), array('langcode' => $langcode));
+}
+
+
+/**
+ * Implements hook_cronapi().
+ */
+function pane_social_combi_cronapi($op, $job = NULL) {
+  $items['pane_social_combi_update_combi_pane'] = array(
+    'description' => 'Updating data from twitter, facebook and instagram',
+    'rule' => '*/5 * * * *',
+  );
+  return $items;
+}
+
+/**
+ * Callback for cron.
+ *
+ * Updates facebook posts, tweets, and instagrams.
+ */
+function pane_social_combi_update_combi_pane() {
+  $panes_config = db_select('panels_pane')
+    ->fields('panels_pane', array('configuration'))
+    ->condition('subtype', 'pane_social_combi_pane')
+    ->execute()
+    ->fetchAll();
+
+  foreach ($panes_config as $config) {
+    $hash = md5($config->configuration);
+    $config = unserialize($config->configuration);
+    $cache = cache_get('combi_boxes_' . $hash);
+    if ($cache && (int) $cache->created + $config['cache_time'] < time()) {
+      $data = pane_social_get_merged_social_data($config);
+      cache_set('combi_boxes_' . $hash, $data, 'cache');
+    }
+  }
+
+}

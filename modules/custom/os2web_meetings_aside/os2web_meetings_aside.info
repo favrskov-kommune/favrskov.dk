@@ -1,0 +1,11 @@
+name = OS2Web Meetings Aside
+core = 7.x
+package = OS2Web - Frontend
+version = 7.x-1.0
+project = os2web_meetings_aside
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = os2web_meetings_aside
+features_exclude[dependencies][ctools] = ctools

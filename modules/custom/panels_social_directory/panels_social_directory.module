@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Code for the Panels Social Directory feature.
+ */
+
+include_once 'panels_social_directory.features.inc';
+
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ * Adds new field suggestion.
+ */
+function panels_social_directory_preprocess_field($vars)
+{
+    $vars['theme_hook_suggestions'][] = 'field__' . $vars['element']['#bundle'];
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Self Service page feature.
+ */
+
+include_once 'panel_self_service_page.features.inc';

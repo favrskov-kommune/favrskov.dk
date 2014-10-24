@@ -1,0 +1,158 @@
+//------------------------------------------------------------------------------
+// Import page styles
+
+.page-import {
+  padding-top: 100px !important;
+  background-color: $slategrey;
+
+  // Help styles
+  .help {
+    @include inline-block();
+    padding: 20px;
+    background-color: $grayLight;
+    margin-bottom: 20px;
+    color: $gray;
+    @include font-size(14);
+    @include border-radius(10px);
+    line-height: 1.5;
+
+    a {
+      @include links($red, $red);
+      // background-color: $cream;
+      @include inline-block();
+      @include border-radius(3px);
+      padding: 2px 8px;
+
+      &:hover {
+        background-color: $red;
+        color: $white;
+      }
+    }
+  }
+
+  // Table styles
+  table {
+    @include container();
+    width: 100%;
+    color: $gray;
+    padding: 0;
+    @include font-size(13);
+
+    th, td {
+      padding: 10px;
+    }
+
+    tr {
+       background-color: $grayLight;
+
+       &:nth-child(even) {
+        background-color: #fff;
+      }
+    }
+
+    td {
+      border: 1px solid $white;
+
+      a {
+        @include inline-block();
+        background-color: $red;
+        @include border-radius(4px);
+        color: $white;
+        padding: 10px;
+        min-width: 50%;
+
+        &:hover {
+          background-color: $pink;
+        }
+      }
+    }
+  }
+
+  thead tr {
+    background-color: $slatgrayDark;
+    color: $white;
+    font-weight: bold;
+  }
+
+  // Fildsets styles
+  form {
+    @include container();
+    background-color: $white;
+    padding: 30px 3%;
+    // Info box
+    .info-box {
+      line-height: 1.5;
+      background-color: #d8d29d;
+      padding: 20px;
+      color: #fff;
+      @include font-size(16);
+      @include inline-block();
+      @include border-radius(10px);
+    }
+
+    // Labels
+    label {
+      font-weight: bold;
+      @include font-size(14);
+      margin-right: 10px;
+      min-width: 80px;
+      @include inline-block();
+    }
+
+    // Inputs
+    .form-text {
+      background-color: $grayLight;
+      border: 1px solid $grayLight;
+      padding: 9px;
+      width: 50%;
+      margin-bottom: 8px;
+    }
+
+    // Desription
+    .form-type-file {
+      .description {
+        margin-left: 0;
+      }
+    }
+
+    .form-type-checkbox {
+      .description {
+        margin-left: 20px;
+      }
+    }
+
+    .description {
+      margin: 7px 0 0 94px;
+    }
+  }
+
+  .form-wrapper {
+    border: 1px solid $grayLight;
+    color: $gray;
+    @include font-size(13);
+    width: 94%;
+    padding: 10px 3% 30px;
+    margin-bottom: 30px;
+
+    legend {
+      padding: 10px;
+      @include font-size(16);
+      font-weight: bold;
+    }
+
+    .fieldset-wrapper {
+     & > .form-item {
+        margin-bottom: 10px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $grayLight;
+      }
+    }
+  }
+}
+
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------

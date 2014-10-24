@@ -1,0 +1,151 @@
+//------------------------------------------------------------------------------
+// Main sprite
+
+@mixin sprite($x, $y, $bg-color: transparent, $sprite: '../images/sprite.png') {
+  background: $bg-color url(#{$sprite}) no-repeat $x $y;
+}
+
+
+//------------------------------------------------------------------------------
+// Font resizing
+
+@mixin font-size($sizeValue: 13){
+  font-size: ($sizeValue) + px;
+  font-size: ($sizeValue / 16) + rem;
+}
+
+
+//------------------------------------------------------------------------------
+// Links
+
+@mixin links($color: $cyan, $hover: $cyan, $text-decoration: none) {
+  color: $color;
+  text-decoration: $text-decoration;
+
+  &:hover {
+    color: $hover;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+// Input fields
+
+@mixin inputs( $width: auto, $height: auto, $border: none, $color: black) {
+  height: $height;
+  width: $width;
+  border: $border;
+  background-color: #fff;
+  padding: 0 5px;
+  color: $color;
+}
+
+
+//------------------------------------------------------------------------------
+// Submit Button
+
+@mixin submit( $width: auto, $height: auto, $border: none, $color: #fff ) {
+  width: $width;
+  height: $height;
+  line-height: $height;
+  border: $border;
+  color: $color;
+  padding: 5px;
+}
+
+
+//------------------------------------------------------------------------------
+// CSS3 Animation
+%animate {
+  @include transition-property(all);
+  @include transition-timing-function(ease-in);
+  @include transition-duration(.1s);
+}
+
+//------------------------------------------------------------------------------
+// Abstract classes
+%border-bottom {
+  border-bottom: 1px solid $grayLight;
+}
+
+%no-border {
+  border: 0 none;
+}
+
+%no-padding {
+  padding: 0;
+}
+%no-margin {
+  margin: 0;
+}
+
+%centered {
+  text-align: center;
+}
+
+//------------------------------------------------------------------------------
+// Placeholder
+@mixin placeholder($color) {
+  &.placeholder {
+    color: $color;
+    }
+  &:-moz-placeholder {
+    color: $color;
+    }
+  &::-webkit-input-placeholder {
+    color: $color;
+    }
+}
+
+//------------------------------------------------------------------------------
+// Responsive video
+%respondvideo {
+  position: relative;
+  padding-bottom: 56.25%; /* 16/9 ratio */
+  height: 0;
+  overflow: hidden;
+  display: block;
+
+  iframe,
+  object,
+  embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+
+// Responsive
+
+//------------------------------------------------------------------------------
+/*
+// Screen---- max-width(980px)
+@include at-breakpoint($tablet) {
+
+}
+
+// Tableet land ----max-width(871px)
+@include at-breakpoint($tablet-land) {
+
+}
+
+// Tableet port ----max-width(767px)
+@include at-breakpoint($tablet-port) {
+
+}
+
+// Phone port -----max-width(480px)
+@include at-breakpoint($phone-land) {
+
+}
+
+// Phone port -----max-width(320px)
+@include at-breakpoint($phone-port) {
+
+}
+*/

@@ -1,0 +1,299 @@
+//------------------------------------------------------------------------------
+// IPE Styles
+@import "compass/css3";
+@import "mixins-var/variables";
+@import "mixins-var/mixins";
+
+// Vars
+  $blue: #0d778e;
+  $contrastblue: #44deff;
+  $lightblue: #2abddc;
+  $lightyellow: #fdfce9;
+
+  $red: #ca7f7f;
+  $reddark: #b24545;
+
+
+// -----------------------------------------------------------------------------
+// Front page fixes for IPE
+.front-slider {
+  .panels-ipe-sort-container.ui-sortable {
+    .pane-slider-slider-nav {
+      position: static
+    }
+  }
+}
+
+.panels-ipe-sort-container {
+  .news,
+  .events {
+    .more-link {
+      top: 0;
+    }
+  }
+
+  &.ui-sortable {
+    .events {
+      margin-top: 40px;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Subject page
+.panels-ipe-editing {
+  .overlay{
+    position: static;
+  }
+  .articles {
+    width:100%;
+    float: none;
+    & > div {
+      padding: 0;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Admin menu
+.panels-ipe-region {
+  // .drupal-system {
+  //   margin-bottom: -5px;
+  // }
+}
+// -----------------------------------------------------------------------------
+// Links bar
+.panels-ipe-linkbar {
+  li {
+    float: left;
+  }
+}
+
+.panels-ipe-region {
+  .panels-ipe-newblock {
+    @include box-shadow(0 0 0 rgba($blue, 0));
+
+    a {
+      @include box-shadow(0 1px 2px rgba($blue, .8));
+    }
+  }
+
+  //Title
+  .panels-ipe-dragbar-admin-title {
+    line-height: 36px;
+    margin-left: 10px;
+  }
+}
+
+.panels-ipe-region .panels-ipe-placeholder h3 {
+  width: 70%;
+}
+
+.html .panels-ipe-editing {
+
+  .panels-ipe-portlet-content {
+    margin: 0;
+    padding: 10px 3px;
+    background-color: rgba($lightyellow, .3);
+  }
+
+ .panels-ipe-placeholder {
+    background-color: rgba($contrastblue, .5);
+    border: 2px dashed $blue;
+
+    h3 {
+      color: $blue;
+      font-weight: bold;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Modal window styles
+// Header
+#modalContent .modal-header {
+  padding: 10px;
+
+  .close {
+    @include font-size(14);
+  }
+}
+
+.ctools-modal-content .modal-content {
+
+  // Title text
+  .option-text-aligner {
+    .form-item {
+      padding: 0;
+    }
+    .form-type-checkbox {
+      line-height: 36px;
+    }
+  }
+
+  .dependent-options {
+    padding: 0;
+  }
+
+  // Form
+  form {
+    @include font-size(16);
+    line-height: 1.5;
+
+    a {
+      margin-bottom: 10px;
+      @include links($blue, $lightblue);
+    }
+
+    .form-item {
+      margin-bottom: 12px;
+      padding: 0;
+
+      &[disabled="true"] input[type="text"]{
+        opacity: .5;
+      }
+    }
+
+    label {
+      margin-right: 20px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .description {
+      @include font-size(14);
+      color: $lightergray;
+      margin: 0 0 10px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="url"],
+    input[type="search"] {
+      border: 1px solid $slategrey;
+      color: $slatgrayLight;
+      margin: 0;
+      height: 17px;
+      max-width: 100%;
+      padding: 9px;
+      background-color: $lightgrey;
+      @include font-size(14);
+      @include border-radius(5px);
+
+
+    }
+
+    // Actions
+    .form-actions {
+      border-top: 1px solid $lightergray;
+      padding-top: 20px;
+      margin-top: 10px;
+
+      .form-submit {
+        margin-right: 10px;
+        margin-bottom: 40px;
+      }
+
+      #edit-cancel {
+        background-color: $red;
+        &:hover {
+          background-color: $reddark;
+        }
+      }
+    }
+
+    .form-submit {
+        color: #fff;
+        background-color: $lightblue;
+        @include border-radius(5px);
+        display: inherit;
+        clear: both;
+        float: left;
+        margin-top: 15px;
+
+        &:hover {
+          background-color: $blue;
+        }
+      }
+
+    // Checkboxes
+    .form-type-radio,
+    .form-type-checkbox {
+      label {
+        display: inline;
+      }
+    }
+
+  }
+}
+
+.modal-content {
+
+  // Chagne color scheme font settings
+  #edit-settings-color {
+    float: left;
+    width: 300px;
+    padding: 20px;
+  }
+
+  // Chagne color scheme background settings
+  #edit-settings-background-background-image {
+    .button {
+      background: #0d778e;
+      color: #fff;
+      @include inline-block();
+      margin: 0 5px;
+      padding: 3px 10px;
+      @include border-radius(3px);
+    }
+
+    .remove {
+      background: #a00a14;
+    }
+  }
+  #edit-settings-background {
+    clear: none;
+    float: left;
+    background: #F8F8F8;
+
+    .fieldset-wrapper {
+      padding: 20px;
+    }
+
+    &:after {
+      clear: both;
+      display: table;
+    }
+  }
+  // Drag & Drop slider
+  .form-type-jslider {
+      // Value field
+      .jslider-display-values-field {
+        float: left;
+        width: 40px;
+      }
+
+      // Container
+      .jslider-container {
+        background: #fff;
+        float: left;
+        border: 1px solid #E2E2E2;
+        margin-top: 5px;
+      }
+
+      // Handle
+      .ui-slider-handle {
+        height: 14px;
+        background: $blue;
+        cursor: -webkit-grab;
+        border: 1px solid #313A3C;
+        margin-top: 2px;
+        width: 14px;
+        @include border-radius(100px);
+      }
+  }
+}

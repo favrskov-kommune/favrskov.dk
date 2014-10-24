@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Views Subject grid feature.
+ */
+
+include_once 'views_subject_grid.features.inc';

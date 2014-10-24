@@ -1,0 +1,11 @@
+name = Panel FAQ page
+description = Panel FAQ node view
+core = 7.x
+package = Panels
+version = 7.x-1.0
+project = panel_faq_page
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:2
+features[page_manager_handlers][] = node_view_panel_context_faq_page
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][page_manager] = page_manager

@@ -1,0 +1,84 @@
+<?php
+/**
+ * @file
+ * Code for the View Video feature.
+ */
+
+include_once 'view_video.features.inc';
+
+/**
+ * Implements hook_views_pre_render.
+ */
+function view_video_views_pre_render(&$view) {
+  if ($view->name == 'video' && $view->current_display == 'video_list') {
+    foreach ($view->result as $id => $result) {
+      $data = unserialize($result->field_field_embed_video[0]['raw']['video_data']);
+      $duration = date('i:s', $data['media$group']['yt$duration']['seconds']);
+      $result->duration = $duration;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter.
+ */
+function view_video_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['field_video_category_tid'])) {
+    $form['field_video_category_tid']['#options']['All'] = t('View all');
+    if (arg(0) == 'node') {
+      $nid = arg(1);
+      $node = node_load($nid);
+      if($node->type == 'video_element') {
+        $tid = $node->field_video_category[LANGUAGE_NONE][0]['tid'];
+        if (empty($_GET['field_video_category_tid'])) {
+          $form_state['input']['field_video_category_tid'] = $tid;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_file_presave.
+ */
+function view_video_file_presave($file) {
+  $file->uri = str_replace('public://video_embed_field_thumbnails/', 'thumbnails://', $file->uri);
+}
+
+/**
+ * Implements hook_entity_presave.
+ */
+function view_video_entity_presave($entity, $type) {
+  if (!empty($entity->uri)) {
+    $entity->uri = str_replace('thumbnails://', 'public://video_embed_field_thumbnails/', $entity->uri);
+  }
+}
+
+/**
+ * Implements hook_stream_wrappers.
+ */
+function view_video_stream_wrappers() {
+  return array(
+    'thumbnails' => array(
+      'name' => t('Video Embed Field thumbnails path'),
+      'class' => 'VideoEmbedStreamWrapper',
+      'description' => t('Provides Video Embed Field thumbnails path.'),
+      'type' => STREAM_WRAPPERS_HIDDEN,
+    ),
+  );
+}
+
+/**
+ * Video Embed Field thumbnails (thumbnails://) stream wrapper class.
+ *
+ * Provides support for storing Video Embed Field thumbnails with the Drupal file
+ * interface.
+ */
+class VideoEmbedStreamWrapper extends DrupalPublicStreamWrapper {
+  /**
+   * Implements abstract public function getDirectoryPath()
+   */
+  public function getDirectoryPath() {
+    return parent::getDirectoryPath() . 'video_embed_field_thumbnails/';
+  }
+}

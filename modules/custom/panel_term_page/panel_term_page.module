@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Term page feature.
+ */
+
+include_once 'panel_term_page.features.inc';

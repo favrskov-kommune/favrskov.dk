@@ -1,0 +1,41 @@
+.btn,
+.more-link {
+  color: $white;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+
+.form-submit,
+.btn-main {
+  background: transparent;
+  background-color: $cyan;
+  color: $slategrey;
+  cursor: pointer;
+  padding: 8px 29px 7px;
+  @extend %no-border;
+
+  &:hover {
+    background-color: #608c9c;
+    @include transition-property(all);
+    @include transition-timing-function(ease-in);
+    @include transition-duration(.1s);
+  }
+
+  &.tapped {
+    background: transparent;
+    background-color: $pink;
+    color: $white;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: transparent;
+      background-color: $pink;
+      color: $white;
+    }
+  }
+}
