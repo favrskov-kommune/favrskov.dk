@@ -1,5 +1,5 @@
-name = Roskilde Kommune
-description = Profile for the Roskilde Kommune website.
+name = Favrskov Kommune
+description = Profile for the Favrskov Kommune website.
 core = 7.x
 dependencies[] = admin_menu
 dependencies[] = block
@@ -270,13 +270,3 @@ dependencies[] = pane_hearing_responses
 dependencies[] = panel_hearing_response_page
 dependencies[] = panel_hearing_response_form
 dependencies[] = views_hearings
-
-// FICS ESDH dependencies
-dependencies[] = os2web_settings_page
-dependencies[] = os2web_esdh_provider
-dependencies[] = os2web_fics_esdh
-dependencies[] = config_fics_esdh
-dependencies[] = os2web_meetings_light
-dependencies[] = os2web_esdh_field
-dependencies[] = fields_esdh_case_document
-dependencies[] = os2web_case_publishing

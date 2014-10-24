@@ -10,7 +10,7 @@ function favrskov_install() {
   // Any themes without keys here will get numeric keys and so will be enabled,
   // but not placed into variables.
   $enable = array(
-    'theme_default' => 'favrskov',
+    'theme_default' => 'favrskovtheme',
     'admin_theme' => 'seven',
     //'zen'
   );
