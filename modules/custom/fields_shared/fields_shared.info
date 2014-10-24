@@ -15,6 +15,7 @@ dependencies[] = node_reference
 dependencies[] = options
 dependencies[] = piwik_stats
 dependencies[] = strongarm
+dependencies[] = tablefield
 dependencies[] = taxonomy
 dependencies[] = taxonomy_kle
 dependencies[] = taxonomy_local
