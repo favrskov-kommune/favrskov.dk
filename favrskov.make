@@ -537,45 +537,6 @@ projects[mailsystem][version] = 2.34
 projects[mimemail][subdir] = contrib
 projects[mimemail][version] = 1.0-beta3
 
-; FICS ESDH integration
-projects[os2web_meetings_light][type] = "module"
-projects[os2web_meetings_light][subdir] = contrib
-projects[os2web_meetings_light][download][type] = "git"
-projects[os2web_meetings_light][download][url] = "https://github.com/PropeopleDK/os2web_meetings_light.git"
-projects[os2web_meetings_light][download][branch] = "master"
-
-projects[os2web_settings_page][type] = "module"
-projects[os2web_settings_page][subdir] = contrib
-projects[os2web_settings_page][download][type] = "git"
-projects[os2web_settings_page][download][url] = "https://github.com/PropeopleDK/os2web_settings_page.git"
-projects[os2web_settings_page][download][branch] = "master"
-
-projects[os2web_esdh_provider][type] = "module"
-projects[os2web_esdh_provider][subdir] = contrib
-projects[os2web_esdh_provider][download][type] = "git"
-projects[os2web_esdh_provider][download][url] = "https://github.com/PropeopleDK/os2web_esdh_provider.git"
-projects[os2web_esdh_provider][download][branch] = "develop"
-
-projects[os2web_fics_esdh][type] = "module"
-projects[os2web_fics_esdh][subdir] = contrib
-projects[os2web_fics_esdh][download][type] = "git"
-projects[os2web_fics_esdh][download][url] = "https://github.com/PropeopleDK/os2web_fics_esdh.git"
-projects[os2web_fics_esdh][download][branch] = "master"
-projects[os2web_fics_esdh][patch][] = "https://raw.github.com/undertext/os2web_fics_esdh/master/os2web_fics_esdh.patch"
-
-projects[os2web_esdh_field][type] = "module"
-projects[os2web_esdh_field][subdir] = contrib
-projects[os2web_esdh_field][download][type] = "git"
-projects[os2web_esdh_field][download][url] = "https://github.com/PropeopleDK/os2web_esdh_field.git"
-projects[os2web_esdh_field][download][branch] = "master"
-
-projects[os2web_case_publishing][type] = "module"
-projects[os2web_case_publishing][subdir] = contrib
-projects[os2web_case_publishing][download][type] = "git"
-projects[os2web_case_publishing][download][url] = "https://github.com/PropeopleDK/os2web_case_publishing.git"
-projects[os2web_case_publishing][download][branch] = "ROSKILDE-1"
-
-
 projects[ajax_comments][subdir] = contrib
 ;projects[ajax_comments][version] = 1.0-alpha2
 projects[ajax_comments][version] = 1.0-beta1
@@ -650,5 +611,5 @@ translations[] = da
 
 ; Patches
 projects[drupal][type] = core
-projects[drupal][version] = 7.31
+projects[drupal][version] = 7.32
 projects[drupal][patch][1078878] = "https://drupal.org/files/issues/1078878-DisableAutoCreation-D7-UTF-8.patch"
