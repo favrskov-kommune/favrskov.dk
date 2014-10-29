@@ -16,7 +16,7 @@ function adaptivetheme_subtheme_form_system_theme_settings_alter(&$form, &$form_
 }
 // */
 
-function propeople_form_system_theme_settings_alter(&$form, &$form_state) {
+function favrskovtheme_form_system_theme_settings_alter(&$form, &$form_state) {
 
   $form['favrskovtheme_settings'] = array(
     '#type' => 'vertical_tabs',
