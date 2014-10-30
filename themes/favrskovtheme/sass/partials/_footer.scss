@@ -1,7 +1,14 @@
 //------------------------------------------------------------------------------
 // Footer
+.footer {
+  outline: 1px solid red;
+  display: block;
+  height: 578px;
+  background: url('../images/favrskov-fon-footer.png') center 100% $color-background5 no-repeat;
+}
 .footer-wrapper {
-  background: #fff !important;
+  background: none !important;
+  @include main_max_width(0, 0);
 }
 
 

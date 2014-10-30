@@ -1,10 +1,112 @@
 //------------------------------------------------------------------------------
 // Header global
 .header {
+  
   background: #fff !important;
   @extend %clearfix;
-
-  
+  & .error {
+    display: none;
+  }
+  &:before {
+    @extend %before-after;
+    width: 100%;
+    height: 15px;
+    background: $color-background6;
+  }
+  & .header-content {
+    @include main_max_width(0, 0);
+    outline: 1px solid red;
+    min-height: 128px;
+    @extend %clearfix;
+    position: relative;
+  }
+  & .logo {
+    width: 194px;
+    height: 72px;
+    overflow: hidden;
+    /*margin-right: percentage(90px,$main_width);*/
+    margin-top: 26px;
+    float: left;
+  }
+  & .inline-block-header {
+      outline: 1px solid blue;
+      /*float: left;*/
+  }
+  & .nav {
+    margin-top: 50px;
+/*    margin-right: percentage(14px,$main_width);*/
+    @extend %clearfix;
+    position: absolute;
+    top: 0;
+    right: 246px;
+    & li {
+      float: left;
+      height: 60px;
+      margin-right: 2px;
+      & a {
+        font-family: $font-fs-medium;
+        color: #333;
+        font-size: 17pt;
+        padding: 10px 20px 0;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: block;
+        height: 60px;
+        background: $color-background4;
+      }
+    }
+  }
+  & .tabs {
+    position: absolute;
+    right: 0;
+    top: 0;
+    & li {
+      float: right;
+      margin-left: 17px;
+      & a {
+        font-family: $font-fs-medium;
+        font-size: 11pt;
+        text-decoration: none;
+        color: #333;
+        text-transform: uppercase;
+        padding: 18px 0;
+        display: block;
+      }
+    }
+    @extend %clearfix;
+  }
+  & .search-contact {
+    width: 236px;
+    height: 100%;
+    float: right;
+    margin-top: 50px;
+/*    position: absolute;
+    right: 0;
+    top: 0;*/
+  }
+  & .search {
+    position: relative;
+    outline: 1px solid green;
+    height: 34px;
+    & input[type="text"] {  
+      width: 100%;
+      height: 34px;
+      background-image: none;
+      background-color: $color-background4;
+      @include border-radius(5px);
+      padding: 0 45px 0 10px;
+    }
+    & input[type="submit"] {
+      position: absolute;
+      width: 41px;
+      height: 100%;
+      top: 0; right: 0;
+      outline: 1px solid red;
+      text-indent:-9999px;
+      z-index: 1;
+      background: none;
+    }
+  }
 }
 
 /*.domain-roskilde-stag-propeople-com-ua .header {

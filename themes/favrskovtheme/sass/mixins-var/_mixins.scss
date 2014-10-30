@@ -54,6 +54,34 @@
 }
 
 
+
+//------------------------------------------------------------------------------
+// Center block
+@mixin center-block($w,$h) {
+  position: absolute;
+  width: $w+px;
+  height: $h+px;
+  top: 50%;left:50%;
+  margin-left: -($w/2)+px;
+  margin-top: -($h/2)+px;
+}
+
+@mixin center-vertical($h) {
+  position: absolute;
+  height: $h+px;
+  top: 50%;
+  margin-top: -($h/2)+px;
+}
+
+@mixin center-gorizontal($w) {
+  position: absolute;
+  width: $w+px;
+  left:50%;
+  margin-left: -($w/2)+px;
+}
+
+
+
 //------------------------------------------------------------------------------
 // CSS3 Animation
 %animate {
@@ -83,6 +111,22 @@
   text-align: center;
 }
 
+//------------------------------------------------------------------------------
+// before/after
+%before-after {
+    content: "";
+    display: block;
+}
+
+
+
+//------------------------------------------------------------------------------
+// main width
+@mixin main_max_width($top, $bottom) {
+  max-width: $main_width;
+  margin: $top auto $bottom;
+}
+
 
 //------------------------------------------------------------------------------
 // CLear Fix
@@ -96,8 +140,11 @@
   }
 }
 
-
-
+//------------------------------------------------------------------------------
+// percentage value
+@function percentage($value,$parent) {
+    @return $value/$parent*100%;
+}
 
 //------------------------------------------------------------------------------
 // Placeholder
