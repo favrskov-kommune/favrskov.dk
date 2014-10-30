@@ -23,25 +23,26 @@
 //------------------------------------------------------------------------------
 //Base
 @import "base/reset";
-@import "base/global";
+@import "base/fonts";
+/*@import "base/global";
 @import "base/layout";
-@import "base/tabs";
+@import "base/tabs";*/
 
 
 
 //------------------------------------------------------------------------------
 // Modules
-@import "modules/slider";
-@import "modules/swiper";
+/*@import "modules/slider";
+@import "modules/swiper";*/
 
 
 //------------------------------------------------------------------------------
 // Particles
 
-// @import "partials/menu";
+/*// @import "partials/menu";*/
 @import "partials/header";
 @import "partials/footer";
-@import "partials/wysiwyg";
+/*@import "partials/wysiwyg";
 @import "partials/buttons";
 @import "partials/login";
 @import "partials/pager";
@@ -54,11 +55,11 @@
 @import "partials/cookie-msg";
 @import "partials/selectbox";
 @import "partials/combibox";
-@import "partials/help-tips";
+@import "partials/help-tips";*/
 
 //------------------------------------------------------------------------------
 // Pages
-@import "pages/front";
+/*@import "pages/front";
 @import "pages/search";
 @import "pages/subject";
 @import "pages/subscribe";
@@ -78,14 +79,14 @@
 @import "pages/published-case-page";
 @import "pages/meetings-page";
 @import "pages/os2web-kultunaut-import";
-@import "pages/taxonomy-page";
+@import "pages/taxonomy-page";*/
 
 // list pages
-@import "pages/list-page";
+/*@import "pages/list-page";
 @import "pages/job-list";
-@import "pages/meeting-page";
+@import "pages/meeting-page";*/
 
 //------------------------------------------------------------------------------
 // Color schemes
-@import "partials/color-schemes";
+/*@import "partials/color-schemes";*/
 
