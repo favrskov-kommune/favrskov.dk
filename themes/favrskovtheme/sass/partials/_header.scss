@@ -1,23 +1,25 @@
 //------------------------------------------------------------------------------
 // Header global
 .header {
-  background: $slategrey;
-  padding: 40px 0 20px;
+  background: #fff !important;
+  @extend %clearfix;
+
+  
 }
 
-.domain-roskilde-stag-propeople-com-ua .header {
+/*.domain-roskilde-stag-propeople-com-ua .header {
   padding: 0;
-}
+}*/
 
 //------------------------------------------------------------------------------
 // Logo
-.logo img {
+/*.logo img {
   display: block;
-}
+}*/
 
 //------------------------------------------------------------------------------
 // Header Navigation
-
+/*
 .nav-search {
   margin-top: 34px;
   float: right;
@@ -91,11 +93,11 @@
       }
     }
   }
-}
+}*/
 
 //------------------------------------------------------------------------------
 // Main site Header Navigation
-
+/*
 .html.domain-roskilde-stag-propeople-com-ua .nav-search {
   margin-top: 0;
   //  Navigation
@@ -166,7 +168,7 @@
       }
     }
   }
-}
+}*/
 
 //------------------------------------------------------------------------------
 
@@ -175,7 +177,7 @@
 //------------------------------------------------------------------------------
 
 // Tableet
-@include at-breakpoint($tablet) {
+/*@include at-breakpoint($tablet) {
   .nav-search li a {
     @include font-size(14);
   }
@@ -389,4 +391,4 @@
       }
     }
   }
-}
+}*/
