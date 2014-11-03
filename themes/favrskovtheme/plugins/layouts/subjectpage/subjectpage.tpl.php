@@ -19,28 +19,36 @@
  */
 ?>
 
-<div class="panel-subject" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
+<div class="panel-subject" <?php if (!empty($css_id)) {
+  print "id=\"$css_id\"";
+} ?>>
   <?php if (!empty($content['header'])): ?>
-      <?php print $content['header']; ?>
+    <?php print $content['header']; ?>
   <?php endif; ?>
 
   <main id="main-wrapper" class="main-wrapper group" role="main">
     <section id="main-content" class="content-container">
 
       <section id="popular" class="popular">
-      <?php if (!empty($content['popular_img'])): ?>
-        <?php print $content['popular_img']; ?>
-      <?php endif; ?>
 
-      <?php if (!empty($content['popular'])): ?>
-        <div class="overlay">
-          <div class="content">
-            <div class="articles">
-              <?php print $content['popular']; ?>
-            </div>
-          </div>
+        <div class="popular-image">
+          <?php if (!empty($content['popular_img'])): ?>
+            <?php print $content['popular_img']; ?>
+          <?php endif; ?>
         </div>
-      <?php endif; ?>
+
+        <div class="popular-content">
+          <?php if (!empty($content['popular'])): ?>
+            <div class="overlay">
+              <div class="content">
+                <div class="articles">
+                  <?php print $content['popular']; ?>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+        </div>
+
       </section>
 
       <?php if (!empty($content['teasers'])): ?>

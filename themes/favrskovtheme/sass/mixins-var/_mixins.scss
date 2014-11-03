@@ -61,7 +61,8 @@
   position: absolute;
   width: $w+px;
   height: $h+px;
-  top: 50%;left:50%;
+  top: 50%;
+  left:50%;
   margin-left: -($w/2)+px;
   margin-top: -($h/2)+px;
 }
@@ -142,9 +143,9 @@
 
 //------------------------------------------------------------------------------
 // percentage value
-@function percentage($value,$parent) {
-    @return $value/$parent*100%;
-}
+//@function percentage($value,$parent) {
+//    @return $value/$parent*100%;
+//}
 
 //------------------------------------------------------------------------------
 // Placeholder

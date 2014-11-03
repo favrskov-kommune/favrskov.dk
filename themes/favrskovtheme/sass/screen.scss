@@ -24,7 +24,7 @@
 //Base
 @import "base/reset";
 @import "base/fonts";
-/*@import "base/layout";*/
+@import "base/layout";
 @import "base/global";
 /*@import "base/tabs";*/
 
@@ -60,9 +60,9 @@
 //------------------------------------------------------------------------------
 // Pages
 /*@import "pages/front";
-@import "pages/search";
+@import "pages/search";*/
 @import "pages/subject";
-@import "pages/subscribe";
+/*@import "pages/subscribe";
 @import "pages/events";
 @import "pages/videos";
 @import "pages/node";

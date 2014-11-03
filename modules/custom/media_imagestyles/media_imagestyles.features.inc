@@ -30,6 +30,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'banners_custom_user_full_1x',
   );
 
   // Exported image style: banners_custom_user_phone_1x.
@@ -52,6 +53,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'banners_custom_user_phone_1x',
   );
 
   // Exported image style: banners_custom_user_phone_land_1x.
@@ -74,6 +76,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'banners_custom_user_phone_land_1x',
   );
 
   // Exported image style: banners_custom_user_phone_port_1x.
@@ -96,6 +99,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'banners_custom_user_phone_port_1x',
   );
 
   // Exported image style: banners_custom_user_tablet_1x.
@@ -118,6 +122,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'banners_custom_user_tablet_1x',
   );
 
   // Exported image style: blog_teaser.
@@ -157,6 +162,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'blog_teaser',
   );
 
   // Exported image style: blogcustom_user_phone_1x.
@@ -196,6 +202,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 3,
       ),
     ),
+    'label' => 'blogcustom_user_phone_1x',
   );
 
   // Exported image style: blogcustom_user_phone_land_1x.
@@ -235,6 +242,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 3,
       ),
     ),
+    'label' => 'blogcustom_user_phone_land_1x',
   );
 
   // Exported image style: blogcustom_user_phone_port_1x.
@@ -257,6 +265,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'blogcustom_user_phone_port_1x',
   );
 
   // Exported image style: blogcustom_user_tablet_1x.
@@ -279,6 +288,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'blogcustom_user_tablet_1x',
   );
 
   // Exported image style: newsletter.
@@ -301,6 +311,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'newsletter',
   );
 
   // Exported image style: newsletter_news.
@@ -323,6 +334,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'newsletter_news',
   );
 
   // Exported image style: node_slide.
@@ -345,12 +357,14 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'node_slide',
   );
 
   // Exported image style: picture.
   $styles['picture'] = array(
     'name' => 'picture',
     'effects' => array(),
+    'label' => 'picture',
   );
 
   // Exported image style: slider_default.
@@ -373,6 +387,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'slider_default',
   );
 
   // Exported image style: slider_thumb.
@@ -395,6 +410,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'slider_thumb',
   );
 
   // Exported image style: slidercustom_user_full_1x.
@@ -417,6 +433,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'slidercustom_user_full_1x',
   );
 
   // Exported image style: slidercustom_user_phone_1x.
@@ -439,6 +456,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'slidercustom_user_phone_1x',
   );
 
   // Exported image style: slidercustom_user_phone_land_1x.
@@ -461,6 +479,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'slidercustom_user_phone_land_1x',
   );
 
   // Exported image style: slidercustom_user_phone_port_1x.
@@ -483,6 +502,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'slidercustom_user_phone_port_1x',
   );
 
   // Exported image style: slidercustom_user_tablet_1x.
@@ -505,13 +525,15 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'slidercustom_user_tablet_1x',
   );
 
   // Exported image style: subject_custom_user_full_1x.
   $styles['subject_custom_user_full_1x'] = array(
     'name' => 'subject_custom_user_full_1x',
+    'label' => 'subject_custom_user_full_1x',
     'effects' => array(
-      3 => array(
+      1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -521,8 +543,8 @@ function media_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 1200,
-          'height' => 390,
+          'width' => 980,
+          'height' => 460,
         ),
         'weight' => 1,
       ),
@@ -549,6 +571,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'subject_custom_user_phone_1x',
   );
 
   // Exported image style: subject_custom_user_phone_land_1x.
@@ -571,6 +594,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'subject_custom_user_phone_land_1x',
   );
 
   // Exported image style: subject_custom_user_phone_port_1x.
@@ -593,6 +617,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'subject_custom_user_phone_port_1x',
   );
 
   // Exported image style: subject_custom_user_slider_default_1x.
@@ -615,6 +640,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'subject_custom_user_slider_default_1x',
   );
 
   // Exported image style: subject_custom_user_tablet_1x.
@@ -637,6 +663,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'subject_custom_user_tablet_1x',
   );
 
   // Exported image style: subject_image.
@@ -659,6 +686,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'subject_image',
   );
 
   // Exported image style: thumb_150x120.
@@ -681,6 +709,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'thumb_150x120',
   );
 
   // Exported image style: videocustom_user_tablet_1x.
@@ -703,6 +732,7 @@ function media_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'videocustom_user_tablet_1x',
   );
 
   return $styles;

@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'ArialBold';
+    src: url('arialbd.eot');
+    src: url('arialbd.eot') format('embedded-opentype'),
+    url('arialbd.woff') format('woff'),
+    url('arialbd.ttf') format('truetype'),
+    url('arialbd.svg#ArialBold') format('svg');
+}
