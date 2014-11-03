@@ -4,14 +4,15 @@
   @extend %clearfix;
   max-width: 100%;
 
-  .error {
-    display: none;
-  }
   &:before {
     @extend %before-after;
     width: 100%;
     height: 15px;
     background: $bg-dark-green;
+  }
+
+  .error {
+    display: none;
   }
 
    .header-content {
@@ -43,17 +44,18 @@
       float: left;
       height: 60px;
       margin-right: 2px;
-       a {
-        font-family: $sans-medium;
-        color: #333;
-        font-size: 20px;
-        padding: 10px 19px 0;
-        text-decoration: none;
-        text-transform: uppercase;
-        display: block;
-        height: 60px;
-        background: $bg-light-blue;
-      }
+    }
+
+    a {
+      font-family: $sans-medium;
+      color: #333;
+      font-size: 20px;
+      padding: 10px 19px 0;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: block;
+      height: 60px;
+      background: $bg-light-blue;
     }
   }
 
@@ -67,16 +69,16 @@
       float: right;
       margin-left: 17px;
       @extend %clearfix;
+    }
 
-      a {
-        font-family: $sans-medium;
-        font-size: 11pt;
-        text-decoration: none;
-        color: #333;
-        text-transform: uppercase;
-        padding: 18px 0;
-        display: block;
-      }
+    a {
+      font-family: $sans-medium;
+      font-size: 11pt;
+      text-decoration: none;
+      color: #333;
+      text-transform: uppercase;
+      padding: 18px 0;
+      display: block;
     }
   }
 
