@@ -69,7 +69,7 @@
   }
 
   h2 {
-    color: $gray;
+    color: $grey;
     @include font-size(22);
     margin-bottom: 14px;
   }
@@ -149,7 +149,7 @@
     @include font-size(15);
     line-height: 1.4;
     a {
-      @include links($def-color, $gray);
+   //   @include links($def-color, $grey);
     }
   }
 }

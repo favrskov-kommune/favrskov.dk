@@ -2,17 +2,48 @@
 // Footer
 .footer {
   display: block;
-  height: 578px;
-  background: url('../images/favrskov-fon-footer.png') center 100% $bg-grey no-repeat;
+  height: 600px;
+  background: url('../images/favrskov-fon-footer.png') center 100% $grey no-repeat;
 }
 
 .footer-wrapper {
   background: none !important;
   @include main_max_width(0, 0);
+  padding-top: 55px;
 }
 
 .footer-block {
   max-width: 233px;
   @include span-columns(3, 12);
   padding: 0 10px;
+  color: $dark-green;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  h2 {
+    color: #003F3D;
+    font-size: 22px;
+    font-family: $sans-medium;
+    font-weight: bold;
+    margin-bottom: 35px;
+  }
+
+  a, p, span {
+    color: $dark-green;
+    font-family: $sans-medium;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  a {
+    line-height: 26px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
 }

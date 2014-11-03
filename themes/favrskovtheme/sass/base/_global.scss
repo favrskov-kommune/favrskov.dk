@@ -15,8 +15,8 @@ body {
   @include font-size();
   font-family: $sans;
   word-wrap: break-word;
-//  background: url(../images/subject_page.png) no-repeat center -825px;
-//  opacity: 0.7;
+ // background: url(../images/subject_page.png) no-repeat center -825px;
+ // opacity: 0.7;
 }
 
 //------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ a {
   @include transition-property(all);
   @include transition-timing-function(ease-in);
   @include transition-duration(.1s);
-  @include links($red, $gray);
+  @include links($red, $grey);
 
   &:focus {
     outline: medium none;
