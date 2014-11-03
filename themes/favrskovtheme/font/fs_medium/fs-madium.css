@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'FoundrySterling-Medium';
+    src: url('foundrysterling-medium.eot');
+    src: url('foundrysterling-medium.eot') format('embedded-opentype'),
+    url('foundrysterling-medium.woff') format('woff'),
+    url('foundrysterling-medium.ttf') format('truetype');
+}

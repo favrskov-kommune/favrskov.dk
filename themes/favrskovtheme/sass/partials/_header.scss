@@ -1,496 +1,116 @@
 //------------------------------------------------------------------------------
 // Header global
 .header {
-  
-  background: #fff !important;
   @extend %clearfix;
-  & .error {
-    display: none;
-  }
+  max-width: 100%;
+
   &:before {
     @extend %before-after;
     width: 100%;
     height: 15px;
-    background: $color-background6;
+    background: $bg-dark-green;
   }
-  & .header-content {
+
+  .error {
+    display: none;
+  }
+
+   .header-content {
     @include main_max_width(0, 0);
-    outline: 1px solid red;
-    min-height: 128px;
+    min-height: 110px;
     @extend %clearfix;
     position: relative;
   }
-  & .logo {
+
+  // Logo
+
+  .logo {
     width: 194px;
     height: 72px;
     overflow: hidden;
-    /*margin-right: percentage(90px,$main_width);*/
-    margin-top: 26px;
+    margin-top: 17px;
     float: left;
+    margin-left: 6px;
   }
-  & .inline-block-header {
-      outline: 1px solid blue;
-      /*float: left;*/
-  }
-  & .nav {
+
+  .nav {
     margin-top: 50px;
-/*    margin-right: percentage(14px,$main_width);*/
     @extend %clearfix;
     position: absolute;
     top: 0;
     right: 246px;
-    & li {
+
+    li {
       float: left;
       height: 60px;
       margin-right: 2px;
-      & a {
-        font-family: $font-fs-medium;
-        color: #333;
-        font-size: 17pt;
-        padding: 10px 20px 0;
-        text-decoration: none;
-        text-transform: uppercase;
-        display: block;
-        height: 60px;
-        background: $color-background4;
-      }
+    }
+
+    a {
+      font-family: $sans-medium;
+      color: #333;
+      font-size: 20px;
+      padding: 10px 19px 0;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: block;
+      height: 60px;
+      background: $bg-light-blue;
     }
   }
-  & .tabs {
+
+  // Tabs
+  .tabs {
     position: absolute;
     right: 0;
     top: 0;
-    & li {
+
+    li {
       float: right;
       margin-left: 17px;
-      & a {
-        font-family: $font-fs-medium;
-        font-size: 11pt;
-        text-decoration: none;
-        color: #333;
-        text-transform: uppercase;
-        padding: 18px 0;
-        display: block;
-      }
+      @extend %clearfix;
     }
-    @extend %clearfix;
+
+    a {
+      font-family: $sans-medium;
+      font-size: 11pt;
+      text-decoration: none;
+      color: #333;
+      text-transform: uppercase;
+      padding: 18px 0;
+      display: block;
+    }
   }
-  & .search-contact {
-    width: 236px;
+
+  .search-contact {
+    width: 230px;
     height: 100%;
     float: right;
     margin-top: 50px;
-/*    position: absolute;
-    right: 0;
-    top: 0;*/
   }
-  & .search {
+
+  .search {
     position: relative;
-    outline: 1px solid green;
     height: 34px;
-    & input[type="text"] {  
+
+    input[type="text"] {
       width: 100%;
       height: 34px;
       background-image: none;
-      background-color: $color-background4;
+      background-color: $bg-light-blue;
       @include border-radius(5px);
-      padding: 0 45px 0 10px;
+      padding: 0 40px 0 10px;
     }
-    & input[type="submit"] {
+
+    input[type="submit"] {
+      cursor: pointer;
       position: absolute;
       width: 41px;
       height: 100%;
       top: 0; right: 0;
-      outline: 1px solid red;
       text-indent:-9999px;
       z-index: 1;
-      background: none;
+      background: url(../images/search_icon.png) no-repeat center center;
     }
   }
 }
-
-/*.domain-roskilde-stag-propeople-com-ua .header {
-  padding: 0;
-}*/
-
-//------------------------------------------------------------------------------
-// Logo
-/*.logo img {
-  display: block;
-}*/
-
-//------------------------------------------------------------------------------
-// Header Navigation
-/*
-.nav-search {
-  margin-top: 34px;
-  float: right;
-  //  Navigation
-  .nav {
-    text-align: right;
-    float: left;
-    margin-right: 30px;
-  }
-
-  li {
-    @include inline-block();
-    margin: 0 17px 0 -4px;
-    padding: 20px 0 0;
-    text-transform: uppercase;
-    @include transition-duration(.2s);
-
-    a {
-      @include font-size(16);
-      font-family: $sans;
-
-      &:hover {
-        color: $white;
-      }
-    }
-
-    &.active,
-    &.active-trail {
-
-      a {
-        @include links($white, $white);
-      }
-    }
-  }
-
-  .last {
-    margin-right: 0;
-  }
-
-  .hidden-item {
-    display: none !important;
-  }
-
-  //  Search
-  .search {
-    float: right;
-    width: 170px;
-    position: relative;
-
-    .form-text {
-      padding: 9px 10% 9px 4%;
-      max-width: 86%;
-      background: $white;
-      background-image: none;
-      @include border-radius(0);
-    }
-
-    .form-submit {
-      @include sprite(21px, 8px);
-      position: absolute;
-      right: 0;
-      top: 0;
-      text-indent: -999em;
-      text-transform: uppercase;
-      height: 36px;
-      width: 60px;
-      @include transition-duration(0s);
-
-      &:hover {
-        background-position: -26px 8px;
-      }
-    }
-  }
-}*/
-
-//------------------------------------------------------------------------------
-// Main site Header Navigation
-/*
-.html.domain-roskilde-stag-propeople-com-ua .nav-search {
-  margin-top: 0;
-  //  Navigation
-  .nav {
-    margin-bottom: 35px;
-    text-align: right;
-    @include span-columns(6 omega, 7);
-  }
-
-  li {
-    border-top: 4px solid transparent;
-    @include inline-block();
-    margin: 0 17px 0 -4px;
-    padding: 6px 0 0;
-    text-transform: uppercase;
-    @include transition-duration(.2s);
-
-    a {
-      @include links($cyan, $white);
-      @include font-size(16);
-      font-family: $sans;
-    }
-
-     &:hover {
-        border-top-color: $white;
-      }
-    &.active,
-    &.active-trail {
-      border-top-color: $white;
-
-      a {
-        @include links($white, $white);
-      }
-    }
-  }
-
-  .last {
-    margin-right: 0;
-  }
-
-  //  Search
-  .search {
-    @include span-columns(6 omega, 7);
-    position: relative;
-    margin-bottom: 24px;
-
-    .form-text {
-      padding: 9px 10% 9px 4%;
-      max-width: 86%;
-      background: $white;
-      background-image: none;
-
-    }
-
-    .form-submit {
-      @include sprite(21px, 8px);
-      position: absolute;
-      right: 0;
-      top: 0;
-      text-indent: -999em;
-      text-transform: uppercase;
-      height: 36px;
-      width: 60px;
-      @include transition-duration(0s);
-
-      &:hover {
-        background-position: -26px 8px;
-      }
-    }
-  }
-}*/
-
-//------------------------------------------------------------------------------
-
-// Responsive
-
-//------------------------------------------------------------------------------
-
-// Tableet
-/*@include at-breakpoint($tablet) {
-  .nav-search li a {
-    @include font-size(14);
-  }
-}
-
-
-@include at-breakpoint($tablet-land) {
-
-  //  Header
-  // .logo {
-  //   margin-top: 27px;
-  //   @include span-columns(4, 12);
-  // }
-  // .nav-search {
-  //   @include span-columns(8 omega, 12);
-  // }
-
-}
-
-@include at-breakpoint(12 890px) {
-  //  Header
-  .header {
-    padding-top: 20px;
-  }
-
-  // Logo
-  .logo img {
-    margin: 0 auto;
-  }
-
-  // Anonymous users
-  .header-content {
-    padding: 60px 0 100px;
-  }
-
-  .logo,
-  .html.domain-roskilde-stag-propeople-com-ua .logo {
-    margin: 0 auto;
-    text-align: center;
-    @include span-columns(12, 12);
-  }
-
-  .nav-search,
-  .html.domain-roskilde-stag-propeople-com-ua .nav-search {
-    width: 100%;
-
-    .nav {
-      position: absolute;
-      top: 0;
-      text-align: center;
-      margin: 0 3%;
-      width: 94%;
-    }
-
-    li {
-      margin-left: 0;
-    }
-
-    .search {
-      float: none;
-      position: absolute;
-      bottom: 35px;
-      margin: 0 25%;
-      width: 50%;
-
-      .form-text {
-        padding: 10px 10% 10px 4%;
-        max-width: 86%;
-      }
-    }
-  }
-
-  //  Logged user fix
-  .logged-in {
-
-    .search {
-      bottom: 55px;
-    }
-
-    .drupal-system {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      margin: 0;
-    }
-  }
-}
-
-
-@include at-breakpoint($phone-land) {
-  // Header
-  .header {
-    padding: 0;
-  }
-
-  .header-content {
-    padding: 90px 0 35px;
-  }
-
-  // Logo
-  .logo {
-    a {
-      display: block;
-      max-width: 200px;
-      margin: 0 auto;
-    }
-  }
-
-  .nav-search {
-    background-color: #1B1B1B;
-    height: 55px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin-top: 0;
-    z-index: 9;
-  }
-
-
-  .nav-bar {
-    background-color: $slatgrayDark;
-  }
-
-  .btn-navbar {
-    background-color: #8A8A8A;
-    cursor: pointer;
-    display: block;
-    height: 25px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    padding: 15px 10px;
-    width: 35px;
-    z-index: 10;
-
-    .icon-bar {
-      height: 5px;
-      background-color: $white;
-      margin-bottom: 5px;
-      display: block;
-    }
-  }
-
-  .nav-search,
-  .html.domain-roskilde-stag-propeople-com-ua .nav-search {
-    width: 100%;
-
-    // Navigation
-    .nav {
-      display: none;
-      background-color: #272727;
-      position: fixed;
-      top: 55px;
-      text-align: left;
-      left: 0;
-      margin: 0;
-      max-width: 200px;
-      z-index: 10;
-
-      &.animated {
-        display: block;
-      }
-    }
-
-    li {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      border-top: 1px solid #333;
-      border-bottom: 1px solid #131313;
-
-      &.active,
-      &.active-trail {
-        border-top: 1px solid #333;
-        border-bottom: 1px solid #131313;
-      }
-      &.first {
-        border-top: 0 none;
-      }
-
-      a {
-        display: block;
-        padding: 20px 5%;
-      }
-    }
-  }
-
-  // Search
-  .nav-search,
-  .html.domain-roskilde-stag-propeople-com-ua .nav-search {
-    .search {
-      bottom: 9px;
-      margin: 0;
-      right: 5%;
-      width: 70%;
-
-      .form-text {
-        padding-left: 4%;
-        max-width: 86%;
-        @include font-size(13);
-      }
-    }
-  }
-}
-
-@include at-breakpoint($phone-port) {
-  .nav-search {
-    .search {
-      .form-text {
-        @include font-size(12);
-      }
-    }
-  }
-}*/

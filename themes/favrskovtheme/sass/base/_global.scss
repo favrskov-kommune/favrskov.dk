@@ -15,37 +15,8 @@ body {
   @include font-size();
   font-family: $sans;
   word-wrap: break-word;
-  background-repeat: no-repeat;
-  background-position: center top;
-
-}
-
-// Colorpicker fix
-.colorpicker {
-  z-index: 1001;
-}
-//------------------------------------------------------------------------------
-// Pattern background
-
-.search,
-.panel-list,
-.panel-nodes,
-.events-list-page {
-
-  .main-wrapper {
-    padding-top: 30px;
-    background: url(../images/pat.png);
-  }
-  .content-container {
-    background: $white;
-  }
-  .content-container {
-    padding-top: 28px;
-  }
-
-   .breadcrumb {
-    margin-bottom: 25px;
-  }
+//  background: url(../images/subject_page.png) no-repeat center -825px;
+//  opacity: 0.7;
 }
 
 //------------------------------------------------------------------------------
@@ -108,25 +79,6 @@ $phone-port:    12 320px;
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong {
-  // font-weight: bold;
-}
-
-/*
-  Reset base styles for all lists
-*/
-ul, ol {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
 //  Global links styles
 a {
   outline: medium none;
@@ -134,21 +86,6 @@ a {
   @include transition-timing-function(ease-in);
   @include transition-duration(.1s);
   @include links($red, $gray);
-
-  // Violet color scheme
-  body.violet & { @include links($violet, $gray); }
-  // Dark Grey color scheme
-  body.dark-grey & { @include links($dark-grey, $gray); }
-  // Gray color scheme
-  body.grey & { @include links($gray, $liteGray); }
-  // Dirty Yellow
-  body.yellow & { @include links($dirty-yellow, $liteGray); }
-  // Deep Blue
-  body.blue & { @include links($deepBlue, $liteGray); }
-  // Pink
-  body.pink & { @include links($pink, $liteGray); }
-  // Salat
-  body.salat-green & { @include links($salatGreen, $liteGray); }
 
   &:focus {
     outline: medium none;
@@ -159,9 +96,9 @@ a {
 }
 
 // Status messages styles
-.drupal-system {
-  @include span-columns(12,12);
-}
+/*.drupal-system {
+   @include span-columns(12,12);
+}*/
 
 
 input[type="text"],
@@ -222,81 +159,6 @@ input:-webkit-autofill {
     }
   }
 
-//------------------------------------------------------------------------------
-// Font Icons
-@font-face {
-  font-family: 'fontello';
-  src: url('../font-icns/fontello.eot?24256973');
-  src: url('../font-icns/fontello.eot?24256973#iefix') format('embedded-opentype'),
-       url('../font-icns/fontello.woff?24256973') format('woff'),
-       url('../font-icns/fontello.ttf?24256973') format('truetype'),
-       url('../font-icns/fontello.svg?24256973#fontello') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Flaticon";
-  src: url("../font-icns/flaticon.eot");
-  src: url("../font-icns/flaticon.eot#iefix") format("embedded-opentype"),
-  url("../font-icns/flaticon.woff") format("woff"),
-  url("../font-icns/flaticon.ttf") format("truetype"),
-  url("../font-icns/flaticon.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
- [class^="icon-"]:before,
- [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  text-align: center;
-  /* opacity: .8; */
-
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-}
-
-// Twitter
-[class^="icon-twitter"]:before,
-[class*="icon-twitter"]:before {
-  content: '\e803';
-}
-
-// Facebook
-[class^="icon-facebook"]:before,
-[class*="icon-facebook"]:before {
-  content: '\e805';
-}
-
-// Instagram
-[class^="icon-instagram"]:before,
-[class*="icon-instagram"]:before {
-  content: '\e804';
-}
-
-// Youtube
-[class^="icon-youtube"]:before,
-[class*="icon-youtube"]:before {
-  content: "\e000";
-  font-family: Flaticon;
-}
-
-
-.icon-play:before { content: '\e801'; }
-.icon-left-open:before { content: '\e806'; }
-.icon-right-open:before { content: '\e802'; }
-.icon-right-open-big:before { content: '\e807'; }
 
 
 /*
@@ -308,7 +170,6 @@ input:-webkit-autofill {
   display: none;
 }
 
-
 /*
   Normlal browsers
 */
@@ -316,13 +177,6 @@ input:-webkit-autofill {
   margin: 0 auto 16px;
   display: block;
   width: 34px;
-}
-
-
-.front {
-  .custom-throbber {
-    display: block;
-  }
 }
 
 

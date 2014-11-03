@@ -5,37 +5,27 @@ $sprite: "../images/sprite.png";
 //-----------------------------------------------------------------------------
 // Fonts
 
-/*$font-serif: serif;
+$font-serif: serif;
 
-$sans:  "DINNextRoundedLTW01-Reg", Helvetica, Arial, sans-serif;
-$sans-strict:  "DIN Next W01 Regular", Helvetica, Arial, sans-serif;
-
-$sans-med:        "DINNextRoundedLTW01-Med", Helvetica, Arial, sans-serif;
-$sans-med-strict: "DIN Next W01 Medium", Helvetica, Arial, sans-serif;
-
-$sans-bold: "DINNextRoundedLTW01-Bol", Helvetica, Arial, sans-serif;
-$sans-bold-strict: "DIN Next W01 Bold", Helvetica, Arial, sans-serif;
-
-$sansLight: Helvetica, Arial, sans-serif;*/
-$font-fs-book: "FoundrySterling-Book";
-$font-fs-medium: "FoundrySterling-Medium";
+$sans:  Helvetica, Arial, sans-serif;
+$sans-book: "FoundrySterling-Book", $sans;
+$sans-medium: "FoundrySterling-Medium", $sans;
 
 
 //-----------------------------------------------------------------------------
 // main width
-$main_width: 932px;
+$main_width: 981px;
 $main_width_not_px: 932;
 
-	
 //-----------------------------------------------------------------------------
 // Colores
 
-$color-background1: #be3b2a;
-$color-background2: #666666;
-$color-background3: #d17569;
-$color-background4: #cce0df;
-$color-background5: #ecedeb;
-$color-background6: #00655e;
+$bg-red: #be3b2a;
+$bg-dark-grey: #666666;
+$bg-orange: #d17569;
+$bg-light-blue: #cce0df;
+$bg-grey: #ecedeb;
+$bg-dark-green: #00655e;
 
 
 
@@ -99,5 +89,4 @@ font-family:'DINNextRoundedLTW01-Lig';
 font-family:'DINNextRoundedLTW01-Reg';
 font-family:'DINNextRoundedLTW01-Med';
 font-family:'DINNextRoundedLTW01-Bol';
-
 */

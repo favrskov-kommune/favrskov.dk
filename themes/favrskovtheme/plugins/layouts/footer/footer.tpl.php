@@ -21,31 +21,31 @@ $background = theme_get_setting('favrskovtheme_footer_background') ? theme_get_s
   <div id="footer-wrapper" class="footer-wrapper group" style="background-color: <?php print "#$background"; ?>;">
     <div class="content">
       <?php if (!empty($content['header'])): ?>
-        <section class="logo" role="region">
+        <section class="logo footer-block" role="region">
           <?php print $content['header']; ?>
         </section>
       <?php endif; ?>
 
       <?php if (!empty($content['contacts'])): ?>
-        <section class="contacts" role="region">
+        <section class="contacts footer-block" role="region">
           <?php print $content['contacts']; ?>
         </section>
       <?php endif; ?>
 
       <?php if (!empty($content['navigation'])): ?>
-        <nav class="nav" role="navigation">
+        <nav class="nav footer-block" role="navigation">
           <?php print $content['navigation']; ?>
         </nav>
       <?php endif; ?>
 
       <?php if (!empty($content['social'])): ?>
-        <section class="social" role="region">
+        <section class="social footer-block" role="region">
           <?php print $content['social']; ?>
         </section>
       <?php endif; ?>
 
       <?php if (!empty($content['policy'])): ?>
-        <section class="policy" role="region">
+        <section class="policy footer-block" role="region">
           <div class="content">
             <?php print $content['policy']; ?>
           </div>

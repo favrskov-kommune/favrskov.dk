@@ -20,7 +20,7 @@ $background = theme_get_setting('favrskovtheme_header_background') ? theme_get_s
 $background[] = theme_get_setting('favrskovtheme_header_opacity') ? theme_get_setting('favrskovtheme_header_opacity') : 1;
 $background = implode(', ', $background);
 ?>
-<header id="header" class="header group" role="banner" style="background: rgba(<?php print "$background"; ?>);">
+<header id="header" class="header" role="banner" style="background: rgba(<?php print "$background"; ?>);">
   <section class="header-content">
 
     <div class="nav-bar">

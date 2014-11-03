@@ -24,7 +24,7 @@
 //Base
 @import "base/reset";
 @import "base/fonts";
-/*@import "base/layout";*/
+@import "base/layout";
 @import "base/global";
 /*@import "base/tabs";*/
 
@@ -42,9 +42,9 @@
 /*// @import "partials/menu";*/
 @import "partials/header";
 @import "partials/footer";
+@import "partials/login";
 /*@import "partials/wysiwyg";
 @import "partials/buttons";
-@import "partials/login";
 @import "partials/pager";
 @import "partials/faq";
 @import "partials/banner-element";
@@ -60,9 +60,9 @@
 //------------------------------------------------------------------------------
 // Pages
 /*@import "pages/front";
-@import "pages/search";
+@import "pages/search";*/
 @import "pages/subject";
-@import "pages/subscribe";
+/*@import "pages/subscribe";
 @import "pages/events";
 @import "pages/videos";
 @import "pages/node";

@@ -2,7 +2,7 @@
 // Subpage page
 .subpage {
   .article {
-    @include span-columns(7, 12);
+    @include span-columns(3, 12);
   }
 
   .sidebar {
