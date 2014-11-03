@@ -8,9 +8,9 @@
     .control-label {
       color: $black;
     }
-    .help-block {
-    color: lighten($def-color, 30%);
-    }
+//    .help-block {
+//    color: lighten($def-color, 30%);
+//    }
 
     input,
     textarea {
@@ -38,7 +38,7 @@
 
     .active a,
     a:hover {
-      background: $gray;
+      background: $grey;
       border: none;
       color: $white;
      }
@@ -58,7 +58,7 @@
     max-width: 96%;
     margin: 0 0 5px;
     background: $white;
-    border: 1px solid $liteGray;
+    border: 1px solid $grey;
     @include font-size(18);
     @include placeholder(#a8a8a8);
   }
@@ -69,7 +69,7 @@
 
   .help-block {
     margin: 3px 0 15px;
-    color: lighten($def-color, 30%);
+//    color: lighten($def-color, 30%);
     font-family: $sans;
     @include font-size(11);
   }
@@ -85,7 +85,7 @@
 #user-register-form,
 #user-pass,
 #user-login {
-  color: $gray;
+  color: $grey;
   background-color: $lightgrey;
   border: 1px solid $grayLight;
   margin: 200px auto 60px;

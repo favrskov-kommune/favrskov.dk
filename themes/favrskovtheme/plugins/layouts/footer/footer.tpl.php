@@ -26,6 +26,12 @@ $background = theme_get_setting('favrskovtheme_footer_background') ? theme_get_s
         </section>
       <?php endif; ?>
 
+      <?php if (!empty($content['social'])): ?>
+        <section class="social footer-block" role="region">
+          <?php print $content['social']; ?>
+        </section>
+      <?php endif; ?>
+
       <?php if (!empty($content['contacts'])): ?>
         <section class="contacts footer-block" role="region">
           <?php print $content['contacts']; ?>
@@ -36,12 +42,6 @@ $background = theme_get_setting('favrskovtheme_footer_background') ? theme_get_s
         <nav class="nav footer-block" role="navigation">
           <?php print $content['navigation']; ?>
         </nav>
-      <?php endif; ?>
-
-      <?php if (!empty($content['social'])): ?>
-        <section class="social footer-block" role="region">
-          <?php print $content['social']; ?>
-        </section>
       <?php endif; ?>
 
       <?php if (!empty($content['policy'])): ?>
