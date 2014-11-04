@@ -30,8 +30,8 @@
 
 <article>
   <header>
-    <?php print $fields['field_date']->content ?>
     <?php print $fields['title']->content ?>
+    <?php print $fields['field_date']->content ?>
   </header>
    <?php print $fields['field_teaser']->content ?>
 </article>
