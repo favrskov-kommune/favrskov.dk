@@ -18,7 +18,7 @@
 //------------------------------------------------------------------------------
 // Links
 
-@mixin links($color: $cyan, $hover: $cyan, $text-decoration: none) {
+@mixin links($color: $dark-grey, $hover: $red, $text-decoration: none) {
   color: $color;
   text-decoration: $text-decoration;
 

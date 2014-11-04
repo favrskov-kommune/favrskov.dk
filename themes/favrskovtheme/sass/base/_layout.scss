@@ -3,7 +3,7 @@
 // Grid settings
 
 $total-columns  : 12;              // a 16-column grid
-$column-width   : 66px;            // each column is 4em wide
+$column-width   : 67px;            // each column is 4em wide
 $gutter-width   : 16px;            // 1em gutters between columns
 $grid-padding   : 0;  // grid-padding equal to gutters
 
@@ -19,7 +19,6 @@ $grid-padding   : 0;  // grid-padding equal to gutters
   @include container;
   position: relative;
   min-width: 280px;
-  max-width: 980px;
 }
 
 .popular-image {
