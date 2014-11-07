@@ -2,8 +2,9 @@
 // Header global
 .header {
   @extend %clearfix;
+  border-bottom: 5px solid $header_bottom_line;
   max-width: 100%;
-
+  background: none !important;
   &:before {
     @extend %before-after;
     width: 100%;

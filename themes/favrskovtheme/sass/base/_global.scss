@@ -318,3 +318,23 @@ input:-webkit-autofill {
 .invisible {
   visibility: hidden;
 }
+
+
+h1 {
+  font: 50px $sans-medium;
+  color: $slategrey;
+}
+h2 {
+  font: 30px $sans-medium;
+  color: $slategrey;
+}
+h3 {
+  font: 28px Arial;
+  font-weight: bold;
+  color: $slategrey; 
+}
+h4 {
+  font: 20px Arial;
+  font-weight: bold;
+  color: $slategrey; 
+}

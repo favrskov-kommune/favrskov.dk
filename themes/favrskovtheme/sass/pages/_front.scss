@@ -72,9 +72,9 @@
     @include font-size(15);
     font-weight: normal;
     margin-bottom: 8px;
-    font-family: $sans-med-strict;
+    font-family: $sans;
     a {
-      @include links($def-color, $liteGray);
+      @include links($dark-grey, $liteGray);
     }
   }
 
@@ -161,7 +161,7 @@
     position: absolute;
     right: 12px;
     top: 2px;
-    font-family: $sansLight;
+    font-family: $dark-grey;
     text-transform: uppercase;
   }
 
@@ -173,7 +173,7 @@
     @include links(#999, #999);
     @include font-size(14);
     text-transform: lowercase;
-    font-family: $sans-med-strict;
+    font-family: $sans;
   }
 
   article {
@@ -183,7 +183,7 @@
       @include font-size(22);
       margin: 15px 0;
       line-height: 1.1;
-      font-family: $sans-med-strict;
+      font-family: $sans;
     }
   }
 }
@@ -198,7 +198,7 @@
     margin-bottom: 36px;
     padding-right: 80px;
     color: $gray;
-    font-family: $sans-bold-strict;
+    font-family: $dark-grey;
   }
 }
 
@@ -240,7 +240,7 @@
     p {
       @include font-size(16);
       line-height: 1.4;
-      font-family: $sans-strict;
+      font-family: $dark-grey;
     }
   }
 }
@@ -312,7 +312,7 @@
       position: absolute;
       width: 50px;
       top: -36px;
-      font-family: $sans-med-strict;
+      font-family: $sans;
       letter-spacing: -.05em;
     }
 
@@ -343,7 +343,7 @@
     right: 8px;
     top: 18px;
     @include font-size(14);
-    font-family: $sans-med;
+    font-family: $dark-grey;
 
     a { @include links(#999, $gray); }
   }
@@ -357,7 +357,7 @@
 
   footer {
     p {
-      font-family: $sans-med;
+      font-family: $dark-grey;
       @include font-size(17);
       margin-bottom: 2px;
       line-height: 1.4;
@@ -435,7 +435,7 @@
     }
 
     h1 {
-      font-family: $sans-med-strict;
+      font-family: $sans;
       margin: 67px 0 19px;
       max-height: 60px;
       @include font-size(30);
@@ -488,7 +488,7 @@
 
     a {
       display: block;
-      background: rgba($def-color, .6);
+      background: rgba($dark-grey, .6);
       min-height: 44px;
       padding: 33px 5% 30px;
       width: 100%;

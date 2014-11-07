@@ -13,7 +13,7 @@
 }
 
 .footer-block {
-  @include span-columns(3, 12);
+  @include span-columns(2, 12);
   color: $dark-green;
 
   &:last-child {
