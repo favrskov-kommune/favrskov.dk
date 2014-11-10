@@ -6,7 +6,8 @@
   @include container;
   @extend %clearfix;
   padding: 46px 0;
-  .node-content  {
+  .node-content,
+  .list-content  {
   @include span-columns(7, 12);
   .breadcrumb + .pane-go-back-link {
     a {
