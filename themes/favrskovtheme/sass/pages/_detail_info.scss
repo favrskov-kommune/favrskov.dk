@@ -1,0 +1,116 @@
+
+//------------- DETAIL INFORMATION -------------------
+
+.content-container {
+  .content {
+  @include container;
+  @extend %clearfix;
+  padding: 46px 0;
+  .node-content  {
+  @include span-columns(7, 12);
+  .breadcrumb + .pane-go-back-link {
+    a {
+      font: 9pt Arial;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: $lightergray;
+    }
+  }
+  h1 {
+    margin: 18px 0;
+  }
+  .author {
+    margin: 17px 0;
+    span {
+      font: 11pt Arial;
+      color: $dark-grey;
+    }
+  }
+  .node-body {
+    border-bottom: 1px solid $border-top-over-news;
+    margin-bottom: 40px;
+    padding: 0 0 66px;
+    p {
+      font: 13pt Arial;
+      color:  $slategrey;
+      line-height: 25px;
+    }
+  }
+  .teaser {
+    font: 18pt $sans-book;
+    color:  $slategrey;
+    line-height: 33px;  
+    margin: 58px 0;
+  }
+  h2 {
+    font-size: 20pt;
+    font-weight: bold;
+  }
+  .pane-node-updated, 
+  .manual-date {
+    @extend %clearfix;
+    margin: 0 0 8px;
+    &, h2 {
+      font: 10pt Arial;
+      color: $dark-grey;
+    }
+    h2, span {
+      float: left;
+      margin-right: 10px;
+    }
+  }
+
+
+  //---for form comment---
+  .pane-node-comment-form {
+    h2 {
+      font-size: 15pt;
+      margin: 5px 0;
+    }
+    label {
+      font: 12pt Arial;
+      color: $dark-grey;
+      padding: 5px 5px 5px 0;
+    }
+    .form-item {
+      margin: 0 0 8px;
+    }
+  }
+  .ckeditor_links {
+    padding: 5px 0;
+    display: block;
+  }
+  .filter-wrapper {
+    a {
+      padding: 5px 0;
+    }
+    ul {
+      li {
+        margin: 10px 0;
+        padding-left: 10px;
+      }
+    }
+  }
+  input[type="submit"] {
+    display: block;
+    padding: 8px 25px;
+    cursor: pointer;
+    font: 9pt Arial;
+  } 
+  .form-type-checkbox {
+    input {
+      float: left;
+      margin-right: 22px;
+    }
+  }
+  .form-radios {
+    .form-type-radio {
+      @extend %clearfix;
+    }
+    input {
+      float: left;
+    }
+  }
+  }
+  }
+}

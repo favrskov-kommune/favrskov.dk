@@ -19,8 +19,17 @@
   &:last-child {
     margin-right: 0;
   }
-
-  h2 {
+  &.logo {
+    a {
+      width: 192px;
+      height: 69px;
+      display: block;
+      text-indent: -9999px;
+      background: url('../images/logo.png') #eec no-repeat;
+      
+    }
+  }
+  h2,h1 {
     color: #003F3D;
     font-size: 22px;
     font-family: $sans-medium;

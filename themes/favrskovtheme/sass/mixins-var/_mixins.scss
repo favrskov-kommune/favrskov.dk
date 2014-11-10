@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 // Main sprite
 
-@mixin sprite($x, $y, $bg-color: transparent, $sprite: '../images/sprite.png') {
+@mixin sprite($x, $y, $bg-color: transparent, $sprite: '../images/sprite-favrskov.png') {
   background: $bg-color url(#{$sprite}) no-repeat $x $y;
 }
 
