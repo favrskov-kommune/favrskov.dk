@@ -1,6 +1,7 @@
 
 
 //--------------------SITEBAR---------------------
+
 .sidebar {
   @include span-columns(4 omega, 12);
   .toggle-share,.print_data { display: none; }
