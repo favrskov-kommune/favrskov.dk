@@ -43,14 +43,6 @@ $background = theme_get_setting('favrskovtheme_footer_background') ? theme_get_s
           <?php print $content['navigation']; ?>
         </nav>
       <?php endif; ?>
-
-      <?php if (!empty($content['policy'])): ?>
-        <section class="policy footer-block" role="region">
-          <div class="content">
-            <?php print $content['policy']; ?>
-          </div>
-        </section>
-      <?php endif; ?>
     </div>
   </div>
 </footer>
