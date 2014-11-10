@@ -1,16 +1,14 @@
 
 
 //--------------------SITEBAR---------------------
-
-
 .sidebar {
-	@include span-columns(4 omega, 12);
-	.toggle-share,.print_data { display: none; }
-	.panel-pane {
-		&:not(:first-child) {
-			border-bottom: 1px solid $border-top-over-news;
-		}
+  @include span-columns(4 omega, 12);
+  .toggle-share,.print_data { display: none; }
+  .panel-pane {
+  	&:not(:first-child) {
+		border-bottom: 1px solid $border-top-over-news;
 	}
+  }
 	.addthis_toolbox {
 		margin: 60px 0 54px;
 		a { margin-right: 5px; }
