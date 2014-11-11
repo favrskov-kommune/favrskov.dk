@@ -23,10 +23,16 @@ function views_subject_grid_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '3';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -64,6 +70,7 @@ function views_subject_grid_views_default_views() {
   $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['arguments']['tid']['field'] = 'tid';
   $handler->display->display_options['arguments']['tid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['tid']['exception']['title'] = 'Alle';
   $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
@@ -97,14 +104,15 @@ function views_subject_grid_views_default_views() {
   );
   $translatables['content_by_taxonomy_term'] = array(
     t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('All'),
+    t('mere'),
+    t('Udfør'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Stigende'),
+    t('Faldende'),
+    t('Alle'),
     t('Content pane'),
+    t('more'),
     t('View panes'),
   );
   $export['content_by_taxonomy_term'] = $view;
@@ -241,7 +249,6 @@ function views_subject_grid_views_default_views() {
   $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['arguments']['name']['field'] = 'name';
   $handler->display->display_options['arguments']['name']['relationship'] = 'parent';
-  $handler->display->display_options['arguments']['name']['default_action'] = 'empty';
   $handler->display->display_options['arguments']['name']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
