@@ -45,11 +45,12 @@ function favrskovtheme_preprocess_html(&$vars) {
   }
 
   $header_links = theme_get_setting('favrskovtheme_header_links');
-  if(!empty($header_links)) {
+
+  if (!empty($header_links)) {
     $vars['classes_array'][] = $header_links;
   }
 
-  if ($vars['background']) {
+  if (!empty($vars['background'])) {
     $vars['classes_array'][] = 'dynamic-background';
   }
 }
