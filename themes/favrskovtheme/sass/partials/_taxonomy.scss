@@ -1,0 +1,145 @@
+//------------------------------------------------------------------------------
+// Subject grid
+
+.subject-grid {
+  background: url(../images/pat.png);
+  border-bottom: 1px solid $slategrey;
+  margin-bottom: 46px;
+
+  .taxonomy-list {
+    padding-top: 36px;
+  }
+
+  .taxonomy {
+    .global-link {
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+  .taxonomy:hover {
+      a {
+        color: $liteGray;
+
+        &:hover {
+
+          // Colors theme
+          .violet      & { color: $violet; }
+          .dark-grey   & { color: $dark-grey; }
+          .grey        & { color: $gray; }
+          .yellow      & { color: $dirty-yellow; }
+          .blue        & { color: $deepBlue; }
+          .pink        & { color: $pink; }
+          .salat-green & { color: $salatGreen; }
+        }
+      }
+
+      .taxonomy-pic {
+        background-color: $liteGray;
+      }
+    }
+
+  // Header
+  h3 {
+    @include font-size(22);
+    margin-bottom: 8px;
+    a {
+      color: $dark-green;
+    }
+  }
+
+  // Subheaders
+  h4 {
+    @include font-size(15);
+    margin-bottom: 8px;
+    font-family: Arial;
+    font-weight: bold;
+    a {
+      @include links(#000, $liteGray);
+    }
+  }
+
+  .contextual-links a {
+    line-height: 1;
+    @include font-size(12);
+  }
+}
+
+.front {
+  .subject-grid {
+    .taxonomy {
+      font-size: 0;
+      @include span-columns(3, 12);
+      @include inline-block(top);
+      vertical-align: top;
+      margin-bottom: 35px;
+      float: none;
+      text-align: center;
+      position: relative;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+      @include at-breakpoint(12 $width-980) {
+        @include span-columns(6, 12);
+        &:nth-child(4n) {
+          margin-right: gutter(12);
+        }
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+      }
+      @include at-breakpoint(12 $width-600) {
+        margin-right: 0;
+        @include span-columns(12, 12);
+        text-align: left;
+      }
+    }
+  }
+}
+
+
+// Taxonomy Image on Subject-grid
+.taxonomy-pic {
+  margin: 0 auto 15px;
+  height: 80px;
+  @include border-radius(80px);
+  background-color: $dark-green;
+  width: 80px;
+
+  // Colors theme
+  .violet      & { background-color: $violet; }
+  .dark-grey   & { background-color: $dark-grey; }
+  .grey        & { background-color: $gray; }
+  .yellow      & { background-color: $dirty-yellow; }
+  .blue        & { background-color: $deepBlue; }
+  .pink        & { background-color: $pink; }
+  .salat-green & { background-color: $salatGreen; }
+
+  @include transition-duration(.2s);
+
+  a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    @include border-radius(80px);
+  }
+
+  img {
+    /*left: 0;
+    width: auto;
+    @include center-vertical(80);
+    display: block;*/
+    margin-top: 10px;
+  }
+  @include at-breakpoint(12 $width-600) {
+    margin: 0 0 15px;
+  }
+}

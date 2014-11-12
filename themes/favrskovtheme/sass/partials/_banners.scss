@@ -1,0 +1,129 @@
+//------------------------------------------------------------------------------
+// Bototom banners
+
+.view-banners {
+  padding-bottom: 0;
+  margin: 0 auto 33px;
+  padding-top: 70px;
+  .banner-link {
+    margin-bottom: 0;
+
+    a {
+      display: block;
+      background: rgba($dark-grey, .6);
+      min-height: 44px;
+      padding: 33px 5% 30px;
+      width: 100%;
+      @include box-sizing(border-box);
+      @include font-size(22);
+      @include links($white, $white);
+      &:before {
+        font-family: "fontello";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+
+        display: inline-block;
+        text-decoration: inherit;
+        width: 1em;
+        text-align: center;
+        content: '\e807';
+        color: $white;
+        float: right;
+        line-height: 23px;
+        @include font-size(30);
+      }
+    }
+  }
+
+  a + .banner-link {
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    margin-bottom: 0;
+
+    a {
+      padding: 22px 5% 20px;
+    }
+    a:before {
+      display: none;
+    }
+  }
+}
+
+.banners-list {
+  margin-bottom: 33px;
+  font-size: 0;
+
+  li {
+    @include span-columns(4, 12);
+    position: relative;
+    margin-bottom: gutter(12);
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+
+    &:hover a {
+      background: rgba($gray, .6);
+    }
+    @include at-breakpoint(12 $width-768) {
+      @include span-columns(6, 12);
+      .banner-link {
+        a {  
+          @include font-size(16);
+        }
+      }
+      &:nth-child(3n) {
+        margin-right: gutter(12);
+      }
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+    @include at-breakpoint(12 $width-600) {
+      @include span-columns(12, 12);
+    }
+  }
+  a {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+// Matrix view
+.matrix-view {
+  font-size: 0;
+  line-height: 0;
+
+  // Switcher
+  .switch {
+    top: 0;
+
+    a {
+      display: block;
+      text-indent: -999em;
+      text-transform: uppercase;
+    }
+  }
+  .pane-title {
+    line-height: 1.2;
+  }
+
+  .contextual-links {
+    @include font-size(13);
+  }
+
+  .matrix-item {
+    .category,
+    h1 {
+      @include transition-duration(.1s);
+    }
+  }
+}
+

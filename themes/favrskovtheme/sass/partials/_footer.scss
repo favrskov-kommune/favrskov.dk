@@ -2,14 +2,17 @@
 // Footer
 .footer {
   display: block;
-  height: 600px;
+  min-height: 600px;
   background: url('../images/favrskov-fon-footer.png') center 100% $grey no-repeat;
+  padding-bottom: 300px;
 }
-
 .footer-wrapper {
   background: none !important;
   @include main_max_width(0, 0);
   padding: 55px 10px 0;
+  @include at-breakpoint(12 $width-1040) {
+    max-width: 90%;
+  }
 }
 
 .footer-block {
@@ -21,12 +24,11 @@
   }
   &.logo {
     a {
-      width: 192px;
+      width: 100%;
       height: 69px;
       display: block;
       text-indent: -9999px;
       background: url('../images/logo.png') #eec no-repeat;
-      
     }
   }
   h2,h1 {
@@ -52,5 +54,38 @@
       text-decoration: underline;
     }
   }
+
+  @include at-breakpoint(12 $width-768) {
+    @include span-columns(4, 12);
+    margin-bottom: gutter(12);
+    &:last-child {
+      margin-right: gutter(12);
+    }
+    &:nth-child(3n) {
+      margin-right:0;
+    }
+  }
+  @include at-breakpoint(12 $width-600) {
+    @include span-columns(6, 12);
+    &:nth-child(3n) {
+      margin-right: gutter(12);
+    }
+    &:nth-child(2n) {
+      margin-right:0;
+    }
+  }
+  @include at-breakpoint(12 $width-480) {
+    width: 100%;
+    float: none;
+    display: block;
+    &:not(:last-child) {  
+      margin-bottom: 30px;
+    }
+    &:nth-child(3n) {
+      margin-right: gutter(12);
+    }
+  }
+
+
 
 }

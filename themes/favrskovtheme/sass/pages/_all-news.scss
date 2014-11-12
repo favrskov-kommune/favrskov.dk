@@ -1,0 +1,43 @@
+
+//-------------------all news--------------------
+.content .list-content {
+	.articles {
+		.list-elements {
+			h1 {
+				margin: 0 0 10px;
+				a {
+					font: 28px Arial;
+					font-weight: bold; 
+					color: $dark-white-grey;
+				}
+			}
+			li {
+				border-top: 1px solid $border-top-over-all-news;
+				p {
+		      font: 13pt Arial;
+		      color:  $slategrey;
+		      line-height: 25px;
+		      margin: 25px 0 50px;
+				}
+				&:last-child {
+					border-bottom: 1px solid $border-top-over-all-news;
+				}
+			}
+			.general-info {
+				span {
+					font: 14px Arial;
+					font-weight: bold;
+					color: $dark-grey;
+					margin-top: 10px;
+				}
+				a {
+					font: 14px Arial;
+					color: $dark-grey;
+				}
+			}
+			.blog-preview {
+				margin-top: 20px;
+			}
+		}
+	}
+}
