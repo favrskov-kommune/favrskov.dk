@@ -47,7 +47,7 @@
 
 			//Thumbnails Clicks
       onSlideClick: function(index){
-        
+        //console.log(navSwiper);
         //SHOW DESCRIPTION SLIDE
         showDescriptionSlide(navSwiper.clickedSlide,index.clickedSlideIndex);
 
