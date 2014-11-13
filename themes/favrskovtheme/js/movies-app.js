@@ -33,7 +33,6 @@
 
 			//Thumbnails Clicks
       onSlideClick: function(index){
-
         if (!$(navSwiper.clickedSlide).hasClass('active-nav')){
           contentSwiper.swipeTo( navSwiper.clickedSlideIndex);
         }
