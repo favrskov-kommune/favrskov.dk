@@ -1,5 +1,6 @@
 //------------------------------------------------------------------------------
 // Header global
+
 .header {
   @extend %clearfix;
   border-bottom: 5px solid $header_bottom_line;
@@ -11,20 +12,41 @@
     height: 15px;
     background: $dark-green;
   }
-
   .error {
     display: none;
   }
-
    .header-content {
     @include main_max_width(0, 0);
     min-height: 110px;
     @extend %clearfix;
     position: relative;
+    @include at-breakpoint(12 $width-1040) {
+      max-width: 90%;
+    }
+    @include at-breakpoint(12 $width-480) {
+      max-width: 100%;
+      min-height: 50px;
+      .btn-navbar {
+        background-color: #8a8a8a;
+        cursor: pointer;
+        display: block;
+        width: 56px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        padding: 10px 10px;
+        span {
+          display: block;
+          background: #fff;
+          height: 5px;
+          margin: 4px 0;
+        }
+      }
+    }
   }
 
   // Logo
-
   .logo {
     width: 194px;
     height: 72px;
@@ -32,21 +54,27 @@
     margin-top: 17px;
     float: left;
     margin-left: 6px;
+    @include at-breakpoint(12 $width-980) {
+      float: none;
+      margin: 30px auto 120px;
+    }
+    @include at-breakpoint(12 $width-480) {
+      margin: 50px auto 15px;
+    }
   }
-
   .nav {
     margin-top: 50px;
     @extend %clearfix;
     position: absolute;
     top: 0;
     right: 246px;
-
-    li {
-      float: left;
-      height: 60px;
-      margin-right: 2px;
+    @include at-breakpoint(12 $width-980) {
+      position: static;
+      text-align: center;
     }
-
+    &.animated {
+      display: block !important;
+    }
     a {
       font-family: $sans-medium;
       color: #333;
@@ -58,20 +86,71 @@
       height: 60px;
       background: $light-blue;
     }
-  }
+    li {
+      float: left;
+      height: 60px;
+      margin-right: 2px;
+      @include at-breakpoint(12 $width-980) {
+        float: none;
+        @include inline-block(top);
+        margin-right: -2px;
+      }
+      &.active {
+        a {
+          background: $grey;
+        }
+      }
+    }
 
+    @include at-breakpoint(12 $width-480) {
+      top: 50px;
+      left: 0;
+      position: fixed;
+      width: 80%;
+      margin: 0;
+      text-align: left;
+      z-index: 3;
+      display: none;
+      li {
+        display: block;
+        height: auto;
+        & a.active {
+          background: $dark-grey;
+        }
+      }
+      a {
+        font-size: 15px;
+        color: $white;
+        background: #272727;
+        padding: 15px 10px;
+        height: auto;
+        border-bottom: 1px solid $dark-grey;
+        &:hover {
+          background: $dark-grey;
+        }
+      }
+    }
+  }
   // Tabs
   .tabs {
     position: absolute;
     right: 0;
     top: 0;
-
+    @include at-breakpoint(12 $width-980) {
+      position: static;
+    }
+    @include at-breakpoint(12 $width-480) {
+      display: none;
+    }
     li {
       float: right;
       margin-left: 17px;
       @extend %clearfix;
+      @include at-breakpoint(12 $width-980) {
+        float: none;
+        @include inline-block(top);
+      }
     }
-
     a {
       font-family: $sans-medium;
       font-size: 11pt;
@@ -82,18 +161,33 @@
       display: block;
     }
   }
-
   .search-contact {
     width: 230px;
     height: 100%;
     float: right;
     margin-top: 50px;
+    @include at-breakpoint(12 $width-980) {
+      float: none;
+      top: 90px;
+      @include center-gorizontal(380);
+      margin-top: 0;
+      text-align: center;
+    }
+    @include at-breakpoint(12 $width-480) {
+      width: 100%;
+      height: 51px;
+      left: 0;
+      top: 0;
+      margin: 0;
+      background: #000;
+      position: fixed;
+      z-index: 1;
+    }
   }
 
   .search {
     position: relative;
     height: 34px;
-
     input[type="text"] {
       width: 100%;
       height: 34px;
@@ -101,8 +195,11 @@
       background-color: $light-blue;
       @include border-radius(5px);
       padding: 0 40px 0 10px;
+      @include at-breakpoint(12 $width-480) {
+        background: #fff;
+        @include border-radius(0px);
+      }
     }
-
     input[type="submit"] {
       cursor: pointer;
       position: absolute;
@@ -112,6 +209,11 @@
       text-indent:-9999px;
       z-index: 1;
       background: url(../images/search_icon.png) no-repeat center center;
+    }
+    @include at-breakpoint(12 $width-480) {
+      @include center-vertical(34);
+      right: 4%;
+      width: 72%;
     }
   }
 }

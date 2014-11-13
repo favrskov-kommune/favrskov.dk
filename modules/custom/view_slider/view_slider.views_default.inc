@@ -47,11 +47,11 @@ function view_slider_views_default_views() {
     'front_page_slider' => 'front_page_slider',
     'front_page_banners_block' => 0,
   );
-  /* Relationship: Content: Image (field_image:fid) */
+  /* Relationship: Field: Image (field_image:fid) */
   $handler->display->display_options['relationships']['field_image_fid']['id'] = 'field_image_fid';
   $handler->display->display_options['relationships']['field_image_fid']['table'] = 'field_data_field_image';
   $handler->display->display_options['relationships']['field_image_fid']['field'] = 'field_image_fid';
-  /* Field: Content: External link */
+  /* Field: Content: Link */
   $handler->display->display_options['fields']['field_external_link']['id'] = 'field_external_link';
   $handler->display->display_options['fields']['field_external_link']['table'] = 'field_data_field_external_link';
   $handler->display->display_options['fields']['field_external_link']['field'] = 'field_external_link';
@@ -68,7 +68,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_image_alt_text']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_image_alt_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_alt_text']['element_default_classes'] = FALSE;
-  /* Field: Content: Image */
+  /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -179,7 +179,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: External link */
+  /* Field: Content: Link */
   $handler->display->display_options['fields']['field_external_link']['id'] = 'field_external_link';
   $handler->display->display_options['fields']['field_external_link']['table'] = 'field_data_field_external_link';
   $handler->display->display_options['fields']['field_external_link']['field'] = 'field_external_link';
@@ -199,14 +199,14 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_external_link_1']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_external_link_1']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_external_link_1']['type'] = 'link_target';
-  /* Field: Content: Alt tekst */
+  /* Field: Content: Image alt text */
   $handler->display->display_options['fields']['field_image_alt_text']['id'] = 'field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['table'] = 'field_data_field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['field'] = 'field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['label'] = '';
   $handler->display->display_options['fields']['field_image_alt_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_alt_text']['element_default_classes'] = FALSE;
-  /* Field: Content: Image */
+  /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -224,41 +224,6 @@ function view_slider_views_default_views() {
     'fallback_image_style' => 'slidercustom_user_full_1x',
     'image_link' => '',
   );
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['path'] = '[field_external_link]';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = '0';
-  $handler->display->display_options['fields']['title']['element_label_type'] = '0';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Description */
-  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
-  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
-  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
-  $handler->display->display_options['fields']['field_description']['label'] = '';
-  $handler->display->display_options['fields']['field_description']['alter']['path'] = '[field_external_link]';
-  $handler->display->display_options['fields']['field_description']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_description']['element_label_type'] = '0';
-  $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_description']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['field_description']['element_default_classes'] = FALSE;
-  /* Field: Content: Hide title and white box */
-  $handler->display->display_options['fields']['field_hide_text']['id'] = 'field_hide_text';
-  $handler->display->display_options['fields']['field_hide_text']['table'] = 'field_data_field_hide_text';
-  $handler->display->display_options['fields']['field_hide_text']['field'] = 'field_hide_text';
-  $handler->display->display_options['fields']['field_hide_text']['label'] = '';
-  $handler->display->display_options['fields']['field_hide_text']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_hide_text']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_hide_text']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_hide_text']['empty_zero'] = TRUE;
-  $handler->display->display_options['fields']['field_hide_text']['type'] = 'list_key';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
   $handler->display->display_options['allow']['offset'] = 'offset';
@@ -285,7 +250,14 @@ function view_slider_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: External link */
+  /* Field: Content: Description */
+  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['label'] = '';
+  $handler->display->display_options['fields']['field_description']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
+  /* Field: Content: Link */
   $handler->display->display_options['fields']['field_external_link']['id'] = 'field_external_link';
   $handler->display->display_options['fields']['field_external_link']['table'] = 'field_data_field_external_link';
   $handler->display->display_options['fields']['field_external_link']['field'] = 'field_external_link';
@@ -302,7 +274,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_image_alt_text']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_image_alt_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_alt_text']['element_default_classes'] = FALSE;
-  /* Field: Content: Image */
+  /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -376,7 +348,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: External link */
+  /* Field: Content: Link */
   $handler->display->display_options['fields']['field_external_link']['id'] = 'field_external_link';
   $handler->display->display_options['fields']['field_external_link']['table'] = 'field_data_field_external_link';
   $handler->display->display_options['fields']['field_external_link']['field'] = 'field_external_link';
@@ -396,7 +368,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_external_link_1']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_external_link_1']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_external_link_1']['type'] = 'link_target';
-  /* Field: Content: Alt tekst */
+  /* Field: Content: Image alt text */
   $handler->display->display_options['fields']['field_image_alt_text']['id'] = 'field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['table'] = 'field_data_field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['field'] = 'field_image_alt_text';
