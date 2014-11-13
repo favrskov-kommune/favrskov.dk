@@ -62,15 +62,10 @@
       position: absolute;
       top: 36px;
       left: 36px;
-/*      &:after {
-        @extend %before-after;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 20px;
-        width: 100%;
-        background-image: -svg(linear-gradient(90deg, $lightgrey, rgba($lightgrey, 0.5)));
-      }*/
+      display: none;
+      &.active {
+        display: block;
+      }
       @include at-breakpoint(12 $width-480) {
         @include font-size(12);
         width: 90%;
