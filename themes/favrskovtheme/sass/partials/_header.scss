@@ -59,7 +59,7 @@
       margin: 30px auto 120px;
     }
     @include at-breakpoint(12 $width-480) {
-      margin: 30px auto 15px;
+      margin: 50px auto 15px;
     }
   }
   .nav {
@@ -75,16 +75,6 @@
     @include at-breakpoint(12 $width-480) {
       display: none;
     }
-    li {
-      float: left;
-      height: 60px;
-      margin-right: 2px;
-      @include at-breakpoint(12 $width-980) {
-        float: none;
-        @include inline-block(top);
-        margin-right: -2px;
-      }
-    }
     a {
       font-family: $sans-medium;
       color: #333;
@@ -96,6 +86,22 @@
       height: 60px;
       background: $light-blue;
     }
+    li {
+      float: left;
+      height: 60px;
+      margin-right: 2px;
+      @include at-breakpoint(12 $width-980) {
+        float: none;
+        @include inline-block(top);
+        margin-right: -2px;
+      }
+      &.active {
+        a {
+          background: $grey;
+        }
+      }
+    }
+
     @include at-breakpoint(12 $width-480) {
       top: 0;
       left: 0;

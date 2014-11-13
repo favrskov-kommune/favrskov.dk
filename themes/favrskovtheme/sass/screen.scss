@@ -32,8 +32,8 @@
 
 //------------------------------------------------------------------------------
 // Modules
-/*@import "modules/slider";
-@import "modules/swiper";*/
+@import "modules/slider";
+@import "modules/swiper";
 
 
 //------------------------------------------------------------------------------
@@ -46,6 +46,7 @@
 @import "partials/sitebar";
 @import "partials/banners";
 @import "partials/taxonomy";
+@import "partials/slider-front-page";
 /*@import "partials/wysiwyg";
 @import "partials/buttons";
 @import "partials/pager";
@@ -73,7 +74,7 @@
 @import "pages/job";*/
 @import "pages/news";
 @import "pages/detail_info";
-
+@import "pages/all-news";
 /*@import "pages/system";
 @import "pages/import";
 @import "pages/user-page";

@@ -20,54 +20,7 @@
   }
 
   .short-about {
-    @include transition-property(all);
-    @include transition-timing-function(ease-in);
-    @include transition-duration(.1s);
-
-    background-color: $lightgrey;
-    color: $gray;
-    padding: 26px 22px 21px 17px;
-    width: 336px;
-    position: absolute;
-    bottom: 32px;
-    left: 0;
-    z-index: 10;
-
-    a {
-      text-indent: -999em;
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 9;
-      // IE bug fix with transparent links which have position absolute
-      background: url('about:blank');
-    }
-
-    .headline {
-      border-top: 4px solid $slatgrayLight;
-      border-bottom: 1px solid $slatgrayLight;
-      padding: 16px 5px;
-      z-index: 1;
-    }
-
-    h1 {
-      font-family: $sans-strict;
-      @include font-size(40);
-      margin-bottom: 18px;
-    }
-
-    h2 {
-      @include font-size(16);
-      margin-bottom: 10px;
-    }
-
-    &:hover {
-      color: $liteGray;
-      cursor: pointer;
-    }
+    display: none;
   }
 }
 
@@ -83,33 +36,76 @@
   padding: 0;
 
   .slider-nav-container {
-    border-top: 4px solid $slatgrayLight;
+    /*padding: 37px;*/
+    padding: 36px 0;
   }
 
   .view-content {
     background: $lightgrey;
-    float: right;
     color: $gray;
-    max-width: 245px;
-    width: 100%;
-    position: relative;
-    margin-top: 30px;
+    max-width: 361px;
+    width: 315px;
     z-index: 2;
-    padding: 20px 15px;
-
+    @include center-vertical(403);
+    left: 0;
+    @include at-breakpoint(12 $width-480) {
+      width: 108px;
+      top: 0;
+      margin: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+    .title-slide {
+      width: 73%;
+      height: 120px;
+      overflow: hidden;
+      position: absolute;
+      top: 36px;
+      left: 36px;
+/*      &:after {
+        @extend %before-after;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 20px;
+        width: 100%;
+        background-image: -svg(linear-gradient(90deg, $lightgrey, rgba($lightgrey, 0.5)));
+      }*/
+      @include at-breakpoint(12 $width-480) {
+        @include font-size(12);
+        width: 90%;
+        top: 13px;
+        left: 5px;
+        height: 50px;
+      }
+    }
+    ul {
+      margin-top: 152px;
+      height: 185px;
+      overflow: hidden;
+      @include at-breakpoint(12 $width-480) {
+        margin-top: 35px;
+      }
+    }
     li {
+      padding: 0 36px;
       cursor: pointer;
-      border-bottom: 1px solid $slatgrayLight;
-
+      margin-bottom: 2px;
+      @include at-breakpoint(12 $width-480) {
+        padding: 0;
+      }
       &:hover,
       &.active-nav {
-        .overlay {
-          background: rgba($liteGray, .6);
-          display: block;
-          width: 109px;
-          height: 71px;
-          float: left;
-          position: absolute;
+        .image {
+          &:before { 
+            @extend %before-after;
+            position: absolute;
+            top: 0;left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 10; 
+            background: rgba($liteGray, .6);
+          }
         }
         .description {
           color: $liteGray;
@@ -117,27 +113,48 @@
       }
       .image {
         float: left;
-        min-width: 109px;
+        width: 45%;
+        height: 60px;
+        margin-right: 4%;
+        overflow: hidden;
+        position: relative;
+        @include at-breakpoint(12 $width-480) {
+          float: none;
+          width: 100%;
+        }
+        img {
+          max-width: 100%;
+          height: 100%;
+          @include at-breakpoint(12 $width-480) {
+            height: auto;
+          }
+        }
+      }
+      &:last-child {
+        .description {
+          border-bottom: 1px solid $slatgrayLight;
+        }
       }
     }
 
      .inner {
-        display: table;
-        height: 70px;
+        height: 60px;
         width: 100%;
-        padding: 12px 0;
+        @extend %clearfix;
       }
 
       .description {
-        @include font-size(16);
-        line-height: 1.4;
-        font-family: $sans-med-strict;
-        display: table-cell;
-        vertical-align: middle;
-        text-align: left;
-        padding-left: 11px;
-        color: $gray;
-        width: 100%;
+        @include font-size(14);
+        line-height: 18px;
+        float: left;
+        width: 50%;
+        height: 100%;
+        border-top: 1px solid $slatgrayLight;
+        padding: 8px;
+        overflow: hidden;
+        @include at-breakpoint(12 $width-480) {
+          display: none;
+        }
       }
   }
 }
@@ -241,9 +258,16 @@
   }
 }
 
-.view-slider .pagination {
-  bottom: 25px;
-  right: 116px;
+.view-slider {
+  height: 488px;
+  @include at-breakpoint(12 $width-480) {
+    margin: 0 !important;
+    height: 263px;
+  }
+  .pagination {
+    bottom: 25px;
+    right: 116px;
+  }
 }
 
 .view-display-id-slider_with_nav .pagination{
@@ -327,7 +351,7 @@
     }
 
     h1 {
-      font-family: $sans-med-strict;
+      font-family: $sans;
       @include font-size(43);
       color: $darkGray;
     }
@@ -350,130 +374,4 @@
 //------------------------------------------------------------------------------
 
 
-// Screen---- max-width(980px)
-@include at-breakpoint($tablet) {
-  .slide-controls {
-    .view-content {
-      max-width: 100px;
-
-      .description {
-        display: none;
-      }
-    }
-  }
-    // Node slider navigation
-  .node-slider-nav {
-    top: 20px;
-  }
-
-  .view-subject-subpages .pagination {
-    top: 44px;
-  }
-}
-
-
-// Tableet port ----max-width(767px)
-@include at-breakpoint($tablet-port) {
-  .swiper-content {
-    .short-about {
-      max-width: 250px;
-      h1 {
-        @include font-size(25);
-        margin-bottom: 10px;
-      }
-    }
-  }
-
-  .swiper-nav-container .about-slide {
-    top: 0;
-    max-width: 100%;
-    padding: 10px;
-    width: 100%;
-    background: rgba($white, .8);
-    @include box-sizing(border-box);
-
-    .headline {
-      padding: 0;
-    }
-  }
-}
-// Phone port -----max-width(480px)
-@include at-breakpoint($phone-land) {
-
-  // Slider navigation
-
-  .slide-controls {
-
-    .slider-nav-container {
-      height: 263px;
-      border: 0 none;
-    }
-
-    .swiper-nav  .swiper-slide {
-      height: 65px !important;
-    }
-
-    .view-content {
-      max-width: 100px;
-      padding: 0 0 0 1px;
-      margin: 0;
-
-      .inner {
-        padding: 0;
-      }
-
-      .description {
-        display: none;
-      }
-    }
-  }
-
-.swiper-content,
-.swiper-nav-container {
-  height: 263px !important;
-    .swiper-wrapper,
-    .swiper-slide {
-      height: 263px !important;
-    }
-
-    // About slide text block
-    .short-about{
-      padding: 10px;
-      max-width: 150px;
-
-      .headline {
-        border: 0 none;
-        padding: 0;
-      }
-
-      h1 {
-        @include font-size(16);
-        margin-bottom: 10px;
-      }
-      h2 {
-        @include font-size(11);
-      }
-    }
-  }
-
-  .pagination {
-    top: 66%;
-  }
-
-  // Slider with navigation
-  .swiper-nav-container .about-slide {
-    h1 {
-      @include font-size(17);
-      line-height: 17px;
-    }
-
-  }
-}
-
-// Phone port -----max-width(320px)
-@include at-breakpoint($phone-port) {
-   .pagination {
-    top: 59%;
-  }
-}
 
