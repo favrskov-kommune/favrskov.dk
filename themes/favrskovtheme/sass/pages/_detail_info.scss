@@ -19,6 +19,9 @@
           color: $lightergray;
         }
       }
+      @include at-breakpoint(12 $width-1040) {
+
+      }
       .swiper-container {
         height: auto;
       }
@@ -45,14 +48,14 @@
       .teaser {
         font: 18pt $sans-book;
         color:  $slategrey;
-        line-height: 33px;  
+        line-height: 33px;
         margin: 58px 0;
       }
       h2 {
         font-size: 20pt;
         font-weight: bold;
       }
-      .pane-node-updated, 
+      .pane-node-updated,
       .manual-date {
         @extend %clearfix;
         margin: 0 0 8px;
@@ -102,7 +105,7 @@
         padding: 8px 25px;
         cursor: pointer;
         font: 9pt Arial;
-      } 
+      }
       .form-type-checkbox {
         input {
           float: left;

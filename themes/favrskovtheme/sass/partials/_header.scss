@@ -72,8 +72,8 @@
       position: static;
       text-align: center;
     }
-    @include at-breakpoint(12 $width-480) {
-      display: none;
+    &.animated {
+      display: block !important;
     }
     a {
       font-family: $sans-medium;
@@ -103,11 +103,32 @@
     }
 
     @include at-breakpoint(12 $width-480) {
-      top: 0;
+      top: 50px;
       left: 0;
-      position: absolute;
-      width: 100%;
+      position: fixed;
+      width: 80%;
       margin: 0;
+      text-align: left;
+      z-index: 3;
+      display: none;
+      li {
+        display: block;
+        height: auto;
+        & a.active {
+          background: $dark-grey;
+        }
+      }
+      a {
+        font-size: 15px;
+        color: $white;
+        background: #272727;
+        padding: 15px 10px;
+        height: auto;
+        border-bottom: 1px solid $dark-grey;
+        &:hover {
+          background: $dark-grey;
+        }
+      }
     }
   }
   // Tabs

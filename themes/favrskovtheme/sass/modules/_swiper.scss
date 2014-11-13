@@ -9,13 +9,7 @@
   &.swiper-content {
     @include at-breakpoint(12 $width-480) {
       height: 262px;
-
     }
-/*    img {
-      max-width: auto;
-      width: auto;
-      height: 100%;
-    }*/
   }
   background-color: #f0f0f0;
   height: 488px;

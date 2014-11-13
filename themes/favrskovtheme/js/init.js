@@ -94,7 +94,7 @@
       // Taxonomy mobile button
       $('.btn-navbar').once(function () {
         $(this).click(function () {
-          $('.nav-search .nav').toggleClass('animated');
+          $('.header-content .nav').toggleClass('animated');
         });
       });
 
