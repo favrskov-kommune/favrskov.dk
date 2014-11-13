@@ -355,19 +355,4 @@
     }
   }
 
-
-
-
-/*  Drupal.behaviors.copy_description = {
-    attach: function (context, settings) {
-
-
-      $('.swiper-slide').click(function(){
-          $(this).css('border','1px solid red');
-      });
-
-
-    }
-  }*/
-
 })(jQuery);

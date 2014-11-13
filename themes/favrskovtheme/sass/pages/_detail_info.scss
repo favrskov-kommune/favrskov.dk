@@ -8,7 +8,8 @@
   @include at-breakpoint(12 $width-1040) {
     max-width: 90%;
   }
-  .node-content  {
+  .node-content,
+  .list-content  {
   @include span-columns(7, 12);
   .breadcrumb + .pane-go-back-link {
     a {
