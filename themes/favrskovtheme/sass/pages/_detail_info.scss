@@ -120,6 +120,146 @@
           float: left;
         }
       }
+      // Buttons self service
+      .self-service {
+        width: 100%;
+        background: $red;
+        min-height: 89px;
+        @include border-radius(10px);
+        position: relative;
+        margin: 10px 0;
+        @include transition-property(background-color);
+        @include transition-duration(0.3s);
+        &:after {
+          @extend %before-after;
+          width: 35px;
+          right: 26px;
+          @include center-vertical(46);
+          @include sprite(0px, -46px);
+        }
+        &:hover {
+          background: $dark-grey;
+        }
+        a, span {
+          display: block;
+        }
+        a {
+          position: absolute;
+          top: 0;left: 0;
+          width: 100%;
+          height: 100%;
+          padding: 20px;
+        }
+        span {
+          font-family: Arial;
+          color: $white;
+        }
+        .title {
+          font-size: 22px;
+          font-weight: bold;
+        }
+        .teaser {
+          margin: 0;
+          font-size: 16px;
+        }
+      }
+      // Contacts
+      .pane-node-field-contact-information {
+        margin: 42px 0;
+        h2 {
+          letter-spacing: 1px;
+          margin-bottom: 34px;
+        }
+        .contact-info {
+          font: 15px Arial;
+          line-height: 25px;
+          &, a {
+            color: $dimgray;
+          }
+          a {
+            font-weight: bold;
+          }
+        }
+      }
+      // Publications
+      .publications {
+        h3 {
+          margin-bottom: 34px;
+        }
+        .decription {
+          p {
+            font: 15px Arial;
+            line-height: 25px;
+            color: $dimgray;
+          }
+        }
+      }
+      .faq {
+        padding: 43px 0;
+        margin-top: 50px;
+        border-bottom: 1px solid $border-top-over-all-news;
+        border-top: 1px solid $border-top-over-all-news;
+        header {
+          h2 {
+            margin-bottom: 31px;
+          }
+        }
+        & > ul {
+          border-bottom: 4px solid $dark-grey;
+          border-top: 4px solid $dark-grey;
+          .question {
+            min-height: 57px;
+            background: $grey;
+            padding: 18px 58px 18px 18px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            &:after {
+              @extend %before-after;
+              width: 20px;
+              right: 30px;
+              @include center-vertical(20);
+              @include sprite(-51px, -66px);
+            }
+            &.open {
+              background: $white;
+              &:after {
+                @include sprite(-79px, -66px);
+              }
+            }
+          }
+          .answer {
+            padding: 18px;
+            display: none;
+            h1, h2, h3, h4 {
+              font-size: 16px;
+              font-weight: bold;
+              margin: 0;
+            }
+            p, a, div, li {
+              font: 15px Arial;
+              line-height: 20px;
+              color: $dimgray;
+            }
+            ul, ol {
+              padding: 20px;
+            }
+            ul {
+              list-style: disc;
+            }
+            ol {
+              list-style: decimal;
+            }
+            a {
+              color: $red;
+              &:hover {
+                color: $dimgray;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

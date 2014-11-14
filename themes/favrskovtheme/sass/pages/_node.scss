@@ -78,7 +78,7 @@
   // Header
   h1 {
     @include font-size(50);
-    font-family: $sans-bold-strict;
+    font-family: $sans;
     color: $slategrey;
     margin-bottom: 30px;
   }
@@ -99,7 +99,7 @@
    h2,
    h3,
    h4 {
-    font-family: $sans-med-strict;
+    font-family: $sans;
    }
 
    h2 { @include font-size(22); }
@@ -121,7 +121,7 @@
   .event-time,
   .location {
     @include font-size(16);
-    font-family: $sans-med-strict;
+    font-family: $sans;
     line-height: 1.4;
     margin-bottom: 5px;
   }
@@ -151,7 +151,7 @@
   margin-bottom: 30px;
 
   thead {
-    font-family: $sans-med-strict;
+    font-family: $sans;
     tr {
       background-color: #595959;
       @include font-size(20);
@@ -163,7 +163,7 @@
     color: $white;
     padding: 9px 10px;
     text-align: left;
-    font-family: $sans-med-strict;
+    font-family: $sans;
     font-weight: normal;
   }
 
@@ -281,7 +281,7 @@
     @include font-size(15);
     line-height: 1.4;
     margin: 0;
-    color: $def-color;
+    color: #000;
   }
 }
 
@@ -297,7 +297,7 @@
   // Main title
   h2 {
     @include font-size(30);
-    font-family: $sans-bold-strict;
+    font-family: $sans;
     margin-bottom: 30px;
   }
 
@@ -376,7 +376,7 @@
       h3,
       h4 {
         @include font-size(22);
-        font-family: $sans-med-strict;
+        font-family: $sans;
       }
 
       h4 {
@@ -453,7 +453,7 @@
 
   .pane-title {
     @include font-size(30);
-    font-family: $sans-bold-strict;
+    font-family: $sans;
     margin-bottom: 27px;
   }
 }
@@ -481,11 +481,11 @@
   .contact-info {
     .view-map,
     .check-email {
-      font-family: $sans-med-strict;
+      font-family: $sans;
     }
 
     .label {
-      font-family: $sans-bold-strict;
+      font-family: $sans;
     }
 
     .facebook-field {
@@ -622,7 +622,7 @@
   // Title
   .pane-title {
     @include font-size(30);
-    font-family: $sans-bold-strict;
+    font-family: $sans;
     margin-bottom: 31px;
     color: $gray;
   }
@@ -668,7 +668,7 @@
     float: left;
     margin: 40px 0;
     width: 100%;
-    
+
     .right { text-align: right; }
     .center { text-align: center; }
     a {
@@ -697,7 +697,7 @@
         border-top: 4px solid $slatgrayLight;
         border-bottom: 1px solid $slatgrayLight;
         color: $gray;
-        font-family: $sans-med-strict;
+        font-family: $sans;
         padding: 15px 13px 12px;
       }
 
@@ -814,7 +814,7 @@
     // Active link
     .active-trail > a {
       background-color: #eee;
-      font-family: $sans-bold-strict;
+      font-family: $sans;
       @include links($gray, $gray);
       @include font-size(18);
     }
@@ -1081,7 +1081,7 @@
     }
 
     .label {
-      font-family: $sans-med-strict;
+      font-family: $sans;
     }
 
     span,

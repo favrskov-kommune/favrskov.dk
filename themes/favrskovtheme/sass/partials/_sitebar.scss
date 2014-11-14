@@ -49,7 +49,8 @@
     color: $dark-grey;
     margin: 23px 0;
   }
-  .views-summary {
+  .views-summary,
+  .view-blogs-filters .item-list {
     li {
       margin-bottom: 15px;
     }
@@ -57,7 +58,7 @@
       font: 16px Arial;
       color: $white-red;
       &:hover {
-        font-weight: bold;
+        font-weight: 200;
       }
     }
   }
@@ -66,6 +67,94 @@
     a {
       font: 18px Arial;
       color: $dark-grey;
+    }
+  }
+}
+
+
+// Article
+.node-type-article {
+  .sidebar {
+    .addthis_toolbox {
+      display: none;
+    }
+    .node-share {
+      margin: 40px 0 45px;
+      & > a {
+        display: block;
+        float: left;
+        margin-right: 32px;
+        font: 14px Arial;
+        color: $dimgray;
+        text-transform: uppercase;
+        &:hover {
+          color: $red;
+        }
+      }
+      @extend %clearfix;
+    }
+    .menu-name-main-menu {
+      background: $grey;
+      & > .menu {
+        a {
+          display: block;
+          width: 100%;
+        }
+        & > li {
+          min-height: 43px;
+          position: relative;
+          border-top: 1px solid $white;
+          &:after {
+            width: 12px;
+            @extend %before-after;
+            @include center-vertical(22);
+            right: 23px;
+            @include sprite(-13px, -110px);
+          }
+          &.active > a {
+            background: $dark-green;
+            font-weight: bold;
+            color: $white;
+            position: relative;
+            &:after {
+              width: 22px;
+              @extend %before-after;
+              @include center-vertical(9);
+              right: 16px;
+              @include sprite(-32px, -116px);
+            }
+          }
+          & > a {
+            padding: 13px 40px 13px 32px;
+            font: 16px Arial;
+            color: $dark-grey;
+            font-weight: bold;
+          }
+          .menu {
+            padding: 20px 34px;
+            li {
+              position: relative;
+              margin: 7px 0;
+              &:before {
+                width: 7px;
+                @extend %before-after;
+                @include center-vertical(12);
+                left: 0;
+                @include sprite(-65px, -113px);
+              }
+              a {
+                font: 16px Arial;
+                color: $dark-grey;
+                padding-left: 12px;
+                padding-top: 2px;
+                &:hover {
+
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
