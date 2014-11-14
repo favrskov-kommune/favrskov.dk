@@ -18,7 +18,15 @@
       height: 100%;
     }
     @include at-breakpoint(12 $width-600) {
-      @extend %clearfix;
+// OLEG do not use @extend in @include
+//      @extend .clearfix;
+      &:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
       .tax-pic {
         float: left;
       }
