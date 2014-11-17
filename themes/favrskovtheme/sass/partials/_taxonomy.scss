@@ -18,15 +18,6 @@
       height: 100%;
     }
     @include at-breakpoint(12 $width-600) {
-// OLEG do not use @extend in @include
-//      @extend .clearfix;
-      &:after {
-        content: ".";
-        display: block;
-        height: 0;
-        clear: both;
-        visibility: hidden;
-      }
       .tax-pic {
         float: left;
       }
@@ -148,13 +139,10 @@
   }
 
   img {
-    /*left: 0;
-    width: auto;
-    @include center-vertical(80);
-    display: block;*/
     margin-top: 10px;
   }
   @include at-breakpoint(12 $width-600) {
     margin: 0 0 15px;
+    text-align: center;
   }
 }

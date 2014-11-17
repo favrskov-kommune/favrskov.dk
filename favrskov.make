@@ -602,6 +602,12 @@ libraries[colorpicker][download][url] =
 libraries[colorpicker][destination] = libraries
 libraries[colorpicker][directory_name] = colorpicker
 
+libraries[malihu][download][type] = get
+libraries[malihu][download][url] =
+"https://github.com/malihu/malihu-custom-scrollbar-plugin/archive/master.zip"
+libraries[malihu][destination] = libraries
+libraries[malihu][directory_name] = malihu
+
 ; Contrib themes
 projects[adaptivetheme][subdir] = contrib
 projects[adaptivetheme][version] = 3.1

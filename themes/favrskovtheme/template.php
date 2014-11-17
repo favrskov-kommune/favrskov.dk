@@ -53,6 +53,18 @@ function favrskovtheme_preprocess_html(&$vars) {
   if (!empty($vars['background'])) {
     $vars['classes_array'][] = 'dynamic-background';
   }
+
+  // jQuery custom content scroller
+  drupal_add_js(libraries_get_path('malihu') . '/js/minified/jquery.mCustomScrollbar.min.js', array(
+    'scope' => 'header',
+    'group' => JS_LIBRARY,
+    'every_page' => TRUE
+  ));
+  drupal_add_css(libraries_get_path('malihu') . '/jquery.mCustomScrollbar.min.css', array(
+    'scope' => 'header',
+    'group' => CSS_THEME,
+    'every_page' => TRUE
+  ));
 }
 
 /**
