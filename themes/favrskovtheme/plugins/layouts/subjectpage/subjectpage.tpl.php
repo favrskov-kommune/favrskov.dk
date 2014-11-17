@@ -1,81 +1,80 @@
 <?php
 /**
  * @file
- * Template for a one column panel layout.
+ * Template for a 2 column panel layout.
  *
- * This template provides a one column panel display layout, with
- * additional areas for the header and the footer.
+ * This template provides a two column panel display layout, with
+ * additional areas for the top and the bottom.
  *
  * Variables:
  * - $id: An optional CSS id to use for the layout.
  * - $content: An array of content, each item in the array is keyed to one
  *   panel of the layout. This layout supports the following sections:
- *   - $content['header']: Region which contain site header.
- *   - $content['popular_img']: Contain image from the node.
- *   - $content['popular']: Contain description of the popular image
- *   - $content['teasers']: Contain short teasers of the nodes from main menu
- *   - $content['news']:    Contain news list which outputted from the view - News
- *   - $content['footer']: Region which contain site footer.
+ *   - $content['header']: header of page;
+ *   - $content['wide_image']: widescreen presentation image;
+ *   - $content['image_content']: content, placed on image;
+ *   - $content['menu_items']: links for navigation;
+ *   - $content['news']: latest news;
+ *   - $content['footer']: footer of page.
  */
 ?>
 
-<div class="panel-subject" <?php if (!empty($css_id)) {
-  print "id=\"$css_id\"";
-} ?>>
-  <?php if (!empty($content['header'])): ?>
-    <?php print $content['header']; ?>
+<div class="panel-subject" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
+  <?php if ($content['header']): ?>
+      <?php print $content['header']; ?>
   <?php endif; ?>
 
   <main id="main-wrapper" class="main-wrapper group" role="main">
-    <section id="main-content" class="content-container">
+    <section id="main-content" class="content-container" role="region">
 
-      <section id="popular" class="popular">
+      <?php if ($content['top_region']): ?>
+        <?php print $content['top_region']; ?>
+      <?php endif; ?>
 
-        <div class="popular-image">
-          <?php if (!empty($content['popular_img'])): ?>
-            <?php print $content['popular_img']; ?>
+      <section class="presentation" role="presentation">
+        <?php if ($content['wide_image']): ?>
+          <?php print $content['wide_image']; ?>
+        <?php endif; ?>
+
+        <?php if ($content['image_content']): ?>
+          <?php if ($renderer->prepared['regions']['image_content']['pids']): ?>
+            <?php $class = 'information'; ?>
+          <?php else: ?>
+            <?php $class = 'information-empty'; ?>
           <?php endif; ?>
-        </div>
-
-        <div class="popular-content">
-          <?php if (!empty($content['popular'])): ?>
-            <div class="overlay">
-              <div class="content">
-                <div class="articles">
-                  <?php print $content['popular']; ?>
-                </div>
-              </div>
+          <div class="overlay">
+            <div class="content">
+              <?php print '<div class="' . $class . '">' . $content['image_content'] . '</div>'; ?>
             </div>
-          <?php endif; ?>
-        </div>
-
+          </div>
+        <?php endif; ?>
       </section>
 
-      <?php if (!empty($content['teasers'])): ?>
-        <?php print $content['teasers']; ?>
+      <?php if ($content['menu_items']): ?>
+        <nav class="menuitems content group" role="navigation">
+          <?php print $content['menu_items']; ?>
+        </nav>
       <?php endif; ?>
 
-      <?php if (!empty($content['first-middle-region'])): ?>
-        <?php print $content['first-middle-region']; ?>
+      <?php if ($content['first_middle_region']): ?>
+        <?php print $content['first_middle_region']; ?>
       <?php endif; ?>
 
-      <?php if (!empty($content['second-middle-region'])): ?>
-        <?php print $content['second-middle-region']; ?>
+      <?php if ($content['second_middle_region']): ?>
+        <?php print $content['second_middle_region']; ?>
       <?php endif; ?>
 
-      <?php if (!empty($content['third-middle-region'])): ?>
-        <?php print $content['third-middle-region']; ?>
-      <?php endif; ?>
-
-      <?php if (!empty($content['news'])): ?>
-        <?php print $content['news']; ?>
+      <?php if ($content['news']): ?>
+        <section class="news" role="region">
+          <?php print $content['news']; ?>
+        </section>
       <?php endif; ?>
 
     </section>
   </main>
 
-  <?php if (!empty($content['footer'])): ?>
-    <?php print $content['footer']; ?>
+  <?php if ($content['footer']): ?>
+      <?php print $content['footer']; ?>
   <?php endif; ?>
 </div>
 

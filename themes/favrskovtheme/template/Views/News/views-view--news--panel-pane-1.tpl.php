@@ -38,7 +38,7 @@
       <?php print render($title_suffix); ?>
 
       <h2 class="pane-title">
-          <?php print $view->get_title(); ?>
+          <?php print $display_title; ?>
       </h2>
 
       <?php if ($header): ?>

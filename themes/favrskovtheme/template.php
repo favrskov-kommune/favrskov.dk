@@ -892,3 +892,24 @@ function favrskovtheme_webform_display_file($variables) {
   $url = !empty($file) ? webform_file_url($file->uri) : t('no upload');
   return !empty($file) ? ($element['#format'] == 'text' ? $url : l($file->filename, $url, $attr)) : ' ';
 }
+
+/**
+ * Implements hook_preprocess_views_view().
+ *
+ * Allow to override pane titles in panels for views.
+ */
+function favrskovtheme_preprocess_views_view(&$vars) {
+  $view = $vars['view'];
+
+  if (!empty($view->display_handler->options['pane_conf'])) {
+    $is_override_title = !empty($view->display_handler->options['pane_conf']['override_title']) ? $view->display_handler->options['pane_conf']['override_title'] : 0;
+    if ($is_override_title == 1) {
+      $display_title = $view->display_handler->options['pane_conf']['override_title_text'];
+    }
+    else {
+      $display_title = $view->get_title();
+    }
+    $vars['display_title'] = $display_title;
+  }
+  $vars['display_title'] = $display_title;
+}
