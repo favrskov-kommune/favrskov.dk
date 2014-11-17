@@ -140,13 +140,10 @@
   }
 
   img {
-    /*left: 0;
-    width: auto;
-    @include center-vertical(80);
-    display: block;*/
     margin-top: 10px;
   }
   @include at-breakpoint(12 $width-600) {
     margin: 0 0 15px;
+    text-align: center;
   }
 }

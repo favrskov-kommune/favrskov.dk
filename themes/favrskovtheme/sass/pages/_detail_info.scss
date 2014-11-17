@@ -8,9 +8,20 @@
     @include at-breakpoint(12 $width-1040) {
       max-width: 90%;
     }
+
+    // Sitebar
+    @include at-breakpoint(12 $width-768) {
+      .sidebar, .list-sidebar {
+        @include span-columns(12 of 12);
+      }
+    }
+
     .node-content,
     .list-content  {
       @include span-columns(7, 12);
+      @include at-breakpoint(12 $width-768) {
+        @include span-columns(12, 12);
+      }
       .breadcrumb + .pane-go-back-link {
         a {
           font: 9pt Arial;
@@ -18,9 +29,6 @@
           text-transform: uppercase;
           color: $lightergray;
         }
-      }
-      @include at-breakpoint(12 $width-1040) {
-
       }
       .swiper-container {
         height: auto;
@@ -120,6 +128,10 @@
           float: left;
         }
       }
+
+      //------------------------------------------------------------------------
+      // Article
+
       // Buttons self service
       .self-service {
         width: 100%;
@@ -194,6 +206,10 @@
           }
         }
       }
+
+
+
+      // Faq
       .faq {
         padding: 43px 0;
         margin-top: 50px;
@@ -260,6 +276,9 @@
           }
         }
       }
+
+
+
     }
   }
 }

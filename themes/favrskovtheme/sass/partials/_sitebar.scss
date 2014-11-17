@@ -79,11 +79,12 @@
       display: none;
     }
     .node-share {
-      margin: 40px 0 45px;
+      margin: 40px 0 28px;
       & > a {
         display: block;
         float: left;
-        margin-right: 32px;
+        margin-right: gutter(2);
+        margin-bottom: 10px;
         font: 14px Arial;
         color: $dimgray;
         text-transform: uppercase;
@@ -111,24 +112,29 @@
             right: 23px;
             @include sprite(-13px, -110px);
           }
-          &.active > a {
-            background: $dark-green;
-            font-weight: bold;
-            color: $white;
-            position: relative;
+          &.active {
             &:after {
-              width: 22px;
-              @extend %before-after;
-              @include center-vertical(9);
-              right: 16px;
-              @include sprite(-32px, -116px);
+              background: none;
+            }
+            & > a {
+              background: $dark-green;
+              font-weight: bold;
+              color: $white;
+              position: relative;
+              &:after {
+                width: 22px;
+                @extend %before-after;
+                @include center-vertical(9);
+                right: 16px;
+                @include sprite(-32px, -116px);
+              }
             }
           }
           & > a {
             padding: 13px 40px 13px 32px;
             font: 16px Arial;
             color: $dark-grey;
-            font-weight: bold;
+            text-shadow: 0px 0px 0.3px #777;
           }
           .menu {
             padding: 20px 34px;
@@ -148,7 +154,7 @@
                 padding-left: 12px;
                 padding-top: 2px;
                 &:hover {
-
+                  text-shadow: 0px 0px 0.3px #777;
                 }
               }
             }

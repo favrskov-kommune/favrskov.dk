@@ -54,6 +54,9 @@
       text-decoration: underline;
     }
   }
+  .contacts-data {
+    margin-top: 40px;
+  }
 
   @include at-breakpoint(12 $width-768) {
     @include span-columns(4, 12);
@@ -78,7 +81,7 @@
     width: 100%;
     float: none;
     display: block;
-    &:not(:last-child) {  
+    &:not(:last-child) {
       margin-bottom: 30px;
     }
     &:nth-child(3n) {
