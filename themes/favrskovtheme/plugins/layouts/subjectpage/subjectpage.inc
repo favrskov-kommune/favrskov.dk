@@ -8,14 +8,14 @@ $plugin = array(
   'theme'     =>  'subjectpage',
   'css'       =>  'subjectpage.css',
   'regions'   =>  array(
-    'header'  =>     t('Header'),
-    'popular_img' => t('Popular Image'),
-    'popular' =>     t('Popular'),
-    'teasers' =>     t('Teasers'),
-    'first-middle-region' =>  t('Middle region'),
-    'second-middle-region' => t('Middle region'),
-    'third-middle-region' =>  t('Middle region'),
-    'news'    =>     t('News'),
-    'footer'  =>     t('Footer')
+    'header'        =>   t('Header'),
+    'top_region'    =>   t('Top region'),
+    'image_content' =>   t('Content on the image'),
+    'wide_image'    =>   t('Image'),
+    'menu_items'    =>   t('Menu links'),
+    'first_middle_region' =>   t('First middle region'),
+    'second_middle_region' =>   t('Second middle region'),
+    'news'          =>   t('News'),
+    'footer'        =>   t('Footer')
   )
 );
