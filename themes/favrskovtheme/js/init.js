@@ -210,16 +210,6 @@
         }
       });
 
-      $('.view-display-id-slider_with_nav .arrow-left').click(function (e) {
-        e.preventDefault()
-        navSwiper.swipePrev()
-      });
-
-      $('.view-display-id-slider_with_nav .arrow-right').click(function (e) {
-        e.preventDefault()
-        navSwiper.swipeNext()
-      });
-
 
       $('.combi').each(function (index) {
         var combiSwiper = $(this).swiper({
@@ -242,6 +232,23 @@
         });
 
       });
+
+
+
+      // mCustomScrollbar
+      scrollBar($('.slide-description'));
+      function scrollBar(e, h) {
+          e.not('.themeName-processed').mCustomScrollbar({
+              scrollInertia: 100,
+              horizontalScroll: (h && h == 'h') ? true : false,
+              advanced: {
+                  autoScrollOnFocus: false,
+                  updateOnBrowserResize: true,
+                  updateOnContentResize: true
+              }
+          }).addClass('themeName-processed');
+      }
+
 
 
       // Initialize of Selectboxit plugin

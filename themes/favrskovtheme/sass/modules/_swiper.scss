@@ -1,3 +1,15 @@
+
+
+// mCustomScrollbar hide controls
+@include at-breakpoint(12 $width-480) {
+  .mCSB_container {
+    margin-right: 0 !important;
+  }
+  .mCSB_scrollTools {
+    right: -20px !important;
+  }
+}
+
 //Basic Swiper Styles
 
 .swiper-container {
@@ -13,13 +25,37 @@
   }
   background-color: #f0f0f0;
   height: 488px;
-  margin: 0 auto;
-  max-width: 981px;
   position:relative;
   overflow:hidden;
   @include backface-visibility(hidden);
   // Fix of Webkit flickering
   z-index:1;
+}
+
+// Controls swiper left/right
+.controls-left-right-swiper {
+  width: 40px;
+  @include center-vertical(60);
+  z-index: 1;
+  background: $black;
+  @include opacity(0.5);
+  cursor: pointer;
+  &:before {
+    @extend %before-after;
+    @include center-block(10, 24);
+  }
+  &.arrow-left-swiper {
+    left: -40px;
+    &:before {
+      @include sprite(-12px, -144px);
+    }
+  }
+  &.arrow-right-swiper {
+    right: -40px;
+    &:before {
+      @include sprite(-32px, -144px);
+    }
+  }
 }
 
 // Node slider
@@ -86,13 +122,13 @@
 // sizes, pagination, etc.
 .slider-nav-container {
   /* Specify Swiper's Size: */
-  height: 403px;
+  height: 407px;
 }
 
 .swiper-nav .swiper-slide {
   /* Specify Slides's Size: */
   width: 100%;
-  height:60px !important;
+  height:51px !important;
 }
 .swiper-slide-active {
   /* Specific active slide styling: */
