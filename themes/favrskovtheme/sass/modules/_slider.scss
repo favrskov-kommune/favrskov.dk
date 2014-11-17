@@ -92,13 +92,13 @@
       &:hover,
       &.active-nav {
         .image {
-          &:before { 
+          &:before {
             @extend %before-after;
             position: absolute;
             top: 0;left: 0;
             height: 100%;
             width: 100%;
-            z-index: 10; 
+            z-index: 10;
             background: rgba($liteGray, .6);
           }
         }
@@ -174,7 +174,8 @@
   line-height: 1.4;
 
   p {
-    padding: 10px 18px;
+    padding: 10px 18px 10px 0;
+    color: $dark-grey;
   }
 
   .photographer {
