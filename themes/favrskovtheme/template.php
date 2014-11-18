@@ -618,19 +618,6 @@ function favrskovtheme_preprocess_views_view_table(&$vars) {
               break;
           }
         }
-        elseif ($view->name == 'page_subscription' && $view->current_display == 'hearings_pane') {
-          switch ($field) {
-            case 'title':
-              $element_type = 'h3';
-              $element_style = 'style="width:255px; margin:0; font-size:22px; font-weight:bold; font-family:Trebuchet MS, Arial, Helvetica, sans-serif; line-height:120%;"';
-              $field_output = substr_replace($field_output, 'style="color:#586464; text-decoration:none;" ', 3, 0);
-              break;
-            case 'field_teaser':
-              $element_type = 'p';
-              $element_style = 'style="color:#666; font-size:16px; line-height:145%;"';
-              break;
-          }
-        }
 
         if ($element_type) {
           if ($element_style) {
@@ -844,13 +831,6 @@ function favrskovtheme_preprocess_webform_confirmation (&$variables, $hook) {
   $variables['link_url'] = url('node/'. $variables['node']->nid);
   $variables['link_title'] = t('Go back to the form');
   $variables['link_tip'] = t('Go back to the form');
-
-  // Link attributes for hearing
-  if ($variables['node']->type == 'hearing') {
-    $variables['link_url'] = url('node/'. $variables['node']->nid);
-    $variables['link_title'] = t('Back to the hearing');
-    $variables['link_tip'] = t('Back to the hearing');
-  }
 }
 
 /*

@@ -96,9 +96,6 @@ function _page_subscription_campaign_create($view, $type, $grouping_id, $subject
     case 'articles':
       $field = 'field_field_update_category';
       break;
-    case 'hearings':
-      $field = 'field_field_hearing_category';
-      break;
     default:
       $field = NULL;
   }
@@ -175,7 +172,6 @@ function page_subscription_campaign() {
     'jobs' => 3,
     'meetings' => 15,
     'articles' => 24,
-    'hearings' => 25,
   );
 
   $mcapi = mailchimp_get_api_object();

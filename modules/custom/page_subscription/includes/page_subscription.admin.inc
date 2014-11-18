@@ -53,19 +53,5 @@ function page_subscription_settings_form() {
     '#default_value' => variable_get('page_subscription_meetings_intro', ''),
   );
 
-  $form['page_subscription_hearings_subject'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Hearings E-mail subject'),
-    '#required' => TRUE,
-    '#default_value' => variable_get('page_subscription_hearings_subject', ''),
-  );
-
-  $form['page_subscription_hearings_intro'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Hearings E-mail body intro text'),
-    '#required' => TRUE,
-    '#default_value' => variable_get('page_subscription_hearings_intro', ''),
-  );
-
   return system_settings_form($form);
 }

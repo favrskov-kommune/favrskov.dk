@@ -277,7 +277,7 @@
 
       // Use uniform plugin for styling select elements
       // igon drupal select elemtns
-      $(".job-listing select, .pane-pane-hearing-responses select, #views-exposed-form-hearings-hearings-list-pane select").once(function () {
+      $(".job-listing select").once(function () {
         $(this).uniform();
       });
 

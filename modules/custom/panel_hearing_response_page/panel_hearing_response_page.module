@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Panel Hearing response page feature.
- */
-
-include_once 'panel_hearing_response_page.features.inc';

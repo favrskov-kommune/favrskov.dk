@@ -15,7 +15,6 @@ function config_webform_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'webform_node_types';
   $strongarm->value = array(
-    0 => 'hearing',
     1 => 'webform',
   );
   $export['webform_node_types'] = $strongarm;
