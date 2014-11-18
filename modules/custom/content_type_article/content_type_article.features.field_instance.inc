@@ -2339,52 +2339,6 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_update_category'
-  $field_instances['node-article-field_update_category'] = array(
-    'bundle' => 'article',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 30,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_update_category',
-    'label' => t('Update category'),
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'taxonomy_container',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'multiple_select_size' => 5,
-      ),
-      'type' => 'taxonomy_container',
-      'weight' => 38,
-    ),
-  );
-
   // Exported field_instance: 'node-article-field_update_teaser'
   $field_instances['node-article-field_update_teaser'] = array(
     'bundle' => 'article',
