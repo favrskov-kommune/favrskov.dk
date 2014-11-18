@@ -8,7 +8,6 @@ dependencies[] = content_type_faq
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = features
-dependencies[] = fields_esdh_case_document
 dependencies[] = fields_shared
 dependencies[] = image
 dependencies[] = media

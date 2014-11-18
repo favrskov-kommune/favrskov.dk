@@ -480,7 +480,6 @@ function view_subject_subpages_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'article' => 'article',
     'news' => 'news',
-    'os2web_kultunaut_event' => 'os2web_kultunaut_event',
   );
   $handler->display->display_options['argument_input'] = array(
     'nid' => array(

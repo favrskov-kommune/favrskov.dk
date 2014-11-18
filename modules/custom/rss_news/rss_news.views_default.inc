@@ -44,8 +44,6 @@ function rss_news_views_default_views() {
     'media_folders' => 0,
     'media_tags' => 0,
     'os2web_hr_manager_job_position_categories' => 0,
-    'os2web_kultunaut_categories' => 0,
-    'os2web_kultunaut_types' => 0,
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';

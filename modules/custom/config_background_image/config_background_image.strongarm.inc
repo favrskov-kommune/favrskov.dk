@@ -64,8 +64,6 @@ function config_background_image_strongarm() {
         'os2web_case_publishing_case' => 0,
         'os2web_case_publishing_document' => 0,
         'os2web_hr_manager_job' => 0,
-        'os2web_kultunaut_event' => 0,
-        'os2web_kultunaut_import' => 0,
         'os2web_meetings_bullet' => 0,
         'os2web_meetings_bullet_attach' => 0,
         'os2web_meetings_meeting' => 0,

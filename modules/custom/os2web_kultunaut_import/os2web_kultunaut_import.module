@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the OS2web Kultunaut Import feature.
- */
-
-include_once 'os2web_kultunaut_import.features.inc';

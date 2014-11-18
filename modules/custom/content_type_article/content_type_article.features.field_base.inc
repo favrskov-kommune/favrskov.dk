@@ -42,8 +42,6 @@ function content_type_article_field_default_field_bases() {
         'frontpage' => 0,
         'news' => 0,
         'os2web_hr_manager_job' => 0,
-        'os2web_kultunaut_event' => 0,
-        'os2web_kultunaut_import' => 0,
         'phone_book' => 0,
         'self_service' => 0,
         'shared' => 0,

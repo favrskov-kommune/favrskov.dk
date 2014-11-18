@@ -300,8 +300,6 @@ function content_type_newsletter_field_default_field_bases() {
         'news' => 0,
         'newsletter' => 0,
         'os2web_hr_manager_job' => 0,
-        'os2web_kultunaut_event' => 'os2web_kultunaut_event',
-        'os2web_kultunaut_import' => 0,
         'phone_book' => 0,
         'self_service' => 0,
         'shared' => 0,

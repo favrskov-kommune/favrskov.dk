@@ -293,13 +293,6 @@ function config_url_aliases_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_os2web_kultunaut_event_pattern';
-  $strongarm->value = 'arrangementer/[node:field-kultunaut-event-category:name]/[node:title]';
-  $export['pathauto_node_os2web_kultunaut_event_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_os2web_kultunaut_import_pattern';
   $strongarm->value = '';
   $export['pathauto_node_os2web_kultunaut_import_pattern'] = $strongarm;
@@ -779,13 +772,6 @@ function config_url_aliases_strongarm() {
   $strongarm->name = 'pathauto_taxonomy_term_os2web_kultunaut_types_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_os2web_kultunaut_types_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_os2web_meetings_tax_committee_pattern';
-  $strongarm->value = 'dagsorden-og-referat/udvalg/[term:name]';
-  $export['pathauto_taxonomy_term_os2web_meetings_tax_committee_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
