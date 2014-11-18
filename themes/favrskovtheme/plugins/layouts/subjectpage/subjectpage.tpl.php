@@ -65,9 +65,7 @@
       <?php endif; ?>
 
       <?php if ($content['news']): ?>
-        <section class="news" role="region">
           <?php print $content['news']; ?>
-        </section>
       <?php endif; ?>
 
     </section>
