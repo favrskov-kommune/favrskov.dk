@@ -58,7 +58,6 @@ function config_node_clone_strongarm() {
     'news' => 'news',
     'os2web_kultunaut_event' => 'os2web_kultunaut_event',
     'os2web_kultunaut_import' => 'os2web_kultunaut_import',
-    'os2web_social_directory' => 'os2web_social_directory',
     'os2web_hr_manager_job' => 'os2web_hr_manager_job',
     'self_service' => 'self_service',
     'shared' => 'shared',
@@ -181,13 +180,6 @@ function config_node_clone_strongarm() {
   $strongarm->name = 'clone_reset_os2web_meetings_meeting';
   $strongarm->value = 0;
   $export['clone_reset_os2web_meetings_meeting'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'clone_reset_os2web_social_directory';
-  $strongarm->value = 0;
-  $export['clone_reset_os2web_social_directory'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

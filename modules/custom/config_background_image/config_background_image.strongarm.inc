@@ -69,7 +69,6 @@ function config_background_image_strongarm() {
         'os2web_meetings_bullet' => 0,
         'os2web_meetings_bullet_attach' => 0,
         'os2web_meetings_meeting' => 0,
-        'os2web_social_directory' => 0,
         'newsletter' => 0,
         'standard_accordion' => 0,
       ),

@@ -33,7 +33,6 @@ function config_autoarch_strongarm() {
     'os2web_hr_manager_job' => 0,
     'os2web_kultunaut_event' => 0,
     'os2web_kultunaut_import' => 0,
-    'os2web_social_directory' => 0,
     'phone_book' => 0,
     'self_service' => 0,
     'shared' => 0,
