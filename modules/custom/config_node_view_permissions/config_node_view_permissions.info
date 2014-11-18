@@ -27,7 +27,6 @@ features[user_permission][] = view own shared content
 features[user_permission][] = view own slider_element content
 features[variable][] = node_view_permissions_article
 features[variable][] = node_view_permissions_banner_element
-features[variable][] = node_view_permissions_blog
 features[variable][] = node_view_permissions_borger_dk_article
 features[variable][] = node_view_permissions_factbox
 features[variable][] = node_view_permissions_faq

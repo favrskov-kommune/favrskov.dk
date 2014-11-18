@@ -65,7 +65,6 @@ function fields_shared_field_default_field_bases() {
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
-        'blog' => 0,
         'factbox' => 0,
         'faq' => 0,
         'frontpage' => 0,
@@ -216,7 +215,6 @@ function fields_shared_field_default_field_bases() {
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
-        'blog' => 0,
         'factbox' => 0,
         'faq' => 'faq',
         'frontpage' => 0,
@@ -736,7 +734,6 @@ function fields_shared_field_default_field_bases() {
       'referenceable_types' => array(
         'article' => 'article',
         'banner_element' => 0,
-        'blog' => 0,
         'factbox' => 0,
         'faq' => 0,
         'frontpage' => 'frontpage',
@@ -835,7 +832,6 @@ function fields_shared_field_default_field_bases() {
         'article' => 0,
         'banner_element' => 0,
         'bannerlink' => 'bannerlink',
-        'blog' => 0,
         'borger_dk_article' => 0,
         'factbox' => 0,
         'faq' => 0,

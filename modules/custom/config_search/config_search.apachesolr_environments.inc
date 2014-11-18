@@ -86,7 +86,6 @@ function config_search_apachesolr_environments() {
       'audio' => '0',
       'banner_element' => '0',
       'bannerlink' => '0',
-      'blog' => '0',
       'borger_dk_article' => '0',
       'os2web_case_publishing_case' => '0',
       'os2web_case_publishing_document' => '0',

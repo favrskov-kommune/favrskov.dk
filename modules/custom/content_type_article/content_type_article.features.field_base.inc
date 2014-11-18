@@ -36,7 +36,6 @@ function content_type_article_field_default_field_bases() {
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
-        'blog' => 0,
         'borger_dk_article' => 'borger_dk_article',
         'factbox' => 0,
         'faq' => 0,

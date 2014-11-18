@@ -25,7 +25,6 @@ function config_autoarch_strongarm() {
     'news' => 'news',
     'article' => 0,
     'banner_element' => 0,
-    'blog' => 0,
     'borger_dk_article' => 0,
     'faq' => 0,
     'factbox' => 0,

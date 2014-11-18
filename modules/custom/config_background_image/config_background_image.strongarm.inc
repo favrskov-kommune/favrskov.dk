@@ -51,7 +51,6 @@ function config_background_image_strongarm() {
         'news' => 'news',
         'bannerlink' => 0,
         'banner_element' => 0,
-        'blog' => 0,
         'factbox' => 0,
         'faq' => 0,
         'location' => 0,

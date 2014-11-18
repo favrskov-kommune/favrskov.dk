@@ -46,7 +46,6 @@ function config_node_clone_strongarm() {
     'article' => 'article',
     'banner_element' => 'banner_element',
     'bannerlink' => 'bannerlink',
-    'blog' => 'blog',
     'borger_dk_article' => 'borger_dk_article',
     'os2web_case_publishing_case' => 'os2web_case_publishing_case',
     'os2web_case_publishing_document' => 'os2web_case_publishing_document',
@@ -92,13 +91,6 @@ function config_node_clone_strongarm() {
   $strongarm->name = 'clone_reset_banner_element';
   $strongarm->value = 0;
   $export['clone_reset_banner_element'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'clone_reset_blog';
-  $strongarm->value = 0;
-  $export['clone_reset_blog'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

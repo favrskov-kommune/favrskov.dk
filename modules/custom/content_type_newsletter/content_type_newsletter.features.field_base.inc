@@ -293,7 +293,6 @@ function content_type_newsletter_field_default_field_bases() {
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
-        'blog' => 0,
         'borger_dk_article' => 0,
         'factbox' => 0,
         'faq' => 0,
@@ -367,7 +366,6 @@ function content_type_newsletter_field_default_field_bases() {
       'referenceable_types' => array(
         'article' => 'article',
         'banner_element' => 0,
-        'blog' => 0,
         'borger_dk_article' => 0,
         'factbox' => 0,
         'faq' => 0,
@@ -450,7 +448,6 @@ function content_type_newsletter_field_default_field_bases() {
         'article' => 0,
         'banner_element' => 0,
         'bannerlink' => 0,
-        'blog' => 0,
         'borger_dk_article' => 0,
         'factbox' => 0,
         'faq' => 0,

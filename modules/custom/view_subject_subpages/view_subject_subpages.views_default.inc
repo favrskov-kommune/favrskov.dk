@@ -479,7 +479,6 @@ function view_subject_subpages_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'article' => 'article',
-    'blog' => 'blog',
     'hearing' => 'hearing',
     'news' => 'news',
     'os2web_kultunaut_event' => 'os2web_kultunaut_event',

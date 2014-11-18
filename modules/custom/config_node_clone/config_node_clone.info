@@ -16,7 +16,6 @@ features[variable][] = clone_omitted
 features[variable][] = clone_reset_article
 features[variable][] = clone_reset_banner_element
 features[variable][] = clone_reset_bannerlink
-features[variable][] = clone_reset_blog
 features[variable][] = clone_reset_borger_dk_article
 features[variable][] = clone_reset_factbox
 features[variable][] = clone_reset_faq

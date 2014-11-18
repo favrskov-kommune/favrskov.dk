@@ -20,13 +20,6 @@ function config_url_aliases_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_blog_pattern';
-  $strongarm->value = 'blogs/[user:name]';
-  $export['pathauto_blog_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_case';
   $strongarm->value = '1';
   $export['pathauto_case'] = $strongarm;
@@ -149,34 +142,6 @@ function config_url_aliases_strongarm() {
   $strongarm->name = 'pathauto_node_banner_element_und_pattern';
   $strongarm->value = '';
   $export['pathauto_node_banner_element_und_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_blog_da_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_blog_da_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_blog_en_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_blog_en_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_blog_pattern';
-  $strongarm->value = 'blog/[node:created:custom:Y]/[node:created:custom:m]/[node:created:custom:d]/[node:title]';
-  $export['pathauto_node_blog_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_blog_und_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_blog_und_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
