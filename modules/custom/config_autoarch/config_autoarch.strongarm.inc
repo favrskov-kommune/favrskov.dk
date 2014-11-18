@@ -29,7 +29,6 @@ function config_autoarch_strongarm() {
     'faq' => 0,
     'factbox' => 0,
     'frontpage' => 0,
-    'location' => 0,
     'os2web_event_calendar' => 0,
     'os2web_hr_manager_job' => 0,
     'os2web_kultunaut_event' => 0,

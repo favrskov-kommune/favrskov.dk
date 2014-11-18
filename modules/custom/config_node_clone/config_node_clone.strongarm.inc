@@ -52,7 +52,6 @@ function config_node_clone_strongarm() {
     'subjectpage' => 'subjectpage',
     'factbox' => 'factbox',
     'frontpage' => 'frontpage',
-    'location' => 'location',
     'os2web_meetings_bullet' => 'os2web_meetings_bullet',
     'os2web_meetings_bullet_attach' => 'os2web_meetings_bullet_attach',
     'os2web_meetings_meeting' => 'os2web_meetings_meeting',
@@ -119,13 +118,6 @@ function config_node_clone_strongarm() {
   $strongarm->name = 'clone_reset_frontpage';
   $strongarm->value = 0;
   $export['clone_reset_frontpage'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'clone_reset_location';
-  $strongarm->value = 0;
-  $export['clone_reset_location'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

@@ -98,7 +98,6 @@ function config_search_apachesolr_environments() {
       'instagram_feed' => '0',
       'instagram_media_item' => '0',
       'instagram_url' => '0',
-      'location' => '0',
       'os2web_meetings_bullet' => '0',
       'os2web_meetings_bullet_attach' => '0',
       'os2web_meetings_meeting' => '0',

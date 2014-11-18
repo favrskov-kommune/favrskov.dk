@@ -53,7 +53,6 @@ function config_background_image_strongarm() {
         'banner_element' => 0,
         'factbox' => 0,
         'faq' => 0,
-        'location' => 0,
         'phone_book' => 0,
         'self_service' => 0,
         'slider_element' => 0,

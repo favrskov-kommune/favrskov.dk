@@ -262,13 +262,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create location content.
-  $permissions['create location content'] = array(
-    'name' => 'create location content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: create news content.
   $permissions['create news content'] = array(
     'name' => 'create news content',
@@ -367,13 +360,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any location content.
-  $permissions['delete any location content'] = array(
-    'name' => 'delete any location content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any news content.
   $permissions['delete any news content'] = array(
     'name' => 'delete any news content',
@@ -454,13 +440,6 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: delete own frontpage content.
   $permissions['delete own frontpage content'] = array(
     'name' => 'delete own frontpage content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own location content.
-  $permissions['delete own location content'] = array(
-    'name' => 'delete own location content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -619,13 +598,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any location content.
-  $permissions['edit any location content'] = array(
-    'name' => 'edit any location content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: edit any news content.
   $permissions['edit any news content'] = array(
     'name' => 'edit any news content',
@@ -706,13 +678,6 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: edit own frontpage content.
   $permissions['edit own frontpage content'] = array(
     'name' => 'edit own frontpage content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit own location content.
-  $permissions['edit own location content'] = array(
-    'name' => 'edit own location content',
     'roles' => array(),
     'module' => 'node',
   );

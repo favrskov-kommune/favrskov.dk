@@ -20,7 +20,6 @@ features[variable][] = clone_reset_borger_dk_article
 features[variable][] = clone_reset_factbox
 features[variable][] = clone_reset_faq
 features[variable][] = clone_reset_frontpage
-features[variable][] = clone_reset_location
 features[variable][] = clone_reset_news
 features[variable][] = clone_reset_os2web_case_publishing_case
 features[variable][] = clone_reset_os2web_case_publishing_document

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Panel Location page feature.
- */
-
-include_once 'panel_location_page.features.inc';

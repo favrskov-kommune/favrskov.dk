@@ -40,7 +40,6 @@ function content_type_article_field_default_field_bases() {
         'factbox' => 0,
         'faq' => 0,
         'frontpage' => 0,
-        'location' => 0,
         'news' => 0,
         'os2web_hr_manager_job' => 0,
         'os2web_kultunaut_event' => 0,

@@ -297,7 +297,6 @@ function content_type_newsletter_field_default_field_bases() {
         'factbox' => 0,
         'faq' => 0,
         'frontpage' => 0,
-        'location' => 0,
         'news' => 0,
         'newsletter' => 0,
         'os2web_hr_manager_job' => 0,
