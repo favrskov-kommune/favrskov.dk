@@ -56,19 +56,6 @@ $rules = array(
   ),
   2 => array(
     'rule' => array(
-      'property' => 'drupal:get_q',
-      'operator' => '=',
-      'value' => 'admin/config/system/cron/execute/page_subscription_mailchimp_cron',
-      'theme' => 'favrskovtheme',
-      'enabled' => 1,
-      'wildcards' => 'a:0:{}',
-      'module' => 'config_theme_key',
-    ),
-    'string' => '"drupal:get_q = admin/config/system/cron/execute/page_subscription_mailchimp_cron >>> favrskovtheme"',
-    'childs' => array(),
-  ),
-  3 => array(
-    'rule' => array(
       'property' => 'system:query_param',
       'operator' => '*',
       'value' => 'theme=favrskovtheme',
@@ -80,7 +67,7 @@ $rules = array(
     'string' => '"system:query_param * theme=favrskovtheme >>> favrskovtheme"',
     'childs' => array(),
   ),
-  4 => array(
+  3 => array(
     'rule' => array(
       'property' => 'drupal:path_is_admin',
       'operator' => '=',

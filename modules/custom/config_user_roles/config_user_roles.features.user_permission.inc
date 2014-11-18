@@ -234,13 +234,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create blog content.
-  $permissions['create blog content'] = array(
-    'name' => 'create blog content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: create borger_dk_article content.
   $permissions['create borger_dk_article content'] = array(
     'name' => 'create borger_dk_article content',
@@ -265,13 +258,6 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: create frontpage content.
   $permissions['create frontpage content'] = array(
     'name' => 'create frontpage content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: create location content.
-  $permissions['create location content'] = array(
-    'name' => 'create location content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -346,13 +332,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any blog content.
-  $permissions['delete any blog content'] = array(
-    'name' => 'delete any blog content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any borger_dk_article content.
   $permissions['delete any borger_dk_article content'] = array(
     'name' => 'delete any borger_dk_article content',
@@ -377,13 +356,6 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: delete any frontpage content.
   $permissions['delete any frontpage content'] = array(
     'name' => 'delete any frontpage content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete any location content.
-  $permissions['delete any location content'] = array(
-    'name' => 'delete any location content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -444,13 +416,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own blog content.
-  $permissions['delete own blog content'] = array(
-    'name' => 'delete own blog content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: delete own borger_dk_article content.
   $permissions['delete own borger_dk_article content'] = array(
     'name' => 'delete own borger_dk_article content',
@@ -475,13 +440,6 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: delete own frontpage content.
   $permissions['delete own frontpage content'] = array(
     'name' => 'delete own frontpage content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own location content.
-  $permissions['delete own location content'] = array(
-    'name' => 'delete own location content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -612,13 +570,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any blog content.
-  $permissions['edit any blog content'] = array(
-    'name' => 'edit any blog content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: edit any borger_dk_article content.
   $permissions['edit any borger_dk_article content'] = array(
     'name' => 'edit any borger_dk_article content',
@@ -643,13 +594,6 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: edit any frontpage content.
   $permissions['edit any frontpage content'] = array(
     'name' => 'edit any frontpage content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit any location content.
-  $permissions['edit any location content'] = array(
-    'name' => 'edit any location content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -710,13 +654,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own blog content.
-  $permissions['edit own blog content'] = array(
-    'name' => 'edit own blog content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: edit own borger_dk_article content.
   $permissions['edit own borger_dk_article content'] = array(
     'name' => 'edit own borger_dk_article content',
@@ -741,13 +678,6 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: edit own frontpage content.
   $permissions['edit own frontpage content'] = array(
     'name' => 'edit own frontpage content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit own location content.
-  $permissions['edit own location content'] = array(
-    'name' => 'edit own location content',
     'roles' => array(),
     'module' => 'node',
   );

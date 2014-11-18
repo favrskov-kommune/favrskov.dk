@@ -154,7 +154,6 @@ function content_type_news_field_default_field_instances() {
           'full_html' => 'full_html',
           'job_html' => 0,
           'mailchimp_campaign' => 0,
-          'os2web_fics_esdh' => 0,
           'plain_text' => 'plain_text',
           'video_html' => 'video_html',
         ),
@@ -175,9 +174,6 @@ function content_type_news_field_default_field_instances() {
               'weight' => 0,
             ),
             'mailchimp_campaign' => array(
-              'weight' => 0,
-            ),
-            'os2web_fics_esdh' => array(
               'weight' => 0,
             ),
             'plain_text' => array(
@@ -1264,7 +1260,6 @@ function content_type_news_field_default_field_instances() {
           'full_html' => 'full_html',
           'job_html' => 'job_html',
           'mailchimp_campaign' => 'mailchimp_campaign',
-          'os2web_fics_esdh' => 'os2web_fics_esdh',
           'plain_text' => 'plain_text',
           'video_html' => 'video_html',
         ),
@@ -1285,9 +1280,6 @@ function content_type_news_field_default_field_instances() {
               'weight' => 0,
             ),
             'mailchimp_campaign' => array(
-              'weight' => 0,
-            ),
-            'os2web_fics_esdh' => array(
               'weight' => 0,
             ),
             'plain_text' => array(

@@ -36,7 +36,6 @@ function content_type_article_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'job_html' => 'job_html',
-          'os2web_fics_esdh' => 'os2web_fics_esdh',
           'plain_text' => 'plain_text',
           'video_html' => 'video_html',
         ),
@@ -54,9 +53,6 @@ function content_type_article_field_default_field_instances() {
               'weight' => 0,
             ),
             'job_html' => array(
-              'weight' => 0,
-            ),
-            'os2web_fics_esdh' => array(
               'weight' => 0,
             ),
             'plain_text' => array(
@@ -487,7 +483,6 @@ function content_type_article_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'job_html' => 0,
-          'os2web_fics_esdh' => 0,
           'plain_text' => 'plain_text',
           'video_html' => 0,
         ),
@@ -505,9 +500,6 @@ function content_type_article_field_default_field_instances() {
               'weight' => 0,
             ),
             'job_html' => array(
-              'weight' => 0,
-            ),
-            'os2web_fics_esdh' => array(
               'weight' => 0,
             ),
             'plain_text' => array(
@@ -672,7 +664,6 @@ function content_type_article_field_default_field_instances() {
           'full_html' => 'full_html',
           'job_html' => 0,
           'mailchimp_campaign' => 0,
-          'os2web_fics_esdh' => 0,
           'plain_text' => 'plain_text',
           'video_html' => 'video_html',
         ),
@@ -693,9 +684,6 @@ function content_type_article_field_default_field_instances() {
               'weight' => 0,
             ),
             'mailchimp_campaign' => array(
-              'weight' => 0,
-            ),
-            'os2web_fics_esdh' => array(
               'weight' => 0,
             ),
             'plain_text' => array(
@@ -2348,148 +2336,6 @@ function content_type_article_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'node-article-field_update_category'
-  $field_instances['node-article-field_update_category'] = array(
-    'bundle' => 'article',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 30,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_update_category',
-    'label' => t('Update category'),
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'taxonomy_container',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'multiple_select_size' => 5,
-      ),
-      'type' => 'taxonomy_container',
-      'weight' => 38,
-    ),
-  );
-
-  // Exported field_instance: 'node-article-field_update_teaser'
-  $field_instances['node-article-field_update_teaser'] = array(
-    'bundle' => 'article',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 31,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_update_teaser',
-    'label' => t('Update teaser'),
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'custom_tokens_no_filters_' => 'custom_tokens_no_filters_',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'job_html' => 'job_html',
-          'mailchimp_campaign' => 'mailchimp_campaign',
-          'os2web_fics_esdh' => 'os2web_fics_esdh',
-          'plain_text' => 'plain_text',
-          'video_html' => 'video_html',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'custom_tokens_no_filters_' => array(
-              'weight' => 0,
-            ),
-            'filtered_html' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => 0,
-            ),
-            'job_html' => array(
-              'weight' => 0,
-            ),
-            'mailchimp_campaign' => array(
-              'weight' => 0,
-            ),
-            'os2web_fics_esdh' => array(
-              'weight' => 0,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-            'video_html' => array(
-              'weight' => 0,
-            ),
-          ),
-        ),
-      ),
-      'linkit' => array(
-        'enable' => 0,
-        'insert_plugin' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => '',
-        'maxlength_js_enforce' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_truncate_html' => 0,
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 39,
     ),
   );
 

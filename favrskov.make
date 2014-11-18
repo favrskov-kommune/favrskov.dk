@@ -519,14 +519,14 @@ projects[jquery_colorpicker][patch][] = "https://raw.githubusercontent.com/geo00
 projects[jslider_field][subdir] = contrib
 projects[jslider_field][version] = 1.0-alpha3
 
-project[pathologic][subdir] = contrib
-project[pathologic][version] = 2.12
+projects[pathologic][subdir] = contrib
+projects[pathologic][version] = 2.12
 
-project[google_analytics][subdir] = contrib
-project[google_analytics][version] = 1.4
+;projects[google_analytics][subdir] = contrib
+;projects[google_analytics][version] = 1.4
 
-project[taxonomy_container][subdir] = contrib
-project[taxonomy_container][version] = 1.1
+projects[taxonomy_container][subdir] = contrib
+projects[taxonomy_container][version] = 1.1
 
 projects[webform_features][subdir] = contrib
 projects[webform_features][version] = 3.0-beta3

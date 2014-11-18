@@ -20,13 +20,6 @@ function config_url_aliases_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_blog_pattern';
-  $strongarm->value = 'blogs/[user:name]';
-  $export['pathauto_blog_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_case';
   $strongarm->value = '1';
   $export['pathauto_case'] = $strongarm;
@@ -153,34 +146,6 @@ function config_url_aliases_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_blog_da_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_blog_da_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_blog_en_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_blog_en_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_blog_pattern';
-  $strongarm->value = 'blog/[node:created:custom:Y]/[node:created:custom:m]/[node:created:custom:d]/[node:title]';
-  $export['pathauto_node_blog_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_blog_und_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_blog_und_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_borger_dk_article_pattern';
   $strongarm->value = '';
   $export['pathauto_node_borger_dk_article_pattern'] = $strongarm;
@@ -272,20 +237,6 @@ function config_url_aliases_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_location_da_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_location_da_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_location_en_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_location_en_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_location_pattern';
   $strongarm->value = '[node:title]';
   $export['pathauto_node_location_pattern'] = $strongarm;
@@ -342,13 +293,6 @@ function config_url_aliases_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_os2web_kultunaut_event_pattern';
-  $strongarm->value = 'arrangementer/[node:field-kultunaut-event-category:name]/[node:title]';
-  $export['pathauto_node_os2web_kultunaut_event_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_os2web_kultunaut_import_pattern';
   $strongarm->value = '';
   $export['pathauto_node_os2web_kultunaut_import_pattern'] = $strongarm;
@@ -373,13 +317,6 @@ function config_url_aliases_strongarm() {
   $strongarm->name = 'pathauto_node_os2web_meetings_meeting_pattern';
   $strongarm->value = 'dagsorden-og-referat/moeder/[node:title]';
   $export['pathauto_node_os2web_meetings_meeting_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_os2web_social_directory_pattern';
-  $strongarm->value = 'social-vejsider/[node:title]';
-  $export['pathauto_node_os2web_social_directory_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -839,13 +776,6 @@ function config_url_aliases_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_os2web_meetings_tax_committee_pattern';
-  $strongarm->value = 'dagsorden-og-referat/udvalg/[term:name]';
-  $export['pathauto_taxonomy_term_os2web_meetings_tax_committee_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_os2web_meetings_tax_location_pattern';
   $strongarm->value = 'dagsorden-og-referat/lokationer/[term:name]';
   $export['pathauto_taxonomy_term_os2web_meetings_tax_location_pattern'] = $strongarm;
@@ -856,34 +786,6 @@ function config_url_aliases_strongarm() {
   $strongarm->name = 'pathauto_taxonomy_term_os2web_meetings_tax_status_pattern';
   $strongarm->value = 'dagsorden-og-referat/status/[term:name]';
   $export['pathauto_taxonomy_term_os2web_meetings_tax_status_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_os2web_social_directory_activity_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_os2web_social_directory_activity_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_os2web_social_directory_association_type_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_os2web_social_directory_association_type_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_os2web_social_directory_audience_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_os2web_social_directory_audience_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_os2web_social_directory_contact_person_role_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_os2web_social_directory_contact_person_role_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

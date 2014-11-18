@@ -25,7 +25,6 @@ function config_search_menu_alter(&$items) {
  * Implements hook_apachesolr_process_results().
  *
  * Nodes of type 'self_service' links to external url field of this node, not to node page.
- * Nodes of type 'kultunaut_event' links to external event url, not to node page.
  *
  * @param array $results
  *   The returned search results.
@@ -38,9 +37,6 @@ function config_search_apachesolr_process_results(array &$results, DrupalSolrQue
       case 'self_service':
       case 'bannerlink':
         $results[$id]['link'] = $result['fields']['ts_field_external_url'];
-        break;
-      case 'os2web_kultunaut_event':
-        $results[$id]['link'] = $result['fields']['ts_field_kultunaut_url'];
         break;
     }
   }
@@ -68,10 +64,6 @@ function config_search_apachesolr_index_document_build_node(ApacheSolrDocument $
       $document->setField('label', $admin_label[0]['value']);
       $document->setField('tos_content_extra', '(' . $admin_label[0]['value'] . ')');
       break;
-    case 'os2web_kultunaut_event':
-      $url = field_get_items('node', $entity, 'field_kultunaut_event_url');
-      $document->addField('ts_field_kultunaut_url', $url[0]['value']);
-      break;
   }
 }
 
@@ -87,7 +79,6 @@ function config_search_apachesolr_index_document_build_node(ApacheSolrDocument $
 function config_search_apachesolr_query_prepare($query) {
   $bundles = array();
   $query->addParam('fl', 'ts_field_external_url');
-  $query->addParam('fl', 'ts_field_kultunaut_url');
 
   //Add some boost for nodes with newer creation date.
   $query->addParam('bf', 'recip(ms(NOW,ds_created),3.16e-11,4,4)^10.0');

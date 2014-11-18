@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Config FICS ESDH feature.
- */
-
-include_once 'config_fics_esdh.features.inc';

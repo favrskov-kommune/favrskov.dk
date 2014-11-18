@@ -36,16 +36,12 @@ function content_type_article_field_default_field_bases() {
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
-        'blog' => 0,
         'borger_dk_article' => 'borger_dk_article',
         'factbox' => 0,
         'faq' => 0,
         'frontpage' => 0,
-        'location' => 0,
         'news' => 0,
         'os2web_hr_manager_job' => 0,
-        'os2web_kultunaut_event' => 0,
-        'os2web_kultunaut_import' => 0,
         'phone_book' => 0,
         'self_service' => 0,
         'shared' => 0,
@@ -346,40 +342,6 @@ function content_type_article_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_update_category'
-  $field_bases['field_update_category'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_update_category',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'page_subscription_category',
-          'parent' => 0,
-        ),
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_update_teaser'
