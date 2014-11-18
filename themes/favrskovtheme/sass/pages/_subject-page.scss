@@ -25,9 +25,9 @@
     }
   }
   .information {
-    width: 363px;
+    width: 357px;
 
-    background: $white;
+    background: $whitesmoke;
     @include center-vertical(314);
     margin-top: -145px;
     padding: 36px;
@@ -43,7 +43,18 @@
       font-size: 30px;
       font-weight: bold;
       letter-spacing: 0.5px;
-      margin-bottom: 29px;
+      margin-bottom: 23px;
+    }
+    .teaser {
+      font: 24px $sans-medium;
+      color: $dark-grey;
+      height: 190px;
+      overflow: hidden;
+      line-height: 28px;
+      letter-spacing: -0.5px;
+      @include at-breakpoint(12 $width-480) {
+        height: 170px;
+      }
     }
   }
 }
