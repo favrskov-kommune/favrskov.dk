@@ -1,0 +1,154 @@
+//------------------------------------------------------------------------------
+// Subject page
+
+
+// Preview image
+.presentation {
+  background: $grey;
+  position: relative;
+  padding-top: 27px;
+  @include at-breakpoint(12 $width-980) {
+    height: 390px;
+  }
+  img {
+    @include at-breakpoint(12 $width-980) {
+      max-width: none;
+    }
+  }
+  .pane-node-field-top-image {
+    @include container;
+  }
+  .content {
+    padding: 0;
+    .breadcrumb {
+      display: none;
+    }
+  }
+  .information {
+    width: 357px;
+
+    background: $whitesmoke;
+    @include center-vertical(314);
+    margin-top: -145px;
+    padding: 36px;
+    @include at-breakpoint(12 $width-980) {
+      width: 90%;
+      margin-top: -130px;
+      background: rgba(255,255,255,0.75);
+    }
+    @include at-breakpoint(12 $width-480) {
+      margin-top: -140px;
+    }
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin-bottom: 23px;
+    }
+    .teaser {
+      font: 24px $sans-medium;
+      color: $dark-grey;
+      height: 190px;
+      overflow: hidden;
+      line-height: 28px;
+      letter-spacing: -0.5px;
+      @include at-breakpoint(12 $width-480) {
+        height: 170px;
+      }
+    }
+  }
+}
+
+// Navigation subject-list
+.menuitems.content {
+  .content {
+    padding: 0;
+  }
+
+  .subject-list {
+    @extend %clearfix;
+    .subject-item {
+      @include span-columns(3, 9);
+      margin-bottom: gutter(9);
+      padding: 24px 35px;
+      background: $grey;
+      min-height: 221px;
+      position: relative;
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+      @include at-breakpoint(12 $width-980) {
+        @include span-columns(6, 12);
+
+        &:nth-child(3n) {
+          margin-right: gutter(12);
+        }
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+      }
+      @include at-breakpoint(12 $width-768) {
+        @include span-columns(12, 12);
+        &, &:nth-child(2n), &:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+      @include transition-property(background);
+      @include transition-duration(0.3s);
+      h2 {
+        a {
+          font-size: 24px;
+          font-weight: bold;
+          @include links($dark-grey, $red);
+          letter-spacing: 0.5px;
+        }
+      }
+      p {
+        line-height: 22px;
+        margin-top: 22px;
+        a {
+          font: 16px Arial;
+          @include links($dark-grey, $red);
+
+        }
+      }
+
+      &:before, &:after {
+        @extend %before-after;
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        background: $red;
+        @include opacity(0);
+        @include transition-property(opacity);
+        @include transition-duration(0.3s);
+      }
+      &:after {
+        bottom: 0;
+      }
+      &:before {
+        top: 0;
+      }
+      &:hover {
+        background: $white;
+        &:before, &:after {
+          @include opacity(1);
+        }
+      }
+
+      // For ie8
+      .lt-ie8 & {
+        margin-right: 1%;
+      }
+
+    }
+  }
+}
+
+// News
+.node-type-subjectpage {
+  .news {
+    margin-top: 0;
+  }
+}

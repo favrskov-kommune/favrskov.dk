@@ -20,6 +20,7 @@ features[field_instance][] = node-subjectpage-field_editorial_responsibility
 features[field_instance][] = node-subjectpage-field_taxonomy_kle
 features[field_instance][] = node-subjectpage-field_taxonomy_local
 features[field_instance][] = node-subjectpage-field_taxonomy_subject_area
+features[field_instance][] = node-subjectpage-field_teaser
 features[field_instance][] = node-subjectpage-field_top_image
 features[node][] = subjectpage
 features[variable][] = comment_anonymous_subjectpage

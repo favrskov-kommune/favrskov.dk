@@ -77,6 +77,9 @@
       position: absolute;
     }
     .title-slide {
+      font-weight: bold;
+      letter-spacing: 0.4px;
+      line-height: 33px;
       width: 80%;
       margin: 0 auto;
       display: none;
@@ -95,7 +98,7 @@
     ul {
       height: 185px;
       overflow: hidden;
-      margin-top: 45px;
+      margin-top: 36px;
       @include at-breakpoint(12 $width-480) {
         margin: 10px 0 30px;
       }
