@@ -221,7 +221,6 @@ dependencies[] = panel_meetings_per_committee
 dependencies[] = rules_admin
 dependencies[] = rule_send_email_on_comment_posting
 dependencies[] = config_theme
-dependencies[] = panel_article_below_body_mini_panel
 dependencies[] = views_hr_manager_job_custom_panes
 dependencies[] = addressfield
 dependencies[] = field_group
