@@ -78,4 +78,3 @@ features[variable][] = node_preview_os2web_kultunaut_import
 features[variable][] = node_submitted_os2web_kultunaut_event
 features[variable][] = node_submitted_os2web_kultunaut_import
 features[views_view][] = os2web_kultunaut_rss_feed
-features_exclude[dependencies][os2web_hrmanager_job] = os2web_hrmanager_job
