@@ -342,9 +342,10 @@
     .btn-filters {
       display: block;
       position: absolute;
-      right: 25px;
+      right: 23px;
       top: 385px;
     }
+
 
     // Filter results
     .filter-results {
@@ -353,7 +354,7 @@
       display: none;
       position: absolute;
       top: 435px;
-      right:25px;
+      right:23px;
       .pane-block {
         background: $white;
         .pane-title {
