@@ -2,6 +2,8 @@
 //Page
 html {
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 html, body {
@@ -331,10 +333,10 @@ h2 {
 h3 {
   font: 28px Arial;
   font-weight: bold;
-  color: $slategrey; 
+  color: $slategrey;
 }
 h4 {
   font: 20px Arial;
   font-weight: bold;
-  color: $slategrey; 
+  color: $slategrey;
 }

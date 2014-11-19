@@ -38,7 +38,7 @@ $background = implode(', ', $background);
       </section>
     <?php endif; ?>
 
-    
+
       <?php if (!empty($content['navigation'])): ?>
         <nav class="nav inline-block-header">
           <?php print $content['navigation']; ?>
@@ -46,12 +46,6 @@ $background = implode(', ', $background);
       <?php endif; ?>
 
       <section class="search-contact inline-block-header">
-          <?php if (!empty($content['system'])): ?>
-            <div class="drupal-system group">
-              <?php print $content['system']; ?>
-            </div>
-          <?php endif; ?>
-          
           <?php if (!empty($content['search'])): ?>
             <div class="search">
               <?php print $content['search']; ?>
@@ -60,5 +54,13 @@ $background = implode(', ', $background);
       </section>
 
   </section>
+
+      <?php if (!empty($content['system'])): ?>
+        <div class="drupal-system group">
+          <?php print $content['system']; ?>
+        </div>
+      <?php endif; ?>
 </header>
+
+
 
