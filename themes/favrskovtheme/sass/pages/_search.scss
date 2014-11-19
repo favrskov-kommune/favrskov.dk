@@ -342,7 +342,7 @@
     .btn-filters {
       display: block;
       position: absolute;
-      right: 23px;
+      right: 4.7%;
       top: 385px;
     }
 
@@ -354,7 +354,7 @@
       display: none;
       position: absolute;
       top: 435px;
-      right:23px;
+      right: 4.7%;
       .pane-block {
         background: $white;
         .pane-title {
@@ -384,10 +384,29 @@
     .pane-apachesolr-form .apachesolr-autocomplete {
       max-width: 90%;
     }
+    .btn-filters {
+      top: 239px;
+    }
+    .filter-results {
+      top: 289px;
+    }
   }
 }
 
-
+// Phone port -----max-width(380px)
+@include at-breakpoint(12 $width-380) {
+  .search {
+    .form-type-checkbox .option {
+      font-size: 12px;
+    }
+    .btn-filters {
+      top: 230px;
+    }
+    .filter-results {
+      top: 280px;
+    }
+  }
+}
 
 // Phone port -----max-width(320px)
 @include at-breakpoint($phone-port) {
