@@ -25,7 +25,7 @@
   // Headline
   .content-container h1 {
     @include font-size(55);
-    font-family: $sans-bold-strict;
+    font-family: $sans;
     color: $slategrey;
     margin: 30px 0;
   }
@@ -33,33 +33,44 @@
   // Search form
   .pane-apachesolr-form {
     background: $lightgrey;
-    @include border-radius(5px);
     padding: 30px;
     margin-bottom: 30px;
     overflow: hidden;
 
     .form-item {
       float: left;
+      width: 77%;
+
+      &.form-type-textfield {
+        height: 42px;
+      }
     }
 
     // Search field
     .apachesolr-autocomplete {
       padding: 10px 15px;
       @include inline-block();
-      margin: 0 10px 10px 0;
       background: $white;
+      @include border-radius(0px);
+      height: 100%;
+      width: 100%;
     }
 
     // Search button
+    .form-actions {
+      margin-left: 3%;
+      float: left;
+    }
     .form-submit {
-      background-color: #608c9c;
+      background-color: $lime;
       color: $white;
-      padding: 10px 30px;
+      height: 42px;
+      width: 170%;
       margin: 0;
       display: inline-block;
-      @include border-radius(5px);
+      @include border-radius(0px);
       @include transition-duration(.2s);
-
+      cursor: pointer;
       &:hover {
         background-color: $slategrey;
       }
@@ -71,12 +82,13 @@
     clear: both;
     float: none;
     margin-top: 15px;
-
     .option,
     .form-checkbox {
       float: left;
       margin: 2px 10px 0 0;
-      @include font-size(14);
+      @include font-size(16);
+      font-family: Arial;
+      color: $dark-grey;
     }
   }
 
@@ -84,11 +96,12 @@
   .pane-apachesolr-result {
     // Title
     h2 {
-      @include font-size(30);
-      border-bottom: 1px solid $lightgrey;
-      font-family: $sans-med-strict;
+      @include font-size(24);
+      border-bottom: 1px solid $border-top-over-all-news;
+      font-family: $sans;
       color: $slategrey;
-      padding: 0 0 10px;
+      padding: 20px 0 30px;
+      font-weight: bold;
     }
 
     // No results list
@@ -104,29 +117,34 @@
       padding: 15px 0;
       @include font-size(14);
       line-height: 1.5;
-      border-bottom: 1px solid $lightgrey;
+      border-bottom: 1px solid $border-top-over-all-news;
       overflow: hidden;
 
       // time
       time {
-        @include font-size(12);
-        color: $liteGray;
+        @include font-size(14);
+        color: $dark-grey;
         letter-spacing: -.05em;
       }
 
       // title
       .title {
-        @include font-size(22);
+        @include font-size(20);
         line-height: 1;
-        margin: 5px 0;
-        font-family: $sans-med-strict;
+        margin: 15px 0;
+        font-family: $sans;
 
-        a { @include links($red, $slatgrayDark)}
+        a { @include links($lime, $dark-grey)}
       }
 
       // Content
       .search-snippet-info {
         margin-bottom: 5px;
+        p {
+          font: 16px Arial;
+          color: $dark-grey;
+          line-height: 23px;
+        }
       }
 
       // type
@@ -134,8 +152,9 @@
         float: left;
         background-color: $lightgrey;
         padding: 2px 10px;
-        @include font-size(13);
-        @include border-radius(3px);
+        margin-top: 5px;
+        @include font-size(14);
+        color: $dark-grey;
       }
     }
   }
@@ -154,66 +173,94 @@
 }
 
 .search-filters {
-  padding-top: 115px;
+  padding-top: 125px;
 
   .pane-block {
-    background: $lightgrey;
-    @include border-radius(5px);
-    padding: 20px;
+    padding: 20px 0;
     margin-bottom: 10px;
+    border-top: 1px solid $border-top-over-all-news;
+    &:last-child {
+      border-bottom: 1px solid $border-top-over-all-news;
+    }
   }
 
   h2 {
-    @include font-size(16);
-    font-family: $sans-med-strict;
-    color: $slategrey;
+    @include font-size(24);
+    font-family: $sans-medium;
+    color: $dark-white-grey;
     padding: 0 0 10px;
+    font-weight: bold;
   }
 
   // Filter list
 
   .item-list {
     li {
-      border-bottom: 1px solid #ccc;
       position: relative;
+      margin: 5px 0;
     }
 
     a {
-    padding: 5px;
+    padding: 5px 10px;
     display: block;
-    @include links($red, $gray);
-    @include font-size(14);
-
+    @include font-size(16);
+    font-family: Arial;
+    color: $lime;
+    position: relative;
+    z-index: 1;
+    &:after {
+      @extend %before-after;
+      right: 12px;
+      width: 18px;
+      @include center-vertical(18);
+      @include sprite(-9px, -179px);
+    }
     &:hover,
     &.active {
-      background-color: #e0e0e0;
-      @include links($slatgrayDark, $slatgrayDark);
+      background-color: $grey;
+      &:after {
+        @include sprite(-33px, -179px);
+      }
     }
 
     &.facetapi-inactive {
-      background: url(../images/filters-icons.png) no-repeat 95% -94px;
       padding-right: 25px;
-
       &:hover {
-        background: #e0e0e0 url(../images/filters-icons.png) no-repeat 95% -182px;
+        &:after {
+          @include sprite(-33px, -179px);
+        }
       }
     }
 
     &.facetapi-active {
       text-indent: -999em;
-      position: absolute;
-      width: 100%;
       padding: 5px 0;
-      background: url(../images/filters-icons.png) no-repeat 95% 8px;
+      &:after {
+        @include sprite(-33px, -179px);
+      }
       @include transition-duration(0s);
       @include font-size(16);
 
       &:hover {
-        background: url(../images/filters-icons.png) no-repeat 95% 8px;
+        background: none;
+        &:after {
+          @include sprite(-33px, -179px);
+        }
       }
 
       & + .active-filter {
-        padding-right: 25px;
+        padding: 5px 10px;
+        @include font-size(16);
+        font-family: Arial;
+        color: $lime;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        &:after {
+          @include sprite(-33px, -179px);
+        }
       }
     }
   }
@@ -221,7 +268,8 @@
     .active-filter {
       padding: 5px;
       display: block;
-      background-color: #e0e0e0;
+
+      background-color: $grey;
     }
   }
 
@@ -251,6 +299,9 @@
       .form-type-textfield {
         width: 100%;
         margin-bottom: 10px;
+        .apachesolr-autocomplete {
+          max-width: none;
+        }
       }
 
       .apachesolr-autocomplete {
@@ -258,7 +309,11 @@
         margin: 0;
         width: 100%;
       }
+      .form-actions {
+        margin-left: 0;
+      }
     }
+
   }
 }
 
@@ -282,15 +337,15 @@
 
 
 
-
     // Filters
     // Button
     .btn-filters {
       display: block;
       position: absolute;
-      right: 10px;
-      top: -10px;
+      right: 4.7%;
+      top: 385px;
     }
+
 
     // Filter results
     .filter-results {
@@ -298,9 +353,17 @@
       padding: 20px;
       display: none;
       position: absolute;
-      top: 40px;
-      right: 10px;
-
+      top: 435px;
+      right: 4.7%;
+      .pane-block {
+        background: $white;
+        .pane-title {
+          padding: 0 10px;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
       &.animated {
         display: block;
       }
@@ -308,7 +371,7 @@
 
     .search-filters {
       position: absolute;
-      top: 310px;
+      top: 320px;
       right: 0;
     }
   }
@@ -321,10 +384,29 @@
     .pane-apachesolr-form .apachesolr-autocomplete {
       max-width: 90%;
     }
+    .btn-filters {
+      top: 239px;
+    }
+    .filter-results {
+      top: 289px;
+    }
   }
 }
 
-
+// Phone port -----max-width(380px)
+@include at-breakpoint(12 $width-380) {
+  .search {
+    .form-type-checkbox .option {
+      font-size: 12px;
+    }
+    .btn-filters {
+      top: 230px;
+    }
+    .filter-results {
+      top: 280px;
+    }
+  }
+}
 
 // Phone port -----max-width(320px)
 @include at-breakpoint($phone-port) {
