@@ -11,7 +11,7 @@ $plugin = array(
     'header' => t('Logo'),
     'contacts' => t('Contacts'),
     'navigation'   => t('Menu'),
-    'social' => t('Social'),
+    'social' => t('Address'),
     'policy'   => t('Policy'),
   ),
 );

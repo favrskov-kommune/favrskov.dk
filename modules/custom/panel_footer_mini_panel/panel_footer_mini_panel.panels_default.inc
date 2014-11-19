@@ -175,10 +175,11 @@ function panel_footer_mini_panel_default_panels_mini() {
   );
   $display->cache = array();
   $display->title = '';
+  $display->uuid = '428b3416-8c56-439d-bd9f-302e19fc893c';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-1';
+    $pane->pid = 'new-6415dea8-8332-4f2b-b8af-8f0c4d558644';
     $pane->panel = 'contacts';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -189,18 +190,20 @@ function panel_footer_mini_panel_default_panels_mini() {
       'title' => 'Contact',
       'body' => '<article role="article">
 <h1>Kontakt</h1>
-<p>
-  Roskilde Kommune <br>
-  Rådhusbuen<br>
-  Postboks 100<br>
- 4000 Roskilde 
-</p>
-<div class="contacts-data">
-<span class="tel">tel Tell 46 31 30 00</span>
-<a href="mailto:kommunen@roskilde.dk">kommunen@roskilde.dk</a>
-</div>
-</article>',
-      'format' => 'video_html',
+
+<p class="small-height">Digital hotline<br/>
+Tlf: 70 20 00 00<br/></p>
+
+<p class="small-height">Kontakt hovednummer<br/>
+Tlf: 89 64 10 10<br/></p>
+
+<p>Man-tris 9.30-15<br/>
+Onsdag Lukket<br/>
+Torsdag 12-17<br/>
+Fredag 9.30-12<br/></p>
+</article>
+',
+      'format' => 'full_html',
       'substitute' => TRUE,
     );
     $pane->cache = array();
@@ -212,36 +215,30 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['contacts'][0] = 'new-1';
+    $pane->uuid = '6415dea8-8332-4f2b-b8af-8f0c4d558644';
+    $display->content['new-6415dea8-8332-4f2b-b8af-8f0c4d558644'] = $pane;
+    $display->panels['contacts'][0] = 'new-6415dea8-8332-4f2b-b8af-8f0c4d558644';
     $pane = new stdClass();
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-1b2c1f65-592b-4028-8a08-8bdd10edaf56';
     $pane->panel = 'header';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
+    $pane->type = 'page_logo';
+    $pane->subtype = 'page_logo';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'admin_title' => 'Footer logo',
-      'title' => '',
-      'body' => '<a href="/" class="back-homepage">Roskilde komunne</a>
-',
-      'format' => 'video_html',
-      'substitute' => TRUE,
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
-      'style' => 'naked',
     );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['header'][0] = 'new-2';
+    $pane->uuid = '1b2c1f65-592b-4028-8a08-8bdd10edaf56';
+    $display->content['new-1b2c1f65-592b-4028-8a08-8bdd10edaf56'] = $pane;
+    $display->panels['header'][0] = 'new-1b2c1f65-592b-4028-8a08-8bdd10edaf56';
     $pane = new stdClass();
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-a23bf52e-f7c1-4702-9df9-9c2d54db75c5';
     $pane->panel = 'navigation';
     $pane->type = 'block';
     $pane->subtype = 'menu-menu-footer-links';
@@ -260,10 +257,11 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['navigation'][0] = 'new-3';
+    $pane->uuid = 'a23bf52e-f7c1-4702-9df9-9c2d54db75c5';
+    $display->content['new-a23bf52e-f7c1-4702-9df9-9c2d54db75c5'] = $pane;
+    $display->panels['navigation'][0] = 'new-a23bf52e-f7c1-4702-9df9-9c2d54db75c5';
     $pane = new stdClass();
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-bd9119fe-56db-475e-bac8-01d7696cb28a';
     $pane->panel = 'policy';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -289,26 +287,33 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['policy'][0] = 'new-4';
+    $pane->uuid = 'bd9119fe-56db-475e-bac8-01d7696cb28a';
+    $display->content['new-bd9119fe-56db-475e-bac8-01d7696cb28a'] = $pane;
+    $display->panels['policy'][0] = 'new-bd9119fe-56db-475e-bac8-01d7696cb28a';
     $pane = new stdClass();
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-a68f9ce5-c5b9-4de8-a397-de2141f76c90';
     $pane->panel = 'social';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'admin_title' => 'Social',
+      'admin_title' => 'Address',
       'title' => '',
-      'body' => '<ul class="social-links">
-	<li class="facebook"><a class="icon-facebook" href="http://www.facebook.com/roskildekommune" target="_blank">Facebook</a></li>
-	<li class="twitter"><a class="icon-twitter" href="https://twitter.com/roskildekommune" target="_blank">Twitter</a></li>
-	<li class="youtube"><a class="icon-youtube" href="http://www.youtube.com/roskildekommune" target="_blank">Youtube</a></li>
-        <li class="instagram"><a class="icon-instagram" href="http://instagram.com/roskilde_kommune" target="_blank">Instagram</a></li>
-</ul>
+      'body' => '<article role="article">
+<h1>Adresse</h1>
+
+<p>Favrskov Kommune<br />
+Skovvej 20<br />
+8382 Hinnerup</p>
+
+<p class="small-height">Skriv til os på mail<br />
+favrskov@favrskov.dk</p>
+
+<p>CVR: 0000000000000</p>
+</article>
 ',
-      'format' => 'video_html',
+      'format' => 'full_html',
       'substitute' => TRUE,
     );
     $pane->cache = array();
@@ -323,8 +328,9 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['social'][0] = 'new-5';
+    $pane->uuid = 'a68f9ce5-c5b9-4de8-a397-de2141f76c90';
+    $display->content['new-a68f9ce5-c5b9-4de8-a397-de2141f76c90'] = $pane;
+    $display->panels['social'][0] = 'new-a68f9ce5-c5b9-4de8-a397-de2141f76c90';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;

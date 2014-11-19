@@ -16,15 +16,8 @@ function panel_footer_mini_panel_menu_default_menu_custom() {
     'title' => 'Footer links',
     'description' => '',
   );
-  // Exported menu: menu-footer-visit-also.
-  $menus['menu-footer-visit-also'] = array(
-    'menu_name' => 'menu-footer-visit-also',
-    'title' => 'Footer Visit also',
-    'description' => '',
-  );
   // Translatables
   // Included for use with string extractors like potx.
-  t('Footer Visit also');
   t('Footer links');
 
 

@@ -1,21 +1,19 @@
 name = Panel Footer mini panel
 core = 7.x
 package = Panels
-php = 5.2.4
 version = 7.x-1.0
 project = panel_footer_mini_panel
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = menu
+dependencies[] = panelizer
 dependencies[] = panels_mini
 datestamp = 1383043193
 features[ctools][] = panels_mini:panels_default:1
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[menu_custom][] = menu-footer-links
-features[menu_custom][] = menu-footer-visit-also
-features[menu_links][] = menu-footer-links:http://google.com
-features[menu_links][] = menu-footer-links:https://www.google.com.ua/search?q=events&oq=events&aqs=chrome.0.69i59j69i60j0l3j69i62.1240j0&sourceid=chrome&ie=UTF-8
-features[menu_links][] = menu-footer-links:https://www.google.com.ua/search?q=jobs&oq=jobs&aqs=chrome.0.69i57j69i61j0l2j69i62l2.1508j0&sourceid=chrome&ie=UTF-8
-features[menu_links][] = menu-footer-links:https://www.google.com.ua/search?q=news&oq=news&aqs=chrome.0.69i57j69i60j69i65j69i60j69i61j0.645j0&sourceid=chrome&ie=UTF-8
-features[menu_links][] = menu-footer-visit-also:http://google.com
+features[menu_links][] = menu-footer-links_aktuelle-udbud:<front>
+features[menu_links][] = menu-footer-links_ean-numre:<front>
+features[menu_links][] = menu-footer-links_ledige-stillinger:<front>
+features[menu_links][] = menu-footer-links_nyheder:<front>
 features[panels_mini][] = footer_mini_panel
