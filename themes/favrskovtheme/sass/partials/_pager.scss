@@ -4,20 +4,21 @@
     margin: 30px 0;
     text-align: center;
     @include font-size(15);
-    font-family: $sans-strict;
 
     li {
       @include inline-block(middle);
       margin: 0;
-
+      color: $lime;
       &.pager-current {
         @include inline-block(middle);
-        padding: 5px 7px;
+        padding: 3px 10px;
       }
       a {
-        padding: 5px 7px;
+        font: 15px Arial;
+        font-weight: bold;
+        padding: 3px 10px;
         display: block;
-        // @include links($red, $white);
+        color: $lime;
       }
 
       &.pager-last,
@@ -32,7 +33,7 @@
         font-weight: bold;
         &:hover  {
           background-color: transparent;
-          a { color: $gray;}
+          a { color: $white;}
 
         }
       }
@@ -48,7 +49,7 @@
       &:hover,
       &.pager-current {
         color: $white;
-        background-color: $red;
+        background-color: $lime;
         cursor: default;
       }
 

@@ -64,8 +64,8 @@
     .form-submit {
       background-color: $lime;
       color: $white;
-      padding: 12px 24px;
-      max-width: 102px;
+      height: 42px;
+      width: 170%;
       margin: 0;
       display: inline-block;
       @include border-radius(0px);
@@ -97,10 +97,10 @@
     // Title
     h2 {
       @include font-size(24);
-      border-bottom: 1px solid $lightgrey;
+      border-bottom: 1px solid $border-top-over-all-news;
       font-family: $sans;
       color: $slategrey;
-      padding: 0 0 10px;
+      padding: 20px 0 30px;
       font-weight: bold;
     }
 
@@ -290,12 +290,7 @@
 // Responsive
 
 //------------------------------------------------------------------------------
-// Screen---- max-width(1024px)
-@include at-breakpoint(12 $width-1024) {
-  .search .pane-apachesolr-form .form-actions {
-    margin-left: 0 !important;
-  }
-}
+
 // Screen---- max-width(980px)
 @include at-breakpoint($tablet) {
   .search {
@@ -304,6 +299,9 @@
       .form-type-textfield {
         width: 100%;
         margin-bottom: 10px;
+        .apachesolr-autocomplete {
+          max-width: none;
+        }
       }
 
       .apachesolr-autocomplete {
@@ -311,7 +309,11 @@
         margin: 0;
         width: 100%;
       }
+      .form-actions {
+        margin-left: 0;
+      }
     }
+
   }
 }
 
@@ -340,8 +342,8 @@
     .btn-filters {
       display: block;
       position: absolute;
-      right: 10px;
-      top: -10px;
+      right: 25px;
+      top: 385px;
     }
 
     // Filter results
@@ -350,9 +352,17 @@
       padding: 20px;
       display: none;
       position: absolute;
-      top: 50px;
-      right: 10px;
-
+      top: 435px;
+      right:25px;
+      .pane-block {
+        background: $white;
+        .pane-title {
+          padding: 0 10px;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
       &.animated {
         display: block;
       }
