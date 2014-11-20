@@ -10,6 +10,12 @@
     a {
       display: block;
       background: rgba($dark-grey, .6);
+
+      // For ie8
+      .lt-ie8 & {
+        background: $dark-grey;
+      }
+
       min-height: 44px;
       padding: 33px 5% 30px;
       width: 100%;
@@ -71,6 +77,7 @@
 
     &:hover a {
       background: rgba($gray, .6);
+      @include transition-duration(.2s);
     }
     @include at-breakpoint(12 $width-768) {
       @include span-columns(6, 12);

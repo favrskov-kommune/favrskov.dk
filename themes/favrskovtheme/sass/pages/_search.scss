@@ -54,6 +54,12 @@
       @include border-radius(0px);
       height: 100%;
       width: 100%;
+
+      // For ie8
+      .lt-ie8 & {
+        padding-top: 15px;
+      }
+
     }
 
     // Search button
