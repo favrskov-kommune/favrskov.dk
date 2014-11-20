@@ -13,9 +13,6 @@
     height: 15px;
     background: $dark-green;
   }
-  .error {
-    display: none;
-  }
    .header-content {
     @include main_max_width(0, 0);
     min-height: 110px;
