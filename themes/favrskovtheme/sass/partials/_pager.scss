@@ -46,7 +46,8 @@
           background: $lime;
           cursor: default;
         }
-        &.pager-next {
+        &.pager-next,
+        &.pager-previous {
           &:hover {
             background: none;
             a {
