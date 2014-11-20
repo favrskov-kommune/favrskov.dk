@@ -191,6 +191,12 @@
       background-color: $light-blue;
       @include border-radius(5px);
       padding: 0 40px 0 10px;
+
+      // For ie8
+      .lt-ie8 & {
+        padding-top: 10px;
+      }
+
       @include at-breakpoint(12 $width-480) {
         background: #fff;
         @include border-radius(0px);
