@@ -58,19 +58,20 @@
 
     // Search button
     .form-actions {
-      margin-left: 3%;
+      margin-left: 4%;
       float: left;
     }
     .form-submit {
       background-color: $lime;
       color: $white;
       height: 42px;
-      width: 170%;
+      width: 215%;
       margin: 0;
       display: inline-block;
       @include border-radius(0px);
       @include transition-duration(.2s);
       cursor: pointer;
+      padding: 0;
       &:hover {
         background-color: $slategrey;
       }
