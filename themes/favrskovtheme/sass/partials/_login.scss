@@ -53,14 +53,13 @@
     margin-bottom: 20px;
   }
   .form-text {
-    height: 25px;
-    padding: 2%;
-    max-width: 96%;
-    margin: 0 0 5px;
+    height: 45px;
+    padding: 0 10px;
+    width: 100%;
     background: $white;
-    border: 1px solid $grey;
     @include font-size(18);
     @include placeholder(#a8a8a8);
+    @include border-radius(0);
   }
 
   .form-required {
@@ -94,13 +93,13 @@
   @include transition-property(all);
   @include transition-timing-function(ease-in);
   @include transition-duration(.4s);
-  @include border-radius(10px);
 
   label {
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
     @include font-size(14);
+    color: $dark-grey;
   }
 
   .description {
@@ -112,9 +111,9 @@
 .form-submit {
   background: #0d778e;
   color: $white;
-  @include border-radius(5px);
   @include font-size(14);
-
+  padding: 5px 15px;
+  cursor: pointer;
   &:hover {
     background-color: #2abddc;
   }
