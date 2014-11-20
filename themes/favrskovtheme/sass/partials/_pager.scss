@@ -1,59 +1,96 @@
   //---------------------------------------------------------------------- Pager
-  .item-list .pager {
-    overflow: hidden;
-    margin: 30px 0;
-    text-align: center;
-    @include font-size(15);
-
-    li {
-      @include inline-block(middle);
-      margin: 0;
-      color: $lime;
-      &.pager-current {
+  .item-list {
+    // Page navigation
+    .pager {
+      overflow: hidden;
+      margin: 30px 0;
+      text-align: center;
+      @include font-size(15);
+      li {
         @include inline-block(middle);
-        padding: 5px 10px;
-        font: 15px Arial;
-        font-weight: bold;
-      }
-      a {
-        font: 15px Arial;
-        font-weight: bold;
-        padding: 5px 10px;
-        display: block;
+        margin: 0;
         color: $lime;
-      }
-
-      &.pager-last,
-      &.pager-first {
-        display: none;
-      }
-
-      &.pager-next {
-        float: right;
-        padding: 0 5px;
-      }
-
-      &.pager-previous {
-        float: left;
-      }
-
-      &:hover,
-      &.pager-current {
-        &, a {
-          color: $white;
+        &.pager-current {
+          @include inline-block(middle);
+          padding: 5px 10px;
+          font: 15px Arial;
+          font-weight: bold;
         }
-        background: $lime;
-        cursor: default;
-      }
-      &.pager-next {
-        &:hover {
-          background: none;
-          a {
-            color: $lime;
+        a {
+          font: 15px Arial;
+          font-weight: bold;
+          padding: 5px 10px;
+          display: block;
+          color: $lime;
+        }
+
+        &.pager-last,
+        &.pager-first {
+          display: none;
+        }
+
+        &.pager-next {
+          float: right;
+          padding: 0 5px;
+        }
+
+        &.pager-previous {
+          float: left;
+        }
+
+        &:hover,
+        &.pager-current {
+          &, a {
+            color: $white;
+          }
+          background: $lime;
+          cursor: default;
+        }
+        &.pager-next {
+          &:hover {
+            background: none;
+            a {
+              color: $lime;
+            }
           }
         }
       }
+    }
+    // Button more news
+    .pager-load-more {
+      li {
+        &.pager-next {
+          width: 100%;
+          padding: 0;
+          a {
+            font: 16px Arial;
+            font-weight: bold;
+            color: $white;
+            background: $dark-green;
+            width: 100%;
+            min-height: 38px;
+            padding: 12px 0;
+            display: block;
+            @include transition-duration(.2s);
+            &:hover {
+              color: $white;
+              background-color: $slategrey;
+            }
+          }
+          .arrow {
+            width: 23px;
+            height: 9px;
+            margin-left: 19px;
+            display: inline-block;
+            @include sprite(-32px, -116px);
 
+            // For ie8
+            .lt-ie8 & {
+              display: none;
+            }
 
+          }
+        }
+      }
     }
   }

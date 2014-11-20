@@ -225,6 +225,7 @@
     width: 100%;
     min-height: 30px;
     background: $grey;
+    border-top: 5px solid $header_bottom_line;
     .status, .error {
       @include main_max_width(0, 0);
     }
