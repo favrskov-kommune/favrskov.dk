@@ -28,6 +28,10 @@
       max-width: none;
     }
   }
+  .slider-background {
+    background-repeat: no-repeat;
+    @include background-size(cover);
+  }
 }
 
 //  Main slides
