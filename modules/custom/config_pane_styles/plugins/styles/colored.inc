@@ -46,7 +46,7 @@ function theme_config_pane_styles_colored_render_pane($vars) {
   $output = "<div class='$background' style='$background_color'>" . $content->content . "</div>";
 
   // Background image wrapper.
-  $output = "<div class='fon-slider' style='$background_image'>" . $output . "</div>";
+  $output = "<div class='slider-background' style='$background_image'>" . $output . "</div>";
 
   return $output;
 }
