@@ -21,6 +21,12 @@
     margin-top: 37px;
     li {
       @include span-columns(4, 16);
+
+      // For ie8
+      .lt-ie8 & {
+        margin-right: 0;
+      }
+
       a {
         @include links($slategrey, $white-red);
       }

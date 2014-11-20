@@ -48,9 +48,15 @@
   a, p, span {
     color: $dark-green;
     font-family: $sans-medium;
-    line-height: 20px;
+    line-height: 29px;
     font-weight: bold;
     font-size: 15px;
+  }
+  p {
+    margin-bottom: 25px;
+  }
+  .small-height {
+    line-height: 20px;
   }
 
   a {

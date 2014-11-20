@@ -40,6 +40,12 @@
   background: $black;
   @include opacity(0.5);
   cursor: pointer;
+
+  // For ie8
+  .lt-ie8 & {
+    z-index: 15;
+  }
+
   &:before {
     @extend %before-after;
     @include center-block(10, 24);

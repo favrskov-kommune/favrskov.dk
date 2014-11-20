@@ -6,14 +6,12 @@
   border-bottom: 5px solid $header_bottom_line;
   max-width: 100%;
   background: none !important;
+  position: relative;
   &:before {
     @extend %before-after;
     width: 100%;
     height: 15px;
     background: $dark-green;
-  }
-  .error {
-    display: none;
   }
    .header-content {
     @include main_max_width(0, 0);
@@ -34,7 +32,7 @@
         position: fixed;
         left: 0;
         top: 0;
-        z-index: 2;
+        z-index: 4;
         padding: 10px 10px;
         span {
           display: block;
@@ -131,36 +129,6 @@
       }
     }
   }
-  // Tabs
-  .tabs {
-    position: absolute;
-    right: 0;
-    top: 0;
-    @include at-breakpoint(12 $width-980) {
-      position: static;
-    }
-    @include at-breakpoint(12 $width-480) {
-      display: none;
-    }
-    li {
-      float: right;
-      margin-left: 17px;
-      @extend %clearfix;
-      @include at-breakpoint(12 $width-980) {
-        float: none;
-        @include inline-block(top);
-      }
-    }
-    a {
-      font-family: $sans-medium;
-      font-size: 11pt;
-      text-decoration: none;
-      color: #333;
-      text-transform: uppercase;
-      padding: 18px 0;
-      display: block;
-    }
-  }
   .search-contact {
     width: 230px;
     float: right;
@@ -180,13 +148,42 @@
       margin: 0;
       background: #000;
       position: fixed;
-      z-index: 1;
+      z-index: 3;
     }
   }
 
   .search {
     position: relative;
     height: 34px;
+    .menu {
+      position: absolute;
+      right: 0;
+      top: -50px;
+      @include at-breakpoint(12 $width-980) {
+        position: static;
+      }
+      @include at-breakpoint(12 $width-480) {
+        display: none;
+      }
+      li {
+        float: right;
+        margin-left: 17px;
+        @extend %clearfix;
+        @include at-breakpoint(12 $width-980) {
+          float: none;
+          @include inline-block(top);
+        }
+      }
+      a {
+        font-family: $sans-medium;
+        font-size: 11pt;
+        text-decoration: none;
+        color: #333;
+        text-transform: uppercase;
+        padding: 18px 0;
+        display: block;
+      }
+    }
     input[type="text"] {
       width: 100%;
       height: 34px;
@@ -208,6 +205,12 @@
       text-indent:-9999px;
       z-index: 1;
       background: url(../images/search_icon.png) no-repeat center center;
+      @include at-breakpoint(12 $width-980) {
+        top: 52px;
+      }
+      @include at-breakpoint(12 $width-480) {
+        top: 0;
+      }
     }
     @include at-breakpoint(12 $width-480) {
       @include center-vertical(34);
@@ -215,4 +218,31 @@
       width: 72%;
     }
   }
+
+
+  // For admin
+  .drupal-system {
+    width: 100%;
+    min-height: 30px;
+    background: $grey;
+    border-top: 5px solid $header_bottom_line;
+    .status, .error {
+      @include main_max_width(0, 0);
+    }
+    .tabs {
+      @include main_max_width(4px, 0);
+      li {
+        display: inline-block;
+        a {
+          font: 15px Arial;
+          color: $white;
+          display: block;
+          padding: 5px 10px;
+          background: #555;
+        }
+      }
+    }
+  }
+
+
 }
