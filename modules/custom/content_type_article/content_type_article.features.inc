@@ -7,8 +7,10 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function content_type_article_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function content_type_article_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
