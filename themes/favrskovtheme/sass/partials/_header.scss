@@ -147,7 +147,7 @@
     @include at-breakpoint(12 $width-980) {
       float: none;
       top: 90px;
-      @include center-gorizontal(380);
+      @include center-horizontal(380);
       margin-top: 0;
       text-align: center;
     }

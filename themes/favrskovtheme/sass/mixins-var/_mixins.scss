@@ -74,7 +74,7 @@
   margin-top: -($h/2)+px;
 }
 
-@mixin center-gorizontal($w) {
+@mixin center-horizontal($w) {
   position: absolute;
   width: $w+px;
   left:50%;
@@ -92,7 +92,7 @@
   left: 50%;
   @include transform(translate(-50%,-50%))
 }
-%center-block-transform-gorizontal {
+%center-block-transform-horizontal {
   position: absolute;
   margin: auto;
   left: 50%;
