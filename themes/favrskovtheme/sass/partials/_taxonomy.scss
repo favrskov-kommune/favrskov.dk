@@ -4,6 +4,12 @@
 .subject-grid {
   background: $grey;
   margin-bottom: 46px;
+
+  // For ie8
+  .lt-ie8 & {
+    min-width: 981px;
+  }
+
   .taxonomy-list {
     padding-top: 36px;
   }

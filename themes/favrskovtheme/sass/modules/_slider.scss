@@ -3,6 +3,7 @@
 .front-slider {
   position: relative;
   margin-bottom: 62px;
+
   &:before {
     @extend %before-after;
     background: $white;
@@ -13,6 +14,13 @@
     top: 0;
     left: 0;
     z-index: 0;
+
+    // For ie8
+    .lt-ie8 & {
+      background: none;
+      background-image: url('../images/opacity-for-ie.png');
+    }
+
   }
   .pane-slider-slider-block,
   .swiper-container {
@@ -22,7 +30,7 @@
   }
   .gallery {
     max-height: 490px;
-        margin: 0 auto;
+    margin: 0 auto;
     max-width: 981px;
     img {
       max-width: none;
@@ -32,6 +40,13 @@
     background-repeat: no-repeat;
     @include background-size(cover);
     background-position: center;
+
+    // For ie8
+    .lt-ie8 & {
+      background-repeat: repeat;
+      background-position: left;
+    }
+
   }
 }
 

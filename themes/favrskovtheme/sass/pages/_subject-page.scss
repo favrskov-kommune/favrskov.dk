@@ -17,6 +17,13 @@
   }
   .pane-node-field-top-image {
     @include container;
+
+    // For ie8
+    .lt-ie8 & {
+      width: 981px;
+      max-width: none;
+    }
+
   }
   .content {
     padding: 0;

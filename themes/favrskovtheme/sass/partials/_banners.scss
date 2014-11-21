@@ -14,6 +14,7 @@
       // For ie8
       .lt-ie8 & {
         background: $dark-grey;
+        @include opacity(.8);
       }
 
       min-height: 44px;
@@ -78,6 +79,13 @@
     &:hover a {
       background: rgba($gray, .6);
       @include transition-duration(.2s);
+
+      // For ie8
+      .lt-ie8 & {
+        background: $dark-grey;
+        @include opacity(.6);
+      }
+
     }
     @include at-breakpoint(12 $width-768) {
       @include span-columns(6, 12);

@@ -2,6 +2,15 @@
 // Search page
 .search {
 
+  .content {
+
+    // For ie8
+    .lt-ie8 & {
+      width: 981px;
+      max-width: none;
+    }
+
+  }
   // Pattern background
   .main-wrapper {
     padding-top: 30px;
