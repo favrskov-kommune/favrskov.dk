@@ -123,6 +123,7 @@
   @include border-radius(80px);
   background-color: $dark-green;
   width: 80px;
+  position: relative;
 
   // Colors theme
   .violet      & { background-color: $violet; }
@@ -145,7 +146,14 @@
   }
 
   img {
-    margin-top: 10px;
+    @extend %center-block-transform;
+
+    // For ie8
+    .lt-ie8 & {
+      margin-top: 10px;
+      position: static;
+    }
+
   }
   @include at-breakpoint(12 $width-600) {
     margin: 0 0 15px;

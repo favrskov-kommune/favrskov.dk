@@ -74,13 +74,36 @@
   margin-top: -($h/2)+px;
 }
 
-@mixin center-gorizontal($w) {
+@mixin center-horizontal($w) {
   position: absolute;
   width: $w+px;
   left:50%;
   margin-left: -($w/2)+px;
 }
 
+
+
+//------------------------------------------------------------------------------
+// center block transform
+%center-block-transform {
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%,-50%))
+}
+%center-block-transform-horizontal {
+  position: absolute;
+  margin: auto;
+  left: 50%;
+  @include transform(translate(-50%,0))
+}
+%center-block-transform-vertical {
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  @include transform(translate(0,-50%))
+}
 
 
 //------------------------------------------------------------------------------
