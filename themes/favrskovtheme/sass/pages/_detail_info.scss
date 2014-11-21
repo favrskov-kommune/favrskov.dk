@@ -5,6 +5,13 @@
     @include container;
     @extend %clearfix;
     padding: 46px 0;
+
+    // For ie8
+    .lt-ie8 & {
+      width: 981px;
+      max-width: none;
+    }
+
     .breadcrumb {
       a {
         font: 12px Arial;

@@ -5,11 +5,24 @@
   min-height: 600px;
   background: url('../images/favrskov-fon-footer.png') center 100% $grey no-repeat;
   padding-bottom: 300px;
+
+  // For ie8
+  .lt-ie8 & {
+    min-width: 981px;
+  }
+
 }
 .footer-wrapper {
   background: none !important;
   @include main_max_width(0, 0);
   padding: 55px 10px 0;
+
+  // For ie8
+  .lt-ie8 & {
+    width: 981px;
+    max-width: none;
+  }
+
   @include at-breakpoint(12 $width-1040) {
     max-width: 90%;
   }

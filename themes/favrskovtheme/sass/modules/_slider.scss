@@ -3,6 +3,7 @@
 .front-slider {
   position: relative;
   margin-bottom: 62px;
+
   &:before {
     @extend %before-after;
     background: $white;
