@@ -84,6 +84,29 @@
 
 
 //------------------------------------------------------------------------------
+// center block transform
+%center-block-transform {
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%,-50%))
+}
+%center-block-transform-gorizontal {
+  position: absolute;
+  margin: auto;
+  left: 50%;
+  @include transform(translate(-50%,0))
+}
+%center-block-transform-vertical {
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  @include transform(translate(0,-50%))
+}
+
+
+//------------------------------------------------------------------------------
 // CSS3 Animation
 %animate {
   @include transition-property(all);
