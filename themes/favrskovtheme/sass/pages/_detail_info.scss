@@ -225,7 +225,7 @@
 
 
       // Faq
-      .faq {
+      .faq, .embedded {
         padding: 43px 0;
         margin-top: 50px;
         border-bottom: 1px solid $border-top-over-all-news;
@@ -235,10 +235,14 @@
             margin-bottom: 31px;
           }
         }
-        & > ul {
+        & > ul, .content {
           border-bottom: 4px solid $dark-grey;
           border-top: 4px solid $dark-grey;
-          .question {
+          padding: 0;
+          & > li, .microArticle {
+            border-bottom: 1px solid $dark-grey;
+          }
+          .question, h2.mArticle {
             min-height: 57px;
             background: $grey;
             padding: 18px 58px 18px 18px;
@@ -260,7 +264,7 @@
               }
             }
           }
-          .answer {
+          .answer, div.mArticle {
             padding: 18px;
             display: none;
             h1, h2, h3, h4 {
@@ -287,6 +291,27 @@
               &:hover {
                 color: $dimgray;
               }
+            }
+          }
+          section {
+            padding: 0;
+            border: none;
+          }
+          .legislation {
+            margin: 25px 0;
+            h3 {
+              @extend h4;
+            }
+            p, a {
+              font: 15px Arial;
+              line-height: 20px;
+            }
+            p {
+              margin: 5px 0;
+              color: $slategrey;
+            }
+            a {
+              @include links($red, $dimgray);
             }
           }
         }
