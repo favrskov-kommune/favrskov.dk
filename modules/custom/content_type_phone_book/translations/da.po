@@ -53,7 +53,7 @@ msgstr "Telefonnummer"
 
 #: content_type_phone_book.features.field_instance.inc:580;625
 msgid "Website"
-msgstr "Website"
+msgstr "Hjemmeside"
 
 #: content_type_phone_book.features.field_instance.inc:620
 msgid "Email"
@@ -64,8 +64,9 @@ msgid "Phone Book"
 msgstr "Telefonbog"
 
 #: content_type_phone_book.features.inc:27
+msgctxt "phonebook"
 msgid "Title"
-msgstr "Overskrift"
+msgstr "Titel"
 
 #: content_type_phone_book.module:17
 msgid "Telephone"
@@ -91,14 +92,26 @@ msgstr "Indholdstype Telefonbog"
 msgid "Content Types"
 msgstr "Indholdstyper"
 
+msgid "Contact phone"
+msgstr "Vagttelefon"
+
+msgid "Day of week"
+msgstr "Ugedag"
+
+msgid "Time"
+msgstr "Time"
+
+msgid "Full name"
+msgstr "Navn"
+
+msgid "Address 1"
+msgstr "Vej"
+
+msgid "Time must be in format '09.00-16.00'"
+msgstr "Time skal være i formatet '09.00-16.00'"
+
 msgid "Mob"
 msgstr "Mob"
 
 msgid "Contact phn"
 msgstr "Vagt"
-
-msgid "Department"
-msgstr "Afdeling"
-
-msgid "Administration"
-msgstr "Område"

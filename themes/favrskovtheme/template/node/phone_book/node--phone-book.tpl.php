@@ -1,49 +1,38 @@
+<?php
+/**
+ * @file
+ * Template for Phone Book Content Type.
+ */
+?>
+
+<?php $fields = array(
+  'field_phone_book_address',
+  'field_phone_book_phone',
+  'field_phone_book_cell_phone',
+  'field_phone_book_email',
+  'field_phone_book_map_link',
+  'field_phone_book_stuff',
+);
+
+// Throw node url to formatter.
+$content['field_phone_book_address'][0]['name_block']['first_name']['#view_mode'] = $view_mode;
+$content['field_phone_book_address'][0]['name_block']['last_name']['#view_mode'] = $view_mode;
+?>
+<?php print '<div id="contact-item-' . $phone_book_id . '" class="contact-item group">'; ?>
 <div class='contact-info'>
-  <h2>
-    <?php print $content['field_phone_book_firstname']['#items'][0]['safe_value'] .
-      ' ' . $content['field_phone_book_lastname']['#items'][0]['safe_value']; ?>
-  </h2>
+  <?php foreach ($fields as $field): ?>
 
-  <div class="short-contact-details">
-    <?php if (isset($content['field_image'])): ?>
-      <?php print render($content['field_image']) ?>
+    <?php if (isset($content[$field])): ?>
+      <?php print render($content[$field]) ?>
     <?php endif ?>
-
-    <div class="short-contact-details-fields">
-      <?php print render($content['field_phone_book_address_sep']) ?>
-
-      <?php if (!empty($content['field_phone_book_department'])): ?>
-        <?php print render($content['field_phone_book_department']) ?>
-      <?php endif; ?>
-
-      <?php if (!empty($content['field_phone_book_administration'])): ?>
-        <?php print render($content['field_phone_book_administration']) ?>
-      <?php endif; ?>
-
-      <?php if (!empty($content['field_phone_book_main_number']) && !empty($content['field_phone_book_main_number']['#items'][0]['value'])): ?>
-        <?php print render($content['field_phone_book_main_number']) ?>
-      <?php elseif (!empty($content['field_phone_book_phone']) && !empty($content['field_phone_book_phone']['#items'][0]['value'])) : ?>
-        <?php print render($content['field_phone_book_phone']) ?>
-      <?php endif; ?>
-
-      <?php if (!empty($content['field_phone_book_email']) && !empty($content['field_phone_book_email']['#items'][0]['email'])): ?>
-        <?php print render($content['field_phone_book_email']) ?>
-      <?php endif; ?>
-
-      <?php if (!empty($content['field_phone_book_website'])): ?>
-        <?php print render($content['field_phone_book_website']) ?>
-      <?php endif; ?>
-    </div>
-
-
-
-  </div>
-  <?php if (!empty($content['field_phone_book_stuff'])): ?>
-      <?php print render($content['field_phone_book_stuff']) ?>
-    <?php endif; ?>
+  <?php endforeach ?>
 </div>
 
 
+<?php if (isset($content['field_opening_hours'])): ?>
 
+  <?php print render($content['field_opening_hours']) ?>
 
+<?php endif ?>
 
+</div>

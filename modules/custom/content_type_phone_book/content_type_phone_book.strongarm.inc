@@ -34,13 +34,6 @@ function content_type_phone_book_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_phone_book';
-  $strongarm->value = 1;
-  $export['comment_form_location_phone_book'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_phone_book';
   $strongarm->value = '1';
   $export['comment_phone_book'] = $strongarm;
@@ -58,23 +51,6 @@ function content_type_phone_book_strongarm() {
   $strongarm->name = 'comment_subject_field_phone_book';
   $strongarm->value = 1;
   $export['comment_subject_field_phone_book'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'domain_node_phone_book';
-  $strongarm->value = array(
-    0 => 'DOMAIN_ALL',
-    1 => 'DOMAIN_ACTIVE',
-  );
-  $export['domain_node_phone_book'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'domain_source_phone_book';
-  $strongarm->value = '-5';
-  $export['domain_source_phone_book'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -104,7 +80,7 @@ function content_type_phone_book_strongarm() {
         'custom_settings' => FALSE,
       ),
       'node_embed' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'print' => array(
         'custom_settings' => FALSE,
@@ -131,19 +107,11 @@ function content_type_phone_book_strongarm() {
       'display' => array(
         'language' => array(
           'default' => array(
-            'weight' => '15',
-            'visible' => FALSE,
-          ),
-          'search_index' => array(
             'weight' => '0',
-            'visible' => FALSE,
-          ),
-          'node_embed' => array(
-            'weight' => '5',
             'visible' => TRUE,
           ),
-          'teaser' => array(
-            'weight' => '2',
+          'search_index' => array(
+            'weight' => '8',
             'visible' => FALSE,
           ),
         ),
@@ -151,6 +119,23 @@ function content_type_phone_book_strongarm() {
     ),
   );
   $export['field_bundle_settings_node__phone_book'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_phone_book';
+  $strongarm->value = '1';
+  $export['i18n_node_extended_phone_book'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_phone_book';
+  $strongarm->value = array(
+    0 => 'current',
+    1 => 'required',
+  );
+  $export['i18n_node_options_phone_book'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -177,16 +162,14 @@ function content_type_phone_book_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_phone_book';
-  $strongarm->value = array(
-    0 => 'status',
-  );
+  $strongarm->value = array();
   $export['node_options_phone_book'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_phone_book';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['node_preview_phone_book'] = $strongarm;
 
   $strongarm = new stdClass();
