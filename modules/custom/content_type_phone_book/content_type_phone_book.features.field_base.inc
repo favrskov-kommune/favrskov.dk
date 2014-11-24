@@ -49,7 +49,11 @@ function content_type_phone_book_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_opening_hours',
     'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
@@ -74,36 +78,6 @@ function content_type_phone_book_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'addressfield',
-  );
-
-  // Exported field_base: 'field_phone_book_blog'
-  $field_bases['field_phone_book_blog'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_phone_book_blog',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'link',
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'rel' => '',
-        'target' => 'default',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'link_field',
   );
 
   // Exported field_base: 'field_phone_book_cell_phone'
@@ -135,35 +109,6 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_phone_book_contact_phone'
-  $field_bases['field_phone_book_contact_phone'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_phone_book_contact_phone',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_phone_book_email'
   $field_bases['field_phone_book_email'] = array(
     'active' => 1,
@@ -180,13 +125,13 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'email',
   );
 
-  // Exported field_base: 'field_phone_book_facebook'
-  $field_bases['field_phone_book_facebook'] = array(
+  // Exported field_base: 'field_phone_book_map_link'
+  $field_bases['field_phone_book_map_link'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_phone_book_facebook',
+    'field_name' => 'field_phone_book_map_link',
     'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
@@ -264,36 +209,6 @@ function content_type_phone_book_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_phone_book_website'
-  $field_bases['field_phone_book_website'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_phone_book_website',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'link',
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'rel' => '',
-        'target' => 'default',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'link_field',
   );
 
   // Exported field_base: 'field_time'
