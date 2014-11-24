@@ -62,6 +62,12 @@
         border-bottom: 1px solid $border-top-over-news;
         margin-bottom: 40px;
         padding: 0 0 66px;
+
+        // For Article
+        .node-type-article & {
+          border: 0;
+        }
+
         p {
           font: 13pt Arial;
           color:  $slategrey;
