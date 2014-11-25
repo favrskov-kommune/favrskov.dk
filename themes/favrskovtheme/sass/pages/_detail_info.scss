@@ -22,6 +22,14 @@
     }
     @include at-breakpoint(12 $width-1040) {
       max-width: 90%;
+
+      // For Article
+      .embedded {
+        .content {
+          max-width: none;
+        }
+      }
+
     }
 
     // Sitebar
@@ -64,8 +72,10 @@
         padding: 0 0 66px;
 
         // For Article
-        .node-type-article & {
-          border: 0;
+        .node-type-article{
+          & {
+            border: 0;
+          }
         }
 
         p {
