@@ -214,11 +214,39 @@
         .contact-info {
           font: 15px Arial;
           line-height: 25px;
+          float: left;
+          width: 40%;
           &, a {
             color: $dimgray;
           }
           a {
             font-weight: bold;
+          }
+        }
+        .hours-field {
+          @include span-columns(5 omega, 10);
+          font: 15px Arial;
+          line-height: 25px;
+          color: $dimgray;
+          @include at-breakpoint(12 $width-600) {
+            font-size: 13px;
+          }
+          @include at-breakpoint(12 $width-480) {
+            @include span-columns(12, 12);
+            margin: 10px 0;
+          }
+          .opening-hours-item {
+            clear: both;
+          }
+          span {
+            width: 30%;
+            margin-right: 2%;
+            float: left;
+            display: block;
+            &:last-child {
+              margin-right: 0;
+              width: 40%;
+            }
           }
         }
       }
