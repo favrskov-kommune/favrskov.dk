@@ -164,7 +164,7 @@
       // Buttons self service
       .self-service {
         width: 100%;
-        background: $red;
+        background: #CC3333;
         min-height: 89px;
         @include border-radius(10px);
         position: relative;
@@ -179,7 +179,7 @@
           @include sprite(0px, -46px);
         }
         &:hover {
-          background: $dark-grey;
+          background: #FF3F3F;
         }
         a, span {
           display: block;
@@ -357,6 +357,9 @@
             }
           }
         }
+      }
+      .faq li:last-child {
+        border-bottom: 0;
       }
 
 

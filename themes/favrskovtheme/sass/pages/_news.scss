@@ -87,7 +87,7 @@
     }
   }
   .more-link {
-    @include main_max_width(46px, 0);
+    @include main_max_width(36px, 0);
     @include at-breakpoint(12 $width-1040) {
       max-width: 90%;
     }

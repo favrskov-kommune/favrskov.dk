@@ -106,7 +106,7 @@
         a {
           font-size: 24px;
           font-weight: bold;
-          @include links($dark-grey, $red);
+          @include links(#666, $red);
           letter-spacing: 0.5px;
         }
       }
@@ -115,7 +115,7 @@
         margin-top: 22px;
         a {
           font: 16px Arial;
-          @include links($dark-grey, $red);
+          @include links(#666, $red);
 
         }
       }
