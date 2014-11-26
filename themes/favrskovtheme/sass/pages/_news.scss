@@ -2,7 +2,7 @@
 // News page
 .news {
   width: 100%;
-  margin: 72px 0;
+  margin: 75px 0 50px;
   border-top: 1px solid $border-top-over-news;
   .content {
     padding: 0 !important;
@@ -12,13 +12,13 @@
       text-transform: uppercase;
       background: $white;
       display: table;
-      margin: -16px auto 0;
+      margin: -18px auto 0;
       padding: 0 10px;
   }
   .news-list {
     @include container;
     @extend %clearfix;
-    margin-top: 37px;
+    margin-top: 30px;
     li {
       @include span-columns(4, 16);
 
@@ -32,7 +32,7 @@
         @include links($slategrey, $white-red);
       }
       .date {
-        margin: 20px 0 10px;
+        margin: 20px 0 15px;
         display: block;
         a {
           font: 10pt Arial;
@@ -44,7 +44,7 @@
         a {
           font: 13pt Arial;
           color:  $slategrey;
-          line-height: 25px;
+          line-height: 22px;
         }
       }
       &:last-child {
@@ -53,6 +53,7 @@
       h1 {
         font-size: 16pt;
         font-weight: bold;
+        line-height: 25px;
       }
       @include at-breakpoint(12 $width-768) {
         @include span-columns(4, 12);
@@ -87,7 +88,7 @@
     }
   }
   .more-link {
-    @include main_max_width(46px, 0);
+    @include main_max_width(40px, 0);
     @include at-breakpoint(12 $width-1040) {
       max-width: 90%;
     }

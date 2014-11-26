@@ -88,9 +88,10 @@
 %center-block-transform {
   position: absolute;
   margin: auto;
-  top: 50%;
-  left: 50%;
-  @include transform(translate(-50%,-50%))
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 %center-block-transform-horizontal {
   position: absolute;

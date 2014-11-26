@@ -20,13 +20,14 @@ body {
   @include font-size();
   font-family: $sans;
   word-wrap: break-word;
-//  background: url(../images/subject_page.png) no-repeat center -479px;
+//  background: url(../images/front_page.png) no-repeat 344px top;
 //  opacity: 0.7;
 }
 
 //------------------------------------------------------------------------------
 // Ajax throbber
 .ajax-progress {
+
   margin-top: 50px;
 }
 

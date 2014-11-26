@@ -3,15 +3,11 @@
 
 .subject-grid {
   background: $grey;
-  margin-bottom: 46px;
+  margin-bottom: 55px;
 
   // For ie8
   .lt-ie8 & {
     min-width: 981px;
-  }
-
-  .taxonomy-list {
-    padding-top: 36px;
   }
 
   .taxonomy {
@@ -59,16 +55,18 @@
   // Header
   h3 {
     @include font-size(22);
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     a {
       color: $dark-green;
+      text-transform: uppercase;
+      @include font-size(18);
     }
   }
 
   // Subheaders
   h4 {
     @include font-size(15);
-    margin-bottom: 8px;
+    margin-bottom: 3px;
     font-family: Arial;
     font-weight: bold;
     a {
@@ -116,7 +114,7 @@
 
       @include inline-block(top);
       vertical-align: top;
-      margin-bottom: 35px;
+      margin-bottom: 20px;
       float: none;
       text-align: center;
       position: relative;
@@ -145,11 +143,11 @@
 
 // Taxonomy Image on Subject-grid
 .taxonomy-pic {
-  margin: 0 auto 15px;
-  height: 80px;
-  @include border-radius(80px);
+  margin: 0 auto 14px;
+  height: 70px;
+  @include border-radius(50%);
   background-color: $dark-green;
-  width: 80px;
+  width: 70px;
   position: relative;
 
   // Colors theme

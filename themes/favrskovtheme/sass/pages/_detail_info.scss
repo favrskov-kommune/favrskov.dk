@@ -4,7 +4,7 @@
   .content {
     @include container;
     @extend %clearfix;
-    padding: 46px 0;
+    padding: 22px 0 0;
 
     // For ie8
     .lt-ie8 & {
