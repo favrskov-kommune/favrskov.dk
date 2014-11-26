@@ -131,6 +131,9 @@
     &:nth-child(3n) {
       margin-right: 0;
     }
+    &:nth-child(4n) {
+      margin-right: 14.2%;
+    }
 
     // For ie8
     .lt-ie8 & {
