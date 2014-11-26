@@ -4,7 +4,9 @@
 .subject-grid {
   background: $grey;
   margin-bottom: 46px;
-
+  .content-container & .content {
+    padding: 0;
+  }
   // For ie8
   .lt-ie8 & {
     min-width: 981px;
@@ -58,10 +60,12 @@
 
   // Header
   h3 {
-    @include font-size(22);
-    margin-bottom: 8px;
+    font-family: $sans-medium;
+    @include font-size(18);
+    margin-bottom: 15px;
     a {
       color: $dark-green;
+      text-transform: uppercase;
     }
   }
 
@@ -82,51 +86,28 @@
   }
 }
 
-// For page erhverv
-.subject-grid {
+
+.front .subject-grid, .subject-grid {
   .taxonomy {
-    margin-right: 14.2%;
-    &:nth-child(3n) {
-      margin-right: 0;
-    }
+    font-size: 0;
+    @include span-columns(3, 12);
     // For ie8
     .lt-ie8 & {
-      margin-right: 9.55%;
+      margin-right: 1.2%;
+    }
+
+    @include inline-block(top);
+    margin-bottom: 35px;
+    float: none;
+    text-align: center;
+    position: relative;
+
+    &:nth-child(4n) {
+      margin-right: 0;
     }
     @include at-breakpoint(12 $width-980) {
-      &:nth-child(3n) {
-        margin-right: gutter(12);
-      }
-      &:nth-child(2n) {
-        margin-right: 0;
-      }
-    }
-  }
-}
-
-.front {
-  .subject-grid {
-    .taxonomy {
-      font-size: 0;
-      @include span-columns(3, 12);
-      // For ie8
-      .lt-ie8 & {
-        margin-right: 1.2%;
-      }
-
-      @include inline-block(top);
-      vertical-align: top;
-      margin-bottom: 35px;
-      float: none;
-      text-align: center;
-      position: relative;
-
+      @include span-columns(6, 12);
       &:nth-child(4n) {
-        margin-right: 0;
-      }
-      @include at-breakpoint(12 $width-980) {
-        @include span-columns(6, 12);
-        &:nth-child(4n) {
           margin-right: gutter(12);
         }
         &:nth-child(2n) {
@@ -140,7 +121,37 @@
       }
     }
   }
+
+
+
+// For page erhverv
+.subject-grid {
+  .taxonomy {
+    margin-right: 14.2%;
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+
+    // For ie8
+    .lt-ie8 & {
+      margin-right: 9.55%;
+    }
+
+    @include at-breakpoint(12 $width-980) {
+      @include span-columns(6, 12);
+      &:nth-child(3n) {
+        margin-right: gutter(12);
+      }
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+    @include at-breakpoint(12 $width-600) {
+      @include span-columns(12, 12);
+    }
+  }
 }
+
 
 
 // Taxonomy Image on Subject-grid
