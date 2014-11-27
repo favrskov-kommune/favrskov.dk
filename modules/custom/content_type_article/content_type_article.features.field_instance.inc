@@ -86,151 +86,6 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_image_link-field_image'
-  $field_instances['field_collection_item-field_image_link-field_image'] = array(
-    'bundle' => 'field_image_link',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_image',
-    'label' => t('Image'),
-    'required' => 1,
-    'settings' => array(
-      'alt_field' => 0,
-      'default_image' => 0,
-      'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
-      'title_field' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'media',
-      'settings' => array(
-        'allowed_schemes' => array(
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_browser_plus--media_browser_my_files' => 'media_browser_plus--media_browser_my_files',
-          'media_browser_plus--media_browser_thumbnails' => 'media_browser_plus--media_browser_thumbnails',
-          'upload' => 'upload',
-        ),
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'media_generic',
-      'weight' => 32,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_image_link-field_image_link_position'
-  $field_instances['field_collection_item-field_image_link-field_image_link_position'] = array(
-    'bundle' => 'field_image_link',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_image_link_position',
-    'label' => t('Position'),
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_select',
-      'weight' => 35,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_image_link-field_link'
-  $field_instances['field_collection_item-field_image_link-field_link'] = array(
-    'bundle' => 'field_image_link',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_link',
-    'label' => t('Link'),
-    'required' => 1,
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 1,
-        'rel' => '',
-        'target' => 'user',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'linkit' => array(
-        'enable' => 0,
-        'insert_plugin' => '',
-      ),
-      'rel_remove' => 'default',
-      'title' => 'none',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'link_field',
-      'weight' => 34,
-    ),
-  );
-
   // Exported field_instance: 'field_collection_item-field_publications-field_image'
   $field_instances['field_collection_item-field_publications-field_image'] = array(
     'bundle' => 'field_publications',
@@ -1146,57 +1001,6 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_image_link'
-  $field_instances['node-article-field_image_link'] = array(
-    'bundle' => 'article',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
-        'weight' => 32,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_image_link',
-    'label' => t('Image link'),
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'field_collection_embed',
-      'weight' => 23,
-    ),
-  );
-
   // Exported field_instance: 'node-article-field_image_thumbnail'
   $field_instances['node-article-field_image_thumbnail'] = array(
     'bundle' => 'article',
@@ -1928,56 +1732,6 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_send_update'
-  $field_instances['node-article-field_send_update'] = array(
-    'bundle' => 'article',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 29,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_send_update',
-    'label' => t('Send update'),
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_onoff',
-      'weight' => 37,
-    ),
-  );
-
   // Exported field_instance: 'node-article-field_table'
   $field_instances['node-article-field_table'] = array(
     'bundle' => 'article',
@@ -2134,9 +1888,9 @@ function content_type_article_field_default_field_instances() {
       ),
       'search_index' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy_local',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_synonyms',
+        'type' => 'taxonomy_term_reference_link',
         'weight' => 8,
       ),
       'teaser' => array(
@@ -2156,12 +1910,12 @@ function content_type_article_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'synonyms',
+      'module' => 'options',
       'settings' => array(
         'autocomplete_path' => 'synonyms/autocomplete',
         'size' => 60,
       ),
-      'type' => 'synonyms_autocomplete',
+      'type' => 'options_select',
       'weight' => 26,
     ),
   );
@@ -2489,7 +2243,6 @@ function content_type_article_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Bannerlink');
-  t('Image');
   t('Body');
   t('BorgerDK');
   t('Comment');
@@ -2501,22 +2254,18 @@ function content_type_article_field_default_field_instances() {
   t('Image');
   t('Image / thumbnail');
   t('Image description');
-  t('Image link');
-  t('Link');
   t('Open in new window');
   t('PDF file');
   t('Piwik Day');
   t('Piwik Month');
   t('Piwik Week');
   t('Piwik Year');
-  t('Position');
   t('Publication link');
   t('Publications');
   t('Publications title');
   t('Related boxes');
   t('Related content');
   t('Self Service');
-  t('Send update');
   t('Table');
   t('Taxonomy, KLE');
   t('Taxonomy, Location');
@@ -2524,8 +2273,6 @@ function content_type_article_field_default_field_instances() {
   t('Taxonomy, local');
   t('Teaser');
   t('Title');
-  t('Update category');
-  t('Update teaser');
   t('Use full page width, no right menu will be shown');
   t('Video');
   t('Video description');
