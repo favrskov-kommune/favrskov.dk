@@ -29,28 +29,41 @@
     }
   }
 
-
   .taxonomy:hover {
-      a {
-        color: $liteGray;
+    a {
+      color: $liteGray;
 
-        &:hover {
+      &:hover {
 
-          // Colors theme
-          .violet      & { color: $violet; }
-          .dark-grey   & { color: $dark-grey; }
-          .grey        & { color: $gray; }
-          .yellow      & { color: $dirty-yellow; }
-          .blue        & { color: $deepBlue; }
-          .pink        & { color: $pink; }
-          .salat-green & { color: $salatGreen; }
+        // Colors theme
+        .violet & {
+          color: $violet;
+        }
+        .dark-grey & {
+          color: $dark-grey;
+        }
+        .grey & {
+          color: $gray;
+        }
+        .yellow & {
+          color: $dirty-yellow;
+        }
+        .blue & {
+          color: $deepBlue;
+        }
+        .pink & {
+          color: $pink;
+        }
+        .salat-green & {
+          color: $salatGreen;
         }
       }
-
-      .taxonomy-pic {
-        background-color: $liteGray;
-      }
     }
+
+    .taxonomy-pic {
+      background-color: $liteGray;
+    }
+  }
 
   // Header
   h3 {
@@ -140,7 +153,6 @@
   }
 }
 
-
 // Taxonomy Image on Subject-grid
 .taxonomy-pic {
   margin: 0 auto 14px;
@@ -151,13 +163,27 @@
   position: relative;
 
   // Colors theme
-  .violet      & { background-color: $violet; }
-  .dark-grey   & { background-color: $dark-grey; }
-  .grey        & { background-color: $gray; }
-  .yellow      & { background-color: $dirty-yellow; }
-  .blue        & { background-color: $deepBlue; }
-  .pink        & { background-color: $pink; }
-  .salat-green & { background-color: $salatGreen; }
+  .violet & {
+    background-color: $violet;
+  }
+  .dark-grey & {
+    background-color: $dark-grey;
+  }
+  .grey & {
+    background-color: $gray;
+  }
+  .yellow & {
+    background-color: $dirty-yellow;
+  }
+  .blue & {
+    background-color: $deepBlue;
+  }
+  .pink & {
+    background-color: $pink;
+  }
+  .salat-green & {
+    background-color: $salatGreen;
+  }
 
   @include transition-duration(.2s);
 

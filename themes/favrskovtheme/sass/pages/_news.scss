@@ -8,12 +8,12 @@
     padding: 0 !important;
   }
   h2 {
-      font-size: 18pt;
-      text-transform: uppercase;
-      background: $white;
-      display: table;
-      margin: -18px auto 0;
-      padding: 0 10px;
+    font-size: 18pt;
+    text-transform: uppercase;
+    background: $white;
+    display: table;
+    margin: -18px auto 0;
+    padding: 0 10px;
   }
   .news-list {
     @include container;
@@ -36,14 +36,14 @@
         display: block;
         a {
           font: 10pt Arial;
-          color:  $slategrey;
+          color: $slategrey;
           font-weight: bold;
         }
       }
       p {
         a {
           font: 13pt Arial;
-          color:  $slategrey;
+          color: $slategrey;
           line-height: 22px;
         }
       }
@@ -62,7 +62,7 @@
           margin-right: gutter(12);
         }
         &:nth-child(3n) {
-          margin-right:0;
+          margin-right: 0;
         }
       }
       @include at-breakpoint(12 $width-600) {
@@ -71,7 +71,7 @@
           margin-right: gutter(12);
         }
         &:nth-child(2n) {
-          margin-right:0;
+          margin-right: 0;
         }
       }
       @include at-breakpoint(12 $width-480) {

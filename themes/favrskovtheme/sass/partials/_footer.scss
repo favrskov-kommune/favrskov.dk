@@ -12,6 +12,7 @@
   }
 
 }
+
 .footer-wrapper {
   background: none !important;
   @include main_max_width(0, 0);
@@ -48,7 +49,7 @@
       display: block;
     }
   }
-  h2,h1 {
+  h2, h1 {
     color: #003F3D;
     font-size: 22px;
     font-family: $sans-medium;
@@ -88,7 +89,7 @@
       margin-right: gutter(12);
     }
     &:nth-child(3n) {
-      margin-right:0;
+      margin-right: 0;
     }
   }
   @include at-breakpoint(12 $width-600) {
@@ -97,7 +98,7 @@
       margin-right: gutter(12);
     }
     &:nth-child(2n) {
-      margin-right:0;
+      margin-right: 0;
     }
   }
   @include at-breakpoint(12 $width-480) {
