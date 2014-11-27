@@ -10,10 +10,6 @@
   border-bottom: 1px solid $slategrey;
   margin-bottom: 46px;
 
-  .taxonomy-list {
-    padding-top: 36px;
-  }
-
   .taxonomy {
     font-size: 0;
     @include span-columns(4, 12);

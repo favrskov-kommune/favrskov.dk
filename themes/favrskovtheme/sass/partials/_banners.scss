@@ -1,71 +1,73 @@
 //------------------------------------------------------------------------------
 // Bototom banners
 
-.view-banners {
-  padding-bottom: 0;
-  margin: -70px auto -30px;
-  .banner-link {
-    margin-bottom: 0;
+#banners {
+  .view-banners {
+    padding: 0;
+    margin: 0 auto;
+    .banner-link {
+      margin-bottom: 0;
 
-    a {
-      display: block;
-      background: rgba($dark-grey, .6);
+      a {
+        display: block;
+        background: rgba($dark-grey, .6);
 
-      // For ie8
-      .lt-ie8 & {
-        background: $dark-grey;
-        @include opacity(.8);
+        // For ie8
+        .lt-ie8 & {
+          background: $dark-grey;
+          @include opacity(.8);
+        }
+
+        min-height: 44px;
+        padding: 33px 5% 30px;
+        width: 100%;
+        @include box-sizing(border-box);
+        @include font-size(22);
+        @include links($white, $white);
+        &:before {
+          font-family: "fontello";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+
+          display: inline-block;
+          text-decoration: inherit;
+          width: 1em;
+          text-align: center;
+          content: '\e807';
+          color: $white;
+          float: right;
+          line-height: 23px;
+          @include font-size(30);
+        }
       }
+    }
 
-      min-height: 44px;
-      padding: 33px 5% 30px;
+    a + .banner-link {
+      bottom: 0;
+      position: absolute;
+      left: 0;
       width: 100%;
-      @include box-sizing(border-box);
-      @include font-size(22);
-      @include links($white, $white);
-      &:before {
-        font-family: "fontello";
-        font-style: normal;
-        font-weight: normal;
-        speak: none;
+      z-index: 1;
 
-        display: inline-block;
-        text-decoration: inherit;
-        width: 1em;
-        text-align: center;
-        content: '\e807';
-        color: $white;
-        float: right;
-        line-height: 23px;
-        @include font-size(30);
+      a {
+        padding: 10% 5% 10%;
+        @include at-breakpoint(12 $width-768) {
+          padding: 6% 5%;
+        }
+        @include at-breakpoint(12 $width-600) {
+          padding: 4% 5%;
+        }
       }
-    }
-  }
-
-  a + .banner-link {
-    bottom: 0;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-
-    a {
-      padding: 10% 5% 10%;
-      @include at-breakpoint(12 $width-768) {
-        padding: 6% 5%;
+      a:before {
+        display: none;
       }
-      @include at-breakpoint(12 $width-600) {
-        padding: 4% 5%;
-      }
-    }
-    a:before {
-      display: none;
     }
   }
 }
 
 .banners-list {
-  margin-bottom: 33px;
+  margin-bottom: 35px;
   font-size: 0;
 
   li {
@@ -134,7 +136,6 @@
       @include span-columns(12, 12);
     }
   }
-
 
   img {
     display: block;
