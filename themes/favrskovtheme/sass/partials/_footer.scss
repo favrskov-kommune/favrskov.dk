@@ -12,6 +12,7 @@
   }
 
 }
+
 .footer-wrapper {
   background: none !important;
   @include main_max_width(0, 0);
@@ -48,18 +49,18 @@
       display: block;
     }
   }
-  h2,h1 {
+  h2, h1 {
     color: #003F3D;
     font-size: 22px;
     font-family: $sans-medium;
     font-weight: bold;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
   }
 
   a, p, span {
     color: $dark-green;
     font-family: $sans-medium;
-    line-height: 29px;
+    line-height: 27px;
     font-weight: bold;
     font-size: 15px;
   }
@@ -67,7 +68,7 @@
     margin-bottom: 25px;
   }
   .small-height {
-    line-height: 20px;
+    line-height: 22px;
   }
 
   a {
@@ -88,7 +89,7 @@
       margin-right: gutter(12);
     }
     &:nth-child(3n) {
-      margin-right:0;
+      margin-right: 0;
     }
   }
   @include at-breakpoint(12 $width-600) {
@@ -97,7 +98,7 @@
       margin-right: gutter(12);
     }
     &:nth-child(2n) {
-      margin-right:0;
+      margin-right: 0;
     }
   }
   @include at-breakpoint(12 $width-480) {

@@ -62,7 +62,7 @@
     overflow: hidden;
     margin-top: 17px;
     float: left;
-    margin-left: 6px;
+    margin-left: 23px;
     @include at-breakpoint(12 $width-980) {
       float: none;
       margin: 30px auto 120px;
@@ -76,7 +76,7 @@
     @extend %clearfix;
     position: absolute;
     top: 0;
-    right: 246px;
+    right: 277px;
     @include at-breakpoint(12 $width-980) {
       position: static;
       text-align: center;
@@ -88,7 +88,7 @@
       font-family: $sans-medium;
       color: #333;
       font-size: 20px;
-      padding: 10px 19px 0;
+      padding: 10px 20px 0;
       text-decoration: none;
       text-transform: uppercase;
       display: block;
@@ -144,6 +144,7 @@
     width: 230px;
     float: right;
     margin-top: 50px;
+    margin-right: 30px;
     @include at-breakpoint(12 $width-980) {
       float: none;
       top: 90px;
@@ -218,8 +219,9 @@
       position: absolute;
       width: 41px;
       height: 100%;
-      top: 0; right: 0;
-      text-indent:-9999px;
+      top: 0;
+      right: 0;
+      text-indent: -9999px;
       z-index: 1;
       background: url(../images/search_icon.png) no-repeat center center;
       @include at-breakpoint(12 $width-980) {
@@ -235,7 +237,6 @@
       width: 72%;
     }
   }
-
 
   // For admin
   .drupal-system {
@@ -260,6 +261,5 @@
       }
     }
   }
-
 
 }

@@ -5,15 +5,13 @@
   background: $bg-color url(#{$sprite}) no-repeat $x $y;
 }
 
-
 //------------------------------------------------------------------------------
 // Font resizing
 
-@mixin font-size($sizeValue: 13){
+@mixin font-size($sizeValue: 13) {
   font-size: ($sizeValue) + px;
   font-size: ($sizeValue / 16) + rem;
 }
-
 
 //------------------------------------------------------------------------------
 // Links
@@ -27,11 +25,10 @@
   }
 }
 
-
 //------------------------------------------------------------------------------
 // Input fields
 
-@mixin inputs( $width: auto, $height: auto, $border: none, $color: black) {
+@mixin inputs($width: auto, $height: auto, $border: none, $color: black) {
   height: $height;
   width: $width;
   border: $border;
@@ -40,11 +37,10 @@
   color: $color;
 }
 
-
 //------------------------------------------------------------------------------
 // Submit Button
 
-@mixin submit( $width: auto, $height: auto, $border: none, $color: #fff ) {
+@mixin submit($width: auto, $height: auto, $border: none, $color: #fff) {
   width: $width;
   height: $height;
   line-height: $height;
@@ -53,16 +49,14 @@
   padding: 5px;
 }
 
-
-
 //------------------------------------------------------------------------------
 // Center block
-@mixin center-block($w,$h) {
+@mixin center-block($w, $h) {
   position: absolute;
   width: $w+px;
   height: $h+px;
   top: 50%;
-  left:50%;
+  left: 50%;
   margin-left: -($w/2)+px;
   margin-top: -($h/2)+px;
 }
@@ -77,34 +71,34 @@
 @mixin center-horizontal($w) {
   position: absolute;
   width: $w+px;
-  left:50%;
+  left: 50%;
   margin-left: -($w/2)+px;
 }
-
-
 
 //------------------------------------------------------------------------------
 // center block transform
 %center-block-transform {
   position: absolute;
   margin: auto;
-  top: 50%;
-  left: 50%;
-  @include transform(translate(-50%,-50%))
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
+
 %center-block-transform-horizontal {
   position: absolute;
   margin: auto;
   left: 50%;
-  @include transform(translate(-50%,0))
+  @include transform(translate(-50%, 0))
 }
+
 %center-block-transform-vertical {
   position: absolute;
   margin: auto;
   top: 50%;
-  @include transform(translate(0,-50%))
+  @include transform(translate(0, -50%))
 }
-
 
 //------------------------------------------------------------------------------
 // CSS3 Animation
@@ -127,6 +121,7 @@
 %no-padding {
   padding: 0;
 }
+
 %no-margin {
   margin: 0;
 }
@@ -138,11 +133,9 @@
 //------------------------------------------------------------------------------
 // before/after
 %before-after {
-    content: "";
-    display: block;
+  content: "";
+  display: block;
 }
-
-
 
 //------------------------------------------------------------------------------
 // main width
@@ -150,7 +143,6 @@
   max-width: $main_width;
   margin: $top auto $bottom;
 }
-
 
 //------------------------------------------------------------------------------
 // CLear Fix
@@ -175,13 +167,13 @@
 @mixin placeholder($color) {
   &.placeholder {
     color: $color;
-    }
+  }
   &:-moz-placeholder {
     color: $color;
-    }
+  }
   &::-webkit-input-placeholder {
     color: $color;
-    }
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -204,14 +196,11 @@
   }
 }
 
-
 //------------------------------------------------------------------------------
 
 // Responsive
 
 //------------------------------------------------------------------------------
-
-
 
 /*
 // Screen---- max-width(980px)

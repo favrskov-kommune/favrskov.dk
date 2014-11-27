@@ -26,7 +26,7 @@
   .swiper-container {
     margin: 0 auto;
     max-width: 981px;
-    position:relative;
+    position: relative;
   }
   .gallery {
     max-height: 490px;
@@ -75,7 +75,7 @@
   padding: 0;
 
   .slider-nav-container {
-    padding: 36px 0;
+    padding: 30px 0;
     @include at-breakpoint(12 $width-480) {
       padding: 10px 0;
     }
@@ -150,7 +150,8 @@
           &:before {
             @extend %before-after;
             position: absolute;
-            top: 0;left: 0;
+            top: 0;
+            left: 0;
             height: 100%;
             width: 100%;
             z-index: 10;
@@ -186,29 +187,27 @@
       }
     }
 
-     .inner {
-        height: 51px;
-        width: 100%;
-        @extend %clearfix;
-      }
+    .inner {
+      height: 51px;
+      width: 100%;
+      @extend %clearfix;
+    }
 
-      .description {
-        @include font-size(14);
-        line-height: 18px;
-        float: left;
-        width: 57%;
-        height: 100%;
-        border-top: 1px solid $slatgrayLight;
-        padding: 8px;
-        overflow: hidden;
-        @include at-breakpoint(12 $width-480) {
-          display: none;
-        }
+    .description {
+      @include font-size(14);
+      line-height: 18px;
+      float: left;
+      width: 57%;
+      height: 100%;
+      border-top: 1px solid $slatgrayLight;
+      padding: 8px;
+      overflow: hidden;
+      @include at-breakpoint(12 $width-480) {
+        display: none;
       }
+    }
   }
 }
-
-
 
 //------------------------------------------------------------------------------
 //  Nodes slider
@@ -267,6 +266,7 @@
     background-position: -100px -343px;
   }
 }
+
 // Node slider pagination
 .view-subject-subpages {
   .pagination {
@@ -310,7 +310,7 @@
 }
 
 .view-slider {
-  height: 488px;
+  height: 460px;
   @include at-breakpoint(12 $width-480) {
     margin: 0 !important;
     height: 263px;
@@ -321,7 +321,7 @@
   }
 }
 
-.view-display-id-slider_with_nav .pagination{
+.view-display-id-slider_with_nav .pagination {
   bottom: 25px;
   right: 116px;
   position: absolute;
@@ -334,88 +334,88 @@
 }
 
 // Prev next block
-  .nav-btn {
-    @include transition-property(all);
-    @include transition-timing-function(ease-in);
-    @include transition-duration(.1s);
-    @include sprite(-93px, -371px, rgba($black, .4));
+.nav-btn {
+  @include transition-property(all);
+  @include transition-timing-function(ease-in);
+  @include transition-duration(.1s);
+  @include sprite(-93px, -371px, rgba($black, .4));
 
-    // background-color: rgba($black, .4);
-    display: block;
-    height: 48px;
-    margin-top: -24px;
-    position: absolute;
-    text-indent: -999em;
-    top: 50%;
-    width: 30px;
-    z-index: 10;
+  // background-color: rgba($black, .4);
+  display: block;
+  height: 48px;
+  margin-top: -24px;
+  position: absolute;
+  text-indent: -999em;
+  top: 50%;
+  width: 30px;
+  z-index: 10;
 
-    .lt-ie9 & {
-      background: url(../images/sprite.png) no-repeat;
-      background-position: -93px -371px;
-      background-color: $black;
-    }
-    &:hover {
-      background-color: rgba($black, .6)
-    }
+  .lt-ie9 & {
+    background: url(../images/sprite.png) no-repeat;
+    background-position: -93px -371px;
+    background-color: $black;
   }
+  &:hover {
+    background-color: rgba($black, .6)
+  }
+}
 
-  .arrow-right {
-    right: 0;
+.arrow-right {
+  right: 0;
+  background-position: -132px -371px;
+
+  .lt-ie9 & {
     background-position: -132px -371px;
-
-    .lt-ie9 & {
-      background-position: -132px -371px;
-    }
   }
+}
 
 // Slider with Navigation
 .about-slide {
-    @include transition-property(all);
-    @include transition-timing-function(ease-in);
-    @include transition-duration(.1s);
-    background: $white;
-    color: $gray;
-    padding: 26px 22px 21px 17px;
-    width: 336px;
+  @include transition-property(all);
+  @include transition-timing-function(ease-in);
+  @include transition-duration(.1s);
+  background: $white;
+  color: $gray;
+  padding: 26px 22px 21px 17px;
+  width: 336px;
+  position: absolute;
+  top: 137px;
+  left: 0;
+  z-index: 10;
+
+  a {
+    text-indent: -999em;
+    display: block;
     position: absolute;
-    top: 137px;
     left: 0;
-    z-index: 10;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    // IE bug fix with transparent links which have position absolute
+    background: url('about:blank');
+  }
 
-    a {
-      text-indent: -999em;
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 9;
-      // IE bug fix with transparent links which have position absolute
-      background: url('about:blank');
-    }
+  .headline {
+    padding: 16px 5px;
+    z-index: 1;
+  }
 
-    .headline {
-      padding: 16px 5px;
-      z-index: 1;
-    }
+  h1 {
+    font-family: $sans;
+    @include font-size(43);
+    color: $darkGray;
+  }
 
-    h1 {
-      font-family: $sans;
-      @include font-size(43);
-      color: $darkGray;
-    }
+  h2 {
+    @include font-size(16);
+    margin-bottom: 10px;
+  }
 
-    h2 {
-      @include font-size(16);
-      margin-bottom: 10px;
-    }
-
-    &:hover {
-      color: $liteGray;
-      cursor: pointer;
-    }
+  &:hover {
+    color: $liteGray;
+    cursor: pointer;
+  }
 }
 
 //------------------------------------------------------------------------------
