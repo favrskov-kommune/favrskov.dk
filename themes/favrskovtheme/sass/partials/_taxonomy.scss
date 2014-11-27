@@ -5,6 +5,10 @@
   background: $grey;
   margin-bottom: 55px;
 
+  .content-container & .content {
+    padding: 0;
+  }
+
   // For ie8
   .lt-ie8 & {
     min-width: 981px;
@@ -67,8 +71,10 @@
 
   // Header
   h3 {
+    font-family: $sans-medium;
     @include font-size(22);
     margin-bottom: 15px;
+
     a {
       color: $dark-green;
       text-transform: uppercase;
@@ -93,6 +99,11 @@
   }
 }
 
+.front .subject-grid {
+  .taxonomy-list {
+    padding: 20px 0 0 0;
+  }
+}
 
 .front .subject-grid, .subject-grid {
   .taxonomy {
@@ -115,26 +126,29 @@
     @include at-breakpoint(12 $width-980) {
       @include span-columns(6, 12);
       &:nth-child(4n) {
-          margin-right: gutter(12);
-        }
-        &:nth-child(2n) {
-          margin-right: 0;
-        }
+        margin-right: gutter(12);
       }
-      @include at-breakpoint(12 $width-600) {
+      &:nth-child(2n) {
         margin-right: 0;
-        @include span-columns(12, 12);
-        text-align: left;
       }
     }
+    @include at-breakpoint(12 $width-600) {
+      margin-right: 0;
+      @include span-columns(12, 12);
+      text-align: left;
+    }
   }
-
-
+}
 
 // For page erhverv
 .subject-grid {
+
+  .taxonomy-list {
+    padding: 20px 50px 0;
+  }
   .taxonomy {
     margin-right: 14.2%;
+    margin-bottom: 25px;
     &:nth-child(3n) {
       margin-right: 0;
     }
@@ -155,6 +169,9 @@
       &:nth-child(2n) {
         margin-right: 0;
       }
+    }
+    @include at-breakpoint(12 $width-600) {
+      @include span-columns(12, 12);
     }
   }
 }
