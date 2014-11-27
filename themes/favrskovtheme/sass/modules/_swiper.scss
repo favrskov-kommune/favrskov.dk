@@ -76,6 +76,10 @@
 .view-subject-subpages .swiper-container {
   .swiper-wrapper {
     overflow: hidden;
+    // for article
+    .node-type-article & {
+      overflow: visible;
+    }
   }
 }
 
