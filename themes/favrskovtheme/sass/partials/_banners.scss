@@ -64,6 +64,17 @@
   }
 }
 
+// For page kommunen
+.content-container > div:first-child {
+  .banners {
+    background: #ececeb;
+    .view-banners {
+      margin: 0 auto;
+      padding: 25px 0 40px;
+    }
+  }
+}
+
 .banners-list {
   //margin-bottom: 33px;
   font-size: 0;
