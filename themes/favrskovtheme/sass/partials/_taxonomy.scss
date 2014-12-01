@@ -127,11 +127,10 @@
 // For page erhverv
 .subject-grid {
   .taxonomy {
-    margin-right: 14.2%;
     &:nth-child(3n) {
       margin-right: 0;
     }
-    &:nth-child(4n) {
+    &, &:nth-child(4n) {
       margin-right: 14.2%;
     }
 
