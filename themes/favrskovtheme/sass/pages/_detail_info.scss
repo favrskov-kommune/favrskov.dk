@@ -179,6 +179,19 @@
           margin-bottom: 0;
         }
       }
+      .pane-node-field-related-content {
+        margin: 15px 0;
+        .related-content {
+          margin: 10px 0;
+          a {
+             color: $red;
+              &:hover {
+                color: $dimgray;
+              }
+          }
+        }
+      }
+
       //------------------------------------------------------------------------
       // Article
 
