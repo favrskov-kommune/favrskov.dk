@@ -10,49 +10,6 @@
 function content_type_bannerlink_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-bannerlink-field_banner_link_color'
-  $field_instances['node-bannerlink-field_banner_link_color'] = array(
-    'bundle' => 'bannerlink',
-    'default_value' => array(
-      0 => array(
-        'value' => 'rgb(64,116,217)',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_banner_link_color',
-    'label' => t('Color'),
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_buttons',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance: 'node-bannerlink-field_displayed_title'
   $field_instances['node-bannerlink-field_displayed_title'] = array(
     'bundle' => 'bannerlink',
