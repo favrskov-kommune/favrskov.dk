@@ -1055,9 +1055,9 @@ function content_type_news_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy_local',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_synonyms',
+        'type' => 'taxonomy_term_reference_link',
         'weight' => 9,
       ),
       'print' => array(
@@ -1069,9 +1069,9 @@ function content_type_news_field_default_field_instances() {
       ),
       'search_index' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy_local',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_synonyms',
+        'type' => 'taxonomy_term_reference_link',
         'weight' => 8,
       ),
       'teaser' => array(
@@ -1091,14 +1091,14 @@ function content_type_news_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'synonyms',
+      'module' => 'options',
       'settings' => array(
         'auto_creation' => 0,
         'autocomplete_path' => 'synonyms/autocomplete',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
-      'type' => 'synonyms_autocomplete',
+      'type' => 'options_select',
       'weight' => 15,
     ),
   );
