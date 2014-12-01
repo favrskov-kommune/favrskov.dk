@@ -88,9 +88,8 @@
     width: 361px;
     min-height: auto;
     z-index: 2;
-    //@include center-vertical(403);
+    @include center-vertical(403);
     left: 0;
-    position: relative;
     .slide-description {
       height: 127px;
       margin-bottom: 10px;

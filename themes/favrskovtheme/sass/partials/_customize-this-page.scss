@@ -1,11 +1,14 @@
 
 
-// Subject page
 .panels-ipe-editing {
+  .panels-ipe-region {
+    position: relative;
+  }
+  // Subject page
   .information {
     height: auto;
     width: 50%;
-    top: 310px;
+    top: 210px;
     margin-top: 0;
     padding: 5px;
     @extend %clearfix;
@@ -14,5 +17,20 @@
       width: 50%;
     }
   }
-
+  // Front-page
+  .front-slider {
+    .panels-ipe-region {
+      position: relative;
+      z-index: 1;
+    }
+  }
+  .ui-sortable {
+    &, .panels-ipe-portlet-wrapper {
+      position: relative;
+      // Slider front-page
+      .pane-slider-slider-nav {
+        position: relative;
+      }
+    }
+  }
 }
