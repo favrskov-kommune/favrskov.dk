@@ -553,6 +553,9 @@ projects[dynamic_background][subdir] = contrib
 projects[dynamic_background][version] = 2.0-rc4
 projects[dynamic_background][patch][1904738] = "https://drupal.org/files/issues/dynamic_background-domain-1904738-4.patch"
 
+projects[content_reminder][subdir] = contrib
+projects[content_reminder][version] = 1.0
+
 ; Libraries
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] =

@@ -55,56 +55,6 @@ function content_type_slider_element_field_default_field_instances() {
     ),
   );
 
-
-  // Exported field_instance: 'node-slider_element-field_color'
-  $field_instances['node-slider_element-field_color'] = array(
-    'bundle' => 'slider_element',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'colorfield',
-        'settings' => array(
-          'height' => 20,
-          'width' => 20,
-        ),
-        'type' => 'colorfield_color_swatch',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_color',
-    'label' => t('Background color'),
-    'required' => 1,
-    'settings' => array(
-      'colorfield_colorpicker_type' => 'farbtastic',
-      'colorfield_enable_colorpicker' => TRUE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'colorfield',
-      'settings' => array(
-        'colorfield_options' => array(
-          'colorfield_colorpicker_type' => 'farbtastic',
-          'colorfield_enable_colorpicker' => 1,
-        ),
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'colorfield_unified_textfield',
-      'weight' => 42,
-    ),
-  );
-
-
   // Exported field_instance: 'node-slider_element-field_external_link'
   $field_instances['node-slider_element-field_external_link'] = array(
     'bundle' => 'slider_element',
@@ -160,50 +110,6 @@ function content_type_slider_element_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-slider_element-field_hide_text'
-  $field_instances['node-slider_element-field_hide_text'] = array(
-    'bundle' => 'slider_element',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hide_text',
-    'label' => t('Hide title and white box'),
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_onoff',
-      'weight' => 4,
     ),
   );
 
