@@ -89,6 +89,7 @@ projects[piwik_stats][patch][2171029] = https://www.drupal.org/files/issues/piwi
 projects[references_dialog][subdir] = contrib
 ;projects[references_dialog][version] = 1.0-alpha4
 projects[references_dialog][version] = 1.0-beta1
+projects[references_dialog][patch][2315905] = https://www.drupal.org/files/issues/references_dialog_beta1-fix_theme_links-2315905-20.patch
 
 projects[entity][subdir] = contrib
 projects[entity][version] = 1.5
