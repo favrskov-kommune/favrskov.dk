@@ -34,4 +34,3 @@ features[variable][] = menu_parent_bannerlink
 features[variable][] = node_options_bannerlink
 features[variable][] = node_preview_bannerlink
 features[variable][] = node_submitted_bannerlink
-mtime = 1417094822
