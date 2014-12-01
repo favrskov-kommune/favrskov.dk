@@ -1,22 +1,21 @@
 //------------------------------------------------------------------------------
 // Bototom banners
 
-#banners {
-  .view-banners {
-    padding: 0;
-    margin: 0 auto;
-    .banner-link {
-      margin-bottom: 0;
+.view-banners {
+  padding-bottom: 0;
+  margin: 23px auto;
+  .banner-link {
+    margin-bottom: 0;
 
-      a {
-        display: block;
-        background: rgba($dark-grey, .6);
+    a {
+      display: block;
+      background: rgba($dark-grey, .6);
 
-        // For ie8
-        .lt-ie8 & {
-          background: $dark-grey;
-          @include opacity(.8);
-        }
+      // For ie8
+      .lt-ie8 & {
+        background: $dark-grey;
+        @include opacity(.8);
+      }
 
         min-height: 44px;
         padding: 33px 5% 30px;
@@ -66,8 +65,19 @@
   }
 }
 
+// For page kommunen
+.content-container > div:first-child {
+  .banners {
+    background: #ececeb;
+    .view-banners {
+      margin: 0 auto;
+      padding: 25px 0 40px;
+    }
+  }
+}
+
 .banners-list {
-  margin-bottom: 35px;
+  //margin-bottom: 33px;
   font-size: 0;
 
   li {

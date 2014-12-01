@@ -3,8 +3,11 @@
   .content {
     @include container;
     @extend %clearfix;
-    padding: 22px 0 0;
-
+    // for node news
+    .node-type-news &,
+    .node-type-article & {
+      padding: 46px 0;
+    }
     // For ie8
     .lt-ie8 & {
       width: 981px;
@@ -54,6 +57,13 @@
       }
       .swiper-container {
         height: auto;
+
+        // for article
+        .node-type-article & {
+          height: 420px;
+          background: none;
+        }
+
       }
       h1 {
         margin: 18px 0;
