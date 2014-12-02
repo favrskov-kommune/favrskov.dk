@@ -35,7 +35,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image',
-    'label' => t('Image'),
+    'label' => 'Billede',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
@@ -92,7 +92,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_alt_text',
-    'label' => t('Image alt text'),
+    'label' => 'Alt tekst',
     'required' => 1,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -137,7 +137,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_link',
-    'label' => t('Link'),
+    'label' => 'Link',
     'required' => 0,
     'settings' => array(
       'attributes' => array(
@@ -199,7 +199,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_transperent_overlay',
-    'label' => t('Transperent overlay'),
+    'label' => 'Transperent lag',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -218,10 +218,10 @@ function content_type_banner_element_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Image');
-  t('Image alt text');
+  t('Alt tekst');
+  t('Billede');
   t('Link');
-  t('Transperent overlay');
+  t('Transperent lag');
 
   return $field_instances;
 }

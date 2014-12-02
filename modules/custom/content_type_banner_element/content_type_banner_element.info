@@ -1,7 +1,6 @@
 name = Content Type Banner element
 core = 7.x
 package = Content Types
-php = 5.2.4
 version = 7.x-1.0
 project = content_type_banner_element
 dependencies[] = ctools
@@ -38,3 +37,4 @@ features[variable][] = menu_parent_banner_element
 features[variable][] = node_options_banner_element
 features[variable][] = node_preview_banner_element
 features[variable][] = node_submitted_banner_element
+mtime = 1417541061
