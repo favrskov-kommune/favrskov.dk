@@ -322,7 +322,7 @@ function content_type_subjectpage_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_top_image',
     'label' => t('Top image'),
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
