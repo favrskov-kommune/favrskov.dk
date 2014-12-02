@@ -39,6 +39,10 @@
   @include opacity(0.5);
   cursor: pointer;
 
+  @include at-breakpoint(12 $width-980) {
+    display: none;
+  }
+
   // For ie8
   .lt-ie8 & {
     z-index: 15;
