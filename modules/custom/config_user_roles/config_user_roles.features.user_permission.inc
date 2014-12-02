@@ -69,6 +69,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
       'anonymous user' => 'anonymous user',
     ),
     'module' => 'node',
@@ -1087,6 +1088,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1105,6 +1107,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create bannerlink content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1123,6 +1126,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create borger_dk_article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1132,6 +1136,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create factbox content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1141,6 +1146,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create faq content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1222,6 +1228,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create phone_book content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1231,6 +1238,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create self_service content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1312,6 +1320,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1339,6 +1348,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any bannerlink content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1357,6 +1367,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any borger_dk_article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1375,6 +1386,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any factbox content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1384,6 +1396,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any faq content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1456,6 +1469,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any phone_book content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1465,6 +1479,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any self_service content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1519,6 +1534,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1546,6 +1562,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own bannerlink content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1564,6 +1581,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own borger_dk_article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1582,6 +1600,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own factbox content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1591,6 +1610,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own faq content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1663,6 +1683,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own phone_book content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -1672,6 +1693,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own self_service content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2014,6 +2036,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2041,6 +2064,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any bannerlink content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2059,6 +2083,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any borger_dk_article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2077,6 +2102,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any factbox content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2086,6 +2112,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any faq content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2158,6 +2185,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any phone_book content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2167,6 +2195,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any self_service content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2249,6 +2278,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2276,6 +2306,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own bannerlink content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2294,6 +2325,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own borger_dk_article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2321,6 +2353,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own factbox content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2330,6 +2363,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own faq content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2402,6 +2436,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own phone_book content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -2411,6 +2446,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own self_service content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
@@ -4330,6 +4366,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'view own unpublished content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'node',
   );
