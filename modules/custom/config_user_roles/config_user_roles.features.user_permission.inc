@@ -15,6 +15,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access administration menu',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'admin_menu',
   );
@@ -24,6 +25,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access administration pages',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'system',
   );
@@ -42,6 +44,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access all webform results',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'webform',
   );
@@ -60,6 +63,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access comments',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'comment',
   );
@@ -69,7 +73,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
       'anonymous user' => 'anonymous user',
     ),
     'module' => 'node',
@@ -80,6 +86,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access content overview',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -89,6 +96,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access contextual links',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'contextual',
   );
@@ -98,6 +106,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access dashboard',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'dashboard',
   );
@@ -116,6 +125,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access own webform results',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'webform',
   );
@@ -125,6 +135,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access own webform submissions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'webform',
   );
@@ -134,6 +145,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access piwik information',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'piwik_stats',
   );
@@ -152,6 +164,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access site in maintenance mode',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'system',
   );
@@ -161,6 +174,10 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access site map',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
     ),
     'module' => 'site_map',
   );
@@ -179,6 +196,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access user profiles',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'user',
   );
@@ -197,6 +217,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer advanced pane settings',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
   );
@@ -206,6 +227,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer blocks',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'block',
   );
@@ -233,6 +255,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer comment notify',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'comment_notify',
   );
@@ -242,6 +265,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer comments',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'comment',
   );
@@ -260,6 +284,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer content types',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -278,6 +303,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer custom content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'ctools_custom_content',
   );
@@ -377,6 +403,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -458,6 +487,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer menu',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'menu',
   );
@@ -476,6 +508,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer meta tags',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'metatag',
   );
@@ -485,6 +518,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer mini panels',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels_mini',
   );
@@ -512,6 +546,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer nodequeue',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'nodequeue',
   );
@@ -521,6 +556,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer nodes',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -530,6 +566,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer nodesymlinks',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'nodesymlinks',
   );
@@ -548,6 +587,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer pane access',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
   );
@@ -557,6 +597,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -566,6 +607,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node borger_dk_article defaults',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -575,6 +617,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node frontpage breadcrumbs',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -584,6 +627,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node frontpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -593,6 +637,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node frontpage context',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -602,6 +647,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node frontpage defaults',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -611,6 +657,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node frontpage layout',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -620,6 +667,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node frontpage overview',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -629,6 +677,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node frontpage settings',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -638,6 +687,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node location breadcrumbs',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -647,6 +697,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node location content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -656,6 +707,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node location context',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -665,6 +717,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node location defaults',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -674,6 +727,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node location layout',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -683,6 +737,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node location overview',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -692,6 +747,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node location settings',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -701,6 +757,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node subjectpage breadcrumbs',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -710,6 +767,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node subjectpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -719,6 +777,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node subjectpage context',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -728,6 +787,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node subjectpage defaults',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -737,6 +797,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node subjectpage layout',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -746,6 +807,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node subjectpage overview',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -755,6 +817,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panelizer node subjectpage settings',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panelizer',
   );
@@ -764,6 +827,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panels layouts',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
   );
@@ -773,6 +837,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer panels styles',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
   );
@@ -791,6 +856,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer permissions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'user',
   );
@@ -809,6 +875,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer piwik',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'piwik',
   );
@@ -818,6 +885,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer redirects',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'redirect',
   );
@@ -836,6 +904,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer scheduler',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'scheduler',
   );
@@ -908,6 +977,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer taxonomy',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -926,6 +996,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer total control',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'total_control',
   );
@@ -935,6 +1006,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer tracking code',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'tracking_code',
   );
@@ -944,6 +1016,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer url aliases',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'path',
   );
@@ -953,6 +1026,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer users',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'user',
   );
@@ -998,6 +1072,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'bypass file access',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1007,6 +1082,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'bypass node access',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1025,6 +1101,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'cancel account',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'user',
   );
@@ -1034,6 +1111,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'change layouts in place editing',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
   );
@@ -1043,6 +1121,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'change own username',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'user',
   );
@@ -1079,6 +1160,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'content reminder administration',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'content_reminder',
   );
@@ -1088,7 +1170,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1098,6 +1182,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create banner_element content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1107,7 +1193,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create bannerlink content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1117,6 +1205,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create blog content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1126,7 +1215,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create borger_dk_article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1136,7 +1227,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create factbox content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1146,7 +1239,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create faq content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1156,6 +1251,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1165,6 +1263,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create frontpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1174,6 +1273,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create hearing content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1183,6 +1283,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create location content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1192,6 +1293,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create mini panels',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels_mini',
   );
@@ -1201,6 +1303,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create news content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1210,6 +1314,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create os2web_hr_manager_job content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1219,6 +1324,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create os2web_social_directory content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1228,7 +1334,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create phone_book content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1238,7 +1346,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create self_service content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1248,6 +1358,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create shared content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1257,6 +1368,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create slider_element content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1266,6 +1379,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create subjectpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1275,6 +1390,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create url aliases',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'path',
   );
@@ -1284,6 +1400,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create webform content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1293,6 +1411,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'customize ckeditor',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'ckeditor',
   );
@@ -1311,6 +1430,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete all webform submissions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'webform',
   );
@@ -1320,7 +1440,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1330,6 +1452,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any audio files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1339,6 +1464,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any banner_element content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1348,7 +1475,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any bannerlink content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1358,6 +1487,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any blog content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1367,7 +1497,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any borger_dk_article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1377,6 +1509,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any document files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1386,7 +1521,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any factbox content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1396,7 +1533,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any faq content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1406,6 +1545,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any frontpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1415,6 +1555,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any hearing content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1424,6 +1565,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any image files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1433,6 +1577,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any location content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1442,6 +1587,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any news content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1451,6 +1598,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any os2web_hr_manager_job content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1460,6 +1608,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any os2web_social_directory content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1469,7 +1618,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any phone_book content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1479,7 +1630,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any self_service content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1489,6 +1642,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any shared content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1498,6 +1652,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any slider_element content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1507,6 +1663,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any subjectpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1516,6 +1674,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any video files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1525,6 +1686,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete any webform content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1534,7 +1697,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1544,6 +1709,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own audio files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1553,6 +1721,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own banner_element content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1562,7 +1732,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own bannerlink content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1572,6 +1744,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own blog content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1581,7 +1754,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own borger_dk_article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1591,6 +1766,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own document files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1600,7 +1778,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own factbox content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1610,7 +1790,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own faq content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1620,6 +1802,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own frontpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1629,6 +1812,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own hearing content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1638,6 +1822,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own image files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1647,6 +1834,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own location content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1656,6 +1844,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own news content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1665,6 +1855,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own os2web_hr_manager_job content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1674,6 +1865,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own os2web_social_directory content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1683,7 +1875,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own phone_book content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1693,7 +1887,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own self_service content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1703,6 +1899,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own shared content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1712,6 +1909,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own slider_element content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1721,6 +1920,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own subjectpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1730,6 +1931,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own video files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1739,6 +1943,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own webform content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1748,6 +1954,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete own webform submissions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'webform',
   );
@@ -1757,6 +1964,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -1775,6 +1983,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete terms in kle',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -1784,6 +1993,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete terms in local',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -1793,6 +2003,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete terms in location',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -1802,6 +2013,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete terms in media_folders',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -1811,6 +2025,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete terms in media_tags',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -1820,6 +2035,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete terms in os2web_hr_manager_job_position_categories',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -1928,6 +2144,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'delete terms in subject_area',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -1955,6 +2172,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'download any audio files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1964,6 +2184,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'download any document files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1973,6 +2196,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'download any image files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1982,6 +2208,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'download any video files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -1991,6 +2220,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'download own audio files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2000,6 +2232,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'download own document files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2009,6 +2244,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'download own image files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2018,6 +2256,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'download own video files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2027,6 +2268,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit all webform submissions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'webform',
   );
@@ -2036,7 +2278,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2046,6 +2290,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any audio files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2055,6 +2302,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any banner_element content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2064,7 +2313,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any bannerlink content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2074,6 +2325,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any blog content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2083,7 +2335,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any borger_dk_article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2093,6 +2347,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any document files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2102,7 +2359,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any factbox content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2112,7 +2371,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any faq content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2122,6 +2383,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any frontpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2131,6 +2393,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any hearing content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2140,6 +2403,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any image files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2149,6 +2415,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any location content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2158,6 +2425,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any news content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2167,6 +2436,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any os2web_hr_manager_job content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2176,6 +2446,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any os2web_social_directory content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2185,7 +2456,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any phone_book content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2195,7 +2468,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any self_service content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2205,6 +2480,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any shared content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2214,6 +2490,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any slider_element content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2223,6 +2501,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any subjectpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2232,6 +2512,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any video files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2241,6 +2524,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit any webform content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2259,6 +2544,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit meta tags',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'metatag',
   );
@@ -2268,7 +2556,6 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit mimemail user settings',
     'roles' => array(
       'Administrator' => 'Administrator',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'mimemail',
   );
@@ -2278,7 +2565,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2288,6 +2577,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own audio files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2297,6 +2589,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own banner_element content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2306,7 +2600,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own bannerlink content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2316,6 +2612,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own blog content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2325,7 +2622,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own borger_dk_article content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2335,6 +2634,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own comments',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'comment',
   );
@@ -2344,6 +2644,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own document files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2353,7 +2656,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own factbox content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2363,7 +2668,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own faq content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2373,6 +2680,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own frontpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2382,6 +2690,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own hearing content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2391,6 +2700,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own image files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2400,6 +2712,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own location content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2409,6 +2722,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own news content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2418,6 +2733,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own os2web_hr_manager_job content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2427,6 +2743,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own os2web_social_directory content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2436,7 +2753,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own phone_book content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2446,7 +2765,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own self_service content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2456,6 +2777,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own shared content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2465,6 +2787,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own slider_element content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2474,6 +2798,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own subjectpage content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2483,6 +2809,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own video files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -2492,6 +2821,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own webform content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -2501,6 +2832,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit own webform submissions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'webform',
   );
@@ -2519,6 +2851,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit terms in kle',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -2528,6 +2861,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit terms in local',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -2537,6 +2871,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit terms in location',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -2546,6 +2881,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit terms in media_folders',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -2555,6 +2893,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit terms in media_tags',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -2564,6 +2905,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit terms in os2web_hr_manager_job_position_categories',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -2672,6 +3014,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'edit terms in subject_area',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
   );
@@ -2870,6 +3213,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'exclude nodes from apache solr',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'apachesolr_exclude_node',
   );
@@ -2906,6 +3250,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'have total control',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'total_control',
   );
@@ -2915,6 +3262,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'import media',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'media',
   );
@@ -2942,6 +3292,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'manipulate all queues',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'nodequeue',
   );
@@ -2951,6 +3302,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'manipulate queues',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'nodequeue',
   );
@@ -2969,6 +3321,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'notify of path changes',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'pathauto',
   );
@@ -4013,6 +4366,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'post comments',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'comment',
   );
@@ -4031,6 +4385,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -4040,6 +4395,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'schedule (un)publishing of nodes',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'scheduler',
   );
@@ -4076,6 +4434,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'show format selection for field_collection_item',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'better_formats',
   );
@@ -4094,6 +4453,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'show format selection for node',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'better_formats',
   );
@@ -4130,6 +4490,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'show format tips',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'better_formats',
   );
@@ -4139,6 +4500,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'show more format tips link',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'better_formats',
   );
@@ -4148,6 +4510,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'skip comment approval',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'comment',
   );
@@ -4157,6 +4520,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'subscribe to comments',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'comment_notify',
   );
@@ -4184,6 +4548,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'translate content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'translation',
   );
@@ -4193,6 +4558,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'translate interface',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'locale',
   );
@@ -4220,6 +4586,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use content reminders',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'content_reminder',
   );
@@ -4229,6 +4598,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use ipe with page manager',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
   );
@@ -4256,6 +4626,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use panels dashboard',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
   );
@@ -4265,6 +4636,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use panels in place editing',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
   );
@@ -4274,6 +4648,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use panels locks',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
   );
@@ -4292,6 +4667,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use text format filtered_html',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'filter',
   );
@@ -4301,6 +4679,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use text format full_html',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'filter',
   );
@@ -4310,6 +4689,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use text format job_html',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'filter',
   );
@@ -4319,6 +4701,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use text format video_html',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'filter',
   );
@@ -4337,8 +4722,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'view files',
     'roles' => array(
       'Administrator' => 'Administrator',
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -4348,6 +4734,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'view own files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -4357,6 +4746,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'view own private files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -4366,7 +4758,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'view own unpublished content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -4376,6 +4770,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'view pane admin links',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
   );
@@ -4385,6 +4780,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'view private files',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
   );
@@ -4394,6 +4792,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -4403,6 +4802,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'view the administration theme',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'system',
   );
