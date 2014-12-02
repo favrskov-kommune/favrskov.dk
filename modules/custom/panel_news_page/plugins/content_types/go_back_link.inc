@@ -25,21 +25,21 @@ function panel_news_page_go_back_link_render($subtype, $conf, $args, $context) {
 
   if (!empty($conf['link'])) {
     $block->content = l(
-        t('Go back'),
-        preg_replace_callback(
-            '(\[arg:(\d)\])',
-            function ($match) {
-              return arg($match[1]);
-            },
-            $conf['link']
-        ),
-        array(
-            'attributes' => array(
-                'class' => array(
-                    'go-back-link'
-                )
-            )
+      t('Go back'),
+      preg_replace_callback(
+        '(\[arg:(\d)\])',
+        function ($match) {
+          return arg($match[1]);
+        },
+        $conf['link']
+      ),
+      array(
+        'attributes' => array(
+          'class' => array(
+            'go-back-link'
+           )
         )
+      )
     );
 
     drupal_add_js(drupal_get_path('module', 'panel_news_page') . '/js/go_back_link.js');
