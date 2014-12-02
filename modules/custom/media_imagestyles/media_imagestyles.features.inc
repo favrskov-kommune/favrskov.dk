@@ -13,8 +13,9 @@ function media_imagestyles_image_default_styles() {
   // Exported image style: banners_custom_user_full_1x.
   $styles['banners_custom_user_full_1x'] = array(
     'name' => 'banners_custom_user_full_1x',
+    'label' => 'banners_custom_user_full_1x',
     'effects' => array(
-      43 => array(
+      1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -24,13 +25,12 @@ function media_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 317,
-          'height' => 190,
+          'width' => 315,
+          'height' => 231,
         ),
         'weight' => 1,
       ),
     ),
-    'label' => 'banners_custom_user_full_1x',
   );
 
   // Exported image style: banners_custom_user_phone_1x.
