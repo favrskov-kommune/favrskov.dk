@@ -13,7 +13,7 @@
   }
 
   .taxonomy-list {
-    padding-top: 36px;
+    padding: 20px 5% 0;
   }
 
   .taxonomy {
@@ -164,10 +164,11 @@
 // Taxonomy Image on Subject-grid
 .taxonomy-pic {
   margin: 0 auto 15px;
-  height: 72px;
+  height: 75px;
   @include border-radius(80px);
   background-color: $dark-green;
-  width: 72px;
+  width: 75px;
+  border: 2px solid $white;
   position: relative;
 
   // Colors theme
