@@ -7,7 +7,7 @@ projects[admin_menu][subdir] = contrib
 projects[admin_menu][version] = 3.0-rc4
 
 projects[ctools][subdir] = contrib
-projects[ctools][version] = 1.4
+projects[ctools][version] = 1.5
 ;projects[ctools][patch][1925018] = https://drupal.org/files/ctools-n1925018-12.patch
 
 projects[views][subdir] = contrib
