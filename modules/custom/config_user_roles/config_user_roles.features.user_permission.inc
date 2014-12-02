@@ -682,76 +682,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: 'administer panelizer node location breadcrumbs'.
-  $permissions['administer panelizer node location breadcrumbs'] = array(
-    'name' => 'administer panelizer node location breadcrumbs',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: 'administer panelizer node location content'.
-  $permissions['administer panelizer node location content'] = array(
-    'name' => 'administer panelizer node location content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: 'administer panelizer node location context'.
-  $permissions['administer panelizer node location context'] = array(
-    'name' => 'administer panelizer node location context',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: 'administer panelizer node location defaults'.
-  $permissions['administer panelizer node location defaults'] = array(
-    'name' => 'administer panelizer node location defaults',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: 'administer panelizer node location layout'.
-  $permissions['administer panelizer node location layout'] = array(
-    'name' => 'administer panelizer node location layout',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: 'administer panelizer node location overview'.
-  $permissions['administer panelizer node location overview'] = array(
-    'name' => 'administer panelizer node location overview',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: 'administer panelizer node location settings'.
-  $permissions['administer panelizer node location settings'] = array(
-    'name' => 'administer panelizer node location settings',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: 'administer panelizer node subjectpage breadcrumbs'.
   $permissions['administer panelizer node subjectpage breadcrumbs'] = array(
     'name' => 'administer panelizer node subjectpage breadcrumbs',
@@ -1200,16 +1130,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'create blog content'.
-  $permissions['create blog content'] = array(
-    'name' => 'create blog content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'create borger_dk_article content'.
   $permissions['create borger_dk_article content'] = array(
     'name' => 'create borger_dk_article content',
@@ -1268,26 +1188,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'create hearing content'.
-  $permissions['create hearing content'] = array(
-    'name' => 'create hearing content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create location content'.
-  $permissions['create location content'] = array(
-    'name' => 'create location content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'create mini panels'.
   $permissions['create mini panels'] = array(
     'name' => 'create mini panels',
@@ -1304,26 +1204,6 @@ function config_user_roles_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create os2web_hr_manager_job content'.
-  $permissions['create os2web_hr_manager_job content'] = array(
-    'name' => 'create os2web_hr_manager_job content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create os2web_social_directory content'.
-  $permissions['create os2web_social_directory content'] = array(
-    'name' => 'create os2web_social_directory content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
@@ -1482,16 +1362,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete any blog content'.
-  $permissions['delete any blog content'] = array(
-    'name' => 'delete any blog content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any borger_dk_article content'.
   $permissions['delete any borger_dk_article content'] = array(
     'name' => 'delete any borger_dk_article content',
@@ -1550,16 +1420,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete any hearing content'.
-  $permissions['delete any hearing content'] = array(
-    'name' => 'delete any hearing content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any image files'.
   $permissions['delete any image files'] = array(
     'name' => 'delete any image files',
@@ -1572,42 +1432,12 @@ function config_user_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'delete any location content'.
-  $permissions['delete any location content'] = array(
-    'name' => 'delete any location content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any news content'.
   $permissions['delete any news content'] = array(
     'name' => 'delete any news content',
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any os2web_hr_manager_job content'.
-  $permissions['delete any os2web_hr_manager_job content'] = array(
-    'name' => 'delete any os2web_hr_manager_job content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any os2web_social_directory content'.
-  $permissions['delete any os2web_social_directory content'] = array(
-    'name' => 'delete any os2web_social_directory content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
@@ -1739,16 +1569,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete own blog content'.
-  $permissions['delete own blog content'] = array(
-    'name' => 'delete own blog content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete own borger_dk_article content'.
   $permissions['delete own borger_dk_article content'] = array(
     'name' => 'delete own borger_dk_article content',
@@ -1807,16 +1627,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete own hearing content'.
-  $permissions['delete own hearing content'] = array(
-    'name' => 'delete own hearing content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete own image files'.
   $permissions['delete own image files'] = array(
     'name' => 'delete own image files',
@@ -1829,42 +1639,12 @@ function config_user_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'delete own location content'.
-  $permissions['delete own location content'] = array(
-    'name' => 'delete own location content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete own news content'.
   $permissions['delete own news content'] = array(
     'name' => 'delete own news content',
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own os2web_hr_manager_job content'.
-  $permissions['delete own os2web_hr_manager_job content'] = array(
-    'name' => 'delete own os2web_hr_manager_job content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own os2web_social_directory content'.
-  $permissions['delete own os2web_social_directory content'] = array(
-    'name' => 'delete own os2web_social_directory content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
@@ -2320,16 +2100,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit any blog content'.
-  $permissions['edit any blog content'] = array(
-    'name' => 'edit any blog content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit any borger_dk_article content'.
   $permissions['edit any borger_dk_article content'] = array(
     'name' => 'edit any borger_dk_article content',
@@ -2388,16 +2158,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit any hearing content'.
-  $permissions['edit any hearing content'] = array(
-    'name' => 'edit any hearing content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit any image files'.
   $permissions['edit any image files'] = array(
     'name' => 'edit any image files',
@@ -2410,42 +2170,12 @@ function config_user_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'edit any location content'.
-  $permissions['edit any location content'] = array(
-    'name' => 'edit any location content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit any news content'.
   $permissions['edit any news content'] = array(
     'name' => 'edit any news content',
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any os2web_hr_manager_job content'.
-  $permissions['edit any os2web_hr_manager_job content'] = array(
-    'name' => 'edit any os2web_hr_manager_job content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any os2web_social_directory content'.
-  $permissions['edit any os2web_social_directory content'] = array(
-    'name' => 'edit any os2web_social_directory content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
@@ -2607,16 +2337,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit own blog content'.
-  $permissions['edit own blog content'] = array(
-    'name' => 'edit own blog content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit own borger_dk_article content'.
   $permissions['edit own borger_dk_article content'] = array(
     'name' => 'edit own borger_dk_article content',
@@ -2685,16 +2405,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit own hearing content'.
-  $permissions['edit own hearing content'] = array(
-    'name' => 'edit own hearing content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit own image files'.
   $permissions['edit own image files'] = array(
     'name' => 'edit own image files',
@@ -2707,42 +2417,12 @@ function config_user_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'edit own location content'.
-  $permissions['edit own location content'] = array(
-    'name' => 'edit own location content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit own news content'.
   $permissions['edit own news content'] = array(
     'name' => 'edit own news content',
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own os2web_hr_manager_job content'.
-  $permissions['edit own os2web_hr_manager_job content'] = array(
-    'name' => 'edit own os2web_hr_manager_job content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own os2web_social_directory content'.
-  $permissions['edit own os2web_social_directory content'] = array(
-    'name' => 'edit own os2web_social_directory content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
@@ -3064,15 +2744,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
-  // Exported permission: 'enter blog revision log entry'.
-  $permissions['enter blog revision log entry'] = array(
-    'name' => 'enter blog revision log entry',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
   // Exported permission: 'enter borger_dk_article revision log entry'.
   $permissions['enter borger_dk_article revision log entry'] = array(
     'name' => 'enter borger_dk_article revision log entry',
@@ -3109,45 +2780,9 @@ function config_user_roles_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
-  // Exported permission: 'enter hearing revision log entry'.
-  $permissions['enter hearing revision log entry'] = array(
-    'name' => 'enter hearing revision log entry',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'enter location revision log entry'.
-  $permissions['enter location revision log entry'] = array(
-    'name' => 'enter location revision log entry',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
   // Exported permission: 'enter news revision log entry'.
   $permissions['enter news revision log entry'] = array(
     'name' => 'enter news revision log entry',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'enter os2web_hr_manager_job revision log entry'.
-  $permissions['enter os2web_hr_manager_job revision log entry'] = array(
-    'name' => 'enter os2web_hr_manager_job revision log entry',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'enter os2web_social_directory revision log entry'.
-  $permissions['enter os2web_social_directory revision log entry'] = array(
-    'name' => 'enter os2web_social_directory revision log entry',
     'roles' => array(
       'Administrator' => 'Administrator',
     ),
@@ -3497,60 +3132,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
-  // Exported permission: 'override blog authored by option'.
-  $permissions['override blog authored by option'] = array(
-    'name' => 'override blog authored by option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override blog authored on option'.
-  $permissions['override blog authored on option'] = array(
-    'name' => 'override blog authored on option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override blog promote to front page option'.
-  $permissions['override blog promote to front page option'] = array(
-    'name' => 'override blog promote to front page option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override blog published option'.
-  $permissions['override blog published option'] = array(
-    'name' => 'override blog published option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override blog revision option'.
-  $permissions['override blog revision option'] = array(
-    'name' => 'override blog revision option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override blog sticky option'.
-  $permissions['override blog sticky option'] = array(
-    'name' => 'override blog sticky option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
   // Exported permission: 'override borger_dk_article authored by option'.
   $permissions['override borger_dk_article authored by option'] = array(
     'name' => 'override borger_dk_article authored by option',
@@ -3767,114 +3348,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
-  // Exported permission: 'override hearing authored by option'.
-  $permissions['override hearing authored by option'] = array(
-    'name' => 'override hearing authored by option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override hearing authored on option'.
-  $permissions['override hearing authored on option'] = array(
-    'name' => 'override hearing authored on option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override hearing promote to front page option'.
-  $permissions['override hearing promote to front page option'] = array(
-    'name' => 'override hearing promote to front page option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override hearing published option'.
-  $permissions['override hearing published option'] = array(
-    'name' => 'override hearing published option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override hearing revision option'.
-  $permissions['override hearing revision option'] = array(
-    'name' => 'override hearing revision option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override hearing sticky option'.
-  $permissions['override hearing sticky option'] = array(
-    'name' => 'override hearing sticky option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override location authored by option'.
-  $permissions['override location authored by option'] = array(
-    'name' => 'override location authored by option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override location authored on option'.
-  $permissions['override location authored on option'] = array(
-    'name' => 'override location authored on option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override location promote to front page option'.
-  $permissions['override location promote to front page option'] = array(
-    'name' => 'override location promote to front page option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override location published option'.
-  $permissions['override location published option'] = array(
-    'name' => 'override location published option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override location revision option'.
-  $permissions['override location revision option'] = array(
-    'name' => 'override location revision option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override location sticky option'.
-  $permissions['override location sticky option'] = array(
-    'name' => 'override location sticky option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
   // Exported permission: 'override news authored by option'.
   $permissions['override news authored by option'] = array(
     'name' => 'override news authored by option',
@@ -3923,114 +3396,6 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: 'override news sticky option'.
   $permissions['override news sticky option'] = array(
     'name' => 'override news sticky option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_hr_manager_job authored by option'.
-  $permissions['override os2web_hr_manager_job authored by option'] = array(
-    'name' => 'override os2web_hr_manager_job authored by option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_hr_manager_job authored on option'.
-  $permissions['override os2web_hr_manager_job authored on option'] = array(
-    'name' => 'override os2web_hr_manager_job authored on option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_hr_manager_job promote to front page option'.
-  $permissions['override os2web_hr_manager_job promote to front page option'] = array(
-    'name' => 'override os2web_hr_manager_job promote to front page option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_hr_manager_job published option'.
-  $permissions['override os2web_hr_manager_job published option'] = array(
-    'name' => 'override os2web_hr_manager_job published option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_hr_manager_job revision option'.
-  $permissions['override os2web_hr_manager_job revision option'] = array(
-    'name' => 'override os2web_hr_manager_job revision option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_hr_manager_job sticky option'.
-  $permissions['override os2web_hr_manager_job sticky option'] = array(
-    'name' => 'override os2web_hr_manager_job sticky option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_social_directory authored by option'.
-  $permissions['override os2web_social_directory authored by option'] = array(
-    'name' => 'override os2web_social_directory authored by option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_social_directory authored on option'.
-  $permissions['override os2web_social_directory authored on option'] = array(
-    'name' => 'override os2web_social_directory authored on option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_social_directory promote to front page option'.
-  $permissions['override os2web_social_directory promote to front page option'] = array(
-    'name' => 'override os2web_social_directory promote to front page option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_social_directory published option'.
-  $permissions['override os2web_social_directory published option'] = array(
-    'name' => 'override os2web_social_directory published option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_social_directory revision option'.
-  $permissions['override os2web_social_directory revision option'] = array(
-    'name' => 'override os2web_social_directory revision option',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override os2web_social_directory sticky option'.
-  $permissions['override os2web_social_directory sticky option'] = array(
-    'name' => 'override os2web_social_directory sticky option',
     'roles' => array(
       'Administrator' => 'Administrator',
     ),
