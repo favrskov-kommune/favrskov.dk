@@ -1463,7 +1463,9 @@ function content_type_news_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Author');
+  t('Bannerlink');
   t('Body');
+  t('Comment');
   t('Contact Information');
   t('Date');
   t('Editorial responsibility');
@@ -1472,6 +1474,8 @@ function content_type_news_field_default_field_instances() {
   t('Image description');
   t('Related boxes');
   t('Related content');
+  t('Self Service');
+  t('Table');
   t('Taxonomy, KLE');
   t('Taxonomy, Location');
   t('Taxonomy, Subject Area');
