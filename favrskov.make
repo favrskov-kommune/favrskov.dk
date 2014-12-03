@@ -7,7 +7,7 @@ projects[admin_menu][subdir] = contrib
 projects[admin_menu][version] = 3.0-rc4
 
 projects[ctools][subdir] = contrib
-projects[ctools][version] = 1.4
+projects[ctools][version] = 1.5
 ;projects[ctools][patch][1925018] = https://drupal.org/files/ctools-n1925018-12.patch
 
 projects[views][subdir] = contrib
@@ -89,6 +89,7 @@ projects[piwik_stats][patch][2171029] = https://www.drupal.org/files/issues/piwi
 projects[references_dialog][subdir] = contrib
 ;projects[references_dialog][version] = 1.0-alpha4
 projects[references_dialog][version] = 1.0-beta1
+projects[references_dialog][patch][2315905] = https://www.drupal.org/files/issues/references_dialog_beta1-fix_theme_links-2315905-20.patch
 
 projects[entity][subdir] = contrib
 projects[entity][version] = 1.5
@@ -552,6 +553,9 @@ projects[synonyms][version] = 1.1
 projects[dynamic_background][subdir] = contrib
 projects[dynamic_background][version] = 2.0-rc4
 projects[dynamic_background][patch][1904738] = "https://drupal.org/files/issues/dynamic_background-domain-1904738-4.patch"
+
+projects[content_reminder][subdir] = contrib
+projects[content_reminder][version] = 1.0
 
 ; Libraries
 libraries[ckeditor][download][type] = get

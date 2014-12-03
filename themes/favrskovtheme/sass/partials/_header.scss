@@ -219,8 +219,9 @@
       position: absolute;
       width: 41px;
       height: 100%;
-      top: 0; right: 0;
-      text-indent:-9999px;
+      top: 0;
+      right: 0;
+      text-indent: -9999px;
       z-index: 1;
       background: url(../images/search_icon.png) no-repeat center center;
       @include at-breakpoint(12 $width-980) {
@@ -236,7 +237,6 @@
       width: 72%;
     }
   }
-
 
   // For admin
   .drupal-system {
@@ -261,6 +261,5 @@
       }
     }
   }
-
 
 }

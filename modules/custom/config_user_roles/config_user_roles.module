@@ -3,30 +3,3 @@
  * @file
  * Drupal needs this blank file.
  */
-
-/**
- * Implement hook_form_FORM_ID_alter().
- */
-function config_user_roles_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
-  if ($form['#id'] == 'views-exposed-form-admin-views-node-system-1' || $form['#id'] == 'views-exposed-form-control-content-page-1') {
-    global $user;
-    if (array_key_exists(3, $user->roles)) {
-      $domains = domain_get_user_domains($user);
-      $current_domain = domain_get_domain();
-
-      $form['gid']['#options'] = array_intersect_key($form['gid']['#options'], $domains);
-
-      if (in_array($current_domain->domain_id, $domains)) {
-        $default_value = $current_domain->domain_id;
-      }
-      else {
-        $default_value = reset($domains);
-      }
-
-      if (!in_array($form_state['input']['gid'], $domains)) {
-        $form['gid']['#default_value'] = $default_value;
-        $form_state['input']['gid'] = $default_value;
-      }
-    }
-  }
-}

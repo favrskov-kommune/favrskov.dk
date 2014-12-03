@@ -54,7 +54,7 @@ function panels_search_form_apachesolr_panels_search_form_alter(&$form, $form_st
 function panels_search_form_apachesolr_panels_search_block_alter(&$form, $form_state) {
   $element = & $form['apachesolr_panels_search_form'];
   $element['#size'] = 76;
-  $element['#placeholder'] = t('Search');
+  $element['#placeholder'] = t('What are you searching?');
   apachesolr_autocomplete_do_alter($element);
 }
 

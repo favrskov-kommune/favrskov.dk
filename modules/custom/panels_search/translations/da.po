@@ -15,3 +15,6 @@ msgstr "Filtrer efter Udvalg"
 
 msgid "Search for phonebooks"
 msgstr "Søg i kontaktoplysninger"
+
+msgid "What are you searching?"
+msgstr "Hvad søger du?"

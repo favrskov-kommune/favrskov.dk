@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Content Type Video element feature.
- */
-
-include_once 'content_type_video_element.features.inc';

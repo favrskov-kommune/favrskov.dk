@@ -358,9 +358,7 @@
     // Button
     .btn-filters {
       display: block;
-      position: absolute;
-      right: 4.7%;
-      top: 385px;
+      margin: -50px 4.6% 0 auto;
     }
 
 
@@ -369,9 +367,7 @@
       background-color: rgba($slategrey, .8);
       padding: 20px;
       display: none;
-      position: absolute;
-      top: 435px;
-      right: 4.7%;
+      margin-right: 4.6%;
       .pane-block {
         background: $white;
         .pane-title {
@@ -388,7 +384,6 @@
 
     .search-filters {
       position: absolute;
-      top: 320px;
       right: 0;
     }
   }
@@ -416,12 +411,12 @@
     .form-type-checkbox .option {
       font-size: 12px;
     }
-    .btn-filters {
+/*     .btn-filters {
       top: 230px;
     }
     .filter-results {
       top: 280px;
-    }
+    } */
   }
 }
 

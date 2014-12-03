@@ -1,11 +1,13 @@
-
 //------------- DETAIL INFORMATION -------------------
 .content-container {
   .content {
     @include container;
     @extend %clearfix;
-    padding: 22px 0 0;
-
+    // for node news
+    .node-type-news &,
+    .node-type-article & {
+      padding: 46px 0;
+    }
     // For ie8
     .lt-ie8 & {
       width: 981px;
@@ -40,7 +42,7 @@
     }
 
     .node-content,
-    .list-content  {
+    .list-content {
       @include span-columns(7, 12);
       @include at-breakpoint(12 $width-768) {
         @include span-columns(12, 12);
@@ -55,6 +57,13 @@
       }
       .swiper-container {
         height: auto;
+
+        // for article
+        .node-type-article & {
+          height: 420px;
+          background: none;
+        }
+
       }
       h1 {
         margin: 18px 0;
@@ -78,13 +87,13 @@
 
         p {
           font: 13pt Arial;
-          color:  $slategrey;
+          color: $slategrey;
           line-height: 25px;
         }
       }
       .teaser {
         font: 18pt $sans-book;
-        color:  $slategrey;
+        color: $slategrey;
         line-height: 33px;
         margin: 54px 0;
       }
@@ -105,7 +114,6 @@
           margin-right: 10px;
         }
       }
-
 
       //---for form comment---
       .pane-node-comment-form {
@@ -186,7 +194,8 @@
         }
         a {
           position: absolute;
-          top: 0;left: 0;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
           padding: 20px;
@@ -263,8 +272,6 @@
           }
         }
       }
-
-
 
       // Faq
       .faq, .embedded {
@@ -361,8 +368,6 @@
       .faq li:last-child {
         border-bottom: 0;
       }
-
-
 
     }
   }

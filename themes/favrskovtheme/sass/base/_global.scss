@@ -20,8 +20,8 @@ body {
   @include font-size();
   font-family: $sans;
   word-wrap: break-word;
-//  background: url(../images/front_page.png) no-repeat 344px top;
-//  opacity: 0.7;
+ //   background: url(../images/erhverv_page.png) no-repeat 344px top;
+ //   opacity: 0.7;
 }
 
 //------------------------------------------------------------------------------
@@ -49,12 +49,11 @@ body {
 
 //------------------------------------------------------------------------------
 // Responsive dimensions
-$tablet:        12 980px;
-$tablet-land:   12 890px;
-$tablet-port:   12 768px;
-$phone-land:    12 480px;
-$phone-port:    12 320px;
-
+$tablet: 12 980px;
+$tablet-land: 12 890px;
+$tablet-port: 12 768px;
+$phone-land: 12 480px;
+$phone-port: 12 320px;
 
 .group {
   zoom: 1; /* For IE 6/7 (trigger hasLayout) */
@@ -72,7 +71,7 @@ $phone-port:    12 320px;
 
 .preloader,
 .preloader-overlay,
-.custom-throbber  {
+.custom-throbber {
   display: none;
 }
 
@@ -81,7 +80,7 @@ $phone-port:    12 320px;
 */
 .hide-title {
   h2.pane-title {
-   display: none;
+    display: none;
   }
 }
 
@@ -89,9 +88,9 @@ $phone-port:    12 320px;
 a {
   outline: medium none;
   //@include transition-property(all);
- // @include transition-timing-function(ease-in);
- // @include transition-duration(.1s);
- // @include links($red, $grey);
+  // @include transition-timing-function(ease-in);
+  // @include transition-duration(.1s);
+  // @include links($red, $grey);
 
   &:focus {
     outline: medium none;
@@ -105,7 +104,6 @@ a {
 /*.drupal-system {
    @include span-columns(12,12);
 }*/
-
 
 input[type="text"],
 input[type="password"],
@@ -123,7 +121,7 @@ input[type="search"] {
 }
 
 input[type="text"]::-ms-clear {
-    display: none;
+  display: none;
 }
 
 .form-text,
@@ -136,7 +134,6 @@ input[type="text"]::-ms-clear {
     outline: none;
   }
 }
-
 
 img {
   max-width: 100%;
@@ -152,20 +149,23 @@ input:-webkit-autofill {
 }
 
 /* Text */
-.tr { text-align: right; }
-.tc { @extend %centered; }
+.tr {
+  text-align: right;
+}
 
-  hr {
-    border-top: 0 none;
-    @extend %border-bottom;
-    margin-left: auto;
-    margin-right: auto;
-    &.half {
-      width: 50%;
-    }
+.tc {
+  @extend %centered;
+}
+
+hr {
+  border-top: 0 none;
+  @extend %border-bottom;
+  margin-left: auto;
+  margin-right: auto;
+  &.half {
+    width: 50%;
   }
-
-
+}
 
 /*
   IE 9.0 and less versions
@@ -185,8 +185,6 @@ input:-webkit-autofill {
   width: 34px;
 }
 
-
-
 //------------------------------------------------------------------------------
 // Empty views
 .view-empty {
@@ -197,8 +195,6 @@ input:-webkit-autofill {
   font-family: $sans;
   @include font-size(14);
 }
-
-
 
 //------------------------------------------------------------------------------
 // Warning, Tabs, Message pane
@@ -238,26 +234,27 @@ input:-webkit-autofill {
   }
 }
 
-
 //------------------------------------------------------------------------------
 // Helper classes
 
 /*
  * Reset borders and paddings/margins
 */
-  .centered {
-    @extend %centered;
-  }
-  .no-border {
-    @extend %no-border;
-  }
-  .no-padding {
-    @extend %no-padding;
-  }
-  .no-margin {
-    @extend %no-margin;
-  }
+.centered {
+  @extend %centered;
+}
 
+.no-border {
+  @extend %no-border;
+}
+
+.no-padding {
+  @extend %no-padding;
+}
+
+.no-margin {
+  @extend %no-margin;
+}
 
 /*
  * Image replacement
@@ -325,20 +322,22 @@ input:-webkit-autofill {
   visibility: hidden;
 }
 
-
 h1 {
   font: 50px $sans-medium;
   color: $slategrey;
 }
+
 h2 {
   font: 30px $sans-medium;
   color: $slategrey;
 }
+
 h3 {
   font: 28px Arial;
   font-weight: bold;
   color: $slategrey;
 }
+
 h4 {
   font: 20px Arial;
   font-weight: bold;

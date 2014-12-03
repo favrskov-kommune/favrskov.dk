@@ -1,0 +1,11 @@
+msgid "Editor"
+msgstr "Redaktør"
+
+msgid "Communications Officer"
+msgstr "Kommunikationsmedarbejder"
+
+msgid "Webmaster"
+msgstr "Webmaster"
+
+msgid "Administrator"
+msgstr "Administrator"

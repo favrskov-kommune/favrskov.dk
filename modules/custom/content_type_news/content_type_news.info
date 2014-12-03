@@ -1,12 +1,12 @@
 name = Content Type News
 core = 7.x
 package = Content Types
-php = 5.2.4
 version = 7.x-1.0
 project = content_type_news
 dependencies[] = content_type_faq
 dependencies[] = ctools
 dependencies[] = date
+dependencies[] = entityreference
 dependencies[] = features
 dependencies[] = fields_shared
 dependencies[] = image

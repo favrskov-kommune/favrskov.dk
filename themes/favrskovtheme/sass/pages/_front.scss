@@ -4,7 +4,6 @@
 //------------------------------------------------------------------------------
 // Subject grid
 
-
 .subject-grid {
   background: url(../images/pat.png);
   border-bottom: 1px solid $slategrey;
@@ -35,27 +34,41 @@
   }
 
   .taxonomy:hover {
-      a {
-        color: $liteGray;
+    a {
+      color: $liteGray;
 
-        &:hover {
-          color: $red;
+      &:hover {
+        color: $red;
 
-          // Colors theme
-          .violet      & { color: $violet; }
-          .dark-grey   & { color: $dark-grey; }
-          .grey        & { color: $gray; }
-          .yellow      & { color: $dirty-yellow; }
-          .blue        & { color: $deepBlue; }
-          .pink        & { color: $pink; }
-          .salat-green & { color: $salatGreen; }
+        // Colors theme
+        .violet & {
+          color: $violet;
+        }
+        .dark-grey & {
+          color: $dark-grey;
+        }
+        .grey & {
+          color: $gray;
+        }
+        .yellow & {
+          color: $dirty-yellow;
+        }
+        .blue & {
+          color: $deepBlue;
+        }
+        .pink & {
+          color: $pink;
+        }
+        .salat-green & {
+          color: $salatGreen;
         }
       }
-
-      .taxonomy-pic {
-        background-color: $liteGray;
-      }
     }
+
+    .taxonomy-pic {
+      background-color: $liteGray;
+    }
+  }
 
   // Header
   h3 {
@@ -99,7 +112,6 @@
   }
 }
 
-
 // Taxonomy Image on Subject-grid
 .taxonomy-pic {
   margin: 0 auto 15px;
@@ -109,13 +121,27 @@
   width: 80px;
 
   // Colors theme
-  .violet      & { background-color: $violet; }
-  .dark-grey   & { background-color: $dark-grey; }
-  .grey        & { background-color: $gray; }
-  .yellow      & { background-color: $dirty-yellow; }
-  .blue        & { background-color: $deepBlue; }
-  .pink        & { background-color: $pink; }
-  .salat-green & { background-color: $salatGreen; }
+  .violet & {
+    background-color: $violet;
+  }
+  .dark-grey & {
+    background-color: $dark-grey;
+  }
+  .grey & {
+    background-color: $gray;
+  }
+  .yellow & {
+    background-color: $dirty-yellow;
+  }
+  .blue & {
+    background-color: $deepBlue;
+  }
+  .pink & {
+    background-color: $pink;
+  }
+  .salat-green & {
+    background-color: $salatGreen;
+  }
 
   @include transition-duration(.2s);
 
@@ -175,7 +201,7 @@
   article {
     @extend %animate;
 
-     h1 {
+    h1 {
       @include font-size(22);
       margin: 15px 0;
       line-height: 1.1;
@@ -188,8 +214,8 @@
 .matrix-view,
 .video-pane,
 .events,
-.news{
-.pane-title {
+.news {
+  .pane-title {
     @include font-size(30);
     margin-bottom: 36px;
     padding-right: 80px;
@@ -248,7 +274,7 @@
   background: $white;
   padding: 70px 0 11px;
 
-   .view-content li {
+  .view-content li {
     @include span-columns(4, 12);
     @include nth-omega(3n);
     position: relative;
@@ -341,7 +367,9 @@
     @include font-size(14);
     font-family: $dark-grey;
 
-    a { @include links(#999, $gray); }
+    a {
+      @include links(#999, $gray);
+    }
   }
 
   .element-content,
@@ -386,19 +414,33 @@
   margin-bottom: 72px;
 
   // Violet color scheme
-  .violet & { background: $violet; }
+  .violet & {
+    background: $violet;
+  }
   // Dark Grey color scheme
-  .dark-grey & { background: $dark-grey; }
+  .dark-grey & {
+    background: $dark-grey;
+  }
   // Grey color scheme
-  .grey & { background: $gray; }
+  .grey & {
+    background: $gray;
+  }
   // Yellow color scheme
-  .yellow & { background: $dirty-yellow; }
+  .yellow & {
+    background: $dirty-yellow;
+  }
   // Blue color scheme
-  .blue & { background: $deepBlue; }
+  .blue & {
+    background: $deepBlue;
+  }
   // Pink color scheme
-  .pink & { background: $pink; }
+  .pink & {
+    background: $pink;
+  }
   // Salat green color scheme
-  .salat-green & { background: $salatGreen; }
+  .salat-green & {
+    background: $salatGreen;
+  }
 
   //  Description from the left
   .description {
@@ -410,19 +452,33 @@
     max-height: 250px;
 
     // Violet color scheme
-    .violet & { background: $violet; }
+    .violet & {
+      background: $violet;
+    }
     // Dark Grey color scheme
-    .dark-grey & { background: $dark-grey; }
+    .dark-grey & {
+      background: $dark-grey;
+    }
     // Grey color scheme
-    .grey & { background: $gray; }
+    .grey & {
+      background: $gray;
+    }
     // Yellow color scheme
-    .yellow & { background: $dirty-yellow; }
+    .yellow & {
+      background: $dirty-yellow;
+    }
     // Blue color scheme
-    .blue & { background: $deepBlue; }
+    .blue & {
+      background: $deepBlue;
+    }
     // Pink color scheme
-    .pink & { background: $pink; }
+    .pink & {
+      background: $pink;
+    }
     // Salat green color scheme
-    .salat-green & { background: $salatGreen; }
+    .salat-green & {
+      background: $salatGreen;
+    }
 
     p,
     h1 {
@@ -464,6 +520,7 @@
     @include font-size(18);
   }
 }
+
 .map .view-empty {
   padding: 20px 0;
 
@@ -559,9 +616,6 @@
   }
 }
 
-
-
-
 // Matrix view
 .matrix-view {
   font-size: 0;
@@ -594,7 +648,6 @@
 
 }
 
-
 //------------------------------------------------------------------------------
 
 // Responsive
@@ -615,7 +668,7 @@
 
   // Events and Matrix view
   .events,
-  .matrix-view  {
+  .matrix-view {
     // Single line in header
     header:before {
       width: 90%;
@@ -646,7 +699,9 @@
   .map {
     .locations-list {
       margin-top: 84px;
-      a { @include font-size(19); }
+      a {
+        @include font-size(19);
+      }
     }
   }
 }
@@ -678,7 +733,7 @@
   .events {
     padding-bottom: 0;
 
-    .item-list  li {
+    .item-list li {
       @include span-columns(12, 12);
       @include remove-nth-omega(3n);
       margin-bottom: 30px;
@@ -780,7 +835,7 @@
   .map {
     // Description
     .description {
-      p,h1 {
+      p, h1 {
         padding-right: 10px;
       }
       h1 {
@@ -797,7 +852,9 @@
     .locations-list {
       margin-top: 44px;
 
-      a { @include font-size(18); }
+      a {
+        @include font-size(18);
+      }
     }
   }
 
@@ -823,11 +880,10 @@
   }
 }
 
-
 @include at-breakpoint(12 640px) {
   // Events and Matrix view
   .events,
-  .matrix-view  {
+  .matrix-view {
     // Single line in header
     header:before {
       width: 85%;
@@ -870,13 +926,15 @@
 
     // Location list
     .locations-list {
-      a { @include font-size(16); }
+      a {
+        @include font-size(16);
+      }
     }
   }
 
   //----------------------------------------------------------------------------
   // Bototom banners
- .banners-list  .banner-link a {
+  .banners-list .banner-link a {
     padding: 15px 5%;
     @include font-size(16);
   }
@@ -885,7 +943,7 @@
 @include at-breakpoint(12 420px) {
   // Events and Matrix view
   .events,
-  .matrix-view  {
+  .matrix-view {
     // Single line in header
     header:before {
       width: 80%;
@@ -923,7 +981,7 @@
 
   // Events and Matrix view
   .events,
-  .matrix-view  {
+  .matrix-view {
     // Single line in header
     header:before {
       width: 77%;
@@ -945,7 +1003,9 @@
 
     // Location list
     .locations-list {
-      a { @include font-size(14); }
+      a {
+        @include font-size(14);
+      }
     }
   }
 }

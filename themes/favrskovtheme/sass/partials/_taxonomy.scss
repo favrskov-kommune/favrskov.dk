@@ -103,6 +103,12 @@
   }
 }
 
+.front .subject-grid {
+  .taxonomy-list {
+    padding: 20px 0 0 0;
+  }
+}
+
 .front .subject-grid, .subject-grid {
   .taxonomy {
     font-size: 0;
@@ -140,8 +146,13 @@
 
 // For page erhverv
 .subject-grid {
+
+  .taxonomy-list {
+    padding: 20px 50px 0;
+  }
   .taxonomy {
     margin-right: 14.2%;
+    margin-bottom: 25px;
     &:nth-child(3n) {
       margin-right: 0;
     }
