@@ -14,7 +14,7 @@ function content_type_faq_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_faq';
-  $strongarm->value = 0;
+  $strongarm->value = '0';
   $export['comment_anonymous_faq'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -169,7 +169,9 @@ function content_type_faq_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_faq';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'status',
+  );
   $export['node_options_faq'] = $strongarm;
 
   $strongarm = new stdClass();

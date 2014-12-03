@@ -118,7 +118,9 @@ function content_type_banner_element_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_banner_element';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'status',
+  );
   $export['node_options_banner_element'] = $strongarm;
 
   $strongarm = new stdClass();
