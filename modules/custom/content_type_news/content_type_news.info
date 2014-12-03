@@ -12,7 +12,6 @@ dependencies[] = fields_shared
 dependencies[] = image
 dependencies[] = media
 dependencies[] = multiple_selects
-dependencies[] = node
 dependencies[] = node_reference
 dependencies[] = options
 dependencies[] = scheduler

@@ -10,10 +10,12 @@
 function config_autoarch_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer autoarch settings.
+  // Exported permission: 'administer autoarch settings'.
   $permissions['administer autoarch settings'] = array(
     'name' => 'administer autoarch settings',
-    'roles' => array(),
+    'roles' => array(
+      'Administrator' => 'Administrator',
+    ),
     'module' => 'autoarch',
   );
 
