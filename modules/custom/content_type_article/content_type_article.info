@@ -1,9 +1,9 @@
 name = Content Type Article
 core = 7.x
 package = Content Types
-php = 5.2.4
 version = 7.x-1.0
 project = content_type_article
+dependencies[] = content_type_faq
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_collection
