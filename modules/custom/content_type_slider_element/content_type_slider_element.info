@@ -40,4 +40,3 @@ features[variable][] = menu_parent_slider_element
 features[variable][] = node_options_slider_element
 features[variable][] = node_preview_slider_element
 features[variable][] = node_submitted_slider_element
-mtime = 1417094822
