@@ -233,7 +233,8 @@
 
       });
 
-
+      // wrap block of the class ".swiper-wrapper" for scrollBar
+      $('.slider-nav-container .swiper-wrapper').wrap('<div class="container-scroll">');
 
       // mCustomScrollbar
       scrollBar($('.slide-description'));
