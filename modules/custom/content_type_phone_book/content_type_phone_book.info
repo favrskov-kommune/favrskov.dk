@@ -1,7 +1,6 @@
 name = Content Type Phone Book
 core = 7.x
 package = Content Types
-php = 5.2.4
 version = 7.x-1.0
 project = content_type_phone_book
 dependencies[] = addressfield
