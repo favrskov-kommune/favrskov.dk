@@ -75,13 +75,14 @@
   padding: 0;
 
   .slider-nav-container {
-    padding: 30px 0;
+    padding: 0 0 30px 0;
     @include at-breakpoint(12 $width-480) {
       padding: 10px 0;
     }
   }
 
   .view-content {
+    top: 30px;
     background: $lightgrey;
     color: $gray;
     max-width: 361px;
@@ -92,8 +93,12 @@
     left: 0;
     position: relative;
     .slide-description {
-      height: 127px;
+      height: 150px;
       margin-bottom: 10px;
+      background: $lightgrey;
+      padding-top: 30px;
+      position: relative;
+      z-index: 10;
       .mCSB_container {
         margin-right: 0 !important;
       }
@@ -133,6 +138,8 @@
       height: 185px;
       overflow: hidden;
       margin-top: 36px;
+      position: relative;
+      z-index: 1;
       @include at-breakpoint(12 $width-480) {
         margin: 10px 0 30px;
       }
