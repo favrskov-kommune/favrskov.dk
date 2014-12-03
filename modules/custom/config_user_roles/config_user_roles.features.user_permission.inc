@@ -64,6 +64,8 @@ function config_user_roles_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
   );
@@ -3732,6 +3734,8 @@ function config_user_roles_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
   );
