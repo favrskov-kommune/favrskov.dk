@@ -1,0 +1,41 @@
+// Share
+.node-share {
+  padding-top: 30px;
+  margin-bottom: 40px;
+  position: relative;
+
+  .addthis_toolbox {
+    display: none;
+    &.animated {
+      display: block;
+    }
+  }
+
+  // Print
+  .print_data {
+    margin-left: 66px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+  }
+
+  // Share
+  .toggle-share {
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-transform: uppercase;
+  }
+
+  // Susbcribe
+  .subscribe {
+    margin-left: 161px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+  }
+
+  .addthis_default_style .at300b {
+    padding: 0 5px;
+  }
+}

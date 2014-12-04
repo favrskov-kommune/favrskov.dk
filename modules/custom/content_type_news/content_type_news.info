@@ -69,7 +69,3 @@ features[variable][] = scheduler_publish_touch_news
 features[variable][] = scheduler_unpublish_enable_news
 features[variable][] = scheduler_unpublish_required_news
 features[variable][] = scheduler_unpublish_revision_news
-features_exclude[field_base][field_fics_esdh_cases] = field_fics_esdh_cases
-features_exclude[field_base][field_fics_esdh_documents] = field_fics_esdh_documents
-features_exclude[field_instance][node-news-field_fics_esdh_cases] = node-news-field_fics_esdh_cases
-features_exclude[field_instance][node-news-field_fics_esdh_documents] = node-news-field_fics_esdh_documents
