@@ -730,11 +730,10 @@ function panel_article_page_default_page_manager_handlers() {
 <a class="addthis_button_email"></a>
 </div>
 <a class="print_data" href="#">' . t('Print') . '</a>
-<a class="subscribe" href="/subscribe">' . t('Subscribe') . '</a>
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520e4c8a1550db4c"></script>',
       'format' => 'video_html',
-      'substitute' => TRUE,
+      'substitute' => 1,
     );
     $pane->cache = array();
     $pane->style = array(
