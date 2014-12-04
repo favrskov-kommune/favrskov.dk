@@ -3,6 +3,7 @@ core = 7.x
 package = Config
 version = 7.x-1.0
 project = config_borger_dk
+dependencies[] = content_type_faq
 dependencies[] = ctools
 dependencies[] = os2web_borger_dk_articles
 dependencies[] = strongarm
