@@ -15,6 +15,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access administration menu',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'admin_menu',
@@ -25,6 +27,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access administration pages',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'system',
@@ -239,6 +243,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer breakpoints',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'breakpoints',
   );
@@ -2869,6 +2874,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'flush caches',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'admin_menu',
   );
