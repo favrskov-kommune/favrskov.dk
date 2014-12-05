@@ -29,9 +29,9 @@
     position: relative;
   }
   .gallery {
-    max-height: 490px;
+    max-height: 460px;
     margin: 0 auto;
-    max-width: 981px;
+    max-width: 980px;
     position: relative;
     img {
       max-width: none;
@@ -91,7 +91,17 @@
     z-index: 2;
     //@include center-vertical(403);
     left: 0;
-    position: relative;
+
+    .container-scroll {
+      height: 53%;
+      overflow: hidden;
+      margin-top: 36px;
+      @include at-breakpoint(12 $width-480) {
+        margin-top: 0;
+        height: 40%;
+      }
+    }
+
     .slide-description {
       height: 150px;
       margin-bottom: 10px;
@@ -135,7 +145,7 @@
       }
     }
     ul {
-      height: 185px;
+      height: 100% !important;
       overflow: hidden;
       margin-top: 36px;
       position: relative;

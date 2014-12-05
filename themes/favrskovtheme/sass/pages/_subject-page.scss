@@ -82,6 +82,7 @@
       background: $grey;
       min-height: 221px;
       position: relative;
+      cursor: pointer;
       &:nth-child(3n) {
         margin-right: 0;
       }
@@ -104,6 +105,23 @@
       @include transition-property(background);
       @include transition-duration(0.3s);
       h2 {
+        &:before, &:after {
+          @extend %before-after;
+          width: 1px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          background: $red;
+          @include opacity(0);
+          @include transition-property(opacity);
+          @include transition-duration(0.3s);
+        }
+        &:before {
+          left: 0;
+        }
+        &:after {
+          right: 0;
+        }
         a {
           font-size: 24px;
           font-weight: bold;
@@ -140,6 +158,11 @@
       }
       &:hover {
         background: $white;
+        h2 {
+          &:before, &:after {
+            @include opacity(1);
+          }
+        }
         &:before, &:after {
           @include opacity(1);
         }
