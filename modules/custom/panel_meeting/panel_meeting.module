@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Panel Meeting feature.
- */
-
-include_once 'panel_meeting.features.inc';
