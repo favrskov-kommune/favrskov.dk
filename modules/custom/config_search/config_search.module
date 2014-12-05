@@ -83,19 +83,14 @@ function config_search_apachesolr_query_prepare($query) {
   //Add some boost for nodes with newer creation date.
   $query->addParam('bf', 'recip(ms(NOW,ds_created),3.16e-11,4,4)^10.0');
 
-  if (!empty($_GET['meetings'])) {
-   $bundles[] = 'os2web_meetings_meeting';
-   $bundles[] = 'document';
-  }
-
   if (!empty($_GET['phonebooks'])) {
     $bundles[] = 'phone_book';
   }
   // Restrict searchable content types.
   if (!empty($bundles)){
-    $query->addParam('fq', 'bundle:(' .  implode(' OR ', $bundles) .')');
+    $query->addParam('fq', 'bundle:(phone_book)');
   }else{
-    $query->addParam('fq', '-bundle:(os2web_meetings_meeting OR document OR phone_book)');
+    $query->addParam('fq', '-bundle:(phone_book)');
   }
 }
 
@@ -137,15 +132,3 @@ function config_search_node_view_alter(&$build) {
     }
   }
 }
-
-/**
- * Implements hook_entity_info_alter().
- *
- * Allow solr to index files in 'os2web_meetings_bullet', but do not index nodes itself.
- */
-function config_search_entity_info_alter(array &$entity_info) {
-  $entity_info['node']['bundles']['os2web_meetings_bullet']['apachesolr']['document callback'] = array('apachesolr_attachments_node_solr_document');
-  $entity_info['node']['bundles']['os2web_meetings_bullet_attach']['apachesolr']['document callback'] = array('apachesolr_attachments_node_solr_document');
-}
-
-

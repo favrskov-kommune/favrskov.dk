@@ -62,7 +62,7 @@ function panels_search_form_apachesolr_panels_search_block_alter(&$form, $form_s
  * Search submit callback.
  *
  * Keeps filter selection on search form on form submit if checkbox is checked.
- * Adds get params to page with information about to search or not to search by meetings.
+ * Adds get params to page with information about to search
  *
  * @see apachesolr_panels_search_block_form_submit().
  */
@@ -73,7 +73,6 @@ function panels_search_search_form_submit(&$form, $form_state) {
     $query += array('retain' => TRUE);
   }
 
-  $query['meetings'] = $form_state['input']['search_meetings'] == 1 ? TRUE : FALSE;
   $query['phonebooks'] = $form_state['input']['search_phonebooks'] == 1 ? TRUE : FALSE;
 
   $form_state['values']['search_block_form'] = $form_state['values']['apachesolr_panels_search_form'];
