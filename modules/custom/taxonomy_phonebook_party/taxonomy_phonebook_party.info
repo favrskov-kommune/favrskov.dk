@@ -1,9 +1,0 @@
-name = Taxonomy Phonebook Party
-core = 7.x
-package = Taxonomies
-version = 7.x-1.0
-project = taxonomy_phonebook_party
-dependencies[] = features
-dependencies[] = taxonomy
-features[features_api][] = api:2
-features[taxonomy][] = phonebook_party
