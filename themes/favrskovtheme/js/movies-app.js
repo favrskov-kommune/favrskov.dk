@@ -45,7 +45,7 @@
 	else {
 		//Nav
 		var navSwiper = $('.swiper-nav').swiper({
-			visibilityFullFit: true,
+	    	visibilityFullFit: true,
 			mode: 'vertical',
 			slidesPerView: 4,
 			mousewheelControl: true,
