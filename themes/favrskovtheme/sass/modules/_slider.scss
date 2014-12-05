@@ -91,17 +91,7 @@
     z-index: 2;
     //@include center-vertical(403);
     left: 0;
-
-    .container-scroll {
-      height: 53%;
-      overflow: hidden;
-      margin-top: 36px;
-      @include at-breakpoint(12 $width-480) {
-        margin-top: 0;
-        height: 40%;
-      }
-    }
-
+    position: relative;
     .slide-description {
       height: 150px;
       margin-bottom: 10px;
@@ -145,7 +135,7 @@
       }
     }
     ul {
-      height: 100% !important;
+      height: 185px;
       overflow: hidden;
       margin-top: 36px;
       position: relative;
