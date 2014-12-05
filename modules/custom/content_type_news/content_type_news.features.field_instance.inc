@@ -41,16 +41,15 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'comment',
     'field_name' => 'comment_body',
-    'label' => t('Comment'),
+    'label' => 'Comment',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
           'custom_tokens_no_filters_' => 0,
-          'filtered_html' => 'filtered_html',
+          'filtered_html' => 0,
           'full_html' => 0,
           'job_html' => 0,
-          'mailchimp_campaign' => 0,
           'plain_text' => 0,
           'video_html' => 0,
         ),
@@ -70,9 +69,6 @@ function content_type_news_field_default_field_instances() {
             'job_html' => array(
               'weight' => 0,
             ),
-            'mailchimp_campaign' => array(
-              'weight' => 0,
-            ),
             'plain_text' => array(
               'weight' => 10,
             ),
@@ -86,7 +82,7 @@ function content_type_news_field_default_field_instances() {
         'enable' => 0,
         'insert_plugin' => '',
       ),
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -202,6 +198,49 @@ function content_type_news_field_default_field_instances() {
       ),
       'type' => 'text_textarea_with_summary',
       'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-news-cntrmd_news'
+  $field_instances['node-news-cntrmd_news'] = array(
+    'bundle' => 'news',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'none',
+        'weight' => 11,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'cntrmd_news',
+    'label' => 'Notification',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'content_reminder',
+      'settings' => array(),
+      'type' => 'content_reminder_widget',
+      'weight' => 0,
     ),
   );
 
@@ -1468,10 +1507,13 @@ function content_type_news_field_default_field_instances() {
   t('Comment');
   t('Contact Information');
   t('Date');
+  t('ESDH cases');
+  t('ESDH documents');
   t('Editorial responsibility');
   t('FAQ');
   t('Image / thumbnail');
   t('Image description');
+  t('Notification');
   t('Related boxes');
   t('Related content');
   t('Self Service');
