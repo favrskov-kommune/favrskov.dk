@@ -1,0 +1,14 @@
+name = Config content reminder
+description = Carry of content reminder configs.
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_content_reminder
+dependencies[] = content_reminder
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = content_reminder_bundles
+features[variable][] = content_reminder_presets
+features[variable][] = content_reminder_unusable

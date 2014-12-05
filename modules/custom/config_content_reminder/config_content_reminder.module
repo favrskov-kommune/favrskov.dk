@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Config content reminder feature.
+ */
+
+include_once 'config_content_reminder.features.inc';
