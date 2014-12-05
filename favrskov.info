@@ -250,3 +250,4 @@ dependencies[] = config_webform
 dependencies[] = mimemail
 dependencies[] = mailsystem
 dependencies[] = config_mailsystem
+dependencies[] = config_content_reminder
