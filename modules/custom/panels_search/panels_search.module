@@ -30,13 +30,6 @@ function panels_search_form_apachesolr_panels_search_form_alter(&$form, $form_st
     }
   }
 
-  $form['search_meetings'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Search for meetings'),
-    '#weight' => 1001,
-    '#default_value' => !empty($_GET['meetings']) ? 1 : 0,
-  );
-
   $form['save_filters'] = array(
     '#type' => 'checkbox',
     '#title' => t('Retain current filters'),

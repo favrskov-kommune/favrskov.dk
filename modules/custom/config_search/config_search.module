@@ -77,17 +77,13 @@ function config_search_apachesolr_index_document_build_node(ApacheSolrDocument $
  *  An object implementing DrupalSolrQueryInterface.
  */
 function config_search_apachesolr_query_prepare($query) {
-  $bundles = array();
   $query->addParam('fl', 'ts_field_external_url');
 
   //Add some boost for nodes with newer creation date.
   $query->addParam('bf', 'recip(ms(NOW,ds_created),3.16e-11,4,4)^10.0');
 
-  if (!empty($_GET['phonebooks'])) {
-    $bundles[] = 'phone_book';
-  }
   // Restrict searchable content types.
-  if (!empty($bundles)){
+  if (!empty($_GET['phonebooks'])){
     $query->addParam('fq', 'bundle:(phone_book)');
   }else{
     $query->addParam('fq', '-bundle:(phone_book)');
