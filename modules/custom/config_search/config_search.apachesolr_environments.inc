@@ -14,7 +14,7 @@ function config_search_apachesolr_environments() {
   $environment->api_version = 1;
   $environment->env_id = 'solr';
   $environment->name = 'localhost server';
-  $environment->url = 'http://localhost:8080/solr/roskilde';
+  $environment->url = 'http://localhost:8080/solr/favrskov';
   $environment->service_class = '';
   $environment->conf = array(
     'apachesolr_access_always_add_grants' => 1,
