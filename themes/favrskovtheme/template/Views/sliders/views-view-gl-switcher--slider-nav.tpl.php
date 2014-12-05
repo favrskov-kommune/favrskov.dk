@@ -10,10 +10,18 @@
  * @ingroup views_templates
  */
 ?>
-
+  <div class="slide-description">
+    <?php foreach ($rows as $id => $row): ?>
+      <h2 class="title-slide slide-<?php print $id ?> <?php if ($id == 0) {
+        print "active";
+      } ?>">
+        <?php print($view->result[$id]->field_field_description[0]['rendered']['#markup']) ?>
+      </h2>
+    <?php endforeach; ?>
+  </div>
 <?php print $wrapper_prefix; ?>
 <?php if (!empty($title)) : ?>
-<h3><?php print $title; ?></h3>
+  <h3><?php print $title; ?></h3>
 <?php endif; ?>
 <?php if (!empty($switcher)) : ?>
   <div class="switch">
@@ -22,20 +30,12 @@
   </div>
 <?php endif; ?>
 
-<div class="slide-description">
-  <?php foreach ($rows as $id => $row): ?>
-  <h2 class="title-slide slide-<?php print $id ?> <?php if ($id == 0) {
-  print "active";
-  } ?>">
-    <?php print($view->result[$id]->field_field_description[0]['rendered']['#markup']) ?>
-  </h2>
-  <?php endforeach; ?>
-</div>
+
 
 <?php print $list_type_prefix; ?>
 
 <?php foreach ($rows as $id => $row): ?>
-<li class="<?php print $classes_array[$id]; ?>"><?php print $row; ?></li>
+  <li class="<?php print $classes_array[$id]; ?>"><?php print $row; ?></li>
 <?php endforeach; ?>
 
 <?php print $list_type_suffix; ?>
