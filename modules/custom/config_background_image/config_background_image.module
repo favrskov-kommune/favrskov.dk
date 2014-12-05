@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Config Background Image feature.
- */
-
-include_once 'config_background_image.features.inc';
