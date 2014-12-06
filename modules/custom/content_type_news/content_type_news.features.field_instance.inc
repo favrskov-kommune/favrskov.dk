@@ -41,7 +41,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'comment',
     'field_name' => 'comment_body',
-    'label' => 'Comment',
+    'label' => t('Comment'),
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -1507,8 +1507,6 @@ function content_type_news_field_default_field_instances() {
   t('Comment');
   t('Contact Information');
   t('Date');
-  t('ESDH cases');
-  t('ESDH documents');
   t('Editorial responsibility');
   t('FAQ');
   t('Image / thumbnail');
