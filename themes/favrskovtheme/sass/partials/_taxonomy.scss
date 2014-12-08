@@ -3,17 +3,19 @@
 
 .subject-grid {
   background: $grey;
-  margin-bottom: 46px;
+  margin-bottom: 55px;
+
+  .taxonomy-list {
+    padding-top: 20px;
+  }
+
   .content-container & .content {
     padding: 0;
   }
+
   // For ie8
   .lt-ie8 & {
     min-width: 981px;
-  }
-
-  .taxonomy-list {
-    padding: 20px 5% 0;
   }
 
   .taxonomy {
@@ -33,35 +35,53 @@
         padding-left: 100px;
       }
     }
-  }
-
-
-  .taxonomy:hover {
-      a {
-        color: $liteGray;
-
-        &:hover {
-
-          // Colors theme
-          .violet      & { color: $violet; }
-          .dark-grey   & { color: $dark-grey; }
-          .grey        & { color: $gray; }
-          .yellow      & { color: $dirty-yellow; }
-          .blue        & { color: $deepBlue; }
-          .pink        & { color: $pink; }
-          .salat-green & { color: $salatGreen; }
-        }
-      }
-
-      .taxonomy-pic {
-        background-color: $liteGray;
+    .view-content-by-taxonomy-term {
+      a:hover {
+        text-decoration: underline;
       }
     }
+  }
+
+  .taxonomy:hover {
+    a {
+      color: $liteGray;
+
+      &:hover {
+
+        // Colors theme
+        .violet & {
+          color: $violet;
+        }
+        .dark-grey & {
+          color: $dark-grey;
+        }
+        .grey & {
+          color: $gray;
+        }
+        .yellow & {
+          color: $dirty-yellow;
+        }
+        .blue & {
+          color: $deepBlue;
+        }
+        .pink & {
+          color: $pink;
+        }
+        .salat-green & {
+          color: $salatGreen;
+        }
+      }
+    }
+
+    .taxonomy-pic {
+      background-color: $liteGray;
+    }
+  }
 
   // Header
   h3 {
     font-family: $sans-medium;
-    @include font-size(18);
+    @include font-size(22);
     margin-bottom: 15px;
     a {
       color: $dark-green;
@@ -72,7 +92,7 @@
   // Subheaders
   h4 {
     @include font-size(15);
-    margin-bottom: 8px;
+    margin-bottom: 3px;
     font-family: Arial;
     font-weight: bold;
     a {
@@ -86,6 +106,11 @@
   }
 }
 
+.front .subject-grid {
+  .taxonomy-list {
+    padding: 20px 0 0 0;
+  }
+}
 
 .front .subject-grid, .subject-grid {
   .taxonomy {
@@ -108,37 +133,39 @@
     text-align: center;
     position: relative;
 
-
     @include at-breakpoint(12 $width-980) {
       @include span-columns(6, 12);
       &:nth-child(4n) {
-          margin-right: gutter(12);
-        }
-        &:nth-child(2n) {
-          margin-right: 0;
-        }
+        margin-right: gutter(12);
       }
-      @include at-breakpoint(12 $width-600) {
+      &:nth-child(2n) {
         margin-right: 0;
-        @include span-columns(12, 12);
-        text-align: left;
       }
     }
+    @include at-breakpoint(12 $width-600) {
+      margin-right: 0;
+      @include span-columns(12, 12);
+      text-align: left;
+    }
   }
-
-
+}
 
 // For page erhverv
 .subject-grid {
+
+  .taxonomy-list {
+    padding: 20px 50px 0;
+  }
   .taxonomy {
-
-    &:nth-child(4n), & {
-      margin-right: 14.2%;
-    }
-
+    margin-right: 14.2%;
+    margin-bottom: 25px;
     &:nth-child(3n) {
       margin-right: 0;
     }
+    &:nth-child(4n) {
+      margin-right: 14.2%;
+    }
+
     // For ie8
     .lt-ie8 & {
       margin-right: 9.55%;
@@ -159,26 +186,75 @@
   }
 }
 
+.front {
+  .subject-grid {
+    .taxonomy {
+      font-size: 0;
+      @include span-columns(3, 12);
+      // For ie8
+      .lt-ie8 & {
+        margin-right: 1.2%;
+      }
 
+      @include inline-block(top);
+      vertical-align: top;
+      margin-bottom: 20px;
+      float: none;
+      text-align: center;
+      position: relative;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+      @include at-breakpoint(12 $width-980) {
+        @include span-columns(6, 12);
+        &:nth-child(4n) {
+          margin-right: gutter(12);
+        }
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+      }
+      @include at-breakpoint(12 $width-600) {
+        margin-right: 0;
+        @include span-columns(12, 12);
+        text-align: left;
+      }
+    }
+  }
+}
 
 // Taxonomy Image on Subject-grid
 .taxonomy-pic {
-  margin: 0 auto 15px;
-  height: 75px;
-  @include border-radius(80px);
+  margin: 0 auto 14px;
+  height: 70px;
+  @include border-radius(50%);
   background-color: $dark-green;
-  width: 75px;
-  border: 2px solid $white;
+  width: 70px;
   position: relative;
 
   // Colors theme
-  .violet      & { background-color: $violet; }
-  .dark-grey   & { background-color: $dark-grey; }
-  .grey        & { background-color: $gray; }
-  .yellow      & { background-color: $dirty-yellow; }
-  .blue        & { background-color: $deepBlue; }
-  .pink        & { background-color: $pink; }
-  .salat-green & { background-color: $salatGreen; }
+  .violet & {
+    background-color: $violet;
+  }
+  .dark-grey & {
+    background-color: $dark-grey;
+  }
+  .grey & {
+    background-color: $gray;
+  }
+  .yellow & {
+    background-color: $dirty-yellow;
+  }
+  .blue & {
+    background-color: $deepBlue;
+  }
+  .pink & {
+    background-color: $pink;
+  }
+  .salat-green & {
+    background-color: $salatGreen;
+  }
 
   @include transition-duration(.2s);
 
