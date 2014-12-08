@@ -102,13 +102,13 @@ function content_type_article_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '3',
         ),
         'redirect' => array(
-          'weight' => '1',
+          'weight' => '2',
         ),
         'language' => array(
-          'weight' => '3',
+          'weight' => '4',
         ),
         'domain' => array(
           'weight' => '4',
