@@ -30,7 +30,7 @@
 		var navSwiper = $('.swiper-nav').swiper({
 			visibilityFullFit: true,
 			mode: 'vertical',
-			slidesPerView: 4,
+			slidesPerView: 3,
 			mousewheelControl: true,
 
 			//Thumbnails Clicks
@@ -47,7 +47,7 @@
 		var navSwiper = $('.swiper-nav').swiper({
 	    	visibilityFullFit: true,
 			mode: 'vertical',
-			slidesPerView: 4,
+			slidesPerView: 3,
 			mousewheelControl: true,
 			simulateTouch: false,
 			//Thumbnails Clicks
