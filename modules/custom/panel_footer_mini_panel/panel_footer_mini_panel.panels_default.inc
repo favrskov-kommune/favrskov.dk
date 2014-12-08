@@ -191,16 +191,16 @@ function panel_footer_mini_panel_default_panels_mini() {
       'body' => '<article role="article">
 <h1>Kontakt</h1>
 
-<p class="small-height">Digital hotline<br/>
-Tlf: 70 20 00 00<br/></p>
+<p class="small-height">Digital hotline<br />
+Tlf: <a href="callto:70 20 00 00">70 20 00 00</a></p>
 
-<p class="small-height">Kontakt hovednummer<br/>
-Tlf: 89 64 10 10<br/></p>
+<p class="small-height">Kontakt hovednummer<br />
+Tlf: <a href="callto:89 64 10 10">89 64 10 10</a></p>
 
-<p>Man-tris 9.30-15<br/>
-Onsdag Lukket<br/>
-Torsdag 12-17<br/>
-Fredag 9.30-12<br/></p>
+<p>Man-tris 9.30-15<br />
+Onsdag Lukket<br />
+Torsdag 12-17<br />
+Fredag 9.30-12</p>
 </article>
 ',
       'format' => 'full_html',
@@ -308,7 +308,7 @@ Skovvej 20<br />
 8382 Hinnerup</p>
 
 <p class="small-height">Skriv til os på mail<br />
-favrskov@favrskov.dk</p>
+<a href="mailto:favrskov@favrskov.dk">favrskov@favrskov.dk</a></p>
 
 <p>CVR: 0000000000000</p>
 </article>
