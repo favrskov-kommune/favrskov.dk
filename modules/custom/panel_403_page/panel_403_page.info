@@ -2,7 +2,6 @@ name = Panel 403 page
 description = Panel 403 page
 core = 7.x
 package = Panels
-php = 5.2.4
 version = 7.x-1.0
 project = panel_403_page
 dependencies[] = ctools

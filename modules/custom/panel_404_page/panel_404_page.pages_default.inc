@@ -16,7 +16,10 @@ function panel_404_page_default_page_manager_pages() {
   $page->admin_title = 'Page 404';
   $page->admin_description = '';
   $page->path = 'page-404';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array();
   $page->conf = array(
@@ -70,10 +73,11 @@ function panel_404_page_default_page_manager_pages() {
   );
   $display->cache = array();
   $display->title = '';
+  $display->uuid = '9467bba7-72fc-45d5-8fc2-e56ba0131961';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-1';
+    $pane->pid = 'new-340947a8-b85f-4342-b84b-c194d0f492f6';
     $pane->panel = 'first-region';
     $pane->type = 'page_logo';
     $pane->subtype = 'page_logo';
@@ -89,10 +93,11 @@ function panel_404_page_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['first-region'][0] = 'new-1';
+    $pane->uuid = '340947a8-b85f-4342-b84b-c194d0f492f6';
+    $display->content['new-340947a8-b85f-4342-b84b-c194d0f492f6'] = $pane;
+    $display->panels['first-region'][0] = 'new-340947a8-b85f-4342-b84b-c194d0f492f6';
     $pane = new stdClass();
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-cdfde144-e1b3-4957-9653-e188255f125b';
     $pane->panel = 'second-region';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -126,10 +131,11 @@ function panel_404_page_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['second-region'][0] = 'new-2';
+    $pane->uuid = 'cdfde144-e1b3-4957-9653-e188255f125b';
+    $display->content['new-cdfde144-e1b3-4957-9653-e188255f125b'] = $pane;
+    $display->panels['second-region'][0] = 'new-cdfde144-e1b3-4957-9653-e188255f125b';
     $pane = new stdClass();
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-d4bd7ab6-1d68-47a4-9277-6b523a53b449';
     $pane->panel = 'third-region';
     $pane->type = 'block';
     $pane->subtype = 'apachesolr_panels-search_form';
@@ -148,10 +154,11 @@ function panel_404_page_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['third-region'][0] = 'new-3';
+    $pane->uuid = 'd4bd7ab6-1d68-47a4-9277-6b523a53b449';
+    $display->content['new-d4bd7ab6-1d68-47a4-9277-6b523a53b449'] = $pane;
+    $display->panels['third-region'][0] = 'new-d4bd7ab6-1d68-47a4-9277-6b523a53b449';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-2';
+  $display->title_pane = 'new-cdfde144-e1b3-4957-9653-e188255f125b';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['page_404'] = $page;
