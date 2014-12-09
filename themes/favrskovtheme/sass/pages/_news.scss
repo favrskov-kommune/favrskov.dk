@@ -93,6 +93,7 @@
       max-width: 90%;
     }
     a {
+      @include links($slategrey, $white-red);
       font: 10pt Arial;
       text-transform: uppercase;
       color: $slategrey;

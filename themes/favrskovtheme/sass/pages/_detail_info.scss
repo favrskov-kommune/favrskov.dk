@@ -1,16 +1,13 @@
-
 //------------- DETAIL INFORMATION -------------------
 .content-container {
   .content {
     @include container;
     @extend %clearfix;
-
     // for node news
     .node-type-news &,
     .node-type-article & {
       padding: 46px 0;
     }
-
     // For ie8
     .lt-ie8 & {
       width: 981px;
@@ -45,7 +42,7 @@
     }
 
     .node-content,
-    .list-content  {
+    .list-content {
       @include span-columns(7, 12);
       @include at-breakpoint(12 $width-768) {
         @include span-columns(12, 12);
@@ -90,13 +87,13 @@
 
         p {
           font: 13pt Arial;
-          color:  $slategrey;
+          color: $slategrey;
           line-height: 25px;
         }
       }
       .teaser {
         font: 18pt $sans-book;
-        color:  $slategrey;
+        color: $slategrey;
         line-height: 33px;
         margin: 54px 0;
       }
@@ -110,14 +107,13 @@
         margin: 0 0 8px;
         &, h2 {
           font: 10pt Arial;
-          float: left;
           color: $dark-grey;
         }
         h2, span {
+          float: left;
           margin-right: 10px;
         }
       }
-
 
       //---for form comment---
       .pane-node-comment-form {
@@ -219,7 +215,11 @@
           display: block;
         }
         a {
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
+          height: 100%;
           padding: 20px;
         }
         span {
@@ -398,8 +398,6 @@
       .faq li:last-child {
         border-bottom: 0;
       }
-
-
 
     }
   }

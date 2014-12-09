@@ -23,10 +23,6 @@
   }
   background-color: #f0f0f0;
   height: 460px;
-  .node-type-article & {
-    height: 430px;
-    background: none;
-  }
   position: relative;
   overflow: hidden;
   @include backface-visibility(hidden);
