@@ -22,7 +22,7 @@ function config_user_fields_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'user',
@@ -80,7 +80,7 @@ function config_user_fields_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 0,
     ),
   );
 
@@ -96,7 +96,7 @@ function config_user_fields_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'user',
@@ -154,7 +154,7 @@ function config_user_fields_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 1,
     ),
   );
 
