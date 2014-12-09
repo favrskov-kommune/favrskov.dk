@@ -1756,15 +1756,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete terms in hearing_category'.
-  $permissions['delete terms in hearing_category'] = array(
-    'name' => 'delete terms in hearing_category',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'delete terms in kle'.
   $permissions['delete terms in kle'] = array(
     'name' => 'delete terms in kle',
@@ -1817,130 +1808,12 @@ function config_user_roles_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'delete terms in os2web_hr_manager_job_position_categories'.
-  $permissions['delete terms in os2web_hr_manager_job_position_categories'] = array(
-    'name' => 'delete terms in os2web_hr_manager_job_position_categories',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in os2web_kultunaut_categories'.
-  $permissions['delete terms in os2web_kultunaut_categories'] = array(
-    'name' => 'delete terms in os2web_kultunaut_categories',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in os2web_kultunaut_types'.
-  $permissions['delete terms in os2web_kultunaut_types'] = array(
-    'name' => 'delete terms in os2web_kultunaut_types',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in os2web_social_directory_activity'.
-  $permissions['delete terms in os2web_social_directory_activity'] = array(
-    'name' => 'delete terms in os2web_social_directory_activity',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in os2web_social_directory_association_type'.
-  $permissions['delete terms in os2web_social_directory_association_type'] = array(
-    'name' => 'delete terms in os2web_social_directory_association_type',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in os2web_social_directory_audience'.
-  $permissions['delete terms in os2web_social_directory_audience'] = array(
-    'name' => 'delete terms in os2web_social_directory_audience',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in os2web_social_directory_contact_person_role'.
-  $permissions['delete terms in os2web_social_directory_contact_person_role'] = array(
-    'name' => 'delete terms in os2web_social_directory_contact_person_role',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in phonebook_administration'.
-  $permissions['delete terms in phonebook_administration'] = array(
-    'name' => 'delete terms in phonebook_administration',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in phonebook_committee'.
-  $permissions['delete terms in phonebook_committee'] = array(
-    'name' => 'delete terms in phonebook_committee',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in phonebook_department'.
-  $permissions['delete terms in phonebook_department'] = array(
-    'name' => 'delete terms in phonebook_department',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in phonebook_party'.
-  $permissions['delete terms in phonebook_party'] = array(
-    'name' => 'delete terms in phonebook_party',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in phonebook_type'.
-  $permissions['delete terms in phonebook_type'] = array(
-    'name' => 'delete terms in phonebook_type',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'delete terms in subject_area'.
   $permissions['delete terms in subject_area'] = array(
     'name' => 'delete terms in subject_area',
     'roles' => array(
       'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in video_category'.
-  $permissions['delete terms in video_category'] = array(
-    'name' => 'delete terms in video_category',
-    'roles' => array(
-      'Administrator' => 'Administrator',
     ),
     'module' => 'taxonomy',
   );
@@ -2524,15 +2397,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: 'edit terms in hearing_category'.
-  $permissions['edit terms in hearing_category'] = array(
-    'name' => 'edit terms in hearing_category',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'edit terms in kle'.
   $permissions['edit terms in kle'] = array(
     'name' => 'edit terms in kle',
@@ -2587,130 +2451,12 @@ function config_user_roles_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'edit terms in os2web_hr_manager_job_position_categories'.
-  $permissions['edit terms in os2web_hr_manager_job_position_categories'] = array(
-    'name' => 'edit terms in os2web_hr_manager_job_position_categories',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in os2web_kultunaut_categories'.
-  $permissions['edit terms in os2web_kultunaut_categories'] = array(
-    'name' => 'edit terms in os2web_kultunaut_categories',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in os2web_kultunaut_types'.
-  $permissions['edit terms in os2web_kultunaut_types'] = array(
-    'name' => 'edit terms in os2web_kultunaut_types',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in os2web_social_directory_activity'.
-  $permissions['edit terms in os2web_social_directory_activity'] = array(
-    'name' => 'edit terms in os2web_social_directory_activity',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in os2web_social_directory_association_type'.
-  $permissions['edit terms in os2web_social_directory_association_type'] = array(
-    'name' => 'edit terms in os2web_social_directory_association_type',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in os2web_social_directory_audience'.
-  $permissions['edit terms in os2web_social_directory_audience'] = array(
-    'name' => 'edit terms in os2web_social_directory_audience',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in os2web_social_directory_contact_person_role'.
-  $permissions['edit terms in os2web_social_directory_contact_person_role'] = array(
-    'name' => 'edit terms in os2web_social_directory_contact_person_role',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in phonebook_administration'.
-  $permissions['edit terms in phonebook_administration'] = array(
-    'name' => 'edit terms in phonebook_administration',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in phonebook_committee'.
-  $permissions['edit terms in phonebook_committee'] = array(
-    'name' => 'edit terms in phonebook_committee',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in phonebook_department'.
-  $permissions['edit terms in phonebook_department'] = array(
-    'name' => 'edit terms in phonebook_department',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in phonebook_party'.
-  $permissions['edit terms in phonebook_party'] = array(
-    'name' => 'edit terms in phonebook_party',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in phonebook_type'.
-  $permissions['edit terms in phonebook_type'] = array(
-    'name' => 'edit terms in phonebook_type',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'edit terms in subject_area'.
   $permissions['edit terms in subject_area'] = array(
     'name' => 'edit terms in subject_area',
     'roles' => array(
       'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in video_category'.
-  $permissions['edit terms in video_category'] = array(
-    'name' => 'edit terms in video_category',
-    'roles' => array(
-      'Administrator' => 'Administrator',
     ),
     'module' => 'taxonomy',
   );
@@ -3012,6 +2758,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'override article published option',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'override_node_options',
   );
@@ -3120,6 +2867,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'override bannerlink published option',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'override_node_options',
   );
@@ -3174,6 +2922,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'override borger_dk_article published option',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'override_node_options',
   );
@@ -3228,6 +2977,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'override factbox published option',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'override_node_options',
   );
@@ -3282,6 +3032,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'override faq published option',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'override_node_options',
   );
@@ -3444,6 +3195,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'override phone_book published option',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'override_node_options',
   );
@@ -3498,6 +3250,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'override self_service published option',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
     ),
     'module' => 'override_node_options',
   );
@@ -4056,6 +3809,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use text format full_html',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'filter',
