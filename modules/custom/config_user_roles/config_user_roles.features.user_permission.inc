@@ -422,7 +422,6 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer filters',
     'roles' => array(
       'Administrator' => 'Administrator',
-      'Editor' => 'Editor',
     ),
     'module' => 'filter',
   );
@@ -3810,6 +3809,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'use text format full_html',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
