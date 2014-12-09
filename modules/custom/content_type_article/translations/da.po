@@ -157,3 +157,57 @@ msgstr "Opdatering teaser"
 msgid "Image link"
 msgstr "Billede link"
 
+msgid "Write short and precise."
+msgstr "Skriv kort og præcist."
+
+msgid "Link to secondary self-service solutions."
+msgstr "Link til sekundære selvbetjeningsløsninger."
+
+msgid "Start typing a keyword and select among the proposals that emerge."
+msgstr "Start med at skrive et søgeord og vælg blandt de forslag der dukker op."
+
+msgid "If not you as the author has editorial responsibility can specify a different editor."
+msgstr "Hvis ikke du som forfatter har det redaktionelle ansvar, kan angive en anden redaktør."
+
+msgid "Lets make fold out sections with short descriptions help to enrich article."
+msgstr "Giver mulighed for at lave fold ud sektioner med korte hjælpebeskrivelser til berigelse af artiklen."
+
+msgid "Text shown visible during image."
+msgstr "Tekst som vises synligt under billede."
+
+msgid "Always write in ALT text what the picture shows the sake of visual impairment and reading tool."
+msgstr "Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj."
+
+msgid "Booklets and reports."
+msgstr "Pjecer og rapporter."
+
+msgid "Related to the fact boxes."
+msgstr "Relation til faktabokse."
+
+msgid "Reference to other articles on favrskov.dk who can provide additional content."
+msgstr "Henvisning til andre artikler på favrskov.dk der kan bidrage med yderligere indhold."
+
+msgid "Search or create new self-service banner."
+msgstr "Søg efter eller opret nyt selvbetjeningsbanner."
+
+msgid "Allows you to create tables that are mobile and tablet friendly. Please use this type of table rather than insert tables in the body."
+msgstr "Giver dig mulighed for at oprette tabeller, som er mobil og tablet venlige. Benyt venligst denne type tabel frem for at indsætte tabeller i brødteksten."
+
+msgid "All texts must be marked with KLE numbers of the classification of content."
+msgstr "Alle tekster skal opmærkes med KLE numre af hensyn til klassificering af indhold."
+
+msgid "Not used."
+msgstr "Anvendes ikke."
+
+msgid "To the article can be placed in the structure you choose here the article topic."
+msgstr "For at artiklen kan placeres i strukturen, skal du her vælge artiklens emne område."
+
+msgid "A short summary text that summarizes the content of the article. The text is used to subject the front pages, search engine optimization, etc."
+msgstr "En kort resume tekst der opsummerer artiklens indhold. Teksten bruges til emne forsiderne, til søgemaskine optimering osv."
+
+msgid "This sets the "embed" code that Youtube provides."
+msgstr "Her indsættes den "embed" kode som Youtube stiller til rådighed."
+
+msgid "Short text describing the content of the video."
+msgstr "Kort tekst der beskriver indholdet af videoen."
+
