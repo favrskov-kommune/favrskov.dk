@@ -21,7 +21,7 @@ msgstr "BorgerDK"
 
 #: content_type_article.features.field_instance.inc:1202
 msgid "Contact Information"
-msgstr "Kontakt oplysninger"
+msgstr "Kontaktinformation"
 
 #: content_type_article.features.field_instance.inc:1203
 msgid "Editorial responsibility"
@@ -77,7 +77,7 @@ msgstr "Taksonomi, lokation"
 
 #: content_type_article.features.field_instance.inc:1216
 msgid "Taxonomy, Subject Area"
-msgstr "Taksonomi, Emne område"
+msgstr "Taksonomi, Emneområde"
 
 #: content_type_article.features.field_instance.inc:1217
 msgid "Taxonomy, local"
@@ -140,7 +140,7 @@ msgid "Page update subscription"
 msgstr "Side opdatering abonnement"
 
 msgid "Publications title"
-msgstr "Publikationer titel"
+msgstr "Publikationstitel"
 
 msgid "Hide node update date"
 msgstr "Skjul node opdateringsdato"
