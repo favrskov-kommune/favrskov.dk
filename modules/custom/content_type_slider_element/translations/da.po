@@ -32,8 +32,8 @@ msgid "Internal link"
 msgstr "Internt link"
 
 #: content_type_slider_element.features.field_instance.inc:332
-msgid "Link text"
-msgstr "Linktekst"
+msgid "Slider menu text"
+msgstr "Slider-menu-tekst"
 
 #: content_type_slider_element.features.inc:23
 msgid "Slider element"
