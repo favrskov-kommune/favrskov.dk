@@ -10,6 +10,82 @@
 function content_type_bannerlink_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-bannerlink-cntrmd_bannerlink'
+  $field_instances['node-bannerlink-cntrmd_bannerlink'] = array(
+    'bundle' => 'bannerlink',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'none',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'cntrmd_bannerlink',
+    'label' => 'Notification',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'content_reminder',
+      'settings' => array(),
+      'type' => 'content_reminder_widget',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'node-bannerlink-field_banner_link_color'
+  $field_instances['node-bannerlink-field_banner_link_color'] = array(
+    'bundle' => 'bannerlink',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_banner_link_color',
+    'label' => 'Color',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_buttons',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-bannerlink-field_displayed_title'
   $field_instances['node-bannerlink-field_displayed_title'] = array(
     'bundle' => 'bannerlink',
