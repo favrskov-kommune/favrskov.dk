@@ -474,7 +474,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Write short and precise.'),
+    'description' => t('Short description.'),
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -700,7 +700,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Link to secondary self-service solutions.'),
+    'description' => t('Reference to bannerlink content type.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -897,7 +897,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('If not you as the author has editorial responsibility can specify a different editor.'),
+    'description' => t('Select author starting type his username.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -956,7 +956,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Lets make fold out sections with short descriptions help to enrich article.'),
+    'description' => t('Reference to FAQ content type.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1071,7 +1071,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Text shown visible during image.'),
+    'description' => t('Image text.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1133,7 +1133,7 @@ function content_type_article_field_default_field_instances() {
   $field_instances['node-article-field_image_thumbnail'] = array(
     'bundle' => 'article',
     'deleted' => 0,
-    'description' => t('Always write in ALT text what the picture shows the sake of visual impairment and reading tool.'),
+    'description' => t('Text that could be readed by browser for blind and visually-impaired people.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1675,7 +1675,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Related to the fact boxes.'),
+    'description' => t('References to factboxes.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1737,7 +1737,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Reference to other articles on favrskov.dk who can provide additional content.'),
+    'description' => t('Reference to other articles on favrskov.dk that provide additional content.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1797,7 +1797,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Search or create new self-service banner.'),
+    'description' => t('Search or create new self-service content type item.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1888,7 +1888,7 @@ function content_type_article_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => t('Allows you to create tables that are mobile and tablet friendly. Please use this type of table rather than insert tables in the body.'),
+    'description' => t('Allows you to create mobile and tablet-friendly tables. Please use this type of table rather than insert tables in the body.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1939,7 +1939,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('All texts must be marked with KLE numbers of the classification of content.'),
+    'description' => t('All articles must be marked by KLE-taxonomy for content classification.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2049,7 +2049,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Not used.'),
+    'description' => t('Not in use.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2104,7 +2104,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('To the article can be placed in the structure you choose here the article topic.'),
+    'description' => t('Choose article topic.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2159,7 +2159,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('A short summary text that summarizes the content of the article. The text is used to subject the front pages, search engine optimization, etc.'),
+    'description' => t('Summary. Clarifies purpose of front pages, necessary in search engine optimization.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2222,7 +2222,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('This sets the "embed" code that Youtube provides.'),
+    'description' => t('Youtube embed code.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2306,7 +2306,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Short text describing the content of the video.'),
+    'description' => t('Short text describing video content.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
