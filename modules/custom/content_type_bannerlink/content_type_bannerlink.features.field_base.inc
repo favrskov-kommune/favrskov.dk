@@ -10,6 +10,26 @@
 function content_type_bannerlink_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'cntrmd_bannerlink'
+  $field_bases['cntrmd_bannerlink'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'cntrmd_bannerlink',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'date' => array(
+        0 => 'date',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'content_reminder',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'content_reminder',
+  );
+
   // Exported field_base: 'field_banner_link_color'
   $field_bases['field_banner_link_color'] = array(
     'active' => 1,
@@ -27,8 +47,9 @@ function content_type_bannerlink_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'green-background' => 'Green',
+        'red-background' => 'Red',
         'blue-background' => 'Blue',
+        'grey-background' => 'Grey',
       ),
       'allowed_values_function' => '',
     ),
