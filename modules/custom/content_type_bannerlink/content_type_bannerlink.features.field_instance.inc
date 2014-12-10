@@ -33,7 +33,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'cntrmd_bannerlink',
-    'label' => 'Notification',
+    'label' => t('Notification'),
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -70,7 +70,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_banner_link_color',
-    'label' => 'Color',
+    'label' => t('Color'),
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
