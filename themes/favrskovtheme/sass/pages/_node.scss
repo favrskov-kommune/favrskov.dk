@@ -603,12 +603,16 @@
   margin-bottom: 10px;
 }
 
-.green-background {
-  background-color: #6e7d5a;
+.grey-background {
+  background-color: $fern-grey;
 }
 
 .blue-background {
-  background-color: #98dff8;
+  background-color: $fern-blue;
+}
+
+.red-background {
+  background-color: $red;
 }
 
 // -----------------------------------------------------------------------------

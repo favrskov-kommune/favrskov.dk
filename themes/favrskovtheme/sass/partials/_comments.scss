@@ -2,10 +2,11 @@
 .pane-node-comments,
 .pane-node-comment-form {
   padding: 50px 0 40px;
+  clear: both;
 
   h2 {
     @include font-size(30);
-    font-family: $sans-bold-strict;
+    font-family: $sans-book;
     margin-bottom: 35px;
   }
 }
@@ -17,7 +18,7 @@
     @include font-size(16);
     h2 {
       @include font-size(16);
-      font-family: $sans-bold-strict;
+      font-family: $sans-book;
       margin: 0;
     }
   }
@@ -54,7 +55,7 @@
     }
 
     h3 {
-      font-family: $sans-med-strict;
+      font-family: $sans-medium;
       @include font-size(19);
     }
 
@@ -286,7 +287,7 @@
   }
 
   label {
-    font-family: $sans-med-strict;
+    font-family: $sans-medium;
     min-width: 15%;
     @include font-size(17);
     @include inline-block();
