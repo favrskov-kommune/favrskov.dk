@@ -18,15 +18,16 @@
     }
   }
   .addthis_toolbox, .social-links {
-    margin: 60px 0 54px;
+    margin: 10px 0;
     a {
       margin-right: 5px;
     }
     span, a {
-      width: 40px !important;
-      height: 40px !important;
+      width: 32px !important;
+      height: 32px !important;
       text-indent: -9999px;
-      display: block;
+      display: inline-block;
+      margin-right: 5px;
     }
     .addthis_button_facebook, .icon-facebook {
       span, a {

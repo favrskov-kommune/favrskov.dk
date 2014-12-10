@@ -6,7 +6,7 @@
 
   h2 {
     @include font-size(30);
-    font-family: $sans-book;
+    font-family: $sans-medium;
     margin-bottom: 35px;
   }
 }
@@ -18,7 +18,7 @@
     @include font-size(16);
     h2 {
       @include font-size(16);
-      font-family: $sans-book;
+      font-family: $sans-medium;
       margin: 0;
     }
   }
