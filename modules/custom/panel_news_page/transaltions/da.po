@@ -14,3 +14,9 @@ msgstr ""
 #: panels_news_page.plugins.content_types.go_back_link.inc:22;25
 msgid "Go back"
 msgstr "Tilbage"
+
+msgid "Print"
+msgstr "Udskriv"
+
+msgid "Share"
+msgstr "Del"
