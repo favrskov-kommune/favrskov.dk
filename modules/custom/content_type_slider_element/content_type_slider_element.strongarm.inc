@@ -74,16 +74,16 @@ function content_type_slider_element_strongarm() {
           'weight' => '7',
         ),
         'language' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'metatags' => array(
-          'weight' => '11',
-        ),
-        'path' => array(
           'weight' => '10',
         ),
-        'redirect' => array(
+        'path' => array(
           'weight' => '9',
+        ),
+        'redirect' => array(
+          'weight' => '8',
         ),
       ),
       'display' => array(),
