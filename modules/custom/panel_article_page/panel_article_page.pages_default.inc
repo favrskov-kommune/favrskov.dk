@@ -199,6 +199,35 @@ function panel_article_page_default_page_manager_handlers() {
     $display->content['new-0e93cb63-960a-48e4-9f16-5a08c8f65096'] = $pane;
     $display->panels['node-content'][1] = 'new-0e93cb63-960a-48e4-9f16-5a08c8f65096';
     $pane = new stdClass();
+    $pane->pid = 'new-dc462ddf-a1f5-4ec5-8470-91348b248ff3';
+    $pane->panel = 'node-content';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_author';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'inline',
+      'formatter' => 'text_plain',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $pane->uuid = 'dc462ddf-a1f5-4ec5-8470-91348b248ff3';
+    $display->content['new-dc462ddf-a1f5-4ec5-8470-91348b248ff3'] = $pane;
+    $display->panels['node-content'][2] = 'new-dc462ddf-a1f5-4ec5-8470-91348b248ff3';
+    $pane = new stdClass();
     $pane->pid = 'new-5874d82c-d391-4cca-a5ba-cc1b9215bbbc';
     $pane->panel = 'node-content';
     $pane->type = 'views_panes';
@@ -580,7 +609,7 @@ function panel_article_page_default_page_manager_handlers() {
       'formatter_settings' => array(),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 1,
-      'override_title_text' => 'Se også',
+      'override_title_text' => t('See also'),
     );
     $pane->cache = array();
     $pane->style = array(
@@ -721,7 +750,7 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Custom share',
       'title' => '',
-      'body' => '<a class="toggle-share" href="#">Del</a>
+      'body' => '<a class="toggle-share" href="#">' . t('Share') . '</a>
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
 
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5485796f7e9e2c6d" async="async"></script>
@@ -730,7 +759,7 @@ function panel_article_page_default_page_manager_handlers() {
 
 </div>
 
-<a class="print_data" href="#">Udscriv</a>
+<a class="print_data" href="#">' . t('Print') . '</a>
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520e4c8a1550db4c"></script>',
       'format' => 'video_html',
@@ -960,7 +989,7 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Custom share',
       'title' => '',
-      'body' => '<a class="toggle-share" href="#">Del</a>
+      'body' => '<a class="toggle-share" href="#">' . t('Share') . '</a>
 
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
 <a class="addthis_button_facebook"></a>
