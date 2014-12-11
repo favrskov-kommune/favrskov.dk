@@ -60,8 +60,8 @@ msgid "Email"
 msgstr "E-mail"
 
 #: content_type_phone_book.features.inc:23
-msgid "Phone Book"
-msgstr "Telefonbog"
+msgid "Contact item"
+msgstr "Kontaktoplysning"
 
 #: content_type_phone_book.features.inc:27
 msgctxt "phonebook"

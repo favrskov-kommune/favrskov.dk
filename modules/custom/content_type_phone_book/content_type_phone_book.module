@@ -38,8 +38,9 @@ function content_type_phone_book_field_formatter_view($entity_type, $entity, $fi
       $element = array();
       foreach ($items as $delta => $item) {
         $value = $item['value'];
-        if (strlen($item['value']) >= 5) {
-          $value = substr($value, 0, 4) . ' ' . substr($value, 4, strlen($value));
+        if (strlen($item['value']) >= 3) {
+          // Split telephone number into smaller chunks
+          $value = substr(chunk_split($value, 2, ' '), 0, -1);
         }
         $element[$delta]['#markup'] = "<span>" . $value . "</span>";
       }
