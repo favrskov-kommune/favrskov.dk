@@ -17,6 +17,5 @@ function panel_term_page_strongarm() {
   $strongarm->value = FALSE;
   $export['page_manager_term_view_disabled'] = $strongarm;
 
-
   return $export;
 }
