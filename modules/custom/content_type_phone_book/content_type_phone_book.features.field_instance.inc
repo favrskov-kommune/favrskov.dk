@@ -649,6 +649,7 @@ function content_type_phone_book_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Address');
   t('Cell phone');
+  t('Notification');
   t('Day of week');
   t('Email');
   t('Map Link');
