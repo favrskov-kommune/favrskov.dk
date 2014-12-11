@@ -113,6 +113,49 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-phone_book-cntrmd_phone_book'
+  $field_instances['node-phone_book-cntrmd_phone_book'] = array(
+    'bundle' => 'phone_book',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'none',
+        'weight' => 11,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'cntrmd_phone_book',
+    'label' => 'Notification',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'content_reminder',
+      'settings' => array(),
+      'type' => 'content_reminder_widget',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'node-phone_book-field_opening_hours'
   $field_instances['node-phone_book-field_opening_hours'] = array(
     'bundle' => 'phone_book',

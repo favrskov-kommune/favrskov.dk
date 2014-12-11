@@ -19,7 +19,7 @@ function content_type_phone_book_ctools_plugin_api($module = NULL, $api = NULL) 
 function content_type_phone_book_node_info() {
   $items = array(
     'phone_book' => array(
-      'name' => t('Phone Book'),
+      'name' => t('Contact item'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
