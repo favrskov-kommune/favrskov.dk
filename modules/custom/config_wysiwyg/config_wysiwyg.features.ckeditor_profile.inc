@@ -142,7 +142,7 @@ config.extraPlugins += (config.extraPlugins ? \',NodeEmbed\' : \'NodeEmbed\' );'
         ),
       ),
       'input_formats' => array(
-        'full_html' => 'Full HTML',
+        'filtered_html' => 'Filtered HTML',
       ),
     ),
   );
