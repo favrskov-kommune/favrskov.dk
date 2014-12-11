@@ -109,6 +109,13 @@
     p {
       margin-bottom: 22px;
     }
+
+    li {
+      list-style: disc;
+      color: $dimgray;
+      font: 12pt/20px Arial;
+      margin-left: 30px;
+    }
   }
 
   // Global links styles
