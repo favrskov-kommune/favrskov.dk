@@ -157,3 +157,57 @@ msgstr "Opdatering teaser"
 msgid "Image link"
 msgstr "Billede link"
 
+msgid "Short description."
+msgstr "Skriv kort og præcist."
+
+msgid "Reference to bannerlink content type."
+msgstr "Link til sekundære selvbetjeningsløsninger."
+
+msgid "Start typing a keyword and select among the proposals that emerge."
+msgstr "Start med at skrive et søgeord og vælg blandt de forslag der dukker op."
+
+msgid "Select author starting type his username."
+msgstr "Hvis ikke du som forfatter har det redaktionelle ansvar, kan angive en anden redaktør."
+
+msgid "Reference to FAQ content type."
+msgstr "Giver mulighed for at lave fold ud sektioner med korte hjælpebeskrivelser til berigelse af artiklen."
+
+msgid "Image text."
+msgstr "Tekst som vises synligt under billede."
+
+msgid "Text that could be readed by browser for blind and visually-impaired people."
+msgstr "Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj."
+
+msgid "Booklets and reports."
+msgstr "Pjecer og rapporter."
+
+msgid "References to factboxes."
+msgstr "Relation til faktabokse."
+
+msgid "Reference to other articles on favrskov.dk that provide additional content."
+msgstr "Henvisning til andre artikler på favrskov.dk der kan bidrage med yderligere indhold."
+
+msgid "Search or create new self-service content type item."
+msgstr "Søg efter eller opret nyt selvbetjeningsbanner."
+
+msgid "Allows you to create mobile and tablet-friendly tables. Please use this type of table rather than insert tables in the body."
+msgstr "Giver dig mulighed for at oprette tabeller, som er mobil og tablet venlige. Benyt venligst denne type tabel frem for at indsætte tabeller i brødteksten."
+
+msgid "All articles must be marked by KLE-taxonomy for content classification."
+msgstr "Alle tekster skal opmærkes med KLE numre af hensyn til klassificering af indhold."
+
+msgid "Not in use."
+msgstr "Anvendes ikke."
+
+msgid "Choose article topic."
+msgstr "For at artiklen kan placeres i strukturen, skal du her vælge artiklens emne område."
+
+msgid "Summary. Clarifies purpose of front pages, necessary in search engine optimization."
+msgstr "En kort resume tekst der opsummerer artiklens indhold. Teksten bruges til emne forsiderne, til søgemaskine optimering osv."
+
+msgid "Youtube embed code."
+msgstr "Her indsættes den 'embed' kode som Youtube stiller til rådighed."
+
+msgid "Short text describing video content."
+msgstr "Kort tekst der beskriver indholdet af videoen."
+

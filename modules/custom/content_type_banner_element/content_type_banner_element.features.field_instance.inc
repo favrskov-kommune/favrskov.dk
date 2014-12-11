@@ -10,6 +10,43 @@
 function content_type_banner_element_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-banner_element-cntrmd_banner_element'
+  $field_instances['node-banner_element-cntrmd_banner_element'] = array(
+    'bundle' => 'banner_element',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'none',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'cntrmd_banner_element',
+    'label' => 'Notification',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'content_reminder',
+      'settings' => array(),
+      'type' => 'content_reminder_widget',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'node-banner_element-field_image'
   $field_instances['node-banner_element-field_image'] = array(
     'bundle' => 'banner_element',
