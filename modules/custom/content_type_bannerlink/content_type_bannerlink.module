@@ -5,3 +5,10 @@
  */
 
 include_once 'content_type_bannerlink.features.inc';
+
+/**
+ * Ipmlementation of hook_form_FORM_ID_alter().
+ */
+function content_type_bannerlink_form_bannerlink_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['#attached']['css'][] = drupal_get_path('module','content_type_bannerlink') . '/css/hide.css';
+}
