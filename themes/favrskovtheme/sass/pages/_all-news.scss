@@ -17,7 +17,7 @@
         a {
           font: 28px Arial;
           font-weight: bold;
-          color: $dark-white-grey;
+          @include links($dark-white-grey, $red);
         }
       }
       li {

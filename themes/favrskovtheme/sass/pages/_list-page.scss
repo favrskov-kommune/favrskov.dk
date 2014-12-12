@@ -14,7 +14,7 @@
   .pane-page-title {
     border-bottom: 1px solid #d4d7d7;
     color: $slategrey;
-    font-family: $sans-bold-strict;
+    font-family: $sans-medium;
     margin-bottom: 35px;
     padding-bottom: 20px;
     @include font-size(50);
@@ -50,7 +50,7 @@
 
   h1 {
     @include  font-size(38);
-    font-family: $sans-bold-strict;
+    font-family: $sans-medium;
     line-height: 1;
     margin: 0 0 10px;
 
@@ -95,9 +95,9 @@
   // Headlines
   h2 {
     @include font-size(24);
-    font-family: $sans-med-strict;
+    font-family: $sans-medium;
     margin-bottom: 20px;
-    color: $def-color;
+    color: $dimgray;
   }
 
   // Filter by month
