@@ -16,7 +16,10 @@ function panels_comments_unsubscribe_default_page_manager_pages() {
   $page->admin_title = 'Disable comment subscription';
   $page->admin_description = '';
   $page->path = 'comment_notify/disable/!hash';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array(
     'hash' => array(
@@ -68,10 +71,11 @@ function panels_comments_unsubscribe_default_page_manager_pages() {
   );
   $display->cache = array();
   $display->title = '';
+  $display->uuid = '55b0410c-35ff-4731-b4d4-c17fc76c9b8c';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-1';
+    $pane->pid = 'new-42598510-7f5b-4a7d-9fee-2bd1449dc0f6';
     $pane->panel = 'footer';
     $pane->type = 'panels_mini';
     $pane->subtype = 'footer_mini_panel';
@@ -89,10 +93,11 @@ function panels_comments_unsubscribe_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['footer'][0] = 'new-1';
+    $pane->uuid = '42598510-7f5b-4a7d-9fee-2bd1449dc0f6';
+    $display->content['new-42598510-7f5b-4a7d-9fee-2bd1449dc0f6'] = $pane;
+    $display->panels['footer'][0] = 'new-42598510-7f5b-4a7d-9fee-2bd1449dc0f6';
     $pane = new stdClass();
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-eddeb87f-33df-4a5b-8d3f-d24a6328282d';
     $pane->panel = 'header';
     $pane->type = 'panels_mini';
     $pane->subtype = 'header_mini_panel';
@@ -110,10 +115,11 @@ function panels_comments_unsubscribe_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['header'][0] = 'new-2';
+    $pane->uuid = 'eddeb87f-33df-4a5b-8d3f-d24a6328282d';
+    $display->content['new-eddeb87f-33df-4a5b-8d3f-d24a6328282d'] = $pane;
+    $display->panels['header'][0] = 'new-eddeb87f-33df-4a5b-8d3f-d24a6328282d';
     $pane = new stdClass();
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-05050dd9-c01d-4546-b2bf-d2d651798404';
     $pane->panel = 'node-content';
     $pane->type = 'comments_disable_subsription';
     $pane->subtype = 'comments_disable_subsription';
@@ -128,10 +134,11 @@ function panels_comments_unsubscribe_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['node-content'][0] = 'new-3';
+    $pane->uuid = '05050dd9-c01d-4546-b2bf-d2d651798404';
+    $display->content['new-05050dd9-c01d-4546-b2bf-d2d651798404'] = $pane;
+    $display->panels['node-content'][0] = 'new-05050dd9-c01d-4546-b2bf-d2d651798404';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-2';
+  $display->title_pane = 'new-eddeb87f-33df-4a5b-8d3f-d24a6328282d';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['disable_comment_subscription'] = $page;

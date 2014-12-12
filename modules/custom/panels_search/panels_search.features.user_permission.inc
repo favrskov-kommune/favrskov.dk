@@ -10,7 +10,7 @@
 function panels_search_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: search content.
+  // Exported permission: 'search content'.
   $permissions['search content'] = array(
     'name' => 'search content',
     'roles' => array(
@@ -19,7 +19,7 @@ function panels_search_user_default_permissions() {
     'module' => 'search',
   );
 
-  // Exported permission: use advanced search.
+  // Exported permission: 'use advanced search'.
   $permissions['use advanced search'] = array(
     'name' => 'use advanced search',
     'roles' => array(
