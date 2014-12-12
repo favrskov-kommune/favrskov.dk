@@ -1,7 +1,6 @@
 name = Config WYSIWYG
 core = 7.x
 package = Config
-php = 5.2.4
 version = 7.x-1.0
 project = config_wysiwyg
 dependencies[] = better_formats
@@ -10,6 +9,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = libraries
 dependencies[] = linkit
+features[ckeditor_profile][] = Advanced
 features[ckeditor_profile][] = CKEditor Global Profile
 features[ckeditor_profile][] = Full
 features[ctools][] = linkit:linkit_profiles:1

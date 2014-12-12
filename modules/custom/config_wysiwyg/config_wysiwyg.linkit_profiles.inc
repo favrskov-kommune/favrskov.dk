@@ -14,7 +14,7 @@ function config_wysiwyg_default_linkit_profiles() {
   $linkit_profile->disabled = FALSE; /* Edit this to true to make a default linkit_profile disabled initially */
   $linkit_profile->api_version = 1;
   $linkit_profile->name = 'linkit_profile';
-  $linkit_profile->admin_title = t('Linkit-profile');
+  $linkit_profile->admin_title = 'Linkit-profile';
   $linkit_profile->data = array(
     'plugins' => array(
       'entity:user' => array(
