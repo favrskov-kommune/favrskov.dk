@@ -190,7 +190,7 @@
         font-family: $sans-medium;
         font-size: 11pt;
         text-decoration: none;
-        color: #333;
+        @include links(#333, $red);
         text-transform: uppercase;
         padding: 18px 0;
         display: block;
