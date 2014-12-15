@@ -31,6 +31,19 @@
   $blue: #0d778e;
   $contrastblue: #44deff;
 
+  #edit-cancel {
+    background-color: #ca7f7f;
+    cursor: pointer;
+    display: inline-block;
+    font: 9pt Arial;
+    padding: 8px 25px;
+    @include links($white, $white);
+    margin-top: 5px;
+    &:hover {
+      background-color: #b24545;
+    }
+  }
+
   .comment {
     border-bottom: 1px solid $liteGray;
     @include font-size(15);
@@ -92,13 +105,14 @@
 
 //----------------------------------------------------------------------
 // Comments Add form
-  // Here base styles for Web form and for Comments form
-  // Elements which similar and styled - Input text, Textarea, Submit buttons
-  // labels for them.
+// Here base styles for Web form and for Comments form
+// Elements which similar and styled - Input text, Textarea, Submit buttons
+// labels for them.
 
 .ajax-comment-reply + .ajax-progress-throbber {
   position: absolute;
 }
+
 // Reply comments form
 .ajax-comment-wrapper .comment-form {
   padding: 20px;
@@ -142,8 +156,6 @@
   .form-item-notify-type {
     margin: 0 0 10px 20px;
   }
-
-
 
   .form-textarea {
     height: 125px;
@@ -310,6 +322,7 @@
   }
 
 }
+
 //------------------------------------------------------------------------------
 // Web client form
 
