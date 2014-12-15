@@ -15,8 +15,8 @@ $text .= '<span class="require-type"></span>';
 print l($text, $link['url'], array(
   'html' => TRUE,
   'attributes' => array(
-    'title' => $content['field_image_alt_text'][0]['#markup'],
-    'target' => $link['attributes']['target']
+    'title' => empty($content['field_image_alt_text'][0]['#markup']) ? '' : $content['field_image_alt_text'][0]['#markup'],
+    'target' => empty($link['attributes']['target']) ? '_self' : $link['attributes']['target']
   )
 ));
 
