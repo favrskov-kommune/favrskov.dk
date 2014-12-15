@@ -224,7 +224,6 @@ config.extraPlugins += (config.extraPlugins ? \',NodeEmbed\' : \'NodeEmbed\' );'
       ),
       'input_formats' => array(
         'filtered_html' => 'Filtered HTML',
-        'full_html' => 'Full HTML',
       ),
     ),
   );
