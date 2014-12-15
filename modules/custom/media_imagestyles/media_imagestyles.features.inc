@@ -128,8 +128,9 @@ function media_imagestyles_image_default_styles() {
   // Exported image style: blog_teaser.
   $styles['blog_teaser'] = array(
     'name' => 'blog_teaser',
+    'label' => 'blog_teaser',
     'effects' => array(
-      2 => array(
+      1 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -145,31 +146,15 @@ function media_imagestyles_image_default_styles() {
         ),
         'weight' => 2,
       ),
-      3 => array(
-        'label' => 'Crop',
-        'help' => 'Cropping will remove portions of an image to make it the specified dimensions.',
-        'effect callback' => 'image_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_crop_form',
-        'summary theme' => 'image_crop_summary',
-        'module' => 'image',
-        'name' => 'image_crop',
-        'data' => array(
-          'width' => 565,
-          'height' => 338,
-          'anchor' => 'center-center',
-        ),
-        'weight' => 2,
-      ),
     ),
-    'label' => 'blog_teaser',
   );
 
   // Exported image style: blogcustom_user_phone_1x.
   $styles['blogcustom_user_phone_1x'] = array(
     'name' => 'blogcustom_user_phone_1x',
+    'label' => 'blogcustom_user_phone_1x',
     'effects' => array(
-      9 => array(
+      3 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -185,31 +170,15 @@ function media_imagestyles_image_default_styles() {
         ),
         'weight' => 2,
       ),
-      10 => array(
-        'label' => 'Crop',
-        'help' => 'Cropping will remove portions of an image to make it the specified dimensions.',
-        'effect callback' => 'image_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_crop_form',
-        'summary theme' => 'image_crop_summary',
-        'module' => 'image',
-        'name' => 'image_crop',
-        'data' => array(
-          'width' => 380,
-          'height' => 250,
-          'anchor' => 'center-center',
-        ),
-        'weight' => 3,
-      ),
     ),
-    'label' => 'blogcustom_user_phone_1x',
   );
 
   // Exported image style: blogcustom_user_phone_land_1x.
   $styles['blogcustom_user_phone_land_1x'] = array(
     'name' => 'blogcustom_user_phone_land_1x',
+    'label' => 'blogcustom_user_phone_land_1x',
     'effects' => array(
-      6 => array(
+      5 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -225,24 +194,7 @@ function media_imagestyles_image_default_styles() {
         ),
         'weight' => 2,
       ),
-      7 => array(
-        'label' => 'Crop',
-        'help' => 'Cropping will remove portions of an image to make it the specified dimensions.',
-        'effect callback' => 'image_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_crop_form',
-        'summary theme' => 'image_crop_summary',
-        'module' => 'image',
-        'name' => 'image_crop',
-        'data' => array(
-          'width' => 480,
-          'height' => 338,
-          'anchor' => 'center-center',
-        ),
-        'weight' => 3,
-      ),
     ),
-    'label' => 'blogcustom_user_phone_land_1x',
   );
 
   // Exported image style: blogcustom_user_phone_port_1x.

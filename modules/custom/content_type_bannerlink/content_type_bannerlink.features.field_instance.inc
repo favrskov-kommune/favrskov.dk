@@ -50,7 +50,11 @@ function content_type_bannerlink_field_default_field_instances() {
   // Exported field_instance: 'node-bannerlink-field_banner_link_color'
   $field_instances['node-bannerlink-field_banner_link_color'] = array(
     'bundle' => 'bannerlink',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'red-background',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -390,6 +394,7 @@ function content_type_bannerlink_field_default_field_instances() {
   t('Color');
   t('Displayed Title');
   t('Link');
+  t('Notification');
   t('Teaser');
 
   return $field_instances;

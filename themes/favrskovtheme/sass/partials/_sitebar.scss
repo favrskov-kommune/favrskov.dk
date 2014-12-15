@@ -30,16 +30,22 @@
     .addthis_button_facebook, .icon-facebook {
       span, a {
         @include sprite(0, 0);
+        width: 38px !important;
+        height: 38px !important;
       }
     }
     .addthis_button_twitter, .icon-twitter {
       span, a {
         @include sprite(-50px, 0);
+        width: 38px !important;
+        height: 38px !important;
       }
     }
     .addthis_button_google_plusone_share, .icon-youtube {
       span, a {
         @include sprite(-100px, 0);
+        width: 38px !important;
+        height: 38px !important;
       }
     }
   }
