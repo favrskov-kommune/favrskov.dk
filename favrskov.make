@@ -557,6 +557,9 @@ projects[dynamic_background][patch][1904738] = "https://drupal.org/files/issues/
 projects[content_reminder][subdir] = contrib
 projects[content_reminder][version] = 1.0
 
+projects[workbench_moderation][subdir] = contrib
+projects[workbench_moderation][version] = 1.3
+
 ; Libraries
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] =
