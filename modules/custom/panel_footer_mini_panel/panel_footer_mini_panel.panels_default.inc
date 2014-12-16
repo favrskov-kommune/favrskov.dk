@@ -197,10 +197,10 @@ Tlf: <a href="callto:70 20 00 00">70 20 00 00</a></p>
 <p class="small-height">Kontakt hovednummer<br />
 Tlf: <a href="callto:89 64 10 10">89 64 10 10</a></p>
 
-<p>Man-tris 9.30-15<br />
-Onsdag Lukket<br />
-Torsdag 12-17<br />
-Fredag 9.30-12</p>
+<p><span class="first-span">Man-tris</span>9.30-15<br />
+<span class="first-span">Onsdag</span>Lukket<br />
+<span class="first-span">Torsdag</span>12-17<br />
+<span class="first-span">Fredag</span>9.30-12</span></span></p>
 </article>
 ',
       'format' => 'full_html',
