@@ -79,3 +79,32 @@ function content_type_article_form_article_node_form_alter(&$form, &$form_state,
     ),
   );
 }
+
+/**
+ * Implements hook_workbench_moderation_states_next_alter().
+ */
+function content_type_article_workbench_moderation_states_next_alter(&$states, $current_state, $context) {
+  krumo($states);
+  //krumo($current_states);
+  //krumo($context['node']->workbench_moderation['current']);
+  //krumo($context['node']->workbench_moderation['my_revision']);
+  //krumo($context['node']->workbench_moderation['published']);
+  krumo($context);
+  if ($context['node']->workbench_moderation['current']->published == 1) {
+    $context['node']->workbench_moderation['current']->from_state = 'published';
+  }
+
+  if ($context['node']->workbench_moderation['my_revision']->published == 1) {
+    $context['node']->workbench_moderation['my_revision']->from_state = 'published';
+  }
+
+  if ($context['node']->workbench_moderation['published']->published == 1) {
+    $context['node']->workbench_moderation['published']->from_state = 'published';
+  }
+  //unset($states['needs_review']);
+
+  //krumo($context['node']->workbench_moderation['current']);
+  //krumo($context['node']->workbench_moderation['my_revision']);
+  //krumo($context['node']->workbench_moderation['published']);
+
+}
