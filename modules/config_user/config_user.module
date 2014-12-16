@@ -1,0 +1,24 @@
+<?php
+/**
+ * @file
+ * Code for the Config user module.
+ */
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function config_user_form_user_login_alter(&$form, &$form_state, $form_id) {
+  $options = array();
+
+  if (!empty($form_state['input']['name'])) {
+    $options['query'] = array('name' => $form_state['input']['name']);
+  }
+
+  $form['actions']['password'] = array(
+    '#type' => 'link',
+    '#title' => t('Have you forgotten your password?'),
+    '#href' => 'user/password',
+    '#options' => $options,
+    '#id' => 'password-link',
+  );
+}

@@ -867,3 +867,30 @@ function favrskovtheme_preprocess_views_view(&$vars) {
   }
   $vars['display_title'] = $display_title;
 }
+
+/**
+ *  Implements hook_theme().
+ */
+function favrskovtheme_theme() {
+  $items = array();
+
+  $items['user_login'] = array(
+    'render element' => 'form',
+    'path' => drupal_get_path('theme', 'favrskovtheme') . '/template/user',
+    'template' => 'user-login',
+    'preprocess functions' => array(
+      'favrskovtheme_preprocess_user_login'
+    ),
+  );
+
+  $items['user_pass'] = array(
+    'render element' => 'form',
+    'path' => drupal_get_path('theme', 'favrskovtheme') . '/template/user',
+    'template' => 'user-pass',
+    'preprocess functions' => array(
+      'bootstrap_preprocess_user_pass'
+    ),
+  );
+
+  return $items;
+}

@@ -1,0 +1,37 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  config_user.module: n/a
+#  config_user.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-10-31 14:29+0100\n"
+"PO-Revision-Date: 2014-10-31 14:29+0100\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: config_user.module:19
+msgid "Have you forgotten your password?"
+msgstr "Har du glemt din adgangskode?"
+
+#: config_user.info:0
+msgid "Config user"
+msgstr ""
+
+#: config_user.info:0
+msgid "User login page configuration"
+msgstr ""
+
+#: config_user.info:0
+msgid "Config"
+msgstr ""
+
