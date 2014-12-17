@@ -95,6 +95,7 @@ function config_user_roles_user_default_permissions() {
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
       'Webmaster' => 'Webmaster',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -568,6 +569,7 @@ function config_user_roles_user_default_permissions() {
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
       'Webmaster' => 'Webmaster',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
