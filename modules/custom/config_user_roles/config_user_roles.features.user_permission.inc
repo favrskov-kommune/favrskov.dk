@@ -83,6 +83,7 @@ function config_user_roles_user_default_permissions() {
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -92,7 +93,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access content overview',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Webmaster' => 'Webmaster',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -553,6 +556,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer nodequeue',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'nodequeue',
@@ -563,7 +567,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer nodes',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Webmaster' => 'Webmaster',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -2683,6 +2689,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'manipulate all queues',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'nodequeue',
@@ -2693,6 +2700,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'manipulate queues',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'nodequeue',
