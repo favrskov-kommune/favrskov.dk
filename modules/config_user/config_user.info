@@ -1,0 +1,6 @@
+name = Config user
+description = User login page configuration
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_user
