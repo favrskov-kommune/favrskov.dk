@@ -61,7 +61,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
         'UserFilesAbsolutePath' => '%d%b%f/',
         'forcePasteAsPlainText' => 'f',
         'html_entities' => 'f',
-        'scayt_autoStartup' => 'f',
+        'scayt_autoStartup' => 't',
         'theme_config_js' => 'f',
         'js_conf' => '',
         'loadPlugins' => array(
@@ -75,13 +75,6 @@ function config_wysiwyg_ckeditor_profile_defaults() {
                 'icon' => 'images/drupalbreak.png',
               ),
             ),
-            'default' => 't',
-          ),
-          'picture_ckeditor' => array(
-            'name' => 'picture_ckeditor',
-            'desc' => 'Support responsive images with the Picture module.',
-            'buttons' => FALSE,
-            'path' => '%base_path%profiles/favrskov/modules/contrib/picture/plugins/',
             'default' => 't',
           ),
           'linkit' => array(
@@ -106,6 +99,13 @@ function config_wysiwyg_ckeditor_profile_defaults() {
               ),
             ),
             'default' => 'f',
+          ),
+          'picture_ckeditor' => array(
+            'name' => 'picture_ckeditor',
+            'desc' => 'Support responsive images with the Picture module.',
+            'buttons' => FALSE,
+            'path' => '%base_path%profiles/favrskov/modules/contrib/picture/plugins/',
+            'default' => 't',
           ),
         ),
       ),
@@ -173,7 +173,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
         'UserFilesAbsolutePath' => '%d%b%f/',
         'forcePasteAsPlainText' => 'f',
         'html_entities' => 'f',
-        'scayt_autoStartup' => 'f',
+        'scayt_autoStartup' => 't',
         'theme_config_js' => 't',
         'js_conf' => 'config.allowedContent = true; config.format_tags = \'h2;h3;h4;p\';
 config.extraPlugins += (config.extraPlugins ? \',NodeEmbed\' : \'NodeEmbed\' );',
