@@ -19,18 +19,17 @@ function config_wysiwyg_ckeditor_profile_defaults() {
         'uicolor_user' => 'default',
         'toolbar' => '[
     [\'Source\'],
-    [\'Cut\',\'Copy\',\'Paste\',\'PasteText\',\'PasteFromWord\',\'-\',\'SpellChecker\', \'Scayt\'],
+    [\'Cut\',\'Copy\',\'Paste\',\'PasteText\',\'PasteFromWord\',\'-\',\'SpellChecker\',\'Scayt\'],
     [\'Undo\',\'Redo\',\'Find\',\'Replace\',\'-\',\'SelectAll\',\'RemoveFormat\'],
-    [\'Image\',\'Media\',\'Flash\',\'Table\',\'HorizontalRule\',\'Smiley\',\'SpecialChar\'],
-    [\'Maximize\', \'ShowBlocks\'],
+    [\'Media\',\'SpecialChar\'],
+    [\'Maximize\',\'ShowBlocks\'],
     \'/\',
     [\'Format\'],
     [\'Bold\',\'Italic\',\'Underline\',\'Strike\',\'-\',\'Subscript\',\'Superscript\'],
     [\'NumberedList\',\'BulletedList\',\'-\',\'Outdent\',\'Indent\',\'Blockquote\'],
     [\'JustifyLeft\',\'JustifyCenter\',\'JustifyRight\',\'JustifyBlock\',\'-\',\'BidiLtr\',\'BidiRtl\'],
-    [\'Link\',\'Unlink\',\'Anchor\', \'Linkit\']
-]
-    ',
+    [\'Link\',\'Unlink\',\'Anchor\',\'linkit\']
+]',
         'expand' => 't',
         'width' => '100%',
         'lang' => 'en',
@@ -61,7 +60,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
         'UserFilesAbsolutePath' => '%d%b%f/',
         'forcePasteAsPlainText' => 'f',
         'html_entities' => 'f',
-        'scayt_autoStartup' => 'f',
+        'scayt_autoStartup' => 't',
         'theme_config_js' => 'f',
         'js_conf' => '',
         'loadPlugins' => array(
@@ -76,6 +75,29 @@ function config_wysiwyg_ckeditor_profile_defaults() {
               ),
             ),
             'default' => 't',
+          ),
+          'linkit' => array(
+            'name' => 'linkit',
+            'desc' => 'Support for Linkit module',
+            'path' => '%base_path%profiles/favrskov/modules/contrib/linkit/editors/ckeditor/',
+            'buttons' => array(
+              'linkit' => array(
+                'label' => 'Linkit',
+                'icon' => 'linkit.png',
+              ),
+            ),
+          ),
+          'media' => array(
+            'name' => 'media',
+            'desc' => 'Plugin for inserting images from Drupal media module',
+            'path' => '%plugin_dir%media/',
+            'buttons' => array(
+              'Media' => array(
+                'label' => 'Media',
+                'icon' => 'images/icon.gif',
+              ),
+            ),
+            'default' => 'f',
           ),
           'picture_ckeditor' => array(
             'name' => 'picture_ckeditor',
@@ -118,7 +140,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
     [\'Source\',\'Bold\',\'NumberedList\',\'BulletedList\',\'Undo\',\'Redo\'],
     [\'Cut\',\'Copy\',\'Paste\',\'PasteText\',\'PasteFromWord\',\'SpecialChar\',\'Replace\',\'Find\',\'SelectAll\',\'Format\',\'RemoveFormat\',\'Media\',\'-\'],
     \'/\',
-    [\'Scayt\',\'SpellChecker\',\'Link\',\'linkit\',\'Maximize\',\'Iframe\',\'NodeEmbed\',\'gis\']
+    [\'Scayt\',\'SpellChecker\',\'Link\',\'linkit\',\'Maximize\',\'Iframe\',\'NodeEmbed\']
 ]',
         'expand' => 't',
         'width' => '100%',
@@ -150,7 +172,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
         'UserFilesAbsolutePath' => '%d%b%f/',
         'forcePasteAsPlainText' => 'f',
         'html_entities' => 'f',
-        'scayt_autoStartup' => 'f',
+        'scayt_autoStartup' => 't',
         'theme_config_js' => 't',
         'js_conf' => 'config.allowedContent = true; config.format_tags = \'h2;h3;h4;p\';
 config.extraPlugins += (config.extraPlugins ? \',NodeEmbed\' : \'NodeEmbed\' );',
@@ -178,17 +200,6 @@ config.extraPlugins += (config.extraPlugins ? \',NodeEmbed\' : \'NodeEmbed\' );'
               ),
             ),
             'default' => 't',
-          ),
-          'gis' => array(
-            'name' => 'gis',
-            'desc' => 'Embed of GIS data',
-            'path' => '%base_path%profiles/favrskov/modules/custom/os2web_embed_gis_data/plugins/os2web_embed_gis_data/',
-            'buttons' => array(
-              'gis' => array(
-                'label' => 'gis',
-                'icon' => 'icons/gis.png',
-              ),
-            ),
           ),
           'iframedialog' => array(
             'name' => 'iframedialog',

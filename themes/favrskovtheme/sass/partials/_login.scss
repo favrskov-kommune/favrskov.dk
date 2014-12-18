@@ -8,9 +8,9 @@
     .control-label {
       color: $black;
     }
-//    .help-block {
-//    color: lighten($def-color, 30%);
-//    }
+    .help-block {
+    color: lighten($dimgray, 30%);
+    }
 
     input,
     textarea {
@@ -38,7 +38,7 @@
 
     .active a,
     a:hover {
-      background: $grey;
+      background: $gray;
       border: none;
       color: $white;
      }
@@ -53,13 +53,14 @@
     margin-bottom: 20px;
   }
   .form-text {
-    height: 45px;
-    padding: 0 10px;
-    width: 100%;
+    height: 25px;
+    padding: 2%;
+    max-width: 96%;
+    margin: 0 0 5px;
     background: $white;
+    border: 1px solid $liteGray;
     @include font-size(18);
     @include placeholder(#a8a8a8);
-    @include border-radius(0);
   }
 
   .form-required {
@@ -68,7 +69,7 @@
 
   .help-block {
     margin: 3px 0 15px;
-//    color: lighten($def-color, 30%);
+    color: lighten($dimgray, 30%);
     font-family: $sans;
     @include font-size(11);
   }
@@ -84,26 +85,70 @@
 #user-register-form,
 #user-pass,
 #user-login {
-  color: $grey;
+  color: $gray;
   background-color: $lightgrey;
   border: 1px solid $grayLight;
   margin: 200px auto 60px;
   max-width: 355px;
   padding: 20px;
+  position: relative;
   @include transition-property(all);
   @include transition-timing-function(ease-in);
   @include transition-duration(.4s);
+  @include border-radius(10px);
 
   label {
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
     @include font-size(14);
-    color: $dark-grey;
   }
 
   .description {
     display: none;
+  }
+
+  .messages {
+    margin-bottom: 10px;
+    @include border-radius(0 0 7px 7px);
+    position: absolute;
+    top: 101%;
+    width: 360px;
+    @include box-shadow(rgba(0,0,0,.5) 0 1px 3px inset);
+
+    @media (max-width: 400px) {
+      max-width: 270px;
+    }
+  }
+
+  a {
+    outline: medium none;
+    @include transition-property(all);
+    @include transition-timing-function(ease-in);
+    @include transition-duration(.1s);
+    @include links($red, $gray);
+
+    // Violet color scheme
+    body.violet & { @include links($violet, $gray); }
+    // Dark Grey color scheme
+    body.dark-grey & { @include links($dark-grey, $gray); }
+    // Gray color scheme
+    body.grey & { @include links($gray, $liteGray); }
+    // Dirty Yellow
+    body.yellow & { @include links($dirty-yellow, $liteGray); }
+    // Deep Blue
+    body.blue & { @include links($deepBlue, $liteGray); }
+    // Pink
+    body.pink & { @include links($pink, $liteGray); }
+    // Salat
+    body.salat-green & { @include links($salatGreen, $liteGray); }
+
+    &:focus {
+      outline: medium none;
+    }
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -111,11 +156,19 @@
 .form-submit {
   background: #0d778e;
   color: $white;
+  @include border-radius(5px);
   @include font-size(14);
-  padding: 5px 15px;
-  cursor: pointer;
+
   &:hover {
     background-color: #2abddc;
+  }
+}
+
+#password-link {
+  margin-left: 20px;
+  @media (max-width: 400px) {
+    display: block;
+    margin: 10px 0 0;
   }
 }
 
