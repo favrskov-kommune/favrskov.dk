@@ -575,9 +575,8 @@ function content_type_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => NULL,
         'settings' => array(),
-        'type' => 'none',
+        'type' => 'hidden',
         'weight' => 11,
       ),
       'search_index' => array(
@@ -2194,7 +2193,40 @@ function content_type_article_field_default_field_instances() {
     'label' => t('Teaser'),
     'required' => 1,
     'settings' => array(
-      'exclude_cv' => FALSE,
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'custom_tokens_no_filters_' => 'custom_tokens_no_filters_',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'job_html' => 'job_html',
+          'plain_text' => 'plain_text',
+          'video_html' => 'video_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'custom_tokens_no_filters_' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'job_html' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'video_html' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -2206,7 +2238,7 @@ function content_type_article_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => 200,
+        'maxlength_js' => 135,
         'maxlength_js_enforce' => 1,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
