@@ -22,10 +22,10 @@ function views_news_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'News';
+  $handler->display->display_options['title'] = t('News');
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'See all';
+  $handler->display->display_options['use_more_text'] = t('See all');
   $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -250,7 +250,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'See all';
+  $handler->display->display_options['use_more_text'] = t('See all');
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -479,7 +479,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'See all';
+  $handler->display->display_options['use_more_text'] = t('See all');
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['defaults']['pager'] = FALSE;
