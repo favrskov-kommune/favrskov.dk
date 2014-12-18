@@ -3,6 +3,10 @@
 .page-user {
   background: $slategrey url(../logo.png) no-repeat center 80px;
 
+  * {
+    @include box-sizing(content-box);
+  }
+
   // colorized errors
   .control-group.error {
     .control-label {
@@ -158,6 +162,7 @@
   color: $white;
   @include border-radius(5px);
   @include font-size(14);
+  @include inline-block;
 
   &:hover {
     background-color: #2abddc;
