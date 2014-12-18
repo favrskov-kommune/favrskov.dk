@@ -19,18 +19,17 @@ function config_wysiwyg_ckeditor_profile_defaults() {
         'uicolor_user' => 'default',
         'toolbar' => '[
     [\'Source\'],
-    [\'Cut\',\'Copy\',\'Paste\',\'PasteText\',\'PasteFromWord\',\'-\',\'SpellChecker\', \'Scayt\'],
+    [\'Cut\',\'Copy\',\'Paste\',\'PasteText\',\'PasteFromWord\',\'-\',\'SpellChecker\',\'Scayt\'],
     [\'Undo\',\'Redo\',\'Find\',\'Replace\',\'-\',\'SelectAll\',\'RemoveFormat\'],
-    [\'Media\',\'Flash\',\'Table\',\'HorizontalRule\',\'Smiley\',\'SpecialChar\'],
-    [\'Maximize\', \'ShowBlocks\'],
+    [\'Media\',\'SpecialChar\'],
+    [\'Maximize\',\'ShowBlocks\'],
     \'/\',
     [\'Format\'],
     [\'Bold\',\'Italic\',\'Underline\',\'Strike\',\'-\',\'Subscript\',\'Superscript\'],
     [\'NumberedList\',\'BulletedList\',\'-\',\'Outdent\',\'Indent\',\'Blockquote\'],
     [\'JustifyLeft\',\'JustifyCenter\',\'JustifyRight\',\'JustifyBlock\',\'-\',\'BidiLtr\',\'BidiRtl\'],
     [\'Link\',\'Unlink\',\'Anchor\',\'linkit\']
-]
-    ',
+]',
         'expand' => 't',
         'width' => '100%',
         'lang' => 'en',
