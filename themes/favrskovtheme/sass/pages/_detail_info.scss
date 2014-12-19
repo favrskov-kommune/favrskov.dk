@@ -90,6 +90,10 @@
           color: $slategrey;
           line-height: 25px;
         }
+
+        a {
+          @include links($white-red, $dimgray);
+        }
       }
       .teaser {
         font: 18pt $sans-book;
