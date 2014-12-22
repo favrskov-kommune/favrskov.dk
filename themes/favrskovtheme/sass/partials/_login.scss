@@ -3,10 +3,6 @@
 .page-user {
   background: $slategrey url(../logo.png) no-repeat center 80px;
 
-  * {
-    @include box-sizing(content-box);
-  }
-
   // colorized errors
   .control-group.error {
     .control-label {
@@ -86,6 +82,12 @@
 }
 
 // Forms
+.not-logged-in {
+  * {
+    @include box-sizing(content-box);
+  }
+}
+
 #user-register-form,
 #user-pass,
 #user-login {
