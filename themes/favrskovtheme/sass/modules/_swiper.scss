@@ -23,7 +23,6 @@
   }
   background-color: #f0f0f0;
   height: 460px;
-  position: relative;
   overflow: hidden;
   @include backface-visibility(hidden);
   // Fix of Webkit flickering
@@ -77,7 +76,6 @@
 
 .view-subject-subpages .swiper-container {
   .swiper-wrapper {
-    overflow: hidden;
     // for article
     .node-type-article & {
       overflow: visible;
