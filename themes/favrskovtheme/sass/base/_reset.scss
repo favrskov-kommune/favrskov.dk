@@ -15,9 +15,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal
 }
 
-/*main, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, input, textarea, button {
+main, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, input, textarea, button {
   display: block
-}*/
+}
 
 body {
   line-height: 1
@@ -54,9 +54,8 @@ input[type="text"]:focus, textarea:focus {
   outline: none
 }
 
-/*
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-}*/
+}
