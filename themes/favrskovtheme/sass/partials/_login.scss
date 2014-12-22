@@ -9,7 +9,7 @@
       color: $black;
     }
     .help-block {
-    color: lighten($dimgray, 30%);
+      color: lighten($dimgray, 30%);
     }
 
     input,
@@ -41,9 +41,8 @@
       background: $gray;
       border: none;
       color: $white;
-     }
+    }
   }
-
 
   //----------------------------------------------------------------------------
   // Base style
@@ -82,7 +81,7 @@
 }
 
 // Forms
-.not-logged-in {
+.not-logged-in.page-user {
   * {
     @include box-sizing(content-box);
   }
@@ -120,7 +119,7 @@
     position: absolute;
     top: 101%;
     width: 360px;
-    @include box-shadow(rgba(0,0,0,.5) 0 1px 3px inset);
+    @include box-shadow(rgba(0, 0, 0, .5) 0 1px 3px inset);
 
     @media (max-width: 400px) {
       max-width: 270px;
@@ -135,19 +134,33 @@
     @include links($red, $gray);
 
     // Violet color scheme
-    body.violet & { @include links($violet, $gray); }
+    body.violet & {
+      @include links($violet, $gray);
+    }
     // Dark Grey color scheme
-    body.dark-grey & { @include links($dark-grey, $gray); }
+    body.dark-grey & {
+      @include links($dark-grey, $gray);
+    }
     // Gray color scheme
-    body.grey & { @include links($gray, $liteGray); }
+    body.grey & {
+      @include links($gray, $liteGray);
+    }
     // Dirty Yellow
-    body.yellow & { @include links($dirty-yellow, $liteGray); }
+    body.yellow & {
+      @include links($dirty-yellow, $liteGray);
+    }
     // Deep Blue
-    body.blue & { @include links($deepBlue, $liteGray); }
+    body.blue & {
+      @include links($deepBlue, $liteGray);
+    }
     // Pink
-    body.pink & { @include links($pink, $liteGray); }
+    body.pink & {
+      @include links($pink, $liteGray);
+    }
     // Salat
-    body.salat-green & { @include links($salatGreen, $liteGray); }
+    body.salat-green & {
+      @include links($salatGreen, $liteGray);
+    }
 
     &:focus {
       outline: medium none;
@@ -181,14 +194,14 @@
 
 #user-register-form,
 #user-pass {
-  .form-text{
+  .form-text {
     margin-bottom: 15px;
   }
 }
 
 #user-register-form {
   #edit-account .form-text {
-  margin-bottom: 0;
+    margin-bottom: 0;
   }
   .field-type-list-integer {
     .selectboxit {
@@ -196,7 +209,6 @@
     }
   }
 }
-
 
 //------------------------------------------------------------------------------
 // User Edit form
@@ -206,7 +218,6 @@
   max-width: 50%;
   margin: 0 auto 60px;
   padding: 2%;
-
 
   .form-wrapper {
     background-color: #e4e4e4;
@@ -222,9 +233,9 @@
   }
 
   #edit-submit {
-      margin: 25px auto 5pc;
-      display: block;
-    }
+    margin: 25px auto 5pc;
+    display: block;
+  }
 
   .selectboxit {
     margin-top: 5px;
@@ -236,10 +247,9 @@
 
   /* Input type file */
 
-  *[type="file"]{
+  *[type="file"] {
     height: auto;
   }
-
 
   /* Account setting */
   #edit-account {
@@ -260,7 +270,6 @@
       clear: both;
       padding: 1%;
       position: relative;
-
 
       .confirm-parent,
       .password-parent {
@@ -298,7 +307,7 @@
         right: 0;
         bottom: 150px;
         @include font-size(11);
-        @include box-shadow(rgba(0,0,0,.3)  0 0 8px);
+        @include box-shadow(rgba(0, 0, 0, .3) 0 0 8px);
 
         li {
           font-weight: normal;
@@ -309,8 +318,6 @@
       }
     }
   }
-
-
 
 }
 
