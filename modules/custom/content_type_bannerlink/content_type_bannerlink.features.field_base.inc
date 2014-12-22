@@ -50,6 +50,7 @@ function content_type_bannerlink_field_default_field_bases() {
         'red-background' => 'Red',
         'blue-background' => 'Blue',
         'grey-background' => 'Grey',
+        'light-grey-background' => 'Light grey',
       ),
       'allowed_values_function' => '',
     ),
