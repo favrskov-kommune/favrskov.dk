@@ -438,14 +438,7 @@
     display: block;
     margin-bottom: 15px;
     @include font-size(16);
-
-    &:before {
-      content: '\e802';
-      display: inline-block;
-      font-family: "fontello";
-      width: 1em;
-      margin-right: 5px;
-    }
+    @include links ($red, $dark-grey);
   }
 }
 
