@@ -1,7 +1,10 @@
 //------------------------------------------------------------------------------
 // LOGIN
 .page-user {
-  background: $slategrey url(../logo.png) no-repeat center 80px;
+
+  .pane-user-profile {
+    margin-top: 30px;
+  }
 
   // colorized errors
   .control-group.error {
@@ -58,7 +61,6 @@
     margin: 0 0 5px;
     background: $white;
     border: 1px solid $liteGray;
-    @include font-size(18);
     @include placeholder(#a8a8a8);
   }
 
