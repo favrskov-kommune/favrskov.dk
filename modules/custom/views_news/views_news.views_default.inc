@@ -169,6 +169,11 @@ function views_news_views_default_views() {
   $handler->display->display_options['filters']['state']['table'] = 'autoarch_state';
   $handler->display->display_options['filters']['state']['field'] = 'state';
   $handler->display->display_options['filters']['state']['value'] = 'actual';
+  /* Filter criterion: Domain Access: Available on current domain */
+  $handler->display->display_options['filters']['current_all']['id'] = 'current_all';
+  $handler->display->display_options['filters']['current_all']['table'] = 'domain_access';
+  $handler->display->display_options['filters']['current_all']['field'] = 'current_all';
+  $handler->display->display_options['filters']['current_all']['value'] = '1';
 
   /* Display: News block */
   $handler = $view->new_display('panel_pane', 'News block', 'panel_pane_1');
@@ -215,7 +220,7 @@ function views_news_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Filter criterion: Broken/missing handler */
+  /* Filter criterion: Domain Access: Available on current domain */
   $handler->display->display_options['filters']['current_all']['id'] = 'current_all';
   $handler->display->display_options['filters']['current_all']['table'] = 'domain_access';
   $handler->display->display_options['filters']['current_all']['field'] = 'current_all';
@@ -562,18 +567,6 @@ function views_news_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Load more'),
-    t('<article>
-  <header class="group">
-   <h1>[title]</h1>
-   <div class="general-info">[field_date] | [field_taxonomy_subject_area]</div>
-  </header>
-  <div class="blog-preview">
-   [field_image_thumbnail]
-   <p>
-      [field_teaser]
-   </p>
-  </div>
-</article>'),
     t('News year filter'),
     t('Arkiv'),
   );
