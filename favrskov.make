@@ -556,6 +556,7 @@ projects[dynamic_background][patch][1904738] = "https://drupal.org/files/issues/
 
 projects[content_reminder][subdir] = contrib
 projects[content_reminder][version] = 1.0
+projects[content_reminder][patch][2342697] = "https://www.drupal.org/files/issues/content_reminder-set_focus_only_once-2342697-1-D7.patch"
 
 ; Libraries
 libraries[ckeditor][download][type] = get
