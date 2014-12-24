@@ -72,6 +72,13 @@ CKEDITOR.editorConfig = function(config) {
     'Times New Roman/Times New Roman, Times, serif;' +
     'Trebuchet MS/Trebuchet MS, Helvetica, sans-serif;' +
     'Verdana/Verdana, Geneva, sans-serif';
+
+  //AllowedContent help us to insert image processed by media_crop module into textarea.
+  config.allowedContent = true;
+  config.format_tags = 'h2;h3;h4;p';
+  config.extraPlugins += (config.extraPlugins ? ',NodeEmbed' : 'NodeEmbed');
+  //Spell checker language
+  config.scayt_sLang = 'da_DK';
 }
 
 /*
