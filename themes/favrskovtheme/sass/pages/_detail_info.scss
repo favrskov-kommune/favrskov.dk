@@ -92,7 +92,7 @@
         }
 
         a {
-          @include links($white-red, $dimgray);
+          @include links($link-red, $dimgray);
         }
       }
       .teaser {

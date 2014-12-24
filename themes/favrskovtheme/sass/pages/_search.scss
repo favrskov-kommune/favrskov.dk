@@ -151,7 +151,7 @@
         margin: 15px 0;
         font-family: $sans;
 
-        a { @include links($dimgray, $dark-green)}
+        a { @include links($dimgray, $link-red)}
       }
 
       // Content
@@ -222,7 +222,7 @@
     display: block;
     @include font-size(16);
     font-family: Arial;
-    color: $dark-green;
+    @include links($dark-grey, $link-red);
     position: relative;
     z-index: 1;
     &:after {

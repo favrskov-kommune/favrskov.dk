@@ -13,7 +13,6 @@
 }
 .page-page-404,
 .page-page-403 {
-  background-color: $dark-green;
     .action-links {
       @include container;
       margin: 40px auto;
@@ -30,24 +29,30 @@
   @include container;
   .logo {
     margin: 0 0 50px;
+    @include at-breakpoint(12 $width-768) {
+      text-align: center;
+    }
   }
   .left-side, .right-side {
     @include span-columns(6, 12);
-    @include at-breakpoint(12 $width-600) {
+    @include at-breakpoint(12 $width-768) {
       @include span-columns(12, 12);
     }
     &.right-side {
       margin-right: 0;
       .big-msg {
         margin: 20px 0;
+        @include at-breakpoint(12 $width-768) {
+          text-align: center;
+        }
         h1 {
-          color: white;
+          color: $dimgray;
         }
       }
       .description {
         h2 {
           font-size: 18px;
-          color: white;
+          color: $dimgray;
           line-height: 25px;
           a {
             @include links($red, $dark-grey);
@@ -60,12 +65,12 @@
         height: 37px;
         position: relative;
         input[type="text"] {
-          @include border-radius(0px);
+          @include border-radius(5px);
           @extend %width-100;
           @extend %height-100;
           @extend %position-absolute;
           left: 0;
-          background: white;
+          background: $light-blue;
           padding: 9px 60px 9px 10px;
         }
         .form-actions {
