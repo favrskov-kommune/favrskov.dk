@@ -427,11 +427,33 @@ function views_news_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
   $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['granularity'] = 'year';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_date.field_date_value' => 'field_data_field_date.field_date_value',
   );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'news' => 'news',
+  );
+  /* Filter criterion: Autoarch: State of the node */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'autoarch_state';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['value'] = 'actual';
   $handler->display->display_options['argument_input'] = array(
     'term_node_tid_depth' => array(
       'type' => 'user',
@@ -508,6 +530,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['arguments']['field_date_value']['table'] = 'field_data_field_date';
   $handler->display->display_options['arguments']['field_date_value']['field'] = 'field_date_value';
   $handler->display->display_options['arguments']['field_date_value']['default_action'] = 'summary';
+  $handler->display->display_options['arguments']['field_date_value']['default_argument_type'] = 'date';
   $handler->display->display_options['arguments']['field_date_value']['default_argument_skip_url'] = TRUE;
   $handler->display->display_options['arguments']['field_date_value']['summary']['sort_order'] = 'desc';
   $handler->display->display_options['arguments']['field_date_value']['summary']['number_of_records'] = '0';
@@ -520,7 +543,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['arguments']['field_date_value']['title_format_custom'] = 'Y';
   $translatables['news'] = array(
     t('Master'),
-    t('Aktuelt'),
+    t('News'),
     t('See all'),
     t('Apply'),
     t('Reset'),
@@ -529,9 +552,11 @@ function views_news_views_default_views() {
     t('Desc'),
     t('No results'),
     t('term'),
+    t('queue'),
     t('All'),
     t('News block'),
     t('more'),
+    t('Queue machine name'),
     t('View panes'),
     t('News list'),
     t('Items per page'),
@@ -541,6 +566,7 @@ function views_news_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('Load more'),
     t('News year filter'),
     t('Arkiv'),
   );
