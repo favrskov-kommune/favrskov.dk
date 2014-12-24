@@ -878,7 +878,7 @@
     text-transform: uppercase;
     position: absolute;
     top: 0;
-    @include links($slategrey, $white-red);
+    @include links($slategrey, $link-red);
   }
 
   // Share
@@ -887,7 +887,7 @@
     left: 0;
     top: 0;
     text-transform: uppercase;
-    @include links($slategrey, $white-red);
+    @include links($slategrey, $link-red);
   }
 
   // Susbcribe

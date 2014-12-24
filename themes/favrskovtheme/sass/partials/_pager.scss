@@ -9,7 +9,7 @@
       li {
         @include inline-block(middle);
         margin: 0;
-        color: $lime;
+        color: $dark-green;
         &.pager-current {
           @include inline-block(middle);
           padding: 5px 10px;
@@ -21,7 +21,7 @@
           font-weight: bold;
           padding: 5px 10px;
           display: block;
-          color: $lime;
+          color: $dark-green;
         }
 
         &.pager-last,
@@ -43,7 +43,7 @@
           &, a {
             color: $white;
           }
-          background: $lime;
+          background: $dark-green;
           cursor: default;
         }
         &.pager-next,
@@ -51,7 +51,7 @@
           &:hover {
             background: none;
             a {
-              color: $lime;
+              color: $dark-green;
             }
           }
         }
