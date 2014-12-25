@@ -61,7 +61,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
         'forcePasteAsPlainText' => 'f',
         'html_entities' => 'f',
         'scayt_autoStartup' => 't',
-        'theme_config_js' => 'f',
+        'theme_config_js' => 't',
         'js_conf' => '',
         'loadPlugins' => array(
           'drupalbreaks' => array(
@@ -174,8 +174,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
         'html_entities' => 'f',
         'scayt_autoStartup' => 't',
         'theme_config_js' => 't',
-        'js_conf' => 'config.allowedContent = true; config.format_tags = \'h2;h3;h4;p\';
-config.extraPlugins += (config.extraPlugins ? \',NodeEmbed\' : \'NodeEmbed\' );',
+        'js_conf' => '',
         'loadPlugins' => array(
           'NodeEmbed' => array(
             'name' => 'NodeEmbed',

@@ -558,6 +558,10 @@ projects[content_reminder][subdir] = contrib
 projects[content_reminder][version] = 1.0
 projects[content_reminder][patch][2342697] = "https://www.drupal.org/files/issues/content_reminder-set_focus_only_once-2342697-1-D7.patch"
 
+projects[workbench_moderation][subdir] = contrib
+projects[workbench_moderation][version] = 1.3
+projects[workbench_moderation][patch][1314508] = "https://www.drupal.org/files/1314508-workbench-moderation-features.patch"
+
 ; Libraries
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] =
