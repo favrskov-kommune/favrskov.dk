@@ -1,0 +1,17 @@
+msgid "Draft"
+msgstr "Udkast"
+
+msgid "Needs Review"
+msgstr "Behov anmeldelse"
+
+msgid "Published"
+msgstr "Udgivet"
+
+msgid "Work in progress"
+msgstr "Igangværende arbejde"
+
+msgid "Ready for moderation"
+msgstr "Klar til moderation"
+
+msgid "Make this version live"
+msgstr "Gør denne version levende"

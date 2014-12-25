@@ -1,0 +1,16 @@
+name = Config Workbench Moderation
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_workbench_moderation
+dependencies[] = workbench_moderation
+dependencies[] = workbench_moderation
+features[features_api][] = api:2
+features[workbench_moderation_states][] = draft
+features[workbench_moderation_states][] = needs_review
+features[workbench_moderation_states][] = published
+features[workbench_moderation_transitions][] = draft:needs_review
+features[workbench_moderation_transitions][] = draft:published
+features[workbench_moderation_transitions][] = needs_review:draft
+features[workbench_moderation_transitions][] = needs_review:published
+features_exclude[dependencies][workbench_moderation] = workbench_moderation

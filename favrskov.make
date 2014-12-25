@@ -560,6 +560,7 @@ projects[content_reminder][patch][2342697] = "https://www.drupal.org/files/issue
 
 projects[workbench_moderation][subdir] = contrib
 projects[workbench_moderation][version] = 1.3
+projects[workbench_moderation][patch][1314508] = "https://www.drupal.org/files/1314508-workbench-moderation-features.patch"
 
 ; Libraries
 libraries[ckeditor][download][type] = get
