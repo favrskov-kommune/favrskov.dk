@@ -136,7 +136,7 @@
             right: 23px;
             @include sprite(-13px, -110px);
           }
-          &.active {
+          &.active-trail {
             &:after {
               background: none;
             }

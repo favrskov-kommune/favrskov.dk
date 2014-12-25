@@ -13,6 +13,7 @@
 }
 .page-page-404,
 .page-page-403 {
+  overflow: hidden;
     .action-links {
       @include container;
       margin: 40px auto;

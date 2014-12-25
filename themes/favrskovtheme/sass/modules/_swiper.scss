@@ -14,7 +14,9 @@
   position: relative;
   img {
     max-width: none;
+    zoom: 1;
     display: block;
+    z-index: 10;
   }
   &.swiper-content {
     @include at-breakpoint(12 $width-480) {
