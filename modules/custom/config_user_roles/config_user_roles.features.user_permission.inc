@@ -83,6 +83,7 @@ function config_user_roles_user_default_permissions() {
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -3515,6 +3516,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
@@ -3924,6 +3927,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
