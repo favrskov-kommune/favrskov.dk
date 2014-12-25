@@ -987,6 +987,15 @@ function config_user_roles_user_default_permissions() {
     'module' => 'views',
   );
 
+  // Exported permission: 'administer workbench moderation'.
+  $permissions['administer workbench moderation'] = array(
+    'name' => 'administer workbench moderation',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
   // Exported permission: 'administer xmlsitemap'.
   $permissions['administer xmlsitemap'] = array(
     'name' => 'administer xmlsitemap',
@@ -994,6 +1003,17 @@ function config_user_roles_user_default_permissions() {
       'Administrator' => 'Administrator',
     ),
     'module' => 'xmlsitemap',
+  );
+
+  // Exported permission: 'allow publish newly created articles'.
+  $permissions['allow publish newly created articles'] = array(
+    'name' => 'allow publish newly created articles',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'content_type_article',
   );
 
   // Exported permission: 'block IP addresses'.
@@ -1032,6 +1052,16 @@ function config_user_roles_user_default_permissions() {
       'Administrator' => 'Administrator',
     ),
     'module' => 'rules',
+  );
+
+  // Exported permission: 'bypass workbench moderation'.
+  $permissions['bypass workbench moderation'] = array(
+    'name' => 'bypass workbench moderation',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'workbench_moderation',
   );
 
   // Exported permission: 'cancel account'.
@@ -2708,6 +2738,54 @@ function config_user_roles_user_default_permissions() {
     'module' => 'term_merge',
   );
 
+  // Exported permission: 'moderate content from draft to needs_review'.
+  $permissions['moderate content from draft to needs_review'] = array(
+    'name' => 'moderate content from draft to needs_review',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'moderate content from draft to published'.
+  $permissions['moderate content from draft to published'] = array(
+    'name' => 'moderate content from draft to published',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'moderate content from needs_review to draft'.
+  $permissions['moderate content from needs_review to draft'] = array(
+    'name' => 'moderate content from needs_review to draft',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'moderate content from needs_review to published'.
+  $permissions['moderate content from needs_review to published'] = array(
+    'name' => 'moderate content from needs_review to published',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
   // Exported permission: 'notify of path changes'.
   $permissions['notify of path changes'] = array(
     'name' => 'notify of path changes',
@@ -3843,6 +3921,42 @@ function config_user_roles_user_default_permissions() {
     'module' => 'filter',
   );
 
+  // Exported permission: 'use workbench_moderation my drafts tab'.
+  $permissions['use workbench_moderation my drafts tab'] = array(
+    'name' => 'use workbench_moderation my drafts tab',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'use workbench_moderation needs review tab'.
+  $permissions['use workbench_moderation needs review tab'] = array(
+    'name' => 'use workbench_moderation needs review tab',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'view all unpublished content'.
+  $permissions['view all unpublished content'] = array(
+    'name' => 'view all unpublished content',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
   // Exported permission: 'view encrypted values'.
   $permissions['view encrypted values'] = array(
     'name' => 'view encrypted values',
@@ -3862,6 +3976,30 @@ function config_user_roles_user_default_permissions() {
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'view moderation history'.
+  $permissions['view moderation history'] = array(
+    'name' => 'view moderation history',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'view moderation messages'.
+  $permissions['view moderation messages'] = array(
+    'name' => 'view moderation messages',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'workbench_moderation',
   );
 
   // Exported permission: 'view own files'.
