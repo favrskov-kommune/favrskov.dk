@@ -79,3 +79,34 @@ function content_type_article_form_article_node_form_alter(&$form, &$form_state,
     ),
   );
 }
+
+/**
+ * Implements hook_permission().
+ */
+function content_type_article_permission() {
+  return array(
+    'allow publish newly created articles' => array(
+      'title' => t("Allow users to publish an Article."),
+      'description' => t("This permission is related to those articles that haven't been published before."),
+    ),
+  );
+}
+
+/**
+ * Implements hook_workbench_moderation_states_next_alter().
+ */
+function content_type_article_workbench_moderation_states_next_alter(&$states, $current_state, $context) {
+  $is_article = $context['node']->type == 'article';
+  if ($is_article && !empty($context['node']->nid) && !user_access('allow publish newly created articles')) {
+    $published = workbench_moderation_state_published();
+    $result = db_select('workbench_moderation_node_history', 'h')
+      ->fields('h')
+      ->condition('nid', $context['node']->nid)
+      ->condition('state', $published)
+      ->execute();
+
+    if ($result->rowCount() == 0) {
+      unset($states[$published]);
+    }
+  }
+}
