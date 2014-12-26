@@ -333,7 +333,7 @@
             font-weight: bold;
             cursor: pointer;
             position: relative;
-            font: $sans-medium;
+            font: $sans;
             &:after {
               @extend %before-after;
               width: 20px;

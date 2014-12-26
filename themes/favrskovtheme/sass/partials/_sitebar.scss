@@ -170,13 +170,13 @@
                 @extend %before-after;
                 @include center-vertical(12);
                 left: 0;
-                @include sprite(-65px, -113px);
               }
               a {
                 font: 16px Arial;
                 color: #666;
                 padding-left: 12px;
-                padding-top: 2px;
+                padding-top: 12px;
+                @include sprite(-65px, -97px);
                 &:hover {
                   font-weight: bold;
                 }
