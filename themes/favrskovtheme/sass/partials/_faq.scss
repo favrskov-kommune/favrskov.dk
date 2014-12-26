@@ -12,14 +12,14 @@
 
   header h2 {
     @include font-size(30);
-    font-family: $sans-bold-strict;
+    font-family: $sans-medium;
     margin-bottom: 31px;
     color: $gray;
   }
 
   h2 {
     @include font-size(16);
-    font-family: $sans-med-strict;
+    font-family: $sans-medium;
     margin-bottom: 10px;
   }
 
@@ -38,7 +38,7 @@
     padding: 20px 80px 16px 19px;
     margin: 0;
     @include font-size(16);
-    font-family: $sans-med-strict;
+    font-family: $sans-medium;
     position: relative;
 
     &.open {
@@ -71,7 +71,7 @@
     h2,
     h3,
     h4 {
-      font-family: $sans-med-strict;
+      font-family: $sans-medium;
       margin-bottom: 10px;
     }
 
