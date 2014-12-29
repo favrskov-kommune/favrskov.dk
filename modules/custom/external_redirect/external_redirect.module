@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * Implements hook_field_attach_form().
+ *
+ * Overwrite for adding external redirects to the node redirect tab.
+ */
+function external_redirect_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  list($id) = entity_extract_ids($entity_type, $entity);
+  if (!empty($form['redirect']) || empty($id)) {
+    return;
+  }
+
+  // Check if this entity type supports redirects.
+  if (!redirect_entity_type_supports_redirects($entity_type)) {
+    return;
+  }
+
+  $uri = entity_uri($entity_type, $entity);
+  if (empty($uri)) {
+    // If the entity has no source path, then we cannot lookup the existing
+    // redirects.
+    return;
+  }
+
+  $info = entity_get_info($entity_type);
+  $form['redirect'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('URL redirects'),
+    '#description' => t('The following are a list of URL redirects that point to this @entitytype.', array('@entitytype' => drupal_strtolower($info['label']))),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#access' => user_access('administer redirects'),
+    '#weight' => 30,
+    '#attributes' => array('class' => array('redirect-list')),
+  );
+
+  // Only support vertical tabs if there is a vertical tab element.
+  foreach (element_children($form) as $key) {
+    if (isset($form[$key]['#type']) && $form[$key]['#type'] == 'vertical_tabs') {
+      $form['redirect']['#group'] = $key;
+      $form['redirect']['#attached']['js']['vertical-tabs'] = drupal_get_path('module', 'redirect') . '/redirect.js';
+    }
+  }
+
+  // We don't have to put our include in $form_state['build_info']['files']
+  // since the build array will already be cached.
+  module_load_include('inc', 'redirect', 'redirect.admin');
+  $redirects = redirect_load_multiple(FALSE, array('redirect' => $uri['path']));
+  $redirect_url = external_redirect_db_get_redirect($uri['path']);
+  $redirects += redirect_load_multiple(FALSE, array('redirect' => $redirect_url));
+  $header = array(
+    'source',
+    'status_code',
+    'language',
+    'count',
+    'access',
+    'operations'
+  );
+  $form['redirect'] += redirect_list_table($redirects, $header);
+  $redirect = array(
+    'redirect' => $uri['path'],
+    'redirect_options' => array_diff_key($uri['options'], array(
+      'entity_type' => '',
+      'entity' => ''
+    )),
+    'language' => $langcode,
+  );
+
+  $form['redirect']['actions'] = array(
+    '#theme' => 'links',
+    '#links' => array(),
+    '#attributes' => array('class' => array('action-links')),
+  );
+  if (redirect_access('create', 'redirect')) {
+    $form['redirect']['actions']['#links']['add'] = array(
+      'title' => t('Add URL redirect to this @entitytype', array('@entitytype' => drupal_strtolower($info['label']))),
+      'href' => 'admin/config/search/redirect/add',
+      'query' => array_filter($redirect) + drupal_get_destination(),
+    );
+  }
+}
+
+/**
+ * Get url-redirect from 'redirect' table.
+ */
+function external_redirect_db_get_redirect($source) {
+  $url = db_select('redirect', 'r')
+    ->fields('r', array('redirect'))
+    ->condition('source', $source)
+    ->execute()
+    ->fetchField();
+
+  return $url;
+}
+
