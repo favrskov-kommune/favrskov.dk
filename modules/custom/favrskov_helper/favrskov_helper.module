@@ -61,9 +61,9 @@ function favrskov_helper_field_attach_form($entity_type, $entity, &$form, &$form
   $redirect = array(
     'redirect' => $uri['path'],
     'redirect_options' => array_diff_key($uri['options'], array(
-        'entity_type' => '',
-        'entity' => ''
-      )),
+      'entity_type' => '',
+      'entity' => ''
+    )),
     'language' => $langcode,
   );
 

@@ -1,5 +1,4 @@
 name = Favrskov helper module.
-description = Contains function and options for help .
+description = Glumodule for Favrskov specific alterations.
 core = 7.x
-package = Feeds
-version = 7.x-1.2
+package = Help
