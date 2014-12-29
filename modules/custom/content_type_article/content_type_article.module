@@ -97,8 +97,13 @@ function content_type_article_permission() {
  */
 function content_type_article_workbench_moderation_states_next_alter(&$states, $current_state, $context) {
   $is_article = $context['node']->type == 'article';
-  if ($is_article && !empty($context['node']->nid) && !user_access('allow publish newly created articles')) {
-    $published = workbench_moderation_state_published();
+  $published = workbench_moderation_state_published();
+  // Disable publishing ability during articles creation.
+  if ($is_article && empty($context['node']->nid) && !user_access('allow publish newly created articles')) {
+    unset($states[$published]);
+  }
+  // Disable publishing ability during articles editing before Oficcer has been published it.
+  elseif ($is_article && !empty($context['node']->nid) && !user_access('allow publish newly created articles')) {
     $result = db_select('workbench_moderation_node_history', 'h')
       ->fields('h')
       ->condition('nid', $context['node']->nid)
