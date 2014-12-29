@@ -1,0 +1,4 @@
+name = External redirect module.
+description = Additions external redirects to re node redirect tab.
+core = 7.x
+package = Help
