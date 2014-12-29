@@ -47,7 +47,7 @@ function external_redirect_field_attach_form($entity_type, $entity, &$form, &$fo
   // since the build array will already be cached.
   module_load_include('inc', 'redirect', 'redirect.admin');
   $redirects = redirect_load_multiple(FALSE, array('redirect' => $uri['path']));
-  $redirect_url = db_get_redirect($uri['path']);
+  $redirect_url = external_redirect_db_get_redirect($uri['path']);
   $redirects += redirect_load_multiple(FALSE, array('redirect' => $redirect_url));
   $header = array(
     'source',
@@ -84,7 +84,7 @@ function external_redirect_field_attach_form($entity_type, $entity, &$form, &$fo
 /**
  * Get url-redirect from 'redirect' table.
  */
-function db_get_redirect($source) {
+function external_redirect_db_get_redirect($source) {
   $url = db_select('redirect', 'r')
     ->fields('r', array('redirect'))
     ->condition('source', $source)
