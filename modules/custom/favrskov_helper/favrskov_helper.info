@@ -1,4 +1,0 @@
-name = Favrskov helper module.
-description = Glumodule for Favrskov specific alterations.
-core = 7.x
-package = Help

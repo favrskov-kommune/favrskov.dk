@@ -5,7 +5,7 @@
  *
  * Overwrite for adding external redirects to the node redirect tab.
  */
-function favrskov_helper_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+function external_redirect_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
   list($id) = entity_extract_ids($entity_type, $entity);
   if (!empty($form['redirect']) || empty($id)) {
     return;
