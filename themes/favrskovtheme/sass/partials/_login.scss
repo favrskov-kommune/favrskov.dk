@@ -1,6 +1,11 @@
 //------------------------------------------------------------------------------
 // LOGIN
 .page-user {
+  background: url(../logo.png) center 150px no-repeat;
+
+  &.user-info {
+    background: none;
+  }
 
   .pane-user-profile {
     margin-top: 30px;
@@ -95,9 +100,10 @@
   color: $gray;
   background-color: $lightgrey;
   border: 1px solid $grayLight;
-  margin: 200px auto 60px;
+  margin: 300px auto 60px;
   max-width: 355px;
   padding: 20px;
+  position: relative;
   @include transition-property(all);
   @include transition-timing-function(ease-in);
   @include transition-duration(.4s);
@@ -115,14 +121,13 @@
   }
 
   .messages {
-    margin-bottom: 10px;
     @include border-radius(0 0 7px 7px);
     position: absolute;
-    top: 0;
+    bottom: -60px;
     margin: auto;
     left: 0;
     right: 0;
-    width: 360px;
+    width: 325px;
     @include box-shadow(rgba(0, 0, 0, .5) 0 1px 3px inset);
 
     @media (max-width: 400px) {

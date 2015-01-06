@@ -104,7 +104,8 @@
         @include inline-block(top);
         margin-right: -2px;
       }
-      &.active {
+      &.active,
+      &:hover {
         a {
           background: $grey;
         }

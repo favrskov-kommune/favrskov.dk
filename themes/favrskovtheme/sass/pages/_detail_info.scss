@@ -76,7 +76,6 @@
         }
       }
       .node-body {
-        border-bottom: 1px solid $border-top-over-news;
         margin-bottom: 20px;
         padding: 0 0 20px;
 
@@ -305,8 +304,8 @@
 
       // Faq
       .faq, .embedded {
-        padding: 43px 0;
-        margin-top: 43px;
+        padding: 25px 0;
+        margin-top: 20px;
         border-bottom: 1px solid $border-top-over-all-news;
         border-top: 1px solid $border-top-over-all-news;
         & + .faq, & + .embedded {
