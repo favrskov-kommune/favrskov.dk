@@ -31,6 +31,8 @@ function config_node_view_permissions_user_default_permissions() {
       'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -55,6 +57,8 @@ function config_node_view_permissions_user_default_permissions() {
       'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
