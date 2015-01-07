@@ -111,10 +111,19 @@
     }
 
     li {
-      list-style: disc;
       color: $dimgray;
       font: 12pt/20px Arial;
       margin-left: 30px;
+    }
+    ul {
+      li {
+        list-style: disc;
+      }
+    }
+    ol {
+      li {
+        list-style: decimal;
+      }
     }
   }
 
@@ -786,15 +795,13 @@
       // Third level
       .menu {
         background: white;
-
-         a {
-            padding-left: 25px;
-         }
-
-         .active-trail {
+        a {
+          padding-left: 25px;
+        }
+        .active-trail {
           background: $cyan;
           color: $white;
-         }
+        }
       }
     }
   }
@@ -837,7 +844,6 @@
       }
 
       .active-trail {
-        background-color: #e3e3e3;
         @include font-size(15);
       }
 

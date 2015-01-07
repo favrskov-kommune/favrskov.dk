@@ -199,6 +199,7 @@
         width: 100%;
         min-height: 89px;
         @include border-radius(10px);
+        background: $red;
         position: relative;
         margin: 10px 0;
         @include transition-property(background-color);
@@ -240,9 +241,15 @@
         }
         &.red-background {
           background: $red;
+          &:hover {
+            background: #999;
+          }
         }
         &.light-grey-background {
           background: $indian-yellow;
+          &:hover {
+            background: $grey;
+          }
         }
       }
       // Contacts
