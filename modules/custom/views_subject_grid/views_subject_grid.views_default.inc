@@ -59,7 +59,7 @@ function views_subject_grid_views_default_views() {
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'content_by_term_sorting:page';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'content_by_term_sorting:draggable_by_term';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Kontekstuelt filter: Indhold: Har taksonomiterm ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
