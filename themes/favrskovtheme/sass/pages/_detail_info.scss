@@ -197,7 +197,6 @@
       // Buttons self service
       .self-service {
         width: 100%;
-        background: $red;
         min-height: 89px;
         @include border-radius(10px);
         position: relative;
@@ -238,6 +237,12 @@
         .teaser {
           margin: 0;
           font-size: 16px;
+        }
+        &.red-background {
+          background: $red;
+        }
+        &.light-grey-background {
+          background: $indian-yellow;
         }
       }
       // Contacts
