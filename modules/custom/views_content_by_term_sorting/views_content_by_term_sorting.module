@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Content by term sorting feature.
+ */
+
+include_once 'views_content_by_term_sorting.features.inc';
