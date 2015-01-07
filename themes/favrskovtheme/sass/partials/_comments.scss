@@ -39,6 +39,7 @@
     padding: 8px 25px;
     @include links($white, $white);
     margin-top: 5px;
+    @include border-radius(5px);
     &:hover {
       background-color: #b24545;
     }

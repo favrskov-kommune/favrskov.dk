@@ -84,7 +84,7 @@
         color: $link-red;
       }
       &.active-category {
-        background: $liteGray;
+        background: $grey;
         color: $dark-grey;
       }
     }
@@ -145,7 +145,7 @@
               background: none;
             }
             & > a {
-              background: none;
+              background: $dark-green;
               font-weight: bold;
               color: $white;
               position: relative;
