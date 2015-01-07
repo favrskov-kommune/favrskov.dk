@@ -43,7 +43,7 @@
         }
         a {
           font: 14px Arial;
-          color: $dark-grey;
+          @include links($dark-white-grey, $red);
         }
       }
       .blog-preview {

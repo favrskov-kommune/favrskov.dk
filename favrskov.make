@@ -19,6 +19,9 @@ projects[views][patch][1036962] = https://drupal.org/files/views-fix-destination
 projects[views_field_view][subdir] = contrib
 projects[views_field_view][version] = 1.1
 
+projects[draggableviews][subdir] = contrib
+projects[draggableviews][version] = 2.0
+
 projects[views_hacks][subdir] = contrib
 projects[views_hacks][version] = 1.0-alpha2
 projects[views_hacks][patch][1721644] = https://drupal.org/files/issues/views_hacks-show_all_selective_terms-1721644-12.patch

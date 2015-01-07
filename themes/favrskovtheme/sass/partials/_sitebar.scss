@@ -78,10 +78,14 @@
     a {
       font: 15px Arial;
       color: $link-red;
-      text-shadow: 0px 0px 0px $link-red;
+      padding: 0 5px;
       &:hover {
         font-weight: bold;
         color: $link-red;
+      }
+      &.active-category {
+        background: $grey;
+        color: $dark-grey;
       }
     }
   }
@@ -171,15 +175,20 @@
                 @include center-vertical(12);
                 left: 0;
               }
+              &.active-trail {
+                background: none;
+              }
               a {
                 font: 16px Arial;
                 color: #666;
-                padding-left: 12px;
-                padding-top: 12px;
-                @include sprite(-65px, -97px);
-                &:hover {
+                padding: 5px 12px;
+                padding-right: 0;
+                @include sprite(-65px, -103px);
+                &:hover,
+                &.active-trail {
                   font-weight: bold;
                 }
+
               }
             }
           }
