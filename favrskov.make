@@ -94,6 +94,9 @@ projects[references_dialog][patch][2315905] = https://www.drupal.org/files/issue
 projects[entity][subdir] = contrib
 projects[entity][version] = 1.5
 
+projects[rabbit_hole][subdir] = contrib
+projects[rabbit_hole][version] = 2.23
+
 projects[linkit][subdir] = contrib
 projects[linkit][version] = 2.6
 
