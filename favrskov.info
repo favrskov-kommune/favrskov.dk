@@ -231,4 +231,5 @@ dependencies[] = mailsystem
 dependencies[] = config_mailsystem
 dependencies[] = config_content_reminder
 dependencies[] = workbench_moderation
+dependencies[] = rabbit_hole
 dependencies[] = draggableviews
