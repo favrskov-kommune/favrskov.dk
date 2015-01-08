@@ -22,6 +22,12 @@ body {
   word-wrap: break-word;
  //   background: url(../images/erhverv_page.png) no-repeat 344px top;
  //   opacity: 0.7;
+
+  .resizable-textarea {
+    .grippie {
+      display: none;
+    }
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -110,14 +116,19 @@ input[type="password"],
 input[type="email"],
 input[type="url"],
 input[type="search"] {
-  border: 0 none;
-  color: $slatgrayLight;
   margin: 0;
-  height: 17px;
   max-width: 100%;
-  padding: 9px 0;
+  background-color: $lightgrey;
+  height: 32px;
+  border: 1px solid $liteGray;
+  color: $gray;
+  @include border-radius(0);
+  width: 94%;
+  padding: 9px 3%;
+  line-height: 34px;
   @include font-size(14);
-  @include border-radius(5px);
+  @include box-sizing(content-box);
+  overflow-y: auto;
 }
 
 input[type="text"]::-ms-clear {
