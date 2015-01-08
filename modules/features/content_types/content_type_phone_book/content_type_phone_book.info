@@ -41,6 +41,7 @@ features[field_instance][] = node-phone_book-field_phone_book_email
 features[field_instance][] = node-phone_book-field_phone_book_map_link
 features[field_instance][] = node-phone_book-field_phone_book_phone
 features[field_instance][] = node-phone_book-field_phone_book_stuff
+features[field_instance][] = node-phone_book-field_internal_title
 features[node][] = phone_book
 features[variable][] = comment_anonymous_phone_book
 features[variable][] = comment_default_mode_phone_book

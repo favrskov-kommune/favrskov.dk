@@ -16,6 +16,7 @@ features[features_api][] = api:2
 features[field_instance][] = node-frontpage-field_editorial_responsibility
 features[field_instance][] = node-frontpage-field_taxonomy_kle
 features[field_instance][] = node-frontpage-field_taxonomy_local
+features[field_instance][] = node-frontpage-field_internal_title
 features[node][] = frontpage
 features[variable][] = comment_anonymous_frontpage
 features[variable][] = comment_default_mode_frontpage

@@ -23,6 +23,7 @@ features[field_instance][] = node-factbox-field_image
 features[field_instance][] = node-factbox-field_image_description
 features[field_instance][] = node-factbox-field_onlyeditorcontent
 features[field_instance][] = node-factbox-field_teaser
+features[field_instance][] = node-factbox-field_internal_title
 features[node][] = factbox
 features[variable][] = comment_anonymous_factbox
 features[variable][] = comment_default_mode_factbox

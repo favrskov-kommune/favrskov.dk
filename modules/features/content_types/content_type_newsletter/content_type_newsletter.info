@@ -48,6 +48,7 @@ features[field_instance][] = node-newsletter-field_related_events
 features[field_instance][] = node-newsletter-field_related_links
 features[field_instance][] = node-newsletter-field_related_news
 features[field_instance][] = node-newsletter-field_send_time
+features[field_instance][] = node-newsletter-field_internal_title
 features[node][] = newsletter
 features[variable][] = comment_anonymous_newsletter
 features[variable][] = comment_default_mode_newsletter
