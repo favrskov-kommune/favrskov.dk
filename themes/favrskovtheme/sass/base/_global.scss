@@ -116,19 +116,14 @@ input[type="password"],
 input[type="email"],
 input[type="url"],
 input[type="search"] {
+  border: 0 none;
+  color: $slatgrayLight;
   margin: 0;
+  height: 17px;
   max-width: 100%;
-  background-color: $lightgrey;
-  height: 32px;
-  border: 1px solid $liteGray;
-  color: $gray;
-  @include border-radius(0);
-  width: 94%;
-  padding: 9px 3%;
-  line-height: 34px;
+  padding: 9px 0;
   @include font-size(14);
-  @include box-sizing(content-box);
-  overflow-y: auto;
+  @include border-radius(5px);
 }
 
 input[type="text"]::-ms-clear {
