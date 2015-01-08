@@ -103,12 +103,10 @@ function panel_403_page_default_page_manager_pages() {
       'body' => '<div class="page-content page-403">
 <div class="message-part">
     <div class="big-msg">
-      <h1 class="small">' . t('Access denied'). '<br> ' . t('403 error') . '</h1>
+      <h1 class="small">Du kan ikke få adgang til siden 403 fejl</h1>
     </div>
     <div class="description">
-      <h2>' . t("We're sorry, but you unfortunately do not have access to the selected page.") .
-      t("Be aware of the search function at the top right, which might help you find what you are looking for.") .
-      t("Clicking <a href='/'>here</a>, you will come to the front page.") . '</h2>
+      <h2>Vi beklager, men du har desværre ikke adgang til den valgte side.Vær opmærksom på søgefunktionen øverst til højre, som måske kan hjælpe dig med at finde, hvad du søger.Hvis du klikker <a href=\'/\'>her</a>, kommer du til forsiden.</h2>
     </div>
 </div>
 </div>
