@@ -51,6 +51,7 @@ features[field_instance][] = node-os2web_event_calendar-field_os2web_ec_teaser
 features[field_instance][] = node-os2web_event_calendar-field_os2web_ec_video
 features[field_instance][] = node-os2web_event_calendar-field_os2web_ec_video_desc
 features[field_instance][] = taxonomy_term-os2web_event_calendar_categories-field_os2web_ec_color
+features[field_instance][] = node-os2web_event_calendar-field_internal_title
 features[node][] = os2web_event_calendar
 features[taxonomy][] = os2web_event_calendar_categories
 features[variable][] = comment_anonymous_os2web_event_calendar

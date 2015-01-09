@@ -26,6 +26,7 @@ features[field_instance][] = node-slider_element-field_external_link
 features[field_instance][] = node-slider_element-field_image
 features[field_instance][] = node-slider_element-field_image_alt_text
 features[field_instance][] = node-slider_element-field_link_text
+features[field_instance][] = node-slider_element-field_internal_title
 features[node][] = slider_element
 features[variable][] = comment_anonymous_slider_element
 features[variable][] = comment_default_mode_slider_element

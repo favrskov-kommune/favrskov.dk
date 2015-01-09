@@ -49,6 +49,7 @@ features[field_base][] = field_piwik_week
 features[field_base][] = field_piwik_year
 features[field_base][] = field_related_boxes
 features[field_base][] = field_related_content
+features[field_base][] = field_internal_title
 features[field_base][] = field_self_service
 features[field_base][] = field_bannerlink
 features[field_base][] = field_taxonomy_kle
@@ -92,6 +93,8 @@ features[field_instance][] = node-shared-field_teaser
 features[field_instance][] = node-shared-field_top_image
 features[field_instance][] = node-shared-field_video
 features[field_instance][] = node-shared-field_video_description
+features[field_instance][] = node-shared-field_internal_title
+
 features[node][] = shared
 features[variable][] = field_bundle_settings_file__image
 features_exclude[variable][comment_anonymous_shared] = comment_anonymous_shared

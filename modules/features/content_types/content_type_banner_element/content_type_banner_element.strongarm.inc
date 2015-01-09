@@ -14,7 +14,7 @@ function content_type_banner_element_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_banner_element';
-  $strongarm->value = '0';
+  $strongarm->value = '2';
   $export['comment_anonymous_banner_element'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -28,28 +28,28 @@ function content_type_banner_element_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_banner_element';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_default_mode_banner_element'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_banner_element';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_banner_element'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_banner_element';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_form_location_banner_element'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_banner_element';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_banner_element'] = $strongarm;
 
   $strongarm = new stdClass();

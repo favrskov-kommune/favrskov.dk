@@ -20,6 +20,7 @@ features[field_instance][] = field_collection_item-field_faq-field_faq_answer
 features[field_instance][] = field_collection_item-field_faq-field_faq_question
 features[field_instance][] = node-faq-field_displayed_title
 features[field_instance][] = node-faq-field_faq
+features[field_instance][] = node-faq-field_internal_title
 features[node][] = faq
 features[variable][] = comment_anonymous_faq
 features[variable][] = comment_default_mode_faq

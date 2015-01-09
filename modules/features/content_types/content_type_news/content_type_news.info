@@ -48,6 +48,7 @@ features[field_instance][] = node-news-field_taxonomy_subject_area
 features[field_instance][] = node-news-field_teaser
 features[field_instance][] = node-news-field_video
 features[field_instance][] = node-news-field_video_description
+features[field_instance][] = node-news-field_internal_title
 features[node][] = news
 features[variable][] = comment_anonymous_news
 features[variable][] = comment_default_mode_news
