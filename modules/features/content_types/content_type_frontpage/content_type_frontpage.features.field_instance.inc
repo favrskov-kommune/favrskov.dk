@@ -240,7 +240,7 @@ function content_type_frontpage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => -1,
+      'weight' => 3,
     ),
   );
 
@@ -249,6 +249,8 @@ function content_type_frontpage_field_default_field_instances() {
   t('Editorial responsibility');
   t('Taxonomy, KLE');
   t('Taxonomy, local');
+  t('Internal title');
+  t('Used for admin content overview page instead of title field.');
 
   return $field_instances;
 }
