@@ -1211,7 +1211,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Used for admin content overview page instead of title field.',
+    'description' => t('Used for admin content overview page instead of title field.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1235,7 +1235,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => 'Internal title',
+    'label' => t('Internal title'),
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
