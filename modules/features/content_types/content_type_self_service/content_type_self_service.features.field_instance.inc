@@ -247,7 +247,7 @@ function content_type_self_service_field_default_field_instances() {
     'bundle' => 'self_service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Used for admin content overview page instead of title field.',
+    'description' => t('Used for admin content overview page instead of title field.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -271,7 +271,7 @@ function content_type_self_service_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => 'Internal title',
+    'label' => t('Internal title'),
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -430,7 +430,7 @@ function content_type_self_service_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -441,6 +441,8 @@ function content_type_self_service_field_default_field_instances() {
   t('Link');
   t('Require login');
   t('Teaser');
+  t('Internal title');
+  t('Used for admin content overview page instead of title field.');
 
   return $field_instances;
 }
