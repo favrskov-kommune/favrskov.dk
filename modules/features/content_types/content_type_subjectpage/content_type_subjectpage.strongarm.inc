@@ -90,7 +90,22 @@ function content_type_subjectpage_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
+        ),
+        'language' => array(
+          'weight' => '2',
+        ),
+        'metatags' => array(
+          'weight' => '12',
+        ),
+        'path' => array(
+          'weight' => '11',
+        ),
+        'rabbit_hole' => array(
+          'weight' => '3',
+        ),
+        'redirect' => array(
+          'weight' => '10',
         ),
       ),
       'display' => array(
