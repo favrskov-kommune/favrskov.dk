@@ -192,10 +192,10 @@ function panel_footer_mini_panel_default_panels_mini() {
 <h1>Kontakt</h1>
 
 <p class="small-height">Digital hotline<br />
-Tlf: <a href="callto:70 20 00 00">70 20 00 00</a></p>
+Tlf: <a href="tel:70 20 00 00">70 20 00 00</a></p>
 
 <p class="small-height">Kontakt hovednummer<br />
-Tlf: <a href="callto:89 64 10 10">89 64 10 10</a></p>
+Tlf: <a href="tel:89 64 10 10">89 64 10 10</a></p>
 
 <p><span class="first-span">Man-tris</span>9.30-15<br />
 <span class="first-span">Onsdag</span>Lukket<br />
