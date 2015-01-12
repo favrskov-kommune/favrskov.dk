@@ -5,7 +5,6 @@ version = 7.x-1.0
 project = content_type_article
 dependencies[] = content_reminder
 dependencies[] = content_type_faq
-dependencies[] = content_type_news
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_collection
