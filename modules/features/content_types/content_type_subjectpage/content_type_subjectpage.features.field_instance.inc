@@ -380,7 +380,7 @@ function content_type_subjectpage_field_default_field_instances() {
   $field_instances['node-subjectpage-field_top_image'] = array(
     'bundle' => 'subjectpage',
     'deleted' => 0,
-    'description' => '',
+    'description' => t('Please, upload image in landscape format only.'),
     'display' => array(
       'default' => array(
         'label' => 'above',

@@ -175,8 +175,11 @@ msgstr "Giver mulighed for at lave fold ud sektioner med korte hjælpebeskrivels
 msgid "Image text."
 msgstr "Tekst som vises synligt under billede."
 
-msgid "Text that could be readed by browser for blind and visually-impaired people."
-msgstr "Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj."
+msgid "Text that could be readed by browser for blind and visually-impaired people. Please, upload image in landscape format only."
+msgstr "Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj. Please, upload billedet i kun liggende format."
+
+msgid "Please, upload image in landscape format only."
+msgstr "Please, upload billedet i kun liggende format."
 
 msgid "Booklets and reports."
 msgstr "Pjecer og rapporter."

@@ -176,7 +176,7 @@ function content_type_article_field_default_field_instances() {
   $field_instances['field_collection_item-field_publications-field_image'] = array(
     'bundle' => 'field_publications',
     'deleted' => 0,
-    'description' => '',
+    'description' => t('Please, upload image in landscape format only.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1218,7 +1218,7 @@ function content_type_article_field_default_field_instances() {
   $field_instances['node-article-field_image_thumbnail'] = array(
     'bundle' => 'article',
     'deleted' => 0,
-    'description' => t('Text that could be readed by browser for blind and visually-impaired people.'),
+    'description' => t('Text that could be readed by browser for blind and visually-impaired people. Please, upload image in landscape format only.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
