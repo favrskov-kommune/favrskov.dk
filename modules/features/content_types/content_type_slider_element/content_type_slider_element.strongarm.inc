@@ -14,35 +14,35 @@ function content_type_slider_element_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_slider_element';
-  $strongarm->value = '0';
+  $strongarm->value = '2';
   $export['comment_anonymous_slider_element'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_slider_element';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_default_mode_slider_element'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_slider_element';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_slider_element'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_slider_element';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_form_location_slider_element'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_slider_element';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_slider_element'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -74,16 +74,19 @@ function content_type_slider_element_strongarm() {
           'weight' => '7',
         ),
         'language' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '12',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '11',
         ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '10',
+        ),
+        'rabbit_hole' => array(
+          'weight' => '2',
         ),
       ),
       'display' => array(),
