@@ -14,35 +14,35 @@ function content_type_self_service_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_self_service';
-  $strongarm->value = '0';
+  $strongarm->value = '2';
   $export['comment_anonymous_self_service'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_self_service';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_default_mode_self_service'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_self_service';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_self_service'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_self_service';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_form_location_self_service'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_self_service';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_self_service'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -90,22 +90,25 @@ function content_type_self_service_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'title' => array(
-          'weight' => '1',
+          'weight' => '2',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'language' => array(
           'weight' => '0',
         ),
         'domain' => array(
           'weight' => '2',
+        ),
+        'rabbit_hole' => array(
+          'weight' => '1',
         ),
       ),
       'display' => array(
