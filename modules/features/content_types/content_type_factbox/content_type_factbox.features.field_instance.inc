@@ -243,7 +243,7 @@ function content_type_factbox_field_default_field_instances() {
   $field_instances['node-factbox-field_image'] = array(
     'bundle' => 'factbox',
     'deleted' => 0,
-    'description' => '',
+    'description' => t('Please, upload image in landscape format only.'),
     'display' => array(
       'default' => array(
         'label' => 'above',

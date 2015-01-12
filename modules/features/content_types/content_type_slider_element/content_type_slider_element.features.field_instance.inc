@@ -154,7 +154,7 @@ function content_type_slider_element_field_default_field_instances() {
   $field_instances['node-slider_element-field_image'] = array(
     'bundle' => 'slider_element',
     'deleted' => 0,
-    'description' => '',
+    'description' => t('Please, upload image in landscape format only.'),
     'display' => array(
       'default' => array(
         'label' => 'above',

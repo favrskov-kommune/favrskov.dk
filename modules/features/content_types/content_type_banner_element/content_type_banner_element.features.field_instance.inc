@@ -51,7 +51,7 @@ function content_type_banner_element_field_default_field_instances() {
   $field_instances['node-banner_element-field_image'] = array(
     'bundle' => 'banner_element',
     'deleted' => 0,
-    'description' => '',
+    'description' => t('Please, upload image in landscape format only.'),
     'display' => array(
       'default' => array(
         'label' => 'above',

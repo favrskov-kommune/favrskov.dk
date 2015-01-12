@@ -698,7 +698,7 @@ function content_type_news_field_default_field_instances() {
   $field_instances['node-news-field_image_thumbnail'] = array(
     'bundle' => 'news',
     'deleted' => 0,
-    'description' => '',
+    'description' => t('Please, upload image in landscape format only.'),
     'display' => array(
       'default' => array(
         'label' => 'above',
