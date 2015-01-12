@@ -727,7 +727,7 @@ function content_type_phone_book_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 14,
     ),
   );
 
@@ -744,6 +744,8 @@ function content_type_phone_book_field_default_field_instances() {
   t('Stuff');
   t('Time');
   t('Time must be in format \'09.00-16.00\'');
+  t('Internal title');
+  t('Used for admin content overview page instead of title field.');
 
   return $field_instances;
 }
