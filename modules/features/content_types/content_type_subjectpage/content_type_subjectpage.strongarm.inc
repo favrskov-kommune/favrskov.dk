@@ -14,35 +14,35 @@ function content_type_subjectpage_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_subjectpage';
-  $strongarm->value = '0';
+  $strongarm->value = '2';
   $export['comment_anonymous_subjectpage'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_subjectpage';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_default_mode_subjectpage'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_subjectpage';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_subjectpage'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_subjectpage';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_form_location_subjectpage'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_subjectpage';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_subjectpage'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -90,7 +90,22 @@ function content_type_subjectpage_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
+        ),
+        'language' => array(
+          'weight' => '2',
+        ),
+        'metatags' => array(
+          'weight' => '12',
+        ),
+        'path' => array(
+          'weight' => '11',
+        ),
+        'rabbit_hole' => array(
+          'weight' => '3',
+        ),
+        'redirect' => array(
+          'weight' => '10',
         ),
       ),
       'display' => array(

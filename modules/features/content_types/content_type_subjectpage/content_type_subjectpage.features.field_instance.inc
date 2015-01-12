@@ -58,7 +58,93 @@ function content_type_subjectpage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'user_reference_autocomplete',
-      'weight' => 7,
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-subjectpage-field_internal_title'
+  $field_instances['node-subjectpage-field_internal_title'] = array(
+    'bundle' => 'subjectpage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Used for admin content overview page instead of title field.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 30,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_internal_title',
+    'label' => 'Internal title',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'custom_tokens_no_filters_' => 'custom_tokens_no_filters_',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'job_html' => 'job_html',
+          'plain_text' => 'plain_text',
+          'video_html' => 'video_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'custom_tokens_no_filters_' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'job_html' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'video_html' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
     ),
   );
 
@@ -106,7 +192,7 @@ function content_type_subjectpage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -154,7 +240,7 @@ function content_type_subjectpage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 6,
+      'weight' => 8,
     ),
   );
 
@@ -202,7 +288,7 @@ function content_type_subjectpage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'multiple_selects',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -286,7 +372,7 @@ function content_type_subjectpage_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 4,
     ),
   );
 
