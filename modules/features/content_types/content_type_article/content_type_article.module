@@ -115,3 +115,20 @@ function content_type_article_workbench_moderation_states_next_alter(&$states, $
     }
   }
 }
+
+function content_type_article_views_pre_render(&$view) {
+  if (($view->current_display == 'subpage_slider_revisions' && !content_type_article_check_url_for_states()) ||
+    ($view->current_display == 'subpage_slider' && content_type_article_check_url_for_states())) {
+    unset($view->result);
+  }
+}
+
+function content_type_article_check_url_for_states() {
+  $path = current_path();
+  $state = explode('/', $path);
+  if (!empty($state[2]) && $state[2] == 'draft') {
+    return TRUE;
+  }
+
+  return FALSE;
+}
