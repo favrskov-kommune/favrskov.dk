@@ -96,19 +96,22 @@ function content_type_factbox_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '3',
+          'weight' => '6',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '4',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '13',
         ),
         'language' => array(
-          'weight' => '0',
+          'weight' => '2',
+        ),
+        'rabbit_hole' => array(
+          'weight' => '3',
         ),
       ),
       'display' => array(

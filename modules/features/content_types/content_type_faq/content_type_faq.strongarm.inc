@@ -96,18 +96,21 @@ function content_type_faq_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'title' => array(
-          'weight' => '1',
+          'weight' => '2',
         ),
         'path' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'language' => array(
+          'weight' => '1',
+        ),
+        'rabbit_hole' => array(
           'weight' => '0',
         ),
       ),

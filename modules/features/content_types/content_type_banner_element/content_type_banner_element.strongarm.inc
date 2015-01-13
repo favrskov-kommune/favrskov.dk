@@ -68,7 +68,22 @@ function content_type_banner_element_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
+        ),
+        'language' => array(
+          'weight' => '3',
+        ),
+        'metatags' => array(
+          'weight' => '11',
+        ),
+        'path' => array(
+          'weight' => '9',
+        ),
+        'rabbit_hole' => array(
+          'weight' => '5',
+        ),
+        'redirect' => array(
+          'weight' => '10',
         ),
       ),
       'display' => array(),

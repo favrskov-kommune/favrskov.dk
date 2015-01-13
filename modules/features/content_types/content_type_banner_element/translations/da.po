@@ -42,3 +42,9 @@ msgstr "Indholdstype Banner element"
 #: content_type_banner_element.info:0
 msgid "Content Types"
 msgstr "Indholdstyper"
+
+msgid "Internal title"
+msgstr "Intern titel"
+
+msgid "Used for admin content overview page instead of title field."
+msgstr "Bruges til admin indhold oversigtsside stedet for titelfeltet."

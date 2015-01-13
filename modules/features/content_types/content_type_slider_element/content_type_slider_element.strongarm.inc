@@ -74,16 +74,19 @@ function content_type_slider_element_strongarm() {
           'weight' => '7',
         ),
         'language' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '12',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '11',
         ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '10',
+        ),
+        'rabbit_hole' => array(
+          'weight' => '2',
         ),
       ),
       'display' => array(),
