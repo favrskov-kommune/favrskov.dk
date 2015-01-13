@@ -22,6 +22,7 @@ function views_subject_subpages_revisions_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['css_class'] = 'view-subject-subpages';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'view revisions';
@@ -34,6 +35,8 @@ function views_subject_subpages_revisions_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['row_class'] = 'swiper-slide';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['style_options']['class'] = 'swiper-wrapper';
   $handler->display->display_options['style_options']['wrapper_class'] = 'swiper-container';
   $handler->display->display_options['style_options']['switcher'] = 0;
@@ -42,11 +45,11 @@ function views_subject_subpages_revisions_views_default_views() {
   $handler->display->display_options['relationships']['nid']['id'] = 'nid';
   $handler->display->display_options['relationships']['nid']['table'] = 'node_revision';
   $handler->display->display_options['relationships']['nid']['field'] = 'nid';
-  /* Relationship: Content (historical data): Image / thumbnail (field_image_thumbnail:fid) */
+  /* Relationship: Content (historical data): Billede / thumbnail (field_image_thumbnail:fid) */
   $handler->display->display_options['relationships']['field_image_thumbnail_fid']['id'] = 'field_image_thumbnail_fid';
   $handler->display->display_options['relationships']['field_image_thumbnail_fid']['table'] = 'field_revision_field_image_thumbnail';
   $handler->display->display_options['relationships']['field_image_thumbnail_fid']['field'] = 'field_image_thumbnail_fid';
-  /* Field: Content (historical data): Image / thumbnail */
+  /* Field: Content (historical data): Billede / thumbnail */
   $handler->display->display_options['fields']['field_image_thumbnail-revision_id']['id'] = 'field_image_thumbnail-revision_id';
   $handler->display->display_options['fields']['field_image_thumbnail-revision_id']['table'] = 'field_revision_field_image_thumbnail';
   $handler->display->display_options['fields']['field_image_thumbnail-revision_id']['field'] = 'field_image_thumbnail-revision_id';
@@ -66,7 +69,7 @@ function views_subject_subpages_revisions_views_default_views() {
   );
   $handler->display->display_options['fields']['field_image_thumbnail-revision_id']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_image_thumbnail-revision_id']['delta_offset'] = '0';
-  /* Field: File: Description */
+  /* Field: File: Beskrivelse */
   $handler->display->display_options['fields']['field_file_image_description']['id'] = 'field_file_image_description';
   $handler->display->display_options['fields']['field_file_image_description']['table'] = 'field_data_field_file_image_description';
   $handler->display->display_options['fields']['field_file_image_description']['field'] = 'field_file_image_description';
@@ -86,7 +89,7 @@ function views_subject_subpages_revisions_views_default_views() {
       'text' => 'text',
     ),
   );
-  /* Field: Content (historical data): Image description */
+  /* Field: Content (historical data): Billedtekst */
   $handler->display->display_options['fields']['field_image_description-revision_id']['id'] = 'field_image_description-revision_id';
   $handler->display->display_options['fields']['field_image_description-revision_id']['table'] = 'field_revision_field_image_description';
   $handler->display->display_options['fields']['field_image_description-revision_id']['field'] = 'field_image_description-revision_id';
@@ -125,6 +128,8 @@ function views_subject_subpages_revisions_views_default_views() {
   $handler->display->display_options['fields']['views_ifempty']['table'] = 'views_ifempty';
   $handler->display->display_options['fields']['views_ifempty']['field'] = 'views_ifempty';
   $handler->display->display_options['fields']['views_ifempty']['label'] = '';
+  $handler->display->display_options['fields']['views_ifempty']['element_type'] = '0';
+  $handler->display->display_options['fields']['views_ifempty']['element_label_type'] = '0';
   $handler->display->display_options['fields']['views_ifempty']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['views_ifempty']['element_wrapper_type'] = 'p';
   $handler->display->display_options['fields']['views_ifempty']['element_default_classes'] = FALSE;
