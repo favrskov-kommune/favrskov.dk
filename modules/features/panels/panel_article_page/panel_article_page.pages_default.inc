@@ -631,7 +631,7 @@ function panel_article_page_default_page_manager_handlers() {
       'formatter_settings' => array(),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 1,
-      'override_title_text' => 'See also',
+      'override_title_text' => t('See also'),
     );
     $pane->cache = array();
     $pane->style = array(
@@ -772,7 +772,7 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Custom share',
       'title' => '',
-      'body' => '<a class="toggle-share" href="#">Share</a>
+      'body' => '<a class="toggle-share" href="#">' . t('Share') . '</a>
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
 
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5485796f7e9e2c6d" async="async"></script>
@@ -781,7 +781,7 @@ function panel_article_page_default_page_manager_handlers() {
 
 </div>
 
-<a class="print_data" href="#">Print</a>
+<a class="print_data" href="#">' . t('Print') . '</a>
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520e4c8a1550db4c"></script>',
       'format' => 'video_html',
@@ -1011,7 +1011,7 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Custom share',
       'title' => '',
-      'body' => '<a class="toggle-share" href="#">Share</a>
+      'body' => '<a class="toggle-share" href="#">' . t('Share') . '</a>
 
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
 <a class="addthis_button_facebook"></a>
