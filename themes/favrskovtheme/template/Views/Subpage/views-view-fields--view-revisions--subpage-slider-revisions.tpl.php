@@ -9,7 +9,7 @@
   <?php print $field->content; ?>
   <?php print $field->wrapper_suffix; ?>
 
-  <?php if (($id == "field_image_thumbnail") && $is_description): ?>
+  <?php if (($id == "field_image_thumbnail-revision_id") && $is_description): ?>
     <?php print '<div class="node-slide-description">'; ?>
   <?php endif;?>
 
