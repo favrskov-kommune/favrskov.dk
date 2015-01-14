@@ -116,6 +116,11 @@ function content_type_article_workbench_moderation_states_next_alter(&$states, $
   }
 }
 
+
+/**
+ * Implements hook_views_pre_render().
+ * Check url and display right view for node view or node view revision page.
+ */
 function content_type_article_views_pre_render(&$view) {
   if (($view->current_display == 'subpage_slider_revisions' && !content_type_article_check_url_for_states()) ||
     ($view->current_display == 'subpage_slider' && content_type_article_check_url_for_states())) {
@@ -123,9 +128,12 @@ function content_type_article_views_pre_render(&$view) {
   }
 }
 
+/**
+ * Parse and check url.
+ * @return bool return true if current node in draft state.
+ */
 function content_type_article_check_url_for_states() {
-  $path = current_path();
-  $state = explode('/', $path);
+  $state = explode('/', current_path());
   if (!empty($state[2]) && $state[2] == 'draft') {
     return TRUE;
   }
