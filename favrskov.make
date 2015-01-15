@@ -98,7 +98,7 @@ projects[rabbit_hole][subdir] = contrib
 projects[rabbit_hole][version] = 2.23
 
 projects[linkit][subdir] = contrib
-projects[linkit][version] = 2.6
+projects[linkit][version] = 2.7
 
 projects[linkit_target][subdir] = contrib
 projects[linkit_target][version] = 1.0
