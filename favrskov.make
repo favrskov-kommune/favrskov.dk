@@ -501,9 +501,9 @@ projects[field_group][subdir] = contrib
 ;projects[field_group][version] = 1.4
 
 projects[tablefield][subdir] = contrib
-projects[tablefield][version] = 2.2
+projects[tablefield][version] = 2.3
 projects[tablefield][patch][2200577] = "https://drupal.org/files/issues/converting_non_utf8_files_to_utf8-2200577-1.patch"
-projects[tablefield][patch][] = "https://raw.githubusercontent.com/geo0000/custom-patches/master/dont-display-empty-table.patch"
+;projects[tablefield][patch][] = "https://raw.githubusercontent.com/geo0000/custom-patches/master/dont-display-empty-table.patch"
 
 projects[mollom][subdir] = contrib
 ;projects[mollom][version] = 2.9
