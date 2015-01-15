@@ -233,7 +233,18 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->type = 'views_panes';
     $pane->subtype = 'subject_subpages-subpage_slider';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'panel_article_page_access_plugin',
+          'settings' => NULL,
+          'not' => TRUE,
+          'context' => array(
+            0 => 'argument_entity_id:node_1',
+          ),
+        ),
+      ),
+    );
     $pane->configuration = array(
       'arguments' => array(
         'nid' => '',
@@ -261,7 +272,16 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->subtype = 'view_revisions-subpage_slider_revisions';
     $pane->shown = TRUE;
     $pane->access = array(
-      'plugins' => array(),
+      'plugins' => array(
+        0 => array(
+          'name' => 'panel_article_page_access_plugin',
+          'settings' => NULL,
+          'not' => FALSE,
+          'context' => array(
+            0 => 'argument_entity_id:node_1',
+          ),
+        ),
+      ),
       'logic' => 'and',
     );
     $pane->configuration = array();
