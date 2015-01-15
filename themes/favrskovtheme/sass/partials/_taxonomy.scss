@@ -82,7 +82,7 @@
   h3 {
     font-family: $sans-medium;
     @include font-size(18);
-    margin-bottom: 15px;
+    margin: 18px 0;
     a {
       color: $dark-green;
       text-transform: uppercase;
@@ -92,7 +92,7 @@
   // Subheaders
   h4 {
     @include font-size(15);
-    margin-bottom: 3px;
+    margin-bottom: 4px;
     font-family: Arial;
     font-weight: bold;
     a {
@@ -108,7 +108,7 @@
 
 .front .subject-grid {
   .taxonomy-list {
-    padding: 20px 0 0 0;
+    padding: 22px 0 0 0;
   }
 }
 

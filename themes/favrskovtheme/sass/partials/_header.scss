@@ -85,15 +85,16 @@
       display: block !important;
     }
     a {
-      font-family: $sans-medium;
+      font-family: $sans-book;
       color: #333;
       font-size: 20px;
-      padding: 10px 20px 0;
+      padding: 13px 20px 0;
       text-decoration: none;
       text-transform: uppercase;
       display: block;
       height: 60px;
       background: $light-blue;
+      font-weight: 600;
     }
     li {
       float: left;
@@ -170,7 +171,7 @@
     height: 34px;
     .menu {
       position: absolute;
-      right: 0;
+      right: 10px;
       top: -50px;
       @include at-breakpoint(12 $width-980) {
         position: static;
@@ -188,13 +189,14 @@
         }
       }
       a {
-        font-family: $sans-medium;
+        font-family: $sans-book;
         font-size: 11pt;
         text-decoration: none;
         @include links(#333, $red);
         text-transform: uppercase;
         padding: 18px 0;
         display: block;
+        font-weight: 600;
       }
     }
     input[type="text"] {
