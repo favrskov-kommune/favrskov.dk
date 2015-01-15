@@ -158,8 +158,7 @@ projects[strongarm][subdir] = contrib
 projects[strongarm][version] = 2.0
 
 projects[date][subdir] = contrib
-;projects[date][version] = 2.6
-projects[date][version] = 2.7
+projects[date][version] = 2.8
 
 projects[link][subdir] = contrib
 ;projects[link][version] = 1.1
