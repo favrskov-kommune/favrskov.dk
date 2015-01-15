@@ -52,13 +52,10 @@ projects[media_crop][patch][2077823] = https://drupal.org/files/image-crop-funct
 ; TODO add library
 
 projects[ckeditor][subdir] = contrib
-projects[ckeditor][version] = 1.13
-;projects[ckeditor][version] = 1.15
-;projects[ckeditor][patch][2049409] = https://drupal.org/files/ckeditor-xss-filtering-2049409.patch
+projects[ckeditor][version] = 1.16
 ; next one is required for spans
 projects[ckeditor][patch][1898958] = https://drupal.org/files/ckeditor-support-document-tokens-1898958-3.patch
 ;projects[ckeditor][patch][1914904] = https://drupal.org/files/ckeditor-media_ie_fix-1914904-4.patch
-
 
 projects[feeds][subdir] = contrib
 projects[feeds][version] = 2.0-alpha8
@@ -81,8 +78,7 @@ projects[elysia_cron][subdir] = contrib
 projects[elysia_cron][version] = 2.1
 
 projects[piwik][subdir] = contrib
-;projects[piwik][version] = 2.4
-projects[piwik][version] = 2.5
+projects[piwik][version] = 2.7
 
 projects[piwik_stats][subdir] = contrib
 projects[piwik_stats][version] = 2.x-dev
@@ -101,7 +97,7 @@ projects[rabbit_hole][subdir] = contrib
 projects[rabbit_hole][version] = 2.23
 
 projects[linkit][subdir] = contrib
-projects[linkit][version] = 2.6
+projects[linkit][version] = 2.7
 
 projects[linkit_target][subdir] = contrib
 projects[linkit_target][version] = 1.0
@@ -161,8 +157,7 @@ projects[strongarm][subdir] = contrib
 projects[strongarm][version] = 2.0
 
 projects[date][subdir] = contrib
-;projects[date][version] = 2.6
-projects[date][version] = 2.7
+projects[date][version] = 2.8
 
 projects[link][subdir] = contrib
 ;projects[link][version] = 1.1
@@ -238,8 +233,7 @@ projects[field_collection][version] = 1.0-beta7
 projects[field_collection][patch][1063434] = https://drupal.org/files/field_collection-feeds-1063434-121.patch
 
 projects[scheduler][subdir] = contrib
-;projects[scheduler][version] = 1.1
-projects[scheduler][version] = 1.2
+projects[scheduler][version] = 1.3
 
 projects[libraries][subdir] = contrib
 ;projects[libraries][version] = 2.1
@@ -414,7 +408,7 @@ projects[webform_encrypt][version] = 1.0
 projects[webform_encrypt][patch][1344804] = https://drupal.org/files/issues/1344804-12.patch
 
 projects[term_merge][subdir] = contrib
-projects[term_merge][version] = 1.0
+projects[term_merge][version] = 1.2
 
 projects[taxonomy_manager][subdir] = contrib
 projects[taxonomy_manager][version] = 1.0
@@ -507,9 +501,9 @@ projects[field_group][subdir] = contrib
 ;projects[field_group][version] = 1.4
 
 projects[tablefield][subdir] = contrib
-projects[tablefield][version] = 2.2
+projects[tablefield][version] = 2.3
 projects[tablefield][patch][2200577] = "https://drupal.org/files/issues/converting_non_utf8_files_to_utf8-2200577-1.patch"
-projects[tablefield][patch][] = "https://raw.githubusercontent.com/geo0000/custom-patches/master/dont-display-empty-table.patch"
+;projects[tablefield][patch][] = "https://raw.githubusercontent.com/geo0000/custom-patches/master/dont-display-empty-table.patch"
 
 projects[mollom][subdir] = contrib
 ;projects[mollom][version] = 2.9
