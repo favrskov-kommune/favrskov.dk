@@ -78,8 +78,7 @@ projects[elysia_cron][subdir] = contrib
 projects[elysia_cron][version] = 2.1
 
 projects[piwik][subdir] = contrib
-;projects[piwik][version] = 2.4
-projects[piwik][version] = 2.5
+projects[piwik][version] = 2.7
 
 projects[piwik_stats][subdir] = contrib
 projects[piwik_stats][version] = 2.x-dev
