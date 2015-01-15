@@ -36,27 +36,6 @@ function config_node_view_permissions_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: 'administer panelizer node phone_book defaults'.
-  $permissions['administer panelizer node phone_book defaults'] = array(
-    'name' => 'administer panelizer node phone_book defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: 'administer panelizer node self_service defaults'.
-  $permissions['administer panelizer node self_service defaults'] = array(
-    'name' => 'administer panelizer node self_service defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: 'administer panelizer taxonomy_term subject_area defaults'.
-  $permissions['administer panelizer taxonomy_term subject_area defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term subject_area defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: 'view any banner_element content'.
   $permissions['view any banner_element content'] = array(
     'name' => 'view any banner_element content',
