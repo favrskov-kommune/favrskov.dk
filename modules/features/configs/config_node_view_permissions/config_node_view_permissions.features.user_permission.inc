@@ -13,7 +13,12 @@ function config_node_view_permissions_user_default_permissions() {
   // Exported permission: 'access draggableviews'.
   $permissions['access draggableviews'] = array(
     'name' => 'access draggableviews',
-    'roles' => array(),
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
     'module' => 'draggableviews',
   );
 
