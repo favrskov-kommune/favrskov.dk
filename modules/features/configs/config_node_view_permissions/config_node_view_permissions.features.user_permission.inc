@@ -22,20 +22,6 @@ function config_node_view_permissions_user_default_permissions() {
     'module' => 'draggableviews',
   );
 
-  // Exported permission: 'administer panelizer node banner_element defaults'.
-  $permissions['administer panelizer node banner_element defaults'] = array(
-    'name' => 'administer panelizer node banner_element defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: 'administer panelizer node bannerlink defaults'.
-  $permissions['administer panelizer node bannerlink defaults'] = array(
-    'name' => 'administer panelizer node bannerlink defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: 'view any banner_element content'.
   $permissions['view any banner_element content'] = array(
     'name' => 'view any banner_element content',
