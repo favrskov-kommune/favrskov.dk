@@ -52,13 +52,10 @@ projects[media_crop][patch][2077823] = https://drupal.org/files/image-crop-funct
 ; TODO add library
 
 projects[ckeditor][subdir] = contrib
-projects[ckeditor][version] = 1.13
-;projects[ckeditor][version] = 1.15
-;projects[ckeditor][patch][2049409] = https://drupal.org/files/ckeditor-xss-filtering-2049409.patch
+projects[ckeditor][version] = 1.16
 ; next one is required for spans
 projects[ckeditor][patch][1898958] = https://drupal.org/files/ckeditor-support-document-tokens-1898958-3.patch
 ;projects[ckeditor][patch][1914904] = https://drupal.org/files/ckeditor-media_ie_fix-1914904-4.patch
-
 
 projects[feeds][subdir] = contrib
 projects[feeds][version] = 2.0-alpha8
