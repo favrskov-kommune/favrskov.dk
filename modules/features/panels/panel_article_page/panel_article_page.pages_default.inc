@@ -235,13 +235,13 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array(
       'plugins' => array(
-        0 => array(
-          'name' => 'panel_article_page_access_plugin',
+        1 => array(
+          'name' => 'panel_article_page_node_revision_state',
           'settings' => NULL,
-          'not' => TRUE,
           'context' => array(
             0 => 'argument_entity_id:node_1',
           ),
+          'not' => TRUE,
         ),
       ),
     );
@@ -266,7 +266,7 @@ function panel_article_page_default_page_manager_handlers() {
     $display->content['new-5874d82c-d391-4cca-a5ba-cc1b9215bbbc'] = $pane;
     $display->panels['node-content'][3] = 'new-5874d82c-d391-4cca-a5ba-cc1b9215bbbc';
     $pane = new stdClass();
-    $pane->pid = 'new-2efef718-d429-4a3b-b1b2-62071a9a96b2';
+    $pane->pid = 'new-b26120a8-8f0e-4c47-9ec3-79652da62acc';
     $pane->panel = 'node-content';
     $pane->type = 'views_panes';
     $pane->subtype = 'view_revisions-subpage_slider_revisions';
@@ -274,15 +274,14 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->access = array(
       'plugins' => array(
         0 => array(
-          'name' => 'panel_article_page_access_plugin',
+          'name' => 'panel_article_page_node_revision_state',
           'settings' => NULL,
-          'not' => FALSE,
           'context' => array(
             0 => 'argument_entity_id:node_1',
           ),
+          'not' => FALSE,
         ),
       ),
-      'logic' => 'and',
     );
     $pane->configuration = array();
     $pane->cache = array();
@@ -293,9 +292,9 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();
-    $pane->uuid = '2efef718-d429-4a3b-b1b2-62071a9a96b2';
-    $display->content['new-2efef718-d429-4a3b-b1b2-62071a9a96b2'] = $pane;
-    $display->panels['node-content'][4] = 'new-2efef718-d429-4a3b-b1b2-62071a9a96b2';
+    $pane->uuid = 'b26120a8-8f0e-4c47-9ec3-79652da62acc';
+    $display->content['new-b26120a8-8f0e-4c47-9ec3-79652da62acc'] = $pane;
+    $display->panels['node-content'][4] = 'new-b26120a8-8f0e-4c47-9ec3-79652da62acc';
     $pane = new stdClass();
     $pane->pid = 'new-221729e8-f1c9-4e5e-b8aa-e93ea114a3c4';
     $pane->panel = 'node-content';
