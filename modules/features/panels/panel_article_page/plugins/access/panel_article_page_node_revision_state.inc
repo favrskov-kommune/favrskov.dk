@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Plugin provide visibility rule for displaying content only on drafts page.
+ * Plugin provide visibility rule.
+ * Return true if node have draft state and current page is view draft.
  */
 $plugin = array(
   'title' => t('Node: current revision of a node is draft'),
