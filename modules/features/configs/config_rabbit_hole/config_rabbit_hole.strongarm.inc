@@ -48,6 +48,13 @@ function config_rabbit_hole_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'rh_module_self_service';
+  $strongarm->value = 'rh_node';
+  $export['rh_module_self_service'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'rh_node_action_bannerlink';
   $strongarm->value = '1';
   $export['rh_node_action_bannerlink'] = $strongarm;
@@ -83,6 +90,13 @@ function config_rabbit_hole_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'rh_node_action_self_service';
+  $strongarm->value = '1';
+  $export['rh_node_action_self_service'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'rh_node_override_bannerlink';
   $strongarm->value = 0;
   $export['rh_node_override_bannerlink'] = $strongarm;
@@ -114,6 +128,13 @@ function config_rabbit_hole_strongarm() {
   $strongarm->name = 'rh_node_override_faq';
   $strongarm->value = 0;
   $export['rh_node_override_faq'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'rh_node_override_self_service';
+  $strongarm->value = 0;
+  $export['rh_node_override_self_service'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -184,6 +205,20 @@ function config_rabbit_hole_strongarm() {
   $strongarm->name = 'rh_node_redirect_response_faq';
   $strongarm->value = '301';
   $export['rh_node_redirect_response_faq'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'rh_node_redirect_response_self_service';
+  $strongarm->value = '301';
+  $export['rh_node_redirect_response_self_service'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'rh_node_redirect_self_service';
+  $strongarm->value = '';
+  $export['rh_node_redirect_self_service'] = $strongarm;
 
   return $export;
 }
