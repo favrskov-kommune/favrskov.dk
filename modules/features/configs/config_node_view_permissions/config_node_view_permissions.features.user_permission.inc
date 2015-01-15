@@ -13,12 +13,7 @@ function config_node_view_permissions_user_default_permissions() {
   // Exported permission: 'access draggableviews'.
   $permissions['access draggableviews'] = array(
     'name' => 'access draggableviews',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Communications Officer' => 'Communications Officer',
-      'Editor' => 'Editor',
-      'Webmaster' => 'Webmaster',
-    ),
+    'roles' => array(),
     'module' => 'draggableviews',
   );
 
@@ -31,6 +26,7 @@ function config_node_view_permissions_user_default_permissions() {
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -57,6 +53,8 @@ function config_node_view_permissions_user_default_permissions() {
       'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -83,6 +81,8 @@ function config_node_view_permissions_user_default_permissions() {
       'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -93,6 +93,8 @@ function config_node_view_permissions_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -106,6 +108,7 @@ function config_node_view_permissions_user_default_permissions() {
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -118,6 +121,8 @@ function config_node_view_permissions_user_default_permissions() {
       'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -130,6 +135,8 @@ function config_node_view_permissions_user_default_permissions() {
       'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -142,6 +149,8 @@ function config_node_view_permissions_user_default_permissions() {
       'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -154,6 +163,8 @@ function config_node_view_permissions_user_default_permissions() {
       'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -166,6 +177,8 @@ function config_node_view_permissions_user_default_permissions() {
       'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -176,6 +189,8 @@ function config_node_view_permissions_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
@@ -188,6 +203,8 @@ function config_node_view_permissions_user_default_permissions() {
       'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node_view_permissions',
   );
