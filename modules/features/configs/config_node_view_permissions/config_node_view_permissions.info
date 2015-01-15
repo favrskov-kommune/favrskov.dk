@@ -4,7 +4,6 @@ package = Config
 version = 7.x-1.0
 project = config_node_view_permissions
 dependencies[] = ctools
-dependencies[] = draggableviews
 dependencies[] = features
 dependencies[] = node_view_permissions
 dependencies[] = strongarm
