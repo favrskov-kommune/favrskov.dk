@@ -408,7 +408,7 @@ projects[webform_encrypt][version] = 1.0
 projects[webform_encrypt][patch][1344804] = https://drupal.org/files/issues/1344804-12.patch
 
 projects[term_merge][subdir] = contrib
-projects[term_merge][version] = 1.0
+projects[term_merge][version] = 1.2
 
 projects[taxonomy_manager][subdir] = contrib
 projects[taxonomy_manager][version] = 1.0
