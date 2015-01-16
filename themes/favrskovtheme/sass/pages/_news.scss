@@ -8,12 +8,12 @@
     padding: 0 !important;
   }
   h2 {
-    font-size: 18pt;
     text-transform: uppercase;
     background: $white;
     display: table;
     margin: -15px auto 0;
     padding: 0 10px;
+    font: 22px $sans-book;
   }
   .news-list {
     @include container;
