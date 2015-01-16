@@ -174,6 +174,11 @@
           .menu {
             padding: 20px 34px;
             li {
+              &.expanded {
+                a.active-trail {
+                  @include sprite(-10px, -210px);
+                }
+              }
               position: relative;
               margin: 7px 0;
               &:before {
@@ -188,14 +193,32 @@
               a {
                 font: 16px Arial;
                 color: #666;
-                padding: 5px 12px;
+                padding: 5px 20px;
                 padding-right: 0;
-                @include sprite(-65px, -104px);
+                @include sprite(-60px, -104px);
                 &:hover,
                 &.active-trail {
                   font-weight: bold;
                 }
-
+              }
+              .menu {
+                padding: 0 5px;
+                margin-bottom: 15px;
+                li {
+                  background: none;
+                  margin: 0 0 5px 0;
+                  padding: 0 0 0 18px;
+                  a {
+                    background: none;
+                    padding: 0;
+                    color: #999999;
+                    &:hover,
+                    &.active-trail {
+                      font-size: 14px;
+                      background: none;
+                    }
+                  }
+                }
               }
             }
           }
