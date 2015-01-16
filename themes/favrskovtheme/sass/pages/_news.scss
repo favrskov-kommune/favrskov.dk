@@ -8,12 +8,12 @@
     padding: 0 !important;
   }
   h2 {
-    font-size: 18pt;
     text-transform: uppercase;
     background: $white;
     display: table;
-    margin: -18px auto 0;
+    margin: -15px auto 0;
     padding: 0 10px;
+    font: 22px $sans-book;
   }
   .news-list {
     @include container;
@@ -32,7 +32,7 @@
         @include links($slategrey, $link-red);
       }
       .date {
-        margin: 20px 0 15px;
+        margin: 22px 0 15px;
         display: block;
         a {
           font: 10pt Arial;
@@ -44,7 +44,7 @@
         a {
           font: 13pt Arial;
           color: $slategrey;
-          line-height: 22px;
+          line-height: 23px;
         }
       }
       &:last-child {
