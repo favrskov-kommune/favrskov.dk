@@ -7,6 +7,15 @@
 include_once 'panel_article_page.features.inc';
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function panel_article_page_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && !empty($plugin_type)) {
+    return "plugins/{$plugin_type}";
+  }
+}
+
+/**
  * Return our custom formats.
  *
  * @return
