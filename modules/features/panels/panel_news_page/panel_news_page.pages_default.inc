@@ -721,6 +721,30 @@ function panel_news_page_default_page_manager_handlers() {
     $display->content['new-7837d96b-72df-46e5-ae03-fc9a1ca82195'] = $pane;
     $display->panels['node-content'][19] = 'new-7837d96b-72df-46e5-ae03-fc9a1ca82195';
     $pane = new stdClass();
+    $pane->pid = 'new-a870e0d2-410a-42b6-9465-ef82970b993d';
+    $pane->panel = 'node-content';
+    $pane->type = 'token';
+    $pane->subtype = 'node:author';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'sanitize' => 1,
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 20;
+    $pane->locks = array();
+    $pane->uuid = 'a870e0d2-410a-42b6-9465-ef82970b993d';
+    $display->content['new-a870e0d2-410a-42b6-9465-ef82970b993d'] = $pane;
+    $display->panels['node-content'][20] = 'new-a870e0d2-410a-42b6-9465-ef82970b993d';
+    $pane = new stdClass();
     $pane->pid = 'new-caaa6301-9c5d-4362-a444-7559c9f45981';
     $pane->panel = 'node-content';
     $pane->type = 'node_comments';
@@ -740,11 +764,11 @@ function panel_news_page_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 20;
+    $pane->position = 21;
     $pane->locks = array();
     $pane->uuid = 'caaa6301-9c5d-4362-a444-7559c9f45981';
     $display->content['new-caaa6301-9c5d-4362-a444-7559c9f45981'] = $pane;
-    $display->panels['node-content'][20] = 'new-caaa6301-9c5d-4362-a444-7559c9f45981';
+    $display->panels['node-content'][21] = 'new-caaa6301-9c5d-4362-a444-7559c9f45981';
     $pane = new stdClass();
     $pane->pid = 'new-2d140adf-9e37-433a-a192-d3e7488b27f0';
     $pane->panel = 'node-content';
@@ -764,11 +788,11 @@ function panel_news_page_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 21;
+    $pane->position = 22;
     $pane->locks = array();
     $pane->uuid = '2d140adf-9e37-433a-a192-d3e7488b27f0';
     $display->content['new-2d140adf-9e37-433a-a192-d3e7488b27f0'] = $pane;
-    $display->panels['node-content'][21] = 'new-2d140adf-9e37-433a-a192-d3e7488b27f0';
+    $display->panels['node-content'][22] = 'new-2d140adf-9e37-433a-a192-d3e7488b27f0';
     $pane = new stdClass();
     $pane->pid = 'new-2a0828de-58ba-41db-8173-3b17748fb82b';
     $pane->panel = 'node-sidebar';
