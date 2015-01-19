@@ -100,7 +100,6 @@
     padding-bottom: 27px;
     a {
       font: 18px Arial;
-      color: #666;
       @include links($dark-grey, $red);
     }
   }
@@ -168,7 +167,7 @@
           & > a {
             padding: 13px 40px 13px 32px;
             font: 16px Arial;
-            color: #666;
+            color: $dark-grey;
             font-weight: bold;
           }
           .menu {
@@ -192,7 +191,7 @@
               }
               a {
                 font: 16px Arial;
-                color: #666;
+                color: $dark-grey;
                 padding: 5px 20px;
                 padding-right: 0;
                 @include sprite(-60px, -104px);
@@ -211,11 +210,13 @@
                   a {
                     background: none;
                     padding: 0;
-                    color: #999999;
+                    color: #999;
+                    font-size: 15px;
                     &:hover,
                     &.active-trail {
-                      font-size: 14px;
                       background: none;
+                      font-weight: normal;
+                      color: $dark-grey;
                     }
                   }
                 }
