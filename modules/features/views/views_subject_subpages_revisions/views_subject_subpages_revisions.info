@@ -1,0 +1,12 @@
+name = Views subject subpages revisions
+description = Display slider on view draft node page.
+core = 7.x
+package = Views
+version = 7.x-1.0
+project = views_subject_subpages_revisions
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = view_revisions
+features_exclude[dependencies][ctools] = ctools
