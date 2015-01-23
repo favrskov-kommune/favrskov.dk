@@ -58,6 +58,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access broken links report',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'linkchecker',
   );
@@ -94,8 +97,8 @@ function config_user_roles_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -105,6 +108,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access contextual links',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'contextual',
@@ -125,6 +130,9 @@ function config_user_roles_user_default_permissions() {
     'name' => 'access own broken links report',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'linkchecker',
   );
@@ -568,8 +576,8 @@ function config_user_roles_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -828,6 +836,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer redirects',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'redirect',
@@ -1313,6 +1322,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'create url aliases',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'path',
@@ -3757,6 +3767,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'translate admin strings',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'i18n_string',
   );
@@ -3786,6 +3798,8 @@ function config_user_roles_user_default_permissions() {
     'name' => 'translate user-defined strings',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'i18n_string',
   );
