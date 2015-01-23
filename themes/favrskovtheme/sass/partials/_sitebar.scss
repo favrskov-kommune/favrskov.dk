@@ -100,7 +100,6 @@
     padding-bottom: 27px;
     a {
       font: 18px Arial;
-      color: #666;
       @include links($dark-grey, $red);
     }
   }
@@ -168,12 +167,17 @@
           & > a {
             padding: 13px 40px 13px 32px;
             font: 16px Arial;
-            color: #666;
+            color: $dark-grey;
             font-weight: bold;
           }
           .menu {
             padding: 20px 34px;
             li {
+              &.expanded {
+                a.active-trail {
+                  @include sprite(-10px, -210px);
+                }
+              }
               position: relative;
               margin: 7px 0;
               &:before {
@@ -187,15 +191,35 @@
               }
               a {
                 font: 16px Arial;
-                color: #666;
-                padding: 5px 12px;
+                color: $dark-grey;
+                padding: 5px 20px;
                 padding-right: 0;
-                @include sprite(-65px, -104px);
+                @include sprite(-60px, -104px);
                 &:hover,
                 &.active-trail {
                   font-weight: bold;
                 }
-
+              }
+              .menu {
+                padding: 0 5px;
+                margin-bottom: 15px;
+                li {
+                  background: none;
+                  margin: 0 0 5px 0;
+                  padding: 0 0 0 18px;
+                  a {
+                    background: none;
+                    padding: 0;
+                    color: #999;
+                    font-size: 15px;
+                    &:hover,
+                    &.active-trail {
+                      background: none;
+                      font-weight: normal;
+                      color: $dark-grey;
+                    }
+                  }
+                }
               }
             }
           }
