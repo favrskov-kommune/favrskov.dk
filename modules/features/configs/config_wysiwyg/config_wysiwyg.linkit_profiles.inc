@@ -46,7 +46,7 @@ function config_wysiwyg_default_linkit_profiles() {
       ),
       'group_by_bundle' => 0,
       'reverse_menu_trail' => 0,
-      'include_unpublished' => 0,
+      'include_unpublished' => 1,
     ),
     'entity:file' => array(
       'result_description' => '',
