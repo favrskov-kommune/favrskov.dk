@@ -251,6 +251,12 @@
             background: $grey;
           }
         }
+        &.blue-background {
+          background: $blue-bannerlink;
+          &:hover {
+            background: $grey-bannerlink;
+          }
+        }
       }
       // Contacts
       .pane-node-field-contact-information {

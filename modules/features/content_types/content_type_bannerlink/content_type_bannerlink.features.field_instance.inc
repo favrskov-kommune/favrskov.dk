@@ -138,7 +138,7 @@ function content_type_bannerlink_field_default_field_instances() {
     'bundle' => 'bannerlink',
     'default_value' => array(
       0 => array(
-        'value' => 'light-grey-background',
+        'value' => 'blue-background',
       ),
     ),
     'deleted' => 0,

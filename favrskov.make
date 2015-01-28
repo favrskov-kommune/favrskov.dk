@@ -228,8 +228,7 @@ projects[token][version] = 1.5
 projects[token][patch][2050421] = "https://drupal.org/files/term-token-real-root-2050421-1.patch"
 
 projects[field_collection][subdir] = contrib
-;projects[field_collection][version] = 1.0-beta5
-projects[field_collection][version] = 1.0-beta7
+projects[field_collection][version] = 1.0-beta8
 projects[field_collection][patch][1063434] = https://drupal.org/files/field_collection-feeds-1063434-121.patch
 
 projects[scheduler][subdir] = contrib
