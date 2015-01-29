@@ -22,13 +22,16 @@ function views_administration_nodes_form_alter(&$form, &$form_state, $form_id) {
         'empty' => t('Not in the menu'),
         'not empty' => t('In the menu'),
       );
-      $form['#validate'][] = 'views_administration_nodes_form_submit';
+      $form['#validate'][] = 'views_administration_nodes_form_validate';
     }
   }
 }
 
-
-function views_administration_nodes_form_submit(&$form, &$form_state) {
+/**
+ * Validate handler for views-exposed-form-admin-views-node-system-1 form.
+ * Handle - Any - option behavior.
+ */
+function views_administration_nodes_form_validate(&$form, &$form_state) {
   // fix illegal choice error for empty mlid operation
   if (!empty($form_state['values']['mlid_op']) && $form_state['values']['mlid_op'] == '=') {
     unset($form_state['values']['mlid_op']);
