@@ -5,3 +5,32 @@
  */
 
 include_once 'views_administration_nodes.features.inc';
+
+/**
+ * Implements hook_form_alter().
+ * Rebuild Admin content overview form: rewrite mlid options and add - Any - option.
+ */
+function views_administration_nodes_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['#id']) && $form['#id'] == 'views-exposed-form-admin-views-node-system-1') {
+    if (!empty($form['mlid'])) {
+      hide($form['mlid']);
+    }
+
+    if (!empty($form['mlid_op'])) {
+      $form['mlid_op']['#options'] = array(
+        'All' => t('- Any -'),
+        'empty' => t('Not in the menu'),
+        'not empty' => t('In the menu'),
+      );
+      $form['#validate'][] = 'views_administration_nodes_form_submit';
+    }
+  }
+}
+
+
+function views_administration_nodes_form_submit(&$form, &$form_state) {
+  // fix illegal choice error for empty mlid operation
+  if (!empty($form_state['values']['mlid_op']) && $form_state['values']['mlid_op'] == '=') {
+    unset($form_state['values']['mlid_op']);
+  }
+}
