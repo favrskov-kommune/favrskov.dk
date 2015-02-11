@@ -21,7 +21,7 @@ function config_media_browser_plus_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'media_browser_plus_filesystem_folders';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['media_browser_plus_filesystem_folders'] = $strongarm;
 
   $strongarm = new stdClass();
