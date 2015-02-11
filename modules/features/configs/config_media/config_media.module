@@ -103,3 +103,15 @@ function config_media_admin_paths() {
   );
   return $paths;
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Restricts ability to change media-root-folder to prevent
+ * accidently moving files into improper folder.
+ *
+ * @see media_browser_plus_media_settings()
+ */
+function config_media_form_media_browser_plus_media_settings_alter(&$form) {
+  $form['advanced']['#access'] = FALSE;
+}
