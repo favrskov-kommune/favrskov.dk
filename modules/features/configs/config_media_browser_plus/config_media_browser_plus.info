@@ -1,6 +1,6 @@
 name = Config media browser plus
 core = 7.x
-package = Features
+package = Config
 version = 7.x-1.0
 project = config_media_browser_plus
 dependencies[] = ctools
