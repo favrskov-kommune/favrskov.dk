@@ -929,6 +929,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer taxonomy',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'taxonomy',
