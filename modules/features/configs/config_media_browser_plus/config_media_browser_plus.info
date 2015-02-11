@@ -1,0 +1,12 @@
+name = Config media browser plus
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = config_media_browser_plus
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = media_browser_plus_disable_default_view
+features[variable][] = media_browser_plus_filesystem_folders
+features[variable][] = media_browser_plus_thumbnails_as_default_browser
