@@ -1,4 +1,4 @@
-name = Config media browser plus
+name = Config Media browser plus
 core = 7.x
 package = Config
 version = 7.x-1.0
