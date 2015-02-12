@@ -55,6 +55,7 @@ projects[ckeditor][subdir] = contrib
 projects[ckeditor][version] = 1.16
 ; next one is required for spans
 projects[ckeditor][patch][1898958] = https://drupal.org/files/ckeditor-support-document-tokens-1898958-3.patch
+projects[ckeditor][patch][1898958] = https://www.drupal.org/files/ckeditor-media-plugin-files-1898958-4.patch
 ;projects[ckeditor][patch][1914904] = https://drupal.org/files/ckeditor-media_ie_fix-1914904-4.patch
 
 projects[feeds][subdir] = contrib
