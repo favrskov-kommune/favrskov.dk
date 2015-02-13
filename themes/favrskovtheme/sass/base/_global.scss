@@ -349,3 +349,13 @@ h4 {
   font-weight: bold;
   color: $slategrey;
 }
+
+#admin-menu {
+  .dropdown {
+    li {
+      li {
+        opacity: 1;
+      }
+    }
+  }
+}
