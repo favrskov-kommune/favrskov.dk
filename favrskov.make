@@ -13,7 +13,8 @@ projects[ctools][version] = 1.5
 projects[views][subdir] = contrib
 ;projects[views][version] = 3.7
 projects[views][version] = 3.8
-projects[views][patch][2065975] = https://drupal.org/files/ajax_pager_does_not_work_in_view_pane-2065975-1.patch
+; projects[views][patch][2065975] = https://drupal.org/files/ajax_pager_does_not_work_in_view_pane-2065975-1.patch
+projects[views][patch][2065975] = https://www.drupal.org/files/issues/2065975-ajax_pager_does_not_work_in_view_pane-2.patch
 projects[views][patch][1036962] = https://drupal.org/files/views-fix-destination-link-for-ajax-1036962-29.patch
 
 projects[views_field_view][subdir] = contrib
