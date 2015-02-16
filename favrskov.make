@@ -630,5 +630,5 @@ translations[] = da
 
 ; Patches
 projects[drupal][type] = core
-projects[drupal][version] = 7.32
+projects[drupal][version] = 7.34
 projects[drupal][patch][1078878] = "https://drupal.org/files/issues/1078878-DisableAutoCreation-D7-UTF-8.patch"
