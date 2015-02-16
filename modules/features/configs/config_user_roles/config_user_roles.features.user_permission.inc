@@ -220,6 +220,15 @@ function config_user_roles_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'add terms in media_folders'.
+  $permissions['add terms in media_folders'] = array(
+    'name' => 'add terms in media_folders',
+    'roles' => array(
+      'Communications Officer' => 'Communications Officer',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
   // Exported permission: 'administer actions'.
   $permissions['administer actions'] = array(
     'name' => 'administer actions',
