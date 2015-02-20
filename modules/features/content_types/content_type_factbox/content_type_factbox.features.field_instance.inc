@@ -336,7 +336,7 @@ function content_type_factbox_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'faktaboks_image',
         ),
         'type' => 'image',
         'weight' => 2,
