@@ -113,7 +113,7 @@
     li {
       color: $dimgray;
       font: 12pt/25px Arial;
-      margin-left: 30px;
+      margin-left: 15px;
     }
     ul {
       li {
@@ -529,9 +529,9 @@
 
 // -----------------------------------------------------------------------------
 .field-name-field-self-service {
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid $slategrey;
+//  margin-bottom: 40px;
+//  padding-bottom: 40px;
+//  border-bottom: 1px solid $slategrey;
 }
 
 .no-self-service-border {
@@ -973,6 +973,7 @@
       min-height: 30px;
       padding-top: 12px;
       line-height: 1.5;
+      @include links ($red, $dark-grey);
     }
   }
 
