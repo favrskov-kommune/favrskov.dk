@@ -199,6 +199,7 @@ function view_subject_subpages_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Menu: Link path */
@@ -214,12 +215,11 @@ function view_subject_subpages_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = '[link_path]';
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '40';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
@@ -229,14 +229,19 @@ function view_subject_subpages_views_default_views() {
   $handler->display->display_options['fields']['field_teaser']['table'] = 'field_data_field_teaser';
   $handler->display->display_options['fields']['field_teaser']['field'] = 'field_teaser';
   $handler->display->display_options['fields']['field_teaser']['label'] = '';
+  $handler->display->display_options['fields']['field_teaser']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_teaser']['alter']['text'] = '<h2>[title]</h2>
+<p>[field_teaser-value]</p>
+';
   $handler->display->display_options['fields']['field_teaser']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_teaser']['alter']['path'] = '[link_path]';
   $handler->display->display_options['fields']['field_teaser']['alter']['max_length'] = '150';
   $handler->display->display_options['fields']['field_teaser']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_teaser']['element_type'] = 'p';
+  $handler->display->display_options['fields']['field_teaser']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['field_teaser']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_teaser']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_teaser']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_teaser']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['field_teaser']['settings'] = array(
     'trim_length' => '150',
     'trim_type' => 'chars',
@@ -582,6 +587,9 @@ function view_subject_subpages_views_default_views() {
     t('Desc'),
     t('All'),
     t('Subject subpages block'),
+    t('<h2>[title]</h2>
+<p>[field_teaser-value]</p>
+'),
     t('View panes'),
     t('Popular pages block'),
     t('Populære emner'),
