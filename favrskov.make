@@ -93,7 +93,8 @@ projects[references_dialog][version] = 1.0-beta1
 projects[references_dialog][patch][2315905] = https://www.drupal.org/files/issues/references_dialog_beta1-fix_theme_links-2315905-20.patch
 
 projects[entity][subdir] = contrib
-projects[entity][version] = 1.5
+;projects[entity][version] = 1.5
+projects[entity][version] = 1.6
 
 projects[rabbit_hole][subdir] = contrib
 projects[rabbit_hole][version] = 2.23
