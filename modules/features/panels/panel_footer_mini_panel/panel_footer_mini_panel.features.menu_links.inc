@@ -28,19 +28,19 @@ function panel_footer_mini_panel_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: menu-footer-links_ean-numre:<front>
-  $menu_links['menu-footer-links_ean-numre:<front>'] = array(
+  // Exported menu link: menu-footer-links_cvr-og-ean-numre:node/894
+  $menu_links['menu-footer-links_cvr-og-ean-numre:node/894'] = array(
     'menu_name' => 'menu-footer-links',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'EAN-Numre',
+    'link_path' => 'node/894',
+    'router_path' => 'node/%',
+    'link_title' => 'CVR og EAN-Numre',
     'options' => array(
+      'identifier' => 'menu-footer-links_cvr-og-ean-numre:node/894',
       'attributes' => array(),
-      'identifier' => 'menu-footer-links_ean-numre:<front>',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -47,
@@ -85,7 +85,7 @@ function panel_footer_mini_panel_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Aktuelle udbud');
-  t('EAN-Numre');
+  t('CVR og EAN-Numre');
   t('Ledige stillinger');
   t('Nyheder');
 
