@@ -566,6 +566,12 @@ projects[workbench_moderation][patch][1314508] = "https://www.drupal.org/files/1
 projects[taxonomy_access_fix][subdir] = contrib
 projects[taxonomy_access_fix][version] = 2.1
 
+projects[simplesamlphp_auth][subdir] = contrib
+projects[simplesamlphp_auth][version] = 2.0-alpha2
+
+projects[securepages][subdir] = contrib
+projects[securepages][version] = 1.0-beta2
+
 ; Libraries
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] =
