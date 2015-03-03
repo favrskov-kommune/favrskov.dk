@@ -79,7 +79,7 @@
       width: 19%;
     }
     .form-submit {
-      background-color: $lime;
+      background-color: $dark-green;
       color: $white;
       margin: 0;
       width: 100%;
@@ -89,7 +89,7 @@
       cursor: pointer;
       padding: 0;
       &:hover {
-        background-color: $slategrey;
+        background-color: $dark-grey;
       }
     }
   }
@@ -151,7 +151,7 @@
         margin: 15px 0;
         font-family: $sans;
 
-        a { @include links($lime, $dark-grey)}
+        a { @include links($dimgray, $link-red)}
       }
 
       // Content
@@ -222,7 +222,7 @@
     display: block;
     @include font-size(16);
     font-family: Arial;
-    color: $lime;
+    @include links($dark-grey, $link-red);
     position: relative;
     z-index: 1;
     &:after {
@@ -269,7 +269,7 @@
         padding: 5px 10px;
         @include font-size(16);
         font-family: Arial;
-        color: $lime;
+        color: $dark-green;
         font-weight: bold;
         position: absolute;
         top: 0;

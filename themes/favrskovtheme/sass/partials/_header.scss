@@ -76,7 +76,7 @@
     @extend %clearfix;
     position: absolute;
     top: 0;
-    right: 277px;
+    right: 275px;
     @include at-breakpoint(12 $width-980) {
       position: static;
       text-align: center;
@@ -85,15 +85,16 @@
       display: block !important;
     }
     a {
-      font-family: $sans-medium;
+      font-family: $sans-book;
       color: #333;
       font-size: 20px;
-      padding: 10px 20px 0;
+      padding: 13px 20px 0;
       text-decoration: none;
       text-transform: uppercase;
       display: block;
       height: 60px;
       background: $light-blue;
+      font-weight: 600;
     }
     li {
       float: left;
@@ -104,7 +105,8 @@
         @include inline-block(top);
         margin-right: -2px;
       }
-      &.active {
+      &.active,
+      &:hover {
         a {
           background: $grey;
         }
@@ -169,7 +171,7 @@
     height: 34px;
     .menu {
       position: absolute;
-      right: 0;
+      right: 10px;
       top: -50px;
       @include at-breakpoint(12 $width-980) {
         position: static;
@@ -178,7 +180,7 @@
         display: none;
       }
       li {
-        float: right;
+        float: left;
         margin-left: 17px;
         @extend %clearfix;
         @include at-breakpoint(12 $width-980) {
@@ -187,13 +189,14 @@
         }
       }
       a {
-        font-family: $sans-medium;
+        font-family: $sans-book;
         font-size: 11pt;
         text-decoration: none;
-        color: #333;
+        @include links(#333, $red);
         text-transform: uppercase;
         padding: 18px 0;
         display: block;
+        font-weight: 600;
       }
     }
     input[type="text"] {

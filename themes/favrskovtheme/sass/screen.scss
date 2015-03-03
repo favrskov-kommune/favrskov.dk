@@ -29,20 +29,21 @@
 /*// @import "partials/menu";*/
 @import "partials/header";
 @import "partials/footer";
+@import "partials/buttons";
 @import "partials/login";
 @import "partials/sitebar";
 @import "partials/banners";
 @import "partials/taxonomy";
 @import "partials/pager";
+@import "partials/comments";
+@import "pages/node";
 /*@import "partials/wysiwyg";
-@import "partials/buttons";
 @import "partials/pager";
 @import "partials/faq";
 @import "partials/banner-element";
 @import "partials/slider-element";
 @import "partials/load-more";
 @import "partials/breadcrumbs";
-@import "partials/comments";
 @import "partials/cookie-msg";
 @import "partials/selectbox";
 @import "partials/combibox";
@@ -54,7 +55,6 @@
 /*@import "pages/subscribe";
 @import "pages/events";
 @import "pages/videos";
-@import "pages/node";
 @import "pages/onecolumn-node";
 @import "pages/job";*/
 @import "pages/news";
@@ -84,6 +84,11 @@
 //------------------------------------------------------------------------------
 // Color schemes
 /*@import "partials/color-schemes";*/
+
+
+//------------------------------------------------------------------------------
+// Error 404
+@import "pages/system";
 
 //------------------------------------------------------------------------------
 // Customize this page

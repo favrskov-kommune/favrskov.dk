@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Config media browser plus feature.
+ */
+
+include_once 'config_media_browser_plus.features.inc';

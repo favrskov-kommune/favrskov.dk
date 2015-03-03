@@ -60,13 +60,14 @@
 
         // for article
         .node-type-article & {
-          height: 420px;
+        //  height: 420px;
+          height: auto;
           background: none;
         }
 
       }
       h1 {
-        margin: 18px 0;
+        margin: 20px 0;
       }
       .author {
         margin: 17px 0;
@@ -76,9 +77,8 @@
         }
       }
       .node-body {
-        border-bottom: 1px solid $border-top-over-news;
-        margin-bottom: 40px;
-        padding: 0 0 66px;
+        margin-bottom: 20px;
+        padding: 0 0 20px;
 
         // For Article
         .node-type-article & {
@@ -90,12 +90,16 @@
           color: $slategrey;
           line-height: 25px;
         }
+
+        a {
+          @include links($link-red, $dimgray);
+        }
       }
       .teaser {
         font: 18pt $sans-book;
         color: $slategrey;
         line-height: 33px;
-        margin: 54px 0;
+        margin: 36px 0;
       }
       h2 {
         font-size: 20pt;
@@ -128,28 +132,6 @@
         }
         .form-item {
           margin: 0 0 35px;
-        }
-
-        input[type="text"] {
-          background: $lightgrey;
-          color: $gray;
-          border: 1px solid #999;
-          height: 32px;
-          width: 94%;
-          padding: 9px 3%;
-          font-size: 0.875rem;
-        }
-
-        .form-textarea {
-          background-color: $lightgrey;
-          border: 1px solid #999;
-          border-radius: 0;
-          color: $gray;
-          font-size: 0.875rem;
-          height: 32px;
-          line-height: 34px;
-          padding: 9px 3%;
-          width: 94%;
         }
       }
       .ckeditor_links {
@@ -187,6 +169,28 @@
           float: left;
         }
       }
+      .factbox {
+        margin: 43px 0;
+        .teaser {
+          margin: 10px 0;
+        }
+        .node-body {
+          padding-bottom: 0;
+          margin-bottom: 0;
+        }
+      }
+      .pane-node-field-related-content {
+        margin: 15px 0;
+        .related-content {
+          margin: 10px 0;
+          a {
+             color: $red;
+              &:hover {
+                color: $dimgray;
+              }
+          }
+        }
+      }
 
       //------------------------------------------------------------------------
       // Article
@@ -194,9 +198,9 @@
       // Buttons self service
       .self-service {
         width: 100%;
-        background: #CC3333;
         min-height: 89px;
         @include border-radius(10px);
+        background: $red;
         position: relative;
         margin: 10px 0;
         @include transition-property(background-color);
@@ -209,7 +213,7 @@
           @include sprite(0px, -46px);
         }
         &:hover {
-          background: #FF3F3F;
+          background: #999;
         }
         a, span {
           display: block;
@@ -225,14 +229,46 @@
         span {
           font-family: Arial;
           color: $white;
+          line-height: 20px;
         }
         .title {
           font-size: 22px;
           font-weight: bold;
+          margin-bottom: 10px;
+          @include at-breakpoint($width-768 12 $width-980) {
+            font-size: 16px;
+          }
+          @include at-breakpoint(12 $width-768) {
+            font-size: 14px;
+          }
         }
         .teaser {
           margin: 0;
           font-size: 16px;
+          @include at-breakpoint($width-768 12 $width-980) {
+            font-size: 14px;
+          }
+          @include at-breakpoint(12 $width-768) {
+            font-size: 12px;
+          }
+        }
+        &.red-background {
+          background: $red;
+          &:hover {
+            background: #999;
+          }
+        }
+        &.light-grey-background {
+          background: $indian-yellow;
+          &:hover {
+            background: $grey;
+          }
+        }
+        &.blue-background {
+          background: $blue-bannerlink;
+          &:hover {
+            background: $grey-bannerlink;
+          }
         }
       }
       // Contacts
@@ -246,7 +282,7 @@
           font: 15px Arial;
           line-height: 25px;
           float: left;
-          width: 40%;
+          width: 50%;
           &, a {
             color: $dimgray;
           }
@@ -280,6 +316,9 @@
             }
           }
         }
+        .name-block {
+          font-weight: bold;
+        }
       }
       // Publications
       .publications {
@@ -295,12 +334,18 @@
         }
       }
 
+
+
       // Faq
       .faq, .embedded {
-        padding: 43px 0;
-        margin-top: 50px;
+        padding: 25px 0;
+        margin-top: 20px;
         border-bottom: 1px solid $border-top-over-all-news;
         border-top: 1px solid $border-top-over-all-news;
+        & + .faq, & + .embedded {
+          border-top: 0;
+          padding-top: 0;
+        }
         header {
           h2 {
             margin-bottom: 31px;
@@ -313,7 +358,7 @@
           & > li, .microArticle {
             border-bottom: 1px solid $dark-grey;
           }
-          .question, h2.mArticle {
+          h2.question, h2.mArticle {
             min-height: 57px;
             background: $grey;
             padding: 18px 58px 18px 18px;
@@ -321,6 +366,7 @@
             font-weight: bold;
             cursor: pointer;
             position: relative;
+            font: $sans-book !important;
             &:after {
               @extend %before-after;
               width: 20px;
@@ -336,6 +382,7 @@
             }
           }
           .answer, div.mArticle {
+            overflow: hidden;
             padding: 18px;
             display: none;
             h1, h2, h3, h4 {
@@ -362,6 +409,14 @@
               &:hover {
                 color: $dimgray;
               }
+            }
+            .state {
+              display: block;
+              margin-top:10px;
+              text-indent: -999px;
+              @include sprite(-79px, -66px);
+              float: right;
+              width: 30px;
             }
           }
           section {

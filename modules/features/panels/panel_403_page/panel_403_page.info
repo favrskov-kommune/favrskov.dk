@@ -1,0 +1,14 @@
+name = Panel 403 page
+description = Panel 403 page
+core = 7.x
+package = Panels
+version = 7.x-1.0
+project = panel_403_page
+dependencies[] = ctools
+dependencies[] = page_manager
+dependencies[] = strongarm
+features[ctools][] = page_manager:pages_default:1
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[page_manager_pages][] = page_403
+features[variable][] = site_403

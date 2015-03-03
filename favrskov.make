@@ -11,13 +11,18 @@ projects[ctools][version] = 1.5
 ;projects[ctools][patch][1925018] = https://drupal.org/files/ctools-n1925018-12.patch
 
 projects[views][subdir] = contrib
-;projects[views][version] = 3.7
-projects[views][version] = 3.8
-projects[views][patch][2065975] = https://drupal.org/files/ajax_pager_does_not_work_in_view_pane-2065975-1.patch
-projects[views][patch][1036962] = https://drupal.org/files/views-fix-destination-link-for-ajax-1036962-29.patch
+;projects[views][version] = 3.8
+projects[views][version] = 3.10
+; projects[views][patch][2065975] = https://drupal.org/files/ajax_pager_does_not_work_in_view_pane-2065975-1.patch
+;Disabled during update to 3.10 because of WSOD
+;projects[views][patch][2065975] = https://www.drupal.org/files/issues/2065975-ajax_pager_does_not_work_in_view_pane-2.patch
+;projects[views][patch][1036962] = https://drupal.org/files/views-fix-destination-link-for-ajax-1036962-29.patch
 
 projects[views_field_view][subdir] = contrib
 projects[views_field_view][version] = 1.1
+
+projects[draggableviews][subdir] = contrib
+projects[draggableviews][version] = 2.0
 
 projects[views_hacks][subdir] = contrib
 projects[views_hacks][version] = 1.0-alpha2
@@ -49,13 +54,11 @@ projects[media_crop][patch][2077823] = https://drupal.org/files/image-crop-funct
 ; TODO add library
 
 projects[ckeditor][subdir] = contrib
-projects[ckeditor][version] = 1.13
-;projects[ckeditor][version] = 1.15
-;projects[ckeditor][patch][2049409] = https://drupal.org/files/ckeditor-xss-filtering-2049409.patch
+projects[ckeditor][version] = 1.16
 ; next one is required for spans
 projects[ckeditor][patch][1898958] = https://drupal.org/files/ckeditor-support-document-tokens-1898958-3.patch
+projects[ckeditor][patch][1898958] = https://www.drupal.org/files/ckeditor-media-plugin-files-1898958-4.patch
 ;projects[ckeditor][patch][1914904] = https://drupal.org/files/ckeditor-media_ie_fix-1914904-4.patch
-
 
 projects[feeds][subdir] = contrib
 projects[feeds][version] = 2.0-alpha8
@@ -78,8 +81,7 @@ projects[elysia_cron][subdir] = contrib
 projects[elysia_cron][version] = 2.1
 
 projects[piwik][subdir] = contrib
-;projects[piwik][version] = 2.4
-projects[piwik][version] = 2.5
+projects[piwik][version] = 2.7
 
 projects[piwik_stats][subdir] = contrib
 projects[piwik_stats][version] = 2.x-dev
@@ -92,10 +94,14 @@ projects[references_dialog][version] = 1.0-beta1
 projects[references_dialog][patch][2315905] = https://www.drupal.org/files/issues/references_dialog_beta1-fix_theme_links-2315905-20.patch
 
 projects[entity][subdir] = contrib
-projects[entity][version] = 1.5
+;projects[entity][version] = 1.5
+projects[entity][version] = 1.6
+
+projects[rabbit_hole][subdir] = contrib
+projects[rabbit_hole][version] = 2.23
 
 projects[linkit][subdir] = contrib
-projects[linkit][version] = 2.6
+projects[linkit][version] = 2.7
 
 projects[linkit_target][subdir] = contrib
 projects[linkit_target][version] = 1.0
@@ -155,8 +161,7 @@ projects[strongarm][subdir] = contrib
 projects[strongarm][version] = 2.0
 
 projects[date][subdir] = contrib
-;projects[date][version] = 2.6
-projects[date][version] = 2.7
+projects[date][version] = 2.8
 
 projects[link][subdir] = contrib
 ;projects[link][version] = 1.1
@@ -227,13 +232,11 @@ projects[token][version] = 1.5
 projects[token][patch][2050421] = "https://drupal.org/files/term-token-real-root-2050421-1.patch"
 
 projects[field_collection][subdir] = contrib
-;projects[field_collection][version] = 1.0-beta5
-projects[field_collection][version] = 1.0-beta7
+projects[field_collection][version] = 1.0-beta8
 projects[field_collection][patch][1063434] = https://drupal.org/files/field_collection-feeds-1063434-121.patch
 
 projects[scheduler][subdir] = contrib
-;projects[scheduler][version] = 1.1
-projects[scheduler][version] = 1.2
+projects[scheduler][version] = 1.3
 
 projects[libraries][subdir] = contrib
 ;projects[libraries][version] = 2.1
@@ -408,7 +411,7 @@ projects[webform_encrypt][version] = 1.0
 projects[webform_encrypt][patch][1344804] = https://drupal.org/files/issues/1344804-12.patch
 
 projects[term_merge][subdir] = contrib
-projects[term_merge][version] = 1.0
+projects[term_merge][version] = 1.2
 
 projects[taxonomy_manager][subdir] = contrib
 projects[taxonomy_manager][version] = 1.0
@@ -501,9 +504,9 @@ projects[field_group][subdir] = contrib
 ;projects[field_group][version] = 1.4
 
 projects[tablefield][subdir] = contrib
-projects[tablefield][version] = 2.2
+projects[tablefield][version] = 2.3
 projects[tablefield][patch][2200577] = "https://drupal.org/files/issues/converting_non_utf8_files_to_utf8-2200577-1.patch"
-projects[tablefield][patch][] = "https://raw.githubusercontent.com/geo0000/custom-patches/master/dont-display-empty-table.patch"
+;projects[tablefield][patch][] = "https://raw.githubusercontent.com/geo0000/custom-patches/master/dont-display-empty-table.patch"
 
 projects[mollom][subdir] = contrib
 ;projects[mollom][version] = 2.9
@@ -556,6 +559,20 @@ projects[dynamic_background][patch][1904738] = "https://drupal.org/files/issues/
 
 projects[content_reminder][subdir] = contrib
 projects[content_reminder][version] = 1.0
+projects[content_reminder][patch][2342697] = "https://www.drupal.org/files/issues/content_reminder-set_focus_only_once-2342697-1-D7.patch"
+
+projects[workbench_moderation][subdir] = contrib
+projects[workbench_moderation][version] = 1.3
+projects[workbench_moderation][patch][1314508] = "https://www.drupal.org/files/1314508-workbench-moderation-features.patch"
+
+projects[taxonomy_access_fix][subdir] = contrib
+projects[taxonomy_access_fix][version] = 2.1
+
+projects[simplesamlphp_auth][subdir] = contrib
+projects[simplesamlphp_auth][version] = 2.0-alpha2
+
+projects[securepages][subdir] = contrib
+projects[securepages][version] = 1.0-beta2
 
 ; Libraries
 libraries[ckeditor][download][type] = get
@@ -621,5 +638,5 @@ translations[] = da
 
 ; Patches
 projects[drupal][type] = core
-projects[drupal][version] = 7.32
+projects[drupal][version] = 7.34
 projects[drupal][patch][1078878] = "https://drupal.org/files/issues/1078878-DisableAutoCreation-D7-UTF-8.patch"

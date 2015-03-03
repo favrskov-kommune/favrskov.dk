@@ -109,6 +109,22 @@
     p {
       margin-bottom: 22px;
     }
+
+    li {
+      color: $dimgray;
+      font: 12pt/25px Arial;
+      margin-left: 15px;
+    }
+    ul {
+      li {
+        list-style: disc;
+      }
+    }
+    ol {
+      li {
+        list-style: decimal;
+      }
+    }
   }
 
   // Global links styles
@@ -229,7 +245,6 @@
 // ----------------------------------
 // Factbox
 .factbox {
-  border-bottom: 1px solid $slategrey;
   margin: 40px 0;
 
   .fact-item {
@@ -431,14 +446,7 @@
     display: block;
     margin-bottom: 15px;
     @include font-size(16);
-
-    &:before {
-      content: '\e802';
-      display: inline-block;
-      font-family: "fontello";
-      width: 1em;
-      margin-right: 5px;
-    }
+    @include links ($red, $dark-grey);
   }
 }
 
@@ -521,9 +529,9 @@
 
 // -----------------------------------------------------------------------------
 .field-name-field-self-service {
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid $slategrey;
+//  margin-bottom: 40px;
+//  padding-bottom: 40px;
+//  border-bottom: 1px solid $slategrey;
 }
 
 .no-self-service-border {
@@ -594,21 +602,24 @@
 
 // Banner links
 .benner-links-group {
-  padding-bottom: 40px;
-  margin-bottom: 50px;
-  border-bottom: 1px solid $slategrey;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .banner-link {
   margin-bottom: 10px;
 }
 
-.green-background {
-  background-color: #6e7d5a;
+.grey-background {
+  background-color: $fern-grey;
 }
 
 .blue-background {
-  background-color: #98dff8;
+  background-color: $fern-blue;
+}
+
+.light-grey-background {
+  background-color: $indian-yellow;
 }
 
 // -----------------------------------------------------------------------------
@@ -689,7 +700,7 @@
     .menu-name-main-menu,
     .menu-block-main-menu {
       margin: 22px 0 35px;
-      padding: 30px 19px 22px;
+      padding: 0;
 
       h2 {
         @include font-size(22);
@@ -784,15 +795,13 @@
       // Third level
       .menu {
         background: white;
-
-         a {
-            padding-left: 25px;
-         }
-
-         .active-trail {
+        a {
+          padding-left: 25px;
+        }
+        .active-trail {
           background: $cyan;
           color: $white;
-         }
+        }
       }
     }
   }
@@ -835,7 +844,6 @@
       }
 
       .active-trail {
-        background-color: #e3e3e3;
         @include font-size(15);
       }
 
@@ -875,6 +883,7 @@
     text-transform: uppercase;
     position: absolute;
     top: 0;
+    @include links($slategrey, $link-red);
   }
 
   // Share
@@ -883,6 +892,7 @@
     left: 0;
     top: 0;
     text-transform: uppercase;
+    @include links($slategrey, $link-red);
   }
 
   // Susbcribe
@@ -963,6 +973,7 @@
       min-height: 30px;
       padding-top: 12px;
       line-height: 1.5;
+      @include links ($red, $dark-grey);
     }
   }
 

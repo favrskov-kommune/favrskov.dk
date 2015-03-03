@@ -1,0 +1,117 @@
+# $Id$
+#
+# Danish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  content_type_phone_book.features.field_instance.inc: n/a
+#  content_type_phone_book.module: n/a
+#  content_type_phone_book.features.inc: n/a
+#  content_type_phone_book.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-12 14:01+0200\n"
+"PO-Revision-Date: 2013-09-12 15:08+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: content_type_phone_book.features.field_instance.inc:44;622
+msgid "Image"
+msgstr "Billede"
+
+#: content_type_phone_book.features.field_instance.inc:112;617
+msgid "Address"
+msgstr "Adresse"
+
+#: content_type_phone_book.features.field_instance.inc:192;618
+msgid "Blog"
+msgstr "Blog indlæg"
+
+#: content_type_phone_book.features.field_instance.inc:256;619
+#: content_type_phone_book.module:76
+msgid "Cell phone"
+msgstr "Mobiltelefon"
+
+#: content_type_phone_book.features.field_instance.inc:382;621
+msgid "Facebook"
+msgstr "Facebook"
+
+#: content_type_phone_book.features.field_instance.inc:445;623
+msgid "Opening hours"
+msgstr "Åbningstider"
+
+#: content_type_phone_book.features.field_instance.inc:500;624
+#: content_type_phone_book.module:75
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: content_type_phone_book.features.field_instance.inc:580;625
+msgid "Website"
+msgstr "Hjemmeside"
+
+#: content_type_phone_book.features.field_instance.inc:620
+msgid "Email"
+msgstr "E-mail"
+
+#: content_type_phone_book.features.inc:23
+msgid "Contact item"
+msgstr "Kontaktoplysning"
+
+#: content_type_phone_book.features.inc:27
+msgctxt "phonebook"
+msgid "Title"
+msgstr "Titel"
+
+#: content_type_phone_book.module:17
+msgid "Telephone"
+msgstr "Telefon"
+
+#: content_type_phone_book.module:21
+msgid "Phone book date"
+msgstr "Telefonbog dato"
+
+#: content_type_phone_book.module:41
+msgid "Phn"
+msgstr "Tlf"
+
+#: content_type_phone_book.module:95
+msgid "The field '@name' must be numeric and have maximum length 8."
+msgstr "Feltet skal '@name' være tal, og har maksimal længde 8."
+
+#: content_type_phone_book.info:0
+msgid "Content Type Phone Book"
+msgstr "Indholdstype Telefonbog"
+
+#: content_type_phone_book.info:0
+msgid "Content Types"
+msgstr "Indholdstyper"
+
+msgid "Contact phone"
+msgstr "Vagttelefon"
+
+msgid "Day of week"
+msgstr "Ugedag"
+
+msgid "Time"
+msgstr "Time"
+
+msgid "Full name"
+msgstr "Navn"
+
+msgid "Address 1"
+msgstr "Vej"
+
+msgid "Time must be in format '09.00-16.00'"
+msgstr "Time skal være i formatet '09.00-16.00'"
+
+msgid "Mob"
+msgstr "Mob"
+
+msgid "Contact phn"
+msgstr "Vagt"

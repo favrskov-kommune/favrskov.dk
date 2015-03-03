@@ -1,0 +1,15 @@
+name = Views Subject grid
+core = 7.x
+package = Views
+version = 7.x-1.0
+project = views_subject_grid
+dependencies[] = views
+dependencies[] = views_content
+dependencies[] = views_field_view
+datestamp = 1374073758
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = content_by_taxonomy_term
+features[views_view][] = subject_grid
+features_exclude[dependencies][ctools] = ctools
+mtime = 1420552123

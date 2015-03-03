@@ -3,9 +3,7 @@
 
 .sidebar, .list-sidebar {
   @include span-columns(4 omega, 12);
-  .toggle-share, .print_data {
-    display: none;
-  }
+
   .panel-pane {
       &:not(:first-child) {
       border-bottom: 1px solid $border-top-over-news;
@@ -18,50 +16,83 @@
     }
   }
   .addthis_toolbox, .social-links {
-    margin: 60px 0 54px;
+    margin: 10px 0;
     a {
       margin-right: 5px;
     }
     span, a {
-      width: 40px !important;
-      height: 40px !important;
+      width: 32px;
+      height: 32px;
       text-indent: -9999px;
-      display: block;
+      display: inline-block;
+      margin-right: 13px;
     }
-    .addthis_button_facebook, .icon-facebook {
-      span, a {
+   // .addthis_button_facebook,
+    .icon-facebook {
+     // span,
+      a {
         @include sprite(0, 0);
+        width: 38px !important;
+        height: 38px !important;
+        &:hover {
+          @include sprite(-160px, 0);
+        }
       }
     }
-    .addthis_button_twitter, .icon-twitter {
-      span, a {
+   // .addthis_button_twitter,
+    .icon-twitter {
+     // span,
+      a {
         @include sprite(-50px, 0);
+        width: 38px !important;
+        height: 38px !important;
+        &:hover {
+          @include sprite(-210px, 0);
+        }
       }
     }
-    .addthis_button_google_plusone_share, .icon-youtube {
-      span, a {
+  //  .addthis_button_google_plusone_share,
+    .icon-youtube {
+     // span,
+      a {
         @include sprite(-100px, 0);
+        width: 38px !important;
+        height: 38px !important;
+        &:hover {
+          @include sprite(-260px, 0);
+        }
       }
+    }
+  }
+  .social-links {
+    margin: 60px 0;
+    @extend %clearfix;
+    li {
+      float: left;
     }
   }
   h2 {
     font: 24px $sans-medium;
     color: $dark-white-grey;
-    margin: 23px 0;
+    margin: 20px 0;
   }
   .views-summary,
   .view-blogs-filters .item-list {
-    margin-bottom: 40px;
+    margin-bottom: 38px;
     li {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     a {
-      font: 15px Arial;
-      color: $white-red;
-      text-shadow: 0px 0px 0px $white-red;
+      font: 16px Arial;
+      color: $link-red;
+      padding: 0 5px;
       &:hover {
         font-weight: bold;
-        color: $white-red;
+        color: $link-red;
+      }
+      &.active-category {
+        background: $grey;
+        color: $dark-grey;
       }
     }
   }
@@ -69,7 +100,7 @@
     padding-bottom: 27px;
     a {
       font: 18px Arial;
-      color: #666;
+      @include links($dark-grey, $red);
     }
   }
 }
@@ -115,7 +146,7 @@
             right: 23px;
             @include sprite(-13px, -110px);
           }
-          &.active {
+          &.active-trail {
             &:after {
               background: none;
             }
@@ -136,12 +167,17 @@
           & > a {
             padding: 13px 40px 13px 32px;
             font: 16px Arial;
-            color: #666;
+            color: $dark-grey;
             font-weight: bold;
           }
           .menu {
             padding: 20px 34px;
             li {
+              &.expanded {
+                a.active-trail {
+                  @include sprite(-10px, -210px);
+                }
+              }
               position: relative;
               margin: 7px 0;
               &:before {
@@ -149,15 +185,40 @@
                 @extend %before-after;
                 @include center-vertical(12);
                 left: 0;
-                @include sprite(-65px, -113px);
+              }
+              &.active-trail {
+                background: none;
               }
               a {
                 font: 16px Arial;
-                color: #666;
-                padding-left: 12px;
-                padding-top: 2px;
-                &:hover {
+                color: $dark-grey;
+                padding: 5px 20px;
+                padding-right: 0;
+                @include sprite(-60px, -104px);
+                &:hover,
+                &.active-trail {
                   font-weight: bold;
+                }
+              }
+              .menu {
+                padding: 0 5px;
+                margin-bottom: 15px;
+                li {
+                  background: none;
+                  margin: 0 0 5px 0;
+                  padding: 0 0 0 18px;
+                  a {
+                    background: none;
+                    padding: 0;
+                    color: #999;
+                    font-size: 15px;
+                    &:hover,
+                    &.active-trail {
+                      background: none;
+                      font-weight: normal;
+                      color: $dark-grey;
+                    }
+                  }
                 }
               }
             }

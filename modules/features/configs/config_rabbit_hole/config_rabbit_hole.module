@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Rabbit hole configs. feature.
+ */
+
+include_once 'config_rabbit_hole.features.inc';

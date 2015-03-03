@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Views subject subpages revisions feature.
+ */
+
+include_once 'views_subject_subpages_revisions.features.inc';

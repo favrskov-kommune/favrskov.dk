@@ -2,7 +2,7 @@
 // Slider
 .front-slider {
   position: relative;
-  margin-bottom: 62px;
+  margin-bottom: 75px;
 
   &:before {
     @extend %before-after;
@@ -29,9 +29,9 @@
     position: relative;
   }
   .gallery {
-    max-height: 490px;
+    max-height: 460px;
     margin: 0 auto;
-    max-width: 981px;
+    max-width: 980px;
     position: relative;
     img {
       max-width: none;
@@ -222,8 +222,17 @@
 // Slides
 .view-subject-subpages .swiper-slide {
   float: left;
-  img {
+  display: block;
+  height: auto !important;
+
+//  img {
+//    display: block;
+//  }
+
+  span[data-alt] {
+  //  height: 338px;
     display: block;
+    overflow: hidden;
   }
 }
 
@@ -235,7 +244,7 @@
   line-height: 1.4;
 
   p {
-    padding: 10px 18px 10px 0;
+    padding: 10px 0;
     color: $dark-grey;
   }
 

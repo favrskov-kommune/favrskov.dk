@@ -1,7 +1,6 @@
 //------------------------------------------------------------------------------
 // Subject page
 
-
 // Preview image
 .presentation {
   background: $grey;
@@ -41,7 +40,7 @@
     @include at-breakpoint(12 $width-980) {
       width: 90%;
       margin-top: -130px;
-      background: rgba(255,255,255,0.75);
+      background: rgba(255, 255, 255, 0.75);
     }
     @include at-breakpoint(12 $width-480) {
       margin-top: -140px;
@@ -78,10 +77,10 @@
     .subject-item {
       @include span-columns(3, 9);
       margin-bottom: gutter(9);
-      padding: 24px 35px;
       background: $grey;
-      min-height: 221px;
+      min-height: 290px;
       position: relative;
+      cursor: pointer;
       &:nth-child(3n) {
         margin-right: 0;
       }
@@ -103,43 +102,33 @@
       }
       @include transition-property(background);
       @include transition-duration(0.3s);
-      h2 {
-        a {
+      a {
+        display: block;
+        padding: 24px 35px;
+        min-height: 290px;
+        h2 {
           font-size: 24px;
           font-weight: bold;
           @include links(#666, $red);
           letter-spacing: 0.5px;
+          line-height: 24px;
+          word-wrap: break-word;
         }
-      }
-      p {
-        line-height: 22px;
-        margin-top: 22px;
-        a {
+        p {
+          line-height: 22px;
+          margin-top: 22px;
           font: 16px Arial;
           @include links(#666, $red);
-
         }
-      }
-
-      &:before, &:after {
-        @extend %before-after;
-        width: 100%;
-        height: 1px;
-        position: absolute;
-        left: 0;
-        background: $red;
-        @include opacity(0);
-        @include transition-property(opacity);
-        @include transition-duration(0.3s);
-      }
-      &:after {
-        bottom: 0;
-      }
-      &:before {
-        top: 0;
       }
       &:hover {
         background: $white;
+        outline: 1px solid $red;
+        h2 {
+          &:before, &:after {
+            @include opacity(1);
+          }
+        }
         &:before, &:after {
           @include opacity(1);
         }
@@ -151,12 +140,5 @@
       }
 
     }
-  }
-}
-
-// News
-.node-type-subjectpage {
-  .news {
-    margin-top: 0;
   }
 }

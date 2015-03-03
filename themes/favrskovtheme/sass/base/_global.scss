@@ -22,6 +22,12 @@ body {
   word-wrap: break-word;
  //   background: url(../images/erhverv_page.png) no-repeat 344px top;
  //   opacity: 0.7;
+
+  .resizable-textarea {
+    .grippie {
+      display: none;
+    }
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -328,7 +334,7 @@ h1 {
 }
 
 h2 {
-  font: 30px $sans-medium;
+  font: 30px $sans;
   color: $slategrey;
 }
 
@@ -342,4 +348,14 @@ h4 {
   font: 20px Arial;
   font-weight: bold;
   color: $slategrey;
+}
+
+#admin-menu {
+  .dropdown {
+    li {
+      li {
+        opacity: 1;
+      }
+    }
+  }
 }

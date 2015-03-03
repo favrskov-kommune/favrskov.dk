@@ -35,6 +35,11 @@
         padding-left: 100px;
       }
     }
+    .view-content-by-taxonomy-term {
+      a:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .taxonomy:hover {
@@ -76,20 +81,18 @@
   // Header
   h3 {
     font-family: $sans-medium;
-    @include font-size(22);
-    margin-bottom: 15px;
-
+    @include font-size(18);
+    margin: 18px 0;
     a {
       color: $dark-green;
       text-transform: uppercase;
-      @include font-size(18);
     }
   }
 
   // Subheaders
   h4 {
     @include font-size(15);
-    margin-bottom: 3px;
+    margin-bottom: 4px;
     font-family: Arial;
     font-weight: bold;
     a {
@@ -105,7 +108,7 @@
 
 .front .subject-grid {
   .taxonomy-list {
-    padding: 20px 0 0 0;
+    padding: 22px 0 0 0;
   }
 }
 
@@ -113,6 +116,12 @@
   .taxonomy {
     font-size: 0;
     @include span-columns(3, 12);
+    &, &:nth-child(3n) {
+      margin-right: gutter(12);
+    }
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
     // For ie8
     .lt-ie8 & {
       margin-right: 1.2%;
@@ -124,9 +133,6 @@
     text-align: center;
     position: relative;
 
-    &:nth-child(4n) {
-      margin-right: 0;
-    }
     @include at-breakpoint(12 $width-980) {
       @include span-columns(6, 12);
       &:nth-child(4n) {

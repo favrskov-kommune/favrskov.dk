@@ -2,10 +2,11 @@
 .pane-node-comments,
 .pane-node-comment-form {
   padding: 50px 0 40px;
+  clear: both;
 
   h2 {
     @include font-size(30);
-    font-family: $sans-bold-strict;
+    font-family: $sans-medium;
     margin-bottom: 35px;
   }
 }
@@ -17,7 +18,7 @@
     @include font-size(16);
     h2 {
       @include font-size(16);
-      font-family: $sans-bold-strict;
+      font-family: $sans-medium;
       margin: 0;
     }
   }
@@ -29,6 +30,20 @@
   // Vars
   $blue: #0d778e;
   $contrastblue: #44deff;
+
+  #edit-cancel {
+    background-color: #ca7f7f;
+    cursor: pointer;
+    display: inline-block;
+    font: 9pt Arial;
+    padding: 8px 25px;
+    @include links($white, $white);
+    margin-top: 5px;
+    @include border-radius(5px);
+    &:hover {
+      background-color: #b24545;
+    }
+  }
 
   .comment {
     border-bottom: 1px solid $liteGray;
@@ -54,7 +69,7 @@
     }
 
     h3 {
-      font-family: $sans-med-strict;
+      font-family: $sans-medium;
       @include font-size(19);
     }
 
@@ -91,13 +106,70 @@
 
 //----------------------------------------------------------------------
 // Comments Add form
-  // Here base styles for Web form and for Comments form
-  // Elements which similar and styled - Input text, Textarea, Submit buttons
-  // labels for them.
+// Here base styles for Web form and for Comments form
+// Elements which similar and styled - Input text, Textarea, Submit buttons
+// labels for them.
 
 .ajax-comment-reply + .ajax-progress-throbber {
   position: absolute;
 }
+
+.ajax-comment-wrapper {
+  form {
+    div {
+      & > div {
+        margin: 10px 0;
+      }
+    }
+  }
+  textarea {
+    padding-top: 3%;
+    height: 273px;
+    resize: vertical;
+    background-color: $lightgrey;
+    border: 1px solid $liteGray;
+    color: $gray;
+    @include border-radius(0);
+    width: 94%;
+    line-height: 34px;
+    @include font-size(14);
+    @include box-sizing(content-box);
+    overflow-y: auto;
+    padding: 9px 3%;
+  }
+  .ajax-comments-reply-cancel {
+    background-color: #ca7f7f;
+    cursor: pointer;
+    display: inline-block;
+    font: 9pt Arial;
+    padding: 8px 25px;
+    @include links($white, $white);
+    margin-top: 5px;
+    @include border-radius(5px);
+    &:hover {
+      background-color: #b24545;
+    }
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="url"] {
+    margin: 0;
+    max-width: 100%;
+    background-color: $lightgrey;
+    height: 32px;
+    border: 1px solid $liteGray;
+    color: $gray;
+    @include border-radius(0);
+    width: 94%;
+    padding: 9px 3%;
+    line-height: 34px;
+    @include font-size(14);
+    @include box-sizing(content-box);
+    overflow-y: auto;
+  }
+}
+
 // Reply comments form
 .ajax-comment-wrapper .comment-form {
   padding: 20px;
@@ -141,8 +213,6 @@
   .form-item-notify-type {
     margin: 0 0 10px 20px;
   }
-
-
 
   .form-textarea {
     height: 125px;
@@ -217,6 +287,7 @@
     line-height: 34px;
     @include font-size(14);
     @include box-sizing(content-box);
+    overflow-y: auto;
 
     &.error {
       border-color: $red;
@@ -286,7 +357,7 @@
   }
 
   label {
-    font-family: $sans-med-strict;
+    font-family: $sans-medium;
     min-width: 15%;
     @include font-size(17);
     @include inline-block();
@@ -308,6 +379,7 @@
   }
 
 }
+
 //------------------------------------------------------------------------------
 // Web client form
 
