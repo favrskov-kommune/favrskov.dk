@@ -745,6 +745,31 @@ function panel_news_page_default_page_manager_handlers() {
     $display->content['new-a870e0d2-410a-42b6-9465-ef82970b993d'] = $pane;
     $display->panels['node-content'][20] = 'new-a870e0d2-410a-42b6-9465-ef82970b993d';
     $pane = new stdClass();
+    $pane->pid = 'new-80c508f4-8e0e-4976-8d90-8629a0041bdc';
+    $pane->panel = 'node-content';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Path to node',
+      'title' => '',
+      'body' => 'drupal.favrskov.dk/node/%node',
+      'format' => 'plain_text',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 21;
+    $pane->locks = array();
+    $pane->uuid = '80c508f4-8e0e-4976-8d90-8629a0041bdc';
+    $display->content['new-80c508f4-8e0e-4976-8d90-8629a0041bdc'] = $pane;
+    $display->panels['node-content'][21] = 'new-80c508f4-8e0e-4976-8d90-8629a0041bdc';
+    $pane = new stdClass();
     $pane->pid = 'new-caaa6301-9c5d-4362-a444-7559c9f45981';
     $pane->panel = 'node-content';
     $pane->type = 'node_comments';
@@ -764,11 +789,11 @@ function panel_news_page_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 21;
+    $pane->position = 22;
     $pane->locks = array();
     $pane->uuid = 'caaa6301-9c5d-4362-a444-7559c9f45981';
     $display->content['new-caaa6301-9c5d-4362-a444-7559c9f45981'] = $pane;
-    $display->panels['node-content'][21] = 'new-caaa6301-9c5d-4362-a444-7559c9f45981';
+    $display->panels['node-content'][22] = 'new-caaa6301-9c5d-4362-a444-7559c9f45981';
     $pane = new stdClass();
     $pane->pid = 'new-2d140adf-9e37-433a-a192-d3e7488b27f0';
     $pane->panel = 'node-content';
@@ -788,11 +813,11 @@ function panel_news_page_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 22;
+    $pane->position = 23;
     $pane->locks = array();
     $pane->uuid = '2d140adf-9e37-433a-a192-d3e7488b27f0';
     $display->content['new-2d140adf-9e37-433a-a192-d3e7488b27f0'] = $pane;
-    $display->panels['node-content'][22] = 'new-2d140adf-9e37-433a-a192-d3e7488b27f0';
+    $display->panels['node-content'][23] = 'new-2d140adf-9e37-433a-a192-d3e7488b27f0';
     $pane = new stdClass();
     $pane->pid = 'new-2a0828de-58ba-41db-8173-3b17748fb82b';
     $pane->panel = 'node-sidebar';
