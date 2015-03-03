@@ -650,7 +650,7 @@ function panel_article_page_default_page_manager_handlers() {
       'formatter_settings' => array(),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 1,
-      'override_title_text' => t('See also'),
+      'override_title_text' => 'Se også',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -750,7 +750,23 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 3,
+              1 => 5,
+              2 => 6,
+              3 => 4,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'admin_title' => 'Path to node',
       'title' => '',
@@ -828,7 +844,7 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Custom share',
       'title' => '',
-      'body' => '<a class="toggle-share" href="#">' . t('Share') . '</a>
+      'body' => '<a class="toggle-share" href="#">Del</a>
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
 
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5485796f7e9e2c6d" async="async"></script>
@@ -837,7 +853,7 @@ function panel_article_page_default_page_manager_handlers() {
 
 </div>
 
-<a class="print_data" href="#">' . t('Print') . '</a>
+<a class="print_data" href="#">Udskriv</a>
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520e4c8a1550db4c"></script>',
       'format' => 'video_html',
@@ -1067,7 +1083,7 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Custom share',
       'title' => '',
-      'body' => '<a class="toggle-share" href="#">' . t('Share') . '</a>
+      'body' => '<a class="toggle-share" href="#">Del</a>
 
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
 <a class="addthis_button_facebook"></a>
@@ -1649,7 +1665,23 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 3,
+              1 => 5,
+              2 => 6,
+              3 => 4,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'admin_title' => 'Path to node',
       'title' => '',
