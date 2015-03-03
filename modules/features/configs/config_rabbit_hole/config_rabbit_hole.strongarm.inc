@@ -105,7 +105,7 @@ function config_rabbit_hole_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'rh_node_action_webform';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['rh_node_action_webform'] = $strongarm;
 
   $strongarm = new stdClass();
