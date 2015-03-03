@@ -745,6 +745,31 @@ function panel_article_page_default_page_manager_handlers() {
     $display->content['new-a46d5cd0-2552-4f83-b4ed-e85723313309'] = $pane;
     $display->panels['node-content'][19] = 'new-a46d5cd0-2552-4f83-b4ed-e85723313309';
     $pane = new stdClass();
+    $pane->pid = 'new-57e548c9-e76c-4d1e-a294-63e8f665c380';
+    $pane->panel = 'node-content';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Path to node',
+      'title' => '',
+      'body' => 'drupal.favrskov.dk/node/%node:nid',
+      'format' => 'plain_text',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 20;
+    $pane->locks = array();
+    $pane->uuid = '57e548c9-e76c-4d1e-a294-63e8f665c380';
+    $display->content['new-57e548c9-e76c-4d1e-a294-63e8f665c380'] = $pane;
+    $display->panels['node-content'][20] = 'new-57e548c9-e76c-4d1e-a294-63e8f665c380';
+    $pane = new stdClass();
     $pane->pid = 'new-2c9d26c1-7f81-4bdc-bb2c-c5789a297015';
     $pane->panel = 'node-content';
     $pane->type = 'node_comment_form';
@@ -763,11 +788,11 @@ function panel_article_page_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 20;
+    $pane->position = 21;
     $pane->locks = array();
     $pane->uuid = '2c9d26c1-7f81-4bdc-bb2c-c5789a297015';
     $display->content['new-2c9d26c1-7f81-4bdc-bb2c-c5789a297015'] = $pane;
-    $display->panels['node-content'][20] = 'new-2c9d26c1-7f81-4bdc-bb2c-c5789a297015';
+    $display->panels['node-content'][21] = 'new-2c9d26c1-7f81-4bdc-bb2c-c5789a297015';
     $pane = new stdClass();
     $pane->pid = 'new-5e5d622c-eb38-4fc2-9a47-4fa1b32d26cf';
     $pane->panel = 'node-content';
@@ -788,11 +813,11 @@ function panel_article_page_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 21;
+    $pane->position = 22;
     $pane->locks = array();
     $pane->uuid = '5e5d622c-eb38-4fc2-9a47-4fa1b32d26cf';
     $display->content['new-5e5d622c-eb38-4fc2-9a47-4fa1b32d26cf'] = $pane;
-    $display->panels['node-content'][21] = 'new-5e5d622c-eb38-4fc2-9a47-4fa1b32d26cf';
+    $display->panels['node-content'][22] = 'new-5e5d622c-eb38-4fc2-9a47-4fa1b32d26cf';
     $pane = new stdClass();
     $pane->pid = 'new-cfba6f87-88e9-4794-a001-601b3f233189';
     $pane->panel = 'node-sidebar';
@@ -1618,6 +1643,31 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->uuid = 'ace70267-0968-467c-bc1b-7cae95530b4e';
     $display->content['new-ace70267-0968-467c-bc1b-7cae95530b4e'] = $pane;
     $display->panels['node-content'][19] = 'new-ace70267-0968-467c-bc1b-7cae95530b4e';
+    $pane = new stdClass();
+    $pane->pid = 'new-9be59df8-06d8-4f54-9788-22326f2adfae';
+    $pane->panel = 'node-content';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Path to node',
+      'title' => '',
+      'body' => 'drupal.favrskov.dk/node/%node:nid',
+      'format' => 'plain_text',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 20;
+    $pane->locks = array();
+    $pane->uuid = '9be59df8-06d8-4f54-9788-22326f2adfae';
+    $display->content['new-9be59df8-06d8-4f54-9788-22326f2adfae'] = $pane;
+    $display->panels['node-content'][20] = 'new-9be59df8-06d8-4f54-9788-22326f2adfae';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-4513846c-1728-4389-a673-9f01009aaab1';
   $handler->conf['display'] = $display;
