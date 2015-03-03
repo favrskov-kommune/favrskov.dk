@@ -2,6 +2,12 @@
 /**
  * @file
  * Code for the Taxonomy Local feature.
+ */
+
+include_once 'taxonomy_local.features.inc';
+/**
+ * @file
+ * Code for the Taxonomy Local feature.
  *
  * Contains formatter for taxonomy references to output synonyms of the terms.
  */
