@@ -1,7 +1,6 @@
 name = Taxonomy Subject Area
 core = 7.x
 package = Taxonomies
-php = 5.2.4
 version = 7.x-1.0
 project = taxonomy_subject_area
 dependencies[] = features
@@ -9,6 +8,7 @@ dependencies[] = image
 dependencies[] = media
 dependencies[] = node_reference
 dependencies[] = taxonomy
+dependencies[] = text
 features[features_api][] = api:2
 features[field_base][] = field_rss_name
 features[field_base][] = field_subject_image

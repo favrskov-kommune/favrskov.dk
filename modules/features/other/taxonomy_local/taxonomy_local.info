@@ -3,6 +3,7 @@ core = 7.x
 package = Taxonomies
 version = 7.x-1.0
 project = taxonomy_local
+dependencies[] = ctools
 dependencies[] = features
 dependencies[] = strongarm
 dependencies[] = taxonomy

@@ -14,7 +14,7 @@ function config_borger_dk_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_borger_dk_article';
-  $strongarm->value = 'edit-workflow';
+  $strongarm->value = 'edit-display';
   $export['additional_settings__active_tab_borger_dk_article'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -63,7 +63,7 @@ function config_borger_dk_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_borger_dk_article';
-  $strongarm->value = '0';
+  $strongarm->value = 0;
   $export['comment_anonymous_borger_dk_article'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -135,10 +135,10 @@ function config_borger_dk_strongarm() {
   $strongarm->name = 'os2web_borger_dk_articles_display';
   $strongarm->value = array(
     'body' => 'body',
+    'field_os2web_byline' => 'field_os2web_byline',
     'field_os2web_legislation' => 'field_os2web_legislation',
     'title' => 0,
     'field_os2web_borger_dk_url' => 0,
-    'field_os2web_byline' => 0,
     'field_os2web_header' => 0,
     'field_os2web_page_title' => 0,
     'field_os2web_post_text' => 0,
@@ -146,6 +146,7 @@ function config_borger_dk_strongarm() {
     'field_os2web_recommended' => 0,
     'field_os2web_selfservice' => 0,
     'field_os2web_shortlist' => 0,
+    'cntrmd_borger_dk_article' => 0,
   );
   $export['os2web_borger_dk_articles_display'] = $strongarm;
 
@@ -165,6 +166,7 @@ function config_borger_dk_strongarm() {
     'field_os2web_recommended' => 0,
     'field_os2web_selfservice' => 0,
     'field_os2web_shortlist' => 0,
+    'cntrmd_borger_dk_article' => 0,
   );
   $export['os2web_borger_dk_articles_editable'] = $strongarm;
 
@@ -172,7 +174,7 @@ function config_borger_dk_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'os2web_borger_dk_articles_last_update';
-  $strongarm->value = 1970;
+  $strongarm->value = 1425355202;
   $export['os2web_borger_dk_articles_last_update'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -200,7 +202,7 @@ function config_borger_dk_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'os2web_borger_dk_webservice_time_counter';
-  $strongarm->value = 1417682137;
+  $strongarm->value = 1425394803;
   $export['os2web_borger_dk_webservice_time_counter'] = $strongarm;
 
   $strongarm = new stdClass();

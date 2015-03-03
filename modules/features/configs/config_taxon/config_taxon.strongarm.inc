@@ -70,7 +70,7 @@ function config_taxon_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'taxon_taxonomy_taxon_url';
-  $strongarm->value = 'http://taxon.propeople.com.ua/taxon-ws.php';
+  $strongarm->value = 'http://taxon.favrskov.dk/web-service/taxon-ws.php';
   $export['taxon_taxonomy_taxon_url'] = $strongarm;
 
   $strongarm = new stdClass();

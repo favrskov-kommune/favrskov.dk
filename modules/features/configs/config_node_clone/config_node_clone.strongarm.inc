@@ -46,16 +46,21 @@ function config_node_clone_strongarm() {
     'article' => 'article',
     'banner_element' => 'banner_element',
     'bannerlink' => 'bannerlink',
+    'blog' => 'blog',
     'borger_dk_article' => 'borger_dk_article',
     'os2web_case_publishing_case' => 'os2web_case_publishing_case',
     'os2web_case_publishing_document' => 'os2web_case_publishing_document',
     'subjectpage' => 'subjectpage',
     'factbox' => 'factbox',
     'frontpage' => 'frontpage',
+    'location' => 'location',
     'os2web_meetings_bullet' => 'os2web_meetings_bullet',
     'os2web_meetings_bullet_attach' => 'os2web_meetings_bullet_attach',
     'os2web_meetings_meeting' => 'os2web_meetings_meeting',
     'news' => 'news',
+    'os2web_kultunaut_event' => 'os2web_kultunaut_event',
+    'os2web_kultunaut_import' => 'os2web_kultunaut_import',
+    'os2web_social_directory' => 'os2web_social_directory',
     'os2web_hr_manager_job' => 'os2web_hr_manager_job',
     'self_service' => 'self_service',
     'shared' => 'shared',
@@ -140,13 +145,6 @@ function config_node_clone_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'clone_reset_os2web_hr_manager_job';
-  $strongarm->value = 0;
-  $export['clone_reset_os2web_hr_manager_job'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'clone_reset_os2web_meetings_bullet';
   $strongarm->value = 0;
   $export['clone_reset_os2web_meetings_bullet'] = $strongarm;
@@ -164,13 +162,6 @@ function config_node_clone_strongarm() {
   $strongarm->name = 'clone_reset_os2web_meetings_meeting';
   $strongarm->value = 0;
   $export['clone_reset_os2web_meetings_meeting'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'clone_reset_phone_book';
-  $strongarm->value = 0;
-  $export['clone_reset_phone_book'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -199,13 +190,6 @@ function config_node_clone_strongarm() {
   $strongarm->name = 'clone_reset_subjectpage';
   $strongarm->value = 0;
   $export['clone_reset_subjectpage'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'clone_reset_video_element';
-  $strongarm->value = 0;
-  $export['clone_reset_video_element'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

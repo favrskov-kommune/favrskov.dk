@@ -237,20 +237,6 @@ function config_url_aliases_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_location_pattern';
-  $strongarm->value = '[node:title]';
-  $export['pathauto_node_location_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_location_und_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_location_und_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_news_da_pattern';
   $strongarm->value = '';
   $export['pathauto_node_news_da_pattern'] = $strongarm;
@@ -286,20 +272,6 @@ function config_url_aliases_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_os2web_hr_manager_job_pattern';
-  $strongarm->value = 'job/[node:title]';
-  $export['pathauto_node_os2web_hr_manager_job_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_os2web_kultunaut_import_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_os2web_kultunaut_import_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_os2web_meetings_bullet_attach_pattern';
   $strongarm->value = 'dagsorden-og-referat/moeder/punkter/bilag/[node:title]';
   $export['pathauto_node_os2web_meetings_bullet_attach_pattern'] = $strongarm;
@@ -324,34 +296,6 @@ function config_url_aliases_strongarm() {
   $strongarm->name = 'pathauto_node_pattern';
   $strongarm->value = 'content/[node:title]';
   $export['pathauto_node_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_phone_book_da_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_phone_book_da_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_phone_book_en_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_phone_book_en_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_phone_book_pattern';
-  $strongarm->value = 'telefonbog/kontakt/[node:title]';
-  $export['pathauto_node_phone_book_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_phone_book_und_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_phone_book_und_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -574,7 +518,7 @@ function config_url_aliases_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_punctuation_hyphen';
-  $strongarm->value = '1';
+  $strongarm->value = 1;
   $export['pathauto_punctuation_hyphen'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -755,23 +699,9 @@ function config_url_aliases_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_os2web_hr_manager_job_position_categories_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_os2web_hr_manager_job_position_categories_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_os2web_kultunaut_categories_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_os2web_kultunaut_categories_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_os2web_kultunaut_types_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_os2web_kultunaut_types_pattern'] = $strongarm;
+  $strongarm->name = 'pathauto_taxonomy_term_os2web_meetings_tax_committee_pattern';
+  $strongarm->value = 'dagsorden-og-referat/udvalg/[term:name]';
+  $export['pathauto_taxonomy_term_os2web_meetings_tax_committee_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -793,20 +723,6 @@ function config_url_aliases_strongarm() {
   $strongarm->name = 'pathauto_taxonomy_term_pattern';
   $strongarm->value = '[term:vocabulary]/[term:name]';
   $export['pathauto_taxonomy_term_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_phonebook_administration_pattern';
-  $strongarm->value = 'telefonbog/forvaltninger/[term:name]';
-  $export['pathauto_taxonomy_term_phonebook_administration_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_phonebook_department_pattern';
-  $strongarm->value = 'telefonbog/afdelinger/[term:name]';
-  $export['pathauto_taxonomy_term_phonebook_department_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
