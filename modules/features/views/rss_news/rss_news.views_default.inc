@@ -62,7 +62,6 @@ function rss_news_views_default_views() {
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s O';
-
   /* Field: Content: Teaser */
   $handler->display->display_options['fields']['field_teaser']['id'] = 'field_teaser';
   $handler->display->display_options['fields']['field_teaser']['table'] = 'field_data_field_teaser';
@@ -71,7 +70,6 @@ function rss_news_views_default_views() {
   $handler->display->display_options['fields']['field_teaser']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_teaser']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_teaser']['type'] = 'text_plain';
-
   /* Field: Feeds item: Item GUID */
   $handler->display->display_options['fields']['guid']['id'] = 'guid';
   $handler->display->display_options['fields']['guid']['table'] = 'feeds_item';
@@ -85,7 +83,7 @@ function rss_news_views_default_views() {
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['path']['absolute'] = TRUE;
-  /* Field: Content: Billede / thumbnail */
+  /* Field: Content: Image / thumbnail */
   $handler->display->display_options['fields']['field_image_thumbnail']['id'] = 'field_image_thumbnail';
   $handler->display->display_options['fields']['field_image_thumbnail']['table'] = 'field_data_field_image_thumbnail';
   $handler->display->display_options['fields']['field_image_thumbnail']['field'] = 'field_image_thumbnail';
@@ -128,52 +126,65 @@ function rss_news_views_default_views() {
   );
 
   /* Display: News RSS feed */
-  $handler = $view->new_display('feed', 'News RSS feed', 'feed_2');
+  $handler = $view->new_display('feed', 'News RSS feed', 'news_rss_feed');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Nyheder';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'rss_fields';
-  $handler->display->display_options['style_options']['channel'] = array(
-    'core' => array(
-      'views_rss_core' => array(
-        'description' => '',
-        'language' => '',
-        'category' => '',
-        'image' => '',
-        'copyright' => '',
-        'managingEditor' => '',
-        'webMaster' => '',
-        'generator' => '',
-        'docs' => '',
-        'cloud' => '',
-        'ttl' => '',
-        'skipHours' => '',
-        'skipDays' => '',
-      ),
-    ),
-  );
-  $handler->display->display_options['style_options']['item'] = array(
-    'core' => array(
-      'views_rss_core' => array(
-        'title' => 'title',
-        'link' => 'path',
-        'description' => 'field_teaser',
-        'author' => '',
-        'category' => '',
-        'comments' => '',
-        'enclosure' => 'field_image_thumbnail',
-        'guid' => 'guid',
-        'pubDate' => 'created',
-      ),
-    ),
-  );
-  $handler->display->display_options['style_options']['feed_settings'] = array(
-    'absolute_paths' => 1,
-    'feed_in_links' => 0,
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'rss_fields';
+  $handler->display->display_options['row_options']['title_field'] = 'title';
+  $handler->display->display_options['row_options']['link_field'] = 'path';
+  $handler->display->display_options['row_options']['description_field'] = 'field_teaser';
+  $handler->display->display_options['row_options']['creator_field'] = 'field_author';
+  $handler->display->display_options['row_options']['date_field'] = 'created';
+  $handler->display->display_options['row_options']['guid_field_options'] = array(
+    'guid_field' => 'guid',
+    'guid_field_is_permalink' => 0,
   );
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s O';
+  /* Field: Content: Teaser */
+  $handler->display->display_options['fields']['field_teaser']['id'] = 'field_teaser';
+  $handler->display->display_options['fields']['field_teaser']['table'] = 'field_data_field_teaser';
+  $handler->display->display_options['fields']['field_teaser']['field'] = 'field_teaser';
+  $handler->display->display_options['fields']['field_teaser']['label'] = '';
+  $handler->display->display_options['fields']['field_teaser']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_teaser']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_teaser']['type'] = 'text_plain';
+  /* Field: Feeds item: Item GUID */
+  $handler->display->display_options['fields']['guid']['id'] = 'guid';
+  $handler->display->display_options['fields']['guid']['table'] = 'feeds_item';
+  $handler->display->display_options['fields']['guid']['field'] = 'guid';
+  $handler->display->display_options['fields']['guid']['label'] = '';
+  $handler->display->display_options['fields']['guid']['element_label_colon'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['path'] = 'rss/news';
+  $handler->display->display_options['path'] = 'nyheder.xml';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: News RSS feed by category */
@@ -265,6 +276,7 @@ function rss_news_views_default_views() {
     t('term'),
     t('All'),
     t('News RSS feed'),
+    t('Nyheder'),
     t('News RSS feed by category'),
   );
   $export['news_rss_feed'] = $view;

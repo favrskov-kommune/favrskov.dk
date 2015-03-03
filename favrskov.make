@@ -11,11 +11,12 @@ projects[ctools][version] = 1.5
 ;projects[ctools][patch][1925018] = https://drupal.org/files/ctools-n1925018-12.patch
 
 projects[views][subdir] = contrib
-;projects[views][version] = 3.7
-projects[views][version] = 3.8
+;projects[views][version] = 3.8
+projects[views][version] = 3.10
 ; projects[views][patch][2065975] = https://drupal.org/files/ajax_pager_does_not_work_in_view_pane-2065975-1.patch
-projects[views][patch][2065975] = https://www.drupal.org/files/issues/2065975-ajax_pager_does_not_work_in_view_pane-2.patch
-projects[views][patch][1036962] = https://drupal.org/files/views-fix-destination-link-for-ajax-1036962-29.patch
+;Disabled during update to 3.10 because of WSOD
+;projects[views][patch][2065975] = https://www.drupal.org/files/issues/2065975-ajax_pager_does_not_work_in_view_pane-2.patch
+;projects[views][patch][1036962] = https://drupal.org/files/views-fix-destination-link-for-ajax-1036962-29.patch
 
 projects[views_field_view][subdir] = contrib
 projects[views_field_view][version] = 1.1
@@ -93,7 +94,8 @@ projects[references_dialog][version] = 1.0-beta1
 projects[references_dialog][patch][2315905] = https://www.drupal.org/files/issues/references_dialog_beta1-fix_theme_links-2315905-20.patch
 
 projects[entity][subdir] = contrib
-projects[entity][version] = 1.5
+;projects[entity][version] = 1.5
+projects[entity][version] = 1.6
 
 projects[rabbit_hole][subdir] = contrib
 projects[rabbit_hole][version] = 2.23
@@ -565,6 +567,12 @@ projects[workbench_moderation][patch][1314508] = "https://www.drupal.org/files/1
 
 projects[taxonomy_access_fix][subdir] = contrib
 projects[taxonomy_access_fix][version] = 2.1
+
+projects[simplesamlphp_auth][subdir] = contrib
+projects[simplesamlphp_auth][version] = 2.0-alpha2
+
+projects[securepages][subdir] = contrib
+projects[securepages][version] = 1.0-beta2
 
 ; Libraries
 libraries[ckeditor][download][type] = get

@@ -192,15 +192,16 @@ function panel_footer_mini_panel_default_panels_mini() {
 <h1>Kontakt</h1>
 
 <p class="small-height">Digital hotline<br />
-Tlf: <a href="tel:70 20 00 00">70 20 00 00</a></p>
+Tlf: <a href="tel:70200000">70 20 00 00</a></p>
 
 <p class="small-height">Kontakt hovednummer<br />
-Tlf: <a href="tel:89 64 10 10">89 64 10 10</a></p>
+Tlf: <a href="tel:89641010">89 64 10 10</a></p>
 
-<p><span class="first-span">Man-tris</span>9.30-15<br />
-<span class="first-span">Onsdag</span>Lukket<br />
-<span class="first-span">Torsdag</span>12-17<br />
-<span class="first-span">Fredag</span>9.30-12</span></span></p>
+<p><span class="first-span">Mandag</span> 9.00-15.00<br />
+<span class="first-span">Tirsdag</span> 9.00-15.00<br />
+<span class="first-span">Onsdag</span> Lukket<br />
+<span class="first-span">Torsdag</span> 9.00-17.00<br />
+<span class="first-span">Fredag</span> 9.00-12.00</p>
 </article>
 ',
       'format' => 'full_html',
@@ -219,10 +220,10 @@ Tlf: <a href="tel:89 64 10 10">89 64 10 10</a></p>
     $display->content['new-6415dea8-8332-4f2b-b8af-8f0c4d558644'] = $pane;
     $display->panels['contacts'][0] = 'new-6415dea8-8332-4f2b-b8af-8f0c4d558644';
     $pane = new stdClass();
-    $pane->pid = 'new-1b2c1f65-592b-4028-8a08-8bdd10edaf56';
+    $pane->pid = 'new-07492029-c139-4712-a651-2779573cbeab';
     $pane->panel = 'header';
-    $pane->type = 'page_logo';
-    $pane->subtype = 'page_logo';
+    $pane->type = 'footer_logo';
+    $pane->subtype = 'footer_logo';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -234,9 +235,9 @@ Tlf: <a href="tel:89 64 10 10">89 64 10 10</a></p>
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '1b2c1f65-592b-4028-8a08-8bdd10edaf56';
-    $display->content['new-1b2c1f65-592b-4028-8a08-8bdd10edaf56'] = $pane;
-    $display->panels['header'][0] = 'new-1b2c1f65-592b-4028-8a08-8bdd10edaf56';
+    $pane->uuid = '07492029-c139-4712-a651-2779573cbeab';
+    $display->content['new-07492029-c139-4712-a651-2779573cbeab'] = $pane;
+    $display->panels['header'][0] = 'new-07492029-c139-4712-a651-2779573cbeab';
     $pane = new stdClass();
     $pane->pid = 'new-a23bf52e-f7c1-4702-9df9-9c2d54db75c5';
     $pane->panel = 'navigation';
@@ -310,7 +311,7 @@ Skovvej 20<br />
 <p class="small-height">Skriv til os på mail<br />
 <a href="mailto:favrskov@favrskov.dk">favrskov@favrskov.dk</a></p>
 
-<p>CVR: 0000000000000</p>
+<p>CVR: 29 18 97 14</p>
 </article>
 ',
       'format' => 'full_html',

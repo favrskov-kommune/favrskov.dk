@@ -20,3 +20,53 @@ msgstr "Udskriv"
 
 msgid "Share"
 msgstr "Del"
+
+# Month name translations.
+# Each name starts from lowercase letter.
+msgctxt "Long month name"
+msgid "January"
+msgstr "januar"
+
+msgctxt "Long month name"
+msgid "February"
+msgstr "februar"
+
+msgctxt "Long month name"
+msgid "March"
+msgstr "marts"
+
+msgctxt "Long month name"
+msgid "April"
+msgstr "april"
+
+msgctxt "Long month name"
+msgid "May"
+msgstr "maj"
+
+msgctxt "Long month name"
+msgid "June"
+msgstr "juni"
+
+msgctxt "Long month name"
+msgid "July"
+msgstr "juli"
+
+msgctxt "Long month name"
+msgid "August"
+msgstr "august"
+
+msgctxt "Long month name"
+msgid "September"
+msgstr "september"
+
+msgctxt "Long month name"
+msgid "October"
+msgstr "oktober"
+
+msgctxt "Long month name"
+msgid "November"
+msgstr "november"
+
+msgctxt "Long month name"
+msgid "December"
+msgstr "december"
