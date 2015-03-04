@@ -296,7 +296,7 @@ function view_slider_views_default_views() {
     'image_style' => 'slider_thumb',
     'image_link' => '',
   );
-  /* Field: Content: Link text */
+  /* Field: Content: Slider menu text */
   $handler->display->display_options['fields']['field_link_text']['id'] = 'field_link_text';
   $handler->display->display_options['fields']['field_link_text']['table'] = 'field_data_field_link_text';
   $handler->display->display_options['fields']['field_link_text']['field'] = 'field_link_text';
@@ -323,6 +323,8 @@ function view_slider_views_default_views() {
 <div class="description"><p>[field_link_text]</p></div>
 </div>
 ';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = '[field_external_link]';
   $handler->display->display_options['fields']['nothing']['element_type'] = '0';
   $handler->display->display_options['fields']['nothing']['element_label_type'] = '0';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -406,7 +408,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_description']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_description']['element_default_classes'] = FALSE;
-  /* Field: Content: Hide title and white box */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_hide_text']['id'] = 'field_hide_text';
   $handler->display->display_options['fields']['field_hide_text']['table'] = 'field_data_field_hide_text';
   $handler->display->display_options['fields']['field_hide_text']['field'] = 'field_hide_text';
@@ -415,7 +417,6 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_hide_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_hide_text']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_hide_text']['empty_zero'] = TRUE;
-  $handler->display->display_options['fields']['field_hide_text']['type'] = 'list_key';
   /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';

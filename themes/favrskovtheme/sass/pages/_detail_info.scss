@@ -60,7 +60,6 @@
 
         // for article
         .node-type-article & {
-        //  height: 420px;
           height: auto;
           background: none;
         }
@@ -184,10 +183,10 @@
         .related-content {
           margin: 10px 0;
           a {
-             color: $red;
-              &:hover {
-                color: $dimgray;
-              }
+            color: $red;
+            &:hover {
+              color: $dimgray;
+            }
           }
         }
       }
@@ -331,10 +330,14 @@
             line-height: 25px;
             color: $dimgray;
           }
+          a {
+            @include links($red, $dimgray);
+            * {
+              @include links($red, $dimgray);
+            }
+          }
         }
       }
-
-
 
       // Faq
       .faq, .embedded {
@@ -412,7 +415,7 @@
             }
             .state {
               display: block;
-              margin-top:10px;
+              margin-top: 10px;
               text-indent: -999px;
               @include sprite(-79px, -66px);
               float: right;

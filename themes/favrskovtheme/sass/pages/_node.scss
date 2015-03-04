@@ -920,6 +920,10 @@
     @include font-size(30);
   }
 
+  a {
+    @include links($link-red, $dimgray);
+  }
+
   // Content
   .publication-item {
     margin-bottom: 1px;
