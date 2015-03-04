@@ -31,14 +31,7 @@
 			visibilityFullFit: true,
 			mode: 'vertical',
 			slidesPerView: 3,
-			mousewheelControl: true,
-
-			//Thumbnails Clicks
-      onSlideClick: function(index){
-        if (!$(navSwiper.clickedSlide).hasClass('active-nav')){
-          contentSwiper.swipeTo( navSwiper.clickedSlideIndex);
-        }
-      }
+			mousewheelControl: true
 		});
 	}
 
@@ -49,13 +42,7 @@
 			mode: 'vertical',
 			slidesPerView: 3,
 			mousewheelControl: true,
-			simulateTouch: false,
-			//Thumbnails Clicks
-      onSlideClick: function(){
-        if (!$(navSwiper.clickedSlide).hasClass('active-nav')){
-          contentSwiper.swipeTo(navSwiper.clickedSlideIndex);
-        }
-      }
+			simulateTouch: false
 		});
 	}
 
