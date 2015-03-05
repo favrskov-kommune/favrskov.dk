@@ -770,7 +770,7 @@ function panel_news_page_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Path to node',
       'title' => '',
-      'body' => 'drupal.favrskov.dk/node/%node',
+      'body' => 'drupal.favrskov.dk/node/%node:nid',
       'format' => 'plain_text',
       'substitute' => 1,
     );
