@@ -3922,7 +3922,6 @@ function config_user_roles_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
-      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'filter',
