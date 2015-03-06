@@ -573,6 +573,9 @@ projects[simplesamlphp_auth][version] = 2.0-alpha2
 projects[securepages][subdir] = contrib
 projects[securepages][version] = 1.0-beta2
 
+projects[varnish][subdir] = contrib
+projects[varnish][version] = 1.0-beta3
+
 ; Libraries
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] =
