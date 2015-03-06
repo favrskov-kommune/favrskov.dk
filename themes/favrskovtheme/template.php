@@ -32,7 +32,7 @@ function favrskovtheme_preprocess_html(&$vars) {
     'every_page' => TRUE
   ));
 
-  drupal_add_css('http://fast.fonts.net/cssapi/cb2b1123-533e-44b1-af78-e3702f6bd579.css',
+  drupal_add_css('https://fast.fonts.net/cssapi/cb2b1123-533e-44b1-af78-e3702f6bd579.css',
     array('type' => 'external', 'group' => 'CSS_THEME', 'every_page' => TRUE, 'media' => 'projection, screen')
   );
 

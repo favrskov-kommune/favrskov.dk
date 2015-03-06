@@ -39,33 +39,55 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_internal_title'
-  $field_bases['field_internal_title'] = array(
+  // Exported field_base: 'field_bannerlink'
+  $field_bases['field_bannerlink'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_internal_title',
+    'field_name' => 'field_bannerlink',
     'foreign keys' => array(
-      'format' => array(
+      'nid' => array(
         'columns' => array(
-          'format' => 'format',
+          'nid' => 'nid',
         ),
-        'table' => 'filter_format',
+        'table' => 'node',
       ),
     ),
     'indexes' => array(
-      'format' => array(
-        0 => 'format',
+      'nid' => array(
+        0 => 'nid',
       ),
     ),
     'locked' => 0,
-    'module' => 'text',
+    'module' => 'node_reference',
     'settings' => array(
-      'max_length' => 255,
+      'referenceable_types' => array(
+        'article' => 0,
+        'banner_element' => 0,
+        'bannerlink' => 'bannerlink',
+        'borger_dk_article' => 0,
+        'factbox' => 0,
+        'faq' => 0,
+        'frontpage' => 0,
+        'news' => 0,
+        'os2web_event_calendar' => 0,
+        'os2web_hr_manager_job' => 0,
+        'phone_book' => 0,
+        'self_service' => 0,
+        'shared' => 0,
+        'slider_element' => 0,
+        'subjectpage' => 0,
+        'webform' => 0,
+      ),
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
     ),
     'translatable' => 0,
-    'type' => 'text',
+    'type' => 'node_reference',
   );
 
   // Exported field_base: 'field_contact_information'
@@ -525,6 +547,35 @@ function fields_shared_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_internal_title'
+  $field_bases['field_internal_title'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_internal_title',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_link'
   $field_bases['field_link'] = array(
     'active' => 1,
@@ -581,8 +632,10 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'piwik_stats',
     'settings' => array(
+      'limit' => 100,
       'period' => 'day',
       'show_in_statistics_page' => 1,
+      'sub_url' => '',
     ),
     'translatable' => 0,
     'type' => 'piwik_stats',
@@ -614,8 +667,10 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'piwik_stats',
     'settings' => array(
+      'limit' => 100,
       'period' => 'month',
       'show_in_statistics_page' => 1,
+      'sub_url' => '',
     ),
     'translatable' => 0,
     'type' => 'piwik_stats',
@@ -647,8 +702,10 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'piwik_stats',
     'settings' => array(
+      'limit' => 100,
       'period' => 'week',
       'show_in_statistics_page' => 1,
+      'sub_url' => '',
     ),
     'translatable' => 0,
     'type' => 'piwik_stats',
@@ -680,8 +737,10 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'piwik_stats',
     'settings' => array(
+      'limit' => 100,
       'period' => 'year',
       'show_in_statistics_page' => 1,
+      'sub_url' => '',
     ),
     'translatable' => 0,
     'type' => 'piwik_stats',
@@ -827,57 +886,26 @@ function fields_shared_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_bannerlink'
-  $field_bases['field_bannerlink'] = array(
+  // Exported field_base: 'field_table'
+  $field_bases['field_table'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_bannerlink',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
-    'indexes' => array(
-      'nid' => array(
-        0 => 'nid',
-      ),
-    ),
+    'field_name' => 'field_table',
+    'foreign keys' => array(),
+    'indexes' => array(),
     'locked' => 0,
-    'module' => 'node_reference',
+    'module' => 'tablefield',
     'settings' => array(
-      'referenceable_types' => array(
-        'article' => 0,
-        'banner_element' => 0,
-        'bannerlink' => 'bannerlink',
-        'borger_dk_article' => 0,
-        'factbox' => 0,
-        'faq' => 0,
-        'frontpage' => 0,
-        'news' => 0,
-        'os2web_event_calendar' => 0,
-        'os2web_hr_manager_job' => 0,
-        'phone_book' => 0,
-        'self_service' => 0,
-        'shared' => 0,
-        'slider_element' => 0,
-        'subjectpage' => 0,
-        'webform' => 0,
-      ),
-      'view' => array(
-        'args' => array(),
-        'display_name' => '',
-        'view_name' => '',
-      ),
+      'cell_processing' => 0,
+      'export' => 0,
+      'lock_values' => 0,
+      'restrict_rebuild' => 0,
     ),
     'translatable' => 0,
-    'type' => 'node_reference',
+    'type' => 'tablefield',
   );
-
 
   // Exported field_base: 'field_taxonomy_kle'
   $field_bases['field_taxonomy_kle'] = array(
@@ -1128,27 +1156,6 @@ function fields_shared_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_table'
-  $field_bases['field_table'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_table',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'tablefield',
-    'settings' => array(
-      'cell_processing' => 0,
-      'export' => 0,
-      'lock_values' => 0,
-      'restrict_rebuild' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'tablefield',
   );
 
   return $field_bases;

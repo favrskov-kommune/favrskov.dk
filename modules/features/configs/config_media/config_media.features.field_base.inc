@@ -39,7 +39,6 @@ function config_media_field_default_field_bases() {
     'type' => 'text',
   );
 
-
   // Exported field_base: 'field_tags'
   $field_bases['field_tags'] = array(
     'active' => 1,
@@ -63,6 +62,7 @@ function config_media_field_default_field_bases() {
     'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
+      'allow_term_autocreation' => TRUE,
       'allowed_values' => array(
         0 => array(
           'vocabulary' => 'media_tags',

@@ -27,9 +27,8 @@ function config_theme_strongarm() {
     'default_logo' => 1,
     'logo_path' => '',
     'logo_upload' => '',
-    'default_favicon' => 1,
-    'favicon_path' => '',
-    'favicon_upload' => '',
+    'default_favicon' => 0,
+    'favicon_path' => 'public://favicon_0.ico',
     'layout_base_type' => NULL,
     'propeople_shiv' => 1,
     'propeople_shiv_google' => 0,
@@ -37,6 +36,17 @@ function config_theme_strongarm() {
     'propeople_polyfill_mediaquery_type' => '0',
     'propeople_clear_registry' => 0,
     'propeople_settings__active_tab' => 'edit-propeople-general',
+    'favrskovtheme_header_background' => array(
+      0 => 88,
+      1 => 100,
+      2 => 100,
+    ),
+    'favrskovtheme_header_opacity' => 1,
+    'favrskovtheme_header_links' => '',
+    'favrskovtheme_footer_background' => '586464',
+    'favrskovtheme_multisite_links' => '',
+    'favrskovtheme_settings__active_tab' => 'edit-favrskovtheme-header-footer',
+    'favicon_mimetype' => 'image/vnd.microsoft.icon',
   );
   $export['theme_favrskovtheme_settings'] = $strongarm;
 
