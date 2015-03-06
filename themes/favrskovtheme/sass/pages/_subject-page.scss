@@ -104,7 +104,7 @@
       @include transition-duration(0.3s);
       a {
         display: block;
-        padding: 24px 35px;
+        padding: 30px 35px;
         min-height: 290px;
         h2 {
           font-size: 24px;
@@ -115,9 +115,8 @@
           word-wrap: break-word;
         }
         p {
-          line-height: 22px;
-          margin-top: 22px;
-          font: 16px Arial;
+          margin-top: 25px;
+          font: 16px/22px Arial;
           @include links(#666, $red);
         }
       }
