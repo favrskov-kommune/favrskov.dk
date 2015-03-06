@@ -1274,7 +1274,7 @@ function panel_news_page_default_page_manager_pages() {
     $pane->panel = 'sidebar';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'admin_title' => 'Social links',
@@ -1308,9 +1308,9 @@ function panel_news_page_default_page_manager_pages() {
     $pane->configuration = array(
       'admin_title' => '',
       'title' => '',
-      'body' => '<a href="/nyheder">See all</a>',
+      'body' => '<a href="/nyheder">Se alle</a>',
       'format' => 'job_html',
-      'substitute' => TRUE,
+      'substitute' => 1,
     );
     $pane->cache = array();
     $pane->style = array(
