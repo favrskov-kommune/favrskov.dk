@@ -10,6 +10,15 @@ function views_filters_selective_views_api() {
 }
 
 /**
+ * Implements hook_code_update_alter().
+ *
+ * Remove views hacks module from the list.
+ */
+function views_filters_selective_update_projects_alter(&$projects) {
+  unset($projects['views_hacks']);
+}
+
+/**
  * Implements hook_views_query_alter().
  */
 function views_filters_selective_views_query_alter(&$view, &$query) {

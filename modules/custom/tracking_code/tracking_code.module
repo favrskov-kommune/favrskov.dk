@@ -12,6 +12,15 @@ define('TRACKING_CODE_VISIBILITY_NOTLISTED', 0);
 define('TRACKING_CODE_VISIBILITY_LISTED', 1);
 
 /**
+ * Implements hook_code_update_alter().
+ *
+ * Remove tracking code module from the list.
+ */
+function tracking_code_update_projects_alter(&$projects) {
+  unset($projects['tracking_code']);
+}
+
+/**
  * Implements hook_init().
  */
 function tracking_code_init() {
