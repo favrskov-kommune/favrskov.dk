@@ -150,8 +150,7 @@ projects[jquery_update][subdir] = contrib
 projects[jquery_update][version] = 2.4
 
 projects[module_filter][subdir] = contrib
-;projects[module_filter][version] = 1.7
-projects[module_filter][version] = 1.8
+projects[module_filter][version] = 2.0
 
 projects[transliteration][subdir] = contrib
 ;projects[transliteration][version] = 3.1
@@ -182,7 +181,7 @@ projects[coder_tough_love][subdir] = contrib
 projects[coder_tough_love][version] = 1.0
 
 projects[webform][subdir] = contrib
-projects[webform][version] = 3.20
+projects[webform][version] = 3.22
 projects[webform][patch][] = https://raw.githubusercontent.com/geo0000/custom-patches/master/webform-submission-mail-subject-tokens.patch
 projects[webform][patch][] = https://raw.githubusercontent.com/geo0000/custom-patches/master/webform-email-response-url-token.patch
 
