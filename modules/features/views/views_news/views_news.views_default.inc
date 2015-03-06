@@ -25,7 +25,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['title'] = t('News');
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = TRUE;
-  $handler->display->display_options['use_more_text'] = t('See all');
+  $handler->display->display_options['use_more_text'] = t('Se alle');
   $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -169,7 +169,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['filters']['state']['table'] = 'autoarch_state';
   $handler->display->display_options['filters']['state']['field'] = 'state';
   $handler->display->display_options['filters']['state']['value'] = 'actual';
-  /* Filter criterion: Domain Access: Available on current domain */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['current_all']['id'] = 'current_all';
   $handler->display->display_options['filters']['current_all']['table'] = 'domain_access';
   $handler->display->display_options['filters']['current_all']['field'] = 'current_all';
@@ -220,11 +220,6 @@ function views_news_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Filter criterion: Domain Access: Available on current domain */
-  $handler->display->display_options['filters']['current_all']['id'] = 'current_all';
-  $handler->display->display_options['filters']['current_all']['table'] = 'domain_access';
-  $handler->display->display_options['filters']['current_all']['field'] = 'current_all';
-  $handler->display->display_options['filters']['current_all']['value'] = '1';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
   $handler->display->display_options['allow']['offset'] = 'offset';
@@ -255,7 +250,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = t('See all');
+  $handler->display->display_options['use_more_text'] = t('Se alle');
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -264,6 +259,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '10';
+  $handler->display->display_options['pager']['options']['more_button_text'] = 'Hent flere';
   $handler->display->display_options['pager']['options']['advance']['content_class'] = '.list-elements';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
@@ -484,7 +480,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = t('See all');
+  $handler->display->display_options['use_more_text'] = t('Se alle');
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -566,7 +562,19 @@ function views_news_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Load more'),
+    t('Hent flere'),
+    t('<article>
+  <header class="group">
+   <h1>[title]</h1>
+   <div class="general-info">[field_date] | [field_taxonomy_subject_area]</div>
+  </header>
+  <div class="blog-preview">
+   [field_image_thumbnail]
+   <p>
+      [field_teaser]
+   </p>
+  </div>
+</article>'),
     t('News year filter'),
     t('Arkiv'),
   );
