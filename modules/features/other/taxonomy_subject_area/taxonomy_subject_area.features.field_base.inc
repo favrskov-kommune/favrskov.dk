@@ -95,8 +95,10 @@ function taxonomy_subject_area_field_default_field_bases() {
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
+        'blog' => 0,
         'factbox' => 0,
         'frontpage' => 0,
+        'location' => 0,
         'news' => 0,
         'os2web_hr_manager_job' => 0,
         'self_service' => 0,

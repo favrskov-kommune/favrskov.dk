@@ -20,9 +20,9 @@ function view_slider_fe_nodequeue_export_fields() {
   // Exported nodequeues: front_page_slider
   $nodequeues['front_page_slider'] = array(
     'name' => 'front_page_slider',
-    'title' => 'Front page: slider',
+    'title' => 'Forside - topbannere (slider lille billede)',
     'subqueue_title' => '',
-    'size' => 0,
+    'size' => 3,
     'link' => '',
     'link_remove' => '',
     'owner' => 'nodequeue',
@@ -32,6 +32,7 @@ function view_slider_fe_nodequeue_export_fields() {
     'reference' => 0,
     'reverse' => 0,
     'i18n' => 0,
+    'insert_at_front' => 0,
     'subqueues' => 1,
     'types' => array(
       0 => 'slider_element',

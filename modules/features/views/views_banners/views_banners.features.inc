@@ -7,8 +7,7 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function views_banners_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function views_banners_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -17,7 +16,7 @@ function views_banners_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function views_banners_views_api() {
+function views_banners_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -32,7 +31,7 @@ function views_banners_fe_nodequeue_export_fields() {
     'name' => 'front_page_banners_block',
     'title' => 'Front page: Banners block',
     'subqueue_title' => '',
-    'size' => 0,
+    'size' => 3,
     'link' => '',
     'link_remove' => '',
     'owner' => 'nodequeue',
@@ -42,6 +41,7 @@ function views_banners_fe_nodequeue_export_fields() {
     'reference' => 0,
     'reverse' => 0,
     'i18n' => 0,
+    'insert_at_front' => 0,
     'subqueues' => 1,
     'types' => array(
       0 => 'banner_element',

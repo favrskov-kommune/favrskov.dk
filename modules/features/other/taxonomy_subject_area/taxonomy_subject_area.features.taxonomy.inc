@@ -13,7 +13,7 @@ function taxonomy_subject_area_taxonomy_default_vocabularies() {
       'name' => t('Subject Area'),
       'machine_name' => 'subject_area',
       'description' => '',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
       'rdf_mapping' => array(

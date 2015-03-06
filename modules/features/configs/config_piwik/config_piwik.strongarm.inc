@@ -14,7 +14,12 @@ function config_piwik_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'path_alias_whitelist';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    'file' => TRUE,
+    'node' => TRUE,
+    'taxonomy' => TRUE,
+    'user' => TRUE,
+  );
   $export['path_alias_whitelist'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -139,6 +144,10 @@ user/*/*';
   $strongarm->value = array(
     1 => 0,
     2 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    4 => 0,
   );
   $export['piwik_roles'] = $strongarm;
 
@@ -181,7 +190,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'piwik_stats_token_auth';
-  $strongarm->value = '8d8f7601e8a0a54c25325e171837a801';
+  $strongarm->value = '0ff65363579ea5041ca8176bda91f101';
   $export['piwik_stats_token_auth'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -195,14 +204,14 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'piwik_trackfiles_extensions';
-  $strongarm->value = '7z|aac|arc|arj|asf|asx|avi|bin|csv|doc|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls|xml|z|zip';
+  $strongarm->value = '7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip';
   $export['piwik_trackfiles_extensions'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'piwik_url_http';
-  $strongarm->value = 'http://piwik.propeople.com.ua/';
+  $strongarm->value = 'http://piwik.favrskov.dk/';
   $export['piwik_url_http'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -223,7 +232,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'piwik_visibility_roles';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['piwik_visibility_roles'] = $strongarm;
 
   return $export;
