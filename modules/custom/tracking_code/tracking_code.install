@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @file
+ * contains installation information for tracking_code module
+ */
+
+/**
+ * Implements hook_schema().
+ * @todo Finish making this exportable.
+ */
+function tracking_code_schema() {
+  $schema['tracking_code'] = array(
+    'description' => 'A table to hold tracking code snippets.',
+    'fields' => array(
+      'tcid' => array(
+        'description' => 'The primary indentifier of a tracking code snippet',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'The user-defined name that describes a tracking code snippet',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'code' => array(
+        'description' => 'The tracking code snippet',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'region' => array(
+        'description' => 'The region in which this codeblock will appear (header, page_top, or page_bottom)',
+        // header, page_top, page_bottom
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => 'page_bottom',
+      ),
+      'status' => array(
+        'description' => 'Tracking code enabled status (1 = enabled, 0 = disabled)',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+      ),
+      'weight' => array(
+        'description' => 'Tracking code weight within region',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'visibility' => array(
+        'description' => 'Flag to indicate how to show tracking code on pages (0 = Show on all pages except listed pages, 1 = Show on only listed pages',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+        'size' => 'tiny',
+      ),
+      'pages' => array(
+        'description' => 'Contents of the "Pages" block; contains a list of paths on which to include/exclude the tracking code.',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'content_types' => array(
+        'description' => 'A serialized array of key=>value pairs that specify which content type nodes to display a tracking code block on.',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'roles' => array(
+        'description' => 'A serialized array of key=>value pairs that specify which user roles to display a tracking code block on.',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('tcid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Adding a "roles" column for user role visibility.
+ */
+function tracking_code_update_7100() {
+  // 7.x-1.4 -- Adding user role visibility restrictions.
+  db_add_field( 'tracking_code', 'roles', array(
+    'type' => 'text',
+    'description' => 'A serialized array of key=>value pairs that specify which user roles to display a tracking code block on.',
+    'not null' => TRUE,
+    'initial' => serialize(array()),
+  ));
+}

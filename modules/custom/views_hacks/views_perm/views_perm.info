@@ -1,0 +1,12 @@
+name = Views Perm
+description = Exposes permission information to Views.
+package = Views
+dependencies[] = views
+core = 6.x
+
+; Information added by drupal.org packaging script on 2013-04-17
+version = "7.x-1.0-alpha2"
+core = "7.x"
+project = "views_hacks"
+datestamp = "1366174582"
+
