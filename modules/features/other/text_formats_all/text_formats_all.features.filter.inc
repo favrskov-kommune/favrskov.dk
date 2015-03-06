@@ -59,6 +59,17 @@ function text_formats_all_filter_default_formats() {
         'status' => 1,
         'settings' => array(),
       ),
+      'pathologic' => array(
+        'weight' => 50,
+        'status' => 1,
+        'settings' => array(
+          'local_paths' => 'http://drupal.favrskov.dk
+https://drupal.favrskov.dk
+http://favrskov.propeople.com.ua
+https://favrskov.propeople.com.ua',
+          'protocol_style' => 'full',
+        ),
+      ),
     ),
   );
 
@@ -84,6 +95,48 @@ function text_formats_all_filter_default_formats() {
         'weight' => 0,
         'status' => 1,
         'settings' => array(),
+      ),
+      'pathologic' => array(
+        'weight' => 50,
+        'status' => 1,
+        'settings' => array(
+          'local_paths' => 'http://drupal.favrskov.dk
+https://drupal.favrskov.dk
+http://favrskov.propeople.com.ua
+https://favrskov.propeople.com.ua',
+          'protocol_style' => 'proto-rel',
+        ),
+      ),
+    ),
+  );
+
+  // Exported format: Job HTML.
+  $formats['job_html'] = array(
+    'format' => 'job_html',
+    'name' => 'Job HTML',
+    'cache' => 1,
+    'status' => 1,
+    'weight' => 0,
+    'filters' => array(
+      'filter_html' => array(
+        'weight' => -10,
+        'status' => 1,
+        'settings' => array(
+          'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd> <p> <br> <b>',
+          'filter_html_help' => 1,
+          'filter_html_nofollow' => 0,
+        ),
+      ),
+      'pathologic' => array(
+        'weight' => 50,
+        'status' => 1,
+        'settings' => array(
+          'local_paths' => 'http://drupal.favrskov.dk
+https://drupal.favrskov.dk
+http://favrskov.propeople.com.ua
+https://favrskov.propeople.com.ua',
+          'protocol_style' => 'full',
+        ),
       ),
     ),
   );
@@ -133,6 +186,17 @@ function text_formats_all_filter_default_formats() {
         'weight' => 10,
         'status' => 1,
         'settings' => array(),
+      ),
+      'pathologic' => array(
+        'weight' => 50,
+        'status' => 1,
+        'settings' => array(
+          'local_paths' => 'http://drupal.favrskov.dk
+https://drupal.favrskov.dk
+http://favrskov.propeople.com.ua
+https://favrskov.propeople.com.ua',
+          'protocol_style' => 'full',
+        ),
       ),
     ),
   );
