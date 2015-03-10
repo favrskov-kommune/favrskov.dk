@@ -24,10 +24,6 @@ projects[views_field_view][version] = 1.1
 projects[draggableviews][subdir] = contrib
 projects[draggableviews][version] = 2.0
 
-projects[views_hacks][subdir] = contrib
-projects[views_hacks][version] = 1.0-alpha2
-projects[views_hacks][patch][1721644] = https://drupal.org/files/issues/views_hacks-show_all_selective_terms-1721644-12.patch
-
 projects[media][subdir] = contrib
 projects[media][version] =2.0-alpha2
 projects[media][patch][1870538] = https://drupal.org/files/media-permission_check_multiple_upload-1870538-10.patch
@@ -219,10 +215,6 @@ projects[site_verify][subdir] = contrib
 ;projects[site_verify][version] = 1.0
 projects[site_verify][version] = 1.1
 
-projects[tracking_code][subdir] = contrib
-;projects[tracking_code][version] = 1.3
-projects[tracking_code][version] = 1.5
-
 projects[diff][subdir] = contrib
 projects[diff][version] = 3.2
 
@@ -366,7 +358,7 @@ projects[fapi_validation][version] = 2.2
 projects[os2web_borger_dk_articles][type] = "module"
 projects[os2web_borger_dk_articles][subdir] = contrib
 projects[os2web_borger_dk_articles][download][type] = "git"
-projects[os2web_borger_dk_articles][download][url] = "https://github.com/lokeoke/os2web_borger_dk_articles.git"
+projects[os2web_borger_dk_articles][download][url] = "https://github.com/PropeopleDK/os2web_borger_dk_articles.git"
 projects[os2web_borger_dk_articles][download][branch] = "master"
 
 projects[better_formats][subdir] = contrib

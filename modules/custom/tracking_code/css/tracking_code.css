@@ -1,0 +1,19 @@
+.tracking-code-loading {
+  background-image: url('images/loading.gif');
+  border: none;
+  display: inline-block;
+  height: 15px;
+  margin-left: 10px;
+  width: 15px;
+}
+
+.tracking-code-disabled td.tracking-code-name,
+.tracking-code-disabled td.tracking-code-code {
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  font-size: 95%;
+  font-style: italic;
+  opacity: 0.5;
+}

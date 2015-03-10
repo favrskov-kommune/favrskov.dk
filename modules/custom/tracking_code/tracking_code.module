@@ -1,0 +1,331 @@
+<?php
+
+/**
+ * @file
+ * main module file for tracking_code module
+ */
+
+/**
+ * visibility constants (a la block module)
+ */
+define('TRACKING_CODE_VISIBILITY_NOTLISTED', 0);
+define('TRACKING_CODE_VISIBILITY_LISTED', 1);
+
+/**
+ * Implements hook_code_update_alter().
+ *
+ * Remove tracking code module from the list.
+ */
+function tracking_code_update_projects_alter(&$projects) {
+  unset($projects['tracking_code']);
+}
+
+/**
+ * Implements hook_init().
+ */
+function tracking_code_init() {
+  $snippets = _tracking_code_enabled_by_region();
+
+  $node = menu_get_object();
+
+  // Render tracking_code in <HEAD> immediately.
+  // Other tracking_code will be rendered by hook_page_alter().
+  foreach ($snippets['header'] as $id => $snippet) {
+    drupal_add_html_head(array(
+      '#type' => 'markup',
+      '#markup' => token_replace($snippet->code, array('node' => $node)),
+      '#weight' => $snippet->weight,
+    ), 'tracking_code_' . $id);
+  }
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function tracking_code_page_alter(&$page) {
+  $snippets = _tracking_code_enabled_by_region();
+
+  $node = menu_get_object();
+
+  // Render "After <BODY>" tracking code.
+  foreach ($snippets['page_top'] as $snippet) {
+    $page['page_top']['tracking_code'][$snippet->name] = array(
+      '#markup' => token_replace($snippet->code, array('node' => $node)),
+      '#weight' => $snippet->weight,
+    );
+  }
+
+  // Render "Before </BODY>" tracking code.
+  foreach ($snippets['page_bottom'] as $snippet) {
+    $page['page_bottom']['tracking_code'][$snippet->name] = array(
+      '#markup' => token_replace($snippet->code, array('node' => $node)),
+      '#weight' => $snippet->weight,
+    );
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function tracking_code_menu() {
+  $items['admin/structure/tracking_code'] = array(
+    'title' => 'Tracking Code Snippets',
+    'description' => 'Create tracking code snippits and associate them with paths',
+    'page callback' => 'tracking_code_admin_overview',
+    'access arguments' => array('administer tracking code'),
+    'file' => 'tracking_code.admin.inc',
+  );
+
+  $items['admin/structure/tracking_code/list'] = array(
+    'title' => 'List',
+    'page callback' => 'tracking_code_admin_overview',
+    'access arguments' => array('administer tracking code'),
+    'file' => 'tracking_code.admin.inc',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -1,
+  );
+
+  $items['admin/structure/tracking_code/add'] = array(
+    'title' => 'Add Tracking Code',
+    'description' => 'Create a new tracking code snippet',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tracking_code_add_form'),
+    'access arguments' => array('administer tracking code'),
+    'file' => 'tracking_code.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  $items['admin/structure/tracking_code/%/edit'] = array(
+    'title' => 'Edit Tracking Code',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tracking_code_edit_form', 3),
+    'access arguments' => array('administer tracking code'),
+    'file' => 'tracking_code.admin.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/structure/tracking_code/%/delete'] = array(
+    'title' => 'Delete Tracking Code',
+    'description' => 'Delete an existing tracking code snippet',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tracking_code_delete_form', 3),
+    'access arguments' => array('administer tracking code'),
+    'file' => 'tracking_code.admin.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/structure/tracking_code/%/disable'] = array(
+    'title' => 'Disable/Enable Tracking Code',
+    'page callback' => 'tracking_code_ajax_disable',
+    'page arguments' => array(3),
+    'access arguments' => array('administer tracking code'),
+    'file' => 'tracking_code.admin.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tracking_code_permission() {
+  return array(
+    'administer tracking code' => array(
+      'title' => t('Administer Tracking Code Snippets'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tracking_code_theme() {
+  return array(
+    'tracking_code_overview_table' => array(
+      'render element' => 'form',
+      'file' => 'tracking_code.admin.inc',
+    ),
+  );
+}
+
+
+/**
+ * ### API FUNCTIONS ###
+ */
+
+
+/**
+ * Read a single tracking code snippet from the database.
+ *
+ * @param (int) $delta
+ *   the primary key of the snippet to load
+ *
+ * @return array/FALSE
+ *   Array: a tracking code record object
+ *   FALSE: snippet doesn't exist in database
+ */
+function _tracking_code_read($delta) {
+  $snippet = db_select('tracking_code', 't')
+    ->fields('t')
+    ->condition('tcid', $delta, '=')
+    ->execute()
+    ->fetchAssoc();
+
+  return (isset($snippet['tcid'])) ? $snippet : FALSE;
+}
+
+/**
+ * Process active tracking code snippets into an array.
+ *
+ * @return array
+ *   an array of active tracking code objects, organized by region
+ */
+function _tracking_code_enabled_by_region() {
+  $snippets = &drupal_static(__FUNCTION__);
+
+  if (isset($snippets)) {
+    return $snippets;
+  }
+
+  $node = menu_get_object();
+
+  $snippets = array(
+    'header' => array(),
+    'page_top' => array(),
+    'page_bottom' => array(),
+  );
+
+  $results = db_select('tracking_code', 't')
+    ->fields('t')
+    ->condition('status', '1', '=')
+    ->execute();
+
+  // Check page-level visibility.
+  foreach ($results as $snippet) {
+    $content_types = unserialize($snippet->content_types);
+    $roles = unserialize($snippet->roles);
+    $selected_types = array();
+    $selected_roles = array();
+
+    // Build list of content types.
+    foreach ($content_types as $type => $status) {
+      if ($status) {
+        $selected_types[] = $type;
+      }
+    }
+
+    // Build list of roles.
+    foreach ($roles as $role_id => $status) {
+      if ($status) {
+        $selected_roles[] = $role_id;
+      }
+    }
+
+    // Need to match clean URLs as well as Drupal paths.
+    $path = drupal_strtolower(drupal_get_path_alias($_GET['q']));
+    $page_match = drupal_match_path($path, $snippet->pages);
+    if ($path != $_GET['q']) {
+      $page_match = $page_match || drupal_match_path($_GET['q'], $snippet->pages);
+    }
+
+    switch ($snippet->visibility) {
+      case TRACKING_CODE_VISIBILITY_NOTLISTED:
+        if (!$page_match) {
+          $snippets[$snippet->region][$snippet->tcid] = $snippet;
+        }
+        break;
+
+      case TRACKING_CODE_VISIBILITY_LISTED:
+        if ($page_match) {
+          $snippets[$snippet->region][$snippet->tcid] = $snippet;
+        }
+        break;
+    }
+
+    // Unset snippet if not in selected content types.
+    if (!empty($selected_types)) {
+      if (!$node || !in_array($node->type, $selected_types)) {
+        unset($snippets[$snippet->region][$snippet->tcid]);
+      }
+    }
+
+    // Unset snippet if not in selected user roles.
+    if (!empty($selected_roles)) {
+      global $user;
+      $show = FALSE;
+      foreach ($user->roles as $role_id => $role) {
+        if (in_array($role_id, $selected_roles)) {
+          $show = TRUE;
+          break;
+        }
+      }
+
+      if (!$show) {
+        unset($snippets[$snippet->region][$snippet->tcid]);
+      }
+    }
+  }
+
+  return $snippets;
+}
+
+/**
+ * Process all tracking code snippets into an array.
+ *
+ * @return array
+ *   an array of all tracking code objects, organized by region
+ */
+function _tracking_code_all_by_region() {
+  $snippets = array(
+    'header' => array(),
+    'page_top' => array(),
+    'page_bottom' => array(),
+  );
+
+  $results = db_select('tracking_code', 't')
+    ->fields('t')
+    ->execute();
+
+  foreach ($results as $snippet) {
+    $snippets[$snippet->region][$snippet->tcid] = $snippet;
+  }
+
+  return $snippets;
+}
+
+/**
+ * Sets the Drupal breadcrumb on admin pages.
+ */
+function _tracking_code_set_breadcrumb() {
+  $breadcrumb = array(
+    l(t('Home'), '<front>'),
+    l(t('Administration'), 'admin'),
+    l(t('Structure'), 'admin/structure'),
+    l(t('Tracking Code Snippets'), 'admin/structure/tracking_code'),
+  );
+
+  drupal_set_breadcrumb($breadcrumb);
+}
+
+/**
+ * Custom sort callback for sorting codeblocks by weight.
+ *
+ * used by usort() to sort objects by their "weight" attribute
+ *
+ * @param stdClass $a
+ *   first comparison object
+ * @param stdClass $b
+ *   second comparison object
+ *
+ * @return int
+ *   0 = objects have equal weight
+ *   1 = object $a has greater weight
+ *  -1 = object $b has greater weight
+ */
+function _tracking_code_weight_sort($a, $b) {
+  if ($a->weight == $b->weight) {
+    return 0;
+  }
+  return ($a->weight > $b->weight) ? 1 : -1;
+}
