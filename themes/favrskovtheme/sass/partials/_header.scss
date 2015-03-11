@@ -105,8 +105,9 @@
         @include inline-block(top);
         margin-right: -2px;
       }
+      &:hover,
       &.active,
-      &:hover {
+      &.active-trail {
         a {
           background: $grey;
         }
