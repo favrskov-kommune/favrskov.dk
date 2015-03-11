@@ -767,11 +767,13 @@ function panel_news_page_default_page_manager_handlers() {
         ),
       ),
     );
+    global $base_url;
+
     $pane->configuration = array(
       'admin_title' => 'Path to node',
       'title' => '',
-      'body' => 'drupal.favrskov.dk/node/%node:nid',
-      'format' => 'plain_text',
+      'body' => '<a href="/node/%node:nid">' . $base_url . '/node/%node:nid</a>',
+      'format' => 'full_html',
       'substitute' => 1,
     );
     $pane->cache = array();

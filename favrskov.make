@@ -359,7 +359,7 @@ projects[os2web_borger_dk_articles][type] = "module"
 projects[os2web_borger_dk_articles][subdir] = contrib
 projects[os2web_borger_dk_articles][download][type] = "git"
 projects[os2web_borger_dk_articles][download][url] = "https://github.com/PropeopleDK/os2web_borger_dk_articles.git"
-projects[os2web_borger_dk_articles][download][branch] = "master"
+projects[os2web_borger_dk_articles][download][branch] = "develop"
 
 projects[better_formats][subdir] = contrib
 projects[better_formats][version] = 1.0-beta1
