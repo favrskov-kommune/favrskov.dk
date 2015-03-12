@@ -16,11 +16,17 @@
     font: 22px $sans-book;
   }
   .news-list {
+    font-size: 0;
     @include container;
     @extend %clearfix;
     margin-top: 30px;
     li {
       @include span-columns(4, 16);
+      &:last-child {
+        article {
+          padding-right: 0;
+        }
+      }
       // For ie8
       .lt-ie8 & {
         width: 23%;
@@ -35,6 +41,9 @@
       .date {
         margin: 22px 0 15px;
         display: block;
+        @include at-breakpoint(12 $width-768) {
+          margin: 11px 7px;
+        }
         a {
           font: 10pt Arial;
           color: $slategrey;
@@ -57,8 +66,10 @@
         line-height: 25px;
       }
       @include at-breakpoint(12 $width-768) {
-        @include span-columns(4, 12);
-        margin-bottom: gutter(12);
+        display: inline-block;
+        vertical-align: top;
+        float: none;
+        margin-right: 0;
         &:last-child {
           margin-right: gutter(12);
         }
@@ -67,6 +78,7 @@
         }
       }
       @include at-breakpoint(12 $width-600) {
+        margin-bottom: 20px;
         @include span-columns(6, 12);
         &:nth-child(3n) {
           margin-right: gutter(12);
