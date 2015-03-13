@@ -210,6 +210,12 @@
           right: 26px;
           @include center-vertical(46);
           @include sprite(0px, -46px);
+          @include at-breakpoint(12 $width-480) {
+            display: none;
+          }
+          @include at-breakpoint($width-980 12 $width-1024) {
+            display: none;
+          }
         }
         &:hover {
           background: #999;
@@ -234,21 +240,15 @@
           font-size: 22px;
           font-weight: bold;
           margin-bottom: 10px;
-          @include at-breakpoint($width-768 12 $width-980) {
+          @include at-breakpoint(12 $width-480) {
             font-size: 16px;
-          }
-          @include at-breakpoint(12 $width-768) {
-            font-size: 14px;
           }
         }
         .teaser {
           margin: 0;
           font-size: 16px;
-          @include at-breakpoint($width-768 12 $width-980) {
+          @include at-breakpoint(12 $width-480) {
             font-size: 14px;
-          }
-          @include at-breakpoint(12 $width-768) {
-            font-size: 12px;
           }
         }
         &.red-background {
