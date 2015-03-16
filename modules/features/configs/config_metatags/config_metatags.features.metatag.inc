@@ -18,7 +18,7 @@ function config_metatags_metatag_export_default() {
         'value' => '[node:title] | [site:name]',
       ),
       'description' => array(
-        'value' => '[node:summary]',
+        'value' => '[node:summary] [node:field_taxonomy_kle]',
       ),
       'og:title' => array(
         'value' => '[node:title]',
