@@ -520,13 +520,13 @@ function panel_news_page_default_page_manager_handlers() {
       'delta_reversed' => 0,
       'formatter_settings' => array(),
       'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Se også',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
-      'style' => 'naked',
+      'style' => 'default',
     );
     $pane->css = array();
     $pane->extras = array();
