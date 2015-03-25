@@ -1,7 +1,6 @@
 name = Config Theme Key
 core = 7.x
 package = Config
-php = 5.2.4
 version = 7.x-1.0
 project = config_theme_key
 dependencies[] = ctools
@@ -12,7 +11,7 @@ dependencies[] = themekey_features
 features[ctools][] = elysia_cron:default_elysia_cron_rules:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[themekey_features_rule_chain][] = drupal:get_q = admin/config/system/cron/execute/mailchimp_cron >>> favrskovtheme
+features[themekey_features_rule_chain][] = drupal:path = node/%/% >>> seven
 features[themekey_features_rule_chain][] = drupal:path_is_admin = true >>> seven
 features[themekey_features_rule_chain][] = system:query_param * theme=favrskovtheme >>> favrskovtheme
 features[themekey_features_rule_chain][] = user:role = anonymous user >>> favrskovtheme
