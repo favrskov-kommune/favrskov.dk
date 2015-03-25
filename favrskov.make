@@ -467,7 +467,8 @@ projects[node_view_permissions][subdir] = contrib
 projects[node_view_permissions][version] = 1.5
 
 projects[themekey][subdir] = contrib
-projects[themekey][version] = 3.2
+;projects[themekey][version] = 3.2
+projects[themekey][version] = 3.3
 
 projects[mailchimp][subdir] = contrib
 projects[mailchimp][version] = 2.12
