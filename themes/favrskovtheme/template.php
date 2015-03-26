@@ -854,6 +854,7 @@ function favrskovtheme_webform_display_file($variables) {
  */
 function favrskovtheme_preprocess_views_view(&$vars) {
   $view = $vars['view'];
+  $display_title = '';
 
   if (!empty($view->display_handler->options['pane_conf'])) {
     $is_override_title = !empty($view->display_handler->options['pane_conf']['override_title']) ? $view->display_handler->options['pane_conf']['override_title'] : 0;
