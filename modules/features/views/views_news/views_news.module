@@ -80,3 +80,18 @@ function views_news_preprocess_views_more(&$vars, $hook) {
       $vars['view']->override_path : $vars['more_url'];
   }
 }
+
+/**
+ * Implements hook_views_plugins_alter().
+ *
+ * Motivation of bad solution.
+ * In ctools-7.x-1.6 was added patch that attached contextual links to
+ * panel_pane instead of view. As result we got broken markup on front page.
+ *
+ * @see https://www.drupal.org/files/ctools-1669756-1.patch
+ */
+function views_news_views_plugins_alter(&$plugins) {
+  if ($plugins['display']['panel_pane']['contextual links locations'] == array('panel_pane')) {
+    unset($plugins['display']['panel_pane']['contextual links locations']);
+  }
+}
