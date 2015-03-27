@@ -42,8 +42,8 @@
       $(".target-popup").remove();
     } else {
       $('<div />').append($('<div />', {
-          html: Drupal.t('Open in new window')
-        }).addClass('new-window'))
+        html: Drupal.t('Open in new window')
+      }).addClass('new-window'))
         .append($('<div />', {
           html: Drupal.t('Open in the same window')
         }).addClass('same-window'))
@@ -129,8 +129,8 @@
       // Hide parent menu item
       var hddenMenuItem = $('.hidden-item');
       if (hddenMenuItem) {
-        hddenMenuItem.each(function(){
-           $(this).parent('li').addClass('hidden');
+        hddenMenuItem.each(function () {
+          $(this).parent('li').addClass('hidden');
         });
       }
 
@@ -193,22 +193,24 @@
       }
 
       // Main slider with navigation
-      var navSwiper = $('.swiper-nav-container').swiper({
-        wrapperClass: 'swiper-nav-wrapper',
-        mode: 'horizontal',
-        loop: true,
-        autoplay: 8000,
-        calculateHeight: true,
-        simulateTouch: true,
-        pagination: '.pagination',
-        paginationClickable: true,
-        grabCursor: true,
-        onTouchEnd: function (swiper) {
-          if (!$('.swiper-container').is(':hover')) {
-            swiper.startAutoplay();
+      if ($('.swiper-nav-container', context).length != 0) {
+        var navSwiper = $('.swiper-nav-container', context).swiper({
+          wrapperClass: 'swiper-nav-wrapper',
+          mode: 'horizontal',
+          loop: true,
+          autoplay: 8000,
+          calculateHeight: true,
+          simulateTouch: true,
+          pagination: '.pagination',
+          paginationClickable: true,
+          grabCursor: true,
+          onTouchEnd: function (swiper) {
+            if (!$('.swiper-container').is(':hover')) {
+              swiper.startAutoplay();
+            }
           }
-        }
-      });
+        });
+      }
 
 
       $('.combi').each(function (index) {
@@ -234,21 +236,21 @@
       });
 
 
-
       // mCustomScrollbar
-      scrollBar($('.slide-description'));
-      function scrollBar(e, h) {
+      var slideDesc = $('.slide-description');
+      if (slideDesc.length != 0) {
+        (function scrollBar(e, h) {
           e.not('.themeName-processed').mCustomScrollbar({
-              scrollInertia: 100,
-              horizontalScroll: (h && h == 'h') ? true : false,
-              advanced: {
-                  autoScrollOnFocus: false,
-                  updateOnBrowserResize: true,
-                  updateOnContentResize: true
-              }
+            scrollInertia: 100,
+            horizontalScroll: (h && h == 'h') ? true : false,
+            advanced: {
+              autoScrollOnFocus: false,
+              updateOnBrowserResize: true,
+              updateOnContentResize: true
+            }
           }).addClass('themeName-processed');
+        })(slideDesc);
       }
-
 
 
       // Initialize of Selectboxit plugin
@@ -356,7 +358,7 @@
 
   Drupal.behaviors.customCommentNotify = {
     attach: function (context) {
-      $('input[name="notify"]', context).bind('change',function () {
+      $('input[name="notify"]', context).bind('change', function () {
         $(this).parent().parent().find('.form-radios')[this.checked ? 'show' : 'hide']();
       }).trigger('change');
     }
