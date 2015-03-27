@@ -23,7 +23,6 @@
  *
  * @ingroup views_templates
  */
-// krumo($variables);
 ?>
 
 <a href="<?php print $fields['path']->content ?>" class="global-link"></a>

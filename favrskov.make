@@ -7,7 +7,7 @@ projects[admin_menu][subdir] = contrib
 projects[admin_menu][version] = 3.0-rc4
 
 projects[ctools][subdir] = contrib
-projects[ctools][version] = 1.5
+projects[ctools][version] = 1.7
 ;projects[ctools][patch][1925018] = https://drupal.org/files/ctools-n1925018-12.patch
 
 projects[views][subdir] = contrib
@@ -177,7 +177,7 @@ projects[coder_tough_love][subdir] = contrib
 projects[coder_tough_love][version] = 1.0
 
 projects[webform][subdir] = contrib
-projects[webform][version] = 3.22
+projects[webform][version] = 3.23
 projects[webform][patch][] = https://raw.githubusercontent.com/geo0000/custom-patches/master/webform-submission-mail-subject-tokens.patch
 projects[webform][patch][] = https://raw.githubusercontent.com/geo0000/custom-patches/master/webform-email-response-url-token.patch
 
@@ -467,7 +467,8 @@ projects[node_view_permissions][subdir] = contrib
 projects[node_view_permissions][version] = 1.5
 
 projects[themekey][subdir] = contrib
-projects[themekey][version] = 3.2
+;projects[themekey][version] = 3.2
+projects[themekey][version] = 3.3
 
 projects[mailchimp][subdir] = contrib
 projects[mailchimp][version] = 2.12
@@ -632,5 +633,5 @@ translations[] = da
 
 ; Patches
 projects[drupal][type] = core
-projects[drupal][version] = 7.34
+projects[drupal][version] = 7.35
 projects[drupal][patch][1078878] = "https://drupal.org/files/issues/1078878-DisableAutoCreation-D7-UTF-8.patch"

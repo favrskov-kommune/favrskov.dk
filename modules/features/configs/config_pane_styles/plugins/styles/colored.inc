@@ -43,7 +43,7 @@ function theme_config_pane_styles_colored_render_pane($vars) {
   $background_image = !empty($image) ? 'background-image: url(' . file_create_url($image->uri) . ');' : '';
 
   // Color scheme & background color wrapper.
-  $output = "<div class='$background' style='$background_color'>" . $content->content . "</div>";
+  $output = "<div class='$background' style='$background_color'>" . render($content->content) . "</div>";
 
   // Background image wrapper.
   $output = "<div class='slider-background' style='$background_image'>" . $output . "</div>";

@@ -7,12 +7,10 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function config_theme_key_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function config_theme_key_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "elysia_cron" && $api == "default_elysia_cron_rules") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -30,6 +28,19 @@ if (!defined('THEMEKEY_PAGECACHE_UNSUPPORTED')) {
 $rules = array(
   0 => array(
     'rule' => array(
+      'property' => 'drupal:path',
+      'operator' => '=',
+      'value' => 'node/%/%',
+      'theme' => 'seven',
+      'enabled' => 1,
+      'wildcards' => array(),
+      'module' => 'config_theme_key',
+    ),
+    'string' => '"drupal:path = node/%/% >>> seven"',
+    'childs' => array(),
+  ),
+  1 => array(
+    'rule' => array(
       'property' => 'user:role',
       'operator' => '=',
       'value' => 'anonymous user',
@@ -39,19 +50,6 @@ $rules = array(
       'module' => 'config_theme_key',
     ),
     'string' => '"user:role = anonymous user >>> favrskovtheme"',
-    'childs' => array(),
-  ),
-  1 => array(
-    'rule' => array(
-      'property' => 'drupal:get_q',
-      'operator' => '=',
-      'value' => 'admin/config/system/cron/execute/mailchimp_cron',
-      'theme' => 'favrskovtheme',
-      'enabled' => 1,
-      'wildcards' => 'a:0:{}',
-      'module' => 'config_theme_key',
-    ),
-    'string' => '"drupal:get_q = admin/config/system/cron/execute/mailchimp_cron >>> favrskovtheme"',
     'childs' => array(),
   ),
   2 => array(
