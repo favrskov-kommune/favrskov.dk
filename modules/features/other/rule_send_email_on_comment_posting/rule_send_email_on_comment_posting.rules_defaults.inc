@@ -18,7 +18,7 @@ function rule_send_email_on_comment_posting_default_rules_configuration() {
       "ON" : { "comment_insert" : [] },
       "DO" : [
         { "mail" : {
-            "to" : "kommunikation@roskilde.dk",
+            "to" : "webmaster@favrskov.dk",
             "subject" : "' . t("New comment on Roskilde") .'",
             "message" : "[comment:node:title] ' . t("at") . ': [comment:url]\\r\\n\\u003Cbr\\u003E\\r\\n' . t("Author")
                         . ': [comment:author:name]\\r\\n\\u003Cbr\\u003E\\r\\n' . t("Subject")
