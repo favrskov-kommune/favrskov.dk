@@ -12,6 +12,7 @@ function rule_send_email_on_comment_posting_default_rules_configuration() {
   $items['rules_send_email_on_comment_posting'] = entity_import('rules_config', '{ "rules_send_email_on_comment_posting" : {
       "LABEL" : "Send email on comment posting",
       "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
       "OWNER" : "rules",
       "REQUIRES" : [ "rules", "comment" ],
       "ON" : { "comment_insert" : [] },
