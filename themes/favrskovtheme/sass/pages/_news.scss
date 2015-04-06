@@ -64,6 +64,7 @@
         font-size: 16pt;
         font-weight: bold;
         line-height: 25px;
+        min-height: 75px;
       }
       @include at-breakpoint(12 $width-768) {
         display: inline-block;
