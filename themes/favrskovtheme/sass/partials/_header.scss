@@ -63,6 +63,9 @@
     margin-top: 17px;
     float: left;
     margin-left: 23px;
+    @include at-breakpoint(12 $width-1040) {
+      margin-left: 15px;
+    }
     @include at-breakpoint(12 $width-980) {
       float: none;
       margin: 30px auto 120px;
@@ -77,6 +80,9 @@
     position: absolute;
     top: 0;
     right: 275px;
+    @include at-breakpoint(12 $width-1040) {
+      right: 265px;
+    }
     @include at-breakpoint(12 $width-980) {
       position: static;
       text-align: center;
