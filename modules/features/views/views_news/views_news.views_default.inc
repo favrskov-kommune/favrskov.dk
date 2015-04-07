@@ -122,7 +122,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['fields']['field_teaser']['label'] = '';
   $handler->display->display_options['fields']['field_teaser']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_teaser']['alter']['path'] = '[path]';
-  $handler->display->display_options['fields']['field_teaser']['alter']['max_length'] = '110';
+  $handler->display->display_options['fields']['field_teaser']['alter']['max_length'] = '135';
   $handler->display->display_options['fields']['field_teaser']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_teaser']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_teaser']['element_type'] = 'p';
