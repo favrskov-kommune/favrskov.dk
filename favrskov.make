@@ -22,7 +22,8 @@ projects[views_field_view][subdir] = contrib
 projects[views_field_view][version] = 1.1
 
 projects[draggableviews][subdir] = contrib
-projects[draggableviews][version] = 2.0
+;projects[draggableviews][version] = 2.0
+projects[draggableviews][version] = 2.1
 
 projects[media][subdir] = contrib
 projects[media][version] =2.0-alpha2
