@@ -91,7 +91,8 @@ function views_news_preprocess_views_more(&$vars, $hook) {
  * @see https://www.drupal.org/files/ctools-1669756-1.patch
  */
 function views_news_views_plugins_alter(&$plugins) {
-  if ($plugins['display']['panel_pane']['contextual links locations'] == array('panel_pane')) {
+  if (!empty($plugins['display']['panel_pane']['contextual links locations'])
+    && $plugins['display']['panel_pane']['contextual links locations'] == array('panel_pane')) {
     unset($plugins['display']['panel_pane']['contextual links locations']);
   }
 }
