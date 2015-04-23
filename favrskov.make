@@ -288,6 +288,7 @@ projects[apachesolr_views][patch][1807028] = https://drupal.org/files/1807028-ex
 projects[apachesolr_attachments][subdir] = contrib
 projects[apachesolr_attachments][version] = 1.3
 projects[apachesolr_attachments][patch][1854088] = https://drupal.org/files/bypass_deadlocks_on_mass_update-1854088-2.patch
+projects[apachesolr_attachments][patch][2195095] = https://www.drupal.org/files/issues/apachesolr-attachments-issue-2195095-6.patch
 
 projects[facetapi][subdir] = contrib
 ;projects[facetapi][version] = 1.3
