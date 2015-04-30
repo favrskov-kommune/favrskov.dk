@@ -102,7 +102,7 @@ function views_administration_content_referenced_by_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Overskrift: Global: Tekstområde */
+  /* Manchet: Global: Tekstområde */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
@@ -292,7 +292,7 @@ function views_administration_content_referenced_by_views_default_views() {
   /* Display: Phonebook */
   $handler = $view->new_display('page', 'Phonebook', 'phonebook');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Kontekstuelt filter: Indhold: Kontaktinformation (field_contact_information) */
+  /* Kontekstuelt filter: Indhold: Kontakt oplysninger (field_contact_information) */
   $handler->display->display_options['arguments']['field_contact_information_nid']['id'] = 'field_contact_information_nid';
   $handler->display->display_options['arguments']['field_contact_information_nid']['table'] = 'field_data_field_contact_information';
   $handler->display->display_options['arguments']['field_contact_information_nid']['field'] = 'field_contact_information_nid';
