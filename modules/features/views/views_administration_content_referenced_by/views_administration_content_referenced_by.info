@@ -4,16 +4,8 @@ core = 7.x
 package = Views
 version = 7.x-1.0
 project = views_administration_content_referenced_by
-dependencies[] = themekey
-dependencies[] = themekey_features
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
-features[themekey_features_rule_chain][] = drupal:path = node/%/bannerlink-referenced-by >>> seven
-features[themekey_features_rule_chain][] = drupal:path = node/%/borgerdk-referenced-by >>> seven
-features[themekey_features_rule_chain][] = drupal:path = node/%/factbox-referenced-by >>> seven
-features[themekey_features_rule_chain][] = drupal:path = node/%/faq-referenced-by >>> seven
-features[themekey_features_rule_chain][] = drupal:path = node/%/phonebook-referenced-by >>> seven
-features[themekey_features_rule_chain][] = drupal:path = node/%/selfservice-referenced-by >>> seven
 features[views_view][] = administration_content_referenced_by
 features_exclude[dependencies][ctools] = ctools
