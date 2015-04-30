@@ -1,7 +1,7 @@
-diff --git a/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.features.inc b/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.features.inc
+diff --git a/views_administration_content_referenced_by.features.inc b/views_administration_content_referenced_by.features.inc
 index ff41be7..24a52d2 100644
---- a/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.features.inc
-+++ b/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.features.inc
+--- a/views_administration_content_referenced_by.features.inc
++++ b/views_administration_content_referenced_by.features.inc
 @@ -10,96 +10,3 @@
  function views_administration_content_referenced_by_views_api($module = NULL, $api = NULL) {
    return array("api" => "3.0");
@@ -99,10 +99,10 @@ index ff41be7..24a52d2 100644
 -
 -return $rules;
 -}
-diff --git a/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.info b/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.info
+diff --git a/views_administration_content_referenced_by.info b/views_administration_content_referenced_by.info
 index a38fc5c..bbdebff 100644
---- a/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.info
-+++ b/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.info
+--- a/views_administration_content_referenced_by.info
++++ b/views_administration_content_referenced_by.info
 @@ -4,16 +4,8 @@ core = 7.x
  package = Views
  version = 7.x-1.0
@@ -120,10 +120,10 @@ index a38fc5c..bbdebff 100644
 -features[themekey_features_rule_chain][] = drupal:path = node/%/selfservice-referenced-by >>> seven
  features[views_view][] = administration_content_referenced_by
  features_exclude[dependencies][ctools] = ctools
-diff --git a/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.module b/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.module
+diff --git a/views_administration_content_referenced_by.module b/views_administration_content_referenced_by.module
 index 48d5b5a..c432320 100644
---- a/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.module
-+++ b/modules/features/views/views_administration_content_referenced_by/views_administration_content_referenced_by.module
+--- a/views_administration_content_referenced_by.module
++++ b/views_administration_content_referenced_by.module
 @@ -5,3 +5,17 @@
   */
  
