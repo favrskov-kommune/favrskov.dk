@@ -69,6 +69,23 @@
 // Global node styles
 .banner-content,
 .node-content {
+
+  // Enable blockquote.
+  .node-body {
+    blockquote {
+      margin: 13px 40px;
+      padding: 2px 8px 2px 20px;
+      border-left-width: 5px;
+      p {
+        line-height: 3.5em !important;
+        margin: 0;
+        font-style: italic !important;
+        font-size: 13px !important;
+        font-family: Georgia, Times, "Times New Roman", serif !important;
+      }
+    }
+  }
+
   // Set global node text color
   color: $gray;
   margin-bottom: 40px;
