@@ -11,12 +11,8 @@ projects[ctools][version] = 1.7
 ;projects[ctools][patch][1925018] = https://drupal.org/files/ctools-n1925018-12.patch
 
 projects[views][subdir] = contrib
-;projects[views][version] = 3.8
-projects[views][version] = 3.10
-; projects[views][patch][2065975] = https://drupal.org/files/ajax_pager_does_not_work_in_view_pane-2065975-1.patch
-;Disabled during update to 3.10 because of WSOD
-;projects[views][patch][2065975] = https://www.drupal.org/files/issues/2065975-ajax_pager_does_not_work_in_view_pane-2.patch
-;projects[views][patch][1036962] = https://drupal.org/files/views-fix-destination-link-for-ajax-1036962-29.patch
+projects[views][version] = 3.11
+;projects[views][patch][2065975] = https://drupal.org/files/ajax_pager_does_not_work_in_view_pane-2065975-1.patch
 
 projects[views_field_view][subdir] = contrib
 projects[views_field_view][version] = 1.1
@@ -384,7 +380,7 @@ projects[token_filter][subdir] = contrib
 projects[token_filter][version] = 1.x-dev
 
 projects[smart_trim][subdir] = contrib
-projects[smart_trim][version] = 1.4
+projects[smart_trim][version] = 1.5
 
 projects[taxonomy_formatter][subdir] = contrib
 projects[taxonomy_formatter][version] = 1.4
