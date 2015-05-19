@@ -466,6 +466,7 @@ function view_subject_subpages_views_default_views() {
   $handler->display->display_options['fields']['views_ifempty']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['views_ifempty']['emptyfield'] = 'field_image_description';
   $handler->display->display_options['fields']['views_ifempty']['outputfield'] = 'field_file_image_description';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
