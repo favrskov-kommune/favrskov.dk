@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Content Type Job feature.
+ */
+
+include_once 'content_type_job.features.inc';
