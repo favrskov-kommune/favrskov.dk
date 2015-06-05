@@ -18,11 +18,11 @@ function content_type_job_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -66,7 +66,7 @@ function content_type_job_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 1,
+      'weight' => 3,
     ),
   );
 
@@ -82,7 +82,7 @@ function content_type_job_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -164,7 +164,7 @@ function content_type_job_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -228,7 +228,7 @@ function content_type_job_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 1,
     ),
   );
 
@@ -240,11 +240,11 @@ function content_type_job_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -324,7 +324,7 @@ function content_type_job_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -400,11 +400,11 @@ function content_type_job_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
