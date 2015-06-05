@@ -1,0 +1,40 @@
+ .node-job {
+  @include font-size(16);
+  line-height: 1.4;
+
+  a {
+    @include links($link-red, $dimgray);
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-family: $sans;
+  }
+
+  h2 { @include font-size(22); }
+  h3 { @include font-size(20); }
+  h4 { @include font-size(18); }
+
+  p {
+    margin-bottom: 22px;
+  }
+
+  li {
+    color: $dimgray;
+    font: 12pt/25px Arial;
+    margin-left: 15px;
+  }
+
+  ul {
+    li {
+      list-style: disc;
+    }
+  }
+
+  ol {
+    li {
+      list-style: decimal;
+    }
+  }
+ }
