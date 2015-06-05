@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feeds Job Importer feature.
+ */
+
+include_once 'feeds_job_importer.features.inc';
