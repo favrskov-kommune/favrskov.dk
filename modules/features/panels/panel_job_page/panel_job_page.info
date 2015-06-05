@@ -1,0 +1,11 @@
+name = Panel Job page
+description = Display job content type
+core = 7.x
+package = Panels
+version = 7.x-1.0
+project = panel_job_page
+dependencies[] = ctools
+dependencies[] = page_manager
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:2
+features[page_manager_handlers][] = node_view__job_page

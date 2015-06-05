@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panel Job page feature.
+ */
+
+include_once 'panel_job_page.features.inc';
