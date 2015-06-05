@@ -625,7 +625,7 @@ libraries[malihu][download][url] =
 libraries[malihu][destination] = libraries
 libraries[malihu][directory_name] = malihu
 
-libraries[jsonpath][download][type] = get
+libraries[jsonpath][download][type] = file
 libraries[jsonpath][download][url] = https://jsonpath.googlecode.com/svn/trunk/src/php/jsonpath.php
 libraries[jsonpath][destination] = libraries
 libraries[jsonpath][directory_name] = jsonpath
