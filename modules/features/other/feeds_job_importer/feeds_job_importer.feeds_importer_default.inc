@@ -37,6 +37,12 @@ function feeds_job_importer_feeds_importer_default() {
             'name' => 'Title',
             'value' => '$.job_headline',
             'debug' => 0,
+            'weight' => '0',
+          ),
+          'apply_link_title' => array(
+            'name' => 'Apply link title',
+            'value' => '$.job_headline',
+            'debug' => 0,
             'weight' => '1',
           ),
           'apply_link' => array(
@@ -82,8 +88,8 @@ function feeds_job_importer_feeds_importer_default() {
             'weight' => '8',
           ),
         ),
-        'display_errors' => 1,
-        'debug_mode' => 1,
+        'display_errors' => 0,
+        'debug_mode' => 0,
         'source_encoding' => array(
           0 => 'auto',
         ),
@@ -102,7 +108,7 @@ function feeds_job_importer_feeds_importer_default() {
             'unique' => FALSE,
           ),
           1 => array(
-            'source' => 'apply_link',
+            'source' => 'apply_link_title',
             'target' => 'field_job_apply_link:title',
             'unique' => FALSE,
           ),
