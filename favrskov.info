@@ -234,3 +234,4 @@ dependencies[] = workbench_moderation
 dependencies[] = rabbit_hole
 dependencies[] = draggableviews
 dependencies[] = config_media_browser_plus
+dependencies[] = content_type_job

@@ -70,6 +70,9 @@ projects[feeds_fetcher_directory][subdir] = contrib
 projects[feeds_fetcher_directory][version] = 2.0-beta5
 projects[feeds_fetcher_directory][patch][2023775] = https://drupal.org/files/feeds_fetcher_directory-config-form-validate-errors.patch
 
+projects[feeds_ex][subdir] = contrib
+projects[feeds_ex][version] = 1.0-beta2
+
 projects[elysia_cron][subdir] = contrib
 projects[elysia_cron][version] = 2.1
 
@@ -621,6 +624,11 @@ libraries[malihu][download][url] =
 "https://github.com/malihu/malihu-custom-scrollbar-plugin/archive/master.zip"
 libraries[malihu][destination] = libraries
 libraries[malihu][directory_name] = malihu
+
+libraries[jsonpath][download][type] = get
+libraries[jsonpath][download][url] = https://jsonpath.googlecode.com/svn/trunk/src/php/jsonpath.php
+libraries[jsonpath][destination] = libraries
+libraries[jsonpath][directory_name] = jsonpath
 
 ; Contrib themes
 projects[adaptivetheme][subdir] = contrib
