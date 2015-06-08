@@ -11,6 +11,7 @@ include_once 'content_type_job.features.inc';
  */
 function content_type_job_admin_paths() {
   $paths = array(
+    'import' => TRUE,
     'import/*' => TRUE,
   );
   return $paths;
