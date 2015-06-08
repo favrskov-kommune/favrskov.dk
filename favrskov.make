@@ -39,6 +39,7 @@ projects[media_browser_plus][subdir] = contrib
 projects[media_browser_plus][download][type] = "git"
 projects[media_browser_plus][download][url] = "http://git.drupal.org/project/media_browser_plus.git"
 projects[media_browser_plus][download][branch] = "7.x-3.x"
+projects[media_browser_plus][patch][2387943] = https://www.drupal.org/files/issues/2387943-subfolder-search-12.patch
 
 projects[media_crop][subdir] = contrib
 projects[media_crop][version] = 1.x-dev
