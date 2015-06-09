@@ -36,7 +36,7 @@ function feeds_job_importer_feeds_importer_default() {
           'title' => array(
             'name' => 'Title',
             'value' => '$.job_headline',
-            'debug' => 0,
+            'debug' => 1,
             'weight' => '0',
           ),
           'apply_link_title' => array(
@@ -98,9 +98,9 @@ function feeds_job_importer_feeds_importer_default() {
     'processor' => array(
       'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
-        'expire' => '3600',
+        'expire' => '21600',
         'author' => '1',
-        'authorize' => 1,
+        'authorize' => 0,
         'mappings' => array(
           0 => array(
             'source' => 'title',
@@ -157,10 +157,10 @@ function feeds_job_importer_feeds_importer_default() {
     ),
     'content_type' => '',
     'update' => 0,
-    'import_period' => '0',
+    'import_period' => '21600',
     'expire_period' => 3600,
     'import_on_create' => 1,
-    'process_in_background' => 1,
+    'process_in_background' => 0,
   );
   $export['job_importer'] = $feeds_importer;
 
