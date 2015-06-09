@@ -78,7 +78,7 @@ function views_job_views_default_views() {
   /* Display: Job listing by table */
   $handler = $view->new_display('panel_pane', 'Job listing by table', 'job_listing_by_table');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Job listing by table';
+  $handler->display->display_options['title'] = 'Alle ledige stillinger i Favrskov Kommune';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -147,7 +147,7 @@ function views_job_views_default_views() {
   /* Display: Job listing by list */
   $handler = $view->new_display('panel_pane', 'Job listing by list', 'job_listing_by_list');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Job listing by list';
+  $handler->display->display_options['title'] = 'Alle ledige stillinger i Favrskov Kommune';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -413,6 +413,7 @@ function views_job_views_default_views() {
     t('næste ›'),
     t('sidste »'),
     t('Job listing by table'),
+    t('Alle ledige stillinger i Favrskov Kommune'),
     t('Headline'),
     t('Place of work'),
     t('Startdato'),
