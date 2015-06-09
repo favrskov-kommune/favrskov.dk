@@ -41,7 +41,9 @@
   }
  }
 
+
 .pane-job-job-listing-by-table {
+  @include pager-table;
   @include at-breakpoint(12 $width-768) {
     display: none;
   }
@@ -97,23 +99,15 @@
       color: $dimgray;
     }
   }
-
-  .pager {
-    margin-top: 40px;
-    overflow: inherit;
-  }
-
-  .ajax-progress {
-    top: -30px;
-  }
 }
 
 .pane-job-job-listing-by-list {
-  display: none;
-
+  @include pager-table;
   @include at-breakpoint(12 $width-768) {
     display: block;
   }
+
+  display: none;
 
   h2 {
     margin-bottom: 10px;

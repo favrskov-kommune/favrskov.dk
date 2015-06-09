@@ -157,10 +157,34 @@
 }
 
 //------------------------------------------------------------------------------
-// percentage value
-//@function percentage($value,$parent) {
-//    @return $value/$parent*100%;
-//}
+// pager for (.pane-job-job-listing-by-table, .pane-job-job-listing-by-list)
+@mixin pager-table() {
+  .pager {
+    margin-top: 40px;
+    overflow: inherit;
+    position: relative;
+    padding: 0 70px;
+
+    .pager-previous,
+    .pager-next {
+      margin-top: -15px;
+      position: absolute;
+      top: 50%;
+    }
+
+    .pager-next {
+      right: 0;
+    }
+
+    .pager-previous {
+      left: 0;
+    }
+  }
+
+  .ajax-progress {
+    top: -30px;
+  }
+}
 
 //------------------------------------------------------------------------------
 // Placeholder
