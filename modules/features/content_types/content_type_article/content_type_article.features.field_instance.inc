@@ -776,7 +776,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 35,
+      'weight' => 36,
     ),
   );
 
@@ -1375,6 +1375,56 @@ function content_type_article_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_job_list'
+  $field_instances['node-article-field_job_list'] = array(
+    'bundle' => 'article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If checked then Job list will be shown.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 31,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_job_list',
+    'label' => 'Job list',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_onoff',
+      'weight' => 35,
     ),
   );
 
@@ -2570,19 +2620,28 @@ function content_type_article_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('All articles must be marked by KLE-taxonomy for content classification.');
+  t('Allows you to create mobile and tablet-friendly tables. Please use this type of table rather than insert tables in the body.');
   t('Author');
   t('Bannerlink');
   t('Body');
+  t('Booklets and reports.');
   t('BorgerDK');
+  t('Choose article topic.');
   t('Comment');
   t('Contact Information');
   t('Description');
   t('Editorial responsibility');
   t('FAQ');
   t('Hide node update date');
+  t('If checked then Job list will be shown.');
   t('Image');
   t('Image / thumbnail');
   t('Image description');
+  t('Image text.');
+  t('Internal title');
+  t('Job list');
+  t('Not in use.');
   t('Notification');
   t('Open in new window');
   t('PDF file');
@@ -2590,41 +2649,36 @@ function content_type_article_field_default_field_instances() {
   t('Piwik Month');
   t('Piwik Week');
   t('Piwik Year');
+  t('Please, upload image in landscape format only.');
   t('Publication link');
   t('Publications');
   t('Publications title');
+  t('Reference to FAQ content type.');
+  t('Reference to bannerlink content type.');
+  t('Reference to other articles on favrskov.dk that provide additional content.');
+  t('References to factboxes.');
   t('Related boxes');
   t('Related content');
+  t('Search or create new self-service content type item.');
+  t('Select author starting type his username.');
   t('Self Service');
+  t('Short description.');
+  t('Short text describing video content.');
+  t('Start typing a keyword and select among the proposals that emerge.');
+  t('Summary. Clarifies purpose of front pages, necessary in search engine optimization.');
   t('Table');
   t('Taxonomy, KLE');
   t('Taxonomy, Location');
   t('Taxonomy, Subject Area');
   t('Taxonomy, local');
   t('Teaser');
+  t('Text that could be readed by browser for blind and visually-impaired people. Please, upload image in landscape format only.');
   t('Title');
   t('Use full page width, no right menu will be shown');
+  t('Used for admin content overview page instead of title field.');
   t('Video');
   t('Video description');
-  t("Write short and precise.");
-  t("Link to secondary self-service solutions.");
-  t("Start typing a keyword and select among the proposals that emerge.");
-  t("If not you as the author has editorial responsibility can specify a different editor.");
-  t("Lets make fold out sections with short descriptions help to enrich article.");
-  t("Text shown visible during image.");
-  t("Always write in ALT text what the picture shows the sake of visual impairment and reading tool.");
-  t("Booklets and reports.");
-  t("Related to the fact boxes.");
-  t("Reference to other articles on favrskov.dk who can provide additional content.");
-  t("Search or create new self-service banner.");
-  t("Allows you to create tables that are mobile and tablet friendly. Please use this type of table rather than insert tables in the body.");
-  t("All texts must be marked with KLE numbers of the classification of content.");
-  t("Not used.");
-  t("Anvendes ikke.");
-  t("To the article can be placed in the structure you choose here the article topic.");
-  t("A short summary text that summarizes the content of the article. The text is used to subject the front pages, search engine optimization, etc.");
-  t("This sets the 'embed' code that Youtube provides.");
-  t("Short text describing the content of the video.");
+  t('Youtube embed code.');
 
   return $field_instances;
 }
