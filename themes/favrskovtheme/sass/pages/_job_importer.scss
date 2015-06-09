@@ -21,8 +21,10 @@
   }
 
   li {
+    @include font-size(16);
     color: $dimgray;
-    font: 12px/2.083 $sans;
+    font-family: $sans;
+    line-height: 25px;
     margin-left: 15px;
   }
 
@@ -38,3 +40,104 @@
     }
   }
  }
+
+.pane-job-job-listing-by-table {
+  @include at-breakpoint(12 $width-768) {
+    display: none;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  table {
+    font-family: $sans;
+    border-collapse: inherit;
+    border-spacing: 3px;
+
+    th, td {
+      @include font-size(14);
+      padding: 9px 10px;
+    }
+  }
+
+  thead {
+    a {
+      color: $white;
+    }
+
+    th {
+      background-color: $dark-green;
+      text-align: left;
+    }
+  }
+
+  tbody {
+    tr:nth-child(2n) {
+      background-color: $grey;
+    }
+
+    td {
+      vertical-align: middle;
+
+      &:first-child {
+        width: columns(6);
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+
+      &:nth-child(2) {
+        width: columns(4);
+      }
+    }
+
+    a {
+      color: $dimgray;
+    }
+  }
+
+  .pager {
+    margin-top: 40px;
+    overflow: inherit;
+  }
+
+  .ajax-progress {
+    top: -30px;
+  }
+}
+
+.pane-job-job-listing-by-list {
+  display: none;
+
+  @include at-breakpoint(12 $width-768) {
+    display: block;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .views-row {
+    background-color: $grey;
+    padding: 5px 9px;
+
+    &:nth-child(2n) {
+      background-color: $light-blue;
+    }
+
+    span:first-child {
+      display: block;
+      font-weight: bold;
+    }
+
+    a {
+      color: $dimgray;
+    }
+
+    & > div {
+      padding: 4px 0;
+    }
+  }
+}

@@ -131,8 +131,9 @@
     }
 
     li {
+      @include font-size(16);
       color: $dimgray;
-      font: 12px/2.083 $sans;
+      font-family: $sans;
       margin-left: 15px;
     }
     ul {

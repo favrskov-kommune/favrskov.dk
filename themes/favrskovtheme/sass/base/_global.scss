@@ -92,11 +92,8 @@ $phone-port: 12 320px;
 
 //  Global links styles
 a {
+  @include links($link-red, $dimgray);
   outline: medium none;
-  //@include transition-property(all);
-  // @include transition-timing-function(ease-in);
-  // @include transition-duration(.1s);
-  // @include links($red, $grey);
 
   &:focus {
     outline: medium none;
