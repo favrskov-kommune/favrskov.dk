@@ -5,7 +5,8 @@
     @extend %clearfix;
     // for node news
     .node-type-news &,
-    .node-type-article & {
+    .node-type-article &,
+    .node-job {
       padding: 46px 0;
     }
     // For ie8

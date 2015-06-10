@@ -71,6 +71,9 @@ projects[feeds_fetcher_directory][subdir] = contrib
 projects[feeds_fetcher_directory][version] = 2.0-beta5
 projects[feeds_fetcher_directory][patch][2023775] = https://drupal.org/files/feeds_fetcher_directory-config-form-validate-errors.patch
 
+projects[feeds_ex][subdir] = contrib
+projects[feeds_ex][version] = 1.0-beta2
+
 projects[elysia_cron][subdir] = contrib
 projects[elysia_cron][version] = 2.1
 
@@ -132,9 +135,7 @@ projects[panels][patch][2057897] = https://drupal.org/files/display_pane_admin_t
 projects[panels][patch][2226011] = https://drupal.org/files/issues/panels-ipe-js-loop-2226011-4.patch
 
 projects[features][subdir] = contrib
-;projects[features][version] = 2.0-rc1
-projects[features][version] = 2.0
-projects[features][patch][1063204] = https://drupal.org/files/features--1063204-65-catch-permission-exception.patch
+projects[features][version] = 2.5
 
 projects[job_scheduler][subdir] = contrib
 projects[job_scheduler][version] = 2.0-alpha3
@@ -622,6 +623,11 @@ libraries[malihu][download][url] =
 "https://github.com/malihu/malihu-custom-scrollbar-plugin/archive/master.zip"
 libraries[malihu][destination] = libraries
 libraries[malihu][directory_name] = malihu
+
+libraries[jsonpath][download][type] = file
+libraries[jsonpath][download][url] = https://jsonpath.googlecode.com/svn/trunk/src/php/jsonpath.php
+libraries[jsonpath][destination] = libraries
+libraries[jsonpath][directory_name] = jsonpath
 
 ; Contrib themes
 projects[adaptivetheme][subdir] = contrib

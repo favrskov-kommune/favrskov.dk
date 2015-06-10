@@ -19,14 +19,12 @@
 @import "base/fonts";
 @import "base/layout";
 @import "base/global";
-/*@import "base/tabs";*/
 //------------------------------------------------------------------------------
 // Modules
 @import "modules/slider";
 @import "modules/swiper";
 //------------------------------------------------------------------------------
 // Particles
-/*// @import "partials/menu";*/
 @import "partials/header";
 @import "partials/footer";
 @import "partials/buttons";
@@ -38,54 +36,16 @@
 @import "partials/comments";
 @import "pages/node";
 @import "partials/slider-front-page";
-/*@import "partials/wysiwyg";
-@import "partials/pager";
-@import "partials/faq";
-@import "partials/banner-element";
-@import "partials/slider-element";
-@import "partials/load-more";
-@import "partials/breadcrumbs";
-@import "partials/cookie-msg";
-@import "partials/selectbox";
-@import "partials/combibox";
-@import "partials/help-tips";*/
+
 //------------------------------------------------------------------------------
 // Pages
-/*@import "pages/front";
-/*@import "pages/subject";*/
-/*@import "pages/subscribe";
-@import "pages/events";
-@import "pages/videos";
-@import "pages/onecolumn-node";
-@import "pages/job";*/
 @import "pages/news";
 @import "pages/detail_info";
 @import "pages/all-news";
 @import "pages/subject-page";
 @import "pages/search";
 @import "pages/articles";
-
-/*@import "pages/system";
-@import "pages/import";
-@import "pages/user-page";
-@import "pages/sitemap";
-@import "pages/node-contacts";
-@import "pages/form-confirmation";
-@import "pages/borgerdk-article-page";
-@import "pages/published-case-page";
-@import "pages/meetings-page";
-@import "pages/os2web-kultunaut-import";
-@import "pages/taxonomy-page";*/
-
-// list pages
-/*@import "pages/list-page";
-@import "pages/job-list";
-@import "pages/meeting-page";*/
-
-//------------------------------------------------------------------------------
-// Color schemes
-/*@import "partials/color-schemes";*/
-
+@import "pages/job_importer";
 
 //------------------------------------------------------------------------------
 // Error 404
@@ -93,7 +53,6 @@
 
 //------------------------------------------------------------------------------
 // Customize this page
-
 @import "partials/customize-this-page";
 
 
