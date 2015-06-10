@@ -105,4 +105,3 @@ features[variable][] = scheduler_publish_touch_article
 features[variable][] = scheduler_unpublish_enable_article
 features[variable][] = scheduler_unpublish_required_article
 features[variable][] = scheduler_unpublish_revision_article
-mtime = 1421162834
