@@ -134,9 +134,7 @@ projects[panels][patch][2057897] = https://drupal.org/files/display_pane_admin_t
 projects[panels][patch][2226011] = https://drupal.org/files/issues/panels-ipe-js-loop-2226011-4.patch
 
 projects[features][subdir] = contrib
-;projects[features][version] = 2.0-rc1
-projects[features][version] = 2.0
-projects[features][patch][1063204] = https://drupal.org/files/features--1063204-65-catch-permission-exception.patch
+projects[features][version] = 2.5
 
 projects[job_scheduler][subdir] = contrib
 projects[job_scheduler][version] = 2.0-alpha3
