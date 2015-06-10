@@ -32,19 +32,6 @@ function panel_job_page_default_page_manager_handlers() {
     'access' => array(
       'logic' => 'and',
       'plugins' => array(
-        0 => array(
-          'name' => 'role',
-          'settings' => array(
-            'rids' => array(
-              0 => 3,
-              1 => 5,
-              2 => 6,
-              3 => 4,
-            ),
-          ),
-          'context' => 'logged-in-user',
-          'not' => FALSE,
-        ),
         1 => array(
           'name' => 'node_type',
           'settings' => array(
