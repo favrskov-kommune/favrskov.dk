@@ -60,17 +60,46 @@
     th, td {
       @include font-size(14);
       padding: 9px 10px;
+      position: relative;
     }
   }
 
   thead {
     a {
       color: $white;
+      position: relative;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
     }
 
     th {
       background-color: $dark-green;
+      position: relative;
       text-align: left;
+
+      &:first-child {
+        width: columns(6);
+      }
+
+      &:last-child,
+      &:nth-child(2) {
+        a {
+          display: block;
+          width: 120px;
+        }
+      }
+    }
+
+    .ajax-progress {
+      padding: 0;
+      position: absolute;
+      margin: 0;
+      top: 4px;
+      right: 0;
+      width: 30px;
     }
   }
 
@@ -82,16 +111,8 @@
     td {
       vertical-align: middle;
 
-      &:first-child {
-        width: columns(6);
-      }
-
       &:last-child {
         text-align: right;
-      }
-
-      &:nth-child(2) {
-        width: columns(4);
       }
     }
 
