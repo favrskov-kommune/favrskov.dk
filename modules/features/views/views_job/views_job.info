@@ -1,0 +1,13 @@
+name = Views Job
+description = Presents Job Importer search and Job list.
+core = 7.x
+package = Views
+version = 7.x-1.0
+project = views_job
+dependencies[] = better_exposed_filters
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = job
+features_exclude[dependencies][ctools] = ctools

@@ -1,0 +1,156 @@
+ .node-job {
+  @include font-size(16);
+  line-height: 1.4;
+
+  a {
+    @include links($link-red, $dimgray);
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-family: $sans;
+  }
+
+  h2 { @include font-size(22); }
+  h3 { @include font-size(20); }
+  h4 { @include font-size(18); }
+
+  p {
+    margin-bottom: 22px;
+  }
+
+  li {
+    @include font-size(16);
+    color: $dimgray;
+    font-family: $sans;
+    line-height: 25px;
+    margin-left: 15px;
+  }
+
+  ul {
+    li {
+      list-style: disc;
+    }
+  }
+
+  ol {
+    li {
+      list-style: decimal;
+    }
+  }
+ }
+
+
+.pane-job-job-listing-by-table {
+  @include pager-table;
+  @include at-breakpoint(12 $width-768) {
+    display: none;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  table {
+    font-family: $sans;
+    border-collapse: inherit;
+    border-spacing: 3px;
+
+    th, td {
+      @include font-size(14);
+      padding: 9px 10px;
+      position: relative;
+    }
+  }
+
+  thead {
+    a {
+      color: $white;
+      position: relative;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+    }
+
+    th {
+      background-color: $dark-green;
+      position: relative;
+      text-align: left;
+
+      &:first-child {
+        width: columns(6);
+      }
+
+      &:last-child,
+      &:nth-child(2) {
+        a {
+          display: block;
+          width: 120px;
+        }
+      }
+    }
+
+    .ajax-progress {
+      margin: 0;
+      left: auto;
+      right: 0;
+      top: 4px;
+    }
+  }
+
+  tbody {
+    tr:nth-child(2n) {
+      background-color: $grey;
+    }
+
+    td {
+      vertical-align: middle;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    a {
+      color: $dimgray;
+    }
+  }
+}
+
+.pane-job-job-listing-by-list {
+  @include pager-table;
+  @include at-breakpoint(12 $width-768) {
+    display: block;
+  }
+
+  display: none;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .views-row {
+    background-color: $grey;
+    padding: 5px 9px;
+
+    &:nth-child(2n) {
+      background-color: $light-blue;
+    }
+
+    span:first-child {
+      display: block;
+      font-weight: bold;
+    }
+
+    a {
+      color: $dimgray;
+    }
+
+    & > div {
+      padding: 4px 0;
+    }
+  }
+}

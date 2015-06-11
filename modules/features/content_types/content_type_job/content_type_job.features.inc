@@ -1,16 +1,13 @@
 <?php
 /**
  * @file
- * content_type_article.features.inc
+ * content_type_job.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function content_type_article_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "field_group" && $api == "field_group") {
-    return array("version" => "1");
-  }
+function content_type_job_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -19,12 +16,12 @@ function content_type_article_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function content_type_article_node_info() {
+function content_type_job_node_info() {
   $items = array(
-    'article' => array(
-      'name' => t('Article'),
+    'job' => array(
+      'name' => t('Job'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Used to collect information about actual job positions in Favrskov. Content type items generates automatically.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

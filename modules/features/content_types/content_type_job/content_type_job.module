@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Code for the Content Type Job feature.
+ */
+
+include_once 'content_type_job.features.inc';
+
+/**
+ * Implements hook_admin_paths().
+ */
+function content_type_job_admin_paths() {
+  $paths = array(
+    'import' => TRUE,
+    'import/*' => TRUE,
+  );
+  return $paths;
+}

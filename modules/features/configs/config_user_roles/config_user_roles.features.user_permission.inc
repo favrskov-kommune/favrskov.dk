@@ -385,6 +385,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer feeds',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'feeds',
   );
@@ -394,6 +395,7 @@ function config_user_roles_user_default_permissions() {
     'name' => 'administer feeds_tamper',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'feeds_tamper',
   );
@@ -709,6 +711,13 @@ function config_user_roles_user_default_permissions() {
       'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
     ),
+    'module' => 'panelizer',
+  );
+
+  // Exported permission: 'administer panelizer node job defaults'.
+  $permissions['administer panelizer node job defaults'] = array(
+    'name' => 'administer panelizer node job defaults',
+    'roles' => array(),
     'module' => 'panelizer',
   );
 
@@ -1120,6 +1129,16 @@ function config_user_roles_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'clear job_importer feeds'.
+  $permissions['clear job_importer feeds'] = array(
+    'name' => 'clear job_importer feeds',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: 'clone node'.
   $permissions['clone node'] = array(
     'name' => 'clone node',
@@ -1243,6 +1262,16 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: 'create frontpage content'.
   $permissions['create frontpage content'] = array(
     'name' => 'create frontpage content',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create job content'.
+  $permissions['create job content'] = array(
+    'name' => 'create job content',
     'roles' => array(
       'Administrator' => 'Administrator',
       'Webmaster' => 'Webmaster',
@@ -1495,6 +1524,16 @@ function config_user_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'delete any job content'.
+  $permissions['delete any job content'] = array(
+    'name' => 'delete any job content',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any news content'.
   $permissions['delete any news content'] = array(
     'name' => 'delete any news content',
@@ -1700,6 +1739,16 @@ function config_user_roles_user_default_permissions() {
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete own job content'.
+  $permissions['delete own job content'] = array(
+    'name' => 'delete own job content',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete own news content'.
@@ -2106,6 +2155,16 @@ function config_user_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'edit any job content'.
+  $permissions['edit any job content'] = array(
+    'name' => 'edit any job content',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any news content'.
   $permissions['edit any news content'] = array(
     'name' => 'edit any news content',
@@ -2353,6 +2412,16 @@ function config_user_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'edit own job content'.
+  $permissions['edit own job content'] = array(
+    'name' => 'edit own job content',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit own news content'.
   $permissions['edit own news content'] = array(
     'name' => 'edit own news content',
@@ -2589,6 +2658,15 @@ function config_user_roles_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
+  // Exported permission: 'enter job revision log entry'.
+  $permissions['enter job revision log entry'] = array(
+    'name' => 'enter job revision log entry',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
   // Exported permission: 'enter news revision log entry'.
   $permissions['enter news revision log entry'] = array(
     'name' => 'enter news revision log entry',
@@ -2702,6 +2780,16 @@ function config_user_roles_user_default_permissions() {
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'total_control',
+  );
+
+  // Exported permission: 'import job_importer feeds'.
+  $permissions['import job_importer feeds'] = array(
+    'name' => 'import job_importer feeds',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'feeds',
   );
 
   // Exported permission: 'import media'.
@@ -3209,6 +3297,60 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: 'override frontpage sticky option'.
   $permissions['override frontpage sticky option'] = array(
     'name' => 'override frontpage sticky option',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override job authored by option'.
+  $permissions['override job authored by option'] = array(
+    'name' => 'override job authored by option',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override job authored on option'.
+  $permissions['override job authored on option'] = array(
+    'name' => 'override job authored on option',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override job promote to front page option'.
+  $permissions['override job promote to front page option'] = array(
+    'name' => 'override job promote to front page option',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override job published option'.
+  $permissions['override job published option'] = array(
+    'name' => 'override job published option',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override job revision option'.
+  $permissions['override job revision option'] = array(
+    'name' => 'override job revision option',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override job sticky option'.
+  $permissions['override job sticky option'] = array(
+    'name' => 'override job sticky option',
     'roles' => array(
       'Administrator' => 'Administrator',
     ),
@@ -3772,6 +3914,16 @@ function config_user_roles_user_default_permissions() {
     'module' => 'shortcut',
   );
 
+  // Exported permission: 'tamper job_importer'.
+  $permissions['tamper job_importer'] = array(
+    'name' => 'tamper job_importer',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'feeds_tamper',
+  );
+
   // Exported permission: 'translate admin strings'.
   $permissions['translate admin strings'] = array(
     'name' => 'translate admin strings',
@@ -3812,6 +3964,16 @@ function config_user_roles_user_default_permissions() {
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'i18n_string',
+  );
+
+  // Exported permission: 'unlock job_importer feeds'.
+  $permissions['unlock job_importer feeds'] = array(
+    'name' => 'unlock job_importer feeds',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'feeds',
   );
 
   // Exported permission: 'use PHP for tracking visibility'.
