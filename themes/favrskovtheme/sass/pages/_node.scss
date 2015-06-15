@@ -108,7 +108,8 @@
   }
 
   // Node Content
-  .node-body {
+  .node-body,
+  .node-type-job & {
    @include font-size(16);
    line-height: 1.4;
 
