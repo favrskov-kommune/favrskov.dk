@@ -108,8 +108,9 @@
   }
 
   // Node Content
-  .node-body {
-   @include font-size(16);
+  .node-body,
+  .node-type-job & {
+   @include font-size(17);
    line-height: 1.4;
 
    a {
@@ -131,7 +132,7 @@
     }
 
     li {
-      @include font-size(16);
+      @include font-size(17);
       color: $dimgray;
       font-family: $sans;
       margin-left: 15px;
