@@ -22,3 +22,47 @@ function config_user_form_user_login_alter(&$form, &$form_state, $form_id) {
     '#id' => 'password-link',
   );
 }
+
+/**
+ * Implements hook_cronapi().
+ */
+function config_user_account_cleanup_cronapi($op, $job = NULL) {
+  $items['user_account_cleanup_cron'] = array(
+    'description' => 'Send mail with news',
+    'rule' => '0 1 * * *',
+  );
+
+  return $items;
+}
+
+/**
+ * Called by user_account_cleanup_cronapi().
+ * Select all abandoned user UIDs and delete them.
+ */
+function config_user_account_cleanup_cron() {
+  $abandoned_timestamp = variable_get('account_cleanup_abandoned_timestamp', strtotime('-3 months'));
+
+  // Fetch all uids older then 3 month.
+  $abandoned_uids = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->condition('login', $abandoned_timestamp,'<')
+    ->execute()
+    ->fetchAll(PDO::FETCH_COLUMN);
+
+  if (!empty($abandoned_uids)) {
+    // uid = 0 belongs to anonymous user.
+    // uid = 1 belongs to admin user.
+    $restricted_uids = variable_get('account_cleanup_restricted_uids', array(0, 1));
+    foreach ($abandoned_uids as $index => $uid) {
+      // Remove restricted uids from further deletion.
+      if (in_array($uid, $restricted_uids)) {
+        unset($abandoned_uids[$index]);
+      }
+    }
+    user_delete_multiple($abandoned_uids);
+    $deleted_uids = implode(', ', $abandoned_uids);
+    watchdog('account_cleanup', 'Abandoned user accounts with uid(s) %uids were deleted.',  array('%uids' => $deleted_uids));
+  } else {
+    watchdog('account_cleanup', 'There are no user accounts that needs to be deleted.');
+  }
+}
