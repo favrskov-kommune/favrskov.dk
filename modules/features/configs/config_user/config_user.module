@@ -44,7 +44,7 @@ function config_user_account_cleanup_cron() {
   // Fetch all uids older then 3 month.
   $abandoned_uids = db_select('users', 'u')
     ->fields('u', array('uid'))
-    ->condition('login', $abandoned_timestamp,'<')
+    ->condition('login', $abandoned_timestamp, '<')
     ->execute()
     ->fetchAll(PDO::FETCH_COLUMN);
 
@@ -59,8 +59,11 @@ function config_user_account_cleanup_cron() {
       }
     }
     user_delete_multiple($abandoned_uids);
-    $deleted_uids = implode(', ', $abandoned_uids);
-    watchdog('account cleanup', 'Abandoned user accounts with uid(s) %uids were deleted.',  array('%uids' => $deleted_uids));
+    $variables = array(
+      '%uids' => implode(', ', $abandoned_uids),
+      '%total' => count($abandoned_uids)
+    );
+    watchdog('account cleanup', 'Abandoned user accounts with uid(s) %uids were deleted. Total accounts number: %total.', $variables);
   } else {
     watchdog('account cleanup', 'There are no user accounts that needs to be deleted.');
   }
