@@ -26,12 +26,11 @@ function config_user_form_user_login_alter(&$form, &$form_state, $form_id) {
 /**
  * Implements hook_cronapi().
  */
-function config_user_account_cleanup_cronapi($op, $job = NULL) {
-  $items['user_account_cleanup_cron'] = array(
-    'description' => 'Send mail with news',
+function config_user_cronapi($op, $job = NULL) {
+  $items['config_user_account_cleanup_cron'] = array(
+    'description' => 'Delete abandoned user accounts',
     'rule' => '0 1 * * *',
   );
-
   return $items;
 }
 
@@ -61,8 +60,8 @@ function config_user_account_cleanup_cron() {
     }
     user_delete_multiple($abandoned_uids);
     $deleted_uids = implode(', ', $abandoned_uids);
-    watchdog('account_cleanup', 'Abandoned user accounts with uid(s) %uids were deleted.',  array('%uids' => $deleted_uids));
+    watchdog('account cleanup', 'Abandoned user accounts with uid(s) %uids were deleted.',  array('%uids' => $deleted_uids));
   } else {
-    watchdog('account_cleanup', 'There are no user accounts that needs to be deleted.');
+    watchdog('account cleanup', 'There are no user accounts that needs to be deleted.');
   }
 }
