@@ -153,7 +153,6 @@ features[user_permission][] = administer panelizer node frontpage defaults
 features[user_permission][] = administer panelizer node frontpage layout
 features[user_permission][] = administer panelizer node frontpage overview
 features[user_permission][] = administer panelizer node frontpage settings
-features[user_permission][] = administer panelizer node job defaults
 features[user_permission][] = administer panelizer node subjectpage breadcrumbs
 features[user_permission][] = administer panelizer node subjectpage content
 features[user_permission][] = administer panelizer node subjectpage context

@@ -27,5 +27,6 @@ function content_type_slider_element_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

@@ -714,13 +714,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: 'administer panelizer node job defaults'.
-  $permissions['administer panelizer node job defaults'] = array(
-    'name' => 'administer panelizer node job defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: 'administer panelizer node subjectpage breadcrumbs'.
   $permissions['administer panelizer node subjectpage breadcrumbs'] = array(
     'name' => 'administer panelizer node subjectpage breadcrumbs',
@@ -4084,6 +4077,7 @@ function config_user_roles_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'filter',
