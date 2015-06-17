@@ -17,7 +17,6 @@ function content_type_slider_element_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'cntrmd_slider_element',
-    'foreign keys' => array(),
     'indexes' => array(
       'date' => array(
         0 => 'date',
@@ -37,14 +36,6 @@ function content_type_slider_element_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_description',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -66,14 +57,6 @@ function content_type_slider_element_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_link_text',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',

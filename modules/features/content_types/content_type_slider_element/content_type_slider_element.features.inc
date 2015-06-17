@@ -23,9 +23,10 @@ function content_type_slider_element_node_info() {
       'base' => 'node_content',
       'description' => t('Et stort billede med tekstboks. Kan indsættes i en slider'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Overskrift'),
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
