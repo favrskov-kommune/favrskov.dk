@@ -22,3 +22,81 @@ function config_user_form_user_login_alter(&$form, &$form_state, $form_id) {
     '#id' => 'password-link',
   );
 }
+
+/**
+ * Implements hook_cronapi().
+ */
+function config_user_cronapi($op, $job = NULL) {
+  $items['config_user_account_cleanup_cron'] = array(
+    'description' => 'Delete abandoned user accounts',
+    'rule' => '* 1 */3 * *',
+  );
+  return $items;
+}
+
+/**
+ * Called by user_account_cleanup_cronapi().
+ * Select all abandoned user UIDs and delete them.
+ */
+function config_user_account_cleanup_cron() {
+  $abandoned_timestamp = variable_get('account_cleanup_abandoned_timestamp', strtotime('-3 months'));
+
+  // Fetch all uids older then 3 month.
+  $abandoned_uids = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->condition('login', $abandoned_timestamp, '<')
+    ->execute()
+    ->fetchAll(PDO::FETCH_COLUMN);
+
+  if (!empty($abandoned_uids)) {
+    // uid = 0 belongs to anonymous user.
+    // uid = 1 belongs to admin user.
+    $restricted_uids = variable_get('account_cleanup_restricted_uids', array(0, 1));
+    foreach ($abandoned_uids as $index => $uid) {
+      // Remove restricted uids from further deletion.
+      if (in_array($uid, $restricted_uids)) {
+        unset($abandoned_uids[$index]);
+      } else {
+        config_user_node_reassign($uid);
+      }
+    }
+    user_delete_multiple($abandoned_uids);
+
+    // Verify once again due to filtering with restricted uids.
+    if (!empty($abandoned_uids)) {
+      $variables = array(
+        '%uids' => implode(', ', $abandoned_uids),
+        '%total' => count($abandoned_uids)
+      );
+      watchdog('account cleanup', 'Abandoned user accounts with uid(s) %uids were deleted. Total accounts number: %total.', $variables);
+    } else {
+      watchdog('account cleanup', 'There are no user accounts that needs to be deleted.');
+    }
+  }
+}
+
+/**
+ * Partially overrides hook_user_cancel().
+ * Reassign nodes to admin user (uid = 1).
+ *
+ * @see node_user_cancel()
+ */
+function config_user_node_reassign($uid) {
+  // Reassign nodes (current revisions).
+  module_load_include('inc', 'node', 'node.admin');
+  $nodes = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('uid', $uid)
+    ->execute()
+    ->fetchCol();
+  node_mass_update($nodes, array('uid' => 1));
+  // Reassign old revisions.
+  db_update('node_revision')
+    ->fields(array('uid' => 1))
+    ->condition('uid', $uid)
+    ->execute();
+  // Clean history.
+  db_delete('history')
+    ->condition('uid', $uid)
+    ->execute();
+}
