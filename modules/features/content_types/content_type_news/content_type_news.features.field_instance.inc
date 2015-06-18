@@ -1198,7 +1198,7 @@ function content_type_news_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'tablefield',
-      'weight' => 9,
+      'weight' => 7,
     ),
   );
 
@@ -1470,7 +1470,6 @@ function content_type_news_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'job_html' => 'job_html',
-          'mailchimp_campaign' => 'mailchimp_campaign',
           'plain_text' => 'plain_text',
           'video_html' => 'video_html',
         ),
@@ -1488,9 +1487,6 @@ function content_type_news_field_default_field_instances() {
               'weight' => 0,
             ),
             'job_html' => array(
-              'weight' => 0,
-            ),
-            'mailchimp_campaign' => array(
               'weight' => 0,
             ),
             'plain_text' => array(
