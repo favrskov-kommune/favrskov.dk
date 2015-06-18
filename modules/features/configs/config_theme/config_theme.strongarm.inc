@@ -28,7 +28,7 @@ function config_theme_strongarm() {
     'logo_path' => '',
     'logo_upload' => '',
     'default_favicon' => 0,
-    'favicon_path' => 'public://favicon_0.ico',
+    'favicon_path' => 'public://favicon_0_1.ico',
     'layout_base_type' => NULL,
     'propeople_shiv' => 1,
     'propeople_shiv_google' => 0,
