@@ -74,7 +74,7 @@
     }
 
     .taxonomy-pic {
-      background-color: $liteGray;
+      @include opacity(0.5);
     }
   }
 
@@ -227,10 +227,10 @@
 // Taxonomy Image on Subject-grid
 .taxonomy-pic {
   margin: 0 auto 14px;
-  height: 70px;
-  @include border-radius(50%);
-  background-color: $dark-green;
-  width: 70px;
+  height: 80px;
+  //@include border-radius(50%);
+  //background-color: $dark-green;
+  width: 80px;
   position: relative;
 
   // Colors theme
