@@ -32,7 +32,7 @@ function theme_config_pane_styles_colored_render_pane($vars) {
     // Get background image.
     if (!empty($vars['settings']['background']['background_image']['fid'])) {
       // Set transparent background for child element.
-      $image = file_load($vars['settings']['background']['background_image']);
+      $image = file_load($vars['settings']['background']['background_image']['fid']);
     }
 
     // Make default background transparent
