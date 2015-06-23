@@ -141,8 +141,7 @@ projects[job_scheduler][subdir] = contrib
 projects[job_scheduler][version] = 2.0-alpha3
 
 projects[jquery_update][subdir] = contrib
-;projects[jquery_update][version] = 2.3
-projects[jquery_update][version] = 2.4
+projects[jquery_update][version] = 2.6
 
 projects[module_filter][subdir] = contrib
 projects[module_filter][version] = 2.0
