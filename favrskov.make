@@ -508,8 +508,8 @@ projects[node_clone][version] = 1.0-rc2
 
 projects[jquery_colorpicker][subdir] = contrib
 projects[jquery_colorpicker][version] = 1.0-rc2
-projects[jquery_colorpicker][patch][] = "https://raw.githubusercontent.com/geo0000/custom-patches/master/jquery_colorpicker-states-fix-0.patch"
-
+projects[jquery_colorpicker][patch][0] = "https://raw.githubusercontent.com/geo0000/custom-patches/master/jquery_colorpicker-states-fix-0.patch"
+projects[jquery_colorpicker][patch][1991042] = https://www.drupal.org/files/set-higher-zindex-1991042-2.patch
 
 projects[jslider_field][subdir] = contrib
 projects[jslider_field][version] = 1.0-alpha3
