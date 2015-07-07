@@ -13,6 +13,9 @@ function panels_aside_menu_block_domain_menu_block_menu_name_alter(&$menu_name, 
   }
 }
 
+/**
+ * Implements hook_menu_breadcrumb_alter().
+ */
 function panels_aside_menu_block_menu_breadcrumb_alter(&$active_trail, $item) {
   $domain = domain_get_domain();
 
