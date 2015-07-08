@@ -408,15 +408,6 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_description']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_description']['element_default_classes'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_hide_text']['id'] = 'field_hide_text';
-  $handler->display->display_options['fields']['field_hide_text']['table'] = 'field_data_field_hide_text';
-  $handler->display->display_options['fields']['field_hide_text']['field'] = 'field_hide_text';
-  $handler->display->display_options['fields']['field_hide_text']['label'] = '';
-  $handler->display->display_options['fields']['field_hide_text']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_hide_text']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_hide_text']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_hide_text']['empty_zero'] = TRUE;
   /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
