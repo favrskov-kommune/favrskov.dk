@@ -85,6 +85,7 @@ features[field_instance][] = node-shared-field_piwik_year
 features[field_instance][] = node-shared-field_related_boxes
 features[field_instance][] = node-shared-field_related_content
 features[field_instance][] = node-shared-field_self_service
+features[field_instance][] = node-shared-field_table
 features[field_instance][] = node-shared-field_taxonomy_kle
 features[field_instance][] = node-shared-field_taxonomy_local
 features[field_instance][] = node-shared-field_taxonomy_location
