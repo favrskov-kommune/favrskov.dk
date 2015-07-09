@@ -172,7 +172,8 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_publications-field_image'
+  // Exported field_instance:
+  // 'field_collection_item-field_publications-field_image'
   $field_instances['field_collection_item-field_publications-field_image'] = array(
     'bundle' => 'field_publications',
     'deleted' => 0,
@@ -236,7 +237,8 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_publications-field_link'
+  // Exported field_instance:
+  // 'field_collection_item-field_publications-field_link'
   $field_instances['field_collection_item-field_publications-field_link'] = array(
     'bundle' => 'field_publications',
     'default_value' => NULL,
@@ -296,7 +298,8 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_publications-field_open_in_new_window'
+  // Exported field_instance:
+  // 'field_collection_item-field_publications-field_open_in_new_window'
   $field_instances['field_collection_item-field_publications-field_open_in_new_window'] = array(
     'bundle' => 'field_publications',
     'default_value' => array(
@@ -334,7 +337,8 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_publications-field_pdf_file'
+  // Exported field_instance:
+  // 'field_collection_item-field_publications-field_pdf_file'
   $field_instances['field_collection_item-field_publications-field_pdf_file'] = array(
     'bundle' => 'field_publications',
     'deleted' => 0,
@@ -391,7 +395,8 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_publications-field_publications_description'
+  // Exported field_instance:
+  // 'field_collection_item-field_publications-field_publications_description'
   $field_instances['field_collection_item-field_publications-field_publications_description'] = array(
     'bundle' => 'field_publications',
     'default_value' => NULL,
@@ -474,7 +479,8 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_publications-field_title'
+  // Exported field_instance:
+  // 'field_collection_item-field_publications-field_title'
   $field_instances['field_collection_item-field_publications-field_title'] = array(
     'bundle' => 'field_publications',
     'default_value' => NULL,
