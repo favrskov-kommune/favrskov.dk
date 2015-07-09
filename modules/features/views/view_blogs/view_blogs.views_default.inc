@@ -23,11 +23,17 @@ function view_blogs_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'more';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Apply';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort by';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Asc';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Desc';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'list';
@@ -65,6 +71,7 @@ function view_blogs_views_default_views() {
   $handler->display->display_options['arguments']['type']['field'] = 'type';
   $handler->display->display_options['arguments']['type']['relationship'] = 'nid';
   $handler->display->display_options['arguments']['type']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['type']['exception']['title'] = 'All';
   $handler->display->display_options['arguments']['type']['title_enable'] = TRUE;
   $handler->display->display_options['arguments']['type']['title'] = 'Kategori';
   $handler->display->display_options['arguments']['type']['default_argument_type'] = 'fixed';

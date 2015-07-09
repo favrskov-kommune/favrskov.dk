@@ -62,6 +62,15 @@ function content_type_self_service_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'domain_node_self_service';
+  $strongarm->value = array(
+    0 => 'DOMAIN_ACTIVE',
+  );
+  $export['domain_node_self_service'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__self_service';
   $strongarm->value = array(
     'view_modes' => array(
@@ -181,7 +190,7 @@ function content_type_self_service_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_self_service';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_self_service'] = $strongarm;
 
   return $export;

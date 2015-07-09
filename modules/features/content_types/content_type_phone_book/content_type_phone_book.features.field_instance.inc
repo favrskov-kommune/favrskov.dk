@@ -96,7 +96,8 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_opening_hours-field_day_of_week'
+  // Exported field_instance:
+  // 'field_collection_item-field_opening_hours-field_day_of_week'
   $field_instances['field_collection_item-field_opening_hours-field_day_of_week'] = array(
     'bundle' => 'field_opening_hours',
     'default_value' => NULL,
@@ -821,16 +822,16 @@ function content_type_phone_book_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Address');
   t('Cell phone');
-  t('Notification');
   t('Day of week');
   t('Email');
+  t('Internal title');
   t('Map Link');
+  t('Notification');
   t('Opening hours');
   t('Phone number');
   t('Stuff');
   t('Time');
   t('Time must be in format \'09.00-16.00\'');
-  t('Internal title');
   t('Used for admin content overview page instead of title field.');
 
   return $field_instances;

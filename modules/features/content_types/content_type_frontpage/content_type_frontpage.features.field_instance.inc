@@ -330,6 +330,49 @@ function content_type_frontpage_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-frontpage-cntrmd_frontpage'
+  $field_instances['node-frontpage-cntrmd_frontpage'] = array(
+    'bundle' => 'frontpage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'none',
+        'weight' => 11,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'cntrmd_frontpage',
+    'label' => 'Notification',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'content_reminder',
+      'settings' => array(),
+      'type' => 'content_reminder_widget',
+      'weight' => 7,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Editorial responsibility');

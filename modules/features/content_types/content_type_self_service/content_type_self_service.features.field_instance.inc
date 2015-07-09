@@ -520,14 +520,58 @@ function content_type_self_service_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-self_service-cntrmd_self_service'
+  $field_instances['node-self_service-cntrmd_self_service'] = array(
+    'bundle' => 'self_service',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'none',
+        'weight' => 11,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'cntrmd_self_service',
+    'label' => 'Notification',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'content_reminder',
+      'settings' => array(),
+      'type' => 'content_reminder_widget',
+      'weight' => 3,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
-  t('Displayed Title');
   t('Alt text');
+  t('Displayed Title');
+  t('Internal title');
   t('Link');
+  t('Notification');
   t('Require login');
   t('Teaser');
-  t('Internal title');
   t('Used for admin content overview page instead of title field.');
 
   return $field_instances;

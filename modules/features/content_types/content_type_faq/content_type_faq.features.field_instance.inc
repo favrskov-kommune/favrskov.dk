@@ -503,8 +503,9 @@ function content_type_faq_field_default_field_instances() {
   t('Comment');
   t('Displayed Title');
   t('FAQ');
-  t('Question');
   t('Internal title');
+  t('Notification');
+  t('Question');
   t('Used for admin content overview page instead of title field.');
 
   return $field_instances;

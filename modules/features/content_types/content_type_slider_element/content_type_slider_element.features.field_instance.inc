@@ -511,9 +511,12 @@ function content_type_slider_element_field_default_field_instances() {
   t('Description');
   t('Image');
   t('Image alt text');
+  t('Internal title');
   t('Link');
   t('Notification');
+  t('Please, upload image in landscape format only.');
   t('Slider menu text');
+  t('Used for admin content overview page instead of title field.');
 
   return $field_instances;
 }
