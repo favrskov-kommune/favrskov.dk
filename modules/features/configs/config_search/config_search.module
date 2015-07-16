@@ -43,6 +43,34 @@ function config_search_apachesolr_process_results(array &$results, DrupalSolrQue
 }
 
 /**
+ * Implements hook_apachesolr_index_document_build().
+ */
+function config_search_apachesolr_index_document_build(ApacheSolrDocument $document, $entity, $entity_type, $env_id) {
+  // Deal with domains functionality.
+  $entity_domains = isset($entity->domains) ? $entity->domains : domain_id_list();
+
+  foreach ($entity_domains as $domain) {
+    // The gid in the {domain} table is unsigned, but the domain module makes
+    // it -1 for the deault domain. Also apache doesn't like it if we query
+    // for domain id -1.
+    if ($domain == -1) {
+      $domain = 0;
+    }
+
+    // Build an apachesolr-compatible domain search index key.
+    $key = array(
+      'name'  => 'domain_id',
+      'multiple'  => TRUE,
+      'index_type'  => 'integer',
+    );
+    $key = apachesolr_index_key($key);
+
+    // Add domain key to document.
+    $document->addField($key, $domain);
+  }
+}
+
+/**
  * Implements hook_apachesolr_index_document_build_ENTITY_TYPE().
  *
  * Adds custom fields to solr index.
@@ -100,6 +128,10 @@ function config_search_apachesolr_query_prepare($query) {
  */
 function config_search_apachesolr_query_alter($query) {
   $query->addContext(array('page_id' => apachesolr_search_default_search_page()));
+
+  // Add domain key to filter all queries.
+  $domain = domain_get_domain();
+  $query->addParam('fq', 'im_domain_id:' . $domain['domain_id']);
 }
 
 /**

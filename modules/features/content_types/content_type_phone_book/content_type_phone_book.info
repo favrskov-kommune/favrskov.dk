@@ -5,7 +5,6 @@ version = 7.x-1.0
 project = content_type_phone_book
 dependencies[] = addressfield
 dependencies[] = content_reminder
-dependencies[] = content_type_phone_book
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = email
