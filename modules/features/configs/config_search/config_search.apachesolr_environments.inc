@@ -19,20 +19,19 @@ function config_search_apachesolr_environments() {
   $environment->conf = array(
     'apachesolr_index_last' => array(
       'node' => array(
-        'last_changed' => '1436360349',
-        'last_entity_id' => '2782',
+        'last_changed' => '1437039795',
+        'last_entity_id' => '1387',
       ),
     ),
-    'apachesolr_index_updated' => 1437031561,
+    'apachesolr_index_updated' => 1437040304,
     'apachesolr_last_optimize' => 1437024814,
   );
   $environment->index_bundles = array(
     'node' => array(
       0 => 'article',
-      1 => 'frontpage',
-      2 => 'job',
-      3 => 'news',
-      4 => 'phone_book',
+      1 => 'job',
+      2 => 'news',
+      3 => 'phone_book',
     ),
     'file' => array(
       0 => 'document',
