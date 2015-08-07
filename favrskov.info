@@ -158,7 +158,6 @@ dependencies[] = config_user_fields
 dependencies[] = media_breakpoints
 dependencies[] = media_picture
 dependencies[] = media_imagestyles
-dependencies[] = view_matrix
 dependencies[] = token_custom
 dependencies[] = text_formats_all
 dependencies[] = config_custom_tokens

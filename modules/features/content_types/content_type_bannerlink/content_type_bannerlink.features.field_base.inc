@@ -17,7 +17,6 @@ function content_type_bannerlink_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'cntrmd_bannerlink',
-    'foreign keys' => array(),
     'indexes' => array(
       'date' => array(
         0 => 'date',
@@ -37,7 +36,6 @@ function content_type_bannerlink_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_banner_link_color',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',

@@ -1426,6 +1426,83 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-shared-field_table'
+  $field_instances['node-shared-field_table'] = array(
+    'bundle' => 'shared',
+    'default_value' => array(
+      0 => array(
+        'tablefield' => array(
+          'cell_0_0' => '',
+          'cell_0_1' => '',
+          'cell_0_2' => '',
+          'cell_1_0' => '',
+          'cell_1_1' => '',
+          'cell_1_2' => '',
+          'cell_2_0' => '',
+          'cell_2_1' => '',
+          'cell_2_2' => '',
+          'cell_3_0' => '',
+          'cell_3_1' => '',
+          'cell_3_2' => '',
+          'import' => array(
+            'rebuild_field_table_0' => 'Upload CSV',
+            'tablefield_csv_field_table_0' => '',
+          ),
+          'rebuild' => array(
+            'count_cols' => 3,
+            'count_rows' => 4,
+            'rebuild' => 'Rebuild Table',
+          ),
+        ),
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'tablefield',
+        'settings' => array(),
+        'type' => 'default',
+        'weight' => 24,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_table',
+    'label' => 'Table',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'tablefield',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'tablefield',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-shared-field_taxonomy_kle'
   $field_instances['node-shared-field_taxonomy_kle'] = array(
     'bundle' => 'shared',
@@ -1797,87 +1874,10 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_table'
-  $field_instances['node-shared-field_table'] = array(
-    'bundle' => 'news',
-    'default_value' => array(
-      0 => array(
-        'tablefield' => array(
-          'cell_0_0' => '',
-          'cell_0_1' => '',
-          'cell_0_2' => '',
-          'cell_1_0' => '',
-          'cell_1_1' => '',
-          'cell_1_2' => '',
-          'cell_2_0' => '',
-          'cell_2_1' => '',
-          'cell_2_2' => '',
-          'cell_3_0' => '',
-          'cell_3_1' => '',
-          'cell_3_2' => '',
-          'import' => array(
-            'rebuild_field_table_0' => 'Upload CSV',
-            'tablefield_csv_field_table_0' => '',
-          ),
-          'rebuild' => array(
-            'count_cols' => 3,
-            'count_rows' => 4,
-            'rebuild' => 'Rebuild Table',
-          ),
-        ),
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'tablefield',
-        'settings' => array(),
-        'type' => 'default',
-        'weight' => 24,
-      ),
-      'print' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_table',
-    'label' => 'Table',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'tablefield',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'tablefield',
-      'weight' => 7,
-    ),
-  );
-
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Alt Text');
+  t('Bannerlink');
   t('Body');
   t('Contact Information');
   t('Description');
@@ -1890,6 +1890,7 @@ function fields_shared_field_default_field_instances() {
   t('Image alt text');
   t('Image description');
   t('Internal link');
+  t('Internal title');
   t('Link');
   t('Photographer');
   t('Piwik Day');
@@ -1899,6 +1900,7 @@ function fields_shared_field_default_field_instances() {
   t('Related boxes');
   t('Related content');
   t('Self Service');
+  t('Table');
   t('Taxonomy, KLE');
   t('Taxonomy, Location');
   t('Taxonomy, Subject Area');
@@ -1907,9 +1909,9 @@ function fields_shared_field_default_field_instances() {
   t('Title Text');
   t('Title text attribute');
   t('Top image');
+  t('Used for admin content overview page instead of title field.');
   t('Video');
   t('Video description');
-  t('Used for admin content overview page instead of title field.');
-  t('Internal title');
+
   return $field_instances;
 }
