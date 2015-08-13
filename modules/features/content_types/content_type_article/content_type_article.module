@@ -115,18 +115,3 @@ function content_type_article_workbench_moderation_states_next_alter(&$states, $
     }
   }
 }
-
-/**
- * Implements hook_node_view().
- */
-function content_type_article_node_view($node, $view_mode, $langcode) {
-  if ($node->type == 'article') {
-    drupal_add_js('http://webkort.favrskov.dk/modules/minimap2/js/2.3/minimap.js', array(
-        'type' => 'external',
-        'scope' => 'footer',
-        'group' => JS_DEFAULT,
-        'weight' => 100,
-      )
-    );
-  }
-}
