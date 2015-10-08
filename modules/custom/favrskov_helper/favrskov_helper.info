@@ -1,0 +1,6 @@
+name = Favrskov Helper
+description = Main engine of custom code for Favrskov project.
+core = 7.x
+package = Favrskov
+
+dependencies[] = features
