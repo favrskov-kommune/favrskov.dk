@@ -846,15 +846,7 @@ function panel_news_page_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Custom share',
       'title' => '',
-      'body' => '<!-- <a class="toggle-share" href="#">Del</a>
-<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-<a class="addthis_button_facebook"></a>
-<a class="addthis_button_google_plusone_share"></a>
-<a class="addthis_button_twitter"></a>
-<a class="addthis_button_linkedin"></a>
-<a class="addthis_button_email"></a>
-</div> -->
-<a class="print_data" href="#">Udskriv</a>',
+      'body' => '<a class="print_data" href="#">'. t('Print') . '</a>',
       'format' => 'video_html',
       'substitute' => TRUE,
       'name' => 'custom_share_used_on_news_pages',

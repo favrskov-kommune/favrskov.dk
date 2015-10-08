@@ -235,13 +235,7 @@ function panel_publishing_case_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Custom share',
       'title' => '',
-      'body' => '<!-- <a class="toggle-share" href="#">' . t('Share') . '</a>
-<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-<a class="addthis_button_facebook"></a>
-<a class="addthis_button_google_plusone_share"></a>
-<a class="addthis_button_twitter"></a>
-</div> -->
-<a class="print_data" href="#">' . t('Print') . '</a>',
+      'body' => '<a class="print_data" href="#">' . t('Print') . '</a>',
       'format' => 'video_html',
       'substitute' => TRUE,
     );
