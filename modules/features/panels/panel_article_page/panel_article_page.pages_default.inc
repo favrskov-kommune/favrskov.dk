@@ -933,9 +933,7 @@ function panel_article_page_default_page_manager_handlers() {
 
 </div>-->
 
-<a class="print_data" href="#">' . t('Print') . '</a>
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520e4c8a1550db4c"></script>',
+<a class="print_data" href="#">' . t('Print') . '</a>',
       'format' => 'video_html',
       'substitute' => 1,
     );
@@ -1163,17 +1161,14 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Custom share',
       'title' => '',
-      'body' => '<a class="toggle-share" href="#">' . t('Share') . '</a>
-
-<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-<a class="addthis_button_facebook"></a>
-<a class="addthis_button_google_plusone_share"></a>
-<a class="addthis_button_twitter"></a>
-<a class="addthis_button_linkedin"></a>
-<a class="addthis_button_email"></a>
-</div>
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520e4c8a1550db4c"></script>',
+      'body' => '<!-- <a class="toggle-share" href="#">' . t('Share') . '</a>
+                <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_google_plusone_share"></a>
+                <a class="addthis_button_twitter"></a>
+                <a class="addthis_button_linkedin"></a>
+                <a class="addthis_button_email"></a>
+                </div> -->',
       'format' => 'video_html',
       'substitute' => TRUE,
     );
