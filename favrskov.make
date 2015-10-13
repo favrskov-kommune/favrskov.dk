@@ -549,7 +549,9 @@ projects[dynamic_background][version] = 2.0-rc4
 projects[dynamic_background][patch][1904738] = "https://drupal.org/files/issues/dynamic_background-domain-1904738-4.patch"
 
 projects[content_reminder][subdir] = contrib
-projects[content_reminder][version] = 1.0
+projects[content_reminder][download][type] = "git"
+projects[content_reminder][download][url] = "git://git.drupal.org/project/content_reminder.git"
+projects[content_reminder][download][branch] = "7.x-1.x"
 projects[content_reminder][patch][2342697] = "https://www.drupal.org/files/issues/content_reminder-set_focus_only_once-2342697-1-D7.patch"
 
 projects[workbench_moderation][subdir] = contrib
