@@ -22,3 +22,16 @@ function favrskov_helper_install() {
     'panel_webform_page',
   ));
 }
+
+/**
+ * Added translations.
+ */
+function favrskov_helper_update_7000() {
+  t('Vacancies');
+  t('Application deadline');
+
+  locale_add_translation('Vacancies', 'da', 'Ledige stillinger');
+  locale_add_translation('Application deadline', 'da', 'Ansøgningsfrist');
+
+  locale_clear_cache();
+}
