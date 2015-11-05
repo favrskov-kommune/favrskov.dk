@@ -30,10 +30,12 @@ function favrskov_helper_update_7000() {
   t('Vacancies');
   t('Application deadline');
   t('Place of work');
+  t('Description');
 
   locale_add_translation('Vacancies', 'da', 'Ledige stillinger');
   locale_add_translation('Application deadline', 'da', 'Ansøgningsfrist');
   locale_add_translation('Place of work', 'da', 'Arbejdssted');
+  locale_add_translation('Description', 'da', 'Beskrivelse');
 
   locale_clear_cache();
 }
