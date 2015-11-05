@@ -313,7 +313,7 @@ function views_job_views_default_views() {
   $handler->display->display_options['filters']['title']['group'] = 1;
   $handler->display->display_options['filters']['title']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['label'] = 'Overskrift';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Vacancies';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
@@ -393,7 +393,6 @@ function views_job_views_default_views() {
     t('View panes'),
     t('Job listing by list'),
     t('Vælg et filter og klik på Anvend for at se resultater'),
-    t('Overskrift'),
     t('Description'),
   );
   $export['job'] = $view;
