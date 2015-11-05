@@ -261,7 +261,7 @@ function views_job_views_default_views() {
   $handler->display->display_options['fields']['field_job_description']['id'] = 'field_job_description';
   $handler->display->display_options['fields']['field_job_description']['table'] = 'field_data_field_job_description';
   $handler->display->display_options['fields']['field_job_description']['field'] = 'field_job_description';
-  $handler->display->display_options['fields']['field_job_description']['label'] = 'Beskrivelse';
+  $handler->display->display_options['fields']['field_job_description']['label'] = 'Description';
   $handler->display->display_options['fields']['field_job_description']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_job_description']['type'] = 'smart_trim_format';
   $handler->display->display_options['fields']['field_job_description']['settings'] = array(
@@ -332,7 +332,7 @@ function views_job_views_default_views() {
   $handler->display->display_options['filters']['field_job_description_value']['group'] = 1;
   $handler->display->display_options['filters']['field_job_description_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_job_description_value']['expose']['operator_id'] = 'field_job_description_value_op';
-  $handler->display->display_options['filters']['field_job_description_value']['expose']['label'] = 'Beskrivelse';
+  $handler->display->display_options['filters']['field_job_description_value']['expose']['label'] = 'Description';
   $handler->display->display_options['filters']['field_job_description_value']['expose']['operator'] = 'field_job_description_value_op';
   $handler->display->display_options['filters']['field_job_description_value']['expose']['identifier'] = 'field_job_description_value';
   $handler->display->display_options['filters']['field_job_description_value']['expose']['remember_roles'] = array(
@@ -394,7 +394,7 @@ function views_job_views_default_views() {
     t('Job listing by list'),
     t('Vælg et filter og klik på Anvend for at se resultater'),
     t('Overskrift'),
-    t('Beskrivelse'),
+    t('Description'),
   );
   $export['job'] = $view;
 
