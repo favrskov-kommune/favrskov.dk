@@ -33,3 +33,12 @@ function locale_clear_cache() {
   _locale_invalidate_js();
   cache_clear_all('locale:', 'cache', TRUE);
 }
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function favrskov_helper_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'feeds_tamper' && $plugin_type == 'plugins') {
+    return 'feeds_tamper_plugins/';
+  }
+}
