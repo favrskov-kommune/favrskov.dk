@@ -39,7 +39,7 @@ function favrskov_helper_update_7000() {
   locale_add_translation('Place of work', 'da', 'Arbejdssted');
   locale_add_translation('Description', 'da', 'Beskrivelse');
   locale_add_translation('Apply link', 'da', 'Søg stillingen via dette link');
-  locale_add_translation('Start date', 'da', 'ololo');
+  locale_add_translation('Start date', 'da', 'Ansøgningsfrist');
 
   locale_clear_cache();
 
