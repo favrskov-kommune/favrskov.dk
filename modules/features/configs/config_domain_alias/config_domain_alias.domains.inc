@@ -18,13 +18,6 @@ function config_domain_alias_domain_alias_default_aliases() {
     ),
   );
   $domain_aliases['favrskov_dk'] = array();
-  $domain_aliases['naturportalen_favrskov_dk'] = array(
-    'www.naturportalen.favrskov.dk' => array(
-      'pattern' => 'www.naturportalen.favrskov.dk',
-      'redirect' => 0,
-      'machine_name' => 'naturportalen_favrskov_dk',
-    ),
-  );
 
   return $domain_aliases;
 }
