@@ -24,7 +24,7 @@ function favrskov_helper_install() {
 }
 
 /**
- * Added translations.
+ * Translations adding and features reverting.
  */
 function favrskov_helper_update_7000() {
   t('Vacancies');
