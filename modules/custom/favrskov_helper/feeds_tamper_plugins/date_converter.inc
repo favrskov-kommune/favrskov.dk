@@ -10,41 +10,24 @@ $plugin = array(
 );
 
 /**
- * From plugin settings definition.
+ * Form plugin settings definition.
  */
 function favrskov_helper_plugin_date_to_proper_format_form($importer, $element_key, $settings) {
-  $formats = system_get_date_formats();
-
-  $options = $states = array();
-  foreach($formats as $format_name => $format_subtype) {
-    if (count($format_subtype) > 1) {
-      $states[$format_name] = $format_name;
-    }
-    $options[$format_name] = $format_name;
+  $date_types = system_get_date_formats();
+  $options    = array();
+  foreach($date_types as $type_name => $type_formats) {
+    $options[$type_name] = drupal_ucfirst(str_replace('_', ' ', $type_name));
   }
 
   $form = array();
-  $form['format'] = array(
-    '#type'          => 'select',
-    '#options'       => $options,
-    '#title'         => t('Available date formats'),
-    '#description'   => t('Choose format you want to convert date.'),
-    '#default_value' => '',
-    '#required'      => TRUE,
+  $form['type'] = array(
+    '#type' => 'select',
+    '#options' => $options,
+    '#title' => t('Available date types'),
+    '#description' => t('Choose type you want to convert date.'),
+    '#default_value' => 'medium',
+    '#required' => TRUE,
   );
-
-//  $form['display'] = array(
-//    '#type'       => 'select',
-//    '#options'    => array(),
-//    '#title'      => t('Format sequence'),
-//    '#description' => t('Display.'),
-//    '#default_value' => '',
-//    '#states' => array(
-//      'visible' => array(
-//        'select[name="formats"]' => array('value' => 'cars'),
-//      ),
-//    ),
-//  );
 
   return $form;
 }
@@ -56,5 +39,5 @@ function favrskov_helper_plugin_date_to_proper_format_callback($result, $item_ke
   $date       = new DateTime($field);
   $timestamp  = $date->getTimestamp();
 
-  $field = format_date($timestamp, $settings['format']);
+  $field = format_date($timestamp, $settings['type']);
 }
