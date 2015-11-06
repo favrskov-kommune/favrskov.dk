@@ -5,6 +5,7 @@ package = Config
 version = 7.x-1.0
 project = config_domain_alias
 dependencies[] = domain_alias
+features[domain_alias][] = cykelkommune_favrskov_dk
 features[domain_alias][] = designguiden_favrskov_dk
 features[domain_alias][] = favrskov_dk
 features[domain_alias][] = oplev_favrskov_dk
