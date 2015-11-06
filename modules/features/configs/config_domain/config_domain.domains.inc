@@ -28,6 +28,15 @@ function config_domain_domain_default_domains() {
     'is_default' => 1,
     'machine_name' => 'favrskov_dk',
   );
+  $domains['oplev_favrskov_dk'] = array(
+    'subdomain' => 'oplev.favrskov.dk',
+    'sitename' => 'Oplev',
+    'scheme' => 'http',
+    'valid' => 1,
+    'weight' => 1,
+    'is_default' => 0,
+    'machine_name' => 'oplev_favrskov_dk',
+  );
 
   return $domains;
 }

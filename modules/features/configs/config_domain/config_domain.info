@@ -7,5 +7,6 @@ project = config_domain
 dependencies[] = domain
 features[domain][] = designguiden_favrskov_dk
 features[domain][] = favrskov_dk
+features[domain][] = oplev_favrskov_dk
 features[domain][] = wipe-domain-tables
 features[features_api][] = api:2
