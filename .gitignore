@@ -7,3 +7,4 @@ modules/contrib/
 themes/contrib/
 .idea
 .DS_Store
+**/Gemfile.lock

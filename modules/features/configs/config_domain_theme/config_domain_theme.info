@@ -1,0 +1,13 @@
+name = Config Domain Theme
+description = Domain Theme configs.
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_domain_theme
+dependencies[] = domain_theme
+features[domain_theme][] = cykelkommune_favrskov_dk
+features[domain_theme][] = designguiden_favrskov_dk
+features[domain_theme][] = favrskov_dk
+features[domain_theme][] = oplev_favrskov_dk
+features[domain_theme][] = wipe-domain-tables
+features[features_api][] = api:2

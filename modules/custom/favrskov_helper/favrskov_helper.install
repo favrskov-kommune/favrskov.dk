@@ -22,3 +22,43 @@ function favrskov_helper_install() {
     'panel_webform_page',
   ));
 }
+
+/**
+ * Translations adding and features reverting.
+ */
+function favrskov_helper_update_7000() {
+  t('Vacancies');
+  t('Application deadline');
+  t('Place of work');
+  t('Description');
+  t('Apply link');
+  t('Start date');
+
+  locale_add_translation('Vacancies', 'da', 'Ledige stillinger');
+  locale_add_translation('Application deadline', 'da', 'Ansøgningsfrist');
+  locale_add_translation('Place of work', 'da', 'Arbejdssted');
+  locale_add_translation('Description', 'da', 'Beskrivelse');
+  locale_add_translation('Apply link', 'da', 'Søg stillingen via dette link');
+  locale_add_translation('Start date', 'da', 'Ansøgningsfrist');
+
+  locale_clear_cache();
+
+  array_map('features_revert_module', array(
+    'views_job',
+    'feeds_job_importer',
+    'panel_job_page',
+  ));
+}
+
+/**
+ * Domain features enabling.
+ */
+function favrskov_helper_update_7001() {
+  $list = array(
+    'config_domain',
+    'config_domain_variables',
+    'config_domain_alias',
+    'config_domain_theme',
+  );
+  module_enable($list);
+}

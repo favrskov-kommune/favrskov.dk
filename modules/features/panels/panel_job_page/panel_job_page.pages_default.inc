@@ -227,36 +227,6 @@ function panel_job_page_default_page_manager_handlers() {
     $display->content['new-5e693b40-dd95-40e2-8f67-14911bf37a73'] = $pane;
     $display->panels['node-content'][3] = 'new-5e693b40-dd95-40e2-8f67-14911bf37a73';
     $pane = new stdClass();
-    $pane->pid = 'new-fbd0c19f-9b95-4617-8536-e9e9024d69fa';
-    $pane->panel = 'node-content';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_job_id';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'inline',
-      'formatter' => 'text_default',
-      'delta_limit' => 0,
-      'delta_offset' => '0',
-      'delta_reversed' => FALSE,
-      'formatter_settings' => array(),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h1',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 4;
-    $pane->locks = array();
-    $pane->uuid = 'fbd0c19f-9b95-4617-8536-e9e9024d69fa';
-    $display->content['new-fbd0c19f-9b95-4617-8536-e9e9024d69fa'] = $pane;
-    $display->panels['node-content'][4] = 'new-fbd0c19f-9b95-4617-8536-e9e9024d69fa';
-    $pane = new stdClass();
     $pane->pid = 'new-96dce3db-1df0-4105-8008-2b2fd537f5e0';
     $pane->panel = 'node-content';
     $pane->type = 'entity_field';
@@ -281,11 +251,11 @@ function panel_job_page_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 5;
+    $pane->position = 4;
     $pane->locks = array();
     $pane->uuid = '96dce3db-1df0-4105-8008-2b2fd537f5e0';
     $display->content['new-96dce3db-1df0-4105-8008-2b2fd537f5e0'] = $pane;
-    $display->panels['node-content'][5] = 'new-96dce3db-1df0-4105-8008-2b2fd537f5e0';
+    $display->panels['node-content'][4] = 'new-96dce3db-1df0-4105-8008-2b2fd537f5e0';
     $pane = new stdClass();
     $pane->pid = 'new-e78ee8e1-9d80-459d-a812-f735208bbd1f';
     $pane->panel = 'node-sidebar';

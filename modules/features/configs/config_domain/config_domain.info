@@ -1,0 +1,13 @@
+name = Config Domain
+description = Domain Access configs.
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = config_domain
+dependencies[] = domain
+features[domain][] = cykelkommune_favrskov_dk
+features[domain][] = designguiden_favrskov_dk
+features[domain][] = favrskov_dk
+features[domain][] = oplev_favrskov_dk
+features[domain][] = wipe-domain-tables
+features[features_api][] = api:2
