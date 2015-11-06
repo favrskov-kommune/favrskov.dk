@@ -10,6 +10,15 @@
 function config_domain_domain_default_domains() {
   $domains = array();
   $domains['wipe-domain-tables'] = 'wipe-domain-tables';
+  $domains['cykelkommune_favrskov_dk'] = array(
+    'subdomain' => 'cykelkommune.favrskov.dk',
+    'sitename' => 'Cykelkommune',
+    'scheme' => 'http',
+    'valid' => 1,
+    'weight' => 3,
+    'is_default' => 0,
+    'machine_name' => 'cykelkommune_favrskov_dk',
+  );
   $domains['designguiden_favrskov_dk'] = array(
     'subdomain' => 'designguiden.favrskov.dk',
     'sitename' => 'Designguiden',
