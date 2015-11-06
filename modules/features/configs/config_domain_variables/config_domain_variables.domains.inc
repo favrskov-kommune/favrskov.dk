@@ -10,6 +10,7 @@
 function config_domain_variables_domain_conf_default_variables() {
   $domain_variables = array();
   $domain_variables['wipe-domain-tables'] = 'wipe-domain-tables';
+  $domain_variables['cykelkommune_favrskov_dk'] = array();
   $domain_variables['designguiden_favrskov_dk'] = array(
     'site_name' => 'Favrskov Kommune',
     'site_mail' => 'info@favrskov.dk',
