@@ -42,3 +42,12 @@ function favrskov_helper_ctools_plugin_directory($owner, $plugin_type) {
     return 'feeds_tamper_plugins/';
   }
 }
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function favrskov_helper_ctools_plugin_api($owner, $api) {
+  if ($owner == 'metatag' && $api == 'metatag') {
+    return array('version' => 1);
+  }
+}
