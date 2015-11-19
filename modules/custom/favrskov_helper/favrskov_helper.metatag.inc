@@ -13,7 +13,7 @@ function favrskov_helper_metatag_info() {
 
   $info['tags']['kle_metatag'] = array(
     'label' => t('KLE metatag'),
-    'description' => t('Separate metatag for KLE tag presented on Article, Subjectpage ans Webform nodes.'),
+    'description' => t('Separate metatag for KLE tag presented on Article, Subjectpage and Webform nodes.'),
     'class' => 'DrupalTextMetaTag',
     'group' => 'favrskov_custom_metatags',
   );

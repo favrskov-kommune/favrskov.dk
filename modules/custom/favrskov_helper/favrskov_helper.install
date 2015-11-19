@@ -64,10 +64,8 @@ function favrskov_helper_update_7001() {
 }
 
 /**
- *
+ * Feature reverting.
  */
 function favrskov_helper_update_7002() {
-  array_map('features_revert_module', array(
-    'config_metatags',
-  ));
+  features_revert(array('config_metatags'));
 }
