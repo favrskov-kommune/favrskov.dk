@@ -14,11 +14,14 @@ function config_metatags_metatag_export_default() {
   $config['node'] = array(
     'instance' => 'node',
     'config' => array(
+      'kle_metatag' => array(
+        'value' => '[node:field_taxonomy_kle]',
+      ),
       'title' => array(
         'value' => '[node:title] | [site:name]',
       ),
       'description' => array(
-        'value' => '[node:summary] [node:field_taxonomy_kle]',
+        'value' => '[node:summary]',
       ),
       'og:title' => array(
         'value' => '[node:title]',
