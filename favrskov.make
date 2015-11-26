@@ -7,8 +7,7 @@ projects[admin_menu][subdir] = contrib
 projects[admin_menu][version] = 3.0-rc4
 
 projects[ctools][subdir] = contrib
-projects[ctools][version] = 1.7
-;projects[ctools][patch][1925018] = https://drupal.org/files/ctools-n1925018-12.patch
+projects[ctools][version] = 1.9
 
 projects[views][subdir] = contrib
 projects[views][version] = 3.11
@@ -55,10 +54,8 @@ projects[ckeditor][patch][1898958] = https://www.drupal.org/files/ckeditor-media
 ;projects[ckeditor][patch][1914904] = https://drupal.org/files/ckeditor-media_ie_fix-1914904-4.patch
 
 projects[feeds][subdir] = contrib
-projects[feeds][version] = 2.0-alpha8
-projects[feeds][patch][1107522] = https://drupal.org/files/ignore-empty-taxonomy-terms-1107522-63.patch
-projects[feeds][patch][2085701] = https://drupal.org/files/strings_are_imported_as_null_for_textfields-2085701.patch
-projects[feeds][patch][1470530] = https://drupal.org/files/issues/unpublish-delete-entities-not-in-feed-1470530-134.patch
+projects[feeds][version] = 2.0-beta1
+;projects[feeds][patch][2085701] = https://drupal.org/files/strings_are_imported_as_null_for_textfields-2085701.patch
 
 projects[feeds_tamper][subdir] = contrib
 ;projects[feeds_tamper][version] = 1.0-beta4
@@ -141,7 +138,7 @@ projects[job_scheduler][subdir] = contrib
 projects[job_scheduler][version] = 2.0-alpha3
 
 projects[jquery_update][subdir] = contrib
-projects[jquery_update][version] = 2.6
+projects[jquery_update][version] = 2.7
 
 projects[module_filter][subdir] = contrib
 projects[module_filter][version] = 2.0
@@ -333,11 +330,10 @@ projects[login_destination][subdir] = contrib
 projects[login_destination][version] = 1.1
 
 projects[views_bulk_operations][subdir] = contrib
-;projects[views_bulk_operations][version] = 3.1
-projects[views_bulk_operations][version] = 3.2
+projects[views_bulk_operations][version] = 3.3
 
 projects[admin_views][subdir] = contrib
-projects[admin_views][version] = 1.3
+projects[admin_views][version] = 1.5
 projects[admin_views][patch][] = https://raw.githubusercontent.com/geo0000/custom-patches/master/admin_views-content_domain_filter.patch
 
 projects[total_control][subdir] = contrib
@@ -480,8 +476,7 @@ projects[entityreference][subdir] = contrib
 projects[entityreference][version] = 1.1
 
 projects[video_embed_field][subdir] = contrib
-;projects[video_embed_field][version] = 2.0-beta5
-projects[video_embed_field][version] = 2.0-beta7
+projects[video_embed_field][version] = 2.0-beta11
 
 projects[rules][subdir] = contrib
 ;projects[rules][version] = 2.6
@@ -639,5 +634,5 @@ translations[] = da
 
 ; Patches
 projects[drupal][type] = core
-projects[drupal][version] = 7.38
+projects[drupal][version] = 7.41
 projects[drupal][patch][1078878] = "https://drupal.org/files/issues/1078878-DisableAutoCreation-D7-UTF-8.patch"
