@@ -197,13 +197,13 @@ Tlf: <a href="tel:70200000">70 20 00 00</a></p>
 <p class="small-height">Kontakt hovednummer<br />
 Tlf: <a href="tel:89641010">89 64 10 10</a></p>
 
-<p><span class="first-span">Mandag</span> 9.00-15.00<br />
+<p>Telefontid<br /><span class="first-span">
+Mandag</span> 9.00-15.00<br />
 <span class="first-span">Tirsdag</span> 9.00-15.00<br />
 <span class="first-span">Onsdag</span> Lukket<br />
 <span class="first-span">Torsdag</span> 9.00-17.00<br />
 <span class="first-span">Fredag</span> 9.00-12.00</p>
-</article>
-',
+</article>',
       'format' => 'full_html',
       'substitute' => TRUE,
     );
