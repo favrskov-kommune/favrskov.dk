@@ -317,14 +317,14 @@ function panel_footer_mini_panel_default_panels_mini() {
 <a href="tel:70200000">70 20 00 00</a></p>
 
 <p class="small-height">Adresse:<br />
-Skovej 20,<br />8382 Hinnerup</p>
+Skovvej 20,<br />
+8382 Hinnerup</p>
 
-<p class="small-height">Skriv til os pa mail:<br />
+<p class="small-height">Skriv til os på mail:<br />
 <a href="mail:favrskov@favrskov.dk">favrskov@favrskov.dk</a></p>
 
 <p class="small-height">CVR:<br />
 29 18 97 14</p>
-
 </article>',
       'format' => 'full_html',
       'substitute' => TRUE,
