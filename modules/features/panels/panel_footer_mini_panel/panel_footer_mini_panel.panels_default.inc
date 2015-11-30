@@ -179,31 +179,34 @@ function panel_footer_mini_panel_default_panels_mini() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-6415dea8-8332-4f2b-b8af-8f0c4d558644';
+    $pane->pid = 'new-a68f9ce5-c5b9-4de8-a397-de2141f76c90';
     $pane->panel = 'contacts';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'admin_title' => 'Contacts',
-      'title' => 'Contact',
+      'admin_title' => 'Address',
+      'title' => '',
       'body' => '<article role="article">
-<h1>Kontakt</h1>
+<h1>Åbningstider</h1>
 
-<p class="small-height">Digital hotline<br />
-Tlf: <a href="tel:70200000">70 20 00 00</a></p>
+<p class="small-height">Besøgstid:<br />
+<span class="first-span">Mandag</span> 9.30-15.00<br />
+<span class="first-span">Tirsdag</span> 9.30-15.00<br />
+<span class="first-span">Onsdag</span> Lukket<br />
+<span class="first-span">Torsdag</span> 12.00-17.00<br />(Borgerservice til kl.18.00)<br />
+<span class="first-span">Fredag</span> 9.30-12.00
+</p>
 
-<p class="small-height">Kontakt hovednummer<br />
-Tlf: <a href="tel:89641010">89 64 10 10</a></p>
-
-<p><span class="first-span">Mandag</span> 9.00-15.00<br />
+<p>Telefontid:<br />
+<span class="first-span">Mandag</span> 9.00-15.00<br />
 <span class="first-span">Tirsdag</span> 9.00-15.00<br />
 <span class="first-span">Onsdag</span> Lukket<br />
 <span class="first-span">Torsdag</span> 9.00-17.00<br />
-<span class="first-span">Fredag</span> 9.00-12.00</p>
-</article>
-',
+<span class="first-span">Fredag</span> 9.00-12.00
+</p>
+</article>',
       'format' => 'full_html',
       'substitute' => TRUE,
     );
@@ -212,13 +215,16 @@ Tlf: <a href="tel:89641010">89 64 10 10</a></p>
       'settings' => NULL,
       'style' => 'naked',
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'social-links',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '6415dea8-8332-4f2b-b8af-8f0c4d558644';
-    $display->content['new-6415dea8-8332-4f2b-b8af-8f0c4d558644'] = $pane;
-    $display->panels['contacts'][0] = 'new-6415dea8-8332-4f2b-b8af-8f0c4d558644';
+    $pane->uuid = 'a68f9ce5-c5b9-4de8-a397-de2141f76c90';
+    $display->content['new-a68f9ce5-c5b9-4de8-a397-de2141f76c90'] = $pane;
+    $display->panels['contacts'][0] = 'new-a68f9ce5-c5b9-4de8-a397-de2141f76c90';
     $pane = new stdClass();
     $pane->pid = 'new-07492029-c139-4712-a651-2779573cbeab';
     $pane->panel = 'header';
@@ -292,28 +298,34 @@ Tlf: <a href="tel:89641010">89 64 10 10</a></p>
     $display->content['new-bd9119fe-56db-475e-bac8-01d7696cb28a'] = $pane;
     $display->panels['policy'][0] = 'new-bd9119fe-56db-475e-bac8-01d7696cb28a';
     $pane = new stdClass();
-    $pane->pid = 'new-a68f9ce5-c5b9-4de8-a397-de2141f76c90';
+    $pane->pid = 'new-6415dea8-8332-4f2b-b8af-8f0c4d558644';
     $pane->panel = 'social';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'admin_title' => 'Address',
-      'title' => '',
+      'admin_title' => 'Contacts',
+      'title' => 'Contact',
       'body' => '<article role="article">
-<h1>Adresse</h1>
+<h1>Kontakt</h1>
 
-<p>Favrskov Kommune<br />
-Skovvej 20<br />
+<p class="small-height">Hovednummer:<br />
+<a href="tel:89641010">89 64 10 10</a></p>
+
+<p class="small-height">Den Digitale Hotline:<br />
+<a href="tel:70200000">70 20 00 00</a></p>
+
+<p class="small-height">Adresse:<br />
+Skovvej 20,<br />
 8382 Hinnerup</p>
 
-<p class="small-height">Skriv til os på mail<br />
-<a href="mailto:favrskov@favrskov.dk">favrskov@favrskov.dk</a></p>
+<p class="small-height">Skriv til os på mail:<br />
+<a href="mail:favrskov@favrskov.dk">favrskov@favrskov.dk</a></p>
 
-<p>CVR: 29 18 97 14</p>
-</article>
-',
+<p class="small-height">CVR:<br />
+29 18 97 14</p>
+</article>',
       'format' => 'full_html',
       'substitute' => TRUE,
     );
@@ -322,16 +334,13 @@ Skovvej 20<br />
       'settings' => NULL,
       'style' => 'naked',
     );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'social-links',
-    );
+    $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = 'a68f9ce5-c5b9-4de8-a397-de2141f76c90';
-    $display->content['new-a68f9ce5-c5b9-4de8-a397-de2141f76c90'] = $pane;
-    $display->panels['social'][0] = 'new-a68f9ce5-c5b9-4de8-a397-de2141f76c90';
+    $pane->uuid = '6415dea8-8332-4f2b-b8af-8f0c4d558644';
+    $display->content['new-6415dea8-8332-4f2b-b8af-8f0c4d558644'] = $pane;
+    $display->panels['social'][0] = 'new-6415dea8-8332-4f2b-b8af-8f0c4d558644';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
