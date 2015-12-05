@@ -4,7 +4,7 @@ core = 7.x
 ; Contrib modules
 
 projects[admin_menu][subdir] = contrib
-projects[admin_menu][version] = 3.0-rc4
+projects[admin_menu][version] = 3.0-rc5
 
 projects[ctools][subdir] = contrib
 projects[ctools][version] = 1.9
@@ -58,8 +58,7 @@ projects[feeds][version] = 2.0-beta1
 ;projects[feeds][patch][2085701] = https://drupal.org/files/strings_are_imported_as_null_for_textfields-2085701.patch
 
 projects[feeds_tamper][subdir] = contrib
-;projects[feeds_tamper][version] = 1.0-beta4
-projects[feeds_tamper][version] = 1.0
+projects[feeds_tamper][version] = 1.1
 
 projects[feeds_xpathparser][subdir] = contrib
 projects[feeds_xpathparser][version] = 1.0-beta4
@@ -114,12 +113,10 @@ projects[devel][subdir] = contrib
 projects[devel][version] = 1.5
 
 projects[breakpoints][subdir] = contrib
-;projects[breakpoints][version] = 1.1
-projects[breakpoints][version] = 1.2
+projects[breakpoints][version] = 1.3
 
 projects[picture][subdir] = contrib
-;projects[picture][version] = 1.1
-projects[picture][version] = 1.5
+projects[picture][version] = 2.13
 
 projects[panels][subdir] = contrib
 ;projects[panels][version] = 3.3
@@ -151,12 +148,10 @@ projects[strongarm][subdir] = contrib
 projects[strongarm][version] = 2.0
 
 projects[date][subdir] = contrib
-projects[date][version] = 2.8
+projects[date][version] = 2.9
 
 projects[link][subdir] = contrib
-;projects[link][version] = 1.1
-projects[link][version] = 1.2
-;projects[link][patch][1914286] = https://drupal.org/files/Fixed_title_value_in_link_field_update_instance_undefined-1914286-3.patch
+projects[link][version] = 1.3
 
 projects[potx][subdir] = contrib
 projects[potx][version] = 1.0
@@ -250,8 +245,7 @@ projects[nodequeue][subdir] = contrib
 projects[nodequeue][version] = 2.x-dev
 
 projects[apachesolr][subdir] = contrib
-;projects[apachesolr][version] = 1.3
-projects[apachesolr][version] = 1.6
+projects[apachesolr][version] = 1.8
 
 projects[apachesolr_autocomplete][subdir] = contrib
 ;projects[apachesolr_autocomplete][version] = 1.3
@@ -316,8 +310,7 @@ projects[placeholder][subdir] = contrib
 projects[placeholder][version] = 1.0
 
 projects[better_exposed_filters][subdir] = contrib
-;projects[better_exposed_filters][version] = 3.0-beta3
-projects[better_exposed_filters][version] = 3.0-beta4
+projects[better_exposed_filters][version] = 3.2
 
 projects[views_load_more][subdir] = contrib
 projects[views_load_more][download][type] = "git"
@@ -479,8 +472,7 @@ projects[video_embed_field][subdir] = contrib
 projects[video_embed_field][version] = 2.0-beta11
 
 projects[rules][subdir] = contrib
-;projects[rules][version] = 2.6
-projects[rules][version] = 2.7
+projects[rules][version] = 2.9
 
 projects[addressfield][subdir] = contrib
 projects[addressfield][version] = 1.0-beta5
