@@ -10,8 +10,7 @@ projects[ctools][subdir] = contrib
 projects[ctools][version] = 1.9
 
 projects[views][subdir] = contrib
-projects[views][version] = 3.11
-;projects[views][patch][2065975] = https://drupal.org/files/ajax_pager_does_not_work_in_view_pane-2065975-1.patch
+projects[views][version] = 3.13
 
 projects[views_field_view][subdir] = contrib
 projects[views_field_view][version] = 1.1
@@ -119,17 +118,11 @@ projects[picture][subdir] = contrib
 projects[picture][version] = 2.13
 
 projects[panels][subdir] = contrib
-;projects[panels][version] = 3.3
-projects[panels][version] = 3.4
-;projects[panels][patch][1772846] = http://drupal.org/files/1772846-links-hooks_0.patch
-;projects[panels][patch][1841960] = http://drupal.org/files/1841960-1-panels-panels_ipe_strict_warning_render_pane_content.patch
-;projects[panels][patch][1772834] = http://drupal.org/files/1772834-fix-lost-context-6.patch
-;projects[panels][patch][1613402] = https://drupal.org/files/panels_ipe_fix_ajax_1613402-9.patch
-projects[panels][patch][2057897] = https://drupal.org/files/display_pane_admin_titles-2057897.patch
+projects[panels][version] = 3.5
 projects[panels][patch][2226011] = https://drupal.org/files/issues/panels-ipe-js-loop-2226011-4.patch
 
 projects[features][subdir] = contrib
-projects[features][version] = 2.5
+projects[features][version] = 2.7
 
 projects[job_scheduler][subdir] = contrib
 projects[job_scheduler][version] = 2.0-alpha3
@@ -167,7 +160,7 @@ projects[coder_tough_love][subdir] = contrib
 projects[coder_tough_love][version] = 1.0
 
 projects[webform][subdir] = contrib
-projects[webform][version] = 3.23
+projects[webform][version] = 3.24
 projects[webform][patch][] = https://raw.githubusercontent.com/geo0000/custom-patches/master/webform-submission-mail-subject-tokens.patch
 projects[webform][patch][] = https://raw.githubusercontent.com/geo0000/custom-patches/master/webform-email-response-url-token.patch
 
@@ -209,7 +202,7 @@ projects[diff][subdir] = contrib
 projects[diff][version] = 3.2
 
 projects[token][subdir] = contrib
-projects[token][version] = 1.5
+projects[token][version] = 1.6
 projects[token][patch][2050421] = "https://drupal.org/files/term-token-real-root-2050421-1.patch"
 
 projects[field_collection][subdir] = contrib
@@ -283,7 +276,7 @@ projects[facetapi][subdir] = contrib
 projects[facetapi][version] = 1.5
 
 projects[i18n][subdir] = contrib
-projects[i18n][version] = 1.x-dev
+projects[i18n][version] = 1.13
 
 projects[variable][subdir] = contrib
 ;projects[variable][version] = 2.2
@@ -307,7 +300,7 @@ projects[panels_breadcrumbs][version] = 2.1
 projects[panels_breadcrumbs][patch][2134071] = https://drupal.org/files/issues/panels_breadcrumbs-php-warning.patch
 
 projects[placeholder][subdir] = contrib
-projects[placeholder][version] = 1.0
+projects[placeholder][version] = 1.1
 
 projects[better_exposed_filters][subdir] = contrib
 projects[better_exposed_filters][version] = 3.2
@@ -383,7 +376,7 @@ projects[colorfield][subdir] = contrib
 projects[colorfield][version] = 1.1
 
 projects[encrypt][subdir] = contrib
-projects[encrypt][version] = 1.1
+projects[encrypt][version] = 2.3
 
 projects[webform_encrypt][subdir] = contrib
 projects[webform_encrypt][version] = 1.0
@@ -526,7 +519,7 @@ projects[ajax_comments][version] = 1.0-beta1
 ;projects[ajax_comments][patch][541078] = https://drupal.org/files/issues/ajax_comments-mollom-541078-16.patch
 
 projects[comment_notify][subdir] = contrib
-projects[comment_notify][version] = 1.2
+projects[comment_notify][version] = 1.3
 
 projects[synonyms][subdir] = contrib
 projects[synonyms][version] = 1.1
