@@ -69,3 +69,41 @@ function favrskov_helper_update_7001() {
 function favrskov_helper_update_7002() {
   features_revert(array('config_metatags'));
 }
+
+/**
+ * View features reverting due to Picture module update.
+ */
+function favrskov_helper_update_7003() {
+  array_map('features_revert_module', array(
+    'view_slider',
+    'views_banners',
+  ));
+
+  // Update of picture formatter that is using in panels.
+  $query = db_select('panels_pane', 'pp')
+    ->fields('pp', array('pid', 'configuration'))
+    ->condition('panel', 'wide_image')
+    ->condition('type', 'entity_field')
+    ->execute();
+
+  $result = $query->fetchAllKeyed();
+
+  foreach ($result as $pid => $conf) {
+    $new_conf = unserialize($conf);
+    $picture_group = isset($new_conf['formatter_settings']['picture_group']);
+    $picture_mapping = isset($new_conf['formatter_settings']['picture_mapping']);
+
+    if ($picture_group && $picture_mapping) {
+      unset($new_conf['formatter_settings']['picture_group']);
+    }
+    elseif ($picture_group && !$picture_mapping) {
+      $new_conf['formatter_settings']['picture_mapping'] = $new_conf['formatter_settings']['picture_group'];
+      unset($new_conf['formatter_settings']['picture_group']);
+    }
+
+    db_update('panels_pane')
+      ->fields(array('configuration' => serialize($new_conf)))
+      ->condition('pid', $pid)
+      ->execute();
+  }
+}

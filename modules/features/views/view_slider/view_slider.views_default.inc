@@ -226,8 +226,10 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['type'] = 'picture';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
-    'picture_group' => 'slider',
+    'picture_mapping' => 'slider',
     'fallback_image_style' => 'slidercustom_user_full_1x',
+    'lazyload' => 0,
+    'lazyload_aspect_ratio' => 0,
     'image_link' => '',
   );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;

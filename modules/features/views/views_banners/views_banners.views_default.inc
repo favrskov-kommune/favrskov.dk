@@ -101,8 +101,10 @@ function views_banners_views_default_views() {
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['type'] = 'picture';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
-    'picture_group' => 'front_banners',
+    'picture_mapping' => 'front_banners',
     'fallback_image_style' => 'banners_custom_user_full_1x',
+    'lazyload' => 0,
+    'lazyload_aspect_ratio' => 0,
     'image_link' => '',
   );
   /* Field: Content: Title */

@@ -13,8 +13,8 @@ $plugin = array(
     'image_content' =>   t('Content on the image'),
     'wide_image'    =>   t('Image'),
     'menu_items'    =>   t('Menu links'),
-    'first_middle_region' =>   t('First middle region'),
-    'second_middle_region' =>   t('Second middle region'),
+    'first_middle_region'  => t('First middle region'),
+    'second_middle_region' => t('Second middle region'),
     'news'          =>   t('News'),
     'footer'        =>   t('Footer')
   )
