@@ -10,7 +10,7 @@
 function panel_footer_mini_panel_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-footer-links_cvr-og-ean-numre:node/894
+  // Exported menu link: menu-footer-links_cvr-og-ean-numre:node/894.
   $menu_links['menu-footer-links_cvr-og-ean-numre:node/894'] = array(
     'menu_name' => 'menu-footer-links',
     'link_path' => 'node/894',
@@ -28,10 +28,10 @@ function panel_footer_mini_panel_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('CVR og EAN-Numre');
-
 
   return $menu_links;
 }

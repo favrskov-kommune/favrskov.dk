@@ -20,6 +20,5 @@ function panel_footer_mini_panel_menu_default_menu_custom() {
   // Included for use with string extractors like potx.
   t('Footer links');
 
-
   return $menus;
 }
