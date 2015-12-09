@@ -460,7 +460,6 @@ function config_panelizer_panelizer_defaults() {
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
         'image_link' => '',
-        'picture_group' => 'subject_image',
         'fallback_image_style' => 'subject_custom_user_full_1x',
         'picture_mapping' => 'subject_image',
         'lazyload' => 0,
