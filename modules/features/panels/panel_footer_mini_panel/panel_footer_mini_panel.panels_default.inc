@@ -321,11 +321,12 @@ Skovvej 20,<br />
 8382 Hinnerup</p>
 
 <p class="small-height">Skriv til os på mail:<br />
-<a href="mail:favrskov@favrskov.dk">favrskov@favrskov.dk</a></p>
+<a href="mailto:favrskov@favrskov.dk">favrskov@favrskov.dk</a></p>
 
 <p class="small-height">CVR:<br />
 29 18 97 14</p>
-</article>',
+</article>
+',
       'format' => 'full_html',
       'substitute' => TRUE,
     );
