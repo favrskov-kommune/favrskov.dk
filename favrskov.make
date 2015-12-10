@@ -144,7 +144,7 @@ projects[date][subdir] = contrib
 projects[date][version] = 2.9
 
 projects[link][subdir] = contrib
-projects[link][version] = 1.3
+projects[link][version] = 1.x-dev
 
 projects[potx][subdir] = contrib
 projects[potx][version] = 1.0
