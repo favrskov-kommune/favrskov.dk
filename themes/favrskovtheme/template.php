@@ -39,6 +39,19 @@ function favrskovtheme_preprocess_html(&$vars) {
   $jwplayer = drupal_get_js('jwplayer');
   $vars['jwplayer'] = $jwplayer;
 
+  // Added meta tag for IE.
+  $meta_ie_render_engine = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'content' =>  'IE=10',
+      'http-equiv' => 'X-UA-Compatible',
+    )
+  );
+
+  // Add header meta tag for IE to head
+  drupal_add_html_head($meta_ie_render_engine, 'meta_ie_render_engine');
+
   $multisite_links = theme_get_setting('favrskovtheme_multisite_links');
   if (!empty($multisite_links)) {
     $vars['classes_array'][] = theme_get_setting('favrskovtheme_multisite_links');
