@@ -112,6 +112,8 @@ function favrskov_helper_update_7003() {
  * Change Subject Area term widget, update term filter conditions.
  */
 function favrskov_helper_update_7004() {
+  module_enable(array('hierarchical_select', 'hs_taxonomy'));
+
   $vocabulary = taxonomy_vocabulary_machine_name_load('subject_area');
 
   $term = new stdClass();
