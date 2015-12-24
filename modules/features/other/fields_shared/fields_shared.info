@@ -6,6 +6,7 @@ project = fields_shared
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = file_entity
+dependencies[] = hs_taxonomy
 dependencies[] = image
 dependencies[] = link
 dependencies[] = media

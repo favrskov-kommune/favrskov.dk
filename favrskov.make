@@ -550,6 +550,9 @@ projects[securepages][version] = 1.0-beta2
 projects[varnish][subdir] = contrib
 projects[varnish][version] = 1.0-beta3
 
+projects[hierarchical_select][subdir] = contrib
+projects[hierarchical_select][version] = 3.0-beta3
+
 ; Libraries
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] =

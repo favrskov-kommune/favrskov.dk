@@ -10,7 +10,7 @@
 function content_type_article_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'cntrmd_article'
+  // Exported field_base: 'cntrmd_article'.
   $field_bases['cntrmd_article'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function content_type_article_field_default_field_bases() {
     'type' => 'content_reminder',
   );
 
-  // Exported field_base: 'field_borgerdk'
+  // Exported field_base: 'field_borgerdk'.
   $field_bases['field_borgerdk'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -70,7 +70,7 @@ function content_type_article_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_hide_node_update_date'
+  // Exported field_base: 'field_hide_node_update_date'.
   $field_bases['field_hide_node_update_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -95,7 +95,7 @@ function content_type_article_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_job_list'
+  // Exported field_base: 'field_job_list'.
   $field_bases['field_job_list'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -120,7 +120,7 @@ function content_type_article_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_one_column_layout'
+  // Exported field_base: 'field_one_column_layout'.
   $field_bases['field_one_column_layout'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -145,7 +145,7 @@ function content_type_article_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_open_in_new_window'
+  // Exported field_base: 'field_open_in_new_window'.
   $field_bases['field_open_in_new_window'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -170,7 +170,7 @@ function content_type_article_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_pdf_file'
+  // Exported field_base: 'field_pdf_file'.
   $field_bases['field_pdf_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -193,7 +193,7 @@ function content_type_article_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_publications'
+  // Exported field_base: 'field_publications'.
   $field_bases['field_publications'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -215,7 +215,7 @@ function content_type_article_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_publications_description'
+  // Exported field_base: 'field_publications_description'.
   $field_bases['field_publications_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -234,7 +234,7 @@ function content_type_article_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_publications_title'
+  // Exported field_base: 'field_publications_title'.
   $field_bases['field_publications_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -255,7 +255,7 @@ function content_type_article_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_title'
+  // Exported field_base: 'field_title'.
   $field_bases['field_title'] = array(
     'active' => 1,
     'cardinality' => 1,

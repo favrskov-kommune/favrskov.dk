@@ -10,7 +10,7 @@
 function content_type_subjectpage_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-subjectpage-cntrmd_subjectpage'
+  // Exported field_instance: 'node-subjectpage-cntrmd_subjectpage'.
   $field_instances['node-subjectpage-cntrmd_subjectpage'] = array(
     'bundle' => 'subjectpage',
     'default_value' => NULL,
@@ -53,7 +53,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-subjectpage-field_editorial_responsibility'
+  // Exported field_instance: 'node-subjectpage-field_editorial_responsibility'.
   $field_instances['node-subjectpage-field_editorial_responsibility'] = array(
     'bundle' => 'subjectpage',
     'default_value' => NULL,
@@ -82,7 +82,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_editorial_responsibility',
-    'label' => t('Editorial responsibility'),
+    'label' => 'Editorial responsibility',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -105,12 +105,12 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-subjectpage-field_internal_title'
+  // Exported field_instance: 'node-subjectpage-field_internal_title'.
   $field_instances['node-subjectpage-field_internal_title'] = array(
     'bundle' => 'subjectpage',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Used for admin content overview page instead of title field.'),
+    'description' => 'Used for admin content overview page instead of title field.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -134,7 +134,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => t('Internal title'),
+    'label' => 'Internal title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -191,7 +191,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-subjectpage-field_taxonomy_kle'
+  // Exported field_instance: 'node-subjectpage-field_taxonomy_kle'.
   $field_instances['node-subjectpage-field_taxonomy_kle'] = array(
     'bundle' => 'subjectpage',
     'default_value' => NULL,
@@ -221,7 +221,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_kle',
-    'label' => t('Taxonomy, KLE'),
+    'label' => 'Taxonomy, KLE',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -239,7 +239,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-subjectpage-field_taxonomy_local'
+  // Exported field_instance: 'node-subjectpage-field_taxonomy_local'.
   $field_instances['node-subjectpage-field_taxonomy_local'] = array(
     'bundle' => 'subjectpage',
     'default_value' => NULL,
@@ -269,7 +269,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_local',
-    'label' => t('Taxonomy, local'),
+    'label' => 'Taxonomy, local',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -287,7 +287,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-subjectpage-field_taxonomy_subject_area'
+  // Exported field_instance: 'node-subjectpage-field_taxonomy_subject_area'.
   $field_instances['node-subjectpage-field_taxonomy_subject_area'] = array(
     'bundle' => 'subjectpage',
     'default_value' => NULL,
@@ -317,7 +317,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_subject_area',
-    'label' => t('Taxonomy, Subject Area'),
+    'label' => 'Taxonomy, Subject Area',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -325,17 +325,17 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'multiple_selects',
+      'module' => 'hs_taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'multiple_selects',
+      'type' => 'taxonomy_hs',
       'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'node-subjectpage-field_teaser'
+  // Exported field_instance: 'node-subjectpage-field_teaser'.
   $field_instances['node-subjectpage-field_teaser'] = array(
     'bundle' => 'subjectpage',
     'default_value' => NULL,
@@ -364,7 +364,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_teaser',
-    'label' => t('Teaser'),
+    'label' => 'Teaser',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -419,11 +419,11 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-subjectpage-field_top_image'
+  // Exported field_instance: 'node-subjectpage-field_top_image'.
   $field_instances['node-subjectpage-field_top_image'] = array(
     'bundle' => 'subjectpage',
     'deleted' => 0,
-    'description' => t('Please, upload image in landscape format only.'),
+    'description' => 'Please, upload image in landscape format only.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -450,7 +450,7 @@ function content_type_subjectpage_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_top_image',
-    'label' => t('Top image'),
+    'label' => 'Top image',
     'required' => 1,
     'settings' => array(
       'alt_field' => 0,

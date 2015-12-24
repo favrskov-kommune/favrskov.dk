@@ -10,7 +10,7 @@
 function content_type_subjectpage_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'cntrmd_subjectpage'
+  // Exported field_base: 'cntrmd_subjectpage'.
   $field_bases['cntrmd_subjectpage'] = array(
     'active' => 1,
     'cardinality' => 1,

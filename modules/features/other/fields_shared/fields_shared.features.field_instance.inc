@@ -10,7 +10,7 @@
 function fields_shared_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'file-image-field_file_image_alt_text'
+  // Exported field_instance: 'file-image-field_file_image_alt_text'.
   $field_instances['file-image-field_file_image_alt_text'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -75,7 +75,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'file',
     'field_name' => 'field_file_image_alt_text',
-    'label' => t('Alt Text'),
+    'label' => 'Alt Text',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -96,7 +96,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-field_file_image_description'
+  // Exported field_instance: 'file-image-field_file_image_description'.
   $field_instances['file-image-field_file_image_description'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -155,7 +155,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'file',
     'field_name' => 'field_file_image_description',
-    'label' => t('Description'),
+    'label' => 'Beskrivelse',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -181,7 +181,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-field_file_image_photographer'
+  // Exported field_instance: 'file-image-field_file_image_photographer'.
   $field_instances['file-image-field_file_image_photographer'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -240,7 +240,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'file',
     'field_name' => 'field_file_image_photographer',
-    'label' => t('Photographer'),
+    'label' => 'Photographer',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -261,7 +261,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-field_file_image_title_text'
+  // Exported field_instance: 'file-image-field_file_image_title_text'.
   $field_instances['file-image-field_file_image_title_text'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -326,7 +326,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'file',
     'field_name' => 'field_file_image_title_text',
-    'label' => t('Title Text'),
+    'label' => 'Title Text',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -343,7 +343,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-body'
+  // Exported field_instance: 'node-shared-body'.
   $field_instances['node-shared-body'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -369,7 +369,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => t('Body'),
+    'label' => 'Brødtekst',
     'required' => FALSE,
     'settings' => array(
       'display_summary' => TRUE,
@@ -387,7 +387,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_bannerlink'
+  // Exported field_instance: 'node-shared-field_bannerlink'.
   $field_instances['node-shared-field_bannerlink'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -433,7 +433,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_contact_information'
+  // Exported field_instance: 'node-shared-field_contact_information'.
   $field_instances['node-shared-field_contact_information'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -456,7 +456,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_contact_information',
-    'label' => t('Contact Information'),
+    'label' => 'Kontaktinformation',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -478,7 +478,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_displayed_title'
+  // Exported field_instance: 'node-shared-field_displayed_title'.
   $field_instances['node-shared-field_displayed_title'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -501,7 +501,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_displayed_title',
-    'label' => t('Displayed Title'),
+    'label' => 'Vist Overskrift',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -548,7 +548,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_editorial_responsibility'
+  // Exported field_instance: 'node-shared-field_editorial_responsibility'.
   $field_instances['node-shared-field_editorial_responsibility'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -571,7 +571,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_editorial_responsibility',
-    'label' => t('Editorial responsibility'),
+    'label' => 'Redaktionel ansvarlig',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -593,7 +593,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_external_link'
+  // Exported field_instance: 'node-shared-field_external_link'.
   $field_instances['node-shared-field_external_link'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -616,9 +616,10 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_external_link',
-    'label' => t('External link'),
+    'label' => 'Eksternt link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -636,6 +637,7 @@ function fields_shared_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -651,7 +653,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_faq_ref'
+  // Exported field_instance: 'node-shared-field_faq_ref'.
   $field_instances['node-shared-field_faq_ref'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -674,7 +676,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_faq_ref',
-    'label' => t('FAQ'),
+    'label' => 'Spørgsmål og svar',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -696,7 +698,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_image'
+  // Exported field_instance: 'node-shared-field_image'.
   $field_instances['node-shared-field_image'] = array(
     'bundle' => 'shared',
     'deleted' => 0,
@@ -721,7 +723,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image',
-    'label' => t('Image'),
+    'label' => 'Billede',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
@@ -754,7 +756,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_image_alt_text'
+  // Exported field_instance: 'node-shared-field_image_alt_text'.
   $field_instances['node-shared-field_image_alt_text'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -777,7 +779,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_alt_text',
-    'label' => t('Image alt text'),
+    'label' => 'Alt tekst',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -798,7 +800,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_image_description'
+  // Exported field_instance: 'node-shared-field_image_description'.
   $field_instances['node-shared-field_image_description'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -821,7 +823,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_description',
-    'label' => t('Image description'),
+    'label' => 'Billedtekst',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -842,7 +844,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_image_thumbnail'
+  // Exported field_instance: 'node-shared-field_image_thumbnail'.
   $field_instances['node-shared-field_image_thumbnail'] = array(
     'bundle' => 'shared',
     'deleted' => 0,
@@ -867,7 +869,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_thumbnail',
-    'label' => t('Image / thumbnail'),
+    'label' => 'Billede / thumbnail',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
@@ -903,7 +905,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_internal_link'
+  // Exported field_instance: 'node-shared-field_internal_link'.
   $field_instances['node-shared-field_internal_link'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -926,9 +928,10 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_link',
-    'label' => t('Internal link'),
+    'label' => 'Internt link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -946,6 +949,7 @@ function fields_shared_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -961,7 +965,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_internal_title'
+  // Exported field_instance: 'node-shared-field_internal_title'.
   $field_instances['node-shared-field_internal_title'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1041,7 +1045,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_link'
+  // Exported field_instance: 'node-shared-field_link'.
   $field_instances['node-shared-field_link'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1064,9 +1068,10 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_link',
-    'label' => t('Link'),
+    'label' => 'Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1084,6 +1089,7 @@ function fields_shared_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -1099,7 +1105,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_piwik_day'
+  // Exported field_instance: 'node-shared-field_piwik_day'.
   $field_instances['node-shared-field_piwik_day'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1135,7 +1141,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_piwik_day',
-    'label' => t('Piwik Day'),
+    'label' => 'Piwik Day',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1149,7 +1155,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_piwik_month'
+  // Exported field_instance: 'node-shared-field_piwik_month'.
   $field_instances['node-shared-field_piwik_month'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1185,7 +1191,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_piwik_month',
-    'label' => t('Piwik Month'),
+    'label' => 'Piwik Month',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1199,7 +1205,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_piwik_week'
+  // Exported field_instance: 'node-shared-field_piwik_week'.
   $field_instances['node-shared-field_piwik_week'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1235,7 +1241,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_piwik_week',
-    'label' => t('Piwik Week'),
+    'label' => 'Piwik Week',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1249,7 +1255,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_piwik_year'
+  // Exported field_instance: 'node-shared-field_piwik_year'.
   $field_instances['node-shared-field_piwik_year'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1285,7 +1291,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_piwik_year',
-    'label' => t('Piwik Year'),
+    'label' => 'Piwik Year',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1299,7 +1305,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_related_boxes'
+  // Exported field_instance: 'node-shared-field_related_boxes'.
   $field_instances['node-shared-field_related_boxes'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1322,7 +1328,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_boxes',
-    'label' => t('Related boxes'),
+    'label' => 'Relaterede bokse',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1344,7 +1350,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_related_content'
+  // Exported field_instance: 'node-shared-field_related_content'.
   $field_instances['node-shared-field_related_content'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1367,7 +1373,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_content',
-    'label' => t('Related content'),
+    'label' => 'Relateret indhold',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1389,7 +1395,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_self_service'
+  // Exported field_instance: 'node-shared-field_self_service'.
   $field_instances['node-shared-field_self_service'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1412,7 +1418,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_self_service',
-    'label' => t('Self Service'),
+    'label' => 'Selvbetjening',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1426,7 +1432,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_table'
+  // Exported field_instance: 'node-shared-field_table'.
   $field_instances['node-shared-field_table'] = array(
     'bundle' => 'shared',
     'default_value' => array(
@@ -1503,7 +1509,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_taxonomy_kle'
+  // Exported field_instance: 'node-shared-field_taxonomy_kle'.
   $field_instances['node-shared-field_taxonomy_kle'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1526,7 +1532,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_kle',
-    'label' => t('Taxonomy, KLE'),
+    'label' => 'Taksonomi, KLE',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1543,7 +1549,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_taxonomy_local'
+  // Exported field_instance: 'node-shared-field_taxonomy_local'.
   $field_instances['node-shared-field_taxonomy_local'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1566,7 +1572,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_local',
-    'label' => t('Taxonomy, local'),
+    'label' => 'Taksonomi, lokal',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1583,7 +1589,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_taxonomy_location'
+  // Exported field_instance: 'node-shared-field_taxonomy_location'.
   $field_instances['node-shared-field_taxonomy_location'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1606,7 +1612,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_location',
-    'label' => t('Taxonomy, Location'),
+    'label' => 'Taksonomi, lokation',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1623,7 +1629,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_taxonomy_subject_area'
+  // Exported field_instance: 'node-shared-field_taxonomy_subject_area'.
   $field_instances['node-shared-field_taxonomy_subject_area'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1646,24 +1652,24 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_subject_area',
-    'label' => t('Taxonomy, Subject Area'),
+    'label' => 'Taksonomi, Emneområde',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'multiple_selects',
+      'module' => 'hs_taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'multiple_selects',
+      'type' => 'taxonomy_hs',
       'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_teaser'
+  // Exported field_instance: 'node-shared-field_teaser'.
   $field_instances['node-shared-field_teaser'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1686,7 +1692,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_teaser',
-    'label' => t('Teaser'),
+    'label' => 'Smagsprøve',
     'required' => FALSE,
     'settings' => array(
       'text_processing' => 0,
@@ -1702,7 +1708,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_top_image'
+  // Exported field_instance: 'node-shared-field_top_image'.
   $field_instances['node-shared-field_top_image'] = array(
     'bundle' => 'shared',
     'deleted' => 0,
@@ -1727,7 +1733,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_top_image',
-    'label' => t('Top image'),
+    'label' => 'Top billede',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
@@ -1760,7 +1766,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_video'
+  // Exported field_instance: 'node-shared-field_video'.
   $field_instances['node-shared-field_video'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1783,7 +1789,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video',
-    'label' => t('Video'),
+    'label' => 'Video',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1830,7 +1836,7 @@ function fields_shared_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-shared-field_video_description'
+  // Exported field_instance: 'node-shared-field_video_description'.
   $field_instances['node-shared-field_video_description'] = array(
     'bundle' => 'shared',
     'default_value' => NULL,
@@ -1853,7 +1859,7 @@ function fields_shared_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video_description',
-    'label' => t('Video description'),
+    'label' => 'Videobeskrivelse',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -1877,41 +1883,41 @@ function fields_shared_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Alt Text');
+  t('Alt tekst');
   t('Bannerlink');
-  t('Body');
-  t('Contact Information');
-  t('Description');
-  t('Displayed Title');
-  t('Editorial responsibility');
-  t('External link');
-  t('FAQ');
-  t('Image');
-  t('Image / thumbnail');
-  t('Image alt text');
-  t('Image description');
-  t('Internal link');
+  t('Beskrivelse');
+  t('Billede');
+  t('Billede / thumbnail');
+  t('Billedtekst');
+  t('Brødtekst');
+  t('Eksternt link');
   t('Internal title');
+  t('Internt link');
+  t('Kontaktinformation');
   t('Link');
   t('Photographer');
   t('Piwik Day');
   t('Piwik Month');
   t('Piwik Week');
   t('Piwik Year');
-  t('Related boxes');
-  t('Related content');
-  t('Self Service');
+  t('Redaktionel ansvarlig');
+  t('Relaterede bokse');
+  t('Relateret indhold');
+  t('Selvbetjening');
+  t('Smagsprøve');
+  t('Spørgsmål og svar');
   t('Table');
-  t('Taxonomy, KLE');
-  t('Taxonomy, Location');
-  t('Taxonomy, Subject Area');
-  t('Taxonomy, local');
-  t('Teaser');
+  t('Taksonomi, Emneområde');
+  t('Taksonomi, KLE');
+  t('Taksonomi, lokal');
+  t('Taksonomi, lokation');
   t('Title Text');
   t('Title text attribute');
-  t('Top image');
+  t('Top billede');
   t('Used for admin content overview page instead of title field.');
   t('Video');
-  t('Video description');
+  t('Videobeskrivelse');
+  t('Vist Overskrift');
 
   return $field_instances;
 }
