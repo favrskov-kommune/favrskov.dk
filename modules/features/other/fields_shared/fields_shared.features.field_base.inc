@@ -10,7 +10,7 @@
 function fields_shared_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'body'
+  // Exported field_base: 'body'.
   $field_bases['body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_bannerlink'
+  // Exported field_base: 'field_bannerlink'.
   $field_bases['field_bannerlink'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -74,7 +74,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_contact_information'
+  // Exported field_base: 'field_contact_information'.
   $field_bases['field_contact_information'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -114,7 +114,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_displayed_title'
+  // Exported field_base: 'field_displayed_title'.
   $field_bases['field_displayed_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -135,7 +135,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_editorial_responsibility'
+  // Exported field_base: 'field_editorial_responsibility'.
   $field_bases['field_editorial_responsibility'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -167,7 +167,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'user_reference',
   );
 
-  // Exported field_base: 'field_external_link'
+  // Exported field_base: 'field_external_link'.
   $field_bases['field_external_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -196,7 +196,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_faq_ref'
+  // Exported field_base: 'field_faq_ref'.
   $field_bases['field_faq_ref'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -238,7 +238,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_file_image_alt_text'
+  // Exported field_base: 'field_file_image_alt_text'.
   $field_bases['field_file_image_alt_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -259,7 +259,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_file_image_description'
+  // Exported field_base: 'field_file_image_description'.
   $field_bases['field_file_image_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -278,7 +278,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_file_image_photographer'
+  // Exported field_base: 'field_file_image_photographer'.
   $field_bases['field_file_image_photographer'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -299,7 +299,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_file_image_title_text'
+  // Exported field_base: 'field_file_image_title_text'.
   $field_bases['field_file_image_title_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -320,7 +320,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_image'
+  // Exported field_base: 'field_image'.
   $field_bases['field_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -342,7 +342,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_image_alt_text'
+  // Exported field_base: 'field_image_alt_text'.
   $field_bases['field_image_alt_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -363,7 +363,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_image_description'
+  // Exported field_base: 'field_image_description'.
   $field_bases['field_image_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -382,7 +382,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_image_thumbnail'
+  // Exported field_base: 'field_image_thumbnail'.
   $field_bases['field_image_thumbnail'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -404,7 +404,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_internal_link'
+  // Exported field_base: 'field_internal_link'.
   $field_bases['field_internal_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -433,7 +433,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_internal_title'
+  // Exported field_base: 'field_internal_title'.
   $field_bases['field_internal_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -454,7 +454,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_link'
+  // Exported field_base: 'field_link'.
   $field_bases['field_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -483,7 +483,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_piwik_day'
+  // Exported field_base: 'field_piwik_day'.
   $field_bases['field_piwik_day'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -517,7 +517,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'piwik_stats',
   );
 
-  // Exported field_base: 'field_piwik_month'
+  // Exported field_base: 'field_piwik_month'.
   $field_bases['field_piwik_month'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -551,7 +551,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'piwik_stats',
   );
 
-  // Exported field_base: 'field_piwik_week'
+  // Exported field_base: 'field_piwik_week'.
   $field_bases['field_piwik_week'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -585,7 +585,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'piwik_stats',
   );
 
-  // Exported field_base: 'field_piwik_year'
+  // Exported field_base: 'field_piwik_year'.
   $field_bases['field_piwik_year'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -619,7 +619,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'piwik_stats',
   );
 
-  // Exported field_base: 'field_related_boxes'
+  // Exported field_base: 'field_related_boxes'.
   $field_bases['field_related_boxes'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -656,7 +656,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_related_content'
+  // Exported field_base: 'field_related_content'.
   $field_bases['field_related_content'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -698,7 +698,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_self_service'
+  // Exported field_base: 'field_self_service'.
   $field_bases['field_self_service'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -735,7 +735,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_table'
+  // Exported field_base: 'field_table'.
   $field_bases['field_table'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -755,7 +755,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'tablefield',
   );
 
-  // Exported field_base: 'field_taxonomy_kle'
+  // Exported field_base: 'field_taxonomy_kle'.
   $field_bases['field_taxonomy_kle'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -782,7 +782,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_taxonomy_local'
+  // Exported field_base: 'field_taxonomy_local'.
   $field_bases['field_taxonomy_local'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -809,7 +809,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_taxonomy_location'
+  // Exported field_base: 'field_taxonomy_location'.
   $field_bases['field_taxonomy_location'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -836,7 +836,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_taxonomy_subject_area'
+  // Exported field_base: 'field_taxonomy_subject_area'.
   $field_bases['field_taxonomy_subject_area'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -863,7 +863,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_teaser'
+  // Exported field_base: 'field_teaser'.
   $field_bases['field_teaser'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -882,7 +882,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_top_image'
+  // Exported field_base: 'field_top_image'.
   $field_bases['field_top_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -904,7 +904,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_video'
+  // Exported field_base: 'field_video'.
   $field_bases['field_video'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -923,7 +923,7 @@ function fields_shared_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_video_description'
+  // Exported field_base: 'field_video_description'.
   $field_bases['field_video_description'] = array(
     'active' => 1,
     'cardinality' => 1,

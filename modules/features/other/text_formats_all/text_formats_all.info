@@ -16,4 +16,3 @@ features[filter][] = full_html
 features[filter][] = job_html
 features[filter][] = plain_text
 features[filter][] = video_html
-mtime = 1425640033

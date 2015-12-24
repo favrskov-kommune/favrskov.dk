@@ -107,3 +107,29 @@ function favrskov_helper_update_7003() {
       ->execute();
   }
 }
+
+/**
+ * Change Subject Area term widget, update term filter conditions.
+ */
+function favrskov_helper_update_7004() {
+  $vocabulary = taxonomy_vocabulary_machine_name_load('subject_area');
+
+  $term = new stdClass();
+  $term->name = 'Favrskov.dk';
+  $term->vid = $vocabulary->vid;
+  taxonomy_term_save($term);
+
+  $query = db_update('taxonomy_term_hierarchy');
+  $query->fields(array('parent' => $term->tid));
+  $query->condition('tid', array(9, 21, 30));
+  $query->execute();
+
+  array_map('features_revert_module', array(
+    'content_type_article',
+    'content_type_news',
+    'content_type_subjectpage',
+    'content_type_webform',
+    'fields_shared',
+    'view_blogs',
+  ));
+}

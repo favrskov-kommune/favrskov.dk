@@ -10,7 +10,7 @@
 function content_type_news_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'comment-comment_node_news-comment_body'
+  // Exported field_instance: 'comment-comment_node_news-comment_body'.
   $field_instances['comment-comment_node_news-comment_body'] = array(
     'bundle' => 'comment_node_news',
     'default_value' => NULL,
@@ -41,7 +41,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'comment',
     'field_name' => 'comment_body',
-    'label' => t('Comment'),
+    'label' => 'Comment',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -100,7 +100,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-body'
+  // Exported field_instance: 'node-news-body'.
   $field_instances['node-news-body'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -140,7 +140,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => t('Body'),
+    'label' => 'Body',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -201,7 +201,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-cntrmd_news'
+  // Exported field_instance: 'node-news-cntrmd_news'.
   $field_instances['node-news-cntrmd_news'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -244,7 +244,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_author'
+  // Exported field_instance: 'node-news-field_author'.
   $field_instances['node-news-field_author'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -281,7 +281,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_author',
-    'label' => t('Author', array(), array('context' => 'type:news:author')),
+    'label' => 'Author',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -303,7 +303,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_bannerlink'
+  // Exported field_instance: 'node-news-field_bannerlink'.
   $field_instances['node-news-field_bannerlink'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -344,7 +344,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_bannerlink',
-    'label' => t('Bannerlink'),
+    'label' => 'Bannerlink',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -367,7 +367,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_contact_information'
+  // Exported field_instance: 'node-news-field_contact_information'.
   $field_instances['node-news-field_contact_information'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -408,7 +408,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_contact_information',
-    'label' => t('Contact Information'),
+    'label' => 'Contact Information',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -431,7 +431,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_date'
+  // Exported field_instance: 'node-news-field_date'.
   $field_instances['node-news-field_date'] = array(
     'bundle' => 'news',
     'deleted' => 0,
@@ -446,6 +446,7 @@ function content_type_news_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
@@ -460,6 +461,7 @@ function content_type_news_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
@@ -481,7 +483,7 @@ function content_type_news_field_default_field_instances() {
     'entity_type' => 'node',
     'exclude_cv' => 1,
     'field_name' => 'field_date',
-    'label' => t('Date'),
+    'label' => 'Date',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -508,7 +510,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_editorial_responsibility'
+  // Exported field_instance: 'node-news-field_editorial_responsibility'.
   $field_instances['node-news-field_editorial_responsibility'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -544,7 +546,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_editorial_responsibility',
-    'label' => t('Editorial responsibility'),
+    'label' => 'Editorial responsibility',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -567,7 +569,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_faq_ref'
+  // Exported field_instance: 'node-news-field_faq_ref'.
   $field_instances['node-news-field_faq_ref'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -608,7 +610,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_faq_ref',
-    'label' => t('FAQ'),
+    'label' => 'FAQ',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -631,7 +633,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_image_description'
+  // Exported field_instance: 'node-news-field_image_description'.
   $field_instances['node-news-field_image_description'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -668,7 +670,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_description',
-    'label' => t('Image description'),
+    'label' => 'Image description',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -694,11 +696,11 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_image_thumbnail'
+  // Exported field_instance: 'node-news-field_image_thumbnail'.
   $field_instances['node-news-field_image_thumbnail'] = array(
     'bundle' => 'news',
     'deleted' => 0,
-    'description' => t('Please, upload image in landscape format only.'),
+    'description' => 'Please, upload image in landscape format only.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -735,7 +737,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_thumbnail',
-    'label' => t('Image / thumbnail'),
+    'label' => 'Image / thumbnail',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
@@ -770,12 +772,12 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_internal_title'
+  // Exported field_instance: 'node-news-field_internal_title'.
   $field_instances['node-news-field_internal_title'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Used for admin content overview page instead of title field.'),
+    'description' => 'Used for admin content overview page instead of title field.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -799,7 +801,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => t('Internal title'),
+    'label' => 'Internal title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -856,7 +858,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_related_boxes'
+  // Exported field_instance: 'node-news-field_related_boxes'.
   $field_instances['node-news-field_related_boxes'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -895,7 +897,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_boxes',
-    'label' => t('Related boxes'),
+    'label' => 'Related boxes',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -918,7 +920,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_related_content'
+  // Exported field_instance: 'node-news-field_related_content'.
   $field_instances['node-news-field_related_content'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -955,7 +957,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_content',
-    'label' => t('Related content'),
+    'label' => 'Related content',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -978,7 +980,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_self_service'
+  // Exported field_instance: 'node-news-field_self_service'.
   $field_instances['node-news-field_self_service'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1016,7 +1018,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_self_service',
-    'label' => t('Self Service'),
+    'label' => 'Self Service',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1039,7 +1041,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_table'
+  // Exported field_instance: 'node-news-field_table'.
   $field_instances['node-news-field_table'] = array(
     'bundle' => 'news',
     'default_value' => array(
@@ -1100,7 +1102,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_table',
-    'label' => t('Table'),
+    'label' => 'Table',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1116,7 +1118,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_taxonomy_kle'
+  // Exported field_instance: 'node-news-field_taxonomy_kle'.
   $field_instances['node-news-field_taxonomy_kle'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1153,7 +1155,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_kle',
-    'label' => t('Taxonomy, KLE'),
+    'label' => 'Taxonomy, KLE',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1171,7 +1173,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_taxonomy_local'
+  // Exported field_instance: 'node-news-field_taxonomy_local'.
   $field_instances['node-news-field_taxonomy_local'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1208,7 +1210,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_local',
-    'label' => t('Taxonomy, local'),
+    'label' => 'Taxonomy, local',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1228,7 +1230,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_taxonomy_location'
+  // Exported field_instance: 'node-news-field_taxonomy_location'.
   $field_instances['node-news-field_taxonomy_location'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1265,7 +1267,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_location',
-    'label' => t('Taxonomy, Location'),
+    'label' => 'Taxonomy, Location',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1283,7 +1285,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_taxonomy_subject_area'
+  // Exported field_instance: 'node-news-field_taxonomy_subject_area'.
   $field_instances['node-news-field_taxonomy_subject_area'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1320,7 +1322,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_subject_area',
-    'label' => t('Taxonomy, Subject Area'),
+    'label' => 'Taxonomy, Subject Area',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1328,17 +1330,17 @@ function content_type_news_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'multiple_selects',
+      'module' => 'hs_taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'multiple_selects',
+      'type' => 'taxonomy_hs',
       'weight' => 16,
     ),
   );
 
-  // Exported field_instance: 'node-news-field_teaser'
+  // Exported field_instance: 'node-news-field_teaser'.
   $field_instances['node-news-field_teaser'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1375,7 +1377,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_teaser',
-    'label' => t('Teaser'),
+    'label' => 'Teaser',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -1434,7 +1436,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_video'
+  // Exported field_instance: 'node-news-field_video'.
   $field_instances['node-news-field_video'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1470,7 +1472,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video',
-    'label' => t('Video'),
+    'label' => 'Video',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1518,7 +1520,7 @@ function content_type_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_video_description'
+  // Exported field_instance: 'node-news-field_video_description'.
   $field_instances['node-news-field_video_description'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1555,7 +1557,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video_description',
-    'label' => t('Video description'),
+    'label' => 'Video description',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,

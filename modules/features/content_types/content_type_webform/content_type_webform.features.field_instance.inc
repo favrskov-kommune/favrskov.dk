@@ -10,7 +10,7 @@
 function content_type_webform_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-webform-body'
+  // Exported field_instance: 'node-webform-body'.
   $field_instances['node-webform-body'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -50,7 +50,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => t('Body'),
+    'label' => 'Body',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -99,7 +99,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-cntrmd_webform'
+  // Exported field_instance: 'node-webform-cntrmd_webform'.
   $field_instances['node-webform-cntrmd_webform'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -142,7 +142,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_contact_information'
+  // Exported field_instance: 'node-webform-field_contact_information'.
   $field_instances['node-webform-field_contact_information'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -183,7 +183,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_contact_information',
-    'label' => t('Contact Information'),
+    'label' => 'Contact Information',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -206,7 +206,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_editorial_responsibility'
+  // Exported field_instance: 'node-webform-field_editorial_responsibility'.
   $field_instances['node-webform-field_editorial_responsibility'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -241,7 +241,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_editorial_responsibility',
-    'label' => t('Editorial responsibility'),
+    'label' => 'Editorial responsibility',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -264,7 +264,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_faq_ref'
+  // Exported field_instance: 'node-webform-field_faq_ref'.
   $field_instances['node-webform-field_faq_ref'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -305,7 +305,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_faq_ref',
-    'label' => t('FAQ'),
+    'label' => 'FAQ',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -328,7 +328,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_image_description'
+  // Exported field_instance: 'node-webform-field_image_description'.
   $field_instances['node-webform-field_image_description'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -365,7 +365,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_description',
-    'label' => t('Image description'),
+    'label' => 'Image description',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -387,7 +387,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_image_thumbnail'
+  // Exported field_instance: 'node-webform-field_image_thumbnail'.
   $field_instances['node-webform-field_image_thumbnail'] = array(
     'bundle' => 'webform',
     'deleted' => 0,
@@ -428,7 +428,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_thumbnail',
-    'label' => t('Image / thumbnail'),
+    'label' => 'Image / thumbnail',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
@@ -463,12 +463,12 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_internal_title'
+  // Exported field_instance: 'node-webform-field_internal_title'.
   $field_instances['node-webform-field_internal_title'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Used for admin content overview page instead of title field.'),
+    'description' => 'Used for admin content overview page instead of title field.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -492,7 +492,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => t('Internal title'),
+    'label' => 'Internal title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -549,7 +549,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_related_boxes'
+  // Exported field_instance: 'node-webform-field_related_boxes'.
   $field_instances['node-webform-field_related_boxes'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -588,7 +588,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_boxes',
-    'label' => t('Related boxes'),
+    'label' => 'Related boxes',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -611,7 +611,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_related_content'
+  // Exported field_instance: 'node-webform-field_related_content'.
   $field_instances['node-webform-field_related_content'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -648,7 +648,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_content',
-    'label' => t('Related content'),
+    'label' => 'Related content',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -671,7 +671,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_taxonomy_kle'
+  // Exported field_instance: 'node-webform-field_taxonomy_kle'.
   $field_instances['node-webform-field_taxonomy_kle'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -708,7 +708,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_kle',
-    'label' => t('Taxonomy, KLE'),
+    'label' => 'Taxonomy, KLE',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -726,7 +726,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_taxonomy_local'
+  // Exported field_instance: 'node-webform-field_taxonomy_local'.
   $field_instances['node-webform-field_taxonomy_local'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -763,7 +763,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_local',
-    'label' => t('Taxonomy, local'),
+    'label' => 'Taxonomy, local',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -781,7 +781,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_taxonomy_location'
+  // Exported field_instance: 'node-webform-field_taxonomy_location'.
   $field_instances['node-webform-field_taxonomy_location'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -818,7 +818,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_location',
-    'label' => t('Taxonomy, Location'),
+    'label' => 'Taxonomy, Location',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -836,7 +836,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_taxonomy_subject_area'
+  // Exported field_instance: 'node-webform-field_taxonomy_subject_area'.
   $field_instances['node-webform-field_taxonomy_subject_area'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -873,7 +873,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_subject_area',
-    'label' => t('Taxonomy, Subject Area'),
+    'label' => 'Taxonomy, Subject Area',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -881,17 +881,17 @@ function content_type_webform_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'multiple_selects',
+      'module' => 'hs_taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'multiple_selects',
+      'type' => 'taxonomy_hs',
       'weight' => 14,
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_teaser'
+  // Exported field_instance: 'node-webform-field_teaser'.
   $field_instances['node-webform-field_teaser'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -928,7 +928,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_teaser',
-    'label' => t('Teaser'),
+    'label' => 'Teaser',
     'required' => 1,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -950,7 +950,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_video'
+  // Exported field_instance: 'node-webform-field_video'.
   $field_instances['node-webform-field_video'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -986,7 +986,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video',
-    'label' => t('Video'),
+    'label' => 'Video',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1034,7 +1034,7 @@ function content_type_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_video_description'
+  // Exported field_instance: 'node-webform-field_video_description'.
   $field_instances['node-webform-field_video_description'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -1071,7 +1071,7 @@ function content_type_webform_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video_description',
-    'label' => t('Video description'),
+    'label' => 'Video description',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,

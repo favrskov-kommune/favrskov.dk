@@ -63,7 +63,9 @@ function text_formats_all_filter_default_formats() {
         'weight' => 50,
         'status' => 1,
         'settings' => array(
-          'local_paths' => 'http://drupal.favrskov.dk
+          'local_paths' => 'http://favrskov.dk
+https://favrskov.dk
+http://drupal.favrskov.dk
 https://drupal.favrskov.dk
 http://favrskov.propeople.com.ua
 https://favrskov.propeople.com.ua',
@@ -100,7 +102,9 @@ https://favrskov.propeople.com.ua',
         'weight' => 50,
         'status' => 1,
         'settings' => array(
-          'local_paths' => 'http://drupal.favrskov.dk
+          'local_paths' => 'http://favrskov.dk
+https://favrskov.dk
+http://drupal.favrskov.dk
 https://drupal.favrskov.dk
 http://favrskov.propeople.com.ua
 https://favrskov.propeople.com.ua',
@@ -131,7 +135,9 @@ https://favrskov.propeople.com.ua',
         'weight' => 50,
         'status' => 1,
         'settings' => array(
-          'local_paths' => 'http://drupal.favrskov.dk
+          'local_paths' => 'http://favrskov.dk
+https://favrskov.dk
+http://drupal.favrskov.dk
 https://drupal.favrskov.dk
 http://favrskov.propeople.com.ua
 https://favrskov.propeople.com.ua',
@@ -191,7 +197,9 @@ https://favrskov.propeople.com.ua',
         'weight' => 50,
         'status' => 1,
         'settings' => array(
-          'local_paths' => 'http://drupal.favrskov.dk
+          'local_paths' => 'http://favrskov.dk
+https://favrskov.dk
+http://drupal.favrskov.dk
 https://drupal.favrskov.dk
 http://favrskov.propeople.com.ua
 https://favrskov.propeople.com.ua',
