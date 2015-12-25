@@ -123,7 +123,7 @@ function favrskov_helper_update_7004() {
 
   $query = db_update('taxonomy_term_hierarchy');
   $query->fields(array('parent' => $term->tid));
-  $query->condition('tid', array(9, 21, 30));
+  $query->condition('tid', array(1689, 1688, 1701));
   $query->execute();
 
   array_map('features_revert_module', array(
