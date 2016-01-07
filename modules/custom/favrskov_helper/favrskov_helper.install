@@ -137,7 +137,7 @@ function favrskov_helper_update_7004() {
 }
 
 /**
- * Feature revert. URL-alias correction.
+ * Feature revert. URL-alias correction. Redirects addition.
  */
 function favrskov_helper_update_7005() {
   features_revert(array('config_url_aliases'));
@@ -157,5 +157,19 @@ function favrskov_helper_update_7005() {
       ->fields(array('alias' => $right_alias))
       ->condition('pid', $pid)
       ->execute();
+
+    $redirect = new stdClass();
+    redirect_object_prepare(
+      $redirect,
+      array(
+        'source' => $alias,
+        'source_options' => array(),
+        'redirect' => $right_alias,
+        'redirect_options' => array(),
+        'language' => 'da',
+      )
+    );
+
+    redirect_save($redirect);
   }
 }
