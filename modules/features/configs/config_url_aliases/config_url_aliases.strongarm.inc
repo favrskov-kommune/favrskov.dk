@@ -105,7 +105,7 @@ function config_url_aliases_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_article_pattern';
-  $strongarm->value = '[node:field-taxonomy-subject-area:0:parents]/[node:field-taxonomy-subject-area:0:name]/[node:title]';
+  $strongarm->value = '[node:field-taxonomy-subject-area:0:parent]/[node:field-taxonomy-subject-area:0:name]/[node:title]';
   $export['pathauto_node_article_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

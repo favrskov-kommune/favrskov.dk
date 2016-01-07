@@ -135,3 +135,27 @@ function favrskov_helper_update_7004() {
     'view_blogs',
   ));
 }
+
+/**
+ * Feature revert. URL-alias correction.
+ */
+function favrskov_helper_update_7005() {
+  features_revert(array('config_url_aliases'));
+
+  $wrong_alias_begin = 'favrskovdk-';
+
+  $pid_alias = db_select('url_alias', 'ua')
+    ->fields('ua', array('pid', 'alias'))
+    ->condition('alias', "$wrong_alias_begin%", 'LIKE')
+    ->execute()
+    ->fetchAllKeyed();
+
+  foreach($pid_alias as $pid => $alias) {
+    $right_alias = str_replace($wrong_alias_begin, '', $alias);
+
+    db_update('url_alias')
+      ->fields(array('alias' => $right_alias))
+      ->condition('pid', $pid)
+      ->execute();
+  }
+}
