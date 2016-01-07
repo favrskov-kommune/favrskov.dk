@@ -144,26 +144,26 @@ function favrskov_helper_update_7005() {
 
   $wrong_alias_begin = 'favrskovdk-';
 
-  $pid_alias = db_select('url_alias', 'ua')
-    ->fields('ua', array('pid', 'alias'))
+  $result = db_select('url_alias', 'ua')
+    ->fields('ua', array('pid', 'source', 'alias'))
     ->condition('alias', "$wrong_alias_begin%", 'LIKE')
     ->execute()
-    ->fetchAllKeyed();
+    ->fetchAllAssoc('pid');
 
-  foreach($pid_alias as $pid => $alias) {
-    $right_alias = str_replace($wrong_alias_begin, '', $alias);
+  foreach($result as $alias_object) {
+    $right_alias = str_replace($wrong_alias_begin, '', $alias_object->alias);
 
     db_update('url_alias')
       ->fields(array('alias' => $right_alias))
-      ->condition('pid', $pid)
+      ->condition('pid', $alias_object->pid)
       ->execute();
 
     $redirect = new stdClass();
     redirect_object_prepare(
       $redirect,
       array(
-        'source' => $alias,
-        'redirect' => $right_alias,
+        'source' => $alias_object->alias,
+        'redirect' => $alias_object->source,
         'language' => 'da',
       )
     );
