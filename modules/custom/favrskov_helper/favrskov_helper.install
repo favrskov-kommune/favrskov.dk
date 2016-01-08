@@ -140,7 +140,7 @@ function favrskov_helper_update_7004() {
  * Feature revert. URL-alias correction. Redirects addition.
  */
 function favrskov_helper_update_7005() {
-  features_revert(array('config_url_aliases'));
+  features_revert_module('config_url_aliases');
 
   $wrong_alias_begin = 'favrskovdk-';
 
@@ -176,6 +176,8 @@ function favrskov_helper_update_7005() {
  * Addon to favrskov_helper_update_7005(). URL-alias correction. Redirects addition.
  */
 function favrskov_helper_update_7006() {
+  features_revert_module('config_url_aliases');
+
   $wrong_alias_begin = 'favrskovdk/';
 
   $result = db_select('url_alias', 'ua')
