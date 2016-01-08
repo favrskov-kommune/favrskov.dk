@@ -25,7 +25,7 @@ function favrskov_helper_token_info() {
 function favrskov_helper_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
 
-  if ($type == 'favrskov_tokens') {
+  if (!empty($data['node']) && $type == 'favrskov_tokens') {
     foreach ($tokens as $name => $original) {
       switch ($name) {
         case 'news_path_alias_taxonomy':
