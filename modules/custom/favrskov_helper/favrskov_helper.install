@@ -171,3 +171,37 @@ function favrskov_helper_update_7005() {
     redirect_save($redirect);
   }
 }
+
+/**
+ * Addon to favrskov_helper_update_7005(). URL-alias correction. Redirects addition.
+ */
+function favrskov_helper_update_7006() {
+  $wrong_alias_begin = 'favrskovdk/';
+
+  $result = db_select('url_alias', 'ua')
+    ->fields('ua', array('pid', 'source', 'alias'))
+    ->condition('alias', "$wrong_alias_begin%", 'LIKE')
+    ->execute()
+    ->fetchAllAssoc('pid');
+
+  foreach($result as $alias_object) {
+    $right_alias = str_replace($wrong_alias_begin, '', $alias_object->alias);
+
+    db_update('url_alias')
+      ->fields(array('alias' => $right_alias))
+      ->condition('pid', $alias_object->pid)
+      ->execute();
+
+    $redirect = new stdClass();
+    redirect_object_prepare(
+      $redirect,
+      array(
+        'source' => $alias_object->alias,
+        'redirect' => $alias_object->source,
+        'language' => 'da',
+      )
+    );
+
+    redirect_save($redirect);
+  }
+}
