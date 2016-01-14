@@ -220,4 +220,10 @@ function favrskov_helper_update_7007() {
  */
 function favrskov_helper_update_7008() {
   module_enable(array('content_type_volunteer_jobs'));
+
+  t('Resume');
+  t('Organisation');
+  locale_add_translation('Resume', 'da', 'Beskrivelse');
+  locale_add_translation('Organisation', 'da', 'Organisation');
+  locale_clear_cache();
 }
