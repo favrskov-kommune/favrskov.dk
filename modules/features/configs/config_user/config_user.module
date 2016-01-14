@@ -5,6 +5,46 @@
  */
 
 /**
+ * Implements hook_menu().
+ */
+function config_user_menu() {
+  $items['admin/reports/users_log'] = array(
+    'title' => 'Users logs',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('users_logs_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+function users_logs_form($form, &$form_state) {
+  $form = array();
+  $uids = variable_get('config_user_uids', NULL);
+
+  if ($uids) {
+    $form['user_group'] = array(
+      '#title' => t('Users were canceled'),
+      '#type' => 'fieldset',
+    );
+
+    foreach ($uids as $key => $uid) {
+      $account = user_load($uid);
+      $last_access = $account->access == 0 ? 'Never accessed' : format_date($account->access);
+      $form['user_group']['details' . $uid] = array(
+        '#markup' => '<p style="border-top: 1px solid #ddd"><strong>account name: </strong>' . $account->name . '</p>'
+          . '<p><strong>last login time: </strong>' . $last_access . '</p>',
+      );
+    }
+  }
+  else {
+    drupal_set_message('Not users were canceled');
+  }
+
+  return $form;
+}
+
+/**
  *  Implements hook_form_FORM_ID_alter().
  */
 function config_user_form_user_login_alter(&$form, &$form_state, $form_id) {
@@ -28,7 +68,7 @@ function config_user_form_user_login_alter(&$form, &$form_state, $form_id) {
  */
 function config_user_cronapi($op, $job = NULL) {
   $items['config_user_account_cleanup_cron'] = array(
-    'description' => 'Delete abandoned user accounts',
+    'description' => 'Cancel abandoned user accounts',
     'rule' => '* 1 */3 * *',
   );
   return $items;
@@ -51,16 +91,23 @@ function config_user_account_cleanup_cron() {
   if (!empty($abandoned_uids)) {
     // uid = 0 belongs to anonymous user.
     // uid = 1 belongs to admin user.
-    $restricted_uids = variable_get('account_cleanup_restricted_uids', array(0, 1));
+    $restricted_uids = variable_get('account_cleanup_restricted_uids', array(
+      0,
+      1
+    ));
+
     foreach ($abandoned_uids as $index => $uid) {
       // Remove restricted uids from further deletion.
       if (in_array($uid, $restricted_uids)) {
         unset($abandoned_uids[$index]);
-      } else {
+      }
+      else {
+        $account = user_load($uid);
+        user_save($account, array('status' => 0));
         config_user_node_reassign($uid);
       }
     }
-    user_delete_multiple($abandoned_uids);
+    variable_set('config_user_uids', $abandoned_uids);
 
     // Verify once again due to filtering with restricted uids.
     if (!empty($abandoned_uids)) {
@@ -68,9 +115,10 @@ function config_user_account_cleanup_cron() {
         '%uids' => implode(', ', $abandoned_uids),
         '%total' => count($abandoned_uids)
       );
-      watchdog('account cleanup', 'Abandoned user accounts with uid(s) %uids were deleted. Total accounts number: %total.', $variables);
-    } else {
-      watchdog('account cleanup', 'There are no user accounts that needs to be deleted.');
+      watchdog('account cleanup', 'Abandoned user accounts with uid(s) %uids were canceled. Total accounts number: %total.', $variables);
+    }
+    else {
+      watchdog('account cleanup', 'There are no user accounts that needs to be canceled.');
     }
   }
 }
@@ -82,21 +130,12 @@ function config_user_account_cleanup_cron() {
  * @see node_user_cancel()
  */
 function config_user_node_reassign($uid) {
-  // Reassign nodes (current revisions).
+  // Unpublish nodes (current revisions).
   module_load_include('inc', 'node', 'node.admin');
   $nodes = db_select('node', 'n')
     ->fields('n', array('nid'))
     ->condition('uid', $uid)
     ->execute()
     ->fetchCol();
-  node_mass_update($nodes, array('uid' => 1));
-  // Reassign old revisions.
-  db_update('node_revision')
-    ->fields(array('uid' => 1))
-    ->condition('uid', $uid)
-    ->execute();
-  // Clean history.
-  db_delete('history')
-    ->condition('uid', $uid)
-    ->execute();
+  node_mass_update($nodes, array('status' => 0));
 }
