@@ -229,4 +229,23 @@ function favrskov_helper_update_7008() {
   locale_add_translation('Resume', 'da', 'Beskrivelse');
   locale_add_translation('Organisation', 'da', 'Organisation');
   locale_clear_cache();
+
+  // Feeds volunteer jobs importer setup.
+  $source = 'http://feeds.favrskov.dk/frivilligejobs.json';
+  $config = array(
+    'FeedsHTTPFetcher' => array('source' => $source),
+    'FeedsExJsonPath' => array(),
+  );
+
+  db_insert('feeds_source')
+    ->fields(array(
+      'id' => 'volunteer_jobs',
+      'feed_nid' => 0,
+      'config' => serialize($config),
+      'source' => $source,
+      'state' => serialize(FALSE),
+      'fetcher_result' => serialize(FALSE),
+    ))
+    ->execute();
 }
+
