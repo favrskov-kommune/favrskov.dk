@@ -219,7 +219,10 @@ function favrskov_helper_update_7007() {
  * Enable content_type_volunteer_jobs.
  */
 function favrskov_helper_update_7008() {
-  module_enable(array('content_type_volunteer_jobs'));
+  module_enable(array(
+    'content_type_volunteer_jobs'),
+    'feeds_volunteer_jobs_importer'
+  );
 
   t('Resume');
   t('Organisation');
