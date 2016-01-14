@@ -98,7 +98,7 @@ function content_type_volunteer_jobs_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_volunteer_jobs_institution',
-    'label' => 'Organisation',
+    'label' => 'Organization',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -240,7 +240,7 @@ function content_type_volunteer_jobs_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Apply url');
-  t('Organisation');
+  t('Organization');
   t('Resume');
 
   return $field_instances;
