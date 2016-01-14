@@ -45,7 +45,7 @@ function feeds_volunteer_jobs_importer_feeds_importer_default() {
             'weight' => '2',
           ),
           'organisation' => array(
-            'name' => 'Organisation',
+            'name' => 'Organization',
             'value' => '$.organisation',
             'debug' => 0,
             'weight' => '3',
