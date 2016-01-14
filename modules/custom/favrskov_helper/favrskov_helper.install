@@ -231,6 +231,7 @@ function favrskov_helper_update_7008() {
   locale_clear_cache();
 
   // Feeds volunteer jobs importer setup.
+  $importer_id = 'volunteer_jobs';
   $source = 'http://feeds.favrskov.dk/frivilligejobs.json';
   $config = array(
     'FeedsHTTPFetcher' => array('source' => $source),
@@ -239,7 +240,7 @@ function favrskov_helper_update_7008() {
 
   db_insert('feeds_source')
     ->fields(array(
-      'id' => 'volunteer_jobs',
+      'id' => $importer_id,
       'feed_nid' => 0,
       'config' => serialize($config),
       'source' => $source,
@@ -247,5 +248,17 @@ function favrskov_helper_update_7008() {
       'fetcher_result' => serialize(FALSE),
     ))
     ->execute();
-}
 
+  // Perform Volunteer jobs import.
+  if (function_exists('feeds_source')) {
+    $source = feeds_source($importer_id);
+    $result_code = $source->import();
+
+    if (FEEDS_BATCH_COMPLETE == $result_code) {
+      watchdog('volunteer_jobs_importer', 'Successfull import.');
+    }
+    else {
+      watchdog('volunteer_jobs_importer', 'Import failed.');
+    }
+  }
+}
