@@ -214,3 +214,10 @@ function favrskov_helper_update_7006() {
 function favrskov_helper_update_7007() {
   module_enable(array('view_users_logs'));
 }
+
+/**
+ * Enable content_type_volunteer_jobs.
+ */
+function favrskov_helper_update_7008() {
+  module_enable(array('content_type_volunteer_jobs'));
+}
