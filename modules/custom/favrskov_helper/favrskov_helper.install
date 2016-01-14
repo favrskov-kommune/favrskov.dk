@@ -224,13 +224,18 @@ function favrskov_helper_update_7008() {
     'feeds_volunteer_jobs_importer'
   );
 
-  t('Resume');
-  t('Organization');
-  locale_add_translation('Resume', 'da', 'Beskrivelse');
-  locale_add_translation('Organization', 'da', 'Organisation');
+  // String translations using context.
+  t('Title', array(), array('context' => 'volunteer_jobs'));
+  t('Resume', array(), array('context' => 'volunteer_jobs'));
+  t('Organization', array(), array('context' => 'volunteer_jobs'));
+
+  locale_add_translation('Title', 'da', 'Frivilligejob', 'volunteer_jobs');
+  locale_add_translation('Resume', 'da', 'Beskrivelse', 'volunteer_jobs');
+  locale_add_translation('Organization', 'da', 'Organisation', 'volunteer_jobs');
+
   locale_clear_cache();
 
-  // Feeds volunteer jobs importer setup.
+  // Feeds "Volunteer jobs" importer setup.
   $importer_id = 'volunteer_jobs';
   $source = 'http://feeds.favrskov.dk/frivilligejobs.json';
   $config = array(
@@ -255,10 +260,10 @@ function favrskov_helper_update_7008() {
     $result_code = $source->import();
 
     if (FEEDS_BATCH_COMPLETE == $result_code) {
-      watchdog('volunteer_jobs_importer', 'Successfull import.');
+      watchdog('volunteer_jobs', 'Successfull import.');
     }
     else {
-      watchdog('volunteer_jobs_importer', 'Import failed.');
+      watchdog('volunteer_jobs', 'Import failed.');
     }
   }
 }
