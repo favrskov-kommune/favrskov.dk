@@ -225,9 +225,9 @@ function favrskov_helper_update_7008() {
   );
 
   t('Resume');
-  t('Organisation');
+  t('Organization');
   locale_add_translation('Resume', 'da', 'Beskrivelse');
-  locale_add_translation('Organisation', 'da', 'Organisation');
+  locale_add_translation('Organization', 'da', 'Organisation');
   locale_clear_cache();
 
   // Feeds volunteer jobs importer setup.
