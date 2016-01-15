@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Views Volunteer jobs feature.
+ */
+
+include_once 'views_volunteer_jobs.features.inc';
