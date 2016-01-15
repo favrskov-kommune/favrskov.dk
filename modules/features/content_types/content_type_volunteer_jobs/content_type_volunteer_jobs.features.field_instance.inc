@@ -184,7 +184,7 @@ function content_type_volunteer_jobs_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'custom_tokens_no_filters_' => 0,
-          'filtered_html' => 'filtered_html',
+          'filtered_html' => 0,
           'full_html' => 0,
           'job_html' => 0,
           'plain_text' => 'plain_text',
