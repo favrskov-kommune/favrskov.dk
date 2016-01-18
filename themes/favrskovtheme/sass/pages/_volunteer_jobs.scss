@@ -38,10 +38,6 @@
       position: relative;
       text-align: left;
 
-      &:first-child {
-        width: columns(6);
-      }
-
       &:last-child,
       &:nth-child(2) {
         a {
@@ -70,6 +66,48 @@
 
     a {
       display: table-cell;
+      color: $dimgray;
+    }
+  }
+}
+
+.view-display-id-volunteer_jobs_list {
+  @include pager-table;
+  @include at-breakpoint(12 $width-768) {
+    display: block;
+  }
+
+  display: none;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .views-row {
+    background-color: $grey;
+    padding: 5px 9px;
+
+    &:nth-child(2n) {
+      background-color: $light-blue;
+    }
+
+    .title-label,
+    .resume-label,
+    .organization-label {
+      display: block;
+      padding-top: 5px;
+      font-weight: bold;
+    }
+
+    .title-value,
+    .resume-value,
+    .organization-value {
+      display: block;
+      padding-bottom: 5px;
+    }
+
+    a {
+      display: block;
       color: $dimgray;
     }
   }
