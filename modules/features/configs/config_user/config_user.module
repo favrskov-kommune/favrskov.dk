@@ -5,46 +5,6 @@
  */
 
 /**
- * Implements hook_menu().
- */
-function config_user_menu() {
-  $items['admin/reports/users_log'] = array(
-    'title' => 'Users logs',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('users_logs_form'),
-    'access callback' => TRUE,
-    'type' => MENU_NORMAL_ITEM,
-  );
-  return $items;
-}
-
-function users_logs_form($form, &$form_state) {
-  $form = array();
-  $uids = variable_get('config_user_uids', NULL);
-
-  if ($uids) {
-    $form['user_group'] = array(
-      '#title' => t('Users were canceled'),
-      '#type' => 'fieldset',
-    );
-
-    foreach ($uids as $key => $uid) {
-      $account = user_load($uid);
-      $last_access = $account->access == 0 ? 'Never accessed' : format_date($account->access);
-      $form['user_group']['details' . $uid] = array(
-        '#markup' => '<p style="border-top: 1px solid #ddd"><strong>account name: </strong>' . $account->name . '</p>'
-          . '<p><strong>last login time: </strong>' . $last_access . '</p>',
-      );
-    }
-  }
-  else {
-    drupal_set_message('Not users were canceled');
-  }
-
-  return $form;
-}
-
-/**
  *  Implements hook_form_FORM_ID_alter().
  */
 function config_user_form_user_login_alter(&$form, &$form_state, $form_id) {
@@ -91,10 +51,7 @@ function config_user_account_cleanup_cron() {
   if (!empty($abandoned_uids)) {
     // uid = 0 belongs to anonymous user.
     // uid = 1 belongs to admin user.
-    $restricted_uids = variable_get('account_cleanup_restricted_uids', array(
-      0,
-      1
-    ));
+    $restricted_uids = variable_get('account_cleanup_restricted_uids', array(0, 1));
 
     foreach ($abandoned_uids as $index => $uid) {
       // Remove restricted uids from further deletion.
@@ -107,7 +64,6 @@ function config_user_account_cleanup_cron() {
         config_user_node_reassign($uid);
       }
     }
-    variable_set('config_user_uids', $abandoned_uids);
 
     // Verify once again due to filtering with restricted uids.
     if (!empty($abandoned_uids)) {

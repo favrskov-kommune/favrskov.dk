@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the View users logs feature.
+ */
+
+include_once 'view_users_logs.features.inc';
