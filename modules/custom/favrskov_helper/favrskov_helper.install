@@ -228,14 +228,8 @@ function favrskov_helper_update_7008() {
   );
 
   // String translations using context.
-  t('Title', array(), array('context' => 'volunteer_jobs'));
-  t('Resume', array(), array('context' => 'volunteer_jobs'));
-  t('Organization', array(), array('context' => 'volunteer_jobs'));
-
-  locale_add_translation('Title', 'da', 'Frivilligejob', 'volunteer_jobs');
-  locale_add_translation('Resume', 'da', 'Beskrivelse', 'volunteer_jobs');
-  locale_add_translation('Organization', 'da', 'Organisation', 'volunteer_jobs');
-
+  t('Volunteer jobs', array(), array('context' => 'volunteer_jobs'));
+  locale_add_translation('Volunteer jobs', 'da', 'Frivillige jobs', 'volunteer_jobs');
   locale_clear_cache();
 
   // Feeds "Volunteer jobs" importer setup.

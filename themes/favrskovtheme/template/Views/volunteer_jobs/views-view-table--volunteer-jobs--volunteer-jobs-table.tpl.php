@@ -27,9 +27,11 @@
     <thead>
     <tr>
       <?php foreach ($header as $field => $label): ?>
-        <th <?php if ($header_classes[$field]) { print 'class="'. $header_classes[$field] . '" '; } ?> scope="col">
-          <?php print $label; ?>
-        </th>
+        <?php if ($field !== 'field_volunteer_jobs_apply_url'): ?>
+          <th <?php if ($header_classes[$field]) { print 'class="'. $header_classes[$field] . '" '; } ?> scope="col">
+            <?php print $label; ?>
+          </th>
+        <?php endif; ?>
       <?php endforeach; ?>
     </tr>
     </thead>

@@ -1,0 +1,76 @@
+//------------------------------------------------------------------------------
+// Volunteer jobs view styles.
+// View has two displays: volunteer_jobs_table and volunteer_jobs_list.
+// Table aimed to display view on desktop.
+// List aimed to display view on tablets and mobile devices.
+
+.view-display-id-volunteer_jobs_table {
+  @include pager-table;
+  @include at-breakpoint(12 $width-768) {
+    display: none;
+  }
+
+  table {
+    font-family: $sans;
+    border-collapse: inherit;
+    border-spacing: 3px;
+
+    th, td {
+      @include font-size(14);
+      padding: 9px 10px;
+      position: relative;
+    }
+  }
+
+  thead {
+    a {
+      color: $white;
+      position: relative;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+    }
+
+    th {
+      background-color: $dark-green;
+      position: relative;
+      text-align: left;
+
+      &:first-child {
+        width: columns(6);
+      }
+
+      &:last-child,
+      &:nth-child(2) {
+        a {
+          display: block;
+          width: 100px;
+        }
+      }
+    }
+
+    .ajax-progress {
+      margin: 0;
+      left: auto;
+      right: 0;
+      top: 4px;
+    }
+  }
+
+  tbody {
+    tr:nth-child(2n) {
+      background-color: $grey;
+    }
+
+    td {
+      vertical-align: middle;
+    }
+
+    a {
+      display: table-cell;
+      color: $dimgray;
+    }
+  }
+}

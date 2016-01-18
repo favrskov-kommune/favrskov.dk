@@ -129,30 +129,28 @@ function views_volunteer_jobs_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Titel';
+  $handler->display->display_options['fields']['title']['label'] = 'Frivilligejob';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Resume */
   $handler->display->display_options['fields']['field_volunteer_jobs_resume']['id'] = 'field_volunteer_jobs_resume';
   $handler->display->display_options['fields']['field_volunteer_jobs_resume']['table'] = 'field_data_field_volunteer_jobs_resume';
   $handler->display->display_options['fields']['field_volunteer_jobs_resume']['field'] = 'field_volunteer_jobs_resume';
+  $handler->display->display_options['fields']['field_volunteer_jobs_resume']['label'] = 'Beskrivelse';
   $handler->display->display_options['fields']['field_volunteer_jobs_resume']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_volunteer_jobs_resume']['element_default_classes'] = FALSE;
   /* Field: Content: Organization */
   $handler->display->display_options['fields']['field_volunteer_jobs_institution']['id'] = 'field_volunteer_jobs_institution';
   $handler->display->display_options['fields']['field_volunteer_jobs_institution']['table'] = 'field_data_field_volunteer_jobs_institution';
   $handler->display->display_options['fields']['field_volunteer_jobs_institution']['field'] = 'field_volunteer_jobs_institution';
+  $handler->display->display_options['fields']['field_volunteer_jobs_institution']['label'] = 'Organisation';
   $handler->display->display_options['fields']['field_volunteer_jobs_institution']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_volunteer_jobs_institution']['element_default_classes'] = FALSE;
   /* Field: Content: Apply url */
   $handler->display->display_options['fields']['field_volunteer_jobs_apply_url']['id'] = 'field_volunteer_jobs_apply_url';
   $handler->display->display_options['fields']['field_volunteer_jobs_apply_url']['table'] = 'field_data_field_volunteer_jobs_apply_url';
   $handler->display->display_options['fields']['field_volunteer_jobs_apply_url']['field'] = 'field_volunteer_jobs_apply_url';
   $handler->display->display_options['fields']['field_volunteer_jobs_apply_url']['label'] = '';
-  $handler->display->display_options['fields']['field_volunteer_jobs_apply_url']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_volunteer_jobs_apply_url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_volunteer_jobs_apply_url']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_volunteer_jobs_apply_url']['click_sort_column'] = 'url';
@@ -267,11 +265,14 @@ function views_volunteer_jobs_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Volunteer jobs table'),
+    t('Frivilligejob'),
+    t('Beskrivelse'),
+    t('Organisation'),
+    t('View panes'),
+    t('Volunteer jobs list'),
     t('Titel'),
     t('Resume'),
     t('Organization'),
-    t('View panes'),
-    t('Volunteer jobs list'),
   );
   $export['volunteer_jobs'] = $view;
 
