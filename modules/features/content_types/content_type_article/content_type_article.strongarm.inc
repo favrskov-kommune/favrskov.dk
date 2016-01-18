@@ -105,7 +105,7 @@ function content_type_article_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'metatags' => array(
           'weight' => '0',
@@ -117,10 +117,10 @@ function content_type_article_strongarm() {
           'weight' => '3',
         ),
         'language' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'domain' => array(
-          'weight' => '4',
+          'weight' => '5',
         ),
         'rabbit_hole' => array(
           'weight' => '1',
