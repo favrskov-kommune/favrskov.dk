@@ -53,6 +53,7 @@ function config_user_account_cleanup_cron() {
     // uid = 0 belongs to anonymous user.
     // uid = 1 belongs to admin user.
     $restricted_uids = variable_get('account_cleanup_restricted_uids', array(0, 1));
+    $abandoned_uids = array_diff($abandoned_uids, $restricted_uids);
 
     foreach ($abandoned_uids as $index => $uid) {
       $account = user_load($uid);
