@@ -24,11 +24,15 @@
  * @ingroup views_templates
  */
 ?>
-<a href="<?php print $fields['field_volunteer_jobs_apply_url']->content; ?>">
-  <?php foreach ($fields as $id => $field): ?>
-    <?php if ($id !== 'field_volunteer_jobs_apply_url'): ?>
-      <?php print $field->label_html; ?>
-      <?php print $field->content; ?>
-    <?php endif; ?>
-  <?php endforeach; ?>
-</a>
+<?php if (!empty($fields['field_volunteer_jobs_apply_url']->content)) : ?>
+  <a href="<?php print $fields['field_volunteer_jobs_apply_url']->content; ?>">
+<?php endif; ?>
+<?php foreach ($fields as $id => $field): ?>
+  <?php if ($id !== 'field_volunteer_jobs_apply_url'): ?>
+    <?php print $field->label_html; ?>
+    <?php print $field->content; ?>
+  <?php endif; ?>
+<?php endforeach; ?>
+<?php if (!empty($fields['field_volunteer_jobs_apply_url']->content)) : ?>
+  </a>
+<?php endif; ?>

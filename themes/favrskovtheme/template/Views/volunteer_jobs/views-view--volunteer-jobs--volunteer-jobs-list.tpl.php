@@ -53,7 +53,7 @@
 
   <?php if ($rows): ?>
   <div class="view-content">
-    <?php print '<h2>' . t('Volunteer jobs') . '</h2>'; ?>
+    <?php print '<h2>' . t('Volunteer jobs', array(), array('context' => 'volunteer_jobs')) . '</h2>'; ?>
     <?php print $rows; ?>
   </div>
   <?php elseif ($empty): ?>
