@@ -45,6 +45,7 @@ function config_user_account_cleanup_cron() {
   $abandoned_uids = db_select('users', 'u')
     ->fields('u', array('uid'))
     ->condition('login', $abandoned_timestamp, '<')
+    ->condition('status', 1)
     ->execute()
     ->fetchAll(PDO::FETCH_COLUMN);
 
@@ -54,15 +55,9 @@ function config_user_account_cleanup_cron() {
     $restricted_uids = variable_get('account_cleanup_restricted_uids', array(0, 1));
 
     foreach ($abandoned_uids as $index => $uid) {
-      // Remove restricted uids from further deletion.
-      if (in_array($uid, $restricted_uids)) {
-        unset($abandoned_uids[$index]);
-      }
-      else {
-        $account = user_load($uid);
-        user_save($account, array('status' => 0));
-        config_user_node_reassign($uid);
-      }
+      $account = user_load($uid);
+      user_save($account, array('status' => 0));
+      config_user_node_reassign($uid);
     }
 
     // Verify once again due to filtering with restricted uids.
