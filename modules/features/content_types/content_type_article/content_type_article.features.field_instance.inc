@@ -10,7 +10,7 @@
 function content_type_article_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'comment-comment_node_article-comment_body'
+  // Exported field_instance: 'comment-comment_node_article-comment_body'.
   $field_instances['comment-comment_node_article-comment_body'] = array(
     'bundle' => 'comment_node_article',
     'default_value' => NULL,
@@ -152,7 +152,7 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_link'
+  // 'field_collection_item-field_publications-field_link'.
   $field_instances['field_collection_item-field_publications-field_link'] = array(
     'bundle' => 'field_publications',
     'default_value' => NULL,
@@ -195,6 +195,7 @@ function content_type_article_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -213,7 +214,7 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_open_in_new_window'
+  // 'field_collection_item-field_publications-field_open_in_new_window'.
   $field_instances['field_collection_item-field_publications-field_open_in_new_window'] = array(
     'bundle' => 'field_publications',
     'default_value' => array(
@@ -252,7 +253,7 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_pdf_file'
+  // 'field_collection_item-field_publications-field_pdf_file'.
   $field_instances['field_collection_item-field_publications-field_pdf_file'] = array(
     'bundle' => 'field_publications',
     'deleted' => 0,
@@ -310,7 +311,7 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_publications_description'
+  // 'field_collection_item-field_publications-field_publications_description'.
   $field_instances['field_collection_item-field_publications-field_publications_description'] = array(
     'bundle' => 'field_publications',
     'default_value' => NULL,
@@ -394,7 +395,7 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_title'
+  // 'field_collection_item-field_publications-field_title'.
   $field_instances['field_collection_item-field_publications-field_title'] = array(
     'bundle' => 'field_publications',
     'default_value' => NULL,
@@ -572,7 +573,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-cntrmd_article'
+  // Exported field_instance: 'node-article-cntrmd_article'.
   $field_instances['node-article-cntrmd_article'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -614,7 +615,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_author'
+  // Exported field_instance: 'node-article-field_author'.
   $field_instances['node-article-field_author'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -831,7 +832,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_contact_information'
+  // Exported field_instance: 'node-article-field_contact_information'.
   $field_instances['node-article-field_contact_information'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1021,7 +1022,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_hide_node_update_date'
+  // Exported field_instance: 'node-article-field_hide_node_update_date'.
   $field_instances['node-article-field_hide_node_update_date'] = array(
     'bundle' => 'article',
     'default_value' => array(
@@ -1298,7 +1299,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_job_list'
+  // Exported field_instance: 'node-article-field_job_list'.
   $field_instances['node-article-field_job_list'] = array(
     'bundle' => 'article',
     'default_value' => array(
@@ -1348,7 +1349,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_one_column_layout'
+  // Exported field_instance: 'node-article-field_one_column_layout'.
   $field_instances['node-article-field_one_column_layout'] = array(
     'bundle' => 'article',
     'default_value' => array(
@@ -1404,7 +1405,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_piwik_day'
+  // Exported field_instance: 'node-article-field_piwik_day'.
   $field_instances['node-article-field_piwik_day'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1467,7 +1468,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_piwik_month'
+  // Exported field_instance: 'node-article-field_piwik_month'.
   $field_instances['node-article-field_piwik_month'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1530,7 +1531,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_piwik_week'
+  // Exported field_instance: 'node-article-field_piwik_week'.
   $field_instances['node-article-field_piwik_week'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1593,7 +1594,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_piwik_year'
+  // Exported field_instance: 'node-article-field_piwik_year'.
   $field_instances['node-article-field_piwik_year'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1656,7 +1657,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_publications'
+  // Exported field_instance: 'node-article-field_publications'.
   $field_instances['node-article-field_publications'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1997,7 +1998,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_table'
+  // Exported field_instance: 'node-article-field_table'.
   $field_instances['node-article-field_table'] = array(
     'bundle' => 'article',
     'default_value' => array(
@@ -2130,7 +2131,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_taxonomy_local'
+  // Exported field_instance: 'node-article-field_taxonomy_local'.
   $field_instances['node-article-field_taxonomy_local'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
