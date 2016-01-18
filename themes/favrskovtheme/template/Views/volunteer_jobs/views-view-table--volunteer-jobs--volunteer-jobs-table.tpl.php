@@ -42,7 +42,7 @@
       <?php foreach ($row as $field => $content): ?>
         <?php if ($field !== 'field_volunteer_jobs_apply_url'): ?>
           <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
-            <a class="apply-url" href="<?php print $row['field_volunteer_jobs_apply_url']; ?>">
+            <a href="<?php print $row['field_volunteer_jobs_apply_url']; ?>">
               <?php print $content; ?>
             </a>
           </td>
