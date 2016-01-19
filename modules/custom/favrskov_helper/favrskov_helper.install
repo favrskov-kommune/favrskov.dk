@@ -265,10 +265,20 @@ function favrskov_helper_update_7008() {
     $result_code = $source->import();
 
     if (FEEDS_BATCH_COMPLETE == $result_code) {
-      watchdog('volunteer_jobs', 'Successfull import.');
+      watchdog('volunteer_jobs', 'Successfull volunteer import.');
     }
     else {
-      watchdog('volunteer_jobs', 'Import failed.');
+      watchdog('volunteer_jobs', 'Import volunteer failed.');
+    }
+
+    $job_source = feeds_source('job_importer');
+    $result_code = $job_source->import();
+
+    if (FEEDS_BATCH_COMPLETE == $result_code) {
+      watchdog('volunteer_jobs', 'Successfull job import.');
+    }
+    else {
+      watchdog('volunteer_jobs', 'Import job failed.');
     }
   }
 }
