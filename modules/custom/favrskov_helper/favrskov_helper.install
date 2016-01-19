@@ -230,6 +230,9 @@ function favrskov_helper_update_7008() {
   array_map('features_revert_module', array(
     'content_type_article',
     'panel_article_page',
+    'content_type_job',
+    'feeds_job_importer',
+    'views_job',
   ));
 
   // String translations using context.
@@ -262,10 +265,20 @@ function favrskov_helper_update_7008() {
     $result_code = $source->import();
 
     if (FEEDS_BATCH_COMPLETE == $result_code) {
-      watchdog('volunteer_jobs', 'Successfull import.');
+      watchdog('volunteer_jobs', 'Successfull volunteer import.');
     }
     else {
-      watchdog('volunteer_jobs', 'Import failed.');
+      watchdog('volunteer_jobs', 'Import volunteer failed.');
+    }
+
+    $job_source = feeds_source('job_importer');
+    $result_code = $job_source->import();
+
+    if (FEEDS_BATCH_COMPLETE == $result_code) {
+      watchdog('volunteer_jobs', 'Successfull job import.');
+    }
+    else {
+      watchdog('volunteer_jobs', 'Import job failed.');
     }
   }
 }
@@ -275,9 +288,18 @@ function favrskov_helper_update_7008() {
  */
 function favrskov_helper_update_7009() {
   require(drupal_get_path('module', 'favrskov_helper') . '/views_import/favrskov_helper_update_7008.inc');
-  
+
   $view = favrskov_helper_update_7008_get_view();
   if (isset($view)) {
     views_save_view($view);
   }
+}
+
+/**
+ * String update.
+ */
+function favrskov_helper_update_7010() {
+  t('Phn');
+  locale_add_translation('Phn', 'da', 'Tlf.');
+  locale_clear_cache();
 }

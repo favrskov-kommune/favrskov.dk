@@ -24,6 +24,8 @@ function feeds_job_importer_feeds_importer_default() {
         'use_pubsubhubbub' => 1,
         'designated_hub' => 'http://feeds.favrskov.dk/joblistings.json',
         'request_timeout' => '',
+        'auto_scheme' => 'http',
+        'accept_invalid_cert' => FALSE,
       ),
     ),
     'parser' => array(
@@ -139,7 +141,7 @@ function feeds_job_importer_feeds_importer_default() {
           ),
           7 => array(
             'source' => 'start_date',
-            'target' => 'field_job_start_date',
+            'target' => 'field_job_start_date:start',
             'unique' => FALSE,
           ),
           8 => array(
