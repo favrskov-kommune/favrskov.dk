@@ -3,6 +3,7 @@
 /**
  * Aimed to collect hook_updates() and other staff.
  */
+require(drupal_get_path('module', 'favrskov_helper') . '/views_import/favrskov_helper_update_7008.inc');
 
 /**
  * Implements hook_install().
@@ -274,16 +275,8 @@ function favrskov_helper_update_7008() {
  * Override admin_views_node view.
  */
 function favrskov_helper_update_7009() {
-  $path = drupal_get_path('module', 'favrskov_helper') . '/views_import/';
-
-  $files = array(
-    'admin_views_node.view',
-  );
-
-  foreach ($files as $file) {
-    require $path . $file;
-    if (isset($view)) {
-      views_save_view($view);
-    }
+  $view = favrskov_helper_update_7008_get_view();
+  if (isset($view)) {
+    views_save_view($view);
   }
 }
