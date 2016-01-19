@@ -4,6 +4,7 @@ package = Content Types
 version = 7.x-1.0
 project = content_type_job
 dependencies[] = ctools
+dependencies[] = date
 dependencies[] = features
 dependencies[] = link
 dependencies[] = strongarm

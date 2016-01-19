@@ -93,22 +93,25 @@ function content_type_job_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'language' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'metatags' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '9',
-        ),
-        'rabbit_hole' => array(
           'weight' => '10',
         ),
+        'rabbit_hole' => array(
+          'weight' => '11',
+        ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '9',
+        ),
+        'domain' => array(
+          'weight' => '2',
         ),
       ),
       'display' => array(

@@ -134,7 +134,14 @@ function views_job_views_default_views() {
   $handler->display->display_options['fields']['field_job_start_date']['table'] = 'field_data_field_job_start_date';
   $handler->display->display_options['fields']['field_job_start_date']['field'] = 'field_job_start_date';
   $handler->display->display_options['fields']['field_job_start_date']['label'] = 'Application deadline';
-  $handler->display->display_options['fields']['field_job_start_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_job_start_date']['settings'] = array(
+    'format_type' => 'update_date',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
   /* Field: Content: Apply link */
   $handler->display->display_options['fields']['field_job_apply_link']['id'] = 'field_job_apply_link';
   $handler->display->display_options['fields']['field_job_apply_link']['table'] = 'field_data_field_job_apply_link';
@@ -150,6 +157,11 @@ function views_job_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Start date (field_job_start_date) */
+  $handler->display->display_options['sorts']['field_job_start_date_value']['id'] = 'field_job_start_date_value';
+  $handler->display->display_options['sorts']['field_job_start_date_value']['table'] = 'field_data_field_job_start_date';
+  $handler->display->display_options['sorts']['field_job_start_date_value']['field'] = 'field_job_start_date_value';
+  $handler->display->display_options['sorts']['field_job_start_date_value']['order'] = 'DESC';
 
   /* Display: Job listing by list */
   $handler = $view->new_display('panel_pane', 'Job listing by list', 'job_listing_by_list');
@@ -198,6 +210,14 @@ function views_job_views_default_views() {
   $handler->display->display_options['fields']['field_job_start_date']['field'] = 'field_job_start_date';
   $handler->display->display_options['fields']['field_job_start_date']['label'] = 'Application deadline';
   $handler->display->display_options['fields']['field_job_start_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_job_start_date']['settings'] = array(
+    'format_type' => 'update_date',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
   /* Field: Content: Apply link */
   $handler->display->display_options['fields']['field_job_apply_link']['id'] = 'field_job_apply_link';
   $handler->display->display_options['fields']['field_job_apply_link']['table'] = 'field_data_field_job_apply_link';
