@@ -288,9 +288,18 @@ function favrskov_helper_update_7008() {
  */
 function favrskov_helper_update_7009() {
   require(drupal_get_path('module', 'favrskov_helper') . '/views_import/favrskov_helper_update_7008.inc');
-  
+
   $view = favrskov_helper_update_7008_get_view();
   if (isset($view)) {
     views_save_view($view);
   }
+}
+
+/**
+ * String update.
+ */
+function favrskov_helper_update_7010() {
+  t('Phn');
+  locale_add_translation('Phn', 'da', 'Tlf.');
+  locale_clear_cache();
 }
