@@ -230,6 +230,7 @@ function favrskov_helper_update_7008() {
   array_map('features_revert_module', array(
     'content_type_article',
     'panel_article_page',
+    'views_job',
   ));
 
   // String translations using context.
