@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Content type Volunteer jobs feature.
+ */
+
+include_once 'content_type_volunteer_jobs.features.inc';

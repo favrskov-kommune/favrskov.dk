@@ -214,3 +214,58 @@ function favrskov_helper_update_7006() {
 function favrskov_helper_update_7007() {
   module_enable(array('view_users_logs'));
 }
+
+/**
+ * Enable content_type_volunteer_jobs.
+ */
+function favrskov_helper_update_7008() {
+  module_enable(
+    array(
+      'content_type_volunteer_jobs',
+      'feeds_volunteer_jobs_importer',
+      'views_volunteer_jobs',
+    )
+  );
+
+  array_map('features_revert_module', array(
+    'content_type_article',
+    'panel_article_page',
+  ));
+
+  // String translations using context.
+  t('Volunteer jobs', array(), array('context' => 'volunteer_jobs'));
+  locale_add_translation('Volunteer jobs', 'da', 'Frivillige jobs', 'volunteer_jobs');
+  locale_clear_cache();
+
+  // Feeds "Volunteer jobs" importer setup.
+  if (module_exists('feeds')) {
+    $importer_id = 'volunteer_jobs';
+    $source = 'http://feeds.favrskov.dk/frivilligejobs.json';
+    $config = array(
+      'FeedsHTTPFetcher' => array('source' => $source),
+      'FeedsExJsonPath' => array(),
+    );
+
+    db_merge('feeds_source')
+      ->key(array('id' => $importer_id, 'feed_nid' => 0))
+      ->fields(array(
+        'config' => serialize($config),
+        'source' => $source,
+        'state' => serialize(FALSE),
+        'fetcher_result' => serialize(FALSE),
+      ))
+      ->execute();
+
+    // Perform Volunteer jobs import.
+    feeds_cache_clear();
+    $source = feeds_source($importer_id);
+    $result_code = $source->import();
+
+    if (FEEDS_BATCH_COMPLETE == $result_code) {
+      watchdog('volunteer_jobs', 'Successfull import.');
+    }
+    else {
+      watchdog('volunteer_jobs', 'Import failed.');
+    }
+  }
+}

@@ -10,7 +10,7 @@
 function content_type_article_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'comment-comment_node_article-comment_body'
+  // Exported field_instance: 'comment-comment_node_article-comment_body'.
   $field_instances['comment-comment_node_article-comment_body'] = array(
     'bundle' => 'comment_node_article',
     'default_value' => NULL,
@@ -152,7 +152,7 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_link'
+  // 'field_collection_item-field_publications-field_link'.
   $field_instances['field_collection_item-field_publications-field_link'] = array(
     'bundle' => 'field_publications',
     'default_value' => NULL,
@@ -175,9 +175,10 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_link',
-    'label' => t('Publication link'),
+    'label' => 'Link til publikation',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -195,6 +196,7 @@ function content_type_article_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -213,7 +215,7 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_open_in_new_window'
+  // 'field_collection_item-field_publications-field_open_in_new_window'.
   $field_instances['field_collection_item-field_publications-field_open_in_new_window'] = array(
     'bundle' => 'field_publications',
     'default_value' => array(
@@ -252,7 +254,7 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_pdf_file'
+  // 'field_collection_item-field_publications-field_pdf_file'.
   $field_instances['field_collection_item-field_publications-field_pdf_file'] = array(
     'bundle' => 'field_publications',
     'deleted' => 0,
@@ -310,7 +312,7 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_publications_description'
+  // 'field_collection_item-field_publications-field_publications_description'.
   $field_instances['field_collection_item-field_publications-field_publications_description'] = array(
     'bundle' => 'field_publications',
     'default_value' => NULL,
@@ -394,7 +396,7 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_title'
+  // 'field_collection_item-field_publications-field_title'.
   $field_instances['field_collection_item-field_publications-field_title'] = array(
     'bundle' => 'field_publications',
     'default_value' => NULL,
@@ -568,11 +570,11 @@ function content_type_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
-  // Exported field_instance: 'node-article-cntrmd_article'
+  // Exported field_instance: 'node-article-cntrmd_article'.
   $field_instances['node-article-cntrmd_article'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -614,7 +616,7 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_author'
+  // Exported field_instance: 'node-article-field_author'.
   $field_instances['node-article-field_author'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -696,16 +698,16 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 38,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_bannerlink'
+  // Exported field_instance: 'node-article-field_bannerlink'.
   $field_instances['node-article-field_bannerlink'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Reference to bannerlink content type.'),
+    'description' => 'Link til sekundære selvbetjeningsløsninger.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -760,16 +762,16 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_borgerdk'
+  // Exported field_instance: 'node-article-field_borgerdk'.
   $field_instances['node-article-field_borgerdk'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Start typing a keyword and select among the proposals that emerge.'),
+    'description' => 'Start med at skrive et søgeord og vælg blandt de forslag der dukker op.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -827,11 +829,11 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_contact_information'
+  // Exported field_instance: 'node-article-field_contact_information'.
   $field_instances['node-article-field_contact_information'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -893,16 +895,16 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 24,
+      'weight' => 25,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_editorial_responsibility'
+  // Exported field_instance: 'node-article-field_editorial_responsibility'.
   $field_instances['node-article-field_editorial_responsibility'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Select author starting type his username.'),
+    'description' => 'Hvis ikke du som forfatter har det redaktionelle ansvar, kan angive en anden redaktør.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -952,16 +954,16 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'user_reference_autocomplete',
-      'weight' => 28,
+      'weight' => 29,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_faq_ref'
+  // Exported field_instance: 'node-article-field_faq_ref'.
   $field_instances['node-article-field_faq_ref'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Reference to FAQ content type.'),
+    'description' => 'Giver mulighed for at lave fold ud sektioner med korte hjælpebeskrivelser til berigelse af artiklen.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1017,11 +1019,11 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_hide_node_update_date'
+  // Exported field_instance: 'node-article-field_hide_node_update_date'.
   $field_instances['node-article-field_hide_node_update_date'] = array(
     'bundle' => 'article',
     'default_value' => array(
@@ -1067,16 +1069,16 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 34,
+      'weight' => 35,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_image_description'
+  // Exported field_instance: 'node-article-field_image_description'.
   $field_instances['node-article-field_image_description'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Image text.'),
+    'description' => 'Tekst som vises synligt under billede.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1130,15 +1132,15 @@ function content_type_article_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_image_thumbnail'
+  // Exported field_instance: 'node-article-field_image_thumbnail'.
   $field_instances['node-article-field_image_thumbnail'] = array(
     'bundle' => 'article',
     'deleted' => 0,
-    'description' => t('Text that could be readed by browser for blind and visually-impaired people. Please, upload image in landscape format only.'),
+    'description' => 'Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj. Please, upload billedet i kun liggende format.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1208,16 +1210,16 @@ function content_type_article_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_internal_title'
+  // Exported field_instance: 'node-article-field_internal_title'.
   $field_instances['node-article-field_internal_title'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Used for admin content overview page instead of title field.'),
+    'description' => 'Used for admin content overview page instead of title field.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1294,11 +1296,11 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 8,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_job_list'
+  // Exported field_instance: 'node-article-field_job_list'.
   $field_instances['node-article-field_job_list'] = array(
     'bundle' => 'article',
     'default_value' => array(
@@ -1344,11 +1346,11 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 35,
+      'weight' => 36,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_one_column_layout'
+  // Exported field_instance: 'node-article-field_one_column_layout'.
   $field_instances['node-article-field_one_column_layout'] = array(
     'bundle' => 'article',
     'default_value' => array(
@@ -1400,11 +1402,11 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 33,
+      'weight' => 34,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_piwik_day'
+  // Exported field_instance: 'node-article-field_piwik_day'.
   $field_instances['node-article-field_piwik_day'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1463,11 +1465,11 @@ function content_type_article_field_default_field_instances() {
       'module' => 'piwik_stats',
       'settings' => array(),
       'type' => 'piwik_stats_hidden',
-      'weight' => 29,
+      'weight' => 30,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_piwik_month'
+  // Exported field_instance: 'node-article-field_piwik_month'.
   $field_instances['node-article-field_piwik_month'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1526,11 +1528,11 @@ function content_type_article_field_default_field_instances() {
       'module' => 'piwik_stats',
       'settings' => array(),
       'type' => 'piwik_stats_hidden',
-      'weight' => 31,
+      'weight' => 32,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_piwik_week'
+  // Exported field_instance: 'node-article-field_piwik_week'.
   $field_instances['node-article-field_piwik_week'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1589,11 +1591,11 @@ function content_type_article_field_default_field_instances() {
       'module' => 'piwik_stats',
       'settings' => array(),
       'type' => 'piwik_stats_hidden',
-      'weight' => 30,
+      'weight' => 31,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_piwik_year'
+  // Exported field_instance: 'node-article-field_piwik_year'.
   $field_instances['node-article-field_piwik_year'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1652,11 +1654,11 @@ function content_type_article_field_default_field_instances() {
       'module' => 'piwik_stats',
       'settings' => array(),
       'type' => 'piwik_stats_hidden',
-      'weight' => 32,
+      'weight' => 33,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_publications'
+  // Exported field_instance: 'node-article-field_publications'.
   $field_instances['node-article-field_publications'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -1715,16 +1717,16 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'field_collection_embed',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_publications_title'
+  // Exported field_instance: 'node-article-field_publications_title'.
   $field_instances['node-article-field_publications_title'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Booklets and reports.'),
+    'description' => 'Pjecer og rapporter.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1807,16 +1809,16 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_related_boxes'
+  // Exported field_instance: 'node-article-field_related_boxes'.
   $field_instances['node-article-field_related_boxes'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('References to factboxes.'),
+    'description' => 'Relation til faktabokse.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1869,16 +1871,16 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_related_content'
+  // Exported field_instance: 'node-article-field_related_content'.
   $field_instances['node-article-field_related_content'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Reference to other articles on favrskov.dk that provide additional content.'),
+    'description' => 'Henvisning til andre artikler på favrskov.dk der kan bidrage med yderligere indhold.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1929,16 +1931,16 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_self_service'
+  // Exported field_instance: 'node-article-field_self_service'.
   $field_instances['node-article-field_self_service'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Search or create new self-service content type item.'),
+    'description' => 'Søg efter eller opret nyt selvbetjeningsbanner.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1993,11 +1995,11 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_table'
+  // Exported field_instance: 'node-article-field_table'.
   $field_instances['node-article-field_table'] = array(
     'bundle' => 'article',
     'default_value' => array(
@@ -2071,16 +2073,16 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'tablefield',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_taxonomy_kle'
+  // Exported field_instance: 'node-article-field_taxonomy_kle'.
   $field_instances['node-article-field_taxonomy_kle'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('All articles must be marked by KLE-taxonomy for content classification.'),
+    'description' => 'Alle tekster skal opmærkes med KLE numre af hensyn til klassificering af indhold.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2126,11 +2128,11 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_taxonomy_local'
+  // Exported field_instance: 'node-article-field_taxonomy_local'.
   $field_instances['node-article-field_taxonomy_local'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -2181,16 +2183,16 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_select',
-      'weight' => 27,
+      'weight' => 28,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_taxonomy_location'
+  // Exported field_instance: 'node-article-field_taxonomy_location'.
   $field_instances['node-article-field_taxonomy_location'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Not in use.'),
+    'description' => 'Anvendes ikke.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2236,16 +2238,16 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'multiple_selects',
-      'weight' => 26,
+      'weight' => 27,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_taxonomy_subject_area'
+  // Exported field_instance: 'node-article-field_taxonomy_subject_area'.
   $field_instances['node-article-field_taxonomy_subject_area'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Choose article topic.'),
+    'description' => 'For at artiklen kan placeres i strukturen, skal du her vælge artiklens emne område.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2285,22 +2287,22 @@ function content_type_article_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'multiple_selects',
+      'module' => 'hs_taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'multiple_selects',
-      'weight' => 25,
+      'type' => 'taxonomy_hs',
+      'weight' => 26,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_teaser'
+  // Exported field_instance: 'node-article-field_teaser'.
   $field_instances['node-article-field_teaser'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Summary. Clarifies purpose of front pages, necessary in search engine optimization.'),
+    'description' => 'En kort resume tekst der opsummerer artiklens indhold. Teksten bruges til emne forsiderne, til søgemaskine optimering osv.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2387,16 +2389,16 @@ function content_type_article_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_video'
+  // Exported field_instance: 'node-article-field_video'.
   $field_instances['node-article-field_video'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Youtube embed code.'),
+    'description' => 'Her indsættes den \'embed\' kode som Youtube stiller til rådighed.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2471,16 +2473,16 @@ function content_type_article_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
-  // Exported field_instance: 'node-article-field_video_description'
+  // Exported field_instance: 'node-article-field_video_description'.
   $field_instances['node-article-field_video_description'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Short text describing video content.'),
+    'description' => 'Kort tekst der beskriver indholdet af videoen.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2534,71 +2536,123 @@ function content_type_article_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_volunteer_jobs_list'.
+  $field_instances['node-article-field_volunteer_jobs_list'] = array(
+    'bundle' => 'article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If checked then Volunteers jobs list will be shown.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 32,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_volunteer_jobs_list',
+    'label' => 'Volunteer jobs list',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_onoff',
+      'weight' => 37,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('All articles must be marked by KLE-taxonomy for content classification.');
-  t('Allows you to create mobile and tablet-friendly tables. Please use this type of table rather than insert tables in the body.');
+  t('Alle tekster skal opmærkes med KLE numre af hensyn til klassificering af indhold.');
+  t('Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj. Please, upload billedet i kun liggende format.');
+  t('Anvendes ikke.');
   t('Author');
   t('Bannerlink');
-  t('Body');
-  t('Booklets and reports.');
+  t('Beskrivelse');
+  t('Billede');
+  t('Billede / thumbnail');
+  t('Billedtekst');
   t('BorgerDK');
-  t('Choose article topic.');
+  t('Brug fuld sidebredde, vil der ikke højre menu blive vist');
+  t('Brødtekst');
   t('Comment');
-  t('Contact Information');
-  t('Description');
-  t('Editorial responsibility');
-  t('FAQ');
-  t('Hide node update date');
+  t('En kort resume tekst der opsummerer artiklens indhold. Teksten bruges til emne forsiderne, til søgemaskine optimering osv.');
+  t('For at artiklen kan placeres i strukturen, skal du her vælge artiklens emne område.');
+  t('Giver dig mulighed for at oprette tabeller, som er mobil og tablet venlige. Benyt venligst denne type tabel frem for at indsætte tabeller i brødteksten.');
+  t('Giver mulighed for at lave fold ud sektioner med korte hjælpebeskrivelser til berigelse af artiklen.');
+  t('Henvisning til andre artikler på favrskov.dk der kan bidrage med yderligere indhold.');
+  t('Her indsættes den \'embed\' kode som Youtube stiller til rådighed.');
+  t('Hvis ikke du som forfatter har det redaktionelle ansvar, kan angive en anden redaktør.');
   t('If checked then Job list will be shown.');
-  t('Image');
-  t('Image / thumbnail');
-  t('Image description');
-  t('Image text.');
-  t('Internal title');
+  t('If checked then Volunteers jobs list will be shown.');
+  t('Internt navn');
   t('Job list');
-  t('Not in use.');
+  t('Kontaktinformation');
+  t('Kort tekst der beskriver indholdet af videoen.');
+  t('Link til publikation');
+  t('Link til sekundære selvbetjeningsløsninger.');
   t('Notification');
-  t('Open in new window');
-  t('PDF file');
+  t('Overskrift');
+  t('PDF fil');
   t('Piwik Day');
   t('Piwik Month');
   t('Piwik Week');
   t('Piwik Year');
-  t('Please, upload image in landscape format only.');
-  t('Publication link');
-  t('Publications');
-  t('Publications title');
-  t('Reference to FAQ content type.');
-  t('Reference to bannerlink content type.');
-  t('Reference to other articles on favrskov.dk that provide additional content.');
-  t('References to factboxes.');
-  t('Related boxes');
-  t('Related content');
-  t('Search or create new self-service content type item.');
-  t('Select author starting type his username.');
-  t('Self Service');
-  t('Short description.');
-  t('Short text describing video content.');
-  t('Start typing a keyword and select among the proposals that emerge.');
-  t('Summary. Clarifies purpose of front pages, necessary in search engine optimization.');
-  t('Table');
-  t('Taxonomy, KLE');
-  t('Taxonomy, Location');
-  t('Taxonomy, Subject Area');
-  t('Taxonomy, local');
-  t('Teaser');
-  t('Text that could be readed by browser for blind and visually-impaired people. Please, upload image in landscape format only.');
-  t('Title');
-  t('Use full page width, no right menu will be shown');
+  t('Pjecer og rapporter.');
+  t('Please, upload billedet i kun liggende format.');
+  t('Publikationer');
+  t('Publikationstitel');
+  t('Redaktionel ansvarlig');
+  t('Relaterede bokse');
+  t('Relateret indhold');
+  t('Relation til faktabokse.');
+  t('Selvbetjening');
+  t('Skjul node opdateringsdato');
+  t('Skriv kort og præcist.');
+  t('Smagsprøve');
+  t('Spørgsmål og svar');
+  t('Start med at skrive et søgeord og vælg blandt de forslag der dukker op.');
+  t('Søg efter eller opret nyt selvbetjeningsbanner.');
+  t('Tabel');
+  t('Taksonomi, Emneområde');
+  t('Taksonomi, KLE');
+  t('Taksonomi, lokal');
+  t('Taksonomi, lokation');
+  t('Tekst som vises synligt under billede.');
   t('Used for admin content overview page instead of title field.');
   t('Video');
-  t('Video description');
-  t('Youtube embed code.');
+  t('Videobeskrivelse');
+  t('Volunteer jobs list');
+  t('Åbn i nyt vindue');
 
   return $field_instances;
 }

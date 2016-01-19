@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feeds Volunteer jobs importer feature.
+ */
+
+include_once 'feeds_volunteer_jobs_importer.features.inc';

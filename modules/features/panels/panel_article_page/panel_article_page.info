@@ -29,4 +29,3 @@ features[variable][] = print_html_windowclose
 features[variable][] = print_robots_noarchive
 features[variable][] = print_robots_nofollow
 features[variable][] = print_robots_noindex
-mtime = 1425390383
