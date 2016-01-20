@@ -54,7 +54,11 @@ function favrskov_helper_ctools_plugin_api($owner, $api) {
 
 /**
  * Implements hook_pathauto_alias_alter().
+ *
+ * @see favrskov_helper_tokens().
  */
 function favrskov_helper_pathauto_alias_alter(&$alias, &$context) {
+  // We use custom separator due to common slash is trimmed
+  // due to token_replace() call.
   $alias = str_replace('favrskovtokensseparator', '/', $alias);
 }

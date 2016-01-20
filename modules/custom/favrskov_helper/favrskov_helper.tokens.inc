@@ -29,8 +29,15 @@ function favrskov_helper_token_info() {
  */
 function favrskov_helper_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
+  // Taxonomy vocabulary id.
+  $vid = array('subject_area' => 6);
 
-  if (!empty($data['node']) && $type == 'favrskov_tokens') {
+  if (!empty($data['node'])
+    && $type == 'favrskov_tokens'
+    && !empty($data['node']->field_taxonomy_subject_area)) {
+
+    $tid = $data['node']->field_taxonomy_subject_area[LANGUAGE_NONE][0]['tid'];
+
     foreach ($tokens as $name => $original) {
       switch ($name) {
         case 'news_path_alias_taxonomy':
@@ -40,8 +47,6 @@ function favrskov_helper_tokens($type, $tokens, array $data = array(), array $op
           // If we have 2-level or 3-level subject area taxonomy item we choose
           // 2nd level taxonomy item as a replacement.
           // If we haven`t subject area taxonomy item we get empty string.
-
-          $tid = $data['node']->field_taxonomy_subject_area[LANGUAGE_NONE][0]['tid'];
 
           if ($tid) {
             $parents_all = taxonomy_get_parents_all($tid);
@@ -62,39 +67,38 @@ function favrskov_helper_tokens($type, $tokens, array $data = array(), array $op
 
           break;
         case 'article_path_alias_taxonomy':
-          $tid = $data['node']->field_taxonomy_subject_area[LANGUAGE_NONE][0]['tid'];
-
           if ($tid) {
             $parents_all = taxonomy_get_parents_all($tid);
+            $tree = taxonomy_get_tree($vid['subject_area'], 0, 1);
 
-            $parents_all = array_filter($parents_all, function ($term) {
-              if ($term->name == 'Favrskov.dk') {
-                return FALSE;
+            if (!empty($tree)) {
+              $first_level_terms = array();
+
+              foreach($tree as $term_object) {
+                $first_level_terms[] = $term_object->name;
               }
-
-              if (module_exists('pathauto')) {
-                $term->cleaned_name = pathauto_cleanstring($term->name);
-              }
-
-              return TRUE;
-            });
-
+            }
 
             $parents_all = array_reverse($parents_all);
-            $cleaned_alias = '';
+            $cleaned_alias = $cleaned_term_name = '';
             $term_num = 0;
 
             foreach ($parents_all as $term) {
-              $cleaned_term_name = $term->cleaned_name;
+              if (!in_array($term->name, $first_level_terms)) {
 
-              if ($term_num > 0) {
-                $cleaned_alias .= 'favrskovtokensseparator' . $cleaned_term_name;
-              }
-              else {
-                $cleaned_alias .= $cleaned_term_name;
-              }
+                if (module_exists('pathauto')) {
+                  $cleaned_term_name = pathauto_cleanstring($term->name);
+                }
 
-              $term_num++;
+                if ($term_num > 0) {
+                  $cleaned_alias .= 'favrskovtokensseparator' . $cleaned_term_name;
+                }
+                else {
+                  $cleaned_alias .= $cleaned_term_name;
+                }
+
+                $term_num++;
+              }
             }
 
             $replacements[$original] = $cleaned_alias;
