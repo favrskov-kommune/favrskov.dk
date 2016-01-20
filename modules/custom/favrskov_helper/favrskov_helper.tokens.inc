@@ -32,16 +32,16 @@ function favrskov_helper_tokens($type, $tokens, array $data = array(), array $op
   // Taxonomy vocabulary id.
   $vid = array('subject_area' => 6);
 
-  if (!empty($data['node'])
-    && $type == 'favrskov_tokens'
-    && !empty($data['node']->field_taxonomy_subject_area)) {
-
-    $tid = $data['node']->field_taxonomy_subject_area[LANGUAGE_NONE][0]['tid'];
+  if (!empty($data['node']) && $type == 'favrskov_tokens') {
+    if (!empty($data['node']->field_taxonomy_subject_area)) {
+      $tid = $data['node']->field_taxonomy_subject_area[LANGUAGE_NONE][0]['tid'];
+    }
 
     foreach ($tokens as $name => $original) {
+      $replacements[$original] = '';
+
       switch ($name) {
         case 'news_path_alias_taxonomy':
-          $replacements[$original] = '';
 
           // If we have 1-level subject area taxonomy item we get empty string.
           // If we have 2-level or 3-level subject area taxonomy item we choose
