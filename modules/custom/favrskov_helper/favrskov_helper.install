@@ -303,3 +303,10 @@ function favrskov_helper_update_7010() {
   locale_add_translation('Phn', 'da', 'Tlf.');
   locale_clear_cache();
 }
+
+/**
+ * Revert config_url_aliases feature.
+ */
+function favrskov_helper_update_7011() {
+  features_revert_module('config_url_aliases');
+}
