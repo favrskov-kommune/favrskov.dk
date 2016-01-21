@@ -310,3 +310,10 @@ function favrskov_helper_update_7010() {
 function favrskov_helper_update_7011() {
   features_revert_module('config_url_aliases');
 }
+
+/**
+ * Sets date_format_short for override default date format.
+ */
+function favrskov_helper_update_7012() {
+  variable_set('date_format_short', 'd/m/Y - H:i');
+}
