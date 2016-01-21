@@ -923,10 +923,13 @@ function panel_article_page_default_page_manager_handlers() {
         ),
       ),
     );
+
+    global $base_url;
+
     $pane->configuration = array(
       'admin_title' => 'Path to node',
       'title' => '',
-      'body' => '<a href="/node/%node:nid">http://favrskov.semipyadniy.ppl.ua/node/%node:nid</a>',
+      'body' => '<a href="/node/%node:nid">' . $base_url . '/node/%node:nid</a>',
       'format' => 'full_html',
       'substitute' => 1,
     );
@@ -1895,10 +1898,13 @@ function panel_article_page_default_page_manager_handlers() {
         ),
       ),
     );
+
+    global $base_url;
+
     $pane->configuration = array(
       'admin_title' => 'Path to node',
       'title' => '',
-      'body' => '<a href="/node/%node:nid">http://default/node/%node:nid</a>',
+      'body' => '<a href="/node/%node:nid">' . $base_url . '/node/%node:nid</a>',
       'format' => 'full_html',
       'substitute' => 1,
     );
