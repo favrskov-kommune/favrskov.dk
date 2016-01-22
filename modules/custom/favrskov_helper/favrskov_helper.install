@@ -317,3 +317,17 @@ function favrskov_helper_update_7011() {
 function favrskov_helper_update_7012() {
   variable_set('date_format_short', 'd/m/Y - H:i');
 }
+
+/**
+ * Sets date created, last access and login for two test users.
+ */
+function favrskov_helper_update_7013() {
+  db_update('users')
+    ->fields(array(
+      'created' => strtotime('01-01-2013'),
+      'access'=> strtotime('01-01-2013'),
+      'login' => strtotime('01-01-2013'),
+    ))
+    ->condition('uid',array(1053,1055),'IN')
+    ->execute();
+}
