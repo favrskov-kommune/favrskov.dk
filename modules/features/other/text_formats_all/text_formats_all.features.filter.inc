@@ -49,6 +49,11 @@ function text_formats_all_filter_default_formats() {
           'filter_url_length' => 72,
         ),
       ),
+      'icon' => array(
+        'weight' => 0,
+        'status' => 1,
+        'settings' => array(),
+      ),
       'filter_tokens' => array(
         'weight' => 0,
         'status' => 1,
