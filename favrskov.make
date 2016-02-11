@@ -553,6 +553,12 @@ projects[varnish][version] = 1.0-beta3
 projects[hierarchical_select][subdir] = contrib
 projects[hierarchical_select][version] = 3.0-beta3
 
+projects[icon][subdir] = contrib
+projects[icon][version] = 1.0-beta6
+
+projects[fontello][subdir] = contrib
+projects[fontello][version] = 1.0
+
 ; Libraries
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] =

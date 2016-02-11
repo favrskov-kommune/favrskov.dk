@@ -268,6 +268,35 @@ function panel_footer_mini_panel_default_panels_mini() {
     $display->content['new-a23bf52e-f7c1-4702-9df9-9c2d54db75c5'] = $pane;
     $display->panels['navigation'][0] = 'new-a23bf52e-f7c1-4702-9df9-9c2d54db75c5';
     $pane = new stdClass();
+    $pane->pid = 'new-620c0c1e-51c8-44cd-bebe-b2e7f253655a';
+    $pane->panel = 'navigation';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Social links',
+      'title' => '',
+      'body' => '<p><a href="https://www.facebook.com/favrskovkommune">[icon:social_links:icon-facebook]</a> <a href="https://www.linkedin.com/company/favrskov-kommune">[icon:social_links:icon-linkedin]</a></p>
+',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'social-links',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '620c0c1e-51c8-44cd-bebe-b2e7f253655a';
+    $display->content['new-620c0c1e-51c8-44cd-bebe-b2e7f253655a'] = $pane;
+    $display->panels['navigation'][1] = 'new-620c0c1e-51c8-44cd-bebe-b2e7f253655a';
+    $pane = new stdClass();
     $pane->pid = 'new-bd9119fe-56db-475e-bac8-01d7696cb28a';
     $pane->panel = 'policy';
     $pane->type = 'custom';
