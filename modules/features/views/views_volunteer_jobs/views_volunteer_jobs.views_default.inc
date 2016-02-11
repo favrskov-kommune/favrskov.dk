@@ -129,7 +129,7 @@ function views_volunteer_jobs_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Frivilligejob';
+  $handler->display->display_options['fields']['title']['label'] = 'Overskrift';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -193,7 +193,7 @@ function views_volunteer_jobs_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Frivilligejob';
+  $handler->display->display_options['fields']['title']['label'] = 'Overskrift';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'span';
@@ -284,7 +284,7 @@ function views_volunteer_jobs_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Volunteer jobs table'),
-    t('Frivilligejob'),
+    t('Overskrift'),
     t('Beskrivelse'),
     t('Organisation'),
     t('View panes'),

@@ -331,3 +331,10 @@ function favrskov_helper_update_7013() {
     ->condition('uid',array(1053,1055),'IN')
     ->execute();
 }
+
+/**
+ * Feature revert.
+ */
+function favrskov_helper_update_7014() {
+  features_revert_module('views_volunteer_jobs');
+}
