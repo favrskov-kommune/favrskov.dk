@@ -471,8 +471,7 @@ projects[addressfield][subdir] = contrib
 projects[addressfield][version] = 1.0-beta5
 
 projects[field_group][subdir] = contrib
-;projects[field_group][version] = 1.3
-;projects[field_group][version] = 1.4
+projects[field_group][version] = 1.5
 
 projects[tablefield][subdir] = contrib
 projects[tablefield][version] = 2.3
