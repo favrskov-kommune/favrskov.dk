@@ -68,23 +68,23 @@ function content_type_job_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'node-job-field_job_description'.
-  $field_instances['node-job-field_job_description'] = array(
+  // Exported field_instance: 'node-job-field_job_destination_link'.
+  $field_instances['node-job-field_job_destination_link'] = array(
     'bundle' => 'job',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
+        'label' => 'above',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'type' => 'link_default',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -94,63 +94,44 @@ function content_type_job_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_job_description',
-    'label' => 'Description',
+    'field_name' => 'field_job_destination_link',
+    'label' => 'Destination link',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'custom_tokens_no_filters_' => 'custom_tokens_no_filters_',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'job_html' => 'job_html',
-          'plain_text' => 'plain_text',
-          'video_html' => 'video_html',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'custom_tokens_no_filters_' => array(
-              'weight' => 0,
-            ),
-            'filtered_html' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => 0,
-            ),
-            'job_html' => array(
-              'weight' => 0,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-            'video_html' => array(
-              'weight' => 0,
-            ),
-          ),
-        ),
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
       ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
       ),
-      'text_processing' => 1,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
       'user_register_form' => FALSE,
+      'validate_url' => 1,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'text',
+      'active' => 0,
+      'module' => 'link',
       'settings' => array(
-        'maxlength_js' => '',
-        'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_truncate_html' => 0,
-        'rows' => 7,
       ),
-      'type' => 'text_textarea',
-      'weight' => 3,
+      'type' => 'link_field',
+      'weight' => 4,
     ),
   );
 
@@ -453,7 +434,7 @@ function content_type_job_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Apply link');
-  t('Description');
+  t('Destination link');
   t('Headline');
   t('Job ID');
   t('Place of work');

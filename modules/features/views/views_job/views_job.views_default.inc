@@ -142,15 +142,15 @@ function views_job_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Apply link */
-  $handler->display->display_options['fields']['field_job_apply_link']['id'] = 'field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['table'] = 'field_data_field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['field'] = 'field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['label'] = '';
-  $handler->display->display_options['fields']['field_job_apply_link']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_job_apply_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_job_apply_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_job_apply_link']['type'] = 'link_plain';
+  /* Field: Content: Destination link */
+  $handler->display->display_options['fields']['field_job_destination_link']['id'] = 'field_job_destination_link';
+  $handler->display->display_options['fields']['field_job_destination_link']['table'] = 'field_data_field_job_destination_link';
+  $handler->display->display_options['fields']['field_job_destination_link']['field'] = 'field_job_destination_link';
+  $handler->display->display_options['fields']['field_job_destination_link']['label'] = '';
+  $handler->display->display_options['fields']['field_job_destination_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_job_destination_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_job_destination_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_job_destination_link']['type'] = 'link_plain';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -218,15 +218,15 @@ function views_job_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Apply link */
-  $handler->display->display_options['fields']['field_job_apply_link']['id'] = 'field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['table'] = 'field_data_field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['field'] = 'field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['label'] = '';
-  $handler->display->display_options['fields']['field_job_apply_link']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_job_apply_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_job_apply_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_job_apply_link']['type'] = 'link_plain';
+  /* Field: Content: Destination link */
+  $handler->display->display_options['fields']['field_job_destination_link']['id'] = 'field_job_destination_link';
+  $handler->display->display_options['fields']['field_job_destination_link']['table'] = 'field_data_field_job_destination_link';
+  $handler->display->display_options['fields']['field_job_destination_link']['field'] = 'field_job_destination_link';
+  $handler->display->display_options['fields']['field_job_destination_link']['label'] = '';
+  $handler->display->display_options['fields']['field_job_destination_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_job_destination_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_job_destination_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_job_destination_link']['type'] = 'link_plain';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -310,24 +310,6 @@ function views_job_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Description */
-  $handler->display->display_options['fields']['field_job_description']['id'] = 'field_job_description';
-  $handler->display->display_options['fields']['field_job_description']['table'] = 'field_data_field_job_description';
-  $handler->display->display_options['fields']['field_job_description']['field'] = 'field_job_description';
-  $handler->display->display_options['fields']['field_job_description']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_job_description']['type'] = 'smart_trim_format';
-  $handler->display->display_options['fields']['field_job_description']['settings'] = array(
-    'trim_link' => '0',
-    'trim_length' => '400',
-    'trim_type' => 'chars',
-    'trim_suffix' => '...',
-    'more_link' => '0',
-    'more_text' => 'Read more',
-    'trim_options' => array(
-      'text' => 0,
-    ),
-    'trim_preserve_tags' => '',
-  );
   /* Field: Content: Place of work */
   $handler->display->display_options['fields']['field_job_place_of_work']['id'] = 'field_job_place_of_work';
   $handler->display->display_options['fields']['field_job_place_of_work']['table'] = 'field_data_field_job_place_of_work';
@@ -368,25 +350,6 @@ function views_job_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-    6 => 0,
-    4 => 0,
-  );
-  /* Filter criterion: Content: Description (field_job_description) */
-  $handler->display->display_options['filters']['field_job_description_value']['id'] = 'field_job_description_value';
-  $handler->display->display_options['filters']['field_job_description_value']['table'] = 'field_data_field_job_description';
-  $handler->display->display_options['filters']['field_job_description_value']['field'] = 'field_job_description_value';
-  $handler->display->display_options['filters']['field_job_description_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_job_description_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_job_description_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_job_description_value']['expose']['operator_id'] = 'field_job_description_value_op';
-  $handler->display->display_options['filters']['field_job_description_value']['expose']['label'] = 'Description';
-  $handler->display->display_options['filters']['field_job_description_value']['expose']['operator'] = 'field_job_description_value_op';
-  $handler->display->display_options['filters']['field_job_description_value']['expose']['identifier'] = 'field_job_description_value';
-  $handler->display->display_options['filters']['field_job_description_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -446,7 +409,6 @@ function views_job_views_default_views() {
     t('Job listing by list'),
     t('Advanced options'),
     t('Select any filter and click on Apply to see results'),
-    t('Description'),
   );
   $export['job'] = $view;
 

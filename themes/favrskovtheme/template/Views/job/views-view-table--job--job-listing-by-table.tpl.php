@@ -39,11 +39,11 @@
     <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
       <?php foreach ($row as $field => $content): ?>
         <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
-          <?php if (!empty($view->field['field_job_apply_link']->original_value)) : ?>
-            <a href="<?php print $view->field['field_job_apply_link']->original_value; ?>">
+          <?php if (!empty($view->field['field_job_destination_link']->original_value)) : ?>
+            <a href="<?php print $view->field['field_job_destination_link']->original_value; ?>">
           <?php endif; ?>
           <?php print $content; ?>
-          <?php if (!empty($view->field['field_job_apply_link']->original_value)) : ?>
+          <?php if (!empty($view->field['field_job_destination_link']->original_value)) : ?>
             </a>
           <?php endif; ?>
         </td>
