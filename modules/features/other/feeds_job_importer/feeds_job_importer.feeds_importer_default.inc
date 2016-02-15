@@ -53,41 +53,47 @@ function feeds_job_importer_feeds_importer_default() {
             'debug' => 0,
             'weight' => '2',
           ),
-          'description' => array(
-            'name' => 'Description',
-            'value' => '$.job_description',
+          'destination_link_title' => array(
+            'name' => 'Destination link title',
+            'value' => '$.job_headline',
             'debug' => 0,
             'weight' => '3',
+          ),
+          'destination_link' => array(
+            'name' => 'Destination link',
+            'value' => '$.destination_link',
+            'debug' => 0,
+            'weight' => '4',
           ),
           'headline' => array(
             'name' => 'Headline',
             'value' => '$.job_headline',
             'debug' => 0,
-            'weight' => '4',
+            'weight' => '5',
           ),
           'job_id' => array(
             'name' => 'Job ID',
             'value' => '$.job_id',
             'debug' => 0,
-            'weight' => '5',
+            'weight' => '6',
           ),
           'place_of_work' => array(
             'name' => 'Place of work',
             'value' => '$.place_of_work',
             'debug' => 0,
-            'weight' => '6',
+            'weight' => '7',
           ),
           'start_date' => array(
             'name' => 'Start date',
             'value' => '$.start_date',
             'debug' => 0,
-            'weight' => '7',
+            'weight' => '8',
           ),
           'language' => array(
             'name' => 'Language',
             'value' => '',
             'debug' => 0,
-            'weight' => '8',
+            'weight' => '9',
           ),
         ),
         'display_errors' => 0,
@@ -120,31 +126,36 @@ function feeds_job_importer_feeds_importer_default() {
             'unique' => FALSE,
           ),
           3 => array(
-            'source' => 'description',
-            'target' => 'field_job_description',
+            'source' => 'destination_link_title',
+            'target' => 'field_job_destination_link:title',
             'unique' => FALSE,
           ),
           4 => array(
+            'source' => 'destination_link',
+            'target' => 'field_job_destination_link:url',
+            'unique' => FALSE,
+          ),
+          5 => array(
             'source' => 'headline',
             'target' => 'field_job_headline',
             'unique' => FALSE,
           ),
-          5 => array(
+          6 => array(
             'source' => 'job_id',
             'target' => 'field_job_id',
             'unique' => FALSE,
           ),
-          6 => array(
+          7 => array(
             'source' => 'place_of_work',
             'target' => 'field_job_place_of_work',
             'unique' => FALSE,
           ),
-          7 => array(
+          8 => array(
             'source' => 'start_date',
             'target' => 'field_job_start_date:start',
             'unique' => FALSE,
           ),
-          8 => array(
+          9 => array(
             'source' => 'language',
             'target' => 'language',
             'unique' => FALSE,
