@@ -142,15 +142,6 @@ function views_job_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Apply link */
-  $handler->display->display_options['fields']['field_job_apply_link']['id'] = 'field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['table'] = 'field_data_field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['field'] = 'field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['label'] = '';
-  $handler->display->display_options['fields']['field_job_apply_link']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_job_apply_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_job_apply_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_job_apply_link']['type'] = 'link_plain';
   /* Field: Content: Destination link */
   $handler->display->display_options['fields']['field_job_destination_link']['id'] = 'field_job_destination_link';
   $handler->display->display_options['fields']['field_job_destination_link']['table'] = 'field_data_field_job_destination_link';
@@ -227,15 +218,6 @@ function views_job_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Apply link */
-  $handler->display->display_options['fields']['field_job_apply_link']['id'] = 'field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['table'] = 'field_data_field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['field'] = 'field_job_apply_link';
-  $handler->display->display_options['fields']['field_job_apply_link']['label'] = '';
-  $handler->display->display_options['fields']['field_job_apply_link']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_job_apply_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_job_apply_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_job_apply_link']['type'] = 'link_plain';
   /* Field: Content: Destination link */
   $handler->display->display_options['fields']['field_job_destination_link']['id'] = 'field_job_destination_link';
   $handler->display->display_options['fields']['field_job_destination_link']['table'] = 'field_data_field_job_destination_link';
