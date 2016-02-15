@@ -32,13 +32,13 @@
   <?php print $field->wrapper_prefix; ?>
   <?php print $field->label_html; ?>
 
-  <?php if(!empty($view->field['field_job_apply_link']->original_value) && ($id == 'title')) : ?>
-    <a href="<?php print $view->field['field_job_apply_link']->original_value; ?>">
+  <?php if(!empty($view->field['field_job_destination_link']->original_value) && ($id == 'title')) : ?>
+    <a href="<?php print $view->field['field_job_destination_link']->original_value; ?>">
   <?php endif; ?>
 
   <?php print $field->content; ?>
 
-  <?php if(!empty($view->field['field_job_apply_link']->original_value) && ($id == 'title')) : ?>
+  <?php if(!empty($view->field['field_job_destination_link']->original_value) && ($id == 'title')) : ?>
     </a>
   <?php endif; ?>
 
