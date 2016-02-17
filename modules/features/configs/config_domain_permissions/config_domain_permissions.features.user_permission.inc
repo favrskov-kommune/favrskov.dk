@@ -615,6 +615,8 @@ function config_domain_permissions_user_default_permissions() {
     'name' => 'view unpublished domain content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'domain',

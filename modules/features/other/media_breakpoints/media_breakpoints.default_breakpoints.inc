@@ -19,7 +19,7 @@ function media_breakpoints_default_breakpoints() {
   $breakpoint->source = 'user';
   $breakpoint->source_type = 'custom';
   $breakpoint->status = 1;
-  $breakpoint->weight = 13;
+  $breakpoint->weight = 2;
   $breakpoint->multipliers = array(
     '1x' => '1x',
   );
@@ -34,7 +34,7 @@ function media_breakpoints_default_breakpoints() {
   $breakpoint->source = 'user';
   $breakpoint->source_type = 'custom';
   $breakpoint->status = 1;
-  $breakpoint->weight = 14;
+  $breakpoint->weight = 6;
   $breakpoint->multipliers = array(
     '1x' => '1x',
   );
@@ -49,7 +49,7 @@ function media_breakpoints_default_breakpoints() {
   $breakpoint->source = 'user';
   $breakpoint->source_type = 'custom';
   $breakpoint->status = 1;
-  $breakpoint->weight = 16;
+  $breakpoint->weight = 4;
   $breakpoint->multipliers = array(
     '1x' => '1x',
   );
@@ -64,7 +64,7 @@ function media_breakpoints_default_breakpoints() {
   $breakpoint->source = 'user';
   $breakpoint->source_type = 'custom';
   $breakpoint->status = 1;
-  $breakpoint->weight = 15;
+  $breakpoint->weight = 5;
   $breakpoint->multipliers = array(
     '1x' => '1x',
   );
@@ -94,7 +94,7 @@ function media_breakpoints_default_breakpoints() {
   $breakpoint->source = 'user';
   $breakpoint->source_type = 'custom';
   $breakpoint->status = 1;
-  $breakpoint->weight = 17;
+  $breakpoint->weight = 3;
   $breakpoint->multipliers = array(
     '1x' => '1x',
   );

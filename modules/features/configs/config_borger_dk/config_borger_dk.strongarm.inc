@@ -174,7 +174,7 @@ function config_borger_dk_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'os2web_borger_dk_articles_last_update';
-  $strongarm->value = 1425355202;
+  $strongarm->value = 1455681604;
   $export['os2web_borger_dk_articles_last_update'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -202,7 +202,7 @@ function config_borger_dk_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'os2web_borger_dk_webservice_time_counter';
-  $strongarm->value = 1425394803;
+  $strongarm->value = 1455696004;
   $export['os2web_borger_dk_webservice_time_counter'] = $strongarm;
 
   $strongarm = new stdClass();

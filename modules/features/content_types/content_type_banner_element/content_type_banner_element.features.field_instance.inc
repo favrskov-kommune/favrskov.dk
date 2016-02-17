@@ -10,7 +10,7 @@
 function content_type_banner_element_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-banner_element-cntrmd_banner_element'
+  // Exported field_instance: 'node-banner_element-cntrmd_banner_element'.
   $field_instances['node-banner_element-cntrmd_banner_element'] = array(
     'bundle' => 'banner_element',
     'default_value' => NULL,
@@ -47,11 +47,11 @@ function content_type_banner_element_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_element-field_image'
+  // Exported field_instance: 'node-banner_element-field_image'.
   $field_instances['node-banner_element-field_image'] = array(
     'bundle' => 'banner_element',
     'deleted' => 0,
-    'description' => t('Please, upload image in landscape format only.'),
+    'description' => 'Please, upload billedet i kun liggende format.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -72,7 +72,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image',
-    'label' => t('Image'),
+    'label' => 'Billede',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
@@ -106,7 +106,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_element-field_image_alt_text'
+  // Exported field_instance: 'node-banner_element-field_image_alt_text'.
   $field_instances['node-banner_element-field_image_alt_text'] = array(
     'bundle' => 'banner_element',
     'default_value' => NULL,
@@ -129,7 +129,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_alt_text',
-    'label' => t('Image alt text'),
+    'label' => 'Alt tekst',
     'required' => 1,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -151,12 +151,12 @@ function content_type_banner_element_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_element-field_internal_title'
+  // Exported field_instance: 'node-banner_element-field_internal_title'.
   $field_instances['node-banner_element-field_internal_title'] = array(
     'bundle' => 'banner_element',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Used for admin content overview page instead of title field.'),
+    'description' => 'Used for admin content overview page instead of title field.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -180,7 +180,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => t('Internal title'),
+    'label' => 'Internt navn',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -237,7 +237,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_element-field_link'
+  // Exported field_instance: 'node-banner_element-field_link'.
   $field_instances['node-banner_element-field_link'] = array(
     'bundle' => 'banner_element',
     'default_value' => NULL,
@@ -260,9 +260,10 @@ function content_type_banner_element_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_link',
-    'label' => t('Link'),
+    'label' => 'Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -280,6 +281,7 @@ function content_type_banner_element_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -295,7 +297,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_element-field_transperent_overlay'
+  // Exported field_instance: 'node-banner_element-field_transperent_overlay'.
   $field_instances['node-banner_element-field_transperent_overlay'] = array(
     'bundle' => 'banner_element',
     'default_value' => array(
@@ -322,7 +324,7 @@ function content_type_banner_element_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_transperent_overlay',
-    'label' => t('Transperent overlay'),
+    'label' => 'Transperent lag',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -341,13 +343,13 @@ function content_type_banner_element_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Image');
-  t('Image alt text');
-  t('Internal title');
+  t('Alt tekst');
+  t('Billede');
+  t('Internt navn');
   t('Link');
   t('Notification');
-  t('Please, upload image in landscape format only.');
-  t('Transperent overlay');
+  t('Please, upload billedet i kun liggende format.');
+  t('Transperent lag');
   t('Used for admin content overview page instead of title field.');
 
   return $field_instances;

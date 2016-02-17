@@ -10,7 +10,7 @@
 function content_type_bannerlink_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-bannerlink-cntrmd_bannerlink'
+  // Exported field_instance: 'node-bannerlink-cntrmd_bannerlink'.
   $field_instances['node-bannerlink-cntrmd_bannerlink'] = array(
     'bundle' => 'bannerlink',
     'default_value' => NULL,
@@ -33,7 +33,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'cntrmd_bannerlink',
-    'label' => t('Notification'),
+    'label' => 'Notification',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -47,7 +47,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-bannerlink-field_banner_link_color'
+  // Exported field_instance: 'node-bannerlink-field_banner_link_color'.
   $field_instances['node-bannerlink-field_banner_link_color'] = array(
     'bundle' => 'bannerlink',
     'default_value' => array(
@@ -74,7 +74,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_banner_link_color',
-    'label' => t('Color'),
+    'label' => 'Farve',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -90,7 +90,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-bannerlink-field_displayed_title'
+  // Exported field_instance: 'node-bannerlink-field_displayed_title'.
   $field_instances['node-bannerlink-field_displayed_title'] = array(
     'bundle' => 'bannerlink',
     'default_value' => NULL,
@@ -113,7 +113,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_displayed_title',
-    'label' => t('Displayed Title'),
+    'label' => 'Vist Overskrift',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -166,7 +166,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-bannerlink-field_external_link'
+  // Exported field_instance: 'node-bannerlink-field_external_link'.
   $field_instances['node-bannerlink-field_external_link'] = array(
     'bundle' => 'bannerlink',
     'default_value' => NULL,
@@ -189,9 +189,10 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_external_link',
-    'label' => t('Link'),
+    'label' => 'Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -209,6 +210,7 @@ function content_type_bannerlink_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -226,7 +228,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-bannerlink-field_image_alt_text'
+  // Exported field_instance: 'node-bannerlink-field_image_alt_text'.
   $field_instances['node-bannerlink-field_image_alt_text'] = array(
     'bundle' => 'bannerlink',
     'default_value' => NULL,
@@ -249,7 +251,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_alt_text',
-    'label' => t('Alt text'),
+    'label' => 'Alt text',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -310,12 +312,12 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-bannerlink-field_internal_title'
+  // Exported field_instance: 'node-bannerlink-field_internal_title'.
   $field_instances['node-bannerlink-field_internal_title'] = array(
     'bundle' => 'bannerlink',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Used for admin content overview page instead of title field.'),
+    'description' => 'Used for admin content overview page instead of title field.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -339,7 +341,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => t('Internal title'),
+    'label' => 'Internt navn',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -396,7 +398,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-bannerlink-field_teaser'
+  // Exported field_instance: 'node-bannerlink-field_teaser'.
   $field_instances['node-bannerlink-field_teaser'] = array(
     'bundle' => 'bannerlink',
     'default_value' => NULL,
@@ -419,7 +421,7 @@ function content_type_bannerlink_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_teaser',
-    'label' => t('Teaser'),
+    'label' => 'Smagsprøve',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -477,13 +479,13 @@ function content_type_bannerlink_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Alt text');
-  t('Color');
-  t('Displayed Title');
-  t('Internal title');
+  t('Farve');
+  t('Internt navn');
   t('Link');
   t('Notification');
-  t('Teaser');
+  t('Smagsprøve');
   t('Used for admin content overview page instead of title field.');
+  t('Vist Overskrift');
 
   return $field_instances;
 }

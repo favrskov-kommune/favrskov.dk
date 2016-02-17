@@ -78,7 +78,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
           ),
           'linkit' => array(
             'name' => 'linkit',
-            'desc' => 'Support for Linkit module',
+            'desc' => 'Understøttelse af Linkit-modulet',
             'path' => '%base_path%profiles/favrskov/modules/contrib/linkit/editors/ckeditor/',
             'buttons' => array(
               'linkit' => array(
@@ -103,7 +103,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
             'name' => 'picture_ckeditor',
             'desc' => 'Support responsive images with the Picture module.',
             'buttons' => FALSE,
-            'path' => '%base_path%profiles/favrskov/modules/contrib/picture/plugins/',
+            'path' => '%base_path%profiles/favrskov/modules/contrib/picture/ckeditor/plugins/',
             'default' => 't',
           ),
         ),
@@ -113,7 +113,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
       ),
     ),
     'CKEditor Global Profile' => array(
-      'name' => t('CKEditor Global Profile'),
+      'name' => 'CKEditor Global Profile',
       'settings' => array(
         'skin' => 'moono',
         'ckeditor_path' => '%b/profiles/favrskov/libraries/ckeditor',
@@ -132,10 +132,6 @@ function config_wysiwyg_ckeditor_profile_defaults() {
       'name' => 'Full',
       'settings' => array(
         'ss' => 2,
-        'default' => 't',
-        'show_toggle' => 't',
-        'uicolor' => 'default',
-        'uicolor_user' => 'default',
         'toolbar' => '[
     [\'Source\',\'Bold\',\'NumberedList\',\'BulletedList\',\'Undo\',\'Redo\'],
     [\'Cut\',\'Copy\',\'Paste\',\'PasteText\',\'PasteFromWord\',\'SpecialChar\',\'Replace\',\'Find\',\'SelectAll\',\'Format\',\'RemoveFormat\',\'Media\',\'-\'],
@@ -143,10 +139,16 @@ function config_wysiwyg_ckeditor_profile_defaults() {
     [\'Scayt\',\'SpellChecker\',\'Link\',\'linkit\',\'Maximize\',\'Iframe\',\'NodeEmbed\']
 ]',
         'expand' => 't',
+        'default' => 't',
+        'show_toggle' => 't',
+        'uicolor' => 'default',
+        'uicolor_user' => 'default',
         'width' => '100%',
         'lang' => 'en',
         'auto_lang' => 't',
         'language_direction' => 'default',
+        'allowed_content' => 't',
+        'extraAllowedContent' => '',
         'enter_mode' => 'p',
         'shift_enter_mode' => 'br',
         'font_format' => 'p;div;pre;address;h1;h2;h3;h4;h5;h6',
@@ -176,18 +178,6 @@ function config_wysiwyg_ckeditor_profile_defaults() {
         'theme_config_js' => 't',
         'js_conf' => '',
         'loadPlugins' => array(
-          'NodeEmbed' => array(
-            'name' => 'NodeEmbed',
-            'desc' => 'Plugin file: NodeEmbed',
-            'path' => '%plugin_dir_extra%NodeEmbed/',
-            'buttons' => array(
-              'NodeEmbed' => array(
-                'label' => 'NodeEmbed',
-                'icon' => 'images/icon.gif',
-              ),
-            ),
-            'default' => 'f',
-          ),
           'drupalbreaks' => array(
             'name' => 'drupalbreaks',
             'desc' => 'Plugin for inserting Drupal teaser and page breaks.',
@@ -209,7 +199,7 @@ function config_wysiwyg_ckeditor_profile_defaults() {
           ),
           'linkit' => array(
             'name' => 'linkit',
-            'desc' => 'Support for Linkit module',
+            'desc' => 'Understøttelse af Linkit-modulet',
             'path' => '%base_path%profiles/favrskov/modules/contrib/linkit/editors/ckeditor/',
             'buttons' => array(
               'linkit' => array(

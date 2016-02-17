@@ -19,11 +19,11 @@ function content_type_frontpage_ctools_plugin_api($module = NULL, $api = NULL) {
 function content_type_frontpage_node_info() {
   $items = array(
     'frontpage' => array(
-      'name' => t('Frontpage'),
+      'name' => t('Forside'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Overskrift'),
       'help' => '',
     ),
   );

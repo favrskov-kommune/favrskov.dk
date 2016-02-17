@@ -24,7 +24,6 @@ features[field_instance][] = node-bannerlink-field_external_link
 features[field_instance][] = node-bannerlink-field_image_alt_text
 features[field_instance][] = node-bannerlink-field_internal_title
 features[field_instance][] = node-bannerlink-field_teaser
-features[field_instance][] = node-bannerlink-field_internal_title
 features[node][] = bannerlink
 features[variable][] = comment_anonymous_bannerlink
 features[variable][] = comment_bannerlink

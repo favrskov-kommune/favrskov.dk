@@ -10,7 +10,7 @@
 function content_type_frontpage_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'cntrmd_frontpage'
+  // Exported field_base: 'cntrmd_frontpage'.
   $field_bases['cntrmd_frontpage'] = array(
     'active' => 1,
     'cardinality' => 1,

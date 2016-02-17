@@ -151,7 +151,9 @@ function content_type_frontpage_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_frontpage';
   $strongarm->value = array(
-    0 => 'main-menu',
+    0 => '840a5c39fa8fab01a2631a5de85c2079',
+    1 => 'main-menu',
+    2 => '729ab9882b8d8f7e285d0b504182bd58',
   );
   $export['menu_options_frontpage'] = $strongarm;
 

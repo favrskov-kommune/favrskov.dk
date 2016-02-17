@@ -1,7 +1,6 @@
 name = Media Breakpoints
 core = 7.x
 package = Media
-php = 5.2.4
 version = 7.x-1.0
 project = media_breakpoints
 dependencies[] = breakpoints

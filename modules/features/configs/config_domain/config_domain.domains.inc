@@ -13,7 +13,7 @@ function config_domain_domain_default_domains() {
   $domains['cykelkommune_favrskov_dk'] = array(
     'subdomain' => 'cykelkommune.favrskov.dk',
     'sitename' => 'Cykelkommune',
-    'scheme' => 'http',
+    'scheme' => 'https',
     'valid' => 1,
     'weight' => 3,
     'is_default' => 0,
@@ -22,7 +22,7 @@ function config_domain_domain_default_domains() {
   $domains['designguiden_favrskov_dk'] = array(
     'subdomain' => 'designguiden.favrskov.dk',
     'sitename' => 'Designguiden',
-    'scheme' => 'http',
+    'scheme' => 'https',
     'valid' => 1,
     'weight' => 2,
     'is_default' => 0,
@@ -40,7 +40,7 @@ function config_domain_domain_default_domains() {
   $domains['oplev_favrskov_dk'] = array(
     'subdomain' => 'oplev.favrskov.dk',
     'sitename' => 'Oplev',
-    'scheme' => 'http',
+    'scheme' => 'https',
     'valid' => 1,
     'weight' => 1,
     'is_default' => 0,

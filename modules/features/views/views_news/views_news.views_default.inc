@@ -22,10 +22,10 @@ function views_news_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = t('News');
+  $handler->display->display_options['title'] = 'Nyheder';
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = TRUE;
-  $handler->display->display_options['use_more_text'] = t('See all');
+  $handler->display->display_options['use_more_text'] = 'Se alle';
   $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -120,7 +120,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
-  /* Field: Content: Teaser */
+  /* Field: Content: Smagsprøve */
   $handler->display->display_options['fields']['field_teaser']['id'] = 'field_teaser';
   $handler->display->display_options['fields']['field_teaser']['table'] = 'field_data_field_teaser';
   $handler->display->display_options['fields']['field_teaser']['field'] = 'field_teaser';
@@ -175,7 +175,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['filters']['state']['table'] = 'autoarch_state';
   $handler->display->display_options['filters']['state']['field'] = 'state';
   $handler->display->display_options['filters']['state']['value'] = 'actual';
-  /* Filter criterion: Broken/missing handler */
+  /* Filter criterion: Domain Access: Available on current domain */
   $handler->display->display_options['filters']['current_all']['id'] = 'current_all';
   $handler->display->display_options['filters']['current_all']['table'] = 'domain_access';
   $handler->display->display_options['filters']['current_all']['field'] = 'current_all';
@@ -226,7 +226,7 @@ function views_news_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Filterkriterie: Domain Access: Available on current domain */
+  /* Filter criterion: Domain Access: Available on current domain */
   $handler->display->display_options['filters']['current_all']['id'] = 'current_all';
   $handler->display->display_options['filters']['current_all']['table'] = 'domain_access';
   $handler->display->display_options['filters']['current_all']['field'] = 'current_all';
@@ -261,7 +261,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = t('Se alle');
+  $handler->display->display_options['use_more_text'] = 'Se alle';
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -373,7 +373,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['fields']['field_image_thumbnail']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_image_thumbnail']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_image_thumbnail']['separator'] = '';
-  /* Field: Content: Teaser */
+  /* Field: Content: Smagsprøve */
   $handler->display->display_options['fields']['field_teaser']['id'] = 'field_teaser';
   $handler->display->display_options['fields']['field_teaser']['table'] = 'field_data_field_teaser';
   $handler->display->display_options['fields']['field_teaser']['field'] = 'field_teaser';
@@ -470,7 +470,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['filters']['state']['table'] = 'autoarch_state';
   $handler->display->display_options['filters']['state']['field'] = 'state';
   $handler->display->display_options['filters']['state']['value'] = 'actual';
-  /* Filterkriterie: Domain Access: Available on current domain */
+  /* Filter criterion: Domain Access: Available on current domain */
   $handler->display->display_options['filters']['current_all']['id'] = 'current_all';
   $handler->display->display_options['filters']['current_all']['table'] = 'domain_access';
   $handler->display->display_options['filters']['current_all']['field'] = 'current_all';
@@ -505,7 +505,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = t('Se alle');
+  $handler->display->display_options['use_more_text'] = 'Se alle';
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -565,29 +565,29 @@ function views_news_views_default_views() {
   $handler->display->display_options['arguments']['field_date_value']['title_format_custom'] = 'Y';
   $translatables['news'] = array(
     t('Master'),
-    t('News'),
-    t('See all'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('Nyheder'),
+    t('Se alle'),
+    t('Udfør'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Stigende'),
+    t('Faldende'),
     t('No results'),
     t('term'),
     t('queue'),
-    t('All'),
+    t('Alle'),
     t('News block'),
     t('more'),
     t('Queue machine name'),
     t('View panes'),
     t('News list'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('Antal elementer'),
+    t('- Alle -'),
+    t('Forskydning'),
+    t('« første'),
+    t('‹ forrige'),
+    t('næste ›'),
+    t('sidste »'),
     t('Hent flere'),
     t('<article>
   <header class="group">

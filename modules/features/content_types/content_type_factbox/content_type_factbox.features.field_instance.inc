@@ -10,7 +10,7 @@
 function content_type_factbox_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-factbox-body'
+  // Exported field_instance: 'node-factbox-body'.
   $field_instances['node-factbox-body'] = array(
     'bundle' => 'factbox',
     'default_value' => NULL,
@@ -43,7 +43,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => t('Body'),
+    'label' => 'Brødtekst',
     'required' => FALSE,
     'settings' => array(
       'better_formats' => array(
@@ -95,7 +95,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-factbox-cntrmd_factbox'
+  // Exported field_instance: 'node-factbox-cntrmd_factbox'.
   $field_instances['node-factbox-cntrmd_factbox'] = array(
     'bundle' => 'factbox',
     'default_value' => NULL,
@@ -138,7 +138,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-factbox-field_displayed_title'
+  // Exported field_instance: 'node-factbox-field_displayed_title'.
   $field_instances['node-factbox-field_displayed_title'] = array(
     'bundle' => 'factbox',
     'default_value' => NULL,
@@ -168,7 +168,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_displayed_title',
-    'label' => t('Displayed Title'),
+    'label' => 'Vist Overskrift',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -217,7 +217,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-factbox-field_external_link'
+  // Exported field_instance: 'node-factbox-field_external_link'.
   $field_instances['node-factbox-field_external_link'] = array(
     'bundle' => 'factbox',
     'default_value' => NULL,
@@ -246,9 +246,10 @@ function content_type_factbox_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_external_link',
-    'label' => t('Link'),
+    'label' => 'Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -267,6 +268,7 @@ function content_type_factbox_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -282,11 +284,11 @@ function content_type_factbox_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-factbox-field_image'
+  // Exported field_instance: 'node-factbox-field_image'.
   $field_instances['node-factbox-field_image'] = array(
     'bundle' => 'factbox',
     'deleted' => 0,
-    'description' => t('Please, uploade billedet i kun højformat.'),
+    'description' => 'Please, uploade billedet i kun højformat.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -313,7 +315,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image',
-    'label' => t('Image'),
+    'label' => 'Billede',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
@@ -347,7 +349,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-factbox-field_image_description'
+  // Exported field_instance: 'node-factbox-field_image_description'.
   $field_instances['node-factbox-field_image_description'] = array(
     'bundle' => 'factbox',
     'default_value' => NULL,
@@ -377,7 +379,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_description',
-    'label' => t('Image description'),
+    'label' => 'Billedtekst',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -403,12 +405,12 @@ function content_type_factbox_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-factbox-field_internal_title'
+  // Exported field_instance: 'node-factbox-field_internal_title'.
   $field_instances['node-factbox-field_internal_title'] = array(
     'bundle' => 'factbox',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Used for admin content overview page instead of title field.'),
+    'description' => 'Used for admin content overview page instead of title field.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -432,7 +434,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => t('Internal title'),
+    'label' => 'Internt navn',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -489,7 +491,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-factbox-field_onlyeditorcontent'
+  // Exported field_instance: 'node-factbox-field_onlyeditorcontent'.
   $field_instances['node-factbox-field_onlyeditorcontent'] = array(
     'bundle' => 'factbox',
     'default_value' => array(
@@ -522,7 +524,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_onlyeditorcontent',
-    'label' => t('OnlyEditorContent'),
+    'label' => 'KunEditorIndhold',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -539,7 +541,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-factbox-field_teaser'
+  // Exported field_instance: 'node-factbox-field_teaser'.
   $field_instances['node-factbox-field_teaser'] = array(
     'bundle' => 'factbox',
     'default_value' => NULL,
@@ -569,7 +571,7 @@ function content_type_factbox_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_teaser',
-    'label' => t('Teaser'),
+    'label' => 'Smagsprøve',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -597,17 +599,17 @@ function content_type_factbox_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
-  t('Displayed Title');
-  t('Image');
-  t('Image description');
-  t('Internal title');
+  t('Billede');
+  t('Billedtekst');
+  t('Brødtekst');
+  t('Internt navn');
+  t('KunEditorIndhold');
   t('Link');
   t('Notification');
-  t('OnlyEditorContent');
   t('Please, uploade billedet i kun højformat.');
-  t('Teaser');
+  t('Smagsprøve');
   t('Used for admin content overview page instead of title field.');
+  t('Vist Overskrift');
 
   return $field_instances;
 }

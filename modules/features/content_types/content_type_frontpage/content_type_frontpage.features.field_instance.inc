@@ -10,7 +10,102 @@
 function content_type_frontpage_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-frontpage-field_internal_title'
+  // Exported field_instance: 'node-frontpage-cntrmd_frontpage'.
+  $field_instances['node-frontpage-cntrmd_frontpage'] = array(
+    'bundle' => 'frontpage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'none',
+        'weight' => 11,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'cntrmd_frontpage',
+    'label' => 'Notification',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'content_reminder',
+      'settings' => array(),
+      'type' => 'content_reminder_widget',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-frontpage-field_editorial_responsibility'.
+  $field_instances['node-frontpage-field_editorial_responsibility'] = array(
+    'bundle' => 'frontpage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'user_reference',
+        'settings' => array(),
+        'type' => 'user_reference_default',
+        'weight' => 2,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_editorial_responsibility',
+    'label' => 'Editorial responsibility',
+    'required' => 0,
+    'settings' => array(
+      'exclude_cv' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'user_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'user_reference/autocomplete',
+        'references_dialog_add' => 0,
+        'references_dialog_edit' => 0,
+        'references_dialog_search' => 0,
+        'references_dialog_search_view' => '',
+        'size' => 60,
+      ),
+      'type' => 'user_reference_autocomplete',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-frontpage-field_internal_title'.
   $field_instances['node-frontpage-field_internal_title'] = array(
     'bundle' => 'frontpage',
     'default_value' => NULL,
@@ -96,59 +191,7 @@ function content_type_frontpage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-frontpage-field_editorial_responsibility'
-  $field_instances['node-frontpage-field_editorial_responsibility'] = array(
-    'bundle' => 'frontpage',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'user_reference',
-        'settings' => array(),
-        'type' => 'user_reference_default',
-        'weight' => 2,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_editorial_responsibility',
-    'label' => t('Editorial responsibility'),
-    'required' => 0,
-    'settings' => array(
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'user_reference',
-      'settings' => array(
-        'autocomplete_match' => 'contains',
-        'autocomplete_path' => 'user_reference/autocomplete',
-        'references_dialog_add' => 0,
-        'references_dialog_edit' => 0,
-        'references_dialog_search' => 0,
-        'references_dialog_search_view' => '',
-        'size' => 60,
-      ),
-      'type' => 'user_reference_autocomplete',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-frontpage-field_taxonomy_kle'
+  // Exported field_instance: 'node-frontpage-field_taxonomy_kle'.
   $field_instances['node-frontpage-field_taxonomy_kle'] = array(
     'bundle' => 'frontpage',
     'default_value' => NULL,
@@ -178,7 +221,7 @@ function content_type_frontpage_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_kle',
-    'label' => t('Taxonomy, KLE'),
+    'label' => 'Taxonomy, KLE',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -196,7 +239,7 @@ function content_type_frontpage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-frontpage-field_taxonomy_local'
+  // Exported field_instance: 'node-frontpage-field_taxonomy_local'.
   $field_instances['node-frontpage-field_taxonomy_local'] = array(
     'bundle' => 'frontpage',
     'default_value' => NULL,
@@ -226,7 +269,7 @@ function content_type_frontpage_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_local',
-    'label' => t('Taxonomy, local'),
+    'label' => 'Taxonomy, local',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -244,55 +287,13 @@ function content_type_frontpage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-frontpage-cntrmd_frontpage'
-  $field_instances['node-frontpage-cntrmd_frontpage'] = array(
-    'bundle' => 'frontpage',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => NULL,
-        'settings' => array(),
-        'type' => 'none',
-        'weight' => 11,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'cntrmd_frontpage',
-    'label' => 'Notification',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'content_reminder',
-      'settings' => array(),
-      'type' => 'content_reminder_widget',
-      'weight' => 7,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Editorial responsibility');
+  t('Internal title');
+  t('Notification');
   t('Taxonomy, KLE');
   t('Taxonomy, local');
-  t('Internal title');
   t('Used for admin content overview page instead of title field.');
 
   return $field_instances;

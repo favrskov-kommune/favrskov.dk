@@ -10,7 +10,7 @@
 function content_type_self_service_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'cntrmd_self_service'
+  // Exported field_base: 'cntrmd_self_service'.
   $field_bases['cntrmd_self_service'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function content_type_self_service_field_default_field_bases() {
     'type' => 'content_reminder',
   );
 
-  // Exported field_base: 'field_require_login'
+  // Exported field_base: 'field_require_login'.
   $field_bases['field_require_login'] = array(
     'active' => 1,
     'cardinality' => 1,

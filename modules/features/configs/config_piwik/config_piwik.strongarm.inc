@@ -218,7 +218,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'piwik_url_https';
-  $strongarm->value = '';
+  $strongarm->value = 'https://piwik.favrskov.dk/';
   $export['piwik_url_https'] = $strongarm;
 
   $strongarm = new stdClass();

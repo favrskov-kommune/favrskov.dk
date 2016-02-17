@@ -10,7 +10,7 @@
 function config_media_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'file-audio-field_tags'
+  // Exported field_instance: 'file-audio-field_tags'.
   $field_instances['file-audio-field_tags'] = array(
     'bundle' => 'audio',
     'default_value' => NULL,
@@ -59,7 +59,7 @@ function config_media_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-document-field_link_title'
+  // Exported field_instance: 'file-document-field_link_title'.
   $field_instances['file-document-field_link_title'] = array(
     'bundle' => 'document',
     'default_value' => NULL,
@@ -140,7 +140,7 @@ function config_media_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-document-field_tags'
+  // Exported field_instance: 'file-document-field_tags'.
   $field_instances['file-document-field_tags'] = array(
     'bundle' => 'document',
     'default_value' => NULL,
@@ -189,7 +189,7 @@ function config_media_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-field_tags'
+  // Exported field_instance: 'file-image-field_tags'.
   $field_instances['file-image-field_tags'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -238,7 +238,7 @@ function config_media_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-video-field_tags'
+  // Exported field_instance: 'file-video-field_tags'.
   $field_instances['file-video-field_tags'] = array(
     'bundle' => 'video',
     'default_value' => NULL,

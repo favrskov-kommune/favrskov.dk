@@ -10,7 +10,7 @@
 function content_type_factbox_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'cntrmd_factbox'
+  // Exported field_base: 'cntrmd_factbox'.
   $field_bases['cntrmd_factbox'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function content_type_factbox_field_default_field_bases() {
     'type' => 'content_reminder',
   );
 
-  // Exported field_base: 'field_onlyeditorcontent'
+  // Exported field_base: 'field_onlyeditorcontent'.
   $field_bases['field_onlyeditorcontent'] = array(
     'active' => 1,
     'cardinality' => 1,

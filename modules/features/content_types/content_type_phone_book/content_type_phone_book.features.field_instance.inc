@@ -11,7 +11,7 @@ function content_type_phone_book_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
-  // 'field_collection_item-field_opening_hours-field_day_of_week'
+  // 'field_collection_item-field_opening_hours-field_day_of_week'.
   $field_instances['field_collection_item-field_opening_hours-field_day_of_week'] = array(
     'bundle' => 'field_opening_hours',
     'default_value' => NULL,
@@ -28,7 +28,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_day_of_week',
-    'label' => t('Day of week'),
+    'label' => 'Ugedag',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -44,12 +44,13 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_opening_hours-field_time'
+  // Exported field_instance:
+  // 'field_collection_item-field_opening_hours-field_time'.
   $field_instances['field_collection_item-field_opening_hours-field_time'] = array(
     'bundle' => 'field_opening_hours',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Time must be in format \'09.00-16.00\''),
+    'description' => 'Time skal være i formatet \'09.00-16.00\'',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -61,7 +62,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_time',
-    'label' => t('Time'),
+    'label' => 'Time',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -114,7 +115,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-phone_book-cntrmd_phone_book'
+  // Exported field_instance: 'node-phone_book-cntrmd_phone_book'.
   $field_instances['node-phone_book-cntrmd_phone_book'] = array(
     'bundle' => 'phone_book',
     'default_value' => NULL,
@@ -157,12 +158,12 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-phone_book-field_internal_title'
+  // Exported field_instance: 'node-phone_book-field_internal_title'.
   $field_instances['node-phone_book-field_internal_title'] = array(
     'bundle' => 'phone_book',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Used for admin content overview page instead of title field.'),
+    'description' => 'Used for admin content overview page instead of title field.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -186,7 +187,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => t('Internal title'),
+    'label' => 'Internt navn',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -243,7 +244,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-phone_book-field_opening_hours'
+  // Exported field_instance: 'node-phone_book-field_opening_hours'.
   $field_instances['node-phone_book-field_opening_hours'] = array(
     'bundle' => 'phone_book',
     'default_value' => NULL,
@@ -272,7 +273,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_opening_hours',
-    'label' => t('Opening hours'),
+    'label' => 'Åbningstider',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -288,7 +289,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-phone_book-field_phone_book_address'
+  // Exported field_instance: 'node-phone_book-field_phone_book_address'.
   $field_instances['node-phone_book-field_phone_book_address'] = array(
     'bundle' => 'phone_book',
     'default_value' => array(
@@ -338,7 +339,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_phone_book_address',
-    'label' => t('Address'),
+    'label' => 'Adresse',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -364,7 +365,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-phone_book-field_phone_book_cell_phone'
+  // Exported field_instance: 'node-phone_book-field_phone_book_cell_phone'.
   $field_instances['node-phone_book-field_phone_book_cell_phone'] = array(
     'bundle' => 'phone_book',
     'default_value' => NULL,
@@ -394,7 +395,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_phone_book_cell_phone',
-    'label' => t('Cell phone'),
+    'label' => 'Mobiltelefon',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -445,7 +446,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-phone_book-field_phone_book_email'
+  // Exported field_instance: 'node-phone_book-field_phone_book_email'.
   $field_instances['node-phone_book-field_phone_book_email'] = array(
     'bundle' => 'phone_book',
     'default_value' => NULL,
@@ -475,7 +476,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_phone_book_email',
-    'label' => t('Email'),
+    'label' => 'E-mail',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -492,7 +493,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-phone_book-field_phone_book_map_link'
+  // Exported field_instance: 'node-phone_book-field_phone_book_map_link'.
   $field_instances['node-phone_book-field_phone_book_map_link'] = array(
     'bundle' => 'phone_book',
     'default_value' => NULL,
@@ -524,6 +525,7 @@ function content_type_phone_book_field_default_field_instances() {
     'label' => 'Map Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -541,6 +543,7 @@ function content_type_phone_book_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'Show on map',
       'url' => 0,
@@ -558,7 +561,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-phone_book-field_phone_book_phone'
+  // Exported field_instance: 'node-phone_book-field_phone_book_phone'.
   $field_instances['node-phone_book-field_phone_book_phone'] = array(
     'bundle' => 'phone_book',
     'default_value' => NULL,
@@ -588,7 +591,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_phone_book_phone',
-    'label' => t('Phone number'),
+    'label' => 'Telefonnummer',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -639,7 +642,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-phone_book-field_phone_book_stuff'
+  // Exported field_instance: 'node-phone_book-field_phone_book_stuff'.
   $field_instances['node-phone_book-field_phone_book_stuff'] = array(
     'bundle' => 'phone_book',
     'default_value' => NULL,
@@ -669,7 +672,7 @@ function content_type_phone_book_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_phone_book_stuff',
-    'label' => t('Stuff'),
+    'label' => 'Stuff',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -734,19 +737,19 @@ function content_type_phone_book_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Address');
-  t('Cell phone');
-  t('Day of week');
-  t('Email');
-  t('Internal title');
+  t('Adresse');
+  t('E-mail');
+  t('Internt navn');
   t('Map Link');
+  t('Mobiltelefon');
   t('Notification');
-  t('Opening hours');
-  t('Phone number');
   t('Stuff');
+  t('Telefonnummer');
   t('Time');
-  t('Time must be in format \'09.00-16.00\'');
+  t('Time skal være i formatet \'09.00-16.00\'');
+  t('Ugedag');
   t('Used for admin content overview page instead of title field.');
+  t('Åbningstider');
 
   return $field_instances;
 }

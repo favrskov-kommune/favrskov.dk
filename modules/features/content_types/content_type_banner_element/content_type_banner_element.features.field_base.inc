@@ -10,7 +10,7 @@
 function content_type_banner_element_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'cntrmd_banner_element'
+  // Exported field_base: 'cntrmd_banner_element'.
   $field_bases['cntrmd_banner_element'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function content_type_banner_element_field_default_field_bases() {
     'type' => 'content_reminder',
   );
 
-  // Exported field_base: 'field_transperent_overlay'
+  // Exported field_base: 'field_transperent_overlay'.
   $field_bases['field_transperent_overlay'] = array(
     'active' => 1,
     'cardinality' => 1,

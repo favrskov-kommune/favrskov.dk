@@ -10,7 +10,7 @@
 function content_type_phone_book_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'cntrmd_phone_book'
+  // Exported field_base: 'cntrmd_phone_book'.
   $field_bases['cntrmd_phone_book'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'content_reminder',
   );
 
-  // Exported field_base: 'field_day_of_week'
+  // Exported field_base: 'field_day_of_week'.
   $field_bases['field_day_of_week'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -45,13 +45,13 @@ function content_type_phone_book_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        1 => t('Monday'),
-        2 => t('Tuesday'),
-        3 => t('Wednesday'),
-        4 => t('Thursday'),
-        5 => t('Friday'),
-        6 => t('Saturday'),
-        7 => t('Sunday'),
+        1 => 'Mandag',
+        2 => 'Tirsdag',
+        3 => 'Onsdag',
+        4 => 'Torsdag',
+        5 => 'Fredag',
+        6 => 'Lørdag',
+        7 => 'Søndag',
       ),
       'allowed_values_function' => '',
     ),
@@ -59,7 +59,7 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_opening_hours'
+  // Exported field_base: 'field_opening_hours'.
   $field_bases['field_opening_hours'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -81,7 +81,7 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_phone_book_address'
+  // Exported field_base: 'field_phone_book_address'.
   $field_bases['field_phone_book_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -96,7 +96,7 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'addressfield',
   );
 
-  // Exported field_base: 'field_phone_book_cell_phone'
+  // Exported field_base: 'field_phone_book_cell_phone'.
   $field_bases['field_phone_book_cell_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -117,7 +117,7 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_phone_book_email'
+  // Exported field_base: 'field_phone_book_email'.
   $field_bases['field_phone_book_email'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -132,7 +132,7 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'email',
   );
 
-  // Exported field_base: 'field_phone_book_map_link'
+  // Exported field_base: 'field_phone_book_map_link'.
   $field_bases['field_phone_book_map_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -161,7 +161,7 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_phone_book_phone'
+  // Exported field_base: 'field_phone_book_phone'.
   $field_bases['field_phone_book_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -182,7 +182,7 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_phone_book_stuff'
+  // Exported field_base: 'field_phone_book_stuff'.
   $field_bases['field_phone_book_stuff'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -201,7 +201,7 @@ function content_type_phone_book_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_time'
+  // Exported field_base: 'field_time'.
   $field_bases['field_time'] = array(
     'active' => 1,
     'cardinality' => 1,

@@ -10,7 +10,7 @@
 function content_type_bannerlink_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'cntrmd_bannerlink'
+  // Exported field_base: 'cntrmd_bannerlink'.
   $field_bases['cntrmd_bannerlink'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function content_type_bannerlink_field_default_field_bases() {
     'type' => 'content_reminder',
   );
 
-  // Exported field_base: 'field_banner_link_color'
+  // Exported field_base: 'field_banner_link_color'.
   $field_bases['field_banner_link_color'] = array(
     'active' => 1,
     'cardinality' => 1,

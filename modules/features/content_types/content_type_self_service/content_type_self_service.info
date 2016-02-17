@@ -23,7 +23,6 @@ features[field_instance][] = node-self_service-field_image_alt_text
 features[field_instance][] = node-self_service-field_internal_title
 features[field_instance][] = node-self_service-field_require_login
 features[field_instance][] = node-self_service-field_teaser
-features[field_instance][] = node-self_service-field_internal_title
 features[node][] = self_service
 features[variable][] = comment_anonymous_self_service
 features[variable][] = comment_default_mode_self_service
