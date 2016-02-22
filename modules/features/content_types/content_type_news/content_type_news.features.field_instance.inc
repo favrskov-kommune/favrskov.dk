@@ -140,7 +140,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => 'Body',
+    'label' => 'Brødtekst',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -149,7 +149,6 @@ function content_type_news_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'job_html' => 0,
-          'mailchimp_campaign' => 0,
           'plain_text' => 'plain_text',
           'video_html' => 'video_html',
         ),
@@ -167,9 +166,6 @@ function content_type_news_field_default_field_instances() {
               'weight' => 0,
             ),
             'job_html' => array(
-              'weight' => 0,
-            ),
-            'mailchimp_campaign' => array(
               'weight' => 0,
             ),
             'plain_text' => array(
@@ -197,7 +193,7 @@ function content_type_news_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 10,
+      'weight' => 6,
     ),
   );
 
@@ -240,7 +236,7 @@ function content_type_news_field_default_field_instances() {
       'module' => 'content_reminder',
       'settings' => array(),
       'type' => 'content_reminder_widget',
-      'weight' => 0,
+      'weight' => 9,
     ),
   );
 
@@ -249,7 +245,7 @@ function content_type_news_field_default_field_instances() {
     'bundle' => 'news',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Forfatternavn som vises lige under sidens overskrit',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -281,10 +277,43 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_author',
-    'label' => 'Author',
+    'label' => 'Forfatter',
     'required' => 0,
     'settings' => array(
-      'exclude_cv' => FALSE,
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'custom_tokens_no_filters_' => 'custom_tokens_no_filters_',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'job_html' => 'job_html',
+          'plain_text' => 'plain_text',
+          'video_html' => 'video_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'custom_tokens_no_filters_' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'job_html' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'video_html' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -296,10 +325,12 @@ function content_type_news_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 25,
+      'weight' => 1,
     ),
   );
 
@@ -363,7 +394,7 @@ function content_type_news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 23,
+      'weight' => 8,
     ),
   );
 
@@ -408,7 +439,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_contact_information',
-    'label' => 'Contact Information',
+    'label' => 'Kontaktoplysninger',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -420,6 +451,7 @@ function content_type_news_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'references_dialog_add' => 1,
         'references_dialog_edit' => 1,
         'references_dialog_search' => 0,
@@ -427,7 +459,7 @@ function content_type_news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 26,
+      'weight' => 7,
     ),
   );
 
@@ -483,14 +515,13 @@ function content_type_news_field_default_field_instances() {
     'entity_type' => 'node',
     'exclude_cv' => 1,
     'field_name' => 'field_date',
-    'label' => 'Date',
+    'label' => 'Dato',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
-      'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -501,12 +532,13 @@ function content_type_news_field_default_field_instances() {
         'input_format' => 'm/d/Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
-        'repeat_collapsed' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'no_fieldset' => 0,
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 24,
+      'weight' => 2,
     ),
   );
 
@@ -546,7 +578,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_editorial_responsibility',
-    'label' => 'Editorial responsibility',
+    'label' => 'Redaktionel ansvarlig',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -558,6 +590,7 @@ function content_type_news_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'user_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'references_dialog_add' => 0,
         'references_dialog_edit' => 0,
         'references_dialog_search' => 0,
@@ -565,7 +598,7 @@ function content_type_news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'user_reference_autocomplete',
-      'weight' => 20,
+      'weight' => 10,
     ),
   );
 
@@ -610,7 +643,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_faq_ref',
-    'label' => 'FAQ',
+    'label' => 'Spørgsmål og svar',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -622,6 +655,7 @@ function content_type_news_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'references_dialog_add' => 1,
         'references_dialog_edit' => 1,
         'references_dialog_search' => 0,
@@ -629,7 +663,7 @@ function content_type_news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 27,
+      'weight' => 14,
     ),
   );
 
@@ -670,10 +704,43 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_description',
-    'label' => 'Image description',
+    'label' => 'Billedetekst',
     'required' => 0,
     'settings' => array(
-      'exclude_cv' => FALSE,
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'custom_tokens_no_filters_' => 'custom_tokens_no_filters_',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'job_html' => 'job_html',
+          'plain_text' => 'plain_text',
+          'video_html' => 'video_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'custom_tokens_no_filters_' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'job_html' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'video_html' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -692,7 +759,7 @@ function content_type_news_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 4,
     ),
   );
 
@@ -700,7 +767,7 @@ function content_type_news_field_default_field_instances() {
   $field_instances['node-news-field_image_thumbnail'] = array(
     'bundle' => 'news',
     'deleted' => 0,
-    'description' => 'Please, upload image in landscape format only.',
+    'description' => 'Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj. Upload kun billedet i liggende (landscape) format.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -737,12 +804,11 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_thumbnail',
-    'label' => 'Image / thumbnail',
+    'label' => 'Billede / thumbnail',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'exclude_cv' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -759,16 +825,22 @@ function content_type_news_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
+          0 => 0,
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
+        'browser_plugins' => array(
+          'media_browser_plus--media_browser_my_files' => 0,
+          'media_browser_plus--media_browser_thumbnails' => 0,
+          'upload' => 0,
+        ),
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 12,
+      'weight' => 3,
     ),
   );
 
@@ -777,7 +849,7 @@ function content_type_news_field_default_field_instances() {
     'bundle' => 'news',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Used for admin content overview page instead of title field.',
+    'description' => 'Titel som benyttes i den administrative indholdsoversigt fremfor sidens overskrift.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -801,7 +873,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => 'Internal title',
+    'label' => 'Intern titel',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -854,7 +926,7 @@ function content_type_news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 9,
     ),
   );
 
@@ -897,7 +969,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_boxes',
-    'label' => 'Related boxes',
+    'label' => 'Relaterede bokse',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -909,6 +981,7 @@ function content_type_news_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'references_dialog_add' => 1,
         'references_dialog_edit' => 1,
         'references_dialog_search' => 0,
@@ -916,7 +989,7 @@ function content_type_news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 19,
+      'weight' => 7,
     ),
   );
 
@@ -957,7 +1030,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_content',
-    'label' => 'Related content',
+    'label' => 'Relateret indhold',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -969,6 +1042,7 @@ function content_type_news_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'references_dialog_add' => 1,
         'references_dialog_edit' => 1,
         'references_dialog_search' => 0,
@@ -976,7 +1050,7 @@ function content_type_news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 21,
+      'weight' => 8,
     ),
   );
 
@@ -1018,7 +1092,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_self_service',
-    'label' => 'Self Service',
+    'label' => 'Selvbetjening',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1030,6 +1104,7 @@ function content_type_news_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'references_dialog_add' => 1,
         'references_dialog_edit' => 1,
         'references_dialog_search' => 0,
@@ -1037,7 +1112,7 @@ function content_type_news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 22,
+      'weight' => 7,
     ),
   );
 
@@ -1102,7 +1177,7 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_table',
-    'label' => 'Table',
+    'label' => 'Tabel',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1155,21 +1230,22 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_kle',
-    'label' => 'Taxonomy, KLE',
+    'label' => 'Taksonomi, KLE',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
+      'active' => 0,
       'module' => 'taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -1226,7 +1302,7 @@ function content_type_news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_select',
-      'weight' => 18,
+      'weight' => 11,
     ),
   );
 
@@ -1281,7 +1357,7 @@ function content_type_news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'multiple_selects',
-      'weight' => 17,
+      'weight' => 12,
     ),
   );
 
@@ -1322,21 +1398,20 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_subject_area',
-    'label' => 'Taxonomy, Subject Area',
+    'label' => 'Taksonomi, Emneområde',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
+      'active' => 1,
       'module' => 'hs_taxonomy',
       'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'taxonomy_hs',
-      'weight' => 16,
+      'weight' => 13,
     ),
   );
 
@@ -1432,7 +1507,7 @@ function content_type_news_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 5,
     ),
   );
 
@@ -1516,7 +1591,7 @@ function content_type_news_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 14,
+      'weight' => 19,
     ),
   );
 
@@ -1557,10 +1632,43 @@ function content_type_news_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video_description',
-    'label' => 'Video description',
+    'label' => 'Videobeskrivelse',
     'required' => 0,
     'settings' => array(
-      'exclude_cv' => FALSE,
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'custom_tokens_no_filters_' => 'custom_tokens_no_filters_',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'job_html' => 'job_html',
+          'plain_text' => 'plain_text',
+          'video_html' => 'video_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'custom_tokens_no_filters_' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'job_html' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'video_html' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -1579,37 +1687,38 @@ function content_type_news_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 20,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Author');
+  t('Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj. Upload kun billedet i liggende (landscape) format.');
   t('Bannerlink');
-  t('Body');
+  t('Billede / thumbnail');
+  t('Billedetekst');
+  t('Brødtekst');
   t('Comment');
-  t('Contact Information');
-  t('Date');
-  t('Editorial responsibility');
-  t('FAQ');
-  t('Image / thumbnail');
-  t('Image description');
-  t('Internal title');
+  t('Dato');
+  t('Forfatter');
+  t('Forfatternavn som vises lige under sidens overskrit');
+  t('Intern titel');
+  t('Kontaktoplysninger');
   t('Notification');
-  t('Please, upload image in landscape format only.');
-  t('Related boxes');
-  t('Related content');
-  t('Self Service');
-  t('Table');
-  t('Taxonomy, KLE');
+  t('Redaktionel ansvarlig');
+  t('Relaterede bokse');
+  t('Relateret indhold');
+  t('Selvbetjening');
+  t('Spørgsmål og svar');
+  t('Tabel');
+  t('Taksonomi, Emneområde');
+  t('Taksonomi, KLE');
   t('Taxonomy, Location');
-  t('Taxonomy, Subject Area');
   t('Taxonomy, local');
   t('Teaser');
-  t('Used for admin content overview page instead of title field.');
+  t('Titel som benyttes i den administrative indholdsoversigt fremfor sidens overskrift.');
   t('Video');
-  t('Video description');
+  t('Videobeskrivelse');
 
   return $field_instances;
 }

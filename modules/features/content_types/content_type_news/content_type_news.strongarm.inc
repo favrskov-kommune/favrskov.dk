@@ -105,25 +105,25 @@ function content_type_news_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '10',
         ),
         'title' => array(
-          'weight' => '2',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '11',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '12',
         ),
         'language' => array(
-          'weight' => '4',
+          'weight' => '10',
         ),
         'domain' => array(
-          'weight' => '2',
+          'weight' => '8',
         ),
         'rabbit_hole' => array(
-          'weight' => '1',
+          'weight' => '13',
         ),
       ),
       'display' => array(

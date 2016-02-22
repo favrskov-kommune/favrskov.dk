@@ -87,11 +87,11 @@ function content_type_article_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_image'
+  // 'field_collection_item-field_publications-field_image'.
   $field_instances['field_collection_item-field_publications-field_image'] = array(
     'bundle' => 'field_publications',
     'deleted' => 0,
-    'description' => t('Please, upload image in landscape format only.'),
+    'description' => 'Please, upload image in landscape format only.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -112,7 +112,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_image',
-    'label' => t('Image'),
+    'label' => 'Image',
     'required' => 1,
     'settings' => array(
       'alt_field' => 0,
@@ -236,7 +236,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_open_in_new_window',
-    'label' => t('Open in new window'),
+    'label' => 'Open in new window',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -276,7 +276,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_pdf_file',
-    'label' => t('PDF file'),
+    'label' => 'PDF file',
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
@@ -336,7 +336,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_publications_description',
-    'label' => t('Description'),
+    'label' => 'Description',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -420,7 +420,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_title',
-    'label' => t('Title'),
+    'label' => 'Title',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -477,12 +477,12 @@ function content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-body'
+  // Exported field_instance: 'node-article-body'.
   $field_instances['node-article-body'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => t('Short description.'),
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -517,7 +517,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => t('Body'),
+    'label' => 'Brødtekst',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -570,14 +570,28 @@ function content_type_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 14,
+      'weight' => 5,
     ),
   );
 
   // Exported field_instance: 'node-article-cntrmd_article'.
   $field_instances['node-article-cntrmd_article'] = array(
     'bundle' => 'article',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'content_reminder' => array(
+          'date' => array(
+            'precise' => array(
+              'date' => '18/02/2016',
+              'time' => '00:00',
+            ),
+          ),
+          'enabled' => 0,
+          'message' => '',
+          'users' => 'admin',
+        ),
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -602,7 +616,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'cntrmd_article',
-    'label' => 'Notification',
+    'label' => 'Notifikation',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -610,9 +624,11 @@ function content_type_article_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'content_reminder',
-      'settings' => array(),
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
       'type' => 'content_reminder_widget',
-      'weight' => 2,
+      'weight' => 8,
     ),
   );
 
@@ -621,7 +637,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Forfatternavn som vises lige under sidens overskrit',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -645,7 +661,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_author',
-    'label' => 'Author',
+    'label' => 'Forfatter',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -698,7 +714,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 38,
+      'weight' => 1,
     ),
   );
 
@@ -743,7 +759,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_bannerlink',
-    'label' => t('Bannerlink'),
+    'label' => 'Bannerlink',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -762,7 +778,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 18,
+      'weight' => 16,
     ),
   );
 
@@ -809,7 +825,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_borgerdk',
-    'label' => t('BorgerDK'),
+    'label' => 'BorgerDK',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -829,7 +845,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 20,
+      'weight' => 15,
     ),
   );
 
@@ -876,7 +892,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_contact_information',
-    'label' => t('Contact Information'),
+    'label' => 'Kontaktoplysninger',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -888,6 +904,7 @@ function content_type_article_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'references_dialog_add' => 1,
         'references_dialog_edit' => 1,
         'references_dialog_search' => 0,
@@ -895,7 +912,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 25,
+      'weight' => 6,
     ),
   );
 
@@ -934,7 +951,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_editorial_responsibility',
-    'label' => t('Editorial responsibility'),
+    'label' => 'Redaktionel ansvarlig',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -954,7 +971,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'user_reference_autocomplete',
-      'weight' => 29,
+      'weight' => 13,
     ),
   );
 
@@ -999,7 +1016,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_faq_ref',
-    'label' => t('FAQ'),
+    'label' => 'Spørgsmål og svar',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1019,7 +1036,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 19,
+      'weight' => 18,
     ),
   );
 
@@ -1056,7 +1073,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_hide_node_update_date',
-    'label' => t('Hide node update date'),
+    'label' => 'Skjul sidens opdateringsdato',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1069,7 +1086,7 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 35,
+      'weight' => 25,
     ),
   );
 
@@ -1110,10 +1127,43 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_description',
-    'label' => t('Image description'),
+    'label' => 'Billedetekst',
     'required' => 0,
     'settings' => array(
-      'exclude_cv' => FALSE,
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'custom_tokens_no_filters_' => 'custom_tokens_no_filters_',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'job_html' => 'job_html',
+          'plain_text' => 'plain_text',
+          'video_html' => 'video_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'custom_tokens_no_filters_' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'job_html' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'video_html' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -1132,7 +1182,7 @@ function content_type_article_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 3,
     ),
   );
 
@@ -1140,7 +1190,7 @@ function content_type_article_field_default_field_instances() {
   $field_instances['node-article-field_image_thumbnail'] = array(
     'bundle' => 'article',
     'deleted' => 0,
-    'description' => 'Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj. Please, upload billedet i kun liggende format.',
+    'description' => 'Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj. Upload kun billedet i liggende (landscape) format.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1177,12 +1227,11 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image_thumbnail',
-    'label' => t('Image / thumbnail'),
+    'label' => 'Billede / thumbnail',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'exclude_cv' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -1197,20 +1246,24 @@ function content_type_article_field_default_field_instances() {
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
-          'vimeo' => 0,
-          'youtube' => 0,
         ),
         'allowed_types' => array(
+          0 => 0,
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
+        'browser_plugins' => array(
+          'media_browser_plus--media_browser_my_files' => 0,
+          'media_browser_plus--media_browser_thumbnails' => 0,
+          'upload' => 0,
+        ),
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 9,
+      'weight' => 2,
     ),
   );
 
@@ -1219,7 +1272,7 @@ function content_type_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Used for admin content overview page instead of title field.',
+    'description' => 'Titel som benyttes i den administrative indholdsoversigt fremfor sidens overskrift.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1243,7 +1296,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_title',
-    'label' => t('Internal title'),
+    'label' => 'Intern titel',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1296,7 +1349,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 12,
     ),
   );
 
@@ -1309,7 +1362,7 @@ function content_type_article_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'If checked then Job list will be shown.',
+    'description' => 'Hvis markeret vil job listen blive vist.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1333,7 +1386,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_job_list',
-    'label' => 'Job list',
+    'label' => 'Job liste',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1346,7 +1399,7 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 36,
+      'weight' => 23,
     ),
   );
 
@@ -1389,7 +1442,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_one_column_layout',
-    'label' => t('Use full page width, no right menu will be shown'),
+    'label' => 'Brug fuld sidebredde, højre menu vil ikke blive vist',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1402,7 +1455,7 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 34,
+      'weight' => 26,
     ),
   );
 
@@ -1454,7 +1507,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_piwik_day',
-    'label' => t('Piwik Day'),
+    'label' => 'Piwik Day',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1465,7 +1518,7 @@ function content_type_article_field_default_field_instances() {
       'module' => 'piwik_stats',
       'settings' => array(),
       'type' => 'piwik_stats_hidden',
-      'weight' => 30,
+      'weight' => 12,
     ),
   );
 
@@ -1517,7 +1570,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_piwik_month',
-    'label' => t('Piwik Month'),
+    'label' => 'Piwik Month',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1528,7 +1581,7 @@ function content_type_article_field_default_field_instances() {
       'module' => 'piwik_stats',
       'settings' => array(),
       'type' => 'piwik_stats_hidden',
-      'weight' => 32,
+      'weight' => 14,
     ),
   );
 
@@ -1580,7 +1633,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_piwik_week',
-    'label' => t('Piwik Week'),
+    'label' => 'Piwik Week',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1591,7 +1644,7 @@ function content_type_article_field_default_field_instances() {
       'module' => 'piwik_stats',
       'settings' => array(),
       'type' => 'piwik_stats_hidden',
-      'weight' => 31,
+      'weight' => 13,
     ),
   );
 
@@ -1643,7 +1696,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_piwik_year',
-    'label' => t('Piwik Year'),
+    'label' => 'Piwik Year',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1654,7 +1707,7 @@ function content_type_article_field_default_field_instances() {
       'module' => 'piwik_stats',
       'settings' => array(),
       'type' => 'piwik_stats_hidden',
-      'weight' => 33,
+      'weight' => 15,
     ),
   );
 
@@ -1705,7 +1758,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_publications',
-    'label' => t('Publications'),
+    'label' => 'Publikationer',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1717,7 +1770,7 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'field_collection_embed',
-      'weight' => 23,
+      'weight' => 16,
     ),
   );
 
@@ -1756,7 +1809,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_publications_title',
-    'label' => t('Publications title'),
+    'label' => 'Publikationer titel',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1809,7 +1862,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 22,
+      'weight' => 15,
     ),
   );
 
@@ -1852,7 +1905,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_boxes',
-    'label' => t('Related boxes'),
+    'label' => 'Relaterede bokse',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1864,6 +1917,7 @@ function content_type_article_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'references_dialog_add' => 1,
         'references_dialog_edit' => 1,
         'references_dialog_search' => 0,
@@ -1871,7 +1925,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 21,
+      'weight' => 19,
     ),
   );
 
@@ -1912,7 +1966,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_content',
-    'label' => t('Related content'),
+    'label' => 'Relateret indhold',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1924,6 +1978,7 @@ function content_type_article_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'references_dialog_add' => 1,
         'references_dialog_edit' => 1,
         'references_dialog_search' => 0,
@@ -1931,7 +1986,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 24,
+      'weight' => 20,
     ),
   );
 
@@ -1976,7 +2031,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_self_service',
-    'label' => t('Self Service'),
+    'label' => 'Selvbetjening',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -1988,6 +2043,7 @@ function content_type_article_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'references_dialog_add' => 1,
         'references_dialog_edit' => 1,
         'references_dialog_search' => 0,
@@ -1995,7 +2051,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 17,
+      'weight' => 15,
     ),
   );
 
@@ -2027,11 +2083,10 @@ function content_type_article_field_default_field_instances() {
             'rebuild' => 'Rebuild Table',
           ),
         ),
-        'format' => 'filtered_html',
       ),
     ),
     'deleted' => 0,
-    'description' => t('Allows you to create mobile and tablet-friendly tables. Please use this type of table rather than insert tables in the body.'),
+    'description' => 'Allows you to create mobile and tablet-friendly tables. Please use this type of table rather than insert tables in the body.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2061,7 +2116,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_table',
-    'label' => t('Table'),
+    'label' => 'Tabel',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2073,7 +2128,7 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'tablefield',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -2114,21 +2169,22 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_kle',
-    'label' => t('Taxonomy, KLE'),
+    'label' => 'Taksonomi, KLE',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
+      'active' => 0,
       'module' => 'taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 16,
+      'weight' => 2,
     ),
   );
 
@@ -2169,7 +2225,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_local',
-    'label' => t('Taxonomy, local'),
+    'label' => 'Taxonomy, local',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -2183,7 +2239,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_select',
-      'weight' => 28,
+      'weight' => 10,
     ),
   );
 
@@ -2224,7 +2280,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_location',
-    'label' => t('Taxonomy, Location'),
+    'label' => 'Taxonomy, Location',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -2238,7 +2294,7 @@ function content_type_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'multiple_selects',
-      'weight' => 27,
+      'weight' => 11,
     ),
   );
 
@@ -2279,21 +2335,20 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_taxonomy_subject_area',
-    'label' => t('Taxonomy, Subject Area'),
+    'label' => 'Taksonomi, Emneområde',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
+      'active' => 1,
       'module' => 'hs_taxonomy',
       'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'taxonomy_hs',
-      'weight' => 26,
+      'weight' => 3,
     ),
   );
 
@@ -2334,7 +2389,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_teaser',
-    'label' => t('Teaser'),
+    'label' => 'Teaser',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -2389,7 +2444,7 @@ function content_type_article_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 4,
     ),
   );
 
@@ -2429,7 +2484,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video',
-    'label' => t('Video'),
+    'label' => 'Video',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -2473,7 +2528,7 @@ function content_type_article_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 15,
     ),
   );
 
@@ -2514,10 +2569,43 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video_description',
-    'label' => t('Video description'),
+    'label' => 'Videobeskrivelse',
     'required' => 0,
     'settings' => array(
-      'exclude_cv' => FALSE,
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'custom_tokens_no_filters_' => 'custom_tokens_no_filters_',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'job_html' => 'job_html',
+          'plain_text' => 'plain_text',
+          'video_html' => 'video_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'custom_tokens_no_filters_' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'job_html' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'video_html' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -2536,7 +2624,7 @@ function content_type_article_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 16,
     ),
   );
 
@@ -2549,7 +2637,7 @@ function content_type_article_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'If checked then Volunteers jobs list will be shown.',
+    'description' => 'Hvis markeret bliver frivillig job listen vist.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2573,7 +2661,7 @@ function content_type_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_volunteer_jobs_list',
-    'label' => 'Volunteer jobs list',
+    'label' => 'Frivillig job liste',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2586,73 +2674,73 @@ function content_type_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 37,
+      'weight' => 24,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Alle tekster skal opmærkes med KLE numre af hensyn til klassificering af indhold.');
-  t('Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj. Please, upload billedet i kun liggende format.');
+  t('Allows you to create mobile and tablet-friendly tables. Please use this type of table rather than insert tables in the body.');
+  t('Altid skriv i ALT-tekst hvad billedet viser af hensyn til synshandicap og oplæsningsværktøj. Upload kun billedet i liggende (landscape) format.');
   t('Anvendes ikke.');
-  t('Author');
   t('Bannerlink');
-  t('Beskrivelse');
-  t('Billede');
   t('Billede / thumbnail');
-  t('Billedtekst');
+  t('Billedetekst');
   t('BorgerDK');
-  t('Brug fuld sidebredde, vil der ikke højre menu blive vist');
+  t('Brug fuld sidebredde, højre menu vil ikke blive vist');
   t('Brødtekst');
   t('Comment');
+  t('Description');
   t('En kort resume tekst der opsummerer artiklens indhold. Teksten bruges til emne forsiderne, til søgemaskine optimering osv.');
   t('For at artiklen kan placeres i strukturen, skal du her vælge artiklens emne område.');
-  t('Giver dig mulighed for at oprette tabeller, som er mobil og tablet venlige. Benyt venligst denne type tabel frem for at indsætte tabeller i brødteksten.');
+  t('Forfatter');
+  t('Forfatternavn som vises lige under sidens overskrit');
+  t('Frivillig job liste');
   t('Giver mulighed for at lave fold ud sektioner med korte hjælpebeskrivelser til berigelse af artiklen.');
   t('Henvisning til andre artikler på favrskov.dk der kan bidrage med yderligere indhold.');
   t('Her indsættes den \'embed\' kode som Youtube stiller til rådighed.');
   t('Hvis ikke du som forfatter har det redaktionelle ansvar, kan angive en anden redaktør.');
-  t('If checked then Job list will be shown.');
-  t('If checked then Volunteers jobs list will be shown.');
-  t('Internt navn');
-  t('Job list');
-  t('Kontaktinformation');
+  t('Hvis markeret bliver frivillig job listen vist.');
+  t('Hvis markeret vil job listen blive vist.');
+  t('Image');
+  t('Intern titel');
+  t('Job liste');
+  t('Kontaktoplysninger');
   t('Kort tekst der beskriver indholdet af videoen.');
   t('Link til publikation');
   t('Link til sekundære selvbetjeningsløsninger.');
-  t('Notification');
-  t('Overskrift');
-  t('PDF fil');
+  t('Notifikation');
+  t('Open in new window');
+  t('PDF file');
   t('Piwik Day');
   t('Piwik Month');
   t('Piwik Week');
   t('Piwik Year');
   t('Pjecer og rapporter.');
-  t('Please, upload billedet i kun liggende format.');
+  t('Please, upload image in landscape format only.');
   t('Publikationer');
-  t('Publikationstitel');
+  t('Publikationer titel');
   t('Redaktionel ansvarlig');
   t('Relaterede bokse');
   t('Relateret indhold');
   t('Relation til faktabokse.');
   t('Selvbetjening');
-  t('Skjul node opdateringsdato');
-  t('Skriv kort og præcist.');
-  t('Smagsprøve');
+  t('Skjul sidens opdateringsdato');
   t('Spørgsmål og svar');
   t('Start med at skrive et søgeord og vælg blandt de forslag der dukker op.');
   t('Søg efter eller opret nyt selvbetjeningsbanner.');
   t('Tabel');
   t('Taksonomi, Emneområde');
   t('Taksonomi, KLE');
-  t('Taksonomi, lokal');
-  t('Taksonomi, lokation');
+  t('Taxonomy, Location');
+  t('Taxonomy, local');
+  t('Teaser');
   t('Tekst som vises synligt under billede.');
-  t('Used for admin content overview page instead of title field.');
+  t('Titel som benyttes i den administrative indholdsoversigt fremfor sidens overskrift.');
+  t('Title');
   t('Video');
   t('Videobeskrivelse');
-  t('Volunteer jobs list');
-  t('Åbn i nyt vindue');
 
   return $field_instances;
 }
