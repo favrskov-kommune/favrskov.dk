@@ -558,6 +558,9 @@ projects[icon][version] = 1.0-beta6
 projects[fontello][subdir] = contrib
 projects[fontello][version] = 1.0
 
+projects[uuid][subdir] = contrib
+projects[uuid][version] = 1.0-beta1
+
 ; Libraries
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] =
