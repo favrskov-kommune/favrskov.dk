@@ -26,6 +26,7 @@
   <?php if (!empty($header)) : ?>
     <thead>
     <tr>
+      <?php unset($header['field_job_destination_link']); ?>
       <?php foreach ($header as $field => $label): ?>
         <th <?php if ($header_classes[$field]) { print 'class="'. $header_classes[$field] . '" '; } ?> scope="col">
           <?php print $label; ?>
@@ -36,20 +37,21 @@
   <?php endif; ?>
   <tbody>
   <?php foreach ($rows as $row_count => $row): ?>
+    <?php if (!empty($row['field_job_destination_link'])): ?>
+      <?php $destination_link = $row['field_job_destination_link']; ?>
+      <?php unset($row['field_job_destination_link']); ?>
+    <?php endif; ?>
+
     <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
       <?php foreach ($row as $field => $content): ?>
-        <?php if ($field == 'field_job_destination_link'): ?>
-          <?php continue; ?>
-        <?php endif; ?>
-
         <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
-          <?php if (!empty($row['field_job_destination_link'])) : ?>
-            <a href="<?php print $row['field_job_destination_link']; ?>">
+          <?php if (!empty($destination_link)) : ?>
+            <a href="<?php print $destination_link; ?>">
           <?php endif; ?>
 
           <?php print $content; ?>
 
-          <?php if (!empty($row['field_job_destination_link'])) : ?>
+          <?php if (!empty($destination_link)) : ?>
             </a>
           <?php endif; ?>
         </td>
