@@ -24,6 +24,12 @@
  * @ingroup views_templates
  */
 ?>
+<?php if (!empty($fields['field_job_destination_link'])): ?>
+  <?php $destination_link = empty($fields['field_job_destination_link']->content)
+    ? '' : $fields['field_job_destination_link']->content; ?>
+  <?php unset($fields['field_job_destination_link']); ?>
+<?php endif; ?>
+
 <?php foreach ($fields as $id => $field): ?>
   <?php if (!empty($field->separator)): ?>
     <?php print $field->separator; ?>
@@ -32,13 +38,13 @@
   <?php print $field->wrapper_prefix; ?>
   <?php print $field->label_html; ?>
 
-  <?php if(!empty($view->field['field_job_destination_link']->original_value) && ($id == 'title')) : ?>
-    <a href="<?php print $view->field['field_job_destination_link']->original_value; ?>">
+  <?php if (!empty($destination_link) && ($id == 'title')): ?>
+    <a href="<?php print $destination_link; ?>">
   <?php endif; ?>
 
   <?php print $field->content; ?>
 
-  <?php if(!empty($view->field['field_job_destination_link']->original_value) && ($id == 'title')) : ?>
+  <?php if (!empty($destination_link) && ($id == 'title')): ?>
     </a>
   <?php endif; ?>
 
