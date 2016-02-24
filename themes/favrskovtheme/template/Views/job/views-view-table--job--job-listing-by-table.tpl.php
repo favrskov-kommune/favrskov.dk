@@ -38,15 +38,22 @@
   <?php foreach ($rows as $row_count => $row): ?>
     <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
       <?php foreach ($row as $field => $content): ?>
+        <?php if ($field == 'field_job_destination_link'): ?>
+          <?php continue; ?>
+        <?php endif; ?>
+
         <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
-          <?php if (!empty($view->field['field_job_destination_link']->original_value)) : ?>
-            <a href="<?php print $view->field['field_job_destination_link']->original_value; ?>">
+          <?php if (!empty($row['field_job_destination_link'])) : ?>
+            <a href="<?php print $row['field_job_destination_link']; ?>">
           <?php endif; ?>
+
           <?php print $content; ?>
-          <?php if (!empty($view->field['field_job_destination_link']->original_value)) : ?>
+
+          <?php if (!empty($row['field_job_destination_link'])) : ?>
             </a>
           <?php endif; ?>
         </td>
+
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
