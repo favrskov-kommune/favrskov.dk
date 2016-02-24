@@ -117,7 +117,7 @@ function content_type_news_strongarm() {
           'weight' => '12',
         ),
         'language' => array(
-          'weight' => '10',
+          'weight' => '2',
         ),
         'domain' => array(
           'weight' => '8',
