@@ -222,7 +222,9 @@ function views_job_views_default_views() {
   $handler->display->display_options['fields']['field_job_destination_link']['table'] = 'field_data_field_job_destination_link';
   $handler->display->display_options['fields']['field_job_destination_link']['field'] = 'field_job_destination_link';
   $handler->display->display_options['fields']['field_job_destination_link']['label'] = '';
+  $handler->display->display_options['fields']['field_job_destination_link']['element_type'] = '0';
   $handler->display->display_options['fields']['field_job_destination_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_job_destination_link']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_job_destination_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_job_destination_link']['type'] = 'link_plain';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
