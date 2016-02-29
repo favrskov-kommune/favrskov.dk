@@ -10,7 +10,7 @@
 function content_type_faq_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'cntrmd_faq'
+  // Exported field_base: 'cntrmd_faq'.
   $field_bases['cntrmd_faq'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function content_type_faq_field_default_field_bases() {
     'type' => 'content_reminder',
   );
 
-  // Exported field_base: 'comment_body'
+  // Exported field_base: 'comment_body'.
   $field_bases['comment_body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -50,7 +50,7 @@ function content_type_faq_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_faq'
+  // Exported field_base: 'field_faq'.
   $field_bases['field_faq'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -72,7 +72,7 @@ function content_type_faq_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_faq_answer'
+  // Exported field_base: 'field_faq_answer'.
   $field_bases['field_faq_answer'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -91,7 +91,7 @@ function content_type_faq_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_faq_question'
+  // Exported field_base: 'field_faq_question'.
   $field_bases['field_faq_question'] = array(
     'active' => 1,
     'cardinality' => 1,

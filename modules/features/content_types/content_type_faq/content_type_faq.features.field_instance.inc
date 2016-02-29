@@ -10,41 +10,8 @@
 function content_type_faq_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'comment-comment_node_faq-comment_body'
-  $field_instances['comment-comment_node_faq-comment_body'] = array(
-    'bundle' => 'comment_node_faq',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'comment',
-    'field_name' => 'comment_body',
-    'label' => t('Comment'),
-    'required' => TRUE,
-    'settings' => array(
-      'exclude_cv' => FALSE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 0,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_faq-field_faq_answer'
+  // Exported field_instance:
+  // 'field_collection_item-field_faq-field_faq_answer'.
   $field_instances['field_collection_item-field_faq-field_faq_answer'] = array(
     'bundle' => 'field_faq',
     'default_value' => NULL,
@@ -113,7 +80,7 @@ function content_type_faq_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_faq-field_faq_question'
+  // 'field_collection_item-field_faq-field_faq_question'.
   $field_instances['field_collection_item-field_faq-field_faq_question'] = array(
     'bundle' => 'field_faq',
     'default_value' => NULL,
@@ -152,7 +119,7 @@ function content_type_faq_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-faq-cntrmd_faq'
+  // Exported field_instance: 'node-faq-cntrmd_faq'.
   $field_instances['node-faq-cntrmd_faq'] = array(
     'bundle' => 'faq',
     'default_value' => NULL,
@@ -195,7 +162,7 @@ function content_type_faq_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-faq-field_displayed_title'
+  // Exported field_instance: 'node-faq-field_displayed_title'.
   $field_instances['node-faq-field_displayed_title'] = array(
     'bundle' => 'faq',
     'default_value' => NULL,
@@ -272,7 +239,7 @@ function content_type_faq_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-faq-field_faq'
+  // Exported field_instance: 'node-faq-field_faq'.
   $field_instances['node-faq-field_faq'] = array(
     'bundle' => 'faq',
     'default_value' => NULL,
@@ -325,7 +292,7 @@ function content_type_faq_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-faq-field_internal_title'
+  // Exported field_instance: 'node-faq-field_internal_title'.
   $field_instances['node-faq-field_internal_title'] = array(
     'bundle' => 'faq',
     'default_value' => NULL,
@@ -414,7 +381,6 @@ function content_type_faq_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Answer');
-  t('Comment');
   t('Displayed Title');
   t('FAQ');
   t('Internal title');
