@@ -39,7 +39,6 @@ features[field_group][] = group_self_service_link|node|news|form
 features[field_group][] = group_table|node|news|form
 features[field_group][] = group_taxonomy|node|news|form
 features[field_group][] = group_video|node|news|form
-features[field_instance][] = comment-comment_node_news-comment_body
 features[field_instance][] = node-news-body
 features[field_instance][] = node-news-cntrmd_news
 features[field_instance][] = node-news-field_author
