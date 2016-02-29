@@ -3739,15 +3739,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'mimemail',
   );
 
-  // Exported permission: 'show format selection for comment'.
-  $permissions['show format selection for comment'] = array(
-    'name' => 'show format selection for comment',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'better_formats',
-  );
-
   // Exported permission: 'show format selection for field_collection_item'.
   $permissions['show format selection for field_collection_item'] = array(
     'name' => 'show format selection for field_collection_item',
