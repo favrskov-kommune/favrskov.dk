@@ -202,7 +202,6 @@ function config_user_roles_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
-      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'user',
@@ -422,6 +421,16 @@ function config_user_roles_user_default_permissions() {
       'Administrator' => 'Administrator',
     ),
     'module' => 'image',
+  );
+
+  // Exported permission: 'administer job importer search'.
+  $permissions['administer job importer search'] = array(
+    'name' => 'administer job importer search',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'favrskov_helper',
   );
 
   // Exported permission: 'administer jquery colorpicker'.
