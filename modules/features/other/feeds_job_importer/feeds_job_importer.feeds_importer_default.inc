@@ -85,7 +85,7 @@ function feeds_job_importer_feeds_importer_default() {
           ),
           'start_date' => array(
             'name' => 'Start date',
-            'value' => '$.start_date',
+            'value' => '$.apply_date',
             'debug' => 0,
             'weight' => '8',
           ),
