@@ -406,4 +406,9 @@ function favrskov_helper_update_7018() {
     'feeds_job_importer',
     'views_job',
   ));
+
+  db_update('system')
+    ->fields(array('weight' => 10))
+    ->condition('name', 'views_workbench_moderation')
+    ->execute();
 }
