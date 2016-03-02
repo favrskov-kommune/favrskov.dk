@@ -416,3 +416,12 @@ function favrskov_helper_update_7018() {
     ->condition('name', 'views_workbench_moderation')
     ->execute();
 }
+
+/**
+ * header_mini_panel feature revert.
+ */
+function favrskov_helper_update_7019() {
+  array_map('features_revert_module', array(
+    'panel_header_mini_panel',
+  ));
+}
