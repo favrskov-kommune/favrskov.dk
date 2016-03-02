@@ -391,6 +391,7 @@ function favrskov_helper_update_7018() {
       'ajax_comments',
       'comment_notify',
       'comment',
+      'views_control_users',
     )
   );
 
