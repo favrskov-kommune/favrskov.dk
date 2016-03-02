@@ -383,19 +383,20 @@ function favrskov_helper_update_7017() {
  * Disable Comment and Comment related modules. Override contrib views.
  */
 function favrskov_helper_update_7018() {
-  module_disable(
-    array(
-      'rule_send_email_on_comment_posting',
-      'config_comments',
-      'panels_comments_unsubscribe',
-      'ajax_comments',
-      'comment_notify',
-      'comment',
-      'views_control_users',
-      'views_control_terms',
-      'views_workbench_moderation',
-    )
-  );
+  module_disable(array(
+    'rule_send_email_on_comment_posting',
+    'config_comments',
+    'panels_comments_unsubscribe',
+    'ajax_comments',
+    'comment_notify',
+    'comment',
+  ));
+
+  module_enable(array(
+    'views_control_users',
+    'views_control_terms',
+    'views_workbench_moderation',
+  ));
 
   array_map('features_revert_module', array(
     'config_user_roles',
