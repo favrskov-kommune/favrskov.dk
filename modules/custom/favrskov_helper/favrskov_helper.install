@@ -380,7 +380,7 @@ function favrskov_helper_update_7017() {
 }
 
 /**
- * Disable Comment and Comment related modules.
+ * Disable Comment and Comment related modules. Override contrib views.
  */
 function favrskov_helper_update_7018() {
   module_disable(
@@ -393,7 +393,7 @@ function favrskov_helper_update_7018() {
       'comment',
       'views_control_users',
       'views_control_terms',
-      '',
+      'views_workbench_moderation',
     )
   );
 
