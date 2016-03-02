@@ -404,5 +404,6 @@ function favrskov_helper_update_7018() {
     'content_type_faq',
     'content_type_news',
     'feeds_job_importer',
+    'views_job',
   ));
 }
