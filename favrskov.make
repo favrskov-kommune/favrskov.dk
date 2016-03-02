@@ -511,15 +511,6 @@ projects[mailsystem][version] = 2.34
 projects[mimemail][subdir] = contrib
 projects[mimemail][version] = 1.0-beta3
 
-projects[ajax_comments][subdir] = contrib
-;projects[ajax_comments][version] = 1.0-alpha2
-projects[ajax_comments][version] = 1.0-beta1
-;TODO - repair this patch
-;projects[ajax_comments][patch][541078] = https://drupal.org/files/issues/ajax_comments-mollom-541078-16.patch
-
-projects[comment_notify][subdir] = contrib
-projects[comment_notify][version] = 1.3
-
 projects[synonyms][subdir] = contrib
 projects[synonyms][version] = 1.1
 
