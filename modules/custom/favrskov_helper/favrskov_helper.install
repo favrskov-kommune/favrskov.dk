@@ -407,6 +407,10 @@ function favrskov_helper_update_7018() {
     'views_job',
   ));
 
+  // By default workbench_moderation has weight 5 in a system table.
+  // By default views_workbench_moderation has weight 0 in a system table.
+  // We need change weight of views_workbench_moderation to higher value
+  // than workbench_moderation has to perform overriding in a proper way.
   db_update('system')
     ->fields(array('weight' => 10))
     ->condition('name', 'views_workbench_moderation')
