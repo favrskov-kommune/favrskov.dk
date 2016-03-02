@@ -65,18 +65,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'linkchecker',
   );
 
-  // Exported permission: 'access comments'.
-  $permissions['access comments'] = array(
-    'name' => 'access comments',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'comment',
-  );
-
   // Exported permission: 'access content'.
   $permissions['access content'] = array(
     'name' => 'access content',
@@ -214,7 +202,6 @@ function config_user_roles_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
-      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'user',
@@ -275,26 +262,6 @@ function config_user_roles_user_default_permissions() {
       'Administrator' => 'Administrator',
     ),
     'module' => 'ckeditor',
-  );
-
-  // Exported permission: 'administer comment notify'.
-  $permissions['administer comment notify'] = array(
-    'name' => 'administer comment notify',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'comment_notify',
-  );
-
-  // Exported permission: 'administer comments'.
-  $permissions['administer comments'] = array(
-    'name' => 'administer comments',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'comment',
   );
 
   // Exported permission: 'administer content translations'.
@@ -433,7 +400,6 @@ function config_user_roles_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Communications Officer' => 'Communications Officer',
-      'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'file_entity',
@@ -455,6 +421,16 @@ function config_user_roles_user_default_permissions() {
       'Administrator' => 'Administrator',
     ),
     'module' => 'image',
+  );
+
+  // Exported permission: 'administer job importer search'.
+  $permissions['administer job importer search'] = array(
+    'name' => 'administer job importer search',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'favrskov_helper',
   );
 
   // Exported permission: 'administer jquery colorpicker'.
@@ -2337,16 +2313,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit own comments'.
-  $permissions['edit own comments'] = array(
-    'name' => 'edit own comments',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'comment',
-  );
-
   // Exported permission: 'edit own document files'.
   $permissions['edit own document files'] = array(
     'name' => 'edit own document files',
@@ -3730,18 +3696,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
-  // Exported permission: 'post comments'.
-  $permissions['post comments'] = array(
-    'name' => 'post comments',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'comment',
-  );
-
   // Exported permission: 'rebuild tablefield'.
   $permissions['rebuild tablefield'] = array(
     'name' => 'rebuild tablefield',
@@ -3791,15 +3745,6 @@ function config_user_roles_user_default_permissions() {
       'Administrator' => 'Administrator',
     ),
     'module' => 'mimemail',
-  );
-
-  // Exported permission: 'show format selection for comment'.
-  $permissions['show format selection for comment'] = array(
-    'name' => 'show format selection for comment',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-    ),
-    'module' => 'better_formats',
   );
 
   // Exported permission: 'show format selection for field_collection_item'.
@@ -3876,26 +3821,6 @@ function config_user_roles_user_default_permissions() {
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'better_formats',
-  );
-
-  // Exported permission: 'skip comment approval'.
-  $permissions['skip comment approval'] = array(
-    'name' => 'skip comment approval',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'comment',
-  );
-
-  // Exported permission: 'subscribe to comments'.
-  $permissions['subscribe to comments'] = array(
-    'name' => 'subscribe to comments',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'comment_notify',
   );
 
   // Exported permission: 'switch shortcut sets'.

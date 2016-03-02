@@ -17,7 +17,6 @@ features[field_base][] = comment_body
 features[field_base][] = field_faq
 features[field_base][] = field_faq_answer
 features[field_base][] = field_faq_question
-features[field_instance][] = comment-comment_node_faq-comment_body
 features[field_instance][] = field_collection_item-field_faq-field_faq_answer
 features[field_instance][] = field_collection_item-field_faq-field_faq_question
 features[field_instance][] = node-faq-cntrmd_faq

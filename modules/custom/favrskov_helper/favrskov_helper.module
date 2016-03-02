@@ -62,3 +62,14 @@ function favrskov_helper_pathauto_alias_alter(&$alias, &$context) {
   // due to token_replace() call.
   $alias = str_replace('favrskovtokensseparator', '/', $alias);
 }
+
+/**
+ * Implements hook_permission().
+ */
+function favrskov_helper_permission() {
+  return array(
+    'administer job importer search' => array(
+      'title' => t('Administer Job importer search'),
+    ),
+  );
+}

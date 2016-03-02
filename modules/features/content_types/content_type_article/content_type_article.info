@@ -57,7 +57,6 @@ features[field_group][] = group_self_service_link|node|article|form
 features[field_group][] = group_table|node|article|form
 features[field_group][] = group_taxonomy|node|article|form
 features[field_group][] = group_video|node|article|form
-features[field_instance][] = comment-comment_node_article-comment_body
 features[field_instance][] = field_collection_item-field_publications-field_image
 features[field_instance][] = field_collection_item-field_publications-field_link
 features[field_instance][] = field_collection_item-field_publications-field_open_in_new_window

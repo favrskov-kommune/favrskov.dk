@@ -378,3 +378,41 @@ function favrskov_helper_update_7017() {
     'content_type_news',
   ));
 }
+
+/**
+ * Disable Comment and Comment related modules. Override contrib views.
+ */
+function favrskov_helper_update_7018() {
+  module_disable(array(
+    'rule_send_email_on_comment_posting',
+    'config_comments',
+    'panels_comments_unsubscribe',
+    'ajax_comments',
+    'comment_notify',
+    'comment',
+  ));
+
+  module_enable(array(
+    'views_control_users',
+    'views_control_terms',
+    'views_workbench_moderation',
+  ));
+
+  array_map('features_revert_module', array(
+    'config_user_roles',
+    'content_type_article',
+    'content_type_faq',
+    'content_type_news',
+    'feeds_job_importer',
+    'views_job',
+  ));
+
+  // By default workbench_moderation has weight 5 in a system table.
+  // By default views_workbench_moderation has weight 0 in a system table.
+  // We need change weight of views_workbench_moderation to higher value
+  // than workbench_moderation has to perform overriding in a proper way.
+  db_update('system')
+    ->fields(array('weight' => 10))
+    ->condition('name', 'views_workbench_moderation')
+    ->execute();
+}

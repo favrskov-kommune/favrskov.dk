@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Views Control terms feature.
+ */
+
+include_once 'views_control_terms.features.inc';
