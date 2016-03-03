@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Views Phonebook feature.
- */
-
-include_once 'views_phonebook.features.inc';

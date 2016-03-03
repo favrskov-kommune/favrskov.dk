@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Panels Comments unsubscribe feature.
- */
-
-include_once 'panels_comments_unsubscribe.features.inc';

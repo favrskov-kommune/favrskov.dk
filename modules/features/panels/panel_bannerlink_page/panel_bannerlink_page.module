@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Panel Bannerlink page feature.
- */
-
-include_once 'panel_bannerlink_page.features.inc';
