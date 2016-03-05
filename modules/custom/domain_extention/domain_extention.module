@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @file Domain extension module.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, $form_id) {
+  $form['#attached']['js'][] = drupal_get_path('module', 'domain_extention') . '/js/domain_extention.js';
+  $form['#submit'][] = 'domain_extention_filter_form_submit';
+
+  $form['admin']['options']['select_all'] = array(
+    '#type' => 'hidden',
+    '#default_value' => '',
+    '#attributes' => array('id' => array('select-all')),
+  );
+
+  $form['admin']['options']['filtered_count'] = array(
+    '#type' => 'hidden',
+    '#default_value' => '',
+    '#attributes' => array('id' => array('filtered_count')),
+  );
+
+}
+
+/**
+ * Overrides node_admin_nodes_submit handler during update node status on
+ * one of domain affiliated content page.
+ */
+function domain_extention_admin_nodes_submit($form, &$form_state) {
+  $operations = module_invoke_all('node_operations');
+  $operation = $operations[$form_state['values']['operation']];
+  // Filter out unchecked nodes
+  $nodes = array_filter($form_state['values']['nodes']);
+  if ($function = $operation['callback']) {
+    // Add in callback arguments if present.
+    if (isset($operation['callback arguments'])) {
+      $args = array_merge(array($nodes), $operation['callback arguments']);
+    }
+    else {
+      $args = array($nodes);
+    }
+    call_user_func_array($function, $args);
+
+    cache_clear_all();
+  }
+  else {
+    // We need to rebuild the form to go to a second step. For example, to
+    // show the confirmation form for the deletion of nodes.
+    $form_state['rebuild'] = TRUE;
+  }
+}
+
+/**
+ * Form submission handler for node_filter_form()
+ * applicable specially for domain content.
+ */
+function domain_extention_filter_form_submit($form, &$form_state) {
+  $query = db_select('node', 'n');
+  node_build_filter_query($query);
+  $filtered_count = $query->countQuery()->execute()->fetchCol();
+
+  // @Todo: storage doesnt work.
+  // $form_state['storage']['filtered_count'] = $filtered_count[0];
+  // $_SESSION['filtered_count'] = $filtered_count[0];
+
+  $form_state['complete form']['admin']['options']['filtered_count']['#value'] = $filtered_count[0];
+  $form_state['values']['filtered_count'] = $filtered_count[0];
+
+}
