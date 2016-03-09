@@ -13,11 +13,14 @@
 function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, $form_id) {
   global $user;
 
+  // Path to root folder of domain_extention module.
+  $path = drupal_get_path('module', 'domain_extention');
+
   // Get filtered count of nodes that were selected by user before.
   $filtered_count = variable_get("domain_extention_filtered_count_$user->uid", 0);
 
-  // In case filters haven`t been used yet - set $filtered_count
-  // to count of all nodes.
+  // In case filters haven`t been used yet - set $filtered_count to count of all
+  // nodes.
   if (empty($filtered_count)) {
     $filtered_count = _domain_extention_get_filtered_count();
   }
@@ -25,34 +28,42 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
   $form['filtered_count'] = array(
     '#type' => 'textfield',
     '#default_value' => $filtered_count,
-    '#weight' => -50,
+    '#weight' => 0,
     '#attributes' => array(
       'id' => array('filtered-count')
     ),
   );
 
-  $form['#attached']['css'][] = drupal_get_path('module', 'domain_extention') . '/css/domain_extention.css';
-  $form['#attached']['js'][] = drupal_get_path('module', 'domain_extention') . '/js/domain_extention.js';
+  $form['select_nodes_on_page_or_all'] = array(
+    '#type' => 'textfield',
+    '#default_value' => '',
+    '#weight' => 0,
+    '#attributes' => array(
+      'id' => array('select-nodes-on-page-or-all')
+    ),
+  );
+
+  $form['#attached']['css'][] =  "$path/css/domain_extention.css";
+  $form['#attached']['js'][] = "$path/js/domain_extention.js";
   $form['#attached']['js'][] = array(
     'data' => array(
-      'domainExtention' =>
-        array(
-          'filteredCount' => $filtered_count,
-        )
-      ),
+      'domainExtention' => array('filteredCount' => $filtered_count),
+    ),
     'type' => 'setting',
   );
 
   $form['#submit'][] = 'domain_extention_filter_form_submit';
 
-  $old_submit_handler = array_search('node_admin_nodes_submit', $form['admin']['options']['submit']['#submit']);
-
-  $form['admin']['options']['submit']['#submit'][$old_submit_handler] = 'domain_extention_filter_form_submit';
+  // Override node_admin_nodes_submit() submit handler with new one to allow
+  // perform operations on all nodes instead of perform them on nodes
+  // presented only on current table page (like VBO contrib module does).
+  $default_handler_index = array_search('node_admin_nodes_submit', $form['admin']['options']['submit']['#submit']);
+  $form['admin']['options']['submit']['#submit'][$default_handler_index] = 'domain_extention_admin_nodes_submit';
 }
 
 /**
- * Form submit handler for node_filter_form() applicable to
- * domain content pages only.
+ * Form submit handler for filters on domain_content_admin form. Used with form
+ * presented on "admin/domain/content/%domain_id" pages.
  */
 function domain_extention_filter_form_submit($form, &$form_state) {
   global $user;
@@ -65,9 +76,10 @@ function domain_extention_filter_form_submit($form, &$form_state) {
 }
 
 /**
- * Get count of filtered content.
+ * Retrieve amount of filtered content.
  *
- * If filters are empty return count of all nodes.
+ * Internal function for this module. If filters are empty - return amount of
+ * all nodes, otherwise amount of filtered nodes.
  */
 function _domain_extention_get_filtered_count() {
   $query = db_select('node', 'n');
@@ -82,6 +94,7 @@ function _domain_extention_get_filtered_count() {
  * with behavior similar to VBO filters.
  */
 function domain_extention_admin_nodes_submit($form, &$form_state) {
+  // @Todo: perform operations on all nodes.
   $operations = module_invoke_all('node_operations');
   $operation = $operations[$form_state['values']['operation']];
   // Filter out unchecked nodes
@@ -116,7 +129,8 @@ function domain_extention_user_logout($account) {
  * Implements hook_js_alter().
  */
 function domain_extention_js_alter(&$javascript) {
-  // Restrict usage of tableselect.js on admin/domain/content/* pages.
+  // Restrict usage of tableselect.js on admin/domain/content/* pages to
+  // replace it with domain_extention.js.
   if (strpos(current_path(), 'admin/domain/content/') !== FALSE) {
     unset($javascript['misc/tableselect.js']);
   }

@@ -8,6 +8,8 @@
     attach: function(context, settings) {
 
       var checkboxes, lastChecked;
+      var maxNodesPerPage = 50;
+      var showSelectAllRow = (parseInt(settings.domainExtention.filteredCount) > maxNodesPerPage) ? true : false;
       var table = $('th.select-all', context).closest('table');
 
       var updateSelectAll = function (state) {
@@ -24,9 +26,10 @@
         .prepend($('<input type="checkbox" class="domain-extention-select-all" />'))
         .click(function (event) {
           if ($(event.target).is('input:checkbox')) {
+
             console.log(event);
 
-            if (event.target.checked) {
+            if (event.target.checked && showSelectAllRow) {
               selectContent.removeClass('hide-row');
             }
             else {
@@ -42,10 +45,8 @@
           }
         });
 
-      checkboxes = $('td input:checkbox:enabled', table).click(function (e) {
-        // Either add or remove the selected class based on the state of the check all checkbox.
-        $(this).closest('tr').toggleClass('selected', this.checked);
 
+      checkboxes = $('td input:checkbox:enabled', table).click(function (e) {
         // If all checkboxes are checked, make sure the select-all one is checked too, otherwise keep unchecked.
         updateSelectAll((checkboxes.length == $(checkboxes).filter(':checked').length));
 
@@ -53,8 +54,8 @@
         lastChecked = e.target;
       });
 
+
       $('#filtered-count', context).each(function() {
-        //console.log('works');
         console.log(settings.domainExtention.filteredCount);
       });
     }
