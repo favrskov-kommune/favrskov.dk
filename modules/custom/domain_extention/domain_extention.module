@@ -6,28 +6,80 @@
 
 /**
  * Implements hook_form_FORM_ID_alter().
+ *
+ * Additional fields to domain_content_admin form constructor function.
+ * @see domain_content_form().
  */
 function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, $form_id) {
+  global $user;
+
+  // Get filtered count of nodes that were selected by user before.
+  $filtered_count = variable_get("domain_extention_filtered_count_$user->uid", 0);
+
+  // In case filters haven`t been used yet - set $filtered_count
+  // to count of all nodes.
+  if (empty($filtered_count)) {
+    $filtered_count = _domain_extention_get_filtered_count();
+  }
+
+  $form['filtered_count'] = array(
+    '#type' => 'textfield',
+    '#default_value' => $filtered_count,
+    '#weight' => -50,
+    '#attributes' => array(
+      'id' => array('filtered-count')
+    ),
+  );
+
+  $form['#attached']['css'][] = drupal_get_path('module', 'domain_extention') . '/css/domain_extention.css';
   $form['#attached']['js'][] = drupal_get_path('module', 'domain_extention') . '/js/domain_extention.js';
+  $form['#attached']['js'][] = array(
+    'data' => array(
+      'domainExtention' =>
+        array(
+          'filteredCount' => $filtered_count,
+        )
+      ),
+    'type' => 'setting',
+  );
+
   $form['#submit'][] = 'domain_extention_filter_form_submit';
 
-  $form['admin']['options']['select_all'] = array(
-    '#type' => 'hidden',
-    '#default_value' => '',
-    '#attributes' => array('id' => array('select-all')),
-  );
+  $old_submit_handler = array_search('node_admin_nodes_submit', $form['admin']['options']['submit']['#submit']);
 
-  $form['admin']['options']['filtered_count'] = array(
-    '#type' => 'hidden',
-    '#default_value' => '',
-    '#attributes' => array('id' => array('filtered_count')),
-  );
-
+  $form['admin']['options']['submit']['#submit'][$old_submit_handler] = 'domain_extention_filter_form_submit';
 }
 
 /**
- * Overrides node_admin_nodes_submit handler during update node status on
- * one of domain affiliated content page.
+ * Form submit handler for node_filter_form() applicable to
+ * domain content pages only.
+ */
+function domain_extention_filter_form_submit($form, &$form_state) {
+  global $user;
+
+  $filtered_count = _domain_extention_get_filtered_count();
+
+  // Set filtered count value to variable separately for each logged in user
+  // to reuse in domain_extention_form_domain_content_admin_alter().
+  variable_set("domain_extention_filtered_count_$user->uid", $filtered_count);
+}
+
+/**
+ * Get count of filtered content.
+ *
+ * If filters are empty return count of all nodes.
+ */
+function _domain_extention_get_filtered_count() {
+  $query = db_select('node', 'n');
+  node_build_filter_query($query);
+  $filtered_count = $query->countQuery()->execute()->fetchCol();
+
+  return $filtered_count[0];
+}
+
+/**
+ * Overrides node_admin_nodes_submit() handler to extend filter capabilities
+ * with behavior similar to VBO filters.
  */
 function domain_extention_admin_nodes_submit($form, &$form_state) {
   $operations = module_invoke_all('node_operations');
@@ -54,19 +106,18 @@ function domain_extention_admin_nodes_submit($form, &$form_state) {
 }
 
 /**
- * Form submission handler for node_filter_form()
- * applicable specially for domain content.
+ * Implements hook_user_logout().
  */
-function domain_extention_filter_form_submit($form, &$form_state) {
-  $query = db_select('node', 'n');
-  node_build_filter_query($query);
-  $filtered_count = $query->countQuery()->execute()->fetchCol();
+function domain_extention_user_logout($account) {
+  variable_del("domain_extention_filtered_count_$account->uid");
+}
 
-  // @Todo: storage doesnt work.
-  // $form_state['storage']['filtered_count'] = $filtered_count[0];
-  // $_SESSION['filtered_count'] = $filtered_count[0];
-
-  $form_state['complete form']['admin']['options']['filtered_count']['#value'] = $filtered_count[0];
-  $form_state['values']['filtered_count'] = $filtered_count[0];
-
+/**
+ * Implements hook_js_alter().
+ */
+function domain_extention_js_alter(&$javascript) {
+  // Restrict usage of tableselect.js on admin/domain/content/* pages.
+  if (strpos(current_path(), 'admin/domain/content/') !== FALSE) {
+    unset($javascript['misc/tableselect.js']);
+  }
 }

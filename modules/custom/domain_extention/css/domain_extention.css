@@ -1,0 +1,7 @@
+.select-content {
+  display: table-row;
+}
+
+.hide-row {
+  display: none;
+}
