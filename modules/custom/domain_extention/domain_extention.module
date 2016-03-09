@@ -7,7 +7,9 @@
 /**
  * Implements hook_form_FORM_ID_alter().
  *
- * Additional fields to domain_content_admin form constructor function.
+ * Add fields that helps to implement VBO-style content selection feature with
+ * domain_content_admin form.
+ *
  * @see domain_content_form().
  */
 function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, $form_id) {
@@ -122,6 +124,7 @@ function domain_extention_admin_nodes_submit($form, &$form_state) {
  * Implements hook_user_logout().
  */
 function domain_extention_user_logout($account) {
+  // Ensure that next session we will start with filtered_count from scratch.
   variable_del("domain_extention_filtered_count_$account->uid");
 }
 

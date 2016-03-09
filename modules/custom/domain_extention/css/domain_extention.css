@@ -2,6 +2,10 @@
   display: table-row;
 }
 
+.select-content td {
+  text-align: center;
+}
+
 .hide-row {
   display: none;
 }
