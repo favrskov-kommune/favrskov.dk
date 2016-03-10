@@ -11,9 +11,17 @@
           selectButtonsMarkup = settings.domainExtention.selectButtonsMarkup,
           defaultPageNodeCount = settings.domainExtention.defaultPageNodeCount;
 
-      var checkboxes, lastChecked;
-      var showSelectAllRow = (parseInt(filteredCount) > parseInt(defaultPageNodeCount)) ? true : false;
-      var $table = $('th.select-all', context).closest('table');
+      // Internal variables.
+      var checkboxes,
+          lastChecked = 'init',
+          showSelectAllRow = (parseInt(filteredCount) > parseInt(defaultPageNodeCount)) ? true : false,
+          $table = $('th.select-all', context).closest('table'),
+          $tbody = $('tbody', $table).prepend('<tr></tr>'),
+          $buttonsRow = $('tr:first', $tbody).addClass('select-content hide-element'),
+          $selected = $('.select-nodes-on-page-or-all', context);
+
+      // Append markup with buttons in table row.
+      $buttonsRow.append(selectButtonsMarkup);
 
       var updateSelectAll = function (state) {
         // Update table's select-all checkbox (and sticky header's if available).
@@ -22,42 +30,67 @@
         });
       };
 
-      var $tbody = $('tbody', $table).prepend('<tr></tr>');
-      var $selectContentRow = $('tr:first', $tbody).addClass('select-content hide-element');
-      $selectContentRow.append(selectButtonsMarkup);
-
       $('th.select-all', $table)
         .prepend('<input type="checkbox" class="domain-extention-select-all" />')
         .click(function (event) {
           if ($(event.target).is('input:checkbox')) {
-            //console.log(event);
+
             if (event.target.checked && showSelectAllRow) {
-              $selectContentRow.removeClass('hide-element');
+              $buttonsRow.show();
+              $selected.val(1);
             }
             else {
-              $selectContentRow.addClass('hide-element');
+              $buttonsRow.hide();
+              $selected.val(0);
             }
 
-            // Loop through all checkboxes and set their state to the select all checkbox' state.
+            // Loop through all checkboxes and set their state to the select all checkbox state.
             checkboxes.each(function () {
               this.checked = event.target.checked;
             });
-            // Update the title and the state of the check all box.
+            // Update the state of the check all box.
             updateSelectAll(event.target.checked);
           }
         });
 
+      // If one of listed boxes were unchecked then switch off all select-all box staff.
+      $('td :checkbox', $tbody).change(function(event) {
+        if (event.target.checked == false) {
+          $selected.val('0');
+          $buttonsRow.hide();
+          $('th.select-all :checkbox', context).attr('checked', false);
+        }
+      });
+
       checkboxes = $('td input:checkbox:enabled', $table).click(function (e) {
-        // If all checkboxes are checked, make sure the select-all one is checked too, otherwise keep unchecked.
+        // If all checkboxes are checked, make sure the select-all one is checked too,
+        // otherwise keep unchecked.
         updateSelectAll((checkboxes.length == $(checkboxes).filter(':checked').length));
-
-        // Keep track of the last checked checkbox.
-        lastChecked = e.target;
       });
 
-      $('#filtered-count', context).each(function() {
-        console.log(settings.domainExtention.filteredCount);
+      // Click on submit with init class leads to setting input.select-nodes-on-page-or-all
+      // value to '2'. It`s mean that all (filtered) nodes will be affected during some
+      // operation performing.
+      $('.init input', $tbody).click(function(event) {
+        if (lastChecked == 'init') $selected.val('2');
+        event.preventDefault();
+        $(this).closest('span').hide().siblings('.all-nodes-in-table').show();
+        lastChecked = 'all-nodes-in-table';
+
+        return false;
       });
+
+      // Click on submit with all-nodes-in-table class leads to setting input.select-nodes-on-page-or-all
+      // value to '1'. It`s mean that default page nodes count will be affected.
+      $('.all-nodes-in-table input', $tbody).click(function(event) {
+        if (lastChecked == 'all-nodes-in-table') $selected.val('1');
+        event.preventDefault();
+        $(this).closest('span').hide().siblings('.init').show();
+        lastChecked = 'init';
+
+        return false;
+      });
+
     }
   }
 
