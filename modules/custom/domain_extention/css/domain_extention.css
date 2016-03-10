@@ -4,8 +4,18 @@
 
 .select-content td {
   text-align: center;
+  background-color: #eee;
 }
 
-.hide-row {
+.hide-element {
   display: none;
+}
+
+.domain-extention-table-select-all-pages {
+  margin: 0 !important;
+  padding: 2px 5px !important;
+}
+
+.some-style {
+
 }

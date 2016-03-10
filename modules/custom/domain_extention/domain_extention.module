@@ -5,6 +5,11 @@
  */
 
 /**
+ * Maximum age of temporary files in seconds.
+ */
+define('DEFAULT_PAGE_NODE_COUNT', 50);
+
+/**
  * Implements hook_form_FORM_ID_alter().
  *
  * Add fields that helps to implement VBO-style content selection feature with
@@ -45,17 +50,31 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
     ),
   );
 
+  $vars = array(
+    'selected_nodes_in_page' => t('Selected <strong>@default_nodes_count nodes</strong> in this page.', array('@default_nodes_count' => DEFAULT_PAGE_NODE_COUNT)),
+    'select_all_nodes_in_table' => t('Select all @filtered_nodes_count nodes in this table.', array('@filtered_nodes_count' => $filtered_count)),
+    'selected_nodes_in_table' => t('Selected <strong>@filtered_nodes_count nodes</strong> in this table.', array('@filtered_nodes_count' => $filtered_count)),
+    'select_default_amount_nodes_in_page' => t('Select only @default_nodes_count nodes in this page.', array('@default_nodes_count' => DEFAULT_PAGE_NODE_COUNT)),
+  );
+  $select_buttons_markup = theme('select_buttons', $vars);
+
   $form['#attached']['css'][] =  "$path/css/domain_extention.css";
   $form['#attached']['js'][] = "$path/js/domain_extention.js";
   $form['#attached']['js'][] = array(
     'data' => array(
-      'domainExtention' => array('filteredCount' => $filtered_count),
+      'domainExtention' => array(
+        'filteredCount' => $filtered_count,
+        'selectButtonsMarkup' => $select_buttons_markup,
+        'defaultPageNodeCount' => DEFAULT_PAGE_NODE_COUNT,
+      ),
     ),
     'type' => 'setting',
   );
 
   $form['#submit'][] = 'domain_extention_filter_form_submit';
+  $form['admin']['options']['submit']['#validate'][] = 'domain_extention_admin_nodes_validate';
 
+  // @todo: refactor this
   // Override node_admin_nodes_submit() submit handler with new one to allow
   // perform operations on all nodes instead of perform them on nodes
   // presented only on current table page (like VBO contrib module does).
@@ -64,7 +83,15 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
 }
 
 /**
- * Form submit handler for filters on domain_content_admin form. Used with form
+ * Validate handler for domain_admin_nodes form. Determine whether to perform
+ * mass operation on all nodes or only on part of them.
+ */
+function domain_extention_admin_nodes_validate($form, &$form_state) {
+  $test = 7;
+}
+
+/**
+ * Submit handler for filters on domain_content_admin form. Used with form
  * presented on "admin/domain/content/%domain_id" pages.
  */
 function domain_extention_filter_form_submit($form, &$form_state) {
@@ -137,4 +164,22 @@ function domain_extention_js_alter(&$javascript) {
   if (strpos(current_path(), 'admin/domain/content/') !== FALSE) {
     unset($javascript['misc/tableselect.js']);
   }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function domain_extention_theme($existing, $type, $theme, $path) {
+  return array(
+    'select_buttons' => array(
+      'path' => "$path/templates",
+      'template' => 'content-select-buttons',
+      'arguments' => array(
+        'selected_nodes_in_page' => NULL,
+        'select_all_nodes_in_table' => NULL,
+        'selected_nodes_in_table' => NULL,
+        'select_default_amount_nodes_in_page' => NULL,
+      ),
+    ),
+  );
 }
