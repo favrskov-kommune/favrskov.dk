@@ -32,21 +32,12 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
     $filtered_count = _domain_extention_get_filtered_count();
   }
 
-  $form['filtered_count'] = array(
-    '#type' => 'textfield',
-    '#default_value' => $filtered_count,
-    '#weight' => 0,
-    '#attributes' => array(
-      'class' => array('filtered-count')
-    ),
-  );
-
   // 0 - Do nothing
   // 1 - Apply to default page nodes count (default = 50 nodes).
   // 2 - Apply to all filtered nodes.
   // @see domain_extention_admin_nodes_validate() for more info.
   $form['select_nodes_on_page_or_all'] = array(
-    '#type' => 'textfield',
+    '#type' => 'hidden',
     '#default_value' => '0',
     '#weight' => 0,
     '#attributes' => array(
@@ -77,13 +68,6 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
 
   $form['#submit'][] = 'domain_extention_filter_form_submit';
   $form['admin']['options']['submit']['#validate'][] = 'domain_extention_admin_nodes_validate';
-
-  // @todo: refactor this
-  // Override node_admin_nodes_submit() submit handler with new one to allow
-  // perform operations on all nodes instead of perform them on nodes
-  // presented only on current table page (like VBO contrib module does).
-  $default_handler_index = array_search('node_admin_nodes_submit', $form['admin']['options']['submit']['#submit']);
-  $form['admin']['options']['submit']['#submit'][$default_handler_index] = 'domain_extention_admin_nodes_submit';
 }
 
 /**
@@ -91,8 +75,38 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
  * mass operation on all nodes or only on part of them.
  */
 function domain_extention_admin_nodes_validate($form, &$form_state) {
-  $test = 7;
-  // Use form_set_value() to update $form_state['values']['nodes']
+  switch($form_state['values']['select_nodes_on_page_or_all']){
+    case '0': {
+      // Do nothing.
+      break;
+    }
+    case '1': {
+      // Do nothing.
+      break;
+    }
+    case '2': {
+      // Update nodes info in $form_state['admin']['nodes'].
+      $query = db_select('node', 'n')->fields('n', array('nid'));
+      node_build_filter_query($query);
+      $nodes = $query->execute()->fetchAllKeyed();
+
+      // Nodes array should satisfy expectations.
+      array_walk($nodes, 'domain_extention_get_proper_array');
+
+      form_set_value($form['admin']['nodes'], $nodes, $form_state);
+      break;
+    }
+    default: {
+      // Do Nothing.
+    }
+  }
+}
+
+/**
+ * Reformat $nodes array to make it further applicable.
+ */
+function domain_extention_get_proper_array(&$value, $key) {
+  $value = (string) $key;
 }
 
 /**
@@ -121,35 +135,6 @@ function _domain_extention_get_filtered_count() {
   $filtered_count = $query->countQuery()->execute()->fetchCol();
 
   return $filtered_count[0];
-}
-
-/**
- * Overrides node_admin_nodes_submit() handler to extend filter capabilities
- * with behavior similar to VBO filters.
- */
-function domain_extention_admin_nodes_submit($form, &$form_state) {
-  // @Todo: perform operations on all nodes.
-  $operations = module_invoke_all('node_operations');
-  $operation = $operations[$form_state['values']['operation']];
-  // Filter out unchecked nodes
-  $nodes = array_filter($form_state['values']['nodes']);
-  if ($function = $operation['callback']) {
-    // Add in callback arguments if present.
-    if (isset($operation['callback arguments'])) {
-      $args = array_merge(array($nodes), $operation['callback arguments']);
-    }
-    else {
-      $args = array($nodes);
-    }
-    call_user_func_array($function, $args);
-
-    cache_clear_all();
-  }
-  else {
-    // We need to rebuild the form to go to a second step. For example, to
-    // show the confirmation form for the deletion of nodes.
-    $form_state['rebuild'] = TRUE;
-  }
 }
 
 /**
