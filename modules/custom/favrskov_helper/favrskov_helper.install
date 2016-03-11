@@ -425,3 +425,23 @@ function favrskov_helper_update_7019() {
     'panel_header_mini_panel',
   ));
 }
+
+/**
+ * Feature enable. Changes in system table.
+ */
+function favrskov_helper_update_7020() {
+  module_enable(array(
+    'views_control_content_panes',
+    'panel_page_dashboard',
+  ));
+
+  // By default total_control has weight 0 in a system table.
+  // By default panel_page_dashboard has weight 0 in a system table.
+  // It leads to situation when panel_page_dashboard has not been detected after
+  // enabling. We need change weight of panel_page_dashboard to higher value
+  // than total_control has to perform overriding in a proper way.
+  db_update('system')
+    ->fields(array('weight' => 5))
+    ->condition('name', 'panel_page_dashboard')
+    ->execute();
+}

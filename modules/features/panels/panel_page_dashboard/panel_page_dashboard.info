@@ -1,0 +1,10 @@
+name = Panel Page dashboard
+description = This panel overrides page-dashboard panel provided by total_control contrib module.
+core = 7.x
+package = Panels
+dependencies[] = ctools
+dependencies[] = page_manager
+dependencies[] = total_control
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:2
+features[page_manager_pages][] = dashboard
