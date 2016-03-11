@@ -75,8 +75,6 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
  * mass operation on all nodes or only on part of them.
  */
 function domain_extention_admin_nodes_validate($form, &$form_state) {
-  $domain_info = domain_get_domain();
-
   switch($form_state['values']['select_nodes_on_page_or_all']){
     case '0': {
       // Do nothing.
@@ -87,6 +85,8 @@ function domain_extention_admin_nodes_validate($form, &$form_state) {
       break;
     }
     case '2': {
+      $domain_info = domain_get_domain();
+
       // We deal with content assigned to particular domain so we should include
       // dependency on current domain in nodes count calculating query.
       $query = db_select('node', 'n');
