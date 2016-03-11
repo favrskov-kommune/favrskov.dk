@@ -5,9 +5,9 @@
  */
 
 /**
- * Maximum age of temporary files in seconds.
+ * Default nodes count per page in content table.
  */
-define('DOMAIN_EXTENTION_DEFAULT_PAGE_NODES_COUNT', 50);
+define('DOMAIN_EXTENTION_NODES_PER_PAGE', 50);
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -46,10 +46,10 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
   );
 
   $vars = array(
-    'selected_nodes_in_page' => t('Selected <strong>@default_nodes_count nodes</strong> in this page.', array('@default_nodes_count' => DOMAIN_EXTENTION_DEFAULT_PAGE_NODES_COUNT)),
+    'selected_nodes_in_page' => t('Selected <strong>@default_nodes_count nodes</strong> in this page.', array('@default_nodes_count' => DOMAIN_EXTENTION_NODES_PER_PAGE)),
     'select_all_nodes_in_table' => t('Select all @filtered_nodes_count nodes in this table.', array('@filtered_nodes_count' => $filtered_count)),
     'selected_nodes_in_table' => t('Selected <strong>@filtered_nodes_count nodes</strong> in this table.', array('@filtered_nodes_count' => $filtered_count)),
-    'select_default_amount_nodes_in_page' => t('Select only @default_nodes_count nodes in this page.', array('@default_nodes_count' => DOMAIN_EXTENTION_DEFAULT_PAGE_NODES_COUNT)),
+    'select_default_amount_nodes_in_page' => t('Select only @default_nodes_count nodes in this page.', array('@default_nodes_count' => DOMAIN_EXTENTION_NODES_PER_PAGE)),
   );
   $select_buttons_markup = theme('select_buttons', $vars);
 
@@ -60,7 +60,7 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
       'domainExtention' => array(
         'filteredCount' => $filtered_count,
         'selectButtonsMarkup' => $select_buttons_markup,
-        'defaultPageNodeCount' => DOMAIN_EXTENTION_DEFAULT_PAGE_NODES_COUNT,
+        'defaultPageNodeCount' => DOMAIN_EXTENTION_NODES_PER_PAGE,
       ),
     ),
     'type' => 'setting',
@@ -75,6 +75,8 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
  * mass operation on all nodes or only on part of them.
  */
 function domain_extention_admin_nodes_validate($form, &$form_state) {
+  $domain_info = domain_get_domain();
+
   switch($form_state['values']['select_nodes_on_page_or_all']){
     case '0': {
       // Do nothing.
@@ -85,14 +87,22 @@ function domain_extention_admin_nodes_validate($form, &$form_state) {
       break;
     }
     case '2': {
-      // Update nodes info in $form_state['admin']['nodes'].
-      $query = db_select('node', 'n')->fields('n', array('nid'));
+      // We deal with content assigned to particular domain so we should include
+      // dependency on current domain in nodes count calculating query.
+      $query = db_select('node', 'n');
+      $query->fields('n', array('nid'));
+      $query->join('domain_access', 'da', 'n.nid = da.nid');
+      $query->condition('da.gid', (int) $domain_info['domain_id']);
+      $query->condition('da.realm', 'domain_id');
+
       node_build_filter_query($query);
       $nodes = $query->execute()->fetchAllKeyed();
 
       // Nodes array should satisfy expectations.
       array_walk($nodes, 'domain_extention_get_proper_array');
 
+      // Update nodes info in $form_state['admin']['nodes'] so that will be pass
+      // to submit handlers.
       form_set_value($form['admin']['nodes'], $nodes, $form_state);
       break;
     }
@@ -130,8 +140,19 @@ function domain_extention_filter_form_submit($form, &$form_state) {
  * all nodes, otherwise amount of filtered nodes.
  */
 function _domain_extention_get_filtered_count() {
+  $domain_info = domain_get_domain();
+
+  // We deal with content assigned to particular domain so we should include
+  // dependency on current domain in nodes count calculating query.
   $query = db_select('node', 'n');
+  $query->join('domain_access', 'da', 'n.nid = da.nid');
+  $query->condition('da.gid', (int) $domain_info['domain_id']);
+  $query->condition('da.realm', 'domain_id');
+
+  // Apply filters, if any were selected.
   node_build_filter_query($query);
+
+  // Finally, get count of filtered nodes.
   $filtered_count = $query->countQuery()->execute()->fetchCol();
 
   return $filtered_count[0];
