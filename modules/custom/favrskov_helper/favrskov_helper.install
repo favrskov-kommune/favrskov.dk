@@ -444,4 +444,8 @@ function favrskov_helper_update_7020() {
     ->fields(array('weight' => 5))
     ->condition('name', 'panel_page_dashboard')
     ->execute();
+
+  array_map('features_revert_module', array(
+    'panel_news_page',
+  ));
 }
