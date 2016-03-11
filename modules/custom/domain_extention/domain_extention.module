@@ -24,7 +24,9 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
   $path = drupal_get_path('module', 'domain_extention');
 
   // Get filtered count of nodes that were selected by user before.
-  $filtered_count = variable_get("domain_extention_filtered_count_$user->uid", 0);
+  $domain_info = domain_get_domain();
+  $id = $user->uid . '_' . $domain_info['domain_id'];
+  $filtered_count = variable_get("domain_extention_filtered_count_$id", 0);
 
   // In case filters haven`t been used yet - set $filtered_count to count of all
   // nodes.
@@ -126,11 +128,14 @@ function domain_extention_get_proper_array(&$value, $key) {
 function domain_extention_filter_form_submit($form, &$form_state) {
   global $user;
 
+  $domain_info = domain_get_domain();
+  $id = $user->uid . '_' . $domain_info['domain_id'];
+
   $filtered_count = _domain_extention_get_filtered_count();
 
   // Set filtered count value to variable separately for each logged in user
   // to reuse in domain_extention_form_domain_content_admin_alter().
-  variable_set("domain_extention_filtered_count_$user->uid", $filtered_count);
+  variable_set("domain_extention_filtered_count_$id", $filtered_count);
 }
 
 /**
@@ -162,8 +167,11 @@ function _domain_extention_get_filtered_count() {
  * Implements hook_user_logout().
  */
 function domain_extention_user_logout($account) {
+  $domain_info = domain_get_domain();
+  $id = $account->uid . '_' . $domain_info['domain_id'];
+
   // Ensure that next session we will start with filtered_count from scratch.
-  variable_del("domain_extention_filtered_count_$account->uid");
+  variable_del("domain_extention_filtered_count_$id");
 }
 
 /**
