@@ -73,3 +73,31 @@ function favrskov_helper_permission() {
     ),
   );
 }
+
+/**
+ * Implements hook_menu_alter.
+ * Check access for forum menu item.
+ */
+function favrskov_helper_menu_alter(&$items) {
+
+  $menus = domain_menu_block_load_multiple();
+
+  // Set of path that needs to be visible per specific domain.
+  $menu_list = array(
+    'admin/structure/menu/list',
+    'admin/structure/manage/%menu',
+  );
+
+  foreach ($menu_list as $path) {
+    if (in_array($path, $items)) {
+      if (!empty($items[$path]['access arguments']) && is_array($items[$path]['access arguments'])) {
+        $items[$path]['access arguments'][] = 'new one';
+      }
+      else {
+        $items[$path]['access arguments'] = array('first one');
+      }
+
+    }
+  }
+
+}
