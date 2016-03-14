@@ -18,20 +18,11 @@ define('DOMAIN_EXTENTION_NODES_PER_PAGE', 50);
  * @see domain_content_form().
  */
 function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, $form_id) {
-  global $user;
-
   // Path to root folder of domain_extention module.
   $path = drupal_get_path('module', 'domain_extention');
 
   // Get filtered count of nodes that were selected by user before.
-  $id = _domain_extention_get_proper_id($user);
-  $filtered_count = variable_get("domain_extention_filtered_count_$id", 0);
-
-  // In case filters haven`t been used yet - set $filtered_count to count of all
-  // nodes.
-  if (empty($filtered_count)) {
-    $filtered_count = _domain_extention_get_filtered_count();
-  }
+  $filtered_count = _domain_extention_get_filtered_count();
 
   // 0 - Do nothing
   // 1 - Apply to default page nodes count (default = 50 nodes).
@@ -67,9 +58,7 @@ function domain_extention_form_domain_content_admin_alter(&$form, &$form_state, 
     'type' => 'setting',
   );
 
-  $form['#submit'][] = 'domain_extention_filter_form_submit';
   $form['admin']['options']['submit']['#validate'][] = 'domain_extention_admin_nodes_validate';
-  $form['admin']['options']['submit']['#submit'][] = 'domain_extention_admin_nodes_submit';
 }
 
 /**
@@ -87,25 +76,7 @@ function domain_extention_admin_nodes_validate($form, &$form_state) {
       break;
     }
     case '2': {
-      $query = db_select('node', 'n');
-      $query->fields('n', array('nid'));
-
-      node_build_filter_query($query);
-
-      // We deal with content assigned to particular domain (or 'all' domains)
-      // so we should include dependency on domain (or on 'all' domains) in
-      // nodes count calculating query.
-      // Do it by domain_content_alter_node_query().
-      $arg = arg(3);
-      // If 'all', only show content assigned to all affiliates.
-      if ($arg == 'all') {
-        domain_content_alter_node_query($query, TRUE, FALSE);
-      }
-      else {
-        // Restrict the query to the active domain.
-        domain_content_alter_node_query($query, FALSE);
-      }
-
+      $query = _domain_extension_filtered_query();
       $nodes = $query->execute()->fetchAllKeyed();
 
       // Nodes array should satisfy expectations.
@@ -120,20 +91,6 @@ function domain_extention_admin_nodes_validate($form, &$form_state) {
       // Do Nothing.
     }
   }
-}
-
-/**
- * Submit handler for domain_admin_nodes form.
- *
- */
-function domain_extention_admin_nodes_submit($form, &$form_state) {
-  global $user;
-
-  $id = _domain_extention_get_proper_id($user);
-
-  // Ensure that after performing "Change affiliate operation"
-  // the filtered_count will be recalculated.
-  variable_del("domain_extention_filtered_count_$id");
 }
 
 /**
@@ -157,24 +114,6 @@ function _domain_extention_get_proper_id($user_info) {
 }
 
 /**
- * Submit handler for filters on domain_content_admin form. Used with form
- * presented on "admin/domain/content/%domain_id" pages.
- */
-function domain_extention_filter_form_submit($form, &$form_state) {
-  global $user;
-
-  //$domain_info = domain_get_domain();
-  //$id = $user->uid . '_' . $domain_info['domain_id'];
-
-  $id = _domain_extention_get_proper_id($user);
-  $filtered_count = _domain_extention_get_filtered_count();
-
-  // Set filtered count value to variable separately for each logged in user
-  // to reuse in domain_extention_form_domain_content_admin_alter().
-  variable_set("domain_extention_filtered_count_$id", $filtered_count);
-}
-
-/**
  * Helper function.
  * Retrieve amount of filtered content.
  *
@@ -182,14 +121,30 @@ function domain_extention_filter_form_submit($form, &$form_state) {
  * all nodes, otherwise amount of filtered nodes.
  */
 function _domain_extention_get_filtered_count() {
-  // We deal with content assigned to particular domain so we should include
-  // dependency on current domain in nodes count calculating query.
-  $query = db_select('node', 'n');
+  $query = _domain_extension_filtered_query();
 
-  // Apply filters, if any were selected.
+  // Finally, get count of filtered nodes.
+  $filtered_count = $query
+    ->countQuery()
+    ->execute()
+    ->fetchCol();
+
+  return $filtered_count[0];
+}
+
+/**
+ *
+ */
+function _domain_extension_filtered_query() {
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid'));
+
   node_build_filter_query($query);
 
-  // Write the proper query.
+  // We deal with content assigned to particular domain (or 'all' domains)
+  // so we should include dependency on domain (or on 'all' domains) in
+  // nodes count calculating query.
+  // Do it by domain_content_alter_node_query().
   $arg = arg(3);
   // If 'all', only show content assigned to all affiliates.
   if ($arg == 'all') {
@@ -200,24 +155,7 @@ function _domain_extention_get_filtered_count() {
     domain_content_alter_node_query($query, FALSE);
   }
 
-  // Finally, get count of filtered nodes.
-  $filtered_count = $query
-    ->fields('n', array('nid'))
-    ->countQuery()
-    ->execute()
-    ->fetchCol();
-
-  return $filtered_count[0];
-}
-
-/**
- * Implements hook_user_logout().
- */
-function domain_extention_user_logout($account) {
-  $id = _domain_extention_get_proper_id($account);
-
-  // Ensure that next session we will start with filtered_count from scratch.
-  variable_del("domain_extention_filtered_count_$id");
+  return $query;
 }
 
 /**
