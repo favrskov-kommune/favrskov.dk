@@ -449,3 +449,23 @@ function favrskov_helper_update_7020() {
     'panel_news_page',
   ));
 }
+
+/**
+ * Clean up domain_access table from deleted nodes.
+ */
+function favrskov_helper_update_7021() {
+  // Get nids of deleted nodes from domain_access table. Ensure that there
+  // aren`t nodes with this nids so that we will not corrupt any valuable node.
+  $query = db_select('domain_access', 'da');
+  $query->leftJoin('node', 'n', 'n.nid = da.nid');
+  $nids = $query->fields('da', array('nid'))
+    ->distinct()
+    ->condition('n.nid', NULL, 'IS')
+    ->execute()
+    ->fetchCol();
+
+  // Clean up domain_access table.
+  db_delete('domain_access')
+    ->condition('nid', $nids, 'IN')
+    ->execute();
+}
