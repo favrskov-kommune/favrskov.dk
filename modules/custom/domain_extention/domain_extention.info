@@ -1,0 +1,6 @@
+name = Domain extention
+description = Domain extension module. Add select-all-content feature to admin domain content tables (VBO-style).
+core = 7.x
+package = Favrskov
+
+dependencies[] = domain
