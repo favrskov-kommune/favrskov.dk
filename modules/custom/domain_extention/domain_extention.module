@@ -103,18 +103,6 @@ function _domain_extention_get_proper_array(&$value, $key) {
 
 /**
  * Helper function.
- * Get already filtered nodes count if it exists.
- */
-function _domain_extention_get_proper_id($user_info) {
-  // Can take string ('all') or integer (domain_id like 1, 2, 3 etc.) value.
-  $args = arg();
-  $affiliate = end($args);
-
-  return $user_info->uid . '_' . $affiliate;
-}
-
-/**
- * Helper function.
  * Retrieve amount of filtered content.
  *
  * Internal function for this module. If filters are empty - return amount of
@@ -133,7 +121,7 @@ function _domain_extention_get_filtered_count() {
 }
 
 /**
- *
+ * Helper function. Apply filters selected by user to query.
  */
 function _domain_extension_filtered_query() {
   $query = db_select('node', 'n');
