@@ -84,34 +84,23 @@ function favrskov_helper_admin_menu_output_alter(&$content) {
   $role = user_role_load_by_name('Editor');
 
   if ($role && user_has_role($role->rid)) {
-
-    $custom_menu_names = db_select('menu_custom', 'mc')
-      ->fields('mc', array('menu_name', 'title'))
-      ->execute()
-      ->fetchAllKeyed();
+    $info = _favrskov_helper_get_menu_and_domain_info();
 
     if (module_exists('domain')) {
-      $current_domain_info = domain_get_domain();
-
-      $all_domains_info = db_select('domain_conf', 'dc')
-        ->fields('dc')
-        ->execute()
-        ->fetchAllKeyed();
-
-      foreach ($all_domains_info as $domain_id => $domain_settings) {
+      foreach ($info['all_domains_info'] as $domain_id => $domain_settings) {
         $single_domain_setting = unserialize($domain_settings);
         $menu_name = $single_domain_setting['menu_main_links_source'];
 
-        if ($domain_id != $current_domain_info['domain_id']) {
+        if ($domain_id != $info['current_domain_info']['domain_id']) {
           unset($content['menu']['admin/structure']['admin/structure/menu']["admin/structure/menu/manage/$menu_name"]);
         }
 
         // Remove from list domain-related menu names.
-        unset($custom_menu_names[$menu_name]);
+        unset($info['custom_menu_names'][$menu_name]);
       }
     }
 
-    foreach ($custom_menu_names as $menu_name => $title) {
+    foreach ($info['custom_menu_names'] as $menu_name => $title) {
       unset($content['menu']['admin/structure']['admin/structure/menu']["admin/structure/menu/manage/$menu_name"]);
     }
   }
@@ -125,42 +114,30 @@ function favrskov_helper_admin_menu_output_alter(&$content) {
  */
 function favrskov_helper_preprocess_table(&$variables) {
   if (current_path() == 'admin/structure/menu') {
-
     $role = user_role_load_by_name('Editor');
 
     if ($role && user_has_role($role->rid)) {
-
-      $custom_menu_names = db_select('menu_custom', 'mc')
-        ->fields('mc', array('menu_name', 'title'))
-        ->execute()
-        ->fetchAllKeyed();
+      $info = _favrskov_helper_get_menu_and_domain_info();
 
       if (module_exists('domain')) {
-        $current_domain_info = domain_get_domain();
-
-        $all_domains_info = db_select('domain_conf', 'dc')
-          ->fields('dc')
-          ->execute()
-          ->fetchAllKeyed();
-
-        foreach ($all_domains_info as $domain_id => $domain_settings) {
+        foreach ($info['all_domains_info'] as $domain_id => $domain_settings) {
           $single_domain_setting = unserialize($domain_settings);
           $menu_name = $single_domain_setting['menu_main_links_source'];
 
-          if ($domain_id != $current_domain_info['domain_id']) {
+          if ($domain_id != $info['current_domain_info']['domain_id']) {
             foreach ($variables['rows'] as $index => $row) {
-              if (strpos($row[0], $custom_menu_names[$menu_name]) !== FALSE) {
+              if (strpos($row[0], $info['custom_menu_names'][$menu_name]) !== FALSE) {
                 unset($variables['rows'][$index]);
               }
             }
           }
 
           // Remove from list domain-related menu names.
-          unset($custom_menu_names[$menu_name]);
+          unset($info['custom_menu_names'][$menu_name]);
         }
       }
 
-      foreach ($custom_menu_names as $menu_name => $title) {
+      foreach ($info['custom_menu_names'] as $title) {
         foreach ($variables['rows'] as $index => $row) {
           if (strpos($row[0], $title) !== FALSE) {
             unset($variables['rows'][$index]);
@@ -169,4 +146,30 @@ function favrskov_helper_preprocess_table(&$variables) {
       }
     }
   }
+}
+
+function _favrskov_helper_get_menu_and_domain_info() {
+  $custom_menu_names = db_select('menu_custom', 'mc')
+    ->fields('mc', array('menu_name', 'title'))
+    ->execute()
+    ->fetchAllKeyed();
+
+  $info = array(
+    'custom_menu_names' => $custom_menu_names,
+  );
+
+  if (module_exists('domain')) {
+    $current_domain_info = domain_get_domain();
+    $all_domains_info = db_select('domain_conf', 'dc')
+      ->fields('dc')
+      ->execute()
+      ->fetchAllKeyed();
+
+    $domain_dependent = array(
+      'current_domain_info' => $current_domain_info,
+      'all_domains_info' => $all_domains_info,
+    );
+  }
+
+  return empty($domain_dependent) ? $info : $info + $domain_dependent;
 }
