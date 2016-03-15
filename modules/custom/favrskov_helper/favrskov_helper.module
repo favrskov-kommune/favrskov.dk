@@ -148,6 +148,12 @@ function favrskov_helper_preprocess_table(&$variables) {
   }
 }
 
+/**
+ * Helper function.
+ *
+ * @see favrskov_helper_preprocess_table().
+ * @see favrskov_helper_admin_menu_output_alter().
+ */
 function _favrskov_helper_get_menu_and_domain_info() {
   $custom_menu_names = db_select('menu_custom', 'mc')
     ->fields('mc', array('menu_name', 'title'))
