@@ -552,6 +552,9 @@ projects[fontello][version] = 1.0
 projects[uuid][subdir] = contrib
 projects[uuid][version] = 1.0-beta1
 
+projects[config_perms][subdir] = contrib
+projects[config_perms][version] = 2.1
+
 ; Libraries
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] =
