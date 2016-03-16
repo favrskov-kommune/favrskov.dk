@@ -469,3 +469,12 @@ function favrskov_helper_update_7021() {
     ->condition('nid', $nids, 'IN')
     ->execute();
 }
+
+/**
+ * Feature enable.
+ */
+function favrskov_helper_update_7022() {
+  module_enable(array(
+    'views_admin_nodes',
+  ));
+}

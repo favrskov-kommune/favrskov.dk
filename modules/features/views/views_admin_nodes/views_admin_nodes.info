@@ -1,11 +1,10 @@
-name = Views Administration Nodes
-description = Views Administration Nodes
+name = Views Admin Nodes
+description = This view overrides admin_views_node view provided by admin_views contrib module.
 core = 7.x
 package = Views
-version = 7.x-1.0
-project = views_administration_nodes
 dependencies[] = admin_views
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
+features[views_view][] = admin_views_node
 features_exclude[dependencies][ctools] = ctools
