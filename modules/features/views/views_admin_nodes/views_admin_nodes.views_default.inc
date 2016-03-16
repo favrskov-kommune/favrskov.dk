@@ -413,6 +413,105 @@ function views_admin_nodes_views_default_views() {
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['hide_admin_links'] = TRUE;
   $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember'] = TRUE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
+  /* Filter criterion: User: Name */
+  $handler->display->display_options['filters']['uid']['id'] = 'uid';
+  $handler->display->display_options['filters']['uid']['table'] = 'users';
+  $handler->display->display_options['filters']['uid']['field'] = 'uid';
+  $handler->display->display_options['filters']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['uid']['value'] = '';
+  $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Author';
+  $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'author';
+  $handler->display->display_options['filters']['uid']['expose']['remember'] = TRUE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 'All';
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['remember'] = TRUE;
+  /* Filter criterion: Taxonomy term: Vocabulary */
+  $handler->display->display_options['filters']['vid']['id'] = 'vid';
+  $handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['vid']['field'] = 'vid';
+  $handler->display->display_options['filters']['vid']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['filters']['vid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['vid']['expose']['operator_id'] = 'vid_op';
+  $handler->display->display_options['filters']['vid']['expose']['label'] = 'Vocabulary';
+  $handler->display->display_options['filters']['vid']['expose']['operator'] = 'vid_op';
+  $handler->display->display_options['filters']['vid']['expose']['identifier'] = 'vid';
+  $handler->display->display_options['filters']['vid']['expose']['remember'] = TRUE;
+  /* Filter criterion: Menu: Menu link id */
+  $handler->display->display_options['filters']['mlid']['id'] = 'mlid';
+  $handler->display->display_options['filters']['mlid']['table'] = 'menu_links';
+  $handler->display->display_options['filters']['mlid']['field'] = 'mlid';
+  $handler->display->display_options['filters']['mlid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['mlid']['expose']['operator_id'] = 'mlid_op';
+  $handler->display->display_options['filters']['mlid']['expose']['label'] = 'Menu link';
+  $handler->display->display_options['filters']['mlid']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['mlid']['expose']['operator'] = 'mlid_op';
+  $handler->display->display_options['filters']['mlid']['expose']['identifier'] = 'mlid';
+  $handler->display->display_options['filters']['mlid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    4 => 0,
+  );
+  /* Filter criterion: Domain Access: Domain ID */
+  $handler->display->display_options['filters']['gid']['id'] = 'gid';
+  $handler->display->display_options['filters']['gid']['table'] = 'domain_access';
+  $handler->display->display_options['filters']['gid']['field'] = 'gid';
+  $handler->display->display_options['filters']['gid']['relationship'] = 'nid';
+  $handler->display->display_options['filters']['gid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['gid']['expose']['operator_id'] = 'gid_op';
+  $handler->display->display_options['filters']['gid']['expose']['label'] = 'Domain';
+  $handler->display->display_options['filters']['gid']['expose']['operator'] = 'gid_op';
+  $handler->display->display_options['filters']['gid']['expose']['identifier'] = 'gid';
+  $handler->display->display_options['filters']['gid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    4 => 0,
+  );
+  /* Filter criterion: User: Current (except super admin) */
+  $handler->display->display_options['filters']['uid_current_except_super_admin']['id'] = 'uid_current_except_super_admin';
+  $handler->display->display_options['filters']['uid_current_except_super_admin']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current_except_super_admin']['field'] = 'uid_current_except_super_admin';
+  $handler->display->display_options['filters']['uid_current_except_super_admin']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['uid_current_except_super_admin']['value'] = '1';
   $handler->display->display_options['path'] = 'admin/content';
   $translatables['admin_views_node'] = array(
     t('Defaults'),
