@@ -209,7 +209,6 @@ dependencies[] = fics_stream_wrapper
 dependencies[] = panel_term_page
 dependencies[] = clone
 dependencies[] = config_node_clone
-dependencies[] = views_administration_nodes
 dependencies[] = config_pane_styles
 dependencies[] = jquery_colorpicker
 dependencies[] = jslider_field

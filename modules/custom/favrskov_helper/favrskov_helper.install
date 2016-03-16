@@ -469,3 +469,22 @@ function favrskov_helper_update_7021() {
     ->condition('nid', $nids, 'IN')
     ->execute();
 }
+
+/**
+ * Feature enable.
+ */
+function favrskov_helper_update_7022() {
+  module_enable(array(
+    'views_admin_nodes',
+  ));
+
+  // By default admin_views has weight 12 in a system table.
+  // By default views_admin_nodes has weight 0 in a system table.
+  // It leads to situation when views_admin_nodes has not been detected after
+  // enabling. We need change weight of views_admin_nodes to higher value
+  // than admin_views has to perform overriding in a proper way.
+  db_update('system')
+    ->fields(array('weight' => 15))
+    ->condition('name', 'views_admin_nodes')
+    ->execute();
+}
