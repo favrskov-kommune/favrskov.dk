@@ -179,3 +179,13 @@ function _favrskov_helper_get_menu_and_domain_info() {
 
   return empty($domain_dependent) ? $info : $info + $domain_dependent;
 }
+
+/**
+ * Implements hook_views_api().
+ */
+function favrskov_helper_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'favrskov_helper') . '/views',
+  );
+}
