@@ -290,12 +290,12 @@ function views_workbench_moderation_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
-  /* Filter criterion: User: Current */
-  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
-  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
-  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
-  $handler->display->display_options['filters']['uid_current']['relationship'] = 'uid';
-  $handler->display->display_options['filters']['uid_current']['value'] = '1';
+  /* Filter criterion: User: Current (except super admin and has not Webmaster role) */
+  $handler->display->display_options['filters']['uid_current_except_super_admin']['id'] = 'uid_current_except_super_admin';
+  $handler->display->display_options['filters']['uid_current_except_super_admin']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current_except_super_admin']['field'] = 'uid_current_except_super_admin';
+  $handler->display->display_options['filters']['uid_current_except_super_admin']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['uid_current_except_super_admin']['value'] = '1';
   $handler->display->display_options['path'] = 'admin/workbench/needs-review';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Needs review';

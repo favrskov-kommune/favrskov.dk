@@ -488,3 +488,13 @@ function favrskov_helper_update_7022() {
     ->condition('name', 'views_admin_nodes')
     ->execute();
 }
+
+/**
+ * Features revert.
+ */
+function favrskov_helper_update_7023() {
+  array_map('features_revert_module', array(
+    'views_admin_nodes',
+    'views_workbench_moderation',
+  ));
+}
