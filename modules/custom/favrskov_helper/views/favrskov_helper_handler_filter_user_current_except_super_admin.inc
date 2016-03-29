@@ -8,20 +8,22 @@
  */
 
 /**
- * Filter handler for the current user except super admin (user with uid = 1).
+ * Filter handler for the current user except super admin (user with uid = 1)
+ * and has not Webmaster role.
  *
  * @ingroup views_filter_handlers
  */
 class favrskov_helper_handler_filter_user_current_except_super_admin extends views_handler_filter_boolean_operator {
   function construct() {
     parent::construct();
-    $this->value_value = t('Is the logged in user (except super admin)');
+    $this->value_value = t('Is the logged in user (except super admin and has not Webmaster role)');
   }
 
   function query() {
     global $user;
 
-    if ($user->uid != 1) {
+    // Filter nodes for all roles except Webmaster and Super admin user.
+    if ($user->uid != 1 && !in_array('Webmaster', $user->roles)) {
       $this->ensure_my_table();
 
       $field = $this->table_alias . '.' . $this->real_field . ' ';
