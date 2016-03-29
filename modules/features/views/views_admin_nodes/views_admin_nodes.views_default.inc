@@ -506,7 +506,7 @@ function views_admin_nodes_views_default_views() {
     6 => 0,
     4 => 0,
   );
-  /* Filter criterion: User: Current (except super admin) */
+  /* Filter criterion: User: Current (except super admin and has not Webmaster role) */
   $handler->display->display_options['filters']['uid_current_except_super_admin']['id'] = 'uid_current_except_super_admin';
   $handler->display->display_options['filters']['uid_current_except_super_admin']['table'] = 'users';
   $handler->display->display_options['filters']['uid_current_except_super_admin']['field'] = 'uid_current_except_super_admin';
