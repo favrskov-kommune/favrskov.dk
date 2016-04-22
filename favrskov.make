@@ -341,6 +341,7 @@ projects[os2web_borger_dk_articles][subdir] = contrib
 projects[os2web_borger_dk_articles][download][type] = "git"
 projects[os2web_borger_dk_articles][download][url] = "https://github.com/ffwagency/os2web_borger_dk_articles.git"
 projects[os2web_borger_dk_articles][download][branch] = "develop"
+projects[os2web_borger_dk_articles][patch][] = https://raw.githubusercontent.com/sergey347/os2web_borger_dk_articles_patch/master/os2web_borger_dk-mysql_warning_fix.patch
 
 projects[better_formats][subdir] = contrib
 projects[better_formats][version] = 1.0-beta1
