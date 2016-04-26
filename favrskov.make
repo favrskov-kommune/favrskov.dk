@@ -343,6 +343,7 @@ projects[os2web_borger_dk_articles][download][url] = "https://github.com/ffwagen
 projects[os2web_borger_dk_articles][download][branch] = "develop"
 projects[os2web_borger_dk_articles][patch][] = https://raw.githubusercontent.com/sergey347/os2web_borger_dk_articles_patch/master/os2web_borger_dk-mysql_warning_fix.patch
 projects[os2web_borger_dk_articles][patch][] = https://raw.githubusercontent.com/sergey347/os2web_borger_dk_articles_patch/master/os2web_borger_dk-broken-actions-fix.patch
+projects[os2web_borger_dk_articles][patch][] = https://raw.githubusercontent.com/sergey347/os2web_borger_dk_articles_patch/master/os2web_borger_dk-wrong-import-during-cron.patch
 
 projects[better_formats][subdir] = contrib
 projects[better_formats][version] = 1.0-beta1
