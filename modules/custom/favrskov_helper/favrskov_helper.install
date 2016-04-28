@@ -498,3 +498,12 @@ function favrskov_helper_update_7023() {
     'views_workbench_moderation',
   ));
 }
+
+/**
+ * Features revert.
+ */
+function favrskov_helper_update_7024() {
+  array_map('features_revert_module', [
+    'panel_article_page',
+  ]);
+}
