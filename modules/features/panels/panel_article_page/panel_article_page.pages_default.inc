@@ -983,7 +983,23 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->type = 'menu_tree';
     $pane->subtype = 'main-menu';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'favrskov_dk' => 'favrskov_dk',
+              'oplev_favrskov_dk' => 0,
+              'designguiden_favrskov_dk' => 0,
+              'cykelkommune_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'menu_name' => 'main-menu',
       'parent_mlid' => 0,
@@ -1015,7 +1031,23 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->type = 'menu_tree';
     $pane->subtype = '840a5c39fa8fab01a2631a5de85c2079';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'designguiden_favrskov_dk' => 'designguiden_favrskov_dk',
+              'favrskov_dk' => 0,
+              'oplev_favrskov_dk' => 0,
+              'cykelkommune_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'menu_name' => '840a5c39fa8fab01a2631a5de85c2079',
       'parent_mlid' => 0,
@@ -1048,7 +1080,23 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->type = 'menu_tree';
     $pane->subtype = 'e06751ae02a79d750126985886141c7b';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'cykelkommune_favrskov_dk' => 'cykelkommune_favrskov_dk',
+              'favrskov_dk' => 0,
+              'oplev_favrskov_dk' => 0,
+              'designguiden_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'menu_name' => 'e06751ae02a79d750126985886141c7b',
       'parent_mlid' => 0,
@@ -1081,7 +1129,23 @@ function panel_article_page_default_page_manager_handlers() {
     $pane->type = 'menu_tree';
     $pane->subtype = 'e8ad7c3466506a0a1ebe3d063d5837b6';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'oplev_favrskov_dk' => 'oplev_favrskov_dk',
+              'favrskov_dk' => 0,
+              'designguiden_favrskov_dk' => 0,
+              'cykelkommune_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'menu_name' => 'e8ad7c3466506a0a1ebe3d063d5837b6',
       'parent_mlid' => 0,
