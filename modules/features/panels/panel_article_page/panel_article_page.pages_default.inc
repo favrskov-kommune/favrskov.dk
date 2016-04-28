@@ -26,7 +26,14 @@ function panel_article_page_default_page_manager_handlers() {
     'body_classes_to_add' => '',
     'css_id' => '',
     'css' => '',
-    'contexts' => array(),
+    'contexts' => array(
+      0 => array(
+        'identifier' => 'Token',
+        'keyword' => 'token',
+        'name' => 'token',
+        'id' => 1,
+      ),
+    ),
     'relationships' => array(),
     'access' => array(
       'plugins' => array(
@@ -923,13 +930,11 @@ function panel_article_page_default_page_manager_handlers() {
         ),
       ),
     );
-
-    global $base_url;
-
     $pane->configuration = array(
       'admin_title' => 'Path to node',
       'title' => '',
-      'body' => '<a href="/node/%node:nid">' . $base_url . '/node/%node:nid</a>',
+      'body' => '<p><a href="http://%token:site:url-brief/node/%node:nid" style="line-height: 1.6em;">http://%token:site:url-brief/node/%node:nid</a></p>
+',
       'format' => 'full_html',
       'substitute' => 1,
     );
@@ -1948,13 +1953,10 @@ function panel_article_page_default_page_manager_handlers() {
         ),
       ),
     );
-
-    global $base_url;
-
     $pane->configuration = array(
       'admin_title' => 'Path to node',
       'title' => '',
-      'body' => '<a href="/node/%node:nid">' . $base_url . '/node/%node:nid</a>',
+      'body' => '<a href="/node/%node:nid">http://default/node/%node:nid</a>',
       'format' => 'full_html',
       'substitute' => 1,
     );
