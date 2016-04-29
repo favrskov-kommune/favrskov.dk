@@ -20,8 +20,9 @@ projects[draggableviews][subdir] = contrib
 projects[draggableviews][version] = 2.1
 
 projects[media][subdir] = contrib
-projects[media][version] =2.0-alpha2
+projects[media][version] = 2.0-alpha2
 projects[media][patch][1870538] = https://drupal.org/files/media-permission_check_multiple_upload-1870538-10.patch
+projects[media][patch][] = https://raw.githubusercontent.com/sergey347/media_patches/master/media-incorrect-like-condition.patch
 
 projects[file_entity][subdir] = contrib
 projects[file_entity][version] = 2.x-dev
