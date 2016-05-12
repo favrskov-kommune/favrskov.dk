@@ -517,3 +517,11 @@ function favrskov_helper_update_7025() {
     'views_workbench_moderation',
   ]);
 }
+
+/**
+ * Force jQuery loading from CDN. Should be temporary solution.
+ */
+function favrskov_helper_update_7026() {
+  // More info: http://jira.propeople.com.ua/browse/FK-342.
+  variable_set('jquery_update_jquery_cdn', 'jquery');
+}
