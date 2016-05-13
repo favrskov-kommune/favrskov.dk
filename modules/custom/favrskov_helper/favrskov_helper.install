@@ -525,3 +525,10 @@ function favrskov_helper_update_7026() {
   // More info: http://jira.propeople.com.ua/browse/FK-342.
   variable_set('jquery_update_jquery_cdn', 'jquery');
 }
+
+/**
+ * Feature revert.
+ */
+function favrskov_helper_update_7027() {
+  features_revert_module('config_user_roles');
+}
