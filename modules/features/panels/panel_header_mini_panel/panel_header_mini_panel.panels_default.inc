@@ -68,21 +68,7 @@ function panel_header_mini_panel_default_panels_mini() {
     $pane->subtype = 'page_primary_links';
     $pane->shown = TRUE;
     $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'domain',
-          'settings' => array(
-            'domain_site' => 0,
-            'domains' => array(
-              'favrskov_dk' => 'favrskov_dk',
-              'oplev_favrskov_dk' => 0,
-              'designguiden_favrskov_dk' => 0,
-              'cykelkommune_favrskov_dk' => 0,
-            ),
-          ),
-          'not' => FALSE,
-        ),
-      ),
+      'plugins' => array(),
     );
     $pane->configuration = array(
       'override_title' => 1,
