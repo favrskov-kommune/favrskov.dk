@@ -539,3 +539,10 @@ function favrskov_helper_update_7027() {
 function favrskov_helper_update_7028() {
   features_revert_module('panel_header_mini_panel');
 }
+
+/**
+ * Feature revert.
+ */
+function favrskov_helper_update_7029() {
+  features_revert_module('panel_article_page');
+}
