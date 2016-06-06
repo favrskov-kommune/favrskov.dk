@@ -1152,7 +1152,7 @@ function panel_article_page_default_page_manager_handlers() {
       'parent' => 'e8ad7c3466506a0a1ebe3d063d5837b6:0',
       'title_link' => 0,
       'admin_title' => '',
-      'level' => '3',
+      'level' => '2',
       'follow' => 0,
       'depth' => '3',
       'expanded' => 0,
