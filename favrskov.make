@@ -294,8 +294,7 @@ projects[menu_block][subdir] = contrib
 projects[menu_block][version] = 2.4
 
 projects[panels_breadcrumbs][subdir] = contrib
-projects[panels_breadcrumbs][version] = 2.1
-projects[panels_breadcrumbs][patch][2134071] = https://drupal.org/files/issues/panels_breadcrumbs-php-warning.patch
+projects[panels_breadcrumbs][version] = 2.2
 
 projects[placeholder][subdir] = contrib
 projects[placeholder][version] = 1.1
@@ -310,8 +309,9 @@ projects[views_load_more][download][branch] = "7.x-1.x"
 
 projects[path_redirect_import][subdir] = contrib
 projects[path_redirect_import][version] = 1.0-rc4
+
 projects[login_destination][subdir] = contrib
-projects[login_destination][version] = 1.1
+projects[login_destination][version] = 1.4
 
 projects[views_bulk_operations][subdir] = contrib
 projects[views_bulk_operations][version] = 3.3
@@ -328,7 +328,7 @@ projects[clientside_validation][subdir] = contrib
 projects[clientside_validation][version] = 1.37
 
 projects[override_node_options][subdir] = contrib
-projects[override_node_options][version] = 1.12
+projects[override_node_options][version] = 1.13
 
 projects[fapi_validation][subdir] = contrib
 ;projects[fapi_validation][version] = 2.1
@@ -500,7 +500,7 @@ projects[pathologic][version] = 2.12
 ;projects[google_analytics][version] = 1.4
 
 projects[taxonomy_container][subdir] = contrib
-projects[taxonomy_container][version] = 1.1
+projects[taxonomy_container][version] = 1.2
 
 projects[webform_features][subdir] = contrib
 projects[webform_features][version] = 3.0-beta3
