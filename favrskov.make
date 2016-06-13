@@ -87,8 +87,7 @@ projects[references_dialog][version] = 1.0-beta1
 projects[references_dialog][patch][2315905] = https://www.drupal.org/files/issues/references_dialog_beta1-fix_theme_links-2315905-20.patch
 
 projects[entity][subdir] = contrib
-;projects[entity][version] = 1.5
-projects[entity][version] = 1.6
+projects[entity][version] = 1.7
 
 projects[rabbit_hole][subdir] = contrib
 projects[rabbit_hole][version] = 2.23
@@ -113,7 +112,7 @@ projects[devel][subdir] = contrib
 projects[devel][version] = 1.5
 
 projects[breakpoints][subdir] = contrib
-projects[breakpoints][version] = 1.3
+projects[breakpoints][version] = 1.4
 
 projects[picture][subdir] = contrib
 projects[picture][version] = 2.13
@@ -123,7 +122,7 @@ projects[panels][version] = 3.5
 projects[panels][patch][2226011] = https://drupal.org/files/issues/panels-ipe-js-loop-2226011-4.patch
 
 projects[features][subdir] = contrib
-projects[features][version] = 2.7
+projects[features][version] = 2.10
 
 projects[job_scheduler][subdir] = contrib
 projects[job_scheduler][version] = 2.0-alpha3
@@ -145,7 +144,7 @@ projects[date][subdir] = contrib
 projects[date][version] = 2.9
 
 projects[link][subdir] = contrib
-projects[link][version] = 1.x-dev
+projects[link][version] = 1.4
 
 projects[potx][subdir] = contrib
 projects[potx][version] = 1.0
@@ -188,8 +187,7 @@ projects[linkchecker][subdir] = contrib
 projects[linkchecker][version] = 1.2
 
 projects[xmlsitemap][subdir] = contrib
-;projects[xmlsitemap][version] = 2.0-rc2
-projects[xmlsitemap][version] = 2.0
+projects[xmlsitemap][version] = 2.3
 
 projects[site_map][subdir] = contrib
 ;projects[site_map][version] = 1.0
@@ -214,8 +212,7 @@ projects[scheduler][subdir] = contrib
 projects[scheduler][version] = 1.3
 
 projects[libraries][subdir] = contrib
-;projects[libraries][version] = 2.1
-projects[libraries][version] = 2.2
+projects[libraries][version] = 2.3
 
 projects[views_ui_basic][subdir] = contrib
 projects[views_ui_basic][version] = 1.2
@@ -233,10 +230,10 @@ projects[views_rss][subdir] = contrib
 projects[views_rss][version] = 2.0-rc3
 
 projects[features_extra][subdir] = contrib
-projects[features_extra][version] = 1.0-beta1
+projects[features_extra][version] = 1.0
 
 projects[nodequeue][subdir] = contrib
-projects[nodequeue][version] = 2.x-dev
+projects[nodequeue][version] = 2.0
 
 projects[apachesolr][subdir] = contrib
 projects[apachesolr][version] = 1.8
@@ -297,8 +294,7 @@ projects[menu_block][subdir] = contrib
 projects[menu_block][version] = 2.4
 
 projects[panels_breadcrumbs][subdir] = contrib
-projects[panels_breadcrumbs][version] = 2.1
-projects[panels_breadcrumbs][patch][2134071] = https://drupal.org/files/issues/panels_breadcrumbs-php-warning.patch
+projects[panels_breadcrumbs][version] = 2.2
 
 projects[placeholder][subdir] = contrib
 projects[placeholder][version] = 1.1
@@ -313,8 +309,9 @@ projects[views_load_more][download][branch] = "7.x-1.x"
 
 projects[path_redirect_import][subdir] = contrib
 projects[path_redirect_import][version] = 1.0-rc4
+
 projects[login_destination][subdir] = contrib
-projects[login_destination][version] = 1.1
+projects[login_destination][version] = 1.4
 
 projects[views_bulk_operations][subdir] = contrib
 projects[views_bulk_operations][version] = 3.3
@@ -331,7 +328,7 @@ projects[clientside_validation][subdir] = contrib
 projects[clientside_validation][version] = 1.37
 
 projects[override_node_options][subdir] = contrib
-projects[override_node_options][version] = 1.12
+projects[override_node_options][version] = 1.13
 
 projects[fapi_validation][subdir] = contrib
 ;projects[fapi_validation][version] = 2.1
@@ -347,7 +344,7 @@ projects[os2web_borger_dk_articles][patch][] = https://raw.githubusercontent.com
 projects[os2web_borger_dk_articles][patch][] = https://raw.githubusercontent.com/sergey347/os2web_borger_dk_articles_patch/master/os2web_borger_dk-wrong-import-during-cron.patch
 
 projects[better_formats][subdir] = contrib
-projects[better_formats][version] = 1.0-beta1
+projects[better_formats][version] = 1.0-beta2
 
 projects[multiple_selects][subdir] = contrib
 projects[multiple_selects][version] = 1.2
@@ -437,8 +434,7 @@ projects[maxlength][patch][1761480] = https://drupal.org/files/line_breaks_in_te
 projects[maxlength][patch][2032655] = https://drupal.org/files/maxlength-calculate_keyup_change-2032655-2.patch
 
 projects[autoarch][subdir] = contrib
-projects[autoarch][version] = 1.0
-projects[autoarch][patch][2043089] = https://drupal.org/files/0001-Issue-2043089.-Fixing-wrong-config-menu-item.patch
+projects[autoarch][version] = 1.1
 
 projects[cnr][subdir] = contrib
 projects[cnr][version] = 4.x-dev
@@ -487,7 +483,7 @@ projects[mollom][subdir] = contrib
 projects[mollom][version] = 2.10
 
 projects[node_clone][subdir] = contrib
-projects[node_clone][version] = 1.0-rc2
+projects[node_clone][version] = 1.0
 
 projects[jquery_colorpicker][subdir] = contrib
 projects[jquery_colorpicker][version] = 1.0-rc2
@@ -504,7 +500,7 @@ projects[pathologic][version] = 2.12
 ;projects[google_analytics][version] = 1.4
 
 projects[taxonomy_container][subdir] = contrib
-projects[taxonomy_container][version] = 1.1
+projects[taxonomy_container][version] = 1.2
 
 projects[webform_features][subdir] = contrib
 projects[webform_features][version] = 3.0-beta3
@@ -542,10 +538,10 @@ projects[securepages][subdir] = contrib
 projects[securepages][version] = 1.0-beta2
 
 projects[varnish][subdir] = contrib
-projects[varnish][version] = 1.0-beta3
+projects[varnish][version] = 1.1
 
 projects[hierarchical_select][subdir] = contrib
-projects[hierarchical_select][version] = 3.0-beta3
+projects[hierarchical_select][version] = 3.0-beta7
 
 projects[icon][subdir] = contrib
 projects[icon][version] = 1.0-beta6
@@ -558,6 +554,9 @@ projects[uuid][version] = 1.0-beta1
 
 projects[config_perms][subdir] = contrib
 projects[config_perms][version] = 2.1
+
+projects[node_export][subdir] = contrib
+projects[node_export][version] = 3.1
 
 ; Libraries
 libraries[ckeditor][download][type] = get
@@ -628,5 +627,5 @@ translations[] = da
 
 ; Patches
 projects[drupal][type] = core
-projects[drupal][version] = 7.41
+projects[drupal][version] = 7.43
 projects[drupal][patch][1078878] = "https://drupal.org/files/issues/1078878-DisableAutoCreation-D7-UTF-8.patch"
