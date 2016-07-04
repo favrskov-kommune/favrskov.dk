@@ -546,3 +546,20 @@ function favrskov_helper_update_7028() {
 function favrskov_helper_update_7029() {
   features_revert_module('panel_article_page');
 }
+
+/**
+ * Updates news.
+ */
+function favrskov_helper_update_7030() {
+  $query = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'news')
+    ->condition('created', strtotime('06/12/2016'), '>=')
+    ->execute();
+
+  while($record = $query->fetchAssoc()) {
+    $node = node_load($record['nid']);
+    autoarch_write_record('update', $record['nid'], 'automatic', $node->field_date['und'][0]['value']);
+    node_save($node);
+  }
+}
