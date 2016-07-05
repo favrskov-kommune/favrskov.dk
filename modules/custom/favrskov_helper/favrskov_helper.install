@@ -546,3 +546,29 @@ function favrskov_helper_update_7028() {
 function favrskov_helper_update_7029() {
   features_revert_module('panel_article_page');
 }
+
+/**
+ * Updates news.
+ */
+function favrskov_helper_update_7030() {
+  $query = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'news')
+    ->condition('created', strtotime('06/12/2016'), '>=')
+    ->condition('status', 1)
+    ->execute();
+
+  while($record = $query->fetchAssoc()) {
+    $is_created = db_select('autoarch_state', 'autoarch')
+      ->fields('autoarch', array('state'))
+      ->condition('nid', $record['nid'])
+      ->execute()
+      ->fetchAssoc();
+
+    if (!empty($is_created)) {
+      autoarch_write_record('update', $record['nid'], 'actual', NULL);
+    } else {
+      autoarch_write_record('insert', $record['nid'], 'actual', NULL);
+    }
+  }
+}
