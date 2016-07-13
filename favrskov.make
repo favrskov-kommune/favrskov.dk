@@ -153,8 +153,7 @@ projects[references][subdir] = contrib
 projects[references][version] = 2.1
 
 projects[coder][subdir] = contrib
-;projects[coder][version] = 2.0-beta2
-projects[coder][version] = 2.2
+projects[coder][version] = 2.6
 
 projects[coder_tough_love][subdir] = contrib
 projects[coder_tough_love][version] = 1.0
