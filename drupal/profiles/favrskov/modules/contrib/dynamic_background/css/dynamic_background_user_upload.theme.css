@@ -1,0 +1,46 @@
+#edit-dynamic-background-picture-upload .background-upload-form {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+}
+
+#edit-dynamic-background-picture-upload .background-upload-form div {
+  display: block;
+}
+
+#edit-dynamic-background-picture-upload .background-upload-form img {
+  display: block;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 4px;
+}
+
+/*
+ * Style the user upload form.
+ */
+#edit-dynamic-background-dynamic-background-picture-upload .form-type-background-upload-form,
+#edit-dynamic-background .form-type-background-upload-form {
+  background: none repeat scroll 0 0 #F8F8F8;
+  border: 1px solid #CCCCCC;
+  clear: both;
+  overflow: auto;
+  padding: 10px;
+}
+
+#edit-dynamic-background-dynamic-background-picture-upload .background-upload-form .form-type-checkbox,
+#edit-dynamic-background .background-upload-form .form-type-checkbox {
+  clear: none;
+  margin-left: 115px;
+  margin-bottom: 0px;
+  padding: 0;
+}
+
+#edit-dynamic-background-dynamic-background-picture-upload .background-upload-form .form-item-labeled,
+#edit-dynamic-background .background-upload-form .form-item-labeled {
+  overflow: hidden;
+}
+
+#edit-dynamic-background-dynamic-background-picture-upload .background-upload-form img,
+#edit-dynamic-background .background-upload-form img {
+  float: left;
+}

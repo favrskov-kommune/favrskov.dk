@@ -1,0 +1,13 @@
+name = "Auto Archiver"
+description = "This module provides automatic archivation for the selected content types"
+dependencies[] = date_popup
+core = 7.x
+package = Autoarch
+files[]=views/AutoarchFilterMultiple.inc
+
+; Information added by Drupal.org packaging script on 2015-02-17
+version = "7.x-1.1"
+core = "7.x"
+project = "autoarch"
+datestamp = "1424176984"
+

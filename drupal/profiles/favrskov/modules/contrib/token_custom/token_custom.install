@@ -1,0 +1,137 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the token_custom module.
+ */
+
+/**
+ * Implements of hook_install().
+ */
+function token_custom_install() {
+  $t = get_t();
+  drupal_set_message($t('The Token Custom module was installed. You can manage your custom tokens in the <a href=\'@admin_url\'>admin pages</a>.',
+                        array('@admin_url' => url('admin/structure/token-custom'))));
+}
+
+
+/**
+ * Implements of hook_schema().
+ */
+function token_custom_schema() {
+  $schema = array();
+
+  $schema['token_custom'] = array(
+    'description'   => 'The database table for the Token Custom module.',
+    'fields'        => array(
+      'machine_name'  => array(
+        'description' => 'The token\'s machine name',
+        'type'        => 'varchar',
+        'length'      => 32,
+        'not null'    => TRUE,
+      ),
+      'name'        => array(
+        'description' => 'The token\'s human readable name',
+        'type'        => 'varchar',
+        'length'      => 128,
+        'not null'    => TRUE,
+      ),
+      'description' => array(
+        'description' => 'The token\'s description, as shown on the token listings',
+        'type'        => 'varchar',
+        'length'      => 255,
+        'not null'    => TRUE,
+      ),
+      'type'        => array(
+        'description' => 'The token\'s type, defining the context in which it will be available',
+        'type'        => 'varchar',
+        'length'      => 128,
+        'not null'    => TRUE,
+      ),
+      'content' => array(
+        'description' => 'The content for the token',
+        'type'        => 'text',
+        'size'        => 'big',
+        'not null'    => TRUE,
+      ),
+      'format' => array(
+        'type'        => 'varchar',
+        'length'      => 255,
+        'not null'    => FALSE,
+        'description' => 'The format for the content on the token.',
+        'default'     => 'php_code',
+      ),
+    ),
+    'primary key'   => array('machine_name'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Updates Custom Tokens to use a text-format-enabled version of textarea.
+ */
+function token_custom_update_7001() {
+  $schema = token_custom_schema();
+
+  // Add the new format field.
+  db_add_field('token_custom', 'format', $schema['token_custom']['fields']['format']);
+
+  // Rename the "php_content" field to "content".
+  db_change_field('token_custom', 'php_content', 'content', $schema['token_custom']['fields']['content']);
+
+  // Make sure the PHP filter is available as the old content used PHP input.
+  module_enable(array('php'));
+
+  // Wrap the content field with php tags.
+  $result = db_select('token_custom', 't')
+    ->fields('t')
+    ->execute();
+  while ($token = $result->fetchAssoc()) {
+    $content = '<?php ' . $token['content'] . ' ?>';
+    db_update('token_custom')
+      ->fields(array(
+        'content' => $content,
+      ))
+      ->condition('machine_name', $token['machine_name'])
+      ->execute();
+  }
+}
+
+
+/**
+ * Updates Custom Tokens name and type fields
+ * to allow storing 128 characters if update 7000 hasn't done it before.
+ * Rebuild menus to activate the new admin pages.
+ */
+function token_custom_update_7002() {
+
+  /*
+   * For users updating from previous dev versions we
+   * have to update the field length here. On the other hand,
+   * users that ran the 7000 update already have that correction.
+   * So we test the fields' length in the database before updating it.
+   */
+  $schema = token_custom_schema();
+  foreach (array('name', 'type') as $field) {
+    $data = db_query("SHOW COLUMNS FROM {token_custom} where Field=:d", array(
+      ':d' => $field)
+      )->fetchObject();
+    if (!empty($data) && (preg_match('/^varchar\(([0-9]+)\)$/', $data->type, $matches))) {
+      if ($schema['token_custom']['fields'][$field]['length'] != $matches[1]) {
+        db_change_field('token_custom', $field, $field, $schema['token_custom']['fields'][$field]);
+      }
+    }
+  }
+
+  // Between 7001 and 7002 we introduced custom token types and a new hook_menu.
+  menu_rebuild();
+}
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function token_custom_uninstall() {
+  variable_del('token_custom_types');
+}

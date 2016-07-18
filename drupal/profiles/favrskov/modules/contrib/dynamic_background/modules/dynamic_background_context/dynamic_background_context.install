@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Installation and update functions for this module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function dynamic_background_context_uninstall() {
+  variable_del('dynamic_background_context_css');
+  variable_del('dynamic_background_context_image_style');
+}
+
+/**
+ * Update stored data to use the new database tables.
+ */
+function dynamic_background_context_update_7000() {
+  $images = variable_get('dynamic_background_images', array());
+  $result = db_select('context', 'c')
+    ->fields('c', array('reactions', 'name'))
+    ->execute();
+
+  foreach ($result as $row) {
+    $new = array();
+    $data = unserialize($row->reactions);
+    if (isset($data['dynamic_background'])) {
+      foreach ($data['dynamic_background'] as $id => $background) {
+        // Create updated data structur for the context UI.
+        $new[$images[$id]['fid']]['selected'] = $background['selected'];
+
+        // Set active background for this context.
+        if ($background['selected']) {
+          dynamic_background_set_active($images[$id]['fid'], 'context', $row->name);
+        }
+      }
+
+      // Update the context configuration.
+      $data['dynamic_background'] = $new;
+
+      // Write data back to the database.
+      db_update('context')
+        ->fields(array('reactions' => serialize($data)))
+        ->condition('name', $row->name)
+        ->execute();
+    }
+  }
+
+  return FALSE;
+}

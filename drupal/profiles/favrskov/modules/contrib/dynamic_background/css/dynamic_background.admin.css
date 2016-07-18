@@ -1,0 +1,23 @@
+
+#dynamic-background-admin-images .form-type-background-upload-form {
+  background: none repeat scroll 0 0 #F8F8F8;
+  border: 1px solid #CCCCCC;
+  clear: both;
+  overflow: auto;
+  padding: 10px;
+}
+
+#dynamic-background-admin-images .form-item-labeled {
+  overflow: hidden;
+}
+
+#dynamic-background-admin-images .form-option,
+#dynamic-background-admin-images .form-item-labeled label {
+  width: 450px;
+}
+
+#dynamic-background-admin-images .background-upload-form img {
+  float: right;
+  margin-top: -14px;
+  margin-right: 10px;
+}

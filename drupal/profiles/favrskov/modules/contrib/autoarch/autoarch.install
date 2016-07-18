@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Auto archiver install file.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function autoarch_schema() {
+  $schema['autoarch_state'] = array(
+    'description' => 'The archivation status table.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The primary identifier for the node.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'state' => array(
+        'description' => 'The state of the node.',
+        'type' => 'varchar',
+        'length' => 10,
+      ),
+      'mode' => array(
+        'description' => 'The mode of the archivation.',
+        'type' => 'varchar',
+        'length' => 10,
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+  $schema['autoarch_date'] = array(
+    'description' => 'The date table of the automatic archivation.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The primary identifier for the node.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'date' => array(
+        'description' => 'The date of the node is active until.',
+        'type' => 'int',
+        'length' => 11,
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function autoarch_uninstall() {
+  variable_del('autoarch_selected_node_types');
+  variable_del('autoarch_date_granularity');
+}

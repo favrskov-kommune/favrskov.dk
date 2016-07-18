@@ -1,0 +1,91 @@
+/**
+ * Formatting the media browser plus views.
+ */
+
+.view .mbp-folders,
+.view .mbp-file-list {
+  vertical-align: top;
+}
+
+.view .mbp-folders ol {
+  padding: 0px;
+  margin: 0px;
+}
+
+.view .mbp-folders ol ol {
+  padding-left: 15px;
+}
+
+.view .mbp-folders li,
+.view .mbp-folders li.open {
+  cursor: pointer;
+  list-style-type: none;
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+.view .mbp-folders li .icon {
+  line-height: 20px;
+  display: inline-block;
+  background: url('../images/icons/folder_icons.png') 0 0 no-repeat;
+  width: 31px;
+  height: 20px;
+}
+
+.view .mbp-folders li.open > div.folder-name .icon {
+  background: url('../images/icons/folder_icons.png') 0 -20px no-repeat;
+}
+.view .mbp-folders li.active > div.folder-name .icon {
+  background: url('../images/icons/folder_icons.png') -31px 0px no-repeat;
+}
+.view .mbp-folders li.active.open > div.folder-name .icon {
+  background: url('../images/icons/folder_icons.png') -31px -20px no-repeat;
+}
+
+.view .mbp-folders li.active > div.folder-name {
+  background-color: #E0E0E0;
+}
+
+.view .mbp-folders li div.folder-name.drag-hover {
+  background-color: #CCCCCC;
+}
+
+.view .mbp-folders li ol {
+  display: none;
+}
+
+.view .mbp-folders li .ajax-progress-throbber {
+  float: right;
+}
+
+.view .mbp-file-list {
+  border-left: 1px solid #cccccc;
+  padding-left: 10px;
+}
+
+/**
+ * VBO based field handler
+ */
+div.view-media-browser-plus .media-list-thumbnails .form-type-checkbox {
+  bottom: 0px;
+  left: 0px;
+}
+
+/**
+ * Media Basket
+ */
+.mbp-file-basket-list li {
+  float: left;
+  list-style: none;
+  margin: 0 10px 10px 0;
+}
+.mbp-file-basket-list .form-type-checkbox{
+  bottom: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.mbp-file-basket.drag-hover {
+  background-color: #e0e0d8;
+}

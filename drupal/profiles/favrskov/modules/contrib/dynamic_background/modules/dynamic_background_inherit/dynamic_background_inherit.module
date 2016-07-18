@@ -1,0 +1,139 @@
+<?php
+/**
+ * @file
+ * Primary hook implementations for Dynamic Background Inherit.
+ */
+
+/**
+ * Implements hook_dynamic_background_weight().
+ */
+function dynamic_background_inherit_dynamic_background_weight() {
+  return array(
+    // By default this should load right before the main module but after all
+    // others.
+    'weight' => -21,
+  );
+}
+
+/**
+ * Implements hook_dynamic_background_selector_alter().
+ */
+function dynamic_background_inherit_dynamic_background_selector_alter(&$form, $settings, $instance) {
+  // It's automatic.
+  $form['#description'] = t('If no image is selected, the background image from the parent page will be used.');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for
+ * dynamic_background_admin_weight_form.
+ */
+function dynamic_background_inherit_form_dynamic_background_admin_weight_form_alter(&$form, &$form_state, $form_id) {
+  $form['inherit_message'] = array(
+    '#markup' => t('Note: in order for the "inherit" module to work correctly it should be after "Dynamic background node" and before "Dynamic background".'),
+  );
+}
+
+/**
+ * Implements hook_dynamic_background_css().
+ */
+function dynamic_background_inherit_dynamic_background_css($vars) {
+  $image_spec = NULL;
+  // The cache table used for this module.
+  $cache_bin = 'cache_dynamic_background_inherit';
+  // Track any paths that need to have their cache updated.
+  $update_cache = array();
+
+  // Start off with the current page's full path alias.
+  $current_path = request_path();
+  $path_array = explode('/', $current_path);
+
+  // Don't bother processing admin pages.
+  if ($path_array[0] == 'admin') {
+    return;
+  }
+
+  // Work down the URL tree, work out the background image for that page.
+  while (empty($image_spec) && count($path_array) > 0) {
+    $path = implode('/', $path_array);
+
+    // See if the cache has this saved.
+    if ($cache = cache_get($path, $cache_bin)) {
+      $image_spec = $cache->data;
+    }
+
+    // Nothing loaded, so try identifying what to add.
+    if (!isset($image_spec)) {
+      // Identify the internal path from the URL.
+      $system_path = drupal_get_normal_path($path);
+      $system_path_array = explode('/', $system_path);
+
+      // Identify what creates this page.
+      $page_type = NULL;
+      $page_id = NULL;
+
+      // Option #1: node.
+      if (count($system_path_array) >= 2 && $system_path_array[0] == 'node' && is_numeric($system_path_array[1])) {
+        // This is a node.
+        $page_type = 'node';
+        // The node's nid is the second part of the system path. 
+        $page_id = $system_path_array[1];
+      }
+      // TODO: Support the other submodules.
+
+      // A matching page type and ID were found for the path.
+      if (!empty($page_type) && !empty($page_id)) {
+        // Identify any background image that is assigned to this path.
+        $image = dynamic_background_active_image($page_type, $page_id);
+        // If a background image is found, compile the appropriate image spec.
+        if (!empty($image)) {
+          $image_style = variable_get('dynamic_background_' . $page_type . '_image_style', FALSE);
+          $image_spec = array(
+            'image' => $image,
+            'configuration' => variable_get('dynamic_background_' . $page_type . '_css', array()),
+            'image_style' => (is_array($image_style) && isset($image_style['style'])) ? $image_style['style'] : FALSE,
+          );
+        }
+      }
+
+      // This path needs its cache updated.
+      $update_cache[] = $path;
+
+      // Remove the last element of the path array to work out the parent page's
+      // path.
+      array_pop($path_array);
+    }
+  }
+
+  // Update the cache for any paths that weren't previously set.
+  if (!empty($update_cache)) {
+    foreach ($update_cache as $path) {
+      cache_set($path, $image_spec, $cache_bin);
+    }
+  }
+
+  // If nothing was found, look for a global default.
+  if (empty($image_spec)) {
+    $image = dynamic_background_active_image('default', '-1');
+    if (!empty($image)) {
+      $image_style = variable_get('dynamic_background_image_style', FALSE);
+      $image_spec = array(
+        'image' => $image,
+        'configuration' => variable_get('dynamic_background_css', array()),
+        'image_style' => (is_array($image_style) && isset($image_style['style'])) ? $image_style['style'] : FALSE,
+      );
+    }
+  }
+
+  return $image_spec;
+}
+
+/**
+ * Implements hook_flush_caches().
+ *
+ * Clear the custom cache any time any other cache is cleared. Being lazy here,
+ * rather than spending additional time to decide when the best time would be
+ * to clear the caches correctly.
+ */
+function dynamic_background_inherit_flush_caches() {
+  return array('cache_dynamic_background_inherit');
+}

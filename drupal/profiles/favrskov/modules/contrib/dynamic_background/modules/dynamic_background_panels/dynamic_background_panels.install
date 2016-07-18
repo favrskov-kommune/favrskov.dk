@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Handles uninstall of the module.
+ */
+
+/**
+ * Implements hook_uninstall():
+ */
+function dynamic_background_panels_uninstall() {
+  // Remove settings.
+  variable_del('dynamic_background_panels_css');
+}
+
+/**
+ * Update the panels configuration variable name to match naming of the other
+ * sub-modules.
+ */
+function dynamic_background_panels_update_7001() {
+  $conf = variable_get('dynamic_background_panels', FALSE);
+  if ($conf) {
+    variable_set('dynamic_background_panels_css', $conf);
+    variable_del('dynamic_background_panels');
+    variable_del('dynamic_background_panels_image_style');
+  }
+}
+
+/**
+ * Update panels configuration to the new database schema.
+ */
+function dynamic_background_panels_update_7002() {
+  $query = db_select('page_manager_handlers', 'pmh');
+  $result = $query->fields('pmh', array('name', 'conf'))
+                  ->execute();
+
+  while ($row = $result->fetchObject()) {
+    // Look in the panels configuration for the dynamic background options.
+    $conf = unserialize($row->conf);
+    if (isset($conf['dynamic_background'])) {
+      // Find the selected image.
+      $id = FALSE;
+      foreach ($conf['dynamic_background'] as $element) {
+        if ($element['selected']) {
+          $id = $element['selected'];
+          break;
+        }
+      }
+
+      // Load old images as the id's store in panels is not fid.
+      $images = variable_get('dynamic_background_images', array());
+      db_insert('dynamic_background_usage')
+        ->fields(array(
+          'fid' => $images[$id]['fid'],
+          'type' => 'panels',
+          'data' => $row->name)
+        )->execute();
+    }
+  }
+}

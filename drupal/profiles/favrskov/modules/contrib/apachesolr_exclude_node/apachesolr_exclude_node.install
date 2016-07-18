@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Install file for the Apache Solr Exclude Node module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function apachesolr_exclude_node_schema() {
+  return array(
+    'apachesolr_exclude_node' => array(
+      'description' => 'The main table holding info about excluded nodes.',
+      'fields' => array(
+        'nid' => array(
+          'description' => 'The foreign key to node.nid',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+        'vid' => array(
+          'description' => 'The foreign key to node.vid',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+        'exclude' => array(
+          'description' => 'Exclude status. 0 = no, 1 = yes',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array('nid'),
+      ),
+      'primary key' => array('vid'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_unnstall().
+ */
+function apachesolr_exclude_node_uninstall() {
+  // Deleting variables.
+  db_query("DELETE FROM {variable} WHERE name LIKE 'apachesolr_exclude_node_%'");
+}

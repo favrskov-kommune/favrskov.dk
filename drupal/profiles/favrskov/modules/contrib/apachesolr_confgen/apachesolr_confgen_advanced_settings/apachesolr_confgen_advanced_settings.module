@@ -1,0 +1,119 @@
+<?php
+
+/**
+ * @file
+ *
+ * @see apachesolr.module
+ *
+ * @author Markus Kalkbrenner (mkalkbrenner) | bio.logis GmbH
+ *   @see http://drupal.org/user/124705
+ */
+
+
+/**
+ * Implements hook_menu().
+ */
+function apachesolr_confgen_advanced_settings_menu() {
+  $items = array();
+
+  $items['admin/config/search/apachesolr/confgen/advanced_settings'] = array(
+    'title' => 'Advanced Solr Settings',
+    'weight' => 0,
+    'page callback' => 'drupal_get_form',
+    // see https://drupal.org/node/1737126
+    'page arguments' => array('variable_module_form', 'apachesolr_confgen_advanced_settings'),
+    'access arguments' => array('administer search'),
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+
+/**
+ * Implements hook_form_search_form_alter().
+ *
+ * @param $form
+ * @param $form_state
+ */
+function apachesolr_confgen_advanced_settings_form_variable_module_form_alter(&$form, $form_state) {
+  if ('apachesolr_confgen_advanced_settings' == $form['#variable_module_form']) {
+    $form['apachesolr_confgen_advanced_settings_dataDir']['#states'] = array(
+      // Hide this field when the 'Disable Data Dir setting' is enabled.
+      'invisible' => array(
+        ':input[name="apachesolr_confgen_advanced_settings_disable_dataDir"]' => array('checked' => TRUE),
+      ),
+    );
+  }
+}
+
+
+/**
+ * Implements hook_apachesolr_confgen_solrconfig_alter().
+ */
+function apachesolr_confgen_advanced_settings_apachesolr_confgen_solrconfig_alter($qp, $solr_version) {
+  if (!variable_get('apachesolr_confgen_advanced_settings_disable_dataDir', 1)) {
+    $qp
+      ->find(':root ' . ((strpos($solr_version, '4.') === 0) ? 'indexConfig' : 'indexDefaults'))
+      ->before('<dataDir>' . apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_dataDir') . '</dataDir>');
+  }
+
+  if (strpos($solr_version, '1.') === 0) {
+    // For solr 3.x and above see apachesolr_confgen_advanced_settings_apachesolr_confgen_solrcore_properties_alter().
+    $qp
+      ->find(':root maxTime')
+      ->text(apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_autoCommit_maxTime'));
+
+    $qp
+      ->find(':root maxDocs')
+      ->text(apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_autoCommit_maxDocs'));
+  }
+}
+
+/**
+ * Implements hook_apachesolr_confgen_solrcore_properties_alter().
+ */
+function apachesolr_confgen_advanced_settings_apachesolr_confgen_solrcore_properties_alter(&$properties, $solr_version) {
+  if (strpos($solr_version, '1.') !== 0) {
+    $properties['solr.autoCommit.MaxTime'] = apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_autoCommit_maxTime');
+    $properties['solr.autoCommit.MaxDocs'] = apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_autoCommit_maxDocs');
+    $properties['solr.mlt.timeAllowed'] = apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_mlt_timeAllowed');
+    $properties['solr.replication.master'] = apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_replication_master');
+    $properties['solr.replication.slave'] = apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_replication_slave');
+    $replication_pollInterval = apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_replication_pollInterval');
+    $properties['solr.replication.pollInterval'] = sprintf("%02d:%02d:%02d",
+      (int) ($replication_pollInterval / 3600),
+      (int) (($replication_pollInterval % 3600) / 60),
+      (int) (($replication_pollInterval % 3600) % 60)
+    );
+    $properties['solr.replication.masterUrl'] = apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_replication_masterUrl');
+
+    if (strpos($solr_version, '3.') !== 0) {
+      // since solr 4.x
+      $properties['solr.autoSoftCommit.MaxTime'] = apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_autoSoftCommit_maxTime');
+      $properties['solr.autoSoftCommit.MaxDocs'] = apachesolr_confgen_variable_get('apachesolr_confgen_advanced_settings_autoSoftCommit_maxDocs');
+    }
+  }
+}
+
+/**
+ * Implements hook_variable_update().
+ */
+function apachesolr_confgen_advanced_settings_variable_update($name, $value, $old_value, $options) {
+  switch ($name) {
+    case 'apachesolr_confgen_advanced_settings_disable_dataDir':
+    case 'apachesolr_confgen_advanced_settings_dataDir':
+    case 'apachesolr_confgen_advanced_settings_autoCommit_maxTime':
+    case 'apachesolr_confgen_advanced_settings_autoCommit_maxDocs':
+    case 'apachesolr_confgen_advanced_settings_autoSoftCommit_maxTime':
+    case 'apachesolr_confgen_advanced_settings_autoSoftCommit_maxDocs':
+    case 'apachesolr_confgen_advanced_settings_autoSoftCommit_maxTime':
+    case 'apachesolr_confgen_advanced_settings_mlt_timeAllowed':
+    case 'apachesolr_confgen_advanced_settings_replication_master':
+    case 'apachesolr_confgen_advanced_settings_replication_slave':
+    case 'apachesolr_confgen_advanced_settings_replication_pollInterval':
+    case 'apachesolr_confgen_advanced_settings_replication_masterUrl':
+      apachesolr_confgen_message_new_config_no_delete($name, $value, $old_value, $options);
+      break;
+  }
+}

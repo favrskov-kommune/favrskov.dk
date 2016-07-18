@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_node_grants_alter().
+ */
+function domain_xmlsitemap_node_grants_alter(&$grants, $account, $op) {
+  if (!empty($account->xmlsitemap_node_access)) {
+    unset($grants['domain_site']);
+    unset($grants['domain_id']);
+    $grants['domain_all'] = array(0);
+  }
+}

@@ -1,0 +1,14 @@
+name = "Views If Empty"
+description = "Allows Views to output a field if another field is empty."
+dependencies[] = views
+package = Views
+core = 7.x
+
+; Include views handlers
+files[] = includes/views/handlers/views_ifempty_handler_field.inc
+; Information added by drupal.org packaging script on 2013-10-19
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "views_ifempty"
+datestamp = "1382164860"
+

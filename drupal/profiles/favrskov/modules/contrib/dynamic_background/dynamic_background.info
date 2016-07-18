@@ -1,0 +1,15 @@
+name = Dynamic background
+description = Enables administrators to upload images, which are used as background on the site.
+package = Dynamic background
+core = 7.x
+files[] = dynamic_background.module
+files[] = includes/backgrounds.admin.inc
+files[] = includes/upload.form.inc
+files[] = dynamic_background.test
+dependencies[] = image
+; Information added by drupal.org packaging script on 2013-03-20
+version = "7.x-2.0-rc4"
+core = "7.x"
+project = "dynamic_background"
+datestamp = "1363809612"
+

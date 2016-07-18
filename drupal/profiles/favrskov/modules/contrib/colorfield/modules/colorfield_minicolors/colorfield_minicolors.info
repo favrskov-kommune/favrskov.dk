@@ -1,0 +1,15 @@
+name = jQuery Minicolors colorpicker
+description = Adds the jQuery Minicolors color picker for colorfield field type.
+package = Colorfield
+core = 7.x
+
+dependencies[] = jquery_update
+dependencies[] = libraries
+dependencies[] = colorfield
+
+; Information added by Drupal.org packaging script on 2014-03-25
+version = "7.x-1.1"
+core = "7.x"
+project = "colorfield"
+datestamp = "1395764960"
+

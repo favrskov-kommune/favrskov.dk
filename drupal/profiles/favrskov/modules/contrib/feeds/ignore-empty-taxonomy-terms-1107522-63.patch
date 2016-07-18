@@ -1,0 +1,15 @@
+diff --git a/mappers/taxonomy.inc b/mappers/taxonomy.inc
+index 02ac54e..3bb1f26 100644
+--- a/mappers/taxonomy.inc
++++ b/mappers/taxonomy.inc
+@@ -123,6 +123,10 @@ function taxonomy_feeds_set_target($source, $entity, $target, $terms, $mapping =
+ 
+   // Iterate over all values.
+   foreach ($terms as $term) {
++    // If term is empty, ignore it.
++    if (empty($term)){
++      continue;
++    }
+ 
+     if ($info['cardinality'] == $delta) {
+       break;
