@@ -580,12 +580,11 @@ function favrskov_helper_update_7031() {
   // Updates news view.
   features_revert_module('views_news');
 
-  // updates news.
-  $actual_time = time();
+  // Updates news.
   $query = db_select('node', 'n')
     ->fields('n', array('nid'))
     ->condition('type', 'news')
-    ->condition('created', $actual_time, '<=')
+    ->condition('created', time(), '<=')
     ->condition('status', 1)
     ->execute();
 
