@@ -574,13 +574,18 @@ function favrskov_helper_update_7030() {
 }
 
 /**
- * Updates news.
+ * Updates news and archive views.
  */
 function favrskov_helper_update_7031() {
+  // Updates news view.
+  features_revert_module('views_news');
+
+  // updates news.
+  $actual_time = time();
   $query = db_select('node', 'n')
     ->fields('n', array('nid'))
     ->condition('type', 'news')
-    ->condition('created', strtotime('06/12/2016'), '>=')
+    ->condition('created', $actual_time, '<=')
     ->condition('status', 1)
     ->execute();
 
@@ -591,21 +596,10 @@ function favrskov_helper_update_7031() {
       ->execute()
       ->fetchAssoc();
 
-    $node = node_load($record['nid']);
-    $date = field_get_items('node', $node, 'field_image');
-    $date_value = field_view_value('node', $node, 'field_date', $date[0]);
-
-    // Set Archive date
-    $node->archive_date = $date_value;
-
-    if (empty($node->archive_state)) {
-      $node->archive_state = 'actual';
-    }
-
     if (!empty($is_created)) {
-      autoarch_write_record('update', $record['nid'], $node->archive_state, $node->archive_date);
+      autoarch_write_record('update', $record['nid'], 'archive', NULL);
     } else {
-      autoarch_write_record('insert', $record['nid'], $node->archive_state, $node->archive_date);
+      autoarch_write_record('insert', $record['nid'], 'archive', NULL);
     }
   }
 }
