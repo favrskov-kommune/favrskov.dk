@@ -51,6 +51,8 @@ function content_type_news_form_news_node_form_submit(&$form, &$form_state) {
     $form_state['values']['field_date'][$language][0]['value2'] = date("Y-m-d H:i:s", $form_state['values']['created']);
   }
 
-  // Set Archive state depending of checkbox
+  // Set Archive state and date
   $form_state['values']['archive_state'] = $form_state['values']['archive_state_check'] ? 'actual' : 'archive';
+  $form_state['values']['archive_date'] = $form_state['values']['field_date'][$language][0]['value'];
+  $form_state['values']['archive_option'] = 'automatic';
 }
