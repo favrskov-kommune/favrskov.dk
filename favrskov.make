@@ -316,7 +316,7 @@ projects[views_bulk_operations][subdir] = contrib
 projects[views_bulk_operations][version] = 3.3
 
 projects[admin_views][subdir] = contrib
-projects[admin_views][version] = 1.5
+projects[admin_views][version] = 1.6
 projects[admin_views][patch][] = https://raw.githubusercontent.com/geo0000/custom-patches/master/admin_views-content_domain_filter.patch
 
 projects[total_control][subdir] = contrib
