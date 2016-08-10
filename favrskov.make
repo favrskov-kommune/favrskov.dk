@@ -208,7 +208,7 @@ projects[field_collection][version] = 1.0-beta8
 projects[field_collection][patch][1063434] = https://drupal.org/files/field_collection-feeds-1063434-121.patch
 
 projects[scheduler][subdir] = contrib
-projects[scheduler][version] = 1.3
+projects[scheduler][version] = 1.5
 
 projects[libraries][subdir] = contrib
 projects[libraries][version] = 2.3
