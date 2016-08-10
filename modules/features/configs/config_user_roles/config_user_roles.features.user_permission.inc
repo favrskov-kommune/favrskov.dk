@@ -3721,7 +3721,11 @@ function config_user_roles_user_default_permissions() {
   // Exported permission: 'schedule publishing of nodes'.
   $permissions['schedule publishing of nodes'] = array(
     'name' => 'schedule publishing of nodes',
-    'roles' => array(),
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
     'module' => 'scheduler',
   );
 
