@@ -3718,12 +3718,11 @@ function config_user_roles_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'schedule (un)publishing of nodes'.
-  $permissions['schedule (un)publishing of nodes'] = array(
-    'name' => 'schedule (un)publishing of nodes',
+  // Exported permission: 'schedule publishing of nodes'.
+  $permissions['schedule publishing of nodes'] = array(
+    'name' => 'schedule publishing of nodes',
     'roles' => array(
       'Administrator' => 'Administrator',
-      'Communications Officer' => 'Communications Officer',
       'Editor' => 'Editor',
       'Webmaster' => 'Webmaster',
     ),
@@ -4182,6 +4181,18 @@ function config_user_roles_user_default_permissions() {
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'view scheduled content'.
+  $permissions['view scheduled content'] = array(
+    'name' => 'view scheduled content',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'scheduler',
   );
 
   // Exported permission: 'view the administration theme'.
