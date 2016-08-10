@@ -572,3 +572,10 @@ function favrskov_helper_update_7030() {
     }
   }
 }
+
+/**
+ * Feature revert. Related to scheduler issue.
+ */
+function favrskov_helper_update_7031() {
+  features_revert_module('config_user_roles');
+}
