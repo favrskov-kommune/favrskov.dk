@@ -96,7 +96,29 @@
             openCloseMethods.close(self);
           }
         }
+
+        // Reinit minimaps in case if map present in Answer field of FAQ
+        var $minimap = self.next().find('.minimapwidget'),
+            mapID = $minimap.attr('minimapid');
+
+        updateMap();
+
+        function updateMap() {
+          var mapsWidgets = window.minimapwidgets || undefined;
+
+          if (mapsWidgets !== undefined) {
+            minimapwidgets.map(function(mapItem){
+              if (mapID === mapItem.minimapId) {
+                mapItem._mapControl.map.updateSize();
+              }
+            });
+          }
+        }
+
       });
     });
+
+
+
   };
 })(jQuery);
