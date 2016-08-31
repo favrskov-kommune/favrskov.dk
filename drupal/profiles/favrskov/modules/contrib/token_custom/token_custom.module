@@ -1,0 +1,520 @@
+<?php
+
+/**
+ * @file
+ * It gives the user the ability to create custom tokens using PHP code
+ * for specific replacements that can improve other modules relying
+ * on the token Drupal 7 core API.
+ */
+
+
+/*
+ * The default token type machine name.
+ */
+define('TOKEN_CUSTOM_DEFAULT_TYPE', 'custom');
+
+
+/**
+ * Implements of hook_help().
+ */
+function token_custom_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#token_custom':
+      $output = '<p>'
+              . t("This allows you to create custom tokens for use throughtout the site using the <a href='@admin_url'>administration pages</a>",
+                  array('@admin_url' => url('admin/structure/token-custom')))
+              . '</p>';
+      $output .= '<p>'
+              . t('Tokens can be created using markup or PHP and have access to context related objects.')
+              . '</p>';
+      return $output;
+  }
+}
+
+
+/**
+ * Implements of hook_permission().
+ */
+function token_custom_permission() {
+  return array(
+    'administer custom tokens' => array(
+      'title' => t('Manage custom tokens using PHP.'),
+      'description' => t('Create/edit/delete custom tokens using markup or PHP.'),
+    ),
+    'list custom tokens' => array(
+      'title' => t("Access the custom token's administration page."),
+      'description' => t('View custom tokens.'),
+    ),
+  );
+}
+
+
+/**
+ * Implements of hook_menu().
+ */
+function token_custom_menu() {
+  $items['admin/structure/token-custom'] = array(
+    'title'      => 'Custom tokens',
+    'description'    => 'Administrate custom tokens.',
+    'page callback'  => 'token_custom_list_page',
+    'access arguments' => array('list custom tokens'),
+    'file'       => 'token_custom.admin.inc',
+  );
+
+  $items['admin/structure/token-custom/list'] = array(
+    'title'          => 'Custom tokens',
+    'description'    => 'List of custom tokens.',
+    'type'           => MENU_DEFAULT_LOCAL_TASK,
+  );
+
+  $items['admin/structure/token-custom/add'] = array(
+    'title'      => 'Add token',
+    'description'    => 'Create custom tokens',
+    'page callback'  => 'drupal_get_form',
+    'page arguments' => array('token_custom_edit_form', 'add'),
+    'access arguments' => array('administer custom tokens'),
+    'file'           => 'token_custom.admin.inc',
+    'weight'         => 1,
+    'type'           => MENU_LOCAL_ACTION,
+  );
+
+  $items['admin/structure/token-custom/%token_custom/edit'] = array(
+    'title'          => 'Edit token',
+    'page callback'  => 'drupal_get_form',
+    'page arguments' => array('token_custom_edit_form', 'edit', 3),
+    'access arguments' => array('administer custom tokens'),
+    'file'           => 'token_custom.admin.inc',
+    'type'           => MENU_CALLBACK,
+    'weight'         => 10,
+  );
+
+  $items['admin/structure/token-custom/%token_custom/delete'] = array(
+    'title' => 'Delete custom token',
+    'page callback'   => 'drupal_get_form',
+    'page arguments'  => array('token_custom_delete_confirm_form', 3),
+    'access arguments' => array('administer custom tokens'),
+    'file'            => 'token_custom.admin.inc',
+  );
+
+  $items['admin/structure/token-custom/type'] = array(
+    'title'      => 'Custom token types',
+    'description'    => 'View custom token types',
+    'page callback'  => 'token_custom_type_list_page',
+    'access arguments' => array('administer custom tokens'),
+    'file'           => 'token_custom.admin.inc',
+    'weight'         => 2,
+    'type'           => MENU_LOCAL_TASK,
+  );
+
+  $items['admin/structure/token-custom/type/add'] = array(
+    'title'      => 'Add token type',
+    'description'    => 'Create custom token types',
+    'page callback'  => 'drupal_get_form',
+    'page arguments' => array('token_custom_type_edit_form', 'add'),
+    'access arguments' => array('administer custom tokens'),
+    'file'           => 'token_custom.admin.inc',
+    'weight'         => 2,
+    'type'           => MENU_LOCAL_ACTION,
+  );
+
+  $items['admin/structure/token-custom/type/%token_custom_type/edit'] = array(
+    'title'          => 'Edit token type',
+    'page callback'  => 'drupal_get_form',
+    'page arguments' => array('token_custom_type_edit_form', 'edit', 4),
+    'access callback' => 'token_custom_type_forms_access',
+    'access arguments' => array(4),
+    'file'           => 'token_custom.admin.inc',
+    'type'           => MENU_CALLBACK,
+  );
+
+  $items['admin/structure/token-custom/type/%token_custom_type/delete'] = array(
+    'title' => 'Delete custom token',
+    'page callback'   => 'drupal_get_form',
+    'page arguments'  => array('token_custom_type_delete_confirm_form', 4),
+    'access callback' => 'token_custom_type_forms_access',
+    'access arguments' => array(4),
+    'file'            => 'token_custom.admin.inc',
+  );
+
+  return $items;
+}
+
+
+/**
+ * Implements hook_token_info().
+ */
+function token_custom_token_info() {
+
+  $token_info = array();
+
+  foreach (token_custom_type_load_multiple() as $type) {
+    $token_info['types'][$type->machine_name] = array(
+      'name' => $type->name,
+      'description' => $type->description,
+    );
+  }
+
+  foreach (token_custom_load_multiple() as $token) {
+    $token_info['tokens'][$token->type][$token->machine_name] = array(
+      'name'         => $token->name,
+      'description'  => $token->description,
+    );
+  }
+
+  return $token_info;
+}
+
+
+/**
+ * Implements hook_tokens().
+ */
+function token_custom_tokens($type, $tokens, array $data = array(), array $options = array()) {
+
+  $return = array();
+
+  // Load all our custom modules mentionned in the $tokens array.
+  $custom_tokens = token_custom_load_multiple(array_keys($tokens));
+
+  foreach ($custom_tokens as $machine_name => $custom_token) {
+    if (($type == $custom_token->type)
+        && array_key_exists($machine_name, $tokens)) {
+      $return[$tokens[$machine_name]]
+        = token_custom_token_render($machine_name, $custom_token->content, $data, $options);
+    }
+  }
+
+  return $return;
+}
+
+
+/**
+ * Access callback for the delete token type form.
+ *
+ * Do not allow deletion of the default custom type.
+ *
+ * @param object $type
+ *   The token type to edit/delete.
+ *
+ * @return bool
+ *   TRUE if user has permission AND type is not the default fixed one.
+ */
+function token_custom_type_forms_access($type) {
+  return user_access('administer custom tokens') && $type->machine_name != TOKEN_CUSTOM_DEFAULT_TYPE;
+}
+
+
+/*
+ * CRUD routines
+ * ----------
+ *
+ * We store the custom types as a variable, since we will
+ * probably never have more than 5 or 6.
+ */
+
+/**
+ * Load all custom types.
+ *
+ * @return array
+ *   The custom token types.
+ */
+function token_custom_type_load_multiple() {
+  $default_type = new stdClass();
+  $default_type->name = t('Custom');
+  $default_type->machine_name = TOKEN_CUSTOM_DEFAULT_TYPE;
+  $default_type->description = t('User created tokens types using the Custom Tokens module.');
+
+  // Load token types and make sure the custom type is always there,
+  // and wasn't deleted somewhere.
+  $types = variable_get('token_custom_types', array());
+  if (!isset($types[TOKEN_CUSTOM_DEFAULT_TYPE])) {
+    $types[TOKEN_CUSTOM_DEFAULT_TYPE] = $default_type;
+  }
+
+  return $types;
+}
+
+
+/**
+ * Load a single custom type.
+ *
+ * @param string $type
+ *   The type to load
+ *
+ * @return bool|array
+ *   The loaded type array or FALSE on error.
+ */
+function token_custom_type_load($type) {
+  $types = token_custom_type_load_multiple();
+  return isset($types[$type]) ? $types[$type] : FALSE;
+}
+
+
+/**
+ * Save a custom type.
+ *
+ * @param array $type
+ *   The custom type to save.
+ */
+function token_custom_type_save($type) {
+  if (!is_object($type)) {
+    $type = (object) $type;
+  }
+
+  if ($type->machine_name == TOKEN_CUSTOM_DEFAULT_TYPE) {
+    return FALSE;
+  }
+
+  $types = token_custom_type_load_multiple();
+  $types[$type->machine_name] = $type;
+  variable_set('token_custom_types', $types);
+  return $type;
+}
+
+
+/**
+ * Delete token type.
+ *
+ * @param string $delete_type
+ *   The token type's machine name.
+ *
+ * @return bool
+ *   FALSE if the token type didn't exist. TRUE otherwise.
+ */
+function token_custom_type_delete($delete_type) {
+
+  $types = token_custom_type_load_multiple();
+
+  if (empty($delete_type)
+      || !isset($types[$delete_type])) {
+    return FALSE;
+  }
+
+  // Do not allow deleting the default custom type.
+  if ($delete_type == TOKEN_CUSTOM_DEFAULT_TYPE) {
+    return FALSE;
+  }
+
+  // Make sure all tokens with the deleted type are given the custom type.
+  $tokens = token_custom_load_multiple();
+  foreach ($tokens as $token) {
+    if ($token->type == $delete_type) {
+      $token->type = TOKEN_CUSTOM_DEFAULT_TYPE;
+      $token->is_new = FALSE;
+      token_custom_save($token);
+    }
+  }
+
+  // Remove token type.
+  unset($types[$delete_type]);
+  variable_set('token_custom_types', $types);
+
+  // Clear the Token module's token cache table.
+  if (module_exists('token')) {
+    token_clear_cache();
+  }
+
+  return TRUE;
+}
+
+
+/**
+ * Saves a token to the database.
+ *
+ * @param object|array $token
+ *   An object or an array containing the values to save.
+ *   The key 'is_new' determines if the token is being inserted or updated
+ *
+ * @return bool
+ *   True on success.
+ */
+function token_custom_save($token) {
+  $is_new = is_object($token) ? (bool) $token->is_new : !empty($token['is_new']);
+
+  $return = (bool) drupal_write_record('token_custom', $token, $is_new ? array() : 'machine_name');
+
+  // Clear the Token module's token cache table.
+  if (module_exists('token')) {
+    token_clear_cache();
+  }
+
+  return $return;
+}
+
+
+/**
+ * Loads an individual token from the database.
+ *
+ * Calls on the main loading function that maintains a static cache of
+ * the loaded tokens.
+ *
+ * @param string $machine_name
+ *   The token's machine name.
+ *
+ * @return object|NULL
+ *   The token object or null.
+ */
+function token_custom_load($machine_name = NULL) {
+  if (empty($machine_name) || !is_string($machine_name)) {
+    return NULL;
+  }
+
+  $tokens = token_custom_load_multiple(array($machine_name));
+  return array_shift($tokens);
+}
+
+
+/**
+ * Loads an array of tokens from the database.
+ *
+ * Maintains a static cache with the tokens already loaded to
+ * avoid unnecessary queries.
+ *
+ * @param array $names
+ *   An array containing the machine names of the tokens to return.
+ *   If none, then loads and returns all the tokens.
+ *
+ * @return array
+ *   An array of token objects, keyed by the token's machine name.
+ */
+function token_custom_load_multiple($names = NULL) {
+
+  // FIXME Use drupal_static instead of static keyword.
+  static $tokens = array();
+  static $all_loaded = FALSE;
+
+  if ($names === NULL) {
+    if (!$all_loaded) {
+      $loaded = array_keys($tokens);
+      $query = db_select('token_custom')->fields('token_custom');
+      if (!empty($loaded)) {
+        $query->condition('machine_name', $loaded, 'NOT IN');
+      }
+      $results = $query->execute();
+      $all_loaded = TRUE;
+      foreach ($results as $token) {
+        $tokens[$token->machine_name] = $token;
+      }
+    }
+
+    return $tokens;
+  }
+
+  $to_fetch = array();
+  foreach ($names as $name) {
+    if (!array_key_exists($name, $tokens)) {
+      $to_fetch[] = $name;
+    }
+  }
+
+  if (!empty($to_fetch)) {
+    $query = db_select('token_custom')
+               ->fields('token_custom')
+               ->condition('machine_name', $to_fetch, 'IN');
+    $results = $query->execute();
+
+    foreach ($results as $token) {
+      $tokens[$token->machine_name] = $token;
+    }
+  }
+
+  $return = array();
+  foreach ($names as $name) {
+    if (isset($tokens[$name])) {
+      $return[$name] = $tokens[$name];
+    }
+  }
+
+  return $return;
+}
+
+
+/**
+ * Delete an individual token from the database.
+ *
+ * @param string $machine_name
+ *   The token's machine name.
+ *
+ * @return bool|object
+ *   The deleted token object or false on error.
+ */
+function token_custom_delete($machine_name) {
+
+  if (!is_string($machine_name) || empty($machine_name)) {
+    return FALSE;
+  }
+
+  $return = db_delete('token_custom')
+              ->condition('machine_name', $machine_name)
+              ->execute();
+
+  // Clear the Token module's token cache table.
+  if (module_exists('token')) {
+    token_clear_cache();
+  }
+
+  return $return;
+}
+
+
+/**
+ * Evaluates a string using the given token.
+ *
+ * @param string $machine_name
+ *   The machine_name of the custom token being used.
+ * @param string $code
+ *   A string containing the code to evaluate.
+ * @param array $data
+ *   The $data array passed on to token_replace().
+ * @param array $options
+ *   The $options array passed on to token_replace().
+ *
+ * @return string
+ *   A string containing the printed output of the code,
+ *   followed by the returned output of the code.
+ */
+function token_custom_token_render($machine_name, $code, $data, $options) {
+  // Load the custom token.
+  $token = token_custom_load($machine_name);
+
+  // Determine which format to use.
+  $format = isset($token->format) ? $token->format : NULL;
+
+  /*
+   * If it's a php_filter token, then pass the $data variable
+   * to the evaluated token.
+   */
+  if ($format == 'php_code') {
+
+    // Generate a unique static key.
+    $static_count = &drupal_static('token_custom_data:counter', 0);
+    $static_key = 'token_custom_data:' . $static_count;
+    $static_count ++;
+
+    /*
+     * Store value in static cache and leave it there.
+     */
+    drupal_static($static_key,
+                  array(
+                    'data' => $data,
+                    'options' => $options,
+                  ));
+
+    // Add static data to the evaluated code.
+    $code = '
+<?php
+  if ($static = drupal_static(\'' . $static_key . '\')) {
+    extract($static);
+  } ?>' . $code;
+
+    $output = check_markup($code, $format);
+
+    // Clear static variable to potentially free memory.
+    drupal_static_reset($static_key);
+
+    return $output;
+  }
+  else {
+    // Format the output using the format.
+    return check_markup($code, $format);
+  }
+}

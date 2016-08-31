@@ -1,0 +1,22 @@
+# Danish translation of Pathologic (7.x-2.12)
+# Copyright (c) 2014 by the Danish translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Pathologic (7.x-2.12)\n"
+"POT-Creation-Date: 2014-01-30 22:56+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Danish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Input filters"
+msgstr "Input-filtre"
+msgid "Pathologic"
+msgstr "Pathologic"
+msgid "Helps avoid broken links and incorrect paths in content."
+msgstr "Hjælper til at undgå brudte links og forkerte stier i indhold."
+msgid "Correct URLs with Pathologic"
+msgstr "Korrigér URLer med Pathlogic"

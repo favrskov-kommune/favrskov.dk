@@ -1,0 +1,11 @@
+name = Content types per menu
+description = Alters the menu edit form to allow enabling content types per menu.
+
+core = 7.x
+
+; Information added by drupal.org packaging script on 2012-08-05
+version = "7.x-1.0"
+core = "7.x"
+project = "ct_per_menu"
+datestamp = "1344189704"
+

@@ -1,0 +1,60 @@
+<?php
+/**
+ * @file
+ * Installation file for the submodule colorfield minicolors module.
+ * It checks if the minimum requirements are respected.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function colorfield_minicolors_enable() {
+  $library = libraries_detect('jquery-miniColors');
+  if (!$library['installed']) {
+    drupal_set_message(t('Beware, you did not configure jQuery miniColors library correctly. Please check the module README.txt.'), 'warning');
+  }
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function colorfield_minicolors_requirements($phase) {
+  $t = get_t();
+  if ($phase == 'install') {
+    $jquery = drupal_get_library('system', 'jquery');
+    if (!version_compare($jquery['version'], '1.7.1', '>=')) {
+      return array(
+        'colorfiel_minicolors_jquery_version' => array(
+          'title' => $t('Wrong version of jQuery installed.'),
+          'value' => $t('jQuery minicolors requires a higher version of jQuery >= 1.7.1.'),
+          'description' => $t('In order to enable jQuery minicolors as a color picker, you need to enable jQuery update and configure jQuery version to be >= 1.7.1.'),
+          'severity' => REQUIREMENT_ERROR,
+        ),
+      );
+    }
+  }
+  elseif ($phase == 'runtime') {
+    $jquery = drupal_get_library('system', 'jquery');
+    $library = libraries_detect('jquery-miniColors');
+    if (!version_compare($jquery['version'], '1.7.1', '>=')) {
+      return array(
+        'colorfield_minicolors_jquery_version' => array(
+          'title' => $t('Wrong version of jQuery installed.'),
+          'value' => $t('jQuery minicolors requires a higher version of jQuery >= 1.7.1.'),
+          'description' => $t('In order to enable jQuery minicolors as a color picker, you need to enable jQuery update and configure jQuery version to be >= 1.7.1.'),
+          'severity' => REQUIREMENT_ERROR,
+        ),
+      );
+    }
+    elseif (!$library['installed']) {
+      return array(
+        'colorfield_minicolors_library_missing' => array(
+          'title' => $t('Library files are missing.'),
+          'value' => $t('The library jQuery miniColors can not be loaded.'),
+          'description' => $t('Please check that your installation of the library is correct.'),
+          'severity' => REQUIREMENT_ERROR,
+        ),
+      );
+    }
+  }
+}

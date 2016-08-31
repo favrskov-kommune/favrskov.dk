@@ -1,0 +1,147 @@
+<?php
+/**
+ * @file
+ * Install file for media_browser_plus.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function media_browser_plus_install() {
+  // This should be load after views is ready.
+  db_query("UPDATE {system} SET weight = 11 WHERE name = 'media_browser_plus'");
+}
+
+/**
+ * Implements hook_enable().
+ *
+ * Ensure the necessary structures exist.
+ */
+function media_browser_plus_enable() {
+  // Folder vocabulary and root term.
+  $root_folder = media_browser_plus_get_media_root_folder(TRUE);
+  $vocabulary = taxonomy_vocabulary_machine_name_load('media_folders');
+
+  // Create the folder field.
+  $field = array(
+    'field_name' => 'field_folder',
+    'label' => st('Media Folder'),
+    'type' => 'taxonomy_term_reference',
+    // Media file can only be in one folder at a time.
+    'cardinality' => 1,
+    'entity_type' => 'file',
+    'bundle' => 'image',
+    'required' => TRUE,
+    'settings' => array(
+      'allowed_values' => array(
+        array(
+          'vocabulary' => $vocabulary->machine_name,
+          'parent' => 0,
+        ),
+      ),
+    ),
+  );
+  $field_info = field_info_field($field['field_name']);
+  if (empty($field_info)) {
+    field_create_field($field);
+  }
+
+  // Backward compatibility handling.
+  // @TODO Version compatibility cleanup.
+  switch (TRUE) {
+    // 23. April 2013 http://drupal.org/node/1977728
+    case function_exists('file_type_load_all'):
+      $file_types = array_keys(file_type_load_all());
+      break;
+
+    // Old.
+    case function_exists('file_type_get_all_types'):
+      $file_types = array_keys(file_type_get_all_types());
+      break;
+
+    // Very old.
+    default:
+      $file_types = array_keys(file_info_file_types());
+  }
+  // Ensure instance for each file bundle.
+  foreach ($file_types as $bundle) {
+    $field['bundle'] = $bundle;
+    $instance_info = field_info_instance($field['entity_type'], $field['field_name'], $field['bundle']);
+    if (empty($instance_info)) {
+      field_create_instance($field);
+    }
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function media_browser_plus_uninstall() {
+  variable_del('media_root_folder');
+  variable_del('media_browser_plus_thumbnails_as_default_browser');
+  variable_del('media_browser_plus_filesystem_folders');
+  variable_del('media_browser_plus_disable_default_view');
+  variable_del('media_browser_plus_root_folder_tid');
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function media_browser_plus_requirements($phase) {
+  $requirements = array();
+  // Ensure translations don't break during installation.
+  $t = get_t();
+
+  if ($phase == 'runtime') {
+    // Check if we've to rely on and if it's enabled.
+    $result = db_query("SELECT * FROM {system} WHERE name = 'media_bulk_upload' and type = 'module'")->rowCount();
+    if ($result) {
+      $requirements['mbp_media_bulk_upload'] = array(
+        'title' => $t('Media Browser Plus: Media Bulk Upload enabled'),
+        'value' => $t('Media Browser Plus needs Media Bulk Upload to work properly.'),
+        'severity' => REQUIREMENT_OK,
+      );
+      if (!module_exists('media_bulk_upload')) {
+        $requirements['mbp_media_bulk_upload']['severity'] = REQUIREMENT_WARNING;
+        $requirements['mbp_media_bulk_upload']['value'] .= $t(
+          ' (Enable the module in the !module_admin_link)',
+          array('!module_admin_link' => l($t('module administration'), 'admin/modules'))
+        );
+      }
+    }
+
+    $requirements['mbp_archiver'] = array(
+      'title' => $t('Media Browser Plus: Archiver found'),
+      'value' => $t('Media Browser Plus needs an archiver to provide multifile downloads.'),
+      'severity' => REQUIREMENT_OK,
+    );
+    if (!count(archiver_get_info())) {
+      $requirements['mbp_archiver']['severity'] = REQUIREMENT_WARNING;
+      $requirements['mbp_archiver']['value'] .= l($t('(further information)'), 'https://api.drupal.org/api/drupal/modules%21system%21system.api.php/function/hook_archiver_info/7');
+    }
+  }
+  return $requirements;
+}
+
+/**
+ * Update from 2.x to 3.x branch.
+ */
+function media_browser_plus_update_7300() {
+  // Set weight.
+  db_query("UPDATE {system} SET weight = 11 WHERE name = 'media_browser_plus'");
+
+  // Fetch the media root term and store it in the related variable.
+  $results = taxonomy_get_term_by_name('Media Root', 'media_folders');
+  if (!empty($results)) {
+    $root_folder = reset($results);
+  }
+  variable_set('media_browser_plus_root_folder_tid', $root_folder->tid);
+
+  // Remove legacy variables.
+  variable_del('media_media_per_page');
+  variable_del('media_grid_window_height');
+  variable_del('media_page_items_per_page');
+
+  // Make sure the dependency modules are enabled.
+  module_enable(array('views_tree', 'views_bulk_operations'));
+}

@@ -1,0 +1,6 @@
+Linkit_panel_pages x.x-x.x, xxxx-xx-xx
+
+
+Linkit_panel_pages 7.x-2.0, 2012-02-13
+------------------------------
+Stable release for 7.x-2.0.

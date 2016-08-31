@@ -1,0 +1,170 @@
+<?php
+
+/**
+ * @file
+ * This module provides user with the option to select a dynamic background
+ * image for each user.
+ */
+
+/**
+ * Implementation of hook_perm().
+ */
+function dynamic_background_user_permission() {
+  return array(
+    'dynamic background user image selection' => array(
+      'title' => t('Allow selection of backgrounds in user profile'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_menu(). Hooks into the profile with a "My background"
+ * tab, where users can select one of the backgrounds.
+ *
+ * @return array menu items
+ */
+function dynamic_background_user_menu() {
+  return array(
+    'user/%user/backgrounds' => array(
+      'title' => 'My background',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('dynamic_background_user_form', 1),
+      'access arguments' => array('dynamic background user image selection'),
+      'type' => MENU_LOCAL_TASK,
+    ),
+  );
+}
+
+/**
+ * Build the administration interface for dynamic background user, if non
+ * defined only default elements will be used.
+ *
+ * @return array $form
+ */
+function dynamic_background_user_settings_form() {
+  $form = array();
+
+  // Add image style to the form.
+  $form += dynamic_background_image_style_form('dynamic_background_user_image_style');
+
+  // Add image behavior form.
+  $form += dynamic_background_image_behaviour_form('dynamic_background_user_image_behaviour');
+
+  return $form;
+}
+
+/**
+ * Menu callback that generates the form used in the "My background" tab on the
+ * profile page.
+ */
+function dynamic_background_user_form($form, $form_state, $user) {
+  // Add the image selection part of the form
+  $form['dynamic_background'] = dynamic_background_image_selector_form('user', $user->uid);
+
+  // Allow user to upload a image.
+  if (user_access('dynamic background user image selection')) {
+    // Load settings and find the number of images.
+    $settings = variable_get('dynamic_background_user', array());
+    $no_of_images = isset($settings['upload']['no_of_images']) ? $settings['upload']['no_of_images'] : 1;
+
+    // Only proceed if the form is needed.
+    if ($no_of_images > 0) {
+      // Add user upload form.
+      $upload_form = dynamic_background_user_upload_form('user', $user->uid, $no_of_images);
+      $form['dynamic_background'] += $upload_form['form'];
+
+      // Add submission functions.
+      $form['#submit'][] = $upload_form['submit'];
+      $form['#submit'][] = 'dynamic_background_user_form_submit';
+    }
+  }
+
+  // Submit handler.
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Update background'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit handler for user background selection and saves the selected image's
+ * id into the database.
+ */
+function dynamic_background_user_form_submit($form, &$form_state) {
+  // Check if any image have been selected.
+  $fid = NULL;
+  foreach ($form_state['values']['dynamic_background'] as $key => $value) {
+    if (isset($value['selected']) && $value['selected']) {
+      $fid = $key;
+      break;
+    }
+  }
+
+  // Check for user upload images
+  if (isset($form_state['values']['dynamic_background']['dynamic_background_picture_upload'])) {
+    foreach ($form_state['values']['dynamic_background']['dynamic_background_picture_upload'] as $key => $value) {
+      if (isset($value['picture_use']) && $value['picture_use']) {
+        $fid = $key;
+        break;
+      }
+    }
+  }
+
+  // Get dynamic background info.
+  $info = $form_state['values']['dynamic_background']['dynamic_background_info'];
+
+  // Update the active background image.
+  dynamic_background_set_active($fid, 'user', $info['data']);
+}
+
+/**
+ * Implements hook_dynamic_background_css().
+ */
+function dynamic_background_user_dynamic_background_css($vars) {
+  global $user;
+
+  // Get active image information.
+  $image = dynamic_background_active_image('user', $user->uid);
+
+  // If no image have been found try to select random image (if configured).
+  $image_behaviour = variable_get('dynamic_background_user_image_behaviour', array());
+  if (!$image && (isset($image_behaviour['random']) && $image_behaviour['random'])) {
+    $image = dynamic_background_random_image('user', $user->uid);
+  }
+
+  if ($image) {
+    // Load image style settings.
+    $image_style = variable_get('dynamic_background_user_image_style', FALSE);
+
+    return array(
+      'image' => $image,
+      'configuration' => variable_get('dynamic_background_user_css', array()),
+      'image_style' => $image_style ? $image_style['style'] : FALSE,
+    );
+  }
+}
+
+/**
+ * Implements hook_dynamic_background_info().
+ */
+function dynamic_background_user_dynamic_background_info() {
+  return array(
+    'type' => 'user',
+    'menu' => array(
+      'title' => t('User'),
+      'description' => t('Configure user extension'),
+    ),
+    'upload' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_dynamic_background_weight().
+ */
+function dynamic_background_user_dynamic_background_weight() {
+  return array(
+    'weight' => -25,
+  );
+}

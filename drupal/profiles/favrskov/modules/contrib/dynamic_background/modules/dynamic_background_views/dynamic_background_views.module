@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * @file
+ * This module implements the views extension for dynamic background.
+ */
+
+/**
+ * Implementation of hook_views_api().
+ */
+function dynamic_background_views_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'dynamic_background_views') . '/views',
+  );
+}
+
+/**
+ * Build the administration interface for dynamic background views, if non
+ * defined the default form elements will only be shown.
+ *
+ * @return array $form
+ */
+function dynamic_background_views_settings_form() {
+  $form = array();
+
+  // Add image style to the form.
+  $form += dynamic_background_image_style_form('dynamic_background_views_image_style');
+
+  // Add image behavior form.
+  $form += dynamic_background_image_behaviour_form('dynamic_background_views_image_behaviour');
+
+  return $form;
+}
+
+/**
+ * Implements hook_dynamic_background_css().
+ */
+function dynamic_background_views_dynamic_background_css($vars) {
+  // If the current page is a view, try to use dynamic background.
+  if ($view = views_get_page_view()) {
+    $view_id = $view->name . '_' . $view->current_display;
+
+    // Get active image an return information.
+    $image = dynamic_background_active_image('views', $view_id);
+
+    // If no image have been found try to select random image (if configured).
+    $image_behaviour = variable_get('dynamic_background_views_image_behaviour', array());
+    if (!$image && (isset($image_behaviour['random']) && $image_behaviour['random'])) {
+      $image = dynamic_background_random_image('views', $view_id);
+    }
+
+    if ($image) {
+      // Load image style settings.
+      $image_style = variable_get('dynamic_background_views_image_style', FALSE);
+
+      return array(
+        'image' => $image,
+        'configuration' => variable_get('dynamic_background_views_css', array()),
+        'image_style' => $image_style ? $image_style['style'] : FALSE,
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_dynamic_background_info().
+ */
+function dynamic_background_views_dynamic_background_info() {
+  return array(
+    'type' => 'views',
+    'menu' => array(
+      'title' => t('Views'),
+      'description' => t('Configure views extension'),
+    ),
+    'upload' => FALSE,
+  );
+}
+
+/**
+ * Implements hook_dynamic_background_weight().
+ */
+function dynamic_background_views_dynamic_background_weight() {
+  return array(
+    'weight' => -40,
+  );
+}

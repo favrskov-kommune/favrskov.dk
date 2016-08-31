@@ -1,0 +1,144 @@
+#media-format-form
+  & > div
+    float: left
+  .media-item
+    float: none
+    border: none
+    margin-bottom: 15px
+    .media-thumbnail
+      overflow: hidden
+      img
+        border: none
+        vertical-align: middle
+        &:hover
+          border: none
+  .image-edit-elements-container
+    float: left
+  #edit-options
+    float: right
+    border: none
+    margin: 0
+    padding: 0
+
+.format-and-crop-container-top
+  .form-item-image-style-integrate
+    padding: 0
+    margin: 0 0 5px 0
+  .form-item-image-style
+    float: left
+    padding: 0
+    margin: 0 0 5px 0
+    label
+      float: left
+      display: block
+      margin-right: 5px
+    select
+      float: left
+      margin-top: 2px
+  .image-style-description
+    float: left
+    margin: 0 0 5px 0
+    font-style: italic
+    font-size: 95%
+
+.format-and-crop-container-bottom
+  background: #ddd
+  border-radius: 5px
+  fieldset
+    border: none
+    margin: 0
+    padding: 0
+  .crop-dimensions-container
+    float: left
+    padding: 20px 0 0 0
+    width: 150px
+    .fieldset-legend
+      margin: 0
+      padding: 0 0 0 5px
+      height: 24px
+      line-height: 24px
+      display: block
+      float: left
+      text-transform: none
+      .crop-title-description
+        font-weight: normal
+    .fieldset-wrapper
+      float: left
+      padding: 0px 5px 5px 5px
+      .crop-aspect-ratio-lock
+        float: left
+        cursor: pointer
+        padding: 10px 0px
+      .crop-aspect-ratio-unlock
+        float: left
+        cursor: pointer
+        padding: 10px 0px
+      .crop-dimensions
+        padding: 5px 0px 5px 5px
+        float: left
+        .form-item
+          padding: 0
+          margin: 0 0 8px 0
+          label
+            display: block
+            float: left
+            width: 50px
+            font-weight: bold
+  .scale-image-container
+    float: left
+    padding: 20px 0 0 0
+    width: 125px
+    .fieldset-legend
+      margin: 0
+      padding: 0 0 0 5px
+      height: 24px
+      line-height: 24px
+      display: block
+      float: left
+      text-transform: none
+    .fieldset-wrapper
+      float: left
+      padding: 5px
+      .form-item
+        padding: 0
+        margin: 0 0 8px 0
+        label
+          display: block
+          float: left
+          width: 50px
+          font-weight: bold
+  .rotate-image-container
+    float: left
+    padding: 20px 0 0 0
+    width: 75px
+    .fieldset-legend
+      margin: 0
+      padding: 0 0 0 5px
+      height: 24px
+      line-height: 24px
+      display: block
+      float: left
+      text-transform: none
+    .fieldset-wrapper
+      float: left
+      padding: 5px
+      .rotate-right-button,
+      .rotate-left-button
+        line-height: 20px
+        height: 20px
+        margin: 0 0 8px 0
+      .rotate-right-button
+        background: transparent url(../images/rotate.png) no-repeat 0px 2px
+      .rotate-left-button
+        background: transparent url(../images/rotate.png) no-repeat 0px -19px
+  .crop-warning,
+  .scale-warning
+    float: left
+
+.disable-interface
+  position: absolute
+  top: -12px
+  right: -12px
+
+span.special-select-text
+  margin-right: 5px

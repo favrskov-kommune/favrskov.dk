@@ -1,0 +1,174 @@
+<?php
+/**
+ * @file
+ * Media Browser Plus tests base.
+ */
+
+/**
+ * Provides some basic functionality for all MBP tests.
+ */
+class MediaBrowserPlusTestBase extends DrupalWebTestCase {
+
+  /**
+   * Admin user to test with.
+   *
+   * @var stdClass|FALSE
+   */
+  protected $adminUser = FALSE;
+
+  /**
+   * Prepare testing.
+   *
+   * Declare dependencies and create admin user.
+   */
+  public function setUp() {
+    parent::setUp(array(
+      'file_entity',
+      'media',
+      'views_tree',
+      'views_bulk_operations',
+      'media_browser_plus',
+    ));
+
+    // Create user.
+    $this->adminUser = $this->drupalCreateUser(array(
+      'administer files',
+      'administer taxonomy',
+    ));
+  }
+
+  /**
+   * Helper to create a folder structure based on an given array.
+   *
+   * @param array $hierarchy
+   *   An array that represents the hierarchy to create. E.g.
+   *   array(
+   *     'root_folder' => array(
+   *       'level_1_1' => array(
+   *         'level_1_1_1' => array(),
+   *       ),
+   *       'level_1_2' => array(
+   *         'level_1_2_1' => array(),
+   *       ),
+   *     ),
+   *   );
+   * @param bool $run_asserts
+   *   Enable/disable the test assertions.
+   * @param int $pid
+   *   The tid of the parent the term has to be assigned to.
+   */
+  protected function folderCreationHelper($hierarchy, $run_asserts = TRUE, $pid = 0) {
+    if (is_array($hierarchy)) {
+      foreach ($hierarchy as $parent => $folder_name) {
+        if ($parent == 'root_folder') {
+          $folder = media_browser_plus_get_media_root_folder();
+          $parent = $folder->name;
+        }
+        else {
+          $this->folderCreationHelper($parent, $run_asserts, $pid);
+          $folders = taxonomy_get_term_by_name($parent);
+          $folder = reset($folders);
+        }
+        if (!empty($folder_name)) {
+          $this->folderCreationHelper($folder_name, $run_asserts, $folder->tid);
+        }
+      }
+    }
+    else {
+      $description = $this->randomString(50);
+      $edit = array(
+        'name' => $hierarchy,
+        'description[value]' => $description,
+        'parent[]' => array($pid),
+      );
+      $this->drupalPost('admin/structure/taxonomy/media_folders/add', $edit, t('Save'));
+      if ($run_asserts) {
+        // Check if the creation was successful.
+        $this->assertText('Folder ' . $hierarchy . ' created successfully');
+
+        // Check if the related folder was created in the filesystem.
+        $folders = taxonomy_get_term_by_name($hierarchy);
+        $folder = reset($folders);
+        $parents = taxonomy_get_parents_all($folder->tid);
+        $parent_count = count($parents) - 2;
+        $path = media_browser_plus_construct_dir_path($folder);
+        $this->assertEqual(substr_count($path, '/'), $parent_count, 'Folder hierarchy structure matches');
+        foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+          $folder_path = file_stream_wrapper_uri_normalize($scheme . '://' . $path);
+          $this->assertTrue(is_dir($folder_path), format_string('Folder found. (!path)', array('!path' => $folder_path)));
+        }
+      }
+    }
+  }
+
+  /**
+   * Creates a test file.
+   *
+   * @param string $mime
+   *   Allowed values text/plain, image/jpg.
+   * @param null|term|integer $folder
+   *   NULL to use the root folder, term object or term id of a folder.
+   * @param string $scheme
+   *   The scheme where the file is created.
+   *
+   * @return file_entity|FALSE
+   *   The file entity of the newly created file or FALSE on error.
+   */
+  protected function createTestFile($mime = 'text/plain', $folder = NULL, $scheme = 'public') {
+
+    $tmp_file = 'temporary://' . uniqid('mbp_test_file');
+
+    if (empty($folder)) {
+      $folder = media_browser_plus_get_media_root_folder();
+    }
+    elseif (is_numeric($folder)) {
+      $folder = taxonomy_term_load($folder);
+    }
+
+    switch ($mime) {
+      case 'image/jpg':
+        $type = 'image';
+        // Make an image split into 4 sections with random colors.
+        $im = imagecreate(800, 600);
+        for ($n = 0; $n < 4; $n++) {
+          $color = imagecolorallocate($im, rand(0, 255), rand(0, 255), rand(0, 255));
+          $x = 800 / 2 * ($n % 2);
+          $y = 600 / 2 * (int) ($n >= 2);
+          imagefilledrectangle($im, $x, $y, $x + 800 / 2, $y + 600 / 2, $color);
+        }
+
+        // Make a perfect circle in the image middle.
+        $color = imagecolorallocate($im, rand(0, 255), rand(0, 255), rand(0, 255));
+        $smaller_dimension = min(800, 600);
+        $smaller_dimension = ($smaller_dimension % 2) ? $smaller_dimension : $smaller_dimension;
+        imageellipse($im, 800 / 2, 600 / 2, $smaller_dimension, $smaller_dimension, $color);
+
+        $tmp_file = $tmp_file . '.jpg';
+        imagejpeg($im, drupal_realpath($tmp_file));
+        break;
+
+      case 'text/plain':
+      default:
+        $type = FILE_TYPE_NONE;
+        $tmp_file = $tmp_file . '.txt';
+        $fp = fopen($tmp_file, 'w');
+        fwrite($fp, str_repeat('01', 512));
+        fclose($fp);
+        break;
+    }
+
+    $source = new stdClass();
+    $source->uri = $tmp_file;
+    $source->uid = 1;
+    $source->filemime = $mime;
+    $source->type = $type;
+    $source->filename = basename($tmp_file);
+    $source->field_folder[LANGUAGE_NONE][0]['tid'] = $folder->tid;
+
+    // Move the file to the right directory.
+    $destination_path = file_stream_wrapper_uri_normalize($scheme . '://' . media_browser_plus_construct_dir_path($folder));
+    $file = file_move($source, $destination_path, FILE_CREATE_DIRECTORY);
+
+    return $file;
+  }
+}

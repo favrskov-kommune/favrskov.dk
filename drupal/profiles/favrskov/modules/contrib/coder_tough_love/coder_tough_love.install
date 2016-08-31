@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Installation routines for Coder Tough Love.
+ *
+
+/**
+ * Implementation of hook_requirements().
+ */
+function coder_tough_love_requirements($phase) {
+  $t = get_t();
+  $requirements = array();
+
+  if ($phase == 'runtime') {
+    if (!function_exists('pspell_new')) {
+      $requirements['coder_tough_love_pspell'] = array(
+        'title' => $t('Pspell library'),
+        'value' => $t('The Pspell library for PHP is missing. Please check the <a href="@url">PHP documentation</a> for information on how to correct this if you\'d like Coder Tough Love to spell check.', array('@url' => 'http://www.php.net/manual/en/book.pspell.php')),
+        'severity' => REQUIREMENT_WARNING,
+      );
+    }
+  }
+
+  return $requirements;
+}

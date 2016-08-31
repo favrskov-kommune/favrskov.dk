@@ -1,0 +1,13 @@
+/**
+ * @file
+ * CSS for Colorfield.
+ */
+fieldset.colorfield-split-field div.form-item {
+  float: left;
+  margin-bottom: 10px;
+}
+.colorfield-split-field div.form-item label,
+.colorfield-split-field div.form-item input {
+  display: inline-block;
+  margin: 0 5px 0 0;
+}

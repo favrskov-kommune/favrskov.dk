@@ -1,0 +1,585 @@
+<?php
+
+/**
+ * @file
+ * Autoarch module for node's automatic or manual archivation
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function autoarch_permission() {
+  return array(
+    'administer autoarch settings' => array(
+      'title' => t("Administer autoarch settings"),
+      'description' => t("Access the module's admin settings page."),
+    ),
+    'archive nodes using autoarch' => array(
+      'title' => t("Archive nodes using autoarch"),
+      'description' => t("Access the autoarch fields on node form."),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function autoarch_menu() {
+  $items = array();
+  $items['admin/config/system/autoarch'] = array(
+    'title' => 'Automatic Archivation settings',
+    'description' => 'Automatic archivation for content types.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('autoarch_admin_form'),
+    'access arguments' => array("administer autoarch settings"),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ *  Autoarch's admin settings.
+ */
+function autoarch_admin_form($form_state) {
+  $granularity_options = autoarch_get_date_granularity('array');
+  $form['autoarch_node_types'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('These content types can be added to'),
+    '#options' => array_map('check_plain', node_type_get_names()),
+    '#default_value' => autoarch_get_nodetypes(),
+    '#description' => t('Adds an automatic archivation functionality to the selected content types'),
+  );
+  $form['autoarch_date_granularity'] = array(
+    '#type' => 'select',
+    '#title' => t('The granularity for the archivation date'),
+    '#options' => $granularity_options,
+    '#default_value' => autoarch_get_date_granularity('variable'),
+    /*'#description' => t('How many different units to display'),*/
+  );
+  return system_settings_form($form);
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function autoarch_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form_id)) {
+    if (user_access('archive nodes using autoarch')) {
+      $autoarch_form_types = autoarch_get_node_add_forms();
+      if (in_array($form_id, $autoarch_form_types)) {
+        if (!empty($form['nid']['#value'])) {
+          $mode = autoarch_get_mode($form['nid']['#value']);
+          !empty($mode) ? $default_value = $mode : $default_value = 'manual';
+          $state = autoarch_get_state($form['nid']['#value']);
+          !empty($mode) ? $default_value2 = $state : $default_value2 = 'actual';
+        }
+        else {
+          $default_value = 'manual';
+          $default_value2 = 'actual';
+        }
+        drupal_add_js(drupal_get_path('module', 'autoarch') . "/autoarch.js");
+        $form['archive'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Archive'),
+          '#collapsible' => TRUE,
+          '#collapsed' => TRUE,
+        );
+        $form['archive']['archive_option'] = array(
+          '#prefix' => '<div id="autoarch-option-select">',
+          '#suffix' => '</div>',
+          '#type' => 'radios',
+          '#title' => t('Options'),
+          '#options' => array('manual' => t('Manual'),'automatic' => t('Automatic')),
+          '#default_value' => $default_value,
+          '#theme' => 'autoarch_radios',
+        );
+        $form['archive']['archive_state'] = array(
+          '#prefix' => '<div id="autoarch-state-select">',
+          '#suffix' => '</div>',
+          '#type' => 'radios',
+          '#title' => t('Actual or Archive'),
+          '#options' => array('actual' => t('Actual'),'archive' => t('Archive')),
+          '#default_value' => $default_value2,
+          '#theme' => 'autoarch_radios',
+        );
+        $form['archive']['archive_date'] = array(
+          '#prefix' => '<div id="autoarch-date-picker">',
+          '#suffix' => '</div>',
+          '#type' => 'date_popup',
+          '#title' => t('Actual until'),
+          '#date_format' => autoarch_get_date_granularity('variable'),
+          '#default_value' => autoarch_convert_date_format('date', autoarch_get_date($form['nid']['#value'])),
+        );
+      }
+      elseif ($form_id == 'node_admin_content' && !empty($form_state['values'])) {
+        if ($form_state['values']['operation'] == 'autoarch_manual_operation' && count($form_state['complete form']['admin']['nodes']['#value']) && !isset($form_state['values']['autoarch'])) {
+          $nodes = $form_state['values']['nodes'];
+          $form['admin']['nodes']['#default_value'] = $nodes;
+          $form['admin']['options']['operation']['#default_value'] = $form_state['values']['operation'];
+          $form['admin']['options']['operation']['#disabled'] = TRUE;
+          $form['admin']['options']['autoarch'] = array(
+            '#type' => 'fieldset',
+            '#title' => t('Actual or Archive'),
+            '#weight' => 1,
+            '#tree' => TRUE,
+          );
+          $form['admin']['options']['autoarch']['autoarch_state'] = array(
+            '#type' => 'select',
+            '#title' => t('State of the node'),
+            '#options' => array('actual' => t('Actual'),'archive' => t('Archive')),
+            '#required' => TRUE,
+          );
+          $form['admin']['options']['submit']['#weight'] = 2;
+          $form['admin']['options']['submit']['#submit'][] = 'autoarch_manual_node_operation_submit';
+          $form['admin']['options']['submit']['#suffix'] = l(t('Cancel'), 'admin/content/node');
+        }
+        elseif ($form_state['values']['operation'] == 'autoarch_automatic_operation' && count($form_state['complete form']['admin']['nodes']['#value']) && !isset($form_state['values']['autoarch'])) {
+          $nodes = $form_state['values']['nodes'];
+          $form['admin']['nodes']['#default_value'] = $nodes;
+          $form['admin']['options']['operation']['#default_value'] = $form_state['values']['operation'];
+          $form['admin']['options']['operation']['#disabled'] = TRUE;
+          $form['admin']['options']['autoarch'] = array(
+            '#type' => 'fieldset',
+            '#title' => t('Actual until'),
+            '#weight' => 1,
+            '#tree' => TRUE,
+          );
+          $form['admin']['options']['autoarch']['autoarch_date'] = array(
+            '#prefix' => '<div id="autoarch-date-picker">',
+            '#suffix' => '</div>',
+            '#type' => 'date_popup',
+            '#date_format' => autoarch_get_date_granularity('variable'),
+            '#required' => TRUE,
+          );
+          $form['admin']['options']['submit']['#weight'] = 2;
+          $form['admin']['options']['submit']['#submit'][] = 'autoarch_automatic_node_operation_submit';
+          $form['admin']['options']['submit']['#suffix'] = l(t('Cancel'), 'admin/content/node');
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function autoarch_theme($existing, $type, $theme, $path) {
+  return array(
+    'autoarch_radios' => array(
+      'render element' => 'element',
+    ),
+    'autoarch_radio' => array(
+      'render element' => 'element',
+    ),
+  );
+}
+
+/**
+ * Theme function for the radio buttons.
+ */
+function theme_autoarch_radios($variables) {
+  $element = $variables['element'];
+  $keys = array_keys($element['#options']);
+  $type = $element[$keys[0]]['#type'];
+  $output = '<div class="autoarch-radios">';
+  foreach ($keys as $key) {
+    $output .= theme('autoarch_radio', $element[$key]);
+  }
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Theme function for each radio button.
+ */
+function theme_autoarch_radio($variables) {
+  $element = $variables['element'];
+  _form_set_class($element, array('form-radio'));
+  $output = '<input type="radio" ';
+  $output .= 'id="' . $element['#id'] . '" ';
+  $output .= 'name="' . $element['#name'] . '" ';
+  $output .= 'value="' . $element['#return_value'] . '" ';
+  $output .= (check_plain($element['#value']) == $element['#return_value']) ? ' checked="checked" ' : ' ';
+  $output .= drupal_attributes($element['#attributes']) . ' />';
+  if (!is_null($element['#title'])) {
+    $output = '<div id="' . $element['#id'] . '-wrapper"><label class="option" for="' . $element['#id'] . '">' . $output . ' ' . $element['#title'] . '</label></div>';
+  }
+  return $output;
+}
+
+
+/**
+ * Implements hook_node_insert().
+ */
+function autoarch_node_insert($node) {
+  if (user_access('archive nodes using autoarch')) {
+    $node_types = autoarch_get_nodetypes();
+    foreach ($node_types as $node_type) {
+      if ($node->type == $node_type) {
+        autoarch_write_record('insert', $node->nid, $node->archive_state, $node->archive_date);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function autoarch_node_update($node) {
+  if (user_access('archive nodes using autoarch')) {
+    $node_types = autoarch_get_nodetypes();
+    foreach ($node_types as $node_type) {
+      if ($node->type == $node_type && !empty($node->archive_state)) {
+        $is_in_database = autoarch_get_mode($node->nid);
+        if (!empty($is_in_database)) {
+          autoarch_write_record('update', $node->nid, $node->archive_state, $node->archive_date);
+        }
+        else {
+          autoarch_write_record('insert', $node->nid, $node->archive_state, $node->archive_date);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_load().
+ */
+function autoarch_node_load($nodes, $types) {
+  $node_types = autoarch_get_nodetypes();
+  foreach ($nodes as $node) {
+    foreach ($node_types as $node_type) {
+      if ($node->type == $node_type) {
+        $arch_state = autoarch_get_state($node->nid);
+        $arch_mode = autoarch_get_mode($node->nid);
+        $arch_date = autoarch_convert_date_format('date', autoarch_get_date($node->nid));
+        $node->archive['archive_state'] = $arch_state;
+        $node->archive['archive_mode'] = $arch_mode;
+        $node->archive['archive_date'] = $arch_date;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_validate().
+ */
+function autoarch_node_validate($node, $form, $form_state) {
+  if (user_access('archive nodes using autoarch')) {
+    $node_types = autoarch_get_nodetypes();
+    foreach ($node_types as $node_type) {
+      if ($node->type == $node_type) {
+        if ($node->archive_option == 'automatic' && empty($node->archive_date)) {
+          $message = t("You haven't set date for the automatic archivation! Please fill the date field in or choose an other option!");
+          form_set_error('archive_date', $message);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function autoarch_node_presave($node) {
+  if (user_access('archive nodes using autoarch')) {
+    $node_types = autoarch_get_nodetypes();
+    foreach ($node_types as $node_type) {
+      if ($node->type == $node_type && !empty($node->archive_option)) {
+        if ($node->archive_option == 'manual') {
+          $node->archive_date = '';
+        } elseif ($node->archive_option == 'automatic') {
+          $node->archive_state = 'actual';
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function autoarch_node_delete($node) {
+  $node_types = autoarch_get_nodetypes();
+  foreach ($node_types as $node_type) {
+    if ($node->type == $node_type) {
+      $is_in_database = autoarch_get_state($node->nid);
+      if (!empty($is_in_database)) {
+        autoarch_delete_record($node->nid, 'all');
+      }
+    }
+  }
+}
+
+/**
+ * Get node's state: active or archive.
+ */
+function autoarch_get_state($nid) {
+  $result = db_query("SELECT state FROM {autoarch_state} WHERE nid = :nid", array(':nid' => $nid));
+  $state = $result->fetchAssoc();
+  return $state['state'];
+}
+
+/**
+ * Get archivation_mode for the node.
+ */
+function autoarch_get_mode($nid) {
+  $result = db_query("SELECT mode FROM {autoarch_state} WHERE nid = :nid", array(':nid' => $nid));
+  $mode = $result->fetchAssoc();
+  return $mode['mode'];
+}
+
+/**
+ * Get the archivation_date for the node if archivation_mode is automatic.
+ */
+function autoarch_get_date($nid) {
+  $result = db_query("SELECT date FROM {autoarch_date} WHERE nid = :nid", array(':nid' => $nid));
+  $date = $result->fetchAssoc();
+  return $date['date'];
+}
+
+/**
+ * Get the associated node types (set at "admin/settings/autoarch").
+ */
+function autoarch_get_nodetypes() {
+  $types = variable_get('autoarch_node_types', array());
+  $return_array = array();
+  foreach ($types as $key => $value) {
+    if ($value != "0") {
+      $return_array[] = $value;
+    }
+  }
+  return $return_array;
+}
+
+/**
+ * Get the date granularity (set at "admin/settings/autoarch").
+ */
+function autoarch_get_date_granularity($op) {
+  if (!empty($op)) {
+    switch ($op) {
+      case 'variable':
+        $value = variable_get('autoarch_date_granularity', array());
+        return $value;
+        break;
+
+      case 'array':
+        $array = array(
+          'Y' => t('Year'),
+          'Y-m' => t('Month'),
+          'Y-m-d' => t('Day'),
+          'Y-m-d H:i' => t('Hour') . ' - ' . t('Minute'),
+        );
+        return $array;
+        break;
+    }
+  }
+}
+
+/**
+ *  Write the record to the database.
+ */
+function autoarch_write_record($write_mode, $nid, $state, $date) {
+  switch ($write_mode) {
+    case 'insert':
+      if (!empty($date)) {
+        $state_data = array(
+          'nid' => $nid,
+          'state' => $state,
+          'mode' => 'automatic',
+        );
+        $date_data = array(
+          'nid' => $nid,
+          'date' => autoarch_convert_date_format('unix', $date),
+        );
+        drupal_write_record('autoarch_state', $state_data);
+        drupal_write_record('autoarch_date', $date_data);
+      }
+      else {
+        $state_data = array(
+          'nid' => $nid,
+          'state' => $state,
+          'mode' => 'manual',
+        );
+        drupal_write_record('autoarch_state', $state_data);
+      }
+      break;
+
+    case 'update':
+      $has_date_already = autoarch_get_date($nid);
+      if (!empty($date)) {
+        $state_data = array(
+          'nid' => $nid,
+          'state' => $state,
+          'mode' => 'automatic',
+        );
+        $date_data = array(
+          'nid' => $nid,
+          'date' => autoarch_convert_date_format('unix', $date),
+        );
+        drupal_write_record('autoarch_state', $state_data, 'nid');
+        empty($has_date_already) ? drupal_write_record('autoarch_date', $date_data) : drupal_write_record('autoarch_date', $date_data, 'nid');
+      }
+      else {
+        $state_data = array(
+          'nid' => $nid,
+          'state' => $state,
+          'mode' => 'manual',
+        );
+        drupal_write_record('autoarch_state', $state_data, 'nid');
+        autoarch_delete_record($nid, 'date');
+      }
+      break;
+
+  }
+}
+
+/**
+ * Delete a record from database.
+ */
+function autoarch_delete_record($nid, $from) {
+  if (!empty($nid) && !empty($from)) {
+    switch ($from) {
+      case 'date':
+        db_query("DELETE from {autoarch_date} WHERE nid = :nid", array(':nid' => $nid));
+        break;
+
+      case 'all':
+        db_query("DELETE from {autoarch_date} WHERE nid = :nid", array(':nid' => $nid));
+        db_query("DELETE from {autoarch_state} WHERE nid = :nid", array(':nid' => $nid));
+        break;
+
+    }
+  }
+}
+
+/**
+ * Get the node/add forms.
+ */
+function autoarch_get_node_add_forms() {
+  $node_types = autoarch_get_nodetypes();
+  $autoarch_form_types = array();
+  foreach ($node_types as $node_type) {
+    array_push($autoarch_form_types, $node_type . '_node_form');
+  }
+  return $autoarch_form_types;
+}
+
+/**
+ * Convert the date string to Unix timestamp or to date() format.
+ */
+function autoarch_convert_date_format($to, $date_string) {
+  if (!empty($date_string)) {
+    switch ($to) {
+      case 'unix':
+        $converted = strtotime($date_string);
+        return $converted;
+        break;
+
+      case 'date':
+        $converted = date(autoarch_get_date_granularity('variable'), $date_string);
+        return $converted;
+        break;
+
+    }
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function autoarch_cron() {
+  $actual_time = time();
+  $result = db_query("SELECT * FROM {autoarch_date} WHERE date <= :date", array(':date' => $actual_time));
+  $datas = $result->fetchCol();
+  foreach ($datas as $data) {
+    $state = 'archive';
+    autoarch_write_record('update', $data, $state, $date = NULL);
+    autoarch_delete_record('date', $data);
+  }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function autoarch_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'autoarch') . '/views',
+  );
+}
+
+/**
+ * Implements hook_node_operations().
+ */
+function autoarch_node_operations() {
+  $operations = array(
+    'autoarch_manual_operation' => array(
+      'label' => t('Set manual archivation'),
+      'callback' => NULL,
+    ),
+    'autoarch_automatic_operation' => array(
+      'label' => t('Set automatic archivation'),
+      'callback' => NULL,
+    ),
+  );
+  return $operations;
+}
+
+/**
+ * Submit handler for the manual node_operation.
+ */
+function autoarch_manual_node_operation_submit($form, &$form_state) {
+  $nodes = $form_state['complete form']['admin']['nodes']['#value'];
+  $state = $form_state['values']['autoarch']['autoarch_state'];
+  $node_types = autoarch_get_nodetypes();
+  if (!empty($nodes) && !empty($state)) {
+    foreach ($nodes as $nid) {
+      $is_in_database = autoarch_get_state($nid);
+      $node_object = node_load($nid, NULL, TRUE);
+      if (!empty($is_in_database) && in_array($node_object->type, $node_types)) {
+        $write_mode = 'update';
+        autoarch_write_record($write_mode, $nid, $state, $date = NULL);
+        drupal_set_message(t('Your archivation settings for the selected node (nodeID: %nid) have successfully been updated!', array('%nid' => $nid)), 'status');
+      }
+      elseif (empty($is_in_database) && in_array($node_object->type, $node_types)) {
+        $write_mode = 'insert';
+        autoarch_write_record($write_mode, $nid, $state, $date = NULL);
+        drupal_set_message(t('Your archivation settings for the selected node (nodeID: %nid) have successfully been updated!', array('%nid' => $nid)), 'status');
+      }
+      elseif (!in_array($node_object->type, $node_types)) {
+        drupal_set_message(t("Your archivation settings for the selected node (nodeID: %nid) could NOT been updated, because the node's type is not selected at <a href='@autoarch-settings-page'>Autoarch settings page</a>!", array('%nid' => $nid, '@autoarch-settings-page' => url('admin/settings/autoarch'))), 'error');
+      }
+    }
+  }
+}
+
+/**
+ * Bulk operation for automatic archivation on the selected nodes.
+ */
+function autoarch_automatic_node_operation_submit($form, &$form_state) {
+  $nodes = $form_state['complete form']['admin']['nodes']['#value'];
+  $state = 'automatic';
+  $date = $form_state['values']['autoarch']['autoarch_date'];
+  $node_types = autoarch_get_nodetypes();
+  if (!empty($nodes) && !empty($state)) {
+    foreach ($nodes as $nid) {
+      $is_in_database = autoarch_get_state($nid);
+      $node_object = node_load($nid, NULL, TRUE);
+      if (!empty($is_in_database) && in_array($node_object->type, $node_types)) {
+        $write_mode = 'update';
+        autoarch_write_record($write_mode, $nid, $state, $date);
+        drupal_set_message(t('Your archivation settings for the selected node (nodeID: %nid) have successfully been updated!', array('%nid' => $nid)), 'status');
+      }
+      elseif (empty($is_in_database) && in_array($node_object->type, $node_types)) {
+        $write_mode = 'insert';
+        autoarch_write_record($write_mode, $nid, $state, $date);
+        drupal_set_message(t('Your archivation settings for the selected node (nodeID: %nid) have successfully been updated!', array('%nid' => $nid)), 'status');
+      }
+      elseif (!in_array($node_object->type, $node_types)) {
+        drupal_set_message(t("Your archivation settings for the selected node (nodeID: %nid) could NOT been updated, because the node's type is not selected at <a href='@autoarch-settings-page'>Autoarch settings page</a>!", array('%nid' => $nid, '@autoarch-settings-page' => url('admin/settings/autoarch'))), 'error');
+      }
+    }
+  }
+}

@@ -1,0 +1,435 @@
+<?php
+/**
+ * @file
+ * A simple color field module with a color picker.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function colorfield_theme() {
+  return array(
+    'colorfield_colored_message' => array(
+      'variables' => array(
+        'text_color' => 'black', 'text_message' => '',
+      ),
+      'template' => 'templates/colorfield-colored-message',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_info().
+ */
+function colorfield_field_info() {
+  $info = array();
+
+  $info['colorfield'] = array(
+    'label' => t('Color'),
+    'description' => t('A field composed of an RGB color.'),
+    'default_widget' => 'colorfield_unified_textfield',
+    'default_formatter' => 'colorfield_color_swatch',
+    'instance_settings' => array(
+      'colorfield_enable_colorpicker' => TRUE,
+      'colorfield_colorpicker_type' => 'farbtastic',
+    ),
+  );
+
+  if (module_exists('entity')) {
+    $info['colorfield']['property_type'] = 'text';
+  }
+
+  return $info;
+}
+
+/**
+ * Implements hook_field_validate().
+ *
+ * Validates that the inputed value matchs a hexadecimal color.
+ *
+ * @see colorfield_field_widget_error()
+ */
+function colorfield_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+  // Remove potential empty fields.
+  $items = _field_filter_items($field, $items);
+
+  if ($instance['widget']['type'] == 'colorfield_unified_textfield') {
+    foreach ($items as $delta => $item) {
+      if (!empty($item['rgb'])) {
+        // Double check that we really have an hexadecimal value.
+        if (!preg_match('@^#[0-9a-f]{6}$@i', $item['rgb'])) {
+          $errors[$field['field_name']][$langcode][$delta][] = array(
+            'error' => 'colorfield_invalid',
+            'message' => t('Color must be a hexadecimal value (eg: #84CCAF).'),
+          );
+        }
+      }
+    }
+  }
+  elseif ($instance['widget']['type'] == 'colorfield_split_textfield') {
+    foreach ($items as $delta => $item) {
+      foreach ($item['rgb'] as $key => $color_component) {
+        // Check if every color component is a valid hexadecimal value.
+        if (!preg_match('@^[0-9a-f]{2}$@i', $color_component)) {
+          $errors[$field['field_name']][$langcode][$delta]['rgb'][$key] = array(
+            'error' => 'colorfield_invalid_component_value',
+            'message' => t('%name: the color component you specified is not valid, you must use a hexadecimal value (eg: 00, 5D, FF...).', array('%name' => $instance['label'])),
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_presave().
+ */
+function colorfield_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  // Rewrite the clean RGB value.
+  if ($instance['widget']['type'] == 'colorfield_split_textfield') {
+    foreach ($items as $key => $item) {
+      $items[$key]['rgb'] = '#' . implode('', $item['rgb']);
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_error().
+ */
+function colorfield_field_widget_error($element, $error, $form, &$form_state) {
+  // Mark components in error.
+  foreach ($error as $key => $error_element) {
+    form_error($element['rgb'][$key], $error_element['message']);
+  }
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function colorfield_field_is_empty($item, $field) {
+  // Detect if the field is empty (the three color components are empty).
+  if (is_array($item['rgb'])) {
+    return empty($item['rgb']['r']) && empty($item['rgb']['g']) && empty($item['rgb']['b']);
+  }
+  else {
+    return empty($item['rgb']);
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function colorfield_field_formatter_info() {
+  return array(
+    // This formatter displays the raw value of the color.
+    'colorfield_raw_rgb' => array(
+      'label' => t('Raw RGB value'),
+      'field types' => array('colorfield'),
+      'settings' => array('display_hash' => TRUE),
+    ),
+    // This formatter displays a DIV of the specified color.
+    'colorfield_color_swatch' => array(
+      'label' => t('Color swatch'),
+      'field types' => array('colorfield'),
+      'settings' => array('width' => 20, 'height' => 20),
+    ),
+    // This formatter displays a message colored with the inputed value.
+    'colorfield_colored_message' => array(
+      'label' => t('Colored message'),
+      'field types' => array('colorfield'),
+      'settings' => array('message' => t('The color code in this field is @code')),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function colorfield_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  // Expose the message to display as a setting.
+  if ($display['type'] == 'colorfield_colored_message') {
+    $element['message'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Message to display'),
+      '#default_value' => $settings['message'],
+      '#description' => t('Note that you can use @code to display the value of the code in the message.'),
+    );
+  }
+  // Expose the the block width and height.
+  elseif ($display['type'] == 'colorfield_color_swatch') {
+    $element['width'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Width of the block'),
+      '#size' => 3,
+      '#required' => TRUE,
+      '#element_validate' => array('element_validate_number'),
+      '#default_value' => $settings['width'],
+    );
+
+    $element['height'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Height of the block'),
+      '#size' => 3,
+      '#required' => TRUE,
+      '#element_validate' => array('element_validate_number'),
+      '#default_value' => $settings['height'],
+    );
+  }
+  // Let the user decide either or not display the # as a prefix of the value.
+  elseif ($display['type'] == 'colorfield_raw_rgb') {
+    $element['display_hash'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Display the # in the output of the color'),
+      '#default_value' => $settings['display_hash'],
+    );
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function colorfield_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = array();
+
+  // Displays a dynamic message and replace @code by the value of the color
+  // code if it exists in the message.
+  if ($display['type'] == 'colorfield_colored_message') {
+    $summary[] = t('Message displayed: %message', array('%message' => $settings['message']));
+    if (strpos($settings['message'], '@code')) {
+      $summary[] = '<small>' . t('Note that @code will be replaced by the color picked.') . '</small>';
+    }
+  }
+  // Displays the width & height of the block as summary.
+  elseif ($display['type'] == 'colorfield_color_swatch') {
+    $summary[] = t('Width: @width px', array('@width' => $settings['width']));
+    $summary[] = t('Height: @height px', array('@height' => $settings['height']));
+  }
+  // Displays if the hash is displayed or not.
+  elseif ($display['type'] == 'colorfield_raw_rgb') {
+    $summary[] = ($settings['display_hash']) ? t('The raw will be prefixed with #.') : t('The raw will not be prefixed with #.');
+  }
+
+  return implode('<br />', $summary);
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ *
+ * Three formatters are implemented:
+ * - colorfield_colored_message outputs a configurable message in the color
+ *   filled by the user, the user can use @code in the message to display
+ *   the value of the color.
+ * - colorfield_raw_rgb displays the raw value of the color, can be used
+ *   to insert the colors in views for instance.
+ * - colorfield_color_swatch displays a swatch of the configured color, the
+ *   size of the swatch is configurable.
+ *
+ * @see colorfield_field_formatter_info()
+ */
+function colorfield_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  switch ($display['type']) {
+    // This formatter simply outputs the field as text and with a color.
+    case 'colorfield_colored_message':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme' => 'colorfield_colored_message',
+          '#text_color' => $item['rgb'],
+          '#text_message' => t($display['settings']['message'], array('@code' => $item['rgb'])),
+        );
+      }
+      break;
+
+    // This formatter simply outputs the raw RGB value prefixed or not with
+    // the hash.
+    case 'colorfield_raw_rgb':
+      foreach ($items as $delta => $item) {
+        $color = ($display['settings']['display_hash']) ? $item['rgb'] : substr($item['rgb'], 1);
+        $element[$delta] = array('#markup' => $color);
+      }
+      break;
+
+    // Adds an empty DIV, the background of which uses the selected colour.
+    // Could be used, for example, to display a swatch of the color.
+    case 'colorfield_color_swatch':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#type' => 'html_tag',
+          '#tag' => 'div',
+          '#value' => '',
+          '#attributes' => array(
+            'class' => array('colorfield-color-swatch'),
+            'style' => 'width: ' . $display['settings']['width'] . 'px; height: ' . $display['settings']['height'] . 'px; background-color:' . $item['rgb'] . ';',
+          ),
+        );
+      }
+      break;
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_info().
+ *
+ * Two widgets are provided:
+ * - colorfield_unified_textfield lets the user input a color code in
+ *   hexadecimal, the user can do it with a selectable color picker
+ *   (farbtastic or minicolors for instance).
+ * - colorfield_split_textfield exposes three textfields to the user, one for
+ *   each color component (red, green and blue).
+ */
+function colorfield_field_widget_info() {
+  return array(
+    'colorfield_unified_textfield' => array(
+      'label' => t('Color code (eg: #FFAA77)'),
+      'field types' => array('colorfield'),
+      'settings' => array(
+        'colorfield_enable_colorpicker' => TRUE,
+        'colorfield_colorpicker_type' => 'farbtastic'
+      ),
+      'weight' => 0,
+    ),
+    'colorfield_split_textfield' => array(
+      'label' => t('Split Red, Green and Blue text fields'),
+      'field types' => array('colorfield'),
+      'weight' => 1,
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function colorfield_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $widget = $element;
+
+  $widget['#delta'] = $delta;
+  switch ($instance['widget']['type']) {
+    case 'colorfield_unified_textfield':
+      $value = isset($items[$delta]['rgb']) ? $items[$delta]['rgb'] : '';
+      $widget += array(
+        '#type' => 'textfield',
+        '#default_value' => $value,
+        '#size' => 7,
+        '#maxlength' => 7,
+      );
+      // Prepare the base markup for the color picker if enabled.
+      if ($instance['widget']['settings']['colorfield_enable_colorpicker']) {
+        $widget += array(
+          '#suffix' => '<div class="colorfield-picker"></div>',
+          '#attributes' => array('class' => array('colorfield-colorpicker')),
+        );
+        // Attach Farbtastic color picker when it's the color picker selected.
+        if ($instance['widget']['settings']['colorfield_colorpicker_type'] == 'farbtastic') {
+          $widget['#attached'] = array(
+            'library' => array(array('system', 'farbtastic')),
+            'js' => array(drupal_get_path('module', 'colorfield') . '/js/colorfield-farbtastic.js'),
+          );
+        }
+      }
+      break;
+
+    case 'colorfield_split_textfield':
+      // If we have a value for this field delta.
+      // If we don't, just consider empty strings as the default value.
+      if (isset($items[$delta]['rgb'])) {
+        $color = $items[$delta]['rgb'];
+        // Then if the color value is a string we need to split it. It happens
+        // when the form is submitted (check the hook_field_presave()).
+        // We don't have a string if the field comes from the default value
+        // of the field settings. (Ask core maintainers why...).
+        if (is_string($items[$delta]['rgb'])) {
+          if (strlen($color) == '7') {
+            $raw_value = substr($color, 1);
+            $color = array(
+              'r' => $raw_value{0} . $raw_value{1},
+              'g' => $raw_value{2} . $raw_value{3},
+              'b' => $raw_value{4} . $raw_value{5},
+            );
+          }
+        }
+      }
+      else {
+        $color = array(
+          'r' => '',
+          'g' => '',
+          'b' => '',
+        );
+      }
+
+      // Make this a fieldset with the three text fields.
+      $widget += array(
+        '#type' => 'fieldset',
+        '#attached' => array(
+          'css' => array(drupal_get_path('module', 'colorfield') . '/styles/colorfield.css'),
+        ),
+        '#suffix' => '<div class="clearfix"></div>',
+        '#attributes' => array('class' => array('colorfield-split-field')),
+      );
+      $widget['#title'] = t('Select your color');
+      $widget['#description'] = '<p>' . t('The 2-digit hexadecimal representation of the color saturation, like "44", "C2" or "FF".') . '</p>';
+
+      // Create a textfield for saturation values for Red, Green, and Blue.
+      foreach (array('r' => t('Red'), 'g' => t('Green'), 'b' => t('Blue')) as $key => $title) {
+        $widget[$key] = array(
+          '#type' => 'textfield',
+          '#title' => $title,
+          '#size' => 2,
+          '#maxlength' => 2,
+          '#default_value' => $color[$key],
+        );
+      }
+      break;
+  }
+  $element['rgb'] = $widget;
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_settings_form().
+ */
+function colorfield_field_widget_settings_form($field, $instance) {
+  $form = array();
+  $widget = $instance['widget'];
+  $settings = $instance['settings'];
+  if ($widget['type'] == 'colorfield_unified_textfield') {
+    $form['colorfield_options'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Color selection options'),
+    );
+    $default_value_colorpicker = (isset($widget['settings']['colorfield_enable_colorpicker'])) ? $widget['settings']['colorfield_enable_colorpicker'] : $settings['colorfield_enable_colorpicker'];
+    $form['colorfield_options']['colorfield_enable_colorpicker'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Enable the color picker.'),
+      '#description' => t('If you enable this option the user will be able to select a color via a user friendly widget.'),
+      '#default_value' => $default_value_colorpicker,
+    );
+    $default_value_colorpicker_type = (isset($widget['settings']['colorfield_colorpicker_type'])) ? $widget['settings']['colorfield_colorpicker_type'] : $settings['colorfield_colorpicker_type'];
+    $form['colorfield_options']['colorfield_colorpicker_type'] = array(
+      '#type' => 'select',
+      '#title' => t('Select the color picker'),
+      '#options' => array(
+        'farbtastic' => t('Farbtastic'),
+      ),
+      '#states' => array(
+        'invisible' => array(
+          'input[name="instance[widget][settings][colorfield_options][colorfield_enable_colorpicker]"]' => array('checked' => FALSE),
+        ),
+      ),
+      '#description' => t('If you are using jQuery 1.7 or a more recent version (via jQuery update), you will expose the !minicolor_link color picker.', array('!minicolor_link' => l(t('jQuery Minicolor'), 'https://github.com/claviska/jquery-miniColors'))),
+      '#default_value' => $default_value_colorpicker_type,
+    );
+  }
+  return $form;
+}

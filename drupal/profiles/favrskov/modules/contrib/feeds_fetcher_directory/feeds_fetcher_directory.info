@@ -1,0 +1,13 @@
+name = Feeds Fetcher Directory
+description = Fetches feeds from a directory
+package = Feeds
+dependencies[] = feeds
+core = 7.x
+files[] = feeds_fetcher_directory_fetcher.inc
+
+; Information added by drupal.org packaging script on 2012-05-15
+version = "7.x-2.0-beta5"
+core = "7.x"
+project = "feeds_fetcher_directory"
+datestamp = "1337068256"
+

@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Schema, installation and update hooks for Dynamic Background Inherit.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function dynamic_background_inherit_schema() {
+  $schema = array();
+
+  // Mirror the core 'cache' table.
+  $schema['cache_dynamic_background_inherit'] = drupal_get_schema_unprocessed('system', 'cache');
+
+  return $schema;
+}

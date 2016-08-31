@@ -1,0 +1,151 @@
+<?php
+
+/*
+ * @file
+ * Alters the panels variant "General" form to enable users to select a dynamic
+ * background image any given panel variant.
+ */
+
+/**
+ * Build the administration interface for dynamic background panels and enables
+ * administrators enter css to used for insertion of backgrounds.
+ *
+ * @return array $form
+ */
+function dynamic_background_panels_settings_form() {
+  $form = array();
+
+  // Add image style to the form.
+  $form += dynamic_background_image_style_form('dynamic_background_panels_image_style');
+
+  // Add image behavior form.
+  $form += dynamic_background_image_behaviour_form('dynamic_background_panels_image_behaviour');
+
+  return $form;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dynamic_background_panels_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'panels_panel_context_edit_settings') {
+    // Add fieldset.
+    $form['conf']['dynamic_background'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Dynamic background'),
+      '#description' => t('To used this feature, you have to setup custom CSS at dynamic background administratio page.'),
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+      '#tree' => TRUE,
+    );
+
+    // Get the panel handler_id as it's used to index the active image
+    $pid = isset($form_state['handler_id']) ? $form_state['handler_id'] : -1;
+    $form['conf']['dynamic_background'] += dynamic_background_image_selector_form('panels', $pid);
+
+    // Allow user to upload a image.
+    if (user_access('dynamic background upload panels')) {
+      // Load settings and find the number of images.
+      $settings = variable_get('dynamic_background_panels', array());
+      $no_of_images = isset($settings['upload']['no_of_images']) ? $settings['upload']['no_of_images'] : 1;
+
+      // Only proceed if the form is needed.
+      if ($no_of_images > 0) {
+        // Add user upload form.
+        $upload_form = dynamic_background_user_upload_form('panels', $pid, $no_of_images);
+        $form['conf']['dynamic_background'] += $upload_form['form'];
+
+        // Add submission function.
+        $form['#submit'][] = $upload_form['submit'];
+      }
+    }
+
+    // Add extra submit handler.
+    $form['#submit'][] = 'dynamic_background_panels_conf_submit_handler';
+  }
+}
+
+function dynamic_background_panels_conf_submit_handler(&$form, &$form_state) {
+  // Check if any image have been selected.
+  $fid = NULL;
+  foreach ($form_state['values']['dynamic_background'] as $key => $value) {
+    if (isset($value['selected']) && $value['selected']) {
+      $fid = $key;
+      break;
+    }
+  }
+
+  if (isset($form_state['values']['dynamic_background']['dynamic_background_picture_upload'])) {
+    foreach ($form_state['values']['dynamic_background']['dynamic_background_picture_upload'] as $key => $value) {
+      if (isset($value['picture_use']) && $value['picture_use']) {
+        $fid = $key;
+        break;
+      }
+    }
+  }
+
+  // Get dynamic background info.
+  $info = $form_state['values']['dynamic_background']['dynamic_background_info'];
+
+  // If image have been upload set the last on as active.
+  if (isset($info['active'])) {
+    $is_selected = TRUE;
+    dynamic_background_set_active($info['active'], 'panels', $info['data']);
+  }
+  else {
+    // Update the active background image.
+    dynamic_background_set_active($fid, 'panels', $info['data']);
+  }
+}
+
+
+/**
+ * Implements hook_dynamic_background_css().
+ */
+function dynamic_background_panels_dynamic_background_css($vars) {
+  // If the current page has a panel, try to use dynamic background.
+  if ($pm_page = page_manager_get_current_page()) {
+    // Get active image an return information.
+    $image = dynamic_background_active_image('panels', $pm_page['handler']->name);
+
+    // If no image have been found try to select random image (if configured).
+    $image_behaviour = variable_get('dynamic_background_panels_image_behaviour', array());
+    if (!$image && (isset($image_behaviour['random']) && $image_behaviour['random'])) {
+      $image = dynamic_background_random_image('panels', $pm_page['handler']->name);
+    }
+
+    if ($image) {
+      // Load image style settings.
+      $image_style = variable_get('dynamic_background_panels_image_style', FALSE);
+
+      return array(
+        'image' => $image,
+        'configuration' => variable_get('dynamic_background_panels_css', array()),
+        'image_style' => $image_style ? $image_style['style'] : FALSE,
+      );
+    }
+  }
+}
+
+/**
+ * Implemments hook_dynamic_background_info().
+ */
+function dynamic_background_panels_dynamic_background_info() {
+  return array(
+    'type' => 'panels',
+    'menu' => array(
+      'title' => t('Panels'),
+      'description' => t('Configure panels extension'),
+    ),
+    'upload' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_dynamic_background_weight().
+ */
+function dynamic_background_panels_dynamic_background_weight() {
+  return array(
+    'weight' => -45,
+  );
+}

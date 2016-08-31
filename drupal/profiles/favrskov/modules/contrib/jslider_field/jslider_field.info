@@ -1,0 +1,12 @@
+name = jQuery UI Slider Field
+description = Integrates form element and widget
+package = User interface
+core = 7.x
+
+
+; Information added by drupal.org packaging script on 2013-03-06
+version = "7.x-1.0-alpha3"
+core = "7.x"
+project = "jslider_field"
+datestamp = "1362555617"
+

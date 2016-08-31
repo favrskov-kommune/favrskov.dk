@@ -1,0 +1,78 @@
+<?php
+/**
+ * @file
+ * A simple color field module with a color picker.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function colorfield_minicolors_form_field_ui_field_edit_form_alter(&$form, $form_state) {
+  // Exposes the new color picker.
+  if ($form['#field']['type'] == 'colorfield' && $form['#instance']['widget']['type'] == 'colorfield_unified_textfield') {
+    $form['instance']['widget']['settings']['colorfield_options']['colorfield_colorpicker_type']['#options']['minicolors'] = t('Minicolors');
+    // If jQuery update is here, no need to suggest to the user to get it.
+    $form['instance']['widget']['settings']['colorfield_options']['colorfield_colorpicker_type']['#description'] = '';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function colorfield_minicolors_field_widget_colorfield_unified_textfield_form_alter(&$element, &$form_state, $context) {
+  // Attaches the library to the field based on the selected colorpicker.
+  $settings = $context['instance']['widget']['settings'];
+  if (isset($settings['colorfield_options']['colorfield_enable_colorpicker']) && $settings['colorfield_options']['colorfield_colorpicker_type'] == 'minicolors') {
+    // Load jQuery minicolors if we can't, farbtastic will fallback.
+    if (($library = libraries_load('jquery-miniColors')) && !empty($library['loaded'])) {
+      $element['rgb']['#attached'] = array(
+        'js' => array(drupal_get_path('module', 'colorfield_minicolors') . '/js/colorfield-minicolors.js'),
+      );
+    }
+    else {
+      watchdog('colorfield_minicolors', 'The library can not be loaded.');
+    }
+  }
+}
+
+/**
+ * Implements hook_library_info().
+ */
+function colorfield_minicolors_libraries_info() {
+  return array(
+    'jquery-miniColors' => array(
+      'name' => 'jQuery Minicolors',
+      'vendor url' => 'http://labs.abeautifulsite.net/jquery-miniColors/',
+      'download url' => 'https://github.com/claviska/jquery-miniColors/tags',
+      'version callback' => 'colorfield_minicolors_get_version',
+      'version arguments' => array(
+        'file' => 'component.json',
+      ),
+      'files' => array(
+        'js' => array(
+          'jquery.minicolors.js',
+        ),
+        'css' => array(
+          'jquery.minicolors.css',
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Overrides the function to get the version of the library.
+ *
+ * @see libraries_get_version()
+ */
+function colorfield_minicolors_get_version($library, $options) {
+  $file = DRUPAL_ROOT . '/' . $library['library path'] . '/' . $options['file'];
+  if (empty($options['file']) || !file_exists($file)) {
+    return;
+  }
+  if ($content = file_get_contents($file)) {
+    $library_data = json_decode($content);
+    return $library_data->version;
+  }
+  return;
+}

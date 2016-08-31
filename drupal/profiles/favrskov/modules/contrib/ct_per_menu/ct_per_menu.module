@@ -1,0 +1,154 @@
+<?php
+
+/**
+ * @file
+ * Enables assigning menus to content types through the menu edit page.
+ *
+ * In Drupal 7, site builders must assign menus to content types before they
+ * will appear on the node edit page. This module makes it possible to assign
+ * multiple content types to a menu through the menu edit form.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function ct_per_menu_help($path, $arg) {
+  if ($path == 'admin/help#ct_per_menu'){
+    $output = '';
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('This module makes it possible to assign multiple content types to a menu through the menu edit form.') . '</p>';
+    $output .= '<h3>' . t('Uses') . '</h3>';
+    $output .= '<p>' . t('With this module installed, go to Structure > Menus (admin/structure/menu) in your site and click the \'edit menu\' link for the menu you want to assign.');
+    $output .= t(' At the bottom of the screen, you will see a list of all content types on you site.');
+    $output .= t(' Click a content type\'s checkbox to enable or disable it for this menu.') . '</p>';
+    return $output;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ct_per_menu_form_menu_edit_menu_alter(&$form, &$form_state) {
+  $defaults = ct_per_menu_get_defaults();
+  $form['types'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Content type assignments to this menu'),
+    '#description' => t('Enable or disable this menu for a content type using the checkbox beside its name.'),
+    '#options' => node_type_get_names(),
+    '#default_value' => $defaults,
+  );
+  $form['#submit'][] = 'ct_per_menu_menu_edit_menu_form_submit';
+}
+
+/**
+ * Helper function to find already enabled content types.
+ */
+function ct_per_menu_get_defaults() {
+  //Get machine name of current menu.
+  $menu = menu_get_object('menu', 4);
+  $menu_name = $menu['menu_name'];
+  //Get list of content types.
+  $node_types = node_type_get_names();
+  $defaults = array();
+  if ($menu_name == 'main-menu') {
+    //Find content types without 'menu_options' variable. These will have main
+    //menu enabled by default.
+    foreach ($node_types as $type => $name) {
+      if (is_null(variable_get('menu_options_' . $type))) {
+        array_push($defaults, $type);
+      }
+      //Add content types to main-menu for any user saved settings.
+      if (variable_get('menu_options_' . $type)) {
+        $options = variable_get('menu_options_' . $type);
+        foreach ($options as $o) {
+          if ($o == $menu_name) {
+            array_push($defaults, $type);
+          }
+        }
+      }
+    }
+  } else {
+    //Get all other 'menu_options' variable settings.
+    foreach ($node_types as $type => $name) {
+      if (variable_get('menu_options_' . $type)) {
+        $options = variable_get('menu_options_' . $type);
+        foreach ($options as $o) {
+          if ($o == $menu_name) {
+            array_push($defaults, $type);
+          }
+        }
+      }
+    }
+  }
+  return $defaults;
+}
+
+/**
+ * Custom submit function.
+ *
+ * This function first looks for a persistent variable assigned to the relevant
+ * content type and creates one if none is present. It then cycles through the
+ * existing variables to add the chosen menus if not included. Finally, it
+ * cycles through the variables to identify deleted menus and remove them.
+ */
+function ct_per_menu_menu_edit_menu_form_submit($form, $form_state) {
+  //Get the machine name of the current menu from the URL.
+  $menu = menu_get_object('menu', 4);
+  $menu_name = $menu['menu_name'];
+  //If no variable has been set, must retain default main menu.
+  $menu_name_main = array('main-menu', $menu_name);
+  //Or simply include it if it is $menu_name.
+  $main = array('main-menu');
+  //Eliminate the unchecked options.
+  $values = array_filter($form_state['values']['types']);
+
+  foreach ($values as $v) {
+    //No persistent variable set. Create one, add menu and include main menu.
+    if (is_null(variable_get('menu_options_' . $v))) {
+      //If main, create with only main in the array.
+      if ($menu_name == 'main-menu'){
+        variable_set('menu_options_' . $v, $main);
+      }
+      //Otherwise, create with main and the new menu.
+      else {
+      variable_set('menu_options_' . $v, $menu_name_main);
+      }
+    }
+    //Find existing persistent variables. If no entry for this menu, add it.
+    //variable_get alone won't detect empty arrays (for content types with
+    //no menus assigned).
+    if (!is_null(variable_get('menu_options_' . $v))) {
+      $options = variable_get('menu_options_' . $v);
+      if (!in_array($menu_name, $options)) {
+        array_push($options, $menu_name);
+        variable_set('menu_options_' . $v, $options);
+      }
+    }
+  }
+
+  //Now delete unchecked content types that were previously set.
+  //First get an array of types not assigned this menu.
+  $non_values = array_diff($form_state['values']['types'], $values);
+  //If the type has a variable, check it for this menu. If there, delete and
+  //reset variable.
+  foreach ($non_values as $type => $value) {
+    if (variable_get('menu_options_' . $type)) {
+      $options = variable_get('menu_options_' . $type);
+      if (in_array($menu_name, $options)) {
+        $key = array_search($menu_name, $options);
+        unset($options[$key]);
+        variable_set('menu_options_' . $type, $options);
+      }
+    }
+    //If variable doesn't exist, create it with empty array as value to delete
+    //main menu, otherwise with main menu as default.
+    if (is_null(variable_get('menu_options_' . $type))) {
+      $empty = array();
+      if ($menu_name == 'main-menu') {
+        variable_set('menu_options_' . $type, $empty);
+      } else {
+        variable_set('menu_options_' . $type, $main);
+      }
+    }
+  }
+}

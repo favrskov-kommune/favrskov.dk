@@ -1,0 +1,185 @@
+<?php
+
+/**
+ * @file
+ * Module file for the Apache Solr Exclude Node module.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function apachesolr_exclude_node_permission() {
+  return array(
+    'exclude nodes from apache solr' => array(
+      'title' => t('Exclude nodes from apache solr'),
+      'description' => t('Allows users to exclude nodes from being indexed in Apache Solr.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function apachesolr_exclude_node_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'apachesolr_exclude_node') . '/views',
+  );
+}
+
+/**
+ * Implements hook_form_node_type_form_alter().
+ */
+function apachesolr_exclude_node_form_node_type_form_alter(&$form, $form_state) {
+  $form['submission']['apachesolr_exclude_node_enable'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable excluding of nodes from Apache Solr'),
+    '#default_value' => variable_get('apachesolr_exclude_node_enable_' . $form['#node_type']->type, 0),
+    '#description' => t('Check this box to enable excluding of specific nodes from Apache Solr for this content type.'),
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function apachesolr_exclude_node_form_alter(&$form, $form_state, $form_id) {
+  if (strpos($form_id, '_node_form') !== FALSE && user_access('exclude nodes from apache solr') && variable_get('apachesolr_exclude_node_enable_' . $form['type']['#value'], 0)) {
+    $node = $form['#node'];
+    $form['apachesolr_exclude_node'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Apache Solr exclude'),
+      '#description' => t('Apache Solr exclude'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+      '#weight' => 35,
+      '#group' => 'additional_settings',
+      '#attached' => array(
+        'js' => array(
+          'vertical-tabs' => drupal_get_path('module', 'apachesolr_exclude_node') . '/apachesolr_exclude_node_vertical_tabs.js',
+        ),
+      ),
+    );
+    $form['apachesolr_exclude_node']['apachesolr_exclude_node_enabled'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Exclude from Apache Solr'),
+      '#default_value' => isset($node->apachesolr_exclude_node_enabled) ? $node->apachesolr_exclude_node_enabled : 0,
+      '#description' => t('Exclude this node from being indexing in Apache Solr.'),
+    );
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function apachesolr_exclude_node_node_insert($node) {
+  // Only insert into database if we need to exclude the node.
+  if (!empty($node->apachesolr_exclude_node_enabled)) {
+    db_insert('apachesolr_exclude_node')
+      ->fields(array(
+        'nid' => $node->nid,
+        'vid' => $node->vid,
+        'exclude' => $node->apachesolr_exclude_node_enabled ? 1 : 0,
+      ))
+      ->execute();
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function apachesolr_exclude_node_node_update($node) {
+  // If the user created a new revision will we insert a new record in the db.
+  // Else update database if we need to exclude the node.
+  // Otherwise we delete the record from the database.
+  if (!$node->is_new && !empty($node->revision) && $node->vid) {
+    apachesolr_exclude_node_node_insert($node);
+  }
+  elseif (!empty($node->apachesolr_exclude_node_enabled)) {
+    db_merge('apachesolr_exclude_node')
+      ->key(array('vid' => $node->vid))
+      ->fields(array(
+          'nid' => $node->nid,
+          'exclude' => $node->apachesolr_exclude_node_enabled ? 1 : 0,
+        ))
+      ->execute();
+  }
+  else {
+    apachesolr_exclude_node_node_revision_delete($node);
+  }
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function apachesolr_exclude_node_node_delete($node) {
+  db_delete('apachesolr_exclude_node')
+    ->condition('nid', $node->nid)
+    ->execute();
+}
+
+/**
+ * Implements hook_node_revision_delete().
+ */
+function apachesolr_exclude_node_node_revision_delete($node) {
+  db_delete('apachesolr_exclude_node')
+    ->condition('vid', $node->vid)
+    ->execute();
+}
+
+/**
+ * Implements hook_node_load().
+ */
+function apachesolr_exclude_node_node_load($nodes, $types) {
+  $vids = array();
+  foreach ($nodes as $node) {
+    $vids[$node->vid] = $node->vid;
+  }
+  $result = db_query('SELECT nid, exclude FROM {apachesolr_exclude_node} WHERE vid IN(:vids)', array(':vids' => array_keys($vids)));
+  foreach ($result as $record) {
+    $nodes[$record->nid]->apachesolr_exclude_node_enabled = $record->exclude;
+  }
+}
+
+/**
+ * Implements hook_apachesolr_entity_info_alter().
+ */
+function apachesolr_exclude_node_apachesolr_entity_info_alter(&$entity_info) {
+  $entity_info['node']['status callback'][] = 'apachesolr_exclude_node_apachesolr_index_node_status_callback';
+}
+
+/**
+ * Status callback for ApacheSolr, for nodes.
+ */
+function apachesolr_exclude_node_apachesolr_index_node_status_callback($entity_id, $type) {
+  if ($type == 'node') {
+    $node = node_load($entity_id, NULL, TRUE);
+    if (is_object($node) && variable_get('apachesolr_exclude_node_enable_' . $node->type, 0)) {
+      if (isset($node->apachesolr_exclude_node_enabled) && $node->apachesolr_exclude_node_enabled) {
+        return 0;
+      }
+    }
+  }
+  return 1;
+}
+
+/**
+ * Implements hook_feeds_node_processor_targets_alter().
+ */
+function apachesolr_exclude_node_feeds_processor_targets_alter(&$targets, $processor, $content_type) {
+  if (variable_get('apachesolr_exclude_node_enable_' . $content_type, 0)) {
+    $targets['apachesolr_exclude_node_enabled'] = array(
+      'name' => t('apachesolr_exclude_node: enabled'),
+      'description' => t('Value should be 1 or 0, representing whether the node will be indexed with Apache Solr or not.'),
+      'callback' => 'apachesolr_exclude_node_feeds_set_target',
+    );
+  }
+}
+
+/**
+ * Mapping callback for Feeds module.
+ *
+ * This callback asigns input from the parser to the appropriate node property.
+ */
+function apachesolr_exclude_node_feeds_set_target($source, $node, $target, $value) {
+  $node->$target = (bool) $value;
+}

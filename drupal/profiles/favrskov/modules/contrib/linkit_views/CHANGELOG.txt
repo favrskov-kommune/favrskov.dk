@@ -1,0 +1,13 @@
+Linkit_views x.x-x.x, xxxx-xx-xx
+
+Linkit_views 7.x-1.2, 2011-11-06
+------------------------------
+by anon: Issue #1239178 Show view name in the result.
+
+Linkit_views 7.x-1.1, 2011-04-01
+------------------------------
+by anon: Fixed result key so the permission to use linkit_views actually works.
+
+Linkit_views 7.x-1.0, 2011-03-31
+------------------------------
+First stable release.
