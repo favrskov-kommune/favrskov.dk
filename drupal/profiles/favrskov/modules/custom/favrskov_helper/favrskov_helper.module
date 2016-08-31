@@ -229,9 +229,11 @@ function favrskov_helper_init() {
   $node = menu_get_object();
 
   if (!empty($node) && !empty($node->type) && in_array($node->type, ['article', 'news'])) {
+    $minimap_version = variable_get('favrskov_minimap_version', '2.4.x');
+
     $minimap = [
       '#type' => 'markup',
-      '#markup' => "<script type='text/javascript' src='https://webkort.favrskov.dk/clientapi/minimap2/2.4.x/minimap.js' charset='windows-1252'></script>",
+      '#markup' => "<script type='text/javascript' src='https://webkort.favrskov.dk/clientapi/minimap2/$minimap_version/minimap.js' charset='windows-1252'></script>",
     ];
     drupal_add_html_head($minimap, 'minimap');
   }

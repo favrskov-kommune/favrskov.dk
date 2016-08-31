@@ -208,7 +208,7 @@ projects[field_collection][version] = 1.0-beta8
 projects[field_collection][patch][1063434] = https://drupal.org/files/field_collection-feeds-1063434-121.patch
 
 projects[scheduler][subdir] = contrib
-projects[scheduler][version] = 1.3
+projects[scheduler][version] = 1.5
 
 projects[libraries][subdir] = contrib
 projects[libraries][version] = 2.3
@@ -316,7 +316,7 @@ projects[views_bulk_operations][subdir] = contrib
 projects[views_bulk_operations][version] = 3.3
 
 projects[admin_views][subdir] = contrib
-projects[admin_views][version] = 1.5
+projects[admin_views][version] = 1.6
 projects[admin_views][patch][] = https://raw.githubusercontent.com/geo0000/custom-patches/master/admin_views-content_domain_filter.patch
 
 projects[total_control][subdir] = contrib
