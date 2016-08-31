@@ -28,13 +28,30 @@
       element.addClass('open');
       element.next().slideDown(300,function () {
 
-
         var heightDiff = $('div', element.parent().prev()).height() - element.parent().height();
 
         var _docHeight = $(element).offset().top - $(window).scrollTop();
 
         if (_docHeight < heightDiff) {
           $("html, body").animate({scrollTop: element.parent().offset().top - 50}, 1000);
+        }
+
+        // Reinit minimaps in case if map present in Answer field of FAQ
+        var $minimap = element.next().find('.minimapwidget'),
+          mapID = $minimap.attr('minimapid');
+
+        updateMap();
+
+        function updateMap() {
+          var mapsWidgets = window.minimapwidgets;
+
+          if (mapsWidgets !== undefined) {
+            minimapwidgets.map(function(mapItem){
+              if (mapID === mapItem.minimapId) {
+                mapItem._mapControl.map.updateSize();
+              }
+            });
+          }
         }
 
 
@@ -96,25 +113,6 @@
             openCloseMethods.close(self);
           }
         }
-
-        // Reinit minimaps in case if map present in Answer field of FAQ
-        var $minimap = self.next().find('.minimapwidget'),
-            mapID = $minimap.attr('minimapid');
-
-        updateMap();
-
-        function updateMap() {
-          var mapsWidgets = window.minimapwidgets || undefined;
-
-          if (mapsWidgets !== undefined) {
-            minimapwidgets.map(function(mapItem){
-              if (mapID === mapItem.minimapId) {
-                mapItem._mapControl.map.updateSize();
-              }
-            });
-          }
-        }
-
       });
     });
 
