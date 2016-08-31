@@ -1,14 +1,33 @@
 /*
   Styles for backend headers
 */
+#panels-dnd-main #header {
+  padding: 10px;
+}
+
 #panels-dnd-main .inline-block-header {
   display: inline-block;
   vertical-align: top;
-  width: 32.82%;
+  width: 49%;
   margin-right: 0.5%;
+}
+#panels-dnd-main .logo {
+  width: 30%
 }
 #panels-dnd-main .inline-block-header:last-child {
   margin-right: 0;
 }
+
+#panels-dnd-main .header-menu-wrapper {
+  width: 69%;
+  display: inline-block;
+}
+
+#panels-dnd-main .nav,
+#panels-dnd-main .search-contact,
+#panels-dnd-main .secondary-nav {
+  margin-bottom: 10px;
+}
+
 #edit-buttons,
 #panels-live-preview {clear: both;}
