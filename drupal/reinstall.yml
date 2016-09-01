@@ -39,8 +39,8 @@
   - include: devops/reinstall/post_settings.yml
     tags: [ 'settings', 'post-settings' ]
 
-  - include: devops/reinstall/modules_enable.yml
-    tags: [ 'modules-enable' ]
-
   - include: devops/reinstall/drush_commands.yml
     tags: [ 'drush-commands' ]
+
+  - include: devops/reinstall/modules_enable.yml
+    tags: [ 'modules-enable' ]
