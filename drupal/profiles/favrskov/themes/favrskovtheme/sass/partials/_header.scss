@@ -11,12 +11,14 @@
   .lt-ie8 & {
     min-width: 981px;
   }
+
   &:before {
     @extend %before-after;
     width: 100%;
     height: 15px;
     background: $dark-green;
   }
+
   .header-content {
     @include main_max_width(0, 0);
     min-height: 110px;
@@ -32,9 +34,11 @@
     @include at-breakpoint(12 $width-1040) {
       max-width: 90%;
     }
+
     @include at-breakpoint(12 $width-480) {
       max-width: 100%;
       min-height: 50px;
+
       .btn-navbar {
         background-color: #8a8a8a;
         cursor: pointer;
@@ -45,6 +49,7 @@
         top: 0;
         z-index: 4;
         padding: 10px 10px;
+
         span {
           display: block;
           background: #fff;
@@ -66,30 +71,32 @@
     @include at-breakpoint(12 $width-1040) {
       margin-left: -20px;
     }
+
     @include at-breakpoint(12 $width-980) {
       float: none;
-      margin: 30px auto 120px;
+      margin: 30px auto 20px;
     }
+
     @include at-breakpoint(12 $width-480) {
       margin: 50px auto 15px;
     }
   }
+
   .nav {
-    margin-top: 50px;
-    @extend %clearfix;
-    position: absolute;
-    top: 0;
-    right: 275px;
-    @include at-breakpoint(12 $width-1040) {
-      right: 265px;
-    }
+    float: right;
+    margin-right: 20px;
+
+
     @include at-breakpoint(12 $width-980) {
-      position: static;
+      float: none;
       text-align: center;
+      margin: 0;
     }
+
     &.animated {
       display: block !important;
     }
+
     a {
       font-family: $sans-book;
       color: #333;
@@ -102,15 +109,18 @@
       background: $light-blue;
       font-weight: 600;
     }
+
     li {
       float: left;
       height: 60px;
       margin-right: 2px;
+
       @include at-breakpoint(12 $width-980) {
         float: none;
         @include inline-block(top);
         margin-right: -2px;
       }
+
       &:hover,
       &.active,
       &.active-trail {
@@ -129,6 +139,7 @@
       text-align: left;
       z-index: 3;
       display: none;
+
       li {
         display: block;
         height: auto;
@@ -136,6 +147,7 @@
           background: $dark-grey;
         }
       }
+
       a {
         font-size: 15px;
         color: $white;
@@ -149,18 +161,18 @@
       }
     }
   }
+
   .search-contact {
     width: 230px;
     float: right;
-    margin-top: 50px;
     margin-right: 30px;
+
     @include at-breakpoint(12 $width-980) {
       float: none;
-      top: 90px;
-      @include center-horizontal(380);
-      margin-top: 0;
+      margin: 0 auto 20px;
       text-align: center;
     }
+
     @include at-breakpoint(12 $width-480) {
       width: 100%;
       height: 51px;
@@ -176,36 +188,7 @@
   .search {
     position: relative;
     height: 34px;
-    .menu {
-      position: absolute;
-      right: 10px;
-      top: -50px;
-      @include at-breakpoint(12 $width-980) {
-        position: static;
-      }
-      @include at-breakpoint(12 $width-480) {
-        display: none;
-      }
-      li {
-        float: left;
-        margin-left: 17px;
-        @extend %clearfix;
-        @include at-breakpoint(12 $width-980) {
-          float: none;
-          @include inline-block(top);
-        }
-      }
-      a {
-        font-family: $sans-book;
-        font-size: 11pt;
-        text-decoration: none;
-        @include links(#333, $red);
-        text-transform: uppercase;
-        padding: 18px 0;
-        display: block;
-        font-weight: 600;
-      }
-    }
+
     input[type="text"] {
       width: 100%;
       height: 34px;
@@ -224,6 +207,7 @@
         @include border-radius(0px);
       }
     }
+
     input[type="submit"] {
       cursor: pointer;
       position: absolute;
@@ -234,17 +218,46 @@
       text-indent: -9999px;
       z-index: 1;
       background: url(../images/search_icon.png) no-repeat center center;
-      @include at-breakpoint(12 $width-980) {
-        top: 52px;
-      }
-      @include at-breakpoint(12 $width-480) {
-        top: 0;
-      }
+
     }
     @include at-breakpoint(12 $width-480) {
       @include center-vertical(34);
       right: 4%;
       width: 72%;
+    }
+  }
+
+  .secondary-nav {
+    .menu {
+      text-align: right;
+      padding-right: 30px;
+
+      @include at-breakpoint(12 $width-980) {
+        text-align: center;
+        padding: 0;
+      }
+
+      li {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 17px;
+
+        @include at-breakpoint(12 $width-980) {
+          float: none;
+          @include inline-block(top);
+        }
+      }
+
+      a {
+        @include links(#333, $red);
+        font-family: $sans-book;
+        font-size: 11pt;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 18px 0;
+        display: block;
+        font-weight: 600;
+      }
     }
   }
 
@@ -254,13 +267,17 @@
     min-height: 30px;
     background: $grey;
     border-top: 5px solid $header_bottom_line;
+
     .status, .error {
       @include main_max_width(0, 0);
     }
+
     .tabs {
       @include main_max_width(4px, 0);
+
       li {
         display: inline-block;
+
         a {
           font: 15px Arial;
           color: $white;
@@ -272,4 +289,19 @@
     }
   }
 
+  .header-menu-wrapper {
+    float: right;
+    position: relative;
+    width: calc(100% - 220px);
+    min-height: 110px;
+
+    @include at-breakpoint(12 $width-980) {
+      float: none;
+      width: 100%;
+    }
+
+    @include at-breakpoint(12 $width-480) {
+      min-height: 0;
+    }
+  }
 }

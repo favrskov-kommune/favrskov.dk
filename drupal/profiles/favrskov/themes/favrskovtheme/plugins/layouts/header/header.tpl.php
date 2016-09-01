@@ -31,35 +31,40 @@ $background = implode(', ', $background);
       </a>
     </div>
 
-
-    <?php if (!empty($content['header'])): ?>
+    <?php if (!empty($content['logo'])): ?>
       <section class="logo inline-block-header">
-        <?php print $content['header']; ?>
+        <?php print $content['logo']; ?>
       </section>
     <?php endif; ?>
 
+    <div class="header-menu-wrapper">
+      <?php if (!empty($content['top-navigation'])): ?>
+        <div class="secondary-nav">
+          <?php print $content['top-navigation']; ?>
+        </div>
+      <?php endif; ?>
+
+      <section class="search-contact inline-block-header">
+        <?php if (!empty($content['search'])): ?>
+          <div class="search">
+            <?php print $content['search']; ?>
+          </div>
+        <?php endif; ?>
+      </section>
 
       <?php if (!empty($content['navigation'])): ?>
         <nav class="nav inline-block-header">
           <?php print $content['navigation']; ?>
         </nav>
       <?php endif; ?>
-
-      <section class="search-contact inline-block-header">
-          <?php if (!empty($content['search'])): ?>
-            <div class="search">
-              <?php print $content['search']; ?>
-            </div>
-          <?php endif; ?>
-      </section>
-
+    </div>
   </section>
 
-      <?php if (!empty($content['system'])): ?>
-        <div class="drupal-system group">
-          <?php print $content['system']; ?>
-        </div>
-      <?php endif; ?>
+  <?php if (!empty($content['system'])): ?>
+    <div class="drupal-system group">
+      <?php print $content['system']; ?>
+    </div>
+  <?php endif; ?>
 </header>
 
 

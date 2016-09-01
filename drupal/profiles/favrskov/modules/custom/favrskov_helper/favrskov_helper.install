@@ -579,3 +579,10 @@ function favrskov_helper_update_7030() {
 function favrskov_helper_update_7031() {
   features_revert_module('config_user_roles');
 }
+
+/**
+ * Feature revert. Header mini-panel layout update.
+ */
+function favrskov_helper_update_7032() {
+  features_revert_module('panel_header_mini_panel');
+}
