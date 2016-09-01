@@ -1,0 +1,32 @@
+From bbdc2964d29c7e60e496d2796ef1363dd2915931 Mon Sep 17 00:00:00 2001
+From: beltofte <beltofte@151799.no-reply.drupal.org>
+Date: Tue, 16 Jul 2013 14:55:45 +0200
+Subject: [PATCH] Issue #2043089. Fixing wrong config menu item.
+
+---
+ autoarch.module |    5 ++---
+ 1 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/autoarch.module b/autoarch.module
+index f045905..93541c4 100644
+--- a/autoarch.module
++++ b/autoarch.module
+@@ -22,13 +22,12 @@ function autoarch_permission() {
+  */
+ function autoarch_menu() {
+   $items = array();
+-  $items['admin/config/autoarch'] = array(
+-    'title' => 'Automatic Archivation settings',
++  $items['admin/config/system/autoarch'] = array(
++    'title' => 'Automatic archivation settings',
+     'description' => 'Automatic archivation for content types.',
+     'page callback' => 'drupal_get_form',
+     'page arguments' => array('autoarch_admin_form'),
+     'access arguments' => array("administer autoarch settings"),
+-    'type' => MENU_NORMAL_ITEM,
+   );
+   return $items;
+ }
+-- 
+1.7.5.4
+

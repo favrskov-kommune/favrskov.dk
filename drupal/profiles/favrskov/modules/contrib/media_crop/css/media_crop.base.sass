@@ -1,0 +1,86 @@
+.media-crop-invisible
+  display: none
+
+#media-format-form
+  .media-item
+    width: 350px
+    height: 350px
+
+.rotated-images .rotated
+  display: none
+
+.rotated
+  width: auto
+  height: 100%
+  display: inline-block
+
+.rotated.rotated-180
+  width: 100%
+  height: auto
+
+@mixin animate-rotation($from, $to)
+  $diff: $from - $to
+  $from_anim: $from
+  $to_anim: $to
+  @if $diff == 270
+    $from_anim: 270
+    $to_anim: 359
+  @else if $diff == -270
+    $from_anim: 359
+    $to_anim: 270
+  @each $vendor in -webkit, -moz, -o, -ms
+    @#{$vendor}-keyframes rotate-#{$from}-#{$to}
+      from
+        #{$vendor}-transform: rotate(#{$from_anim}deg)
+      to
+        #{$vendor}-transform: rotate(#{$to_anim}deg)
+    .image-rotate-#{$from}-#{$to}
+      #{$vendor}-animation: rotate-#{$from}-#{$to} 0.25s linear
+      #{$vendor}-transform: rotate(#{$to}deg)
+
+@each $from in 0, 90, 180, 270
+  @each $to in 0, 90, 180, 270
+    @if $from != $to
+      @include animate-rotation($from, $to)
+
+.format-and-crop-container-top,
+.format-and-crop-container-bottom,
+  width: 350px
+  //overflow: hidden
+
+.format-and-crop-container-top
+  .image-style-description
+    display: none
+    padding-left: 26px
+    background: transparent url(../images/warning.png) no-repeat left center
+
+.format-and-crop-container-bottom
+  position: relative
+  display: none
+  .crop-warning,
+  .scale-warning
+    display: none
+  .crop-dimensions-container
+    .crop-aspect-ratio-lock
+      cursor: pointer
+    .crop-aspect-ratio-unlock
+      display: none
+      cursor: pointer
+  .rotate-image-container
+    .rotate-right-button,
+    .rotate-left-button
+      display: block
+      line-height: 15px
+      height: 15px
+      padding-left: 15px
+      span
+        display: block
+        padding-left: 3px
+    .rotate-right-button
+      background: transparent url(../images/rotate.png) no-repeat 0px 0px
+    .rotate-left-button
+      background: transparent url(../images/rotate.png) no-repeat 0px -21px
+
+.enable-interface,
+.disable-interface
+  cursor: pointer

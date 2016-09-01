@@ -1,0 +1,13 @@
+.dynamic-background-picture {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 22px;
+  min-height: 105px;
+  margin-top: 10px;
+}
+
+.dynamic-background-picture img {
+  display: block;
+  margin: auto;
+  margin-bottom: 4px;
+}

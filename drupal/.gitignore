@@ -1,0 +1,6 @@
+sites/*/settings*.php
+sites/*/files
+sites/*/private
+sites/all
+sites/README.txt
+sites/example.sites.php

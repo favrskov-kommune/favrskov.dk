@@ -1,0 +1,451 @@
+<?php
+
+/**
+ * @file
+ * Supplementary Coder module to provide Morbus' style complaints.
+ *
+ * @todo get rid of coder_tough_love_remove_known_keys once concat bug fixed.
+ * @todo <a is allowed inside a t() for translating purposes.
+ * @todo <a href="@..."  >  but disallow <a href="http://.... >.
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function coder_tough_love_menu() {
+  $items['admin/settings/coder_tough_love'] = array(
+    'access arguments'  => array('administer site configuration'),
+    'description'       => 'Configure Coder Tough Love with these settings.',
+    'page callback'     => 'drupal_get_form',
+    'page arguments'    => array('coder_tough_love_settings'),
+    'title'             => 'Code tough love',
+  );
+
+  return $items;
+}
+
+/**
+ * Implementation of hook_reviews().
+ */
+function coder_tough_love_reviews() {
+  $rules = array(
+
+    // Doxygen errors.
+    array(
+      '#source' => 'comment',
+      '#type' => 'regex',
+      '#value' => '(@param|@return) (?!unknown_type)unknown',
+      '#warning' => t('Proper documentation is needed for this mysterious blackhole.'),
+    ),
+    array(
+      '#source' => 'comment',
+      '#type' => 'regex',
+      '#value' => '[\/\*]\s+(TODO|BUG)',
+      '#warning' => t('Doxygen uses @todo and @bug to markup things to be done.'),
+    ),
+    array(
+      '#source' => 'comment',
+      '#type' => 'regex',
+      '#value' => '(^|\s+)\/\/[^\s]',
+      '#warning' => t('Separate comments from comment syntax by a space.'),
+    ),
+    array(
+      '#source' => 'all',
+      '#type' => 'callback',
+      '#value' => '_coder_tough_love_doxygen_params_explained',
+      '#warning' => t('If you define a @param or @return, you should document it as well.'),
+    ),
+    array(
+      '#source' => 'all',
+      '#type' => 'callback',
+      '#value' => '_coder_tough_love_doxygen_function_empty_comment',
+      '#warning' => t('Remove the empty commented line in your function documentation.'),
+    ),
+    array(
+      '#source' => 'all',
+      '#type' => 'callback',
+      '#value' => '_coder_tough_love_doxygen_function_long_line',
+      '#warning' => t('Function documentation should be less than 80 characters per line.'),
+    ),
+    array(
+      '#source' => 'all',
+      '#type' => 'callback',
+      '#value' => '_coder_tough_love_doxygen_function_one_line_summary',
+      '#warning_callback' => '_coder_tough_love_doxygen_function_one_line_summary_warning',
+    ),
+    array(
+      '#source' => 'comment',
+      '#type' => 'regex',
+      '#value' => '(@param|@return) (?!array|int|mixed|string|object|bool|float|double|real|unknown_type).*? .*?',
+      '#warning_callback' => '_coder_tough_love_doxygen_param_description_warning',
+    ),
+
+    // Grammar, spelling, and capitalization errors.
+    array(
+      '#type' => 'regex',
+      '#value' => '[^valid_email_address]email',
+      '#warning' => t('Core uses "e-mail" in end-user text and "mail" elsewhere (database, function names, etc.)'),
+    ),
+    array(
+      '#type' => 'regex',
+      '#value' => 'web-?server',
+      '#warning' => t('Core uses "web server" in end-user text.'),
+    ),
+    array(
+      '#case-sensitive' => TRUE,
+      '#source' => 'quote',
+      '#type' => 'regex',
+      '#value' => '[A-Z]\w+ Module',
+      '#warning' => t('"Module" should rarely be capitalized as part of a module\'s proper name.'),
+    ),
+    array(
+      '#case-sensitive' => TRUE,
+      '#source' => 'quote',
+      '#type' => 'callback',
+      '#value' => '_coder_tough_love_sentence_style',
+      '#warning' => t('Use sentence case, not title case, for end-user strings. (<a href="@url">Wikipedia</a>)', array('@url' => 'http://en.wikipedia.org/wiki/Capitalization#Headings_and_publication_titles')),
+    ),
+    array(
+      '#case-sensitive' => TRUE,
+      '#source' => 'quote',
+      '#type' => 'callback',
+      '#value' => '_coder_tough_love_pspell_check',
+      '#warning' => t('An unknown or misspelled word has been detected on this line.'),
+    ),
+
+    // Miscellany
+    array(
+      '#source' => 'quote',
+      '#type' => 'regex',
+      '#value' => '<(a|img|table)(\s|>)',
+      '#warning' => t('Use the matching Drupal theme functions, not raw HTML.'),
+    ),
+    array(
+      '#type' => 'regex',
+      '#value' => '[^\w+|_]date\(',
+      '#warning' => t('Use Drupal\'s format_date(), not PHP\'s default date().'),
+    ),
+    array(
+      '#type' => 'regex',
+      '#value' => '\s+(chop|close|die|dir|diskfreespace|doubleval|fputs|ini_alter|is_(double|integer|long|real|writeable)|join|magic_quotes_runtime|pos|rewind|show_source|sizeof|strchr)\(',
+      '#warning' => t('Use PHP\'s master function, not an alias. (<a href="@url">List of PHP aliases</a>)', array('@url' => 'http://www.php.net/manual/en/aliases.php')),
+    ),
+    array(
+      '#source' => 'all',
+      '#type' => 'callback',
+      '#value' => '_coder_tough_love_admin_menu_descriptions',
+      '#warning' => t('Administrative menu items should have a description.'),
+    ),
+
+  );
+
+  $review = array(
+    '#title' => 'Coder Tough Love',
+    '#rules' => $rules,
+    '#description' => t('obsessive eyeballing from Morbus'),
+  );
+
+  return array('coder_tough_love' => $review);
+}
+
+/**
+ * Administrative menu items should have a #description.
+ */
+function _coder_tough_love_admin_menu_descriptions(&$coder_args, $review, $rule, $lines, &$results) {
+  $potentially_inside_a_hook_menu = FALSE;
+  $saw_a_description = FALSE;
+  $needs_a_description = TRUE;
+  $potentially_found_an_admin_path = FALSE;
+
+  foreach ((array)$lines as $line_number => $line) {
+    $line = implode(' ', $line); // concat'd parts.
+
+    // are we inside a function that ends in _menu?
+    if (preg_match('/^function .*?_menu\(\)/', $line)) {
+      $potentially_inside_a_hook_menu = 1;
+    }
+
+    // if we're inside, look at the line and check for an admin path.
+    if ($potentially_inside_a_hook_menu && preg_match('/\[[\'"]admin\//', $line)) {
+      $potentially_found_an_admin_path = $line_number; // used in the error.
+    }
+
+    // now, keep looking for a 'description' element for this admin path.
+    if ($potentially_inside_a_hook_menu && $potentially_found_an_admin_path) {
+      if (preg_match('/[\'"]description[\'"]\s*=>/', $line)) {
+        $saw_a_description = TRUE;
+      }
+    }
+
+    // Ignore MENU_CALLBACK and MENU_DEFAULT_LOCAL_TASK
+    if ($potentially_inside_a_hook_menu && $potentially_found_an_admin_path) {
+      if (preg_match('/[\'"]type[\'"]\s*=>/', $line)) {
+        if (preg_match('/MENU_CALLBACK/', $line) || preg_match('/MENU_DEFAULT_LOCAL_TASK/', $line)) {
+          $needs_a_description = FALSE;
+        }
+      }
+    }
+
+    // if we've found any sort of ");", we assume the menu's array is done.
+    if ($potentially_inside_a_hook_menu && $potentially_found_an_admin_path && preg_match("/\);/", $line)) {
+      if (!$saw_a_description && $needs_a_description) { // if there's no description for an admin path, yell. loudly. HORSE HEAD!
+        _coder_review_error($results, $rule, _coder_review_severity_name($coder_args, $review, $rule), $potentially_found_an_admin_path);
+      }
+
+      // reset for the next iteration, bub.
+      $saw_a_description = $potentially_found_an_admin_path = FALSE;
+      $needs_a_description = TRUE;
+    }
+
+    // are we inside a function that ends in _menu?
+    if (preg_match('/^(function .*?[^_menu]\(\)|\/\*\*)/', $line)) {
+      $potentially_inside_a_hook_menu = FALSE;
+    }
+  }
+}
+
+/**
+ * If someone has defined Doxygen's param or return, they should document them.
+ */
+function _coder_tough_love_doxygen_params_explained(&$coder_args, $review, $rule, $lines, &$results) {
+  foreach ((array)$lines as $line_number => $line) {
+    $line = implode(' ', $line); // concat'd parts.
+    if (preg_match('/^ \* (@param|@return)/', $line)) {
+      // check the next line to see if there's SOMETHING written.
+      if (!preg_match('/^ \*   .*/', implode(' ', $lines[$line_number + 1]))) {
+        _coder_review_error($results, $rule, _coder_review_severity_name($coder_args, $review, $rule), $line_number, $line);
+      }
+    }
+  }
+}
+
+/**
+ * Empty comments are not needed in a Doxygen block.
+ */
+function _coder_tough_love_doxygen_function_empty_comment(&$coder_args, $review, $rule, $lines, &$results) {
+  foreach ((array)$lines as $line_number => $line) {
+    $line = implode(' ', $line); // concat'd parts.
+
+    if (preg_match('/^ \*\/$/', $line)) {
+      $previous_line = implode(' ', $lines[$line_number - 1]);
+      if (preg_match('/^ \*(\s*)$/', $previous_line)) {
+        _coder_review_error($results, $rule, _coder_review_severity_name($coder_args, $review, $rule), $line_number - 1);
+      }
+    }
+  }
+}
+
+/**
+ * Function documentation should be less than 80 characters per line.
+ */
+function _coder_tough_love_doxygen_function_long_line(&$coder_args, $review, $rule, $lines, &$results) {
+  foreach ((array)$lines as $line_number => $line) {
+    $line = implode(' ', $line); // concat'd parts.
+
+    if (preg_match('/^ \*/', $line) && drupal_strlen($line) > 80) {
+      _coder_review_error($results, $rule, _coder_review_severity_name($coder_args, $review, $rule), $line_number);
+    }
+  }
+}
+
+/**
+ * The first line of a function Doxygen should be a brief summary.
+ */
+function _coder_tough_love_doxygen_function_one_line_summary(&$coder_args, $review, $rule, $lines, &$results) {
+  foreach ((array)$lines as $line_number => $line) {
+    $line = implode(' ', $line); // concat'd parts.
+    if (preg_match('/^\/\*\*$/', $line)) {
+      $first_line_exists = $second_line_is_ok = 0;
+
+      // check the next line to see if there's SOMETHING written.
+      if (preg_match('/^ \* (\w+)/', implode(' ', $lines[$line_number + 1]))) {
+        $first_line_exists = $line_number + 1; // used in _coder_review_error().
+      }
+
+      // if the line after THAT is NOT a blank line or end of Doxygen, there's a problem.
+      if ($first_line_exists && !preg_match('/^ (\*\/|\*)$/', implode(' ', $lines[$line_number + 2]))) {
+        _coder_review_error($results, $rule, _coder_review_severity_name($coder_args, $review, $rule), $first_line_exists);
+        $first_line_exists = 0; // reset for the next iteration.
+      }
+    }
+  }
+}
+
+function _coder_tough_love_doxygen_function_one_line_summary_warning() {
+  return array(
+    '#warning' => t('Function summaries should be one line only.'),
+    '#link' => 'http://drupal.org/node/1354',
+  );
+}
+
+function _coder_tough_love_doxygen_param_description_warning() {
+  return array(
+    '#warning' => t('@param and @return descriptions begin indented on the next line.'),
+    '#link' => 'http://drupal.org/node/1354',
+  );
+}
+
+/**
+ * Check the passed quote for spelling errors.
+ */
+function _coder_tough_love_pspell_check(&$coder_args, $review, $rule, $lines, &$results) {
+  if (function_exists('pspell_new')) {
+    static $pspell_link;
+
+    if (!$pspell_link) {
+      $pspell_link = pspell_new("en_US");
+      $learnables = explode(',', variable_get('coder_tough_love_pspell_personal', _coder_tough_love_settings_pspell_personal_default()));
+      foreach ($learnables as $learnable) { // one day, we'll use a literal dictionary, not session.
+        pspell_add_to_session($pspell_link, drupal_strtolower(trim($learnable)));
+      }
+    }
+
+    foreach ((array)$lines as $line_number => $line) {
+      $line = implode(' ', $line); // concat'd parts.
+      $found_unknown_word = 0; // start fresh please.
+      $line = coder_tough_love_remove_known_keys($line);
+      $line = coder_tough_love_remove_non_words($line);
+      $line = coder_tough_love_remove_sql_queries($line);
+      $line = trim($line); // any fidgety whitespace.
+
+      $words = preg_split('/\s+/', $line);
+
+      foreach ($words as $word) {
+        // only look for words longer than 2 letters. could allow some misses, but reduces fositives.
+        if (drupal_strlen($word) > 2 && !pspell_check($pspell_link, drupal_strtolower(trim($word)))) {
+          $found_unknown_word = 1; // don't spit the error yet...
+        }
+      }
+
+      if ($found_unknown_word) { // ...we spit the error here so we report just once per line.
+        _coder_review_error($results, $rule, _coder_review_severity_name($coder_args, $review, $rule), $line_number, $line);
+      }
+    }
+  }
+}
+
+/**
+ * Look for Sentences That Look Like This and yell about 'em.
+ */
+function _coder_tough_love_sentence_style(&$coder_args, $review, $rule, $lines, &$results) {
+  $filename_to_title_caps = ucwords(str_replace('_', ' ', preg_replace('/(.*?)(\..*)/', '\1', basename($coder_args['#filename']))));
+
+  foreach ((array)$lines as $line_number => $line) {
+    $line = implode(' ', $line); // concat'd parts.
+    $line = coder_tough_love_remove_known_keys($line);
+    $line = trim($line); // any fidgety whitespace left.
+
+    // if this line has only one word, skip it.
+    if (count(explode(' ', $line)) == 1) {
+      continue;
+    }
+
+    // remove potential module names from the string, as determined by
+    // taking the filename and uppercasing it (ie., bio_visibility.module
+    // turns into "Bio Visibility"). This is primarily so that we don't give
+    // a false positive on a module's configuration menu definition.
+    $line = str_replace($filename_to_title_caps, '', $line);
+
+    // remove the first word which should be capitalized anyways.
+    $line = preg_replace('/^[A-Z]\w+/', '', $line);
+
+    // common stop words.
+    $rarely_capitalizeds = array(
+      'a', 'an', 'the', 'and', 'or', 'nor', 'for', 'but', 'so', 'yet',
+      'to', 'of', 'by', 'at', 'for', 'but', 'in', 'with', 'has',
+    ); // and now go ahead and remove common stop words.
+    foreach ($rarely_capitalizeds as $rarely_capitalized) {
+      // we could've put the \bs above, then passed the array, but it
+      // looked ugly. i like readability better than performance personally.
+      $line = preg_replace('/\b'. $rarely_capitalized .'\b/', '', $line);
+    }
+
+    // normalize any remaining spaces down to one.
+    $line = preg_replace('/\s+/', ' ', trim($line));
+
+    // if the number of words remaining is the same number of capitalized
+    // words, there's a good chance that the string is title-cased. note
+    // that we don't use word boundaries for the regexp because it considers
+    // the / in "api/v2/Group.php" a word boundary (properly - \W vs. \w).
+    $num_words = count(explode(' ', $line));
+    $num_capitalized_words = preg_match_all('/(^| )[A-Z]/', $line, $matches);
+
+    if ($num_words == $num_capitalized_words) {
+      _coder_review_error($results, $rule, _coder_review_severity_name($coder_args, $review, $rule), $line_number);
+    }
+  }
+}
+
+/**
+ * Remove known array keys that coder's "quote" #source gives us.
+ */
+function coder_tough_love_remove_known_keys($line) {
+  return preg_replace('/^#?(access|callback|description|path|prefix|suffix|title|type|value)/', '', $line);
+}
+
+/**
+ * Given a "quote" #source, try to remove non-words from the results.
+ */
+function coder_tough_love_remove_non_words($line) {
+  // attempt to remove ending punctuation from a sentence.
+  $line = preg_replace("/\w+\.\w+/", "", $line); // remove table.column type strings.
+  $line = preg_replace("/(\w)[:;,\.\?\!](\s|$)/", "\1", $line); // remove ending punctuation.
+  $line = preg_replace("/\s+([@%!\$].*?)(\s|$)/", ' ', $line); // remove %placeholders in line.
+  $line = preg_replace("/\.\w+/", '', $line); // filename extensions leftover from previous.
+
+  $words = preg_split("/\s+/", $line);
+  foreach ($words as $word) {
+    if (preg_match("/[^A-Z]/i", $word)) {
+      $word = preg_quote($word, '/');
+      $line = preg_replace("/(\s|^)$word(\s|$)/", ' ', $line);
+    }
+  }
+
+  return $line;
+}
+
+/**
+ * Given a "quote" #source, try to determine, and wipe-out, a SQL queries.
+ */
+function coder_tough_love_remove_sql_queries($line) {
+  if (preg_match('/^(INSERT|UPDATE|DELETE|SELECT)/', trim($line))) {
+    return ''; // remove the entire line. there's nothing good here.
+  }
+
+  return $line;
+}
+
+/**
+ * Configures Coder Tough Love.
+ */
+function coder_tough_love_settings() {
+  $form = array(); // helLOO, nurse!
+
+  if (function_exists('pspell_new')) {
+    $form['coder_tough_love_pspell_personal'] = array(
+      '#default_value'    => variable_get('coder_tough_love_pspell_personal', _coder_tough_love_settings_pspell_personal_default()),
+      '#description'      => t('Comma-separated list of words to teach Pspell. Words with hyphens are not currently allowed.'),
+      '#title'            => t('Pspell custom dictionary'),
+      '#type'             => 'textarea',
+    );
+
+    return system_settings_form($form);
+  }
+  else { // one day, we may be a bit more stringent with what to turn on. but, for now...
+    drupal_set_message(t('Pspell is not enabled, so there are no settings to configure.'));
+  }
+}
+
+/**
+ * Default set of teachable words for Pspell.
+ */
+function _coder_tough_love_settings_pspell_personal_default() {
+  return
+    'api, asc, autocomplete, baseURL, bio, cck, checkbox, checkboxes, CiviCRM, colspan, '.
+    'desc, devel, Doxygen, Drupal, enctype, Facebook, fieldgroup, fieldset, geocode, '.
+    'geocoding, Google, href, HTML, imagefield, irc, javascript, json, metadata, Morbus, '.
+    'mysql, mysqli, ncount, nid, null, pathauto, pgsql, PHP, pid, PO, presave, pspell, regex, '.
+    'signup, simplenews, tablename, textarea, textfield, tid, timestamp, trellon, uid, Unix, '.
+    'URL, URLs, username, varchar, vid, wiki, Wikipedia, XHTML';
+}
+

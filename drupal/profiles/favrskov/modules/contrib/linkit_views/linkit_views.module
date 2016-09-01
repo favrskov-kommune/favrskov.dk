@@ -1,0 +1,79 @@
+<?php 
+
+/**
+ * @file
+ * Extend Linkit with views links.
+ */
+
+/**
+ * Implementation of hook_linkit_load_plugins().
+ */
+function linkit_views_linkit_load_plugins($string) {
+  $matches = array();
+  $results = array();
+
+  $table_name = 'linkit_tmp_view_table_' . rand(0,10000) . rand(0,10000);
+
+  // Create the tmp table
+  _linkit_views_create_tmp_table($table_name);
+  
+  // Populate the tmp table
+  _linkit_views_populate_tmp_table($table_name);
+
+  $results = db_select($table_name, 'tmp')
+    ->fields('tmp', array('path', 'display_title', 'human_name'))
+    ->condition('tmp.display_title', '%' . db_like($string) . '%', 'LIKE')
+    ->execute();
+
+  foreach ($results AS $view) {
+    $matches['views'][] = array(
+      'title' => $view->display_title,
+      'path' => base_path() . $view->path,
+      'information' => array(
+        'type' => 'Views',
+        'view' => $view->human_name,
+      ),
+    );
+  }
+  return  $matches;
+}
+
+/**
+ * Implementation of hook_linkit_info_plugins().
+ * 
+ * This is used by linkit_permissions
+ */
+function linkit_views_linkit_info_plugins() {
+  $return['linkit_views'] = array(
+    'type' => 'views',
+  );
+  return $return;
+}
+
+
+function _linkit_views_create_tmp_table($table_name) {
+  // Create temporary table
+  $temp_table = 'CREATE TEMPORARY TABLE {'.$table_name.'} (human_name VARCHAR(255) NOT NULL, display_title VARCHAR(65) NOT NULL, path VARCHAR(255) NOT NULL)';
+  return db_query($temp_table);
+}
+
+function _linkit_views_populate_tmp_table($table_name) {
+  // Get all displays that is "page" and their path
+  $query = db_select('views_view', 'w')
+    ->condition('wd.display_plugin', 'page')
+    ->fields('wd', array('display_options', 'display_title'))
+    ->fields('w', array('human_name'));
+  $query->join('views_display', 'wd', 'w.vid = wd.vid');
+
+  $result = $query->execute();
+
+  foreach ($result AS $view) {
+    $optinos = unserialize($view->display_options);
+    $fields = array(
+      'display_title' => $view->display_title,
+      'human_name' => $view->human_name,
+      'path' => $optinos['path'],
+    );
+    db_insert($table_name)->fields($fields)->execute();
+  }
+}

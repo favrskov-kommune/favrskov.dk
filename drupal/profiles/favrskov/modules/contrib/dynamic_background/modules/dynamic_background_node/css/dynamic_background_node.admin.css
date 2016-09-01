@@ -1,0 +1,22 @@
+#edit-dynamic-background .dynamic-background-picture {
+  clear: both;
+  min-height: 105px;
+  margin-bottom: 10px;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-color: #CCCCCC #DDDDDD #EEEEEE;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  overflow: hidden;
+}
+
+#edit-dynamic-background .form-type-checkbox {
+  clear: both;
+}
+
+#edit-dynamic-background .dynamic-background-picture img {
+  display: block;
+  margin: auto;
+  margin-bottom: 4px;
+  border: none;
+}

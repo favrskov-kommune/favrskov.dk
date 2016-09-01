@@ -1,0 +1,28 @@
+# Danish translation of simpleSAMLphp Authentication (7.x-2.0-alpha2)
+# Copyright (c) 2013 by the Danish translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: simpleSAMLphp Authentication (7.x-2.0-alpha2)\n"
+"POT-Creation-Date: 2013-02-12 19:03+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Danish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "user"
+msgstr "bruger"
+msgid "User"
+msgstr "Bruger"
+msgid "Session closed for %name."
+msgstr "Session lukket for %name."
+msgid "Logged in user"
+msgstr "Brugeren som er logget ind"
+msgid ""
+"Warning: Give to trusted roles only; this permission has security "
+"implications."
+msgstr ""
+"Advarsel: Giv kun til betroede roller; denne tilladelse har "
+"sikkerhedsmæssige implikationer."

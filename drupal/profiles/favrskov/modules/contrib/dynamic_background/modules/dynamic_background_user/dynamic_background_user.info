@@ -1,0 +1,13 @@
+name = Dynamic background user
+description = Gives users the option to select a dynamic background image as their background image.
+package = Dynamic background
+core = 7.x
+files[] = dynamic_background_user.module
+
+dependencies[] = dynamic_background
+; Information added by drupal.org packaging script on 2013-03-20
+version = "7.x-2.0-rc4"
+core = "7.x"
+project = "dynamic_background"
+datestamp = "1363809612"
+

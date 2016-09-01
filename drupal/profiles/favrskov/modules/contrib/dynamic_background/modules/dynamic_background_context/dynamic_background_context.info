@@ -1,0 +1,15 @@
+name = Dynamic background context
+description = Set different backgrounds based on a given context
+package = Dynamic background
+core = 7.x
+files[] = dynamic_background_context.module
+files[] = plugins/dynamic_background_context_reaction.inc
+
+dependencies[] = dynamic_background
+dependencies[] = context
+; Information added by drupal.org packaging script on 2013-03-20
+version = "7.x-2.0-rc4"
+core = "7.x"
+project = "dynamic_background"
+datestamp = "1363809612"
+

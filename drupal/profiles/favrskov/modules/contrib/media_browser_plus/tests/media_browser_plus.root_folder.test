@@ -1,0 +1,160 @@
+<?php
+/**
+ * @file
+ * Media Browser Plus root folder test.
+ */
+
+/**
+ * Tests the behaviour when changing the MBP root folder.
+ */
+class MediaBrowserPlusRootFolderTest extends MediaBrowserPlusTestBase {
+
+  /**
+   * Return meta info about this test.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Media Browser Plus Root Folder',
+      'description' => 'Tests the root folder handling of Media Browser Plus',
+      'group' => 'Media',
+    );
+  }
+
+  /**
+   * Test the ability to move the root folder for media files.
+   */
+  public function testMovingRootFolder() {
+    $this->drupalLogin($this->adminUser);
+
+    // Create test folder structure.
+    $folders = array(
+      'root_folder' => 'Media Folders',
+      'source' => $this->randomName(),
+      'source_child' => $this->randomName(),
+      'source_child_child' => $this->randomName(),
+    );
+    $hierarchy = array(
+      'root_folder' => array(
+        $folders['source'] => array(
+          $folders['source_child'] => array(
+            $folders['source_child_child'] => array(),
+          ),
+        ),
+      ),
+    );
+    $this->folderCreationHelper($hierarchy, FALSE);
+
+    // Create test files.
+    $files = array();
+    foreach ($folders as $type => $folder_name) {
+      $terms = taxonomy_get_term_by_name($folder_name);
+      $folder = $folders[$type] = reset($terms);
+      foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+        $files[$scheme][] = $this->createTestFile('text/plain', $folder, $scheme);
+        $files[$scheme][] = $this->createTestFile('image/jpg', $folder, $scheme);
+      }
+    }
+    // Just to have a verbose output.
+    $this->drupalGet('admin/content/file/list');
+
+    // Create mbp independent folders and files.
+    foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+      $scheme_path = drupal_realpath($scheme . '://');
+      $independent_folders[$scheme] = $scheme_path . '/non_mbp';
+      file_prepare_directory($independent_folders[$scheme], FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS);
+      $independent_files[$scheme] = array(
+        $independent_folders[$scheme] . '/non_mpp.txt',
+        $scheme_path . '/non_mpp.txt',
+      );
+      foreach ($independent_files[$scheme] as $independent_file) {
+        file_put_contents($independent_file, str_repeat('01', 512));
+      }
+    }
+
+    // Reconfigure the root folder.
+    $data = array(
+      'root_folder' => 'mbp',
+    );
+    $this->drupalPost('admin/config/media/media_browser_plus_settings', $data, t('Save configuration'));
+
+    // Reset the different caches.
+    drupal_static_reset('taxonomy_get_parents');
+    drupal_static_reset('taxonomy_get_parents_all');
+    entity_get_controller('taxonomy_term')->resetCache();
+    entity_get_controller('file')->resetCache();
+    clearstatcache();
+
+    // Check if managed files were moved.
+    foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+      foreach ($files[$scheme] as $file) {
+        // Refresh cached object.
+        $file = file_load($file->fid);
+        // Check if the new path is a child folder of the destination.
+        $this->assertTrue(
+          stristr($file->uri, $scheme . '://mbp/') !== FALSE,
+          'Managed file is moved to new destination.'
+        );
+        $this->assertTrue(file_exists(drupal_realpath($file->uri)), 'File found in filesystem.');
+      }
+    }
+
+    // Check if independent folder wasn't moved.
+    foreach ($independent_folders as $scheme => $independent_folder) {
+      $this->assertTrue(
+        is_dir($independent_folder),
+        format_string('Independent folder is untouched. %scheme', array('%' => $scheme))
+      );
+      // Check if independent files weren't moved.
+      foreach ($independent_files[$scheme] as $file) {
+        $this->assertTrue(
+          file_exists($file),
+          format_string('Independent file is untouched. %scheme', array('%' => $scheme))
+        );
+      }
+    }
+
+    // And move all the stuff back.
+    // Reconfigure the root folder.
+    $data = array(
+      'root_folder' => '',
+    );
+    $this->drupalPost('admin/config/media/media_browser_plus_settings', $data, t('Save configuration'));
+
+    // Reset the different caches.
+    drupal_static_reset('taxonomy_get_parents');
+    drupal_static_reset('taxonomy_get_parents_all');
+    entity_get_controller('taxonomy_term')->resetCache();
+    entity_get_controller('file')->resetCache();
+    clearstatcache();
+
+    // Check if managed files were moved.
+    foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+      foreach ($files[$scheme] as $file) {
+        // Refresh cached object.
+        $file = file_load($file->fid);
+        // Check if the new path is a child folder of the destination.
+        $this->assertTrue(
+          stristr($file->uri, $scheme . '://mpb/') === FALSE,
+          'Managed file is moved to new destination.'
+        );
+        $this->assertTrue(file_exists(drupal_realpath($file->uri)), 'File found in filesystem.');
+      }
+    }
+
+    // Check if independent folder wasn't moved.
+    foreach ($independent_folders as $scheme => $independent_folder) {
+      $this->assertTrue(
+        is_dir($independent_folder),
+        format_string('Independent folder is untouched. %scheme', array('%' => $scheme))
+      );
+      // Check if independent files weren't moved.
+      foreach ($independent_files[$scheme] as $file) {
+        $this->assertTrue(
+          file_exists($file),
+          format_string('Independent file is untouched. %scheme', array('%' => $scheme))
+        );
+      }
+    }
+  }
+
+}

@@ -1,0 +1,252 @@
+<?php
+
+/**
+ * @file
+ * This module provides the node adminitrators with the option to use different
+ * dynamic background images for each node.
+ */
+
+/**
+ * Build the administration interface for dynamic background nodes and enables
+ * administrators to select which content types have enable background selection.
+ *
+ * @return array $form
+ */
+function dynamic_background_node_settings_form() {
+  // Finde all the node types and make them radio options frindly.
+  $options = array();
+  $types = node_type_get_types();
+  foreach ($types as $key => $type) {
+    $options[$key] = $type->name;
+    $description = t(filter_xss_admin($type->description));
+    if (!empty($description)) {
+      $options[$key] .= ' (' . $description . ')';
+    }
+  }
+
+  // Enable all content types by default.
+  $settings = variable_get('dynamic_background_node', array());
+  dynamic_background_default_content_types($settings);
+
+  $form['dynamic_background_node']['settings'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Content types'),
+      '#description' => t('Enable background selection for these content types.'),
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+  );
+
+  $form['dynamic_background_node']['settings']['content_types'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Content types'),
+    '#required' => TRUE,
+    '#options' => $options,
+    '#default_value' => $settings['settings']['content_types'],
+  );
+
+  // Add image style to the form.
+  $form += dynamic_background_image_style_form('dynamic_background_node_image_style');
+
+  // Add image behavior form.
+  $form += dynamic_background_image_behaviour_form('dynamic_background_node_image_behaviour');
+
+  return $form;
+}
+
+/**
+ * Ensure that all content types are enabled by default.
+ *
+ * @param @settings
+ */
+function dynamic_background_default_content_types(&$settings) {
+  if (!isset($settings['settings']['content_types'])) {
+    if (!isset($settings['settings'])) {
+      $settings['settings'] = array();
+    }
+    $settings['settings']['content_types'] = array();
+
+    foreach (node_type_get_types() as $key => $type) {
+      $settings['settings']['content_types'][$key] = $key;
+    }
+
+    ksort($settings['settings']['content_types']);
+  }
+}
+
+/**
+ * Hooks into the selected content types an insert a form selection option of
+ * background images uploaded by the site administrator.
+ *
+ * @param array $form
+ * @param array $form_state
+ * @param string $form_id
+ */
+function dynamic_background_node_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['type']['#value'])) {
+    // Enable all content types by default.
+    $settings = variable_get('dynamic_background_node', array());
+    dynamic_background_default_content_types($settings);
+
+    if (isset($settings['settings']['content_types'][$form['type']['#value']]) &&
+        $settings['settings']['content_types'][$form['type']['#value']]) {
+
+      // Add new fieldset, will appred as a vertical tab.
+      $form['additional_settings']['dynamic_background'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Node background'),
+        '#collapsed' => FALSE,
+        '#collapsible' => TRUE,
+        '#tree' => TRUE,
+      );
+
+      // Find the current node's id.
+      $nid = -1;
+      if (isset($form['#node']) && isset($form['#node']->nid)) {
+        $nid = $form['#node']->nid;
+      }
+
+      // Add the image selection part of the form
+      $form['additional_settings']['dynamic_background'] += dynamic_background_image_selector_form('node', $nid);
+
+      // Allow user to upload a image.
+      if (user_access('dynamic background upload node')) {
+        // Load settings and find the number of images.
+        $settings = variable_get('dynamic_background_node', array());
+        $no_of_images = isset($settings['upload']['no_of_images']) ? $settings['upload']['no_of_images'] : 1;
+
+        // Only proceed if the form is needed.
+        if ($no_of_images > 0) {
+          // Add user upload form.
+          $upload_form = dynamic_background_user_upload_form('node', $nid, $no_of_images);
+          $form['additional_settings']['dynamic_background'] += $upload_form['form'];
+
+          // Add submission function.
+          $form['#submit'][] = $upload_form['submit'];
+        }
+      }
+
+      // Add some style to the image selection.
+      drupal_add_css(drupal_get_path('module', 'dynamic_background_node') . '/css/dynamic_background_node.admin.css');
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert(), which saves information about the select
+ * background image.
+ */
+function dynamic_background_node_node_insert($node) {
+  dynamic_background_set_active_node_image($node);
+}
+
+/**
+ * Implements hook_node_update(), which updates the selected background image on
+ * node update events.
+ */
+function dynamic_background_node_node_update($node) {
+  dynamic_background_set_active_node_image($node);
+}
+
+/**
+ * Implements hook_node_delete(), that ensures that dynamic background
+ * information is delete during node deletion.
+ */
+function dynamic_background_node_node_delete($node) {
+  // Enable all content types by default.
+  $settings = variable_get('dynamic_background_node', array());
+  dynamic_background_default_content_types($settings);
+
+  if (isset($settings['settings']['content_types']) && $settings['settings']['content_types'][$node->type]) {
+    dynamic_background_set_active(NULL, 'node', $node->nid);
+  }
+}
+
+/**
+ * Set the active image for the node given, base on the image selected on the
+ * node.
+ *
+ * @param object $node
+ */
+function dynamic_background_set_active_node_image($node) {
+  // Enable all content types by default.
+  $settings = variable_get('dynamic_background_node', array());
+  dynamic_background_default_content_types($settings);
+
+  if (isset($settings['settings']['content_types'][$node->type]) && $settings['settings']['content_types'][$node->type] && isset($node->dynamic_background)) {
+    // Look through the form to find selected image, if any.
+    $is_selected = FALSE;
+    foreach ($node->dynamic_background as $fid => $element) {
+      if (isset($element['selected']) && $element['selected']) {
+        $is_selected = TRUE;
+        dynamic_background_set_active($fid, 'node', $node->nid);
+        break;
+      }
+    }
+
+    // If image have been upload set the last on as active.
+    if (isset($node->dynamic_background['dynamic_background_info']['active'])) {
+      $is_selected = TRUE;
+      dynamic_background_set_active($node->dynamic_background['dynamic_background_info']['active'], 'node', $node->nid);
+    }
+
+    // Check if a image was selected, if not delete usage entry (@todo Create
+    // function to this, the null hack is not pretty).
+    if (!$is_selected) {
+      dynamic_background_set_active(NULL, 'node', $node->nid);
+    }
+  }
+}
+
+/**
+ * Implements hook_dynamic_background_css().
+ */
+function dynamic_background_node_dynamic_background_css($vars) {
+  // Find the selected image id.
+  $fid = NULL;
+  if (isset($vars['node'])) {
+    $node = $vars['node'];
+
+    // Get active image an return information.
+    $image = dynamic_background_active_image('node', $node->nid);
+
+    // If no image have been found try to select random image (if configured).
+    $image_behaviour = variable_get('dynamic_background_node_image_behaviour', array());
+    if (!$image && (isset($image_behaviour['random']) && $image_behaviour['random'])) {
+      $image = dynamic_background_random_image('node', $node->nid);
+    }
+
+    if ($image) {
+      // Load image style settings.
+      $image_style = variable_get('dynamic_background_node_image_style', FALSE);
+
+      return array(
+        'image' => $image,
+        'configuration' => variable_get('dynamic_background_node_css', array()),
+        'image_style' => $image_style ? $image_style['style'] : FALSE,
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_dynamic_background_info().
+ */
+function dynamic_background_node_dynamic_background_info() {
+  return array(
+    'type' => 'node',
+    'menu' => array(
+      'title' => t('Node'),
+      'description' => t('Configure node extension'),
+    ),
+    'upload' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_dynamic_background_weight().
+ */
+function dynamic_background_node_dynamic_background_weight() {
+  return array(
+    'weight' => -30,
+  );
+}

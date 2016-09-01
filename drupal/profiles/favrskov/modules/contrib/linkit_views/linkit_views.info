@@ -1,0 +1,13 @@
+name = Linkit Views
+description = Extend Linkit with views links
+core = 7.x
+package = Linkit
+dependencies[] = "linkit"
+dependencies[] = "views"
+configure = admin/config/content/linkit
+; Information added by drupal.org packaging script on 2011-11-06
+version = "7.x-1.2"
+core = "7.x"
+project = "linkit_views"
+datestamp = "1320600636"
+

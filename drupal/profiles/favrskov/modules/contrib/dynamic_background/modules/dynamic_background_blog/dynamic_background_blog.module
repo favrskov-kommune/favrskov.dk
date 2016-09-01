@@ -1,0 +1,188 @@
+<?php
+
+/**
+ * @file
+ * This module provides the user blog's with the option to use different
+ * dynamic background images for each blog.
+ */
+
+define('DYNAMIC_BACKGROUND_BLOG_PATH', 'blog');
+
+/**
+ * Implementation of hook_permission().
+ */
+function dynamic_background_blog_permission() {
+  return array(
+    'user selection of blog background' => array(
+      'title' => t('Allow selection of background on user blog'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_menu().
+ *
+ * Hooks into the dynamic background modules menu
+ * structure and adds the "blog" menu tab to the administration interface.
+ */
+function dynamic_background_blog_menu() {
+  return array(
+    'user/%user/blog/background' => array(
+      'title' => 'My blog background',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('dynamic_background_blog_form', 1),
+      'access arguments' => array('user selection of blog background'),
+      'type' => MENU_LOCAL_TASK,
+    ),
+  );
+}
+
+/**
+ * Build the administration interface for dynamic background nodes and enables
+ * administrators to select which content types have enable background selection.
+ *
+ * @return array $form
+ */
+function dynamic_background_blog_settings_form() {
+  $form = array();
+
+  // Add image style to the form.
+  $form += dynamic_background_image_style_form('dynamic_background_blog_image_style');
+
+  // Add image behavior form.
+  $form += dynamic_background_image_behaviour_form('dynamic_background_blog_image_behaviour');
+
+  return $form;
+}
+
+/**
+ * Menu callback that generates the form used in the "My blog background" tab
+ * on the user profile page.
+ */
+function dynamic_background_blog_form($form, $form_state, $user) {
+  // Add the image selection part of the form
+  $form['dynamic_background'] = dynamic_background_image_selector_form('blog', $user->uid);
+
+  // Allow user to upload a image.
+  if (user_access('dynamic background upload blog')) {
+    // Load settings and find the number of images.
+    $settings = variable_get('dynamic_background_blog', array());
+    $no_of_images = isset($settings['upload']['no_of_images']) ? $settings['upload']['no_of_images'] : 1;
+
+    // Only proceed if the form is needed.
+    if ($no_of_images > 0) {
+      // Add user upload form.
+      $upload_form = dynamic_background_user_upload_form('blog', $user->uid, $no_of_images);
+      $form['dynamic_background'] += $upload_form['form'];
+
+      // Add submission function.
+      $form['#submit'][] = $upload_form['submit'];
+      $form['#submit'][] = 'dynamic_background_blog_form_submit';
+    }
+  }
+
+  // Add submit handler.
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Update background'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit handler for user background selection and saves the selected image's
+ * id into the database.
+ */
+function dynamic_background_blog_form_submit($form, &$form_state) {
+  // Check if any image have been selected.
+  $fid = NULL;
+  foreach ($form_state['values']['dynamic_background'] as $key => $value) {
+    if (isset($value['selected']) && $value['selected']) {
+      $fid = $key;
+      break;
+    }
+  }
+
+  if (isset($form_state['values']['dynamic_background']['dynamic_background_picture_upload'])) {
+    foreach ($form_state['values']['dynamic_background']['dynamic_background_picture_upload'] as $key => $value) {
+      if (isset($value['picture_use']) && $value['picture_use']) {
+        $fid = $key;
+        break;
+      }
+    }
+  }
+
+  // Get dynamic background info.
+  $info = $form_state['values']['dynamic_background']['dynamic_background_info'];
+
+  // Update the active background image.
+  dynamic_background_set_active($fid, 'blog', $info['data']);
+}
+
+/**
+ * Implements hook_dynamic_background_css().
+ */
+function dynamic_background_blog_dynamic_background_css($vars) {
+  $uid = NULL;
+  // There are two ways to detecte the different parts of a blog. The path
+  // /blog/%uid_optional of the node type blog. First we look at the node type,
+  // then the path.
+  if (isset($vars['node']) && $vars['node']->type == 'blog') {
+    $uid = $vars['node']->uid;
+  }
+  else {
+    // Try to find the uid by using path.
+    $parts = explode('/', drupal_get_path_alias());
+    if (count($parts) >= 2 && $parts[0] == DYNAMIC_BACKGROUND_BLOG_PATH && is_numeric($parts[1])) {
+      // Test that the 2nd part is an interger (meight be a user id).
+      $uid = (int)$parts[1];
+    }
+  }
+
+  // If user id was found, try to load blog background image if one is definded.
+  if (!is_null($uid)) {
+    $image = dynamic_background_active_image('blog', $uid);
+
+    // If no image have been found try to select random image (if configured).
+    $image_behaviour = variable_get('dynamic_background_blog_image_behaviour', array());
+    if (!$image && (isset($image_behaviour['random']) && $image_behaviour['random'])) {
+      $image = dynamic_background_random_image('blog', $uid);
+    }
+
+    if ($image) {
+      // Load image style settings.
+      $image_style = variable_get('dynamic_background_blog_image_style', FALSE);
+
+      return array(
+        'image' => $image,
+        'configuration' => variable_get('dynamic_background_blog_css', array()),
+        'image_style' => $image_style ? $image_style['style'] : FALSE,
+        'weight' => 230,
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_dynamic_background_info().
+ */
+function dynamic_background_blog_dynamic_background_info() {
+  return array(
+    'type' => 'blog',
+    'menu' => array(
+      'title' => t('Blog'),
+      'description' => t('Configure blog extension'),
+    ),
+    'upload' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_dynamic_background_weight().
+ */
+function dynamic_background_blog_dynamic_background_weight() {
+  return array(
+    'weight' => -35,
+  );
+}

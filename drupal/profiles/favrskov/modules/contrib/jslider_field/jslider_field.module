@@ -1,0 +1,117 @@
+<?php
+/**
+ * Implements hook_element_info().
+ *
+ * To keep the various pieces of the example together in external files,
+ * this just returns _form_example_elements().
+ */
+function jslider_field_element_info() {
+  require_once('jslider_field_jslider_element.inc');
+  require_once('jslider_field_transfer_slider_element.inc');
+  $data1 = _jslider_field_element_info_jslider();
+  $data2 = _jslider_field_element_info_transfer_slider();
+  $data = array_merge($data1, $data2);
+  return $data;
+}
+
+/**
+ * Implements hook_theme().
+ *
+ * The only theme implementation is by the element example. To keep the various
+ * parts of the example together, this actually returns
+ * _form_example_element_theme().
+ */
+function jslider_field_theme($existing, $type, $theme, $path) {
+  require_once('jslider_field_jslider_element.inc');
+  require_once('jslider_field_transfer_slider_element.inc');
+  $data1 = _jslider_field_theme_jslider($existing, $type, $theme, $path);
+  $data2 = _jslider_field_theme_transfer_slider($existing, $type, $theme, $path);
+  $data = array_merge($data1, $data2);
+  return $data;
+}
+
+/**
+ * @return array
+ */
+function jslider_field_field_widget_info() {
+  require_once('jslider_field_jslider_element.inc');
+  $data = _jslider_field_field_widget_info_jslider();
+  //$data = array_merge($data1, $data2);
+  return $data;
+}
+
+/**
+ * @param $form
+ * @param $form_state
+ * @param $field
+ * @param $instance
+ * @param $langcode
+ * @param $items
+ * @param $delta
+ * @param $element
+ * @return mixed
+ */
+function jslider_field_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  require_once('jslider_field_jslider_element.inc');
+  $data = _jslider_field_field_widget_form($form, $form_state, $field, $instance, $langcode, $items, $delta, $element);
+  //$data = array_merge($data1, $data2);
+  return $data;
+}
+
+/**
+ * @param $field
+ * @param $instance
+ * @return mixed
+ */
+function jslider_field_field_widget_settings_form($field, $instance) {
+  require_once('jslider_field_jslider_element.inc');
+  $data = _jslider_field_field_widget_settings_form_jslider($field, $instance);
+  //$data = array_merge($data1, $data2);
+  return $data;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function jslider_field_form_field_ui_field_edit_form_alter(&$form, &$form_state) {
+  require_once('jslider_field_jslider_element.inc');
+  _jslider_field_form_field_ui_field_edit_form_alter_jslider($form, $form_state);
+}
+
+
+/**
+ * Function to validate integer numbers
+ *
+ * @param $element
+ * @param $form_state
+ */
+function jslider_field_validate_integer($element, &$form_state) {
+  if (!ctype_digit($element['#value'])) {
+    form_error($element, t('The value should be a valid integer number'));
+  }
+}
+
+
+/**
+ *
+ */
+function jslider_field_get_styles($default = FALSE) {
+  $items = array(
+    '' => t('Default'),
+    'red' => t('Red'),
+    'green' => t('Green'),
+    'blue' => t('Blue'),
+    'orange' => t('Orange'),
+    'purple' => t('Purple'),
+    'steel-blue' => t('Steel Blue'),
+    'tiger-orange' => t('Tiger Orange'),
+    'wild-blue-yonder' => t('Wild Blue Yonder'),
+    'cinereous' => t('Cinereous'),
+    'laurel-green' => t('Laurel Green')
+  );
+  if (!$default) {
+    array_shift($items);
+  }
+
+  return $items;
+}

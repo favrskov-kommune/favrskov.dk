@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Installes the database scheme and handles install and uninstall of the
+ * module.
+ */
+
+/**
+ * Implements hook_uninstall():
+ */
+function dynamic_background_user_uninstall() {
+  // Remove settings.
+  variable_del('dynamic_background_user_css');
+  variable_del('dynamic_background_user');
+  variable_del('dynamic_background_user_image_style');
+}
+
+/**
+ * Update stored data to use the new database tables.
+ */
+function dynamic_background_user_update_7000() {
+  $query = db_select('dynamic_background_user', 'dbu');
+  $result = $query->fields('dbu', array('uid', 'data'))->execute();
+
+  // Load the old stored image, as the old node extension used the array index
+  // and not the fid (doh).
+  $images = variable_get('dynamic_background_images', array());
+  while ($row = $result->fetchObject()) {
+    db_insert('dynamic_background_usage')
+      ->fields(array(
+        'fid' => $images[$row->data]['fid'],
+        'type' => 'user',
+        'data' => $row->uid)
+      )->execute();
+  }
+}
+
+/**
+ * Remove old database scheme.
+ */
+function dynamic_background_user_update_7001() {
+  db_query('drop table {dynamic_background_user}');
+}

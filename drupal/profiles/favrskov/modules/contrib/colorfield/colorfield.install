@@ -1,0 +1,24 @@
+<?php
+/**
+ * @file
+ * Field definition for the colorfield module.
+ */
+
+/**
+ * Implements hook_field_schema().
+ *
+ * The data we will store here is just one 7 characters element, even
+ * though the widget presents the three portions separately.
+ */
+function colorfield_field_schema($field) {
+  $columns = array(
+    'rgb' => array('type' => 'varchar', 'length' => 7, 'not null' => FALSE),
+  );
+  $indexes = array(
+    'rgb' => array('rgb'),
+  );
+  return array(
+    'columns' => $columns,
+    'indexes' => $indexes,
+  );
+}

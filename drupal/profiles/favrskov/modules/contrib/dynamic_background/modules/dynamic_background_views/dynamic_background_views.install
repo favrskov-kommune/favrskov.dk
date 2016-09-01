@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Installes the database scheme and handles install and uninstall of the
+ * module.
+ */
+
+/**
+ * Implements hook_uninstall():
+ */
+function dynamic_background_views_uninstall() {
+  // Remove settings.
+  variable_del('dynamic_background_views');
+  variable_del('dynamic_background_views_css');
+  variable_del('dynamic_background_views_image_style');
+}
+
+/**
+ * Update stored data to use the new database tables.
+ */
+function dynamic_background_views_update_7000() {
+  $query = db_select('dynamic_background_views', 'dbv');
+  $result = $query->fields('dbv', array('view_id', 'data'))->execute();
+
+  // Load the old stored image, as the old node extension used the array index
+  // and not the fid (doh).
+  $images = variable_get('dynamic_background_images', array());
+  while ($row = $result->fetchObject()) {
+    db_insert('dynamic_background_usage')
+      ->fields(array(
+        'fid' => $images[$row->data]['fid'],
+        'type' => 'views',
+        'data' => $row->view_id)
+      )->execute();
+  }
+}

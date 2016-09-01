@@ -1,0 +1,3 @@
+[submodule "drupal/devops"]
+	path = drupal/devops
+	url = ssh://git@git.propeople.com.ua:2200/tim/favrskov-build-components.git

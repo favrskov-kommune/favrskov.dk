@@ -1,0 +1,13 @@
+name = Piwik Statistical Field
+description = Integrates piwik statistics as entity field.
+package = Statistics
+core = 7.x
+configure = admin/config/system/piwik
+dependencies[] = piwik
+
+; Information added by Drupal.org packaging script on 2014-03-05
+version = "7.x-2.0-beta3+5-dev"
+core = "7.x"
+project = "piwik_stats"
+datestamp = "1394033679"
+

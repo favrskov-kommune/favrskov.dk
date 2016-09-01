@@ -1,0 +1,152 @@
+<?php
+
+/**
+ * @file
+ * Installation file for dynamic background, currently only the uninstall
+ * function is present.
+ */
+
+function dynamic_background_schema() {
+  $schema = array();
+
+  $schema['dynamic_background_usage'] = array(
+    'description' => 'Stores information about the usage of dynamic background images',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for a dynamic background image.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'fid' => array(
+        'description' => 'The {file_managed}.fid identifier for the uploaded file.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'Used to indicate which extension/module uploaded the image.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'data' => array(
+        'description' => 'Extra information, which may be used be extension to store local information',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+    ),
+    'indexes' => array(
+      'type' => array('type'),
+    ),
+    'foreign keys' => array(
+      'file' => array(
+        'table' => 'file_managed',
+        'columns' => array('fid' => 'fid'),
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+
+  // Dynamic background images table
+  $schema['dynamic_background_images'] = array(
+    'description' => 'Stores information about the images uploaded',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for a dynamic background image.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'fid' => array(
+        'description' => 'The {file_managed}.fid identifier for the uploaded file.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'data' => array(
+        'description' => 'Extra information, which may be used be extension to store local information',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'extension' => array(
+        'description' => 'Used to indicate which extension/module uploaded the image.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'indexes' => array(
+      'extension' => array('extension'),
+    ),
+    'foreign keys' => array(
+      'file' => array(
+        'table' => 'file_managed',
+        'columns' => array('fid' => 'fid'),
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dynamic_background_uninstall() {
+  variable_del('dynamic_background_setting');
+  variable_del('dynamic_background_images');
+  variable_del('dynamic_background_image_style');
+  variable_del('dynamic_background_weight');
+
+  drupal_uninstall_schema('dynamic_background');
+}
+
+/**
+ * Install new database schema.
+ */
+function dynamic_background_update_7002() {
+  drupal_install_schema('dynamic_background');
+}
+
+/**
+ * Move saved images to new data structure.
+ */
+function dynamic_background_update_7003() {
+  $images = variable_get('dynamic_background_images', array());
+  foreach ($images as $id => $image) {
+    if (isset($image['fid'])) {
+      // Move image into the new table.
+      db_insert('dynamic_background_images')
+        ->fields(array('fid' => $image['fid'],
+                       'data' => '-1',
+                       'extension' => 'default'))
+        ->execute();
+
+      // Update usage table, with active table.
+      if ($image['picture_use']) {
+        db_insert('dynamic_background_usage')
+          ->fields(array('fid' => $image['fid'],
+                         'type' => 'default',
+                         'data' => '-1'))
+          ->execute();
+      }
+    }
+  }
+
+  // Remove active background image variable.
+  variable_del('dynamic_background_active');
+}
+
+/**
+ * Make site's default background setting domain sensitive.
+ */
+function dynamic_background_update_7004() {
+  if (module_exists('domain')) {
+    $default_domain_id = domain_default_id();
+    db_add_field('dynamic_background_usage', 'domain_id', array('type' => 'int', 'unsigned' => FALSE, 'not null' => TRUE, 'default' => $default_domain_id), array());
+  }
+}

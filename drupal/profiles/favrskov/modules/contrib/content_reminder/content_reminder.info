@@ -1,0 +1,7 @@
+name = "Content reminder"
+description = "Set up reminders for content."
+package = "Workflow"
+core = "7.x"
+dependencies[] = "field"
+dependencies[] = "date_popup"
+configure = admin/config/workflow/content_reminder
