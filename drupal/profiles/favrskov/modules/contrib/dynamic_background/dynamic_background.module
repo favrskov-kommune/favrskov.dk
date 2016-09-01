@@ -1,0 +1,1002 @@
+<?php
+
+/**
+ * @file
+ * This module enables administrators to upload images used as background on
+ * the site. The selected background image link is exposed as either $background
+ * in the page.tpl file or as /background.css.
+ *
+ */
+
+// Include the upload form element definition.
+module_load_include('inc', 'dynamic_background', 'includes/upload.form');
+
+/**
+ * Implements hook_permission().
+ */
+function dynamic_background_permission() {
+  $permissions = array(
+    'dynamic backgrounds set default' => array(
+      'title' => t('Set globle dynamic backgrounds'),
+    ),
+    'dynamic backgrounds css callback' => array(
+      'title' => t('Access dynamic backgrounds css'),
+    ),
+    'dynamic backgrounds weight' => array(
+      'title' => t('Re-order dynamic backgrounds weight'),
+    ),
+  );
+
+  // Build permissions for the extensions.
+  foreach (module_implements('dynamic_background_info') as $module) {
+    $function = $module . '_dynamic_background_info';
+    $result = $function();
+    if ($result && is_array($result)) {
+      $permissions['dynamic background configure ' . $result['type']] = array(
+        'title' => 'Configure ' . $module . ' settings',
+      );
+      $permissions['dynamic background upload ' . $result['type']] = array(
+        'title' => 'Allow image upload: ' . $module,
+      );
+    }
+  }
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function dynamic_background_menu() {
+  $items = array();
+
+  $items['admin/config/user-interface/backgrounds'] = array(
+    'title' => 'Dynamic background',
+    'description' => 'Upload background images.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('dynamic_background_admin_images'),
+    'access arguments' => array('dynamic backgrounds set default'),
+    'file' => 'includes/backgrounds.admin.inc',
+  );
+
+  $items['admin/config/user-interface/backgrounds/images'] = array(
+    'title' => 'Background images',
+    'description' => 'Upload background images and select current active background.',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  $items['admin/config/user-interface/backgrounds/weight'] = array(
+    'title' => 'Weight',
+    'description' => 'Configure dynamic backgrounds extension weight',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('dynamic_background_admin_weight_form'),
+    'access arguments' => array('dynamic backgrounds weight'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 10,
+    'file' => 'includes/weight.admin.inc',
+  );
+
+  $items['background.css'] = array(
+    'page callback' => 'dynamic_background_css',
+    'access arguments' => array('dynamic backgrounds css callback'),
+    'type' => MENU_CALLBACK,
+  );
+
+  // Build menu for extensions (using hook_dynamic_background_info).
+  foreach (module_implements('dynamic_background_info') as $module) {
+    $function = $module . '_dynamic_background_info';
+    $result = $function();
+    if ($result && is_array($result)) {
+      $items['admin/config/user-interface/backgrounds/' . $result['type']] = array(
+        'title' => $result['menu']['title'],
+        'description' => $result['menu']['description'],
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('dynamic_background_build_settings_form', $module, $result['upload']),
+        'access arguments' => array('dynamic background configure ' . $result['type']),
+        'weight' => isset($result['menu']['weight']) ? $result['menu']['weight'] : 0,
+        'type' => MENU_LOCAL_TASK,
+      );
+    }
+  }
+
+  return $items;
+}
+
+/**
+ * Menu callback, which builds the administration UI for a given extension based
+ * on the parameters passed to the function.
+ *
+ * @param array $form
+ * @param array $form_state
+ * @param string $module
+ *        The name of the module that the form should be build form.
+ * @param boolean $upload
+ *        Add upload image options to the administration form.
+ * @return array $form
+ */
+function dynamic_background_build_settings_form($form, $form_state, $module, $upload = TRUE) {
+  $form = array(
+    '#tree' => TRUE,
+  );
+
+  // Call the extension/modules that implements hook_settings_form(), which
+  // gives the extension a possibility to change the form.
+  // @todo: move to after the form.
+  $function = $module . '_settings_form';
+  if (function_exists($function)) {
+    $form += $function();
+  }
+
+  // Build upload options form.
+  if ($upload) {
+    // Load the defaults.
+    $defaults = variable_get($module, array());
+
+    $form[$module]['upload'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('User supplied images'),
+      '#description' => t('You can allow users to upload their own images. To enable this go to <a href="@link">permissions page</a>.', array('@link' => '/admin/people/permissions')),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+
+    $form[$module]['upload']['no_of_images'] = array(
+      '#type' => 'select',
+      '#title' => t('Number of images'),
+      '#description' => t('The number of images each user should be allowed to upload, setting it to "0" will disable it.'),
+      '#options' => range(0, 20),
+      '#default_value' => isset($defaults['upload']['no_of_images']) ? intval($defaults['upload']['no_of_images']) : '1',
+    );
+  }
+
+  // Builds the CSS behaviour part of the settings form.
+  $form_key = $module . '_css';
+  $defaults = variable_get($form_key, array());
+  $form[$form_key] = array(
+    '#type' => 'fieldset',
+    '#title' => t('CSS behaviour'),
+    '#collapsed' => FALSE,
+    '#collapsible' => TRUE,
+    '#tree' => TRUE,
+  );
+
+  $form[$form_key]['selector'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CSS selector'),
+    '#description' => t('The CSS selector string to target with the background image e.g. body #container.'),
+    '#required' => TRUE,
+    '#default_value' => isset($defaults['selector']) ? $defaults['selector'] : '',
+  );
+
+  $form[$form_key]['css'] = array(
+    '#type' => 'textarea',
+    '#title' => t('CSS'),
+    '#description' => t('The CSS to insert with the background image e.g background-size: cover;.'),
+    '#default_value' => isset($defaults['css']) ? $defaults['css'] : '',
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Build the image style selection form, which can be used in sub-modules to add
+ * support for image manipulation.
+ *
+ * @param type $form_key
+ * @return type
+ */
+function dynamic_background_image_style_form($form_key) {
+  $form = array();
+
+  $form[$form_key] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Image style'),
+    '#description' => 'You can apply differect effects to your background image using image styles. If you don\'t want to add effects to the selected background image, just select "No style".',
+    '#collapsed' => FALSE,
+    '#collapsible' => TRUE,
+    '#tree' => TRUE,
+  );
+
+  // Get image style information.
+  $options = array(0 => t('No style'));
+  $styles = image_styles();
+  foreach ($styles as $stylename => $settings) {
+    $options[$stylename] = $stylename;
+  }
+
+  // Load default form values (current selected image style)
+  $default = variable_get($form_key, array());
+  $form[$form_key]['style'] = array(
+    '#type' => 'select',
+    '#title' => t('Choose a style to apply to background images.'),
+    '#description' => t('To create an image style, go to <a href="@url">image style configuration</a>.', array('@url' => '/admin/config/media/image-styles')),
+    '#options' => $options,
+    '#default_value' => isset($default['style']) ? $default['style'] : 0,
+  );
+
+  $form[$form_key]['thumbnail_style'] = array(
+    '#type' => 'select',
+    '#title' => t('Choose a style to apply to thumbnail images.'),
+    '#description' => t('To create an image style, go to <a href="@url">image style configuration</a>.', array('@url' => '/admin/config/media/image-styles')),
+    '#options' => $options,
+    '#default_value' => isset($default['thumbnail_style']) ? $default['thumbnail_style'] : 'thumbnail',
+  );
+
+  return $form;
+}
+
+/**
+ * Build the image behaviour form, which can be used in sub-modules to add
+ * support for image behaviour, such as the default random image.
+ *
+ * @param type $form_key
+ * @return type
+ */
+function dynamic_background_image_behaviour_form($form_key) {
+  $form = array();
+
+  $default = variable_get($form_key, array());
+  $form[$form_key] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Image behaviour'),
+    '#collapsed' => TRUE,
+    '#collapsible' => TRUE,
+    '#tree' => TRUE,
+  );
+
+  $form[$form_key]['random'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Random image'),
+    '#description' => t('If no image is selected and this is checked a random image will be selected.'),
+    '#default_value' => isset($default['random']) ? $default['random'] : 0,
+  );
+
+  return $form;
+}
+
+/**
+ * Implements hook_dynamic_background_css for the main module.
+ */
+function dynamic_background_dynamic_background_css($vars) {
+  // Get active image.
+  $image = dynamic_background_active_image();
+
+  // If no image have been found try to select random image (if configured).
+  $image_behaviour = variable_get('dynamic_background_image_behaviour', array());
+  if (!$image && (isset($image_behaviour['random']) && $image_behaviour['random'])) {
+    $image = dynamic_background_random_image();
+  }
+
+  if ($image) {
+    // Load image style settings.
+    $image_style = variable_get('dynamic_background_image_style', FALSE);
+
+    return array(
+      'image' => $image,
+      'configuration' => variable_get('dynamic_background_css', array()),
+      'image_style' => $image_style ? $image_style['style'] : FALSE,
+    );
+  }
+}
+
+/**
+ * Implements hook_dynamic_background_info() for the main module.
+ */
+function dynamic_background_dynamic_background_info() {
+  return array(
+    'type' => 'default',
+    'menu' => array(
+      'title' => t('Settings'),
+      'description' => t('Configure dynamic backgrounds'),
+      'weight' => 50,
+    ),
+    'upload' => FALSE,
+  );
+}
+
+/**
+ * Implements hook_dynamic_background_weight() for the main module.
+ */
+function dynamic_background_dynamic_background_weight() {
+  return array(
+    'weight' => -20,
+  );
+}
+
+/**
+ * The dynamic background administration settings form.
+ */
+function dynamic_background_settings_form() {
+  $form['dynamic_background_setting'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  // Load default values.
+  $default = variable_get('dynamic_background_setting', array());
+  $form['dynamic_background_setting']['num_of_pictures'] = array(
+    '#type' => 'select',
+    '#description' => t('Enter the number of images that should be possible to upload.'),
+    '#options' => array('unlimited' => t('Unlimited')) + drupal_map_assoc(array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30)),
+    '#required' => TRUE,
+    '#default_value' => isset($default['num_of_pictures']) ? $default['num_of_pictures'] : 'unlimited',
+  );
+
+  $form['dynamic_background_setting']['path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Upload path'),
+    '#description' => t('The path inside the files folder to upload the images to.'),
+    '#size' => 25,
+    '#required' => TRUE,
+    '#default_value' => isset($default['path']) ? $default['path'] : '',
+  );
+
+  $form['dynamic_background_setting']['extensions'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Allowed file types'),
+    '#description' => t('Allowed files extension to upload. The list should be seperated by spaces.'),
+    '#size' => 30,
+    '#required' => TRUE,
+    '#default_value' => isset($default['extensions']) ? $default['extensions'] : 'jpg jpeg png',
+  );
+
+  // Add image style to the form.
+  $form += dynamic_background_image_style_form('dynamic_background_image_style');
+
+  // Add image behavior form.
+  $form += dynamic_background_image_behaviour_form('dynamic_background_image_behaviour');
+
+  // Set drupal system settings form and add validation function.
+  $form['#validate'][] = 'dynamic_background_settings_form_validate';
+
+  return $form;
+}
+
+/**
+ * Validation function for the administration settings form.
+ */
+function dynamic_background_settings_form_validate($form, &$form_state) {
+  // Create upload path.
+  $path = file_default_scheme() . '://' . check_plain($form_state['values']['dynamic_background_setting']['path']);
+  if (!file_prepare_directory($path, FILE_CREATE_DIRECTORY)) {
+    form_set_error('path', t('The entered path could not be created.'));
+  }
+}
+
+/**
+ * Implements hook_theme(). This defines the default theming function for the
+ * background_upload_form element and the weight administration form.
+ */
+function dynamic_background_theme() {
+  return array(
+    'background_upload_form' => array(
+      'render element' => 'element',
+    ),
+    'dynamic_background_admin_weight_form' => array(
+      'render element' => 'form',
+      'file' => 'includes/weight.admin.inc',
+    ),
+  );
+}
+
+/**
+ * Page preprocess function used to create the $background variable, so it
+ * can be used in html.tpl.php. If selected have selected to use custom CSS, the
+ * image will automatically be added to the page header.
+ *
+ */
+function dynamic_background_preprocess_html(&$vars) {
+  // Load image configuration.
+  $image_conf = dynamic_background_load_image_configuration($vars);
+
+  // Generate the css and add it to the site.
+  if (isset($image_conf)) {
+    $css = dynamic_background_create_css($image_conf);
+    if ($css) {
+      drupal_add_css($css, array('type' => 'inline', 'group' => 200));
+    }
+
+    // Set the one with the highest weight as the variable.
+    if (!empty($image_conf)) {
+      $image = array_pop($image_conf);
+      $vars['background'] = 'style="background-image: url(\'' . file_create_url($image['image']->uri) . '\')"';
+    }
+  }
+}
+
+/**
+ * Page preprocess function used to create the $background variable, so it
+ * can be used in page.tpl.php
+ *
+ */
+function dynamic_background_preprocess_page(&$vars) {
+  // Load image configuration.
+  $image_conf = dynamic_background_load_image_configuration($vars);
+
+  // Only look at the last element (with the highest weight).
+  $image_conf = array_pop($image_conf);
+
+  // Generate the css and add it to the site.
+  if (isset($image_conf)) {
+    $vars['background'] = 'style="background-image: url(\'' . file_create_url($image_conf['image']->uri) . '\')"';
+  }
+}
+
+/**
+ * Menu callback function used to generate an body style css with the selected
+ * background image. The callback is /background.css.
+ */
+function dynamic_background_css() {
+  // Load image configuration.
+  $image_conf = dynamic_background_load_image_configuration($vars);
+
+  // Generate the css and add it to the site.
+  if (isset($image_conf)) {
+    $css = dynamic_background_create_css($image_conf);
+    if ($css) {
+      echo $css;
+    }
+  }
+}
+
+/**
+ * Helper function that calls hook_dynamic_background_css() and sorts the
+ * returned image configurations based on weight. This function may be called
+ * by more then one preprocessor function, so a static cache applied.
+ *
+ * @staticvar type $images
+ * @param type $reset
+ * @return type
+ */
+function dynamic_background_load_image_configuration(&$vars, $reset = FALSE) {
+  static $images;
+  if (!isset($images) || $reset) {
+    // If images is null, create empty array (as no images may be selected).
+    if (is_null($images)) {
+      $images = array();
+    }
+
+    // Call all hook_dynamic_background_css().
+    foreach (module_implements('dynamic_background_css') as $module) {
+      $function = $module . '_dynamic_background_css';
+      $result = $function($vars);
+      if ($result && is_array($result)) {
+        // Add weight to the result array.
+        $result['weight'] = _dynamic_background_get_weight($module);
+        $images[$module] = $result;
+      }
+    }
+
+    // Sort images based on weight.
+    usort($images, 'dynamic_background_revers_weight_cmp');
+  }
+
+  return $images;
+}
+
+/**
+ * Gets the weight of the extension/module.
+ *
+ * @TODO Implement static cache.
+ *
+ * @param string $module
+ *   The name of module/extension to get weight for.
+ * @return int
+ *   The module/extension weight.
+ */
+function _dynamic_background_get_weight($module) {
+  // Load administrator values
+  $weights = variable_get('dynamic_background_weight', array());
+
+  // Find weights sat by the administratio UI.
+  foreach ($weights as $weight) {
+    if ($weight['name'] == $module) {
+      // Weight found for the module.
+      return $weight['weight'];
+    }
+  }
+
+  // Try to get the weight from hook_dynamic_background_weight().
+  $function = $module . '_dynamic_background_weight';
+  if (function_exists($function)) {
+    $result = $function();
+    return $result['weight'];
+  }
+
+  // No weight was found, so nutral weight returned.
+  return 0;
+}
+
+/**
+ * Helper function to sort image configuration arrays based on module weight in
+ * revers order.
+ *
+ * @param array $a
+ * @param array $b
+ * @return int
+ */
+function dynamic_background_revers_weight_cmp($a, $b) {
+  if ($a['weight'] == $b['weight']) {
+    return 0;
+  }
+  return ($a['weight'] > $b['weight']) ? -1 : 1;
+}
+
+/**
+ * Helper function that creates CSS based on module configuration and image
+ * selection.
+ *
+ * @param array $images_conf
+ * @param boolean $reset optional
+ * @return string $css or FALSE if custom CSS have not been defined
+ */
+function dynamic_background_create_css($images_conf, $reset = FALSE) {
+  static $css;
+  if (!isset($css) || $reset) {
+    // Build style array based on weight, this will allow weight base override
+    // at the same time allowing different selectors.
+    $style_array = array();
+    foreach ($images_conf as $image_conf) {
+      // Add image style, if one have been defined.
+      $image = $image_conf['image'];
+      if (isset($image_conf['image_style']) && $image_conf['image_style']) {
+        // Image style found, so update the image path with an image style
+        // based one.
+        $image->url = image_style_url($image_conf['image_style'], $image->uri);
+      }
+
+      // Only use image if css behaviour have be set.
+      if (!empty($image_conf['configuration'])) {
+        // Check if selector have been used, if it have and has a higher weight
+        // override it.
+        if (isset($style_array[$image_conf['configuration']['selector']])) {
+          if ($style_array[$image_conf['configuration']['selector']]['weight'] > $image_conf['weight']) {
+            $style_array[$image_conf['configuration']['selector']] = array(
+              'css' => $image_conf['configuration']['css'],
+              'image' => $image,
+              'weight' => $image_conf['weight'],
+            );
+          }
+        }
+        else {
+          $style_array[$image_conf['configuration']['selector']] = array(
+            'css' => $image_conf['configuration']['css'],
+            'image' => $image,
+            'weight' => $image_conf['weight'],
+          );
+        }
+      }
+    }
+
+    // Build css based on weighted style array.
+    $css = '';
+    foreach ($style_array as $selector => $style) {
+      $style['image']->url = isset($style['image']->url) ? $style['image']->url : file_create_url($style['image']->uri);
+      $css .= $selector . " {
+        background-image: url('" . $style['image']->url . "');
+        " . $style['css'] . "
+      }\n";
+    }
+  }
+  return $css;
+}
+
+/**
+ * Builds image selection part of a form to be used by sub-moduels, where the
+ * user may select background images.
+ *
+ * @param int $active_image
+ * @return array $form
+ */
+function dynamic_background_image_selector_form($type = 'default', $data = -1) {
+  $form = array(
+    '#tree' => TRUE,
+  );
+
+  // Added extra information, which is used to exten information about the image
+  // in the database.
+  $form['dynamic_background_info'] = array(
+    'type' => array(
+      '#type' => 'hidden',
+      '#value' => $type,
+    ),
+    'data' => array(
+      '#type' => 'hidden',
+      '#value' => $data,
+    ),
+  );
+
+  // Load image information.
+  $images = dynamic_background_load_images();
+  $active_image = dynamic_background_active_image($type, $data);
+  $settings = variable_get('dynamic_background_' . $type . '_image_style', array());
+
+  foreach ($images as $fid => $image) {
+    // Create image thumbnail.
+    $thumb = array(
+      'style_name' => isset($settings['thumbnail_style']) && $settings['thumbnail_style'] ? $settings['thumbnail_style'] : 'thumbnail',
+      'path' => $image,
+      'alt' => basename($image),
+      'title' => basename($image),
+    );
+    $thumb = theme('image_style', $thumb);
+
+    $form[$fid]['image'] = array(
+      '#markup' => $thumb,
+      '#prefix' => '<div class="dynamic-background-picture">',
+    );
+
+    $form[$fid]['selected'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Use background'),
+      '#default_value' => $active_image && $active_image->fid == $fid ? 1 : 0,
+      '#suffix' => '</div>',
+    );
+  }
+
+  // Add some default styling to the image selector.
+  drupal_add_css(drupal_get_path('module', 'dynamic_background') . '/css/dynamic_background.theme.css');
+  drupal_add_js(drupal_get_path('module', 'dynamic_background') . '/js/dynamic_background_selector.js');
+
+  // Allow other modules to modify the form above using
+  // hook_dynamic_background_selector_alter().
+  drupal_alter('dynamic_background_selector', $form, $settings);
+
+  return $form;
+}
+
+/**
+ * Hepler function that build an upload form, which can be used by sub-modules
+ * to allow uploading of files.
+ *
+ * @param type $type
+ * @param type $data
+ * @param type $number_of_files
+ * @return array
+ */
+function dynamic_background_user_upload_form($type = 'default', $data = -1, $number_of_files = 1) {
+  $form = array();
+
+  // Allow the form to upload files.
+  $form['#attributes'] = array('enctype' => 'multipart/form-data');
+
+  $form['dynamic_background_picture_upload'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Upload image'),
+    '#collapsed' => FALSE,
+    '#collapsible' => TRUE,
+    '#tree' => TRUE,
+  );
+
+  // Try to find uploaded file and build default value.
+  $uploaded_images = dynamic_background_load_images($type, $data);
+  $active_image = dynamic_background_active_image($type, $data);
+  if ($active_image) {
+    $active_image = $active_image->fid;
+  }
+
+  $i = 0;
+  foreach ($uploaded_images as $fid => $uri) {
+    $i++;
+    $default = array(
+      'picture' => $uri,
+      'fid' => $fid,
+      'picture_use' => ($fid == $active_image) ? 1 : 0,
+      'picture_delete' => 0,
+    );
+
+    $form['dynamic_background_picture_upload'][$fid] = array(
+      '#type' => 'background_upload_form',
+      '#title' => t('Background image %num', array('%num' => $i)),
+      '#default_value' => $default,
+    );
+  }
+
+  // Add empty upload slots, if any left.
+  for ($i - 1; $number_of_files > $i; $i++) {
+    $form['dynamic_background_picture_upload'][$i + 1] = array(
+      '#type' => 'background_upload_form',
+      '#title' => t('Background image %num', array('%num' => $i+1)),
+      '#default_value' => array(),
+    );
+  }
+
+  // Add some styling to the form.
+  drupal_add_css(drupal_get_path('module', 'dynamic_background') . '/css/dynamic_background_user_upload.theme.css');
+
+  // Return the $form and the validation function, it's done this way because
+  // the validation function otherwise maybe overridden in the calling function.
+  return array('form' => $form, 'submit' => 'dynamic_background_user_upload_form_submit');
+}
+
+/**
+ * Submission callback for user uploaded image, which stores the image(s)
+ * uploaded and stores the last uploaded image in the $form_state values info
+ * array. So extension automatically can activate the last uploaded image.
+ *
+ * @param type $form
+ * @param type $form_state
+ */
+function dynamic_background_user_upload_form_submit($form, &$form_state) {
+  // Run through the uploaded files and save them.
+  if (!empty($_FILES)) {
+    foreach ($_FILES['files']['name'] as $file_field => $val) {
+      if (!empty($val) && strpos($file_field, 'dynamic_background') === 0) {
+        try {
+          // Get information about the extension uploading the image.
+          $info = $form_state['values']['dynamic_background']['dynamic_background_info'];
+
+          // Save the image.
+          $fid = dynamic_background_save_image($file_field, $info['type'], $info['data']);
+
+          // Save fid for the last upload image, which can be used to set it active else where.
+          $form_state['values']['dynamic_background']['dynamic_background_info']['active'] = $fid;
+        }
+        catch (Exception $e) {
+          form_set_error($file_field, $e->getMessage());
+        }
+      }
+    }
+  }
+
+  // Check for image deletion and if image have been selected.
+  foreach ($form_state['values']['dynamic_background']['dynamic_background_picture_upload'] as $field => $data) {
+    if (isset($data['picture_delete']) && $data['picture_delete']) {
+      try {
+        dynamic_background_delete_image($data['fid']);
+      }
+      catch (Exception $e) {
+        form_set_error($field, $e->getMessage());
+      }
+    }
+    // Test if an image have been selected among the upload files.
+    if (isset($data['picture_use']) && $data['picture_use']) {
+      $form_state['values']['dynamic_background']['dynamic_background_info']['active'] = $data['fid'];
+    }
+  }
+}
+
+/**
+ * Helper function that findes the currently active image in the context created
+ * base on the parameters given.
+ *
+ * @param string $type
+ *    The extension that the image should be locationed under.
+ * @param string $data
+ *    Identifier defined by the extension that the image should be located under.
+ * @return object
+ *    An object with fid and uri to the image, if non was found FALSE is
+ *    returned.
+ */
+function dynamic_background_active_image($type = 'default', $data = -1) {
+  $query = db_select('dynamic_background_usage', 'dbu');
+  $query->join('file_managed', 'fm', 'dbu.fid = fm.fid');
+  $query->fields('dbu', array('fid'))
+        ->fields('fm', array('uri'))
+        ->condition('dbu.type', $type, '=')
+        ->condition('data', $data, '=');
+
+  // Current domain condition
+  if ($type == 'default' && module_exists('domain')) {
+    $domain = domain_get_domain();
+    $query->condition('domain_id',$domain['domain_id']);
+  }
+
+  return $query->execute()->fetchObject();
+}
+
+/**
+ * Helper function that selects a random image based on extension (type).
+ *
+ * @param string $extension
+ *    The extension that the image should be locationed under.
+ * @param string $data
+ *    Identifier defined by the extension that the image should be located under.
+ * @return object
+ *    An object with fid and uri to the image, if non was found FALSE is
+ *    returned.
+ */
+function dynamic_background_random_image($extension = 'default', $data = FALSE) {
+  $query = db_select('dynamic_background_images', 'dbi');
+  $query->join('file_managed', 'fm', 'dbi.fid = fm.fid');
+  $query->fields('dbi', array('fid'))
+        ->fields('fm', array('uri'));
+
+  // If data is set, select user uploaded images and default images.
+  if ($data) {
+    $query->condition('dbi.extension', array('default', $extension), 'IN')
+      ->condition('data', array('-1', $data), 'IN');
+  }
+  else {
+    $query->condition('dbi.extension', $extension, '=')
+      ->condition('data', '-1', '=');
+  }
+
+  // Find one random image.
+  $query->orderRandom();
+  $query->range(0,1);
+
+  return $query->execute()->fetchObject();
+}
+
+/**
+ * Helper function that loads all images in a given context based on the
+ * parameters passed.
+ *
+ * @staticvar array $images
+ *    Static image cache.
+ * @param type $extension
+ *    The extension that the image should be locationed under.
+ * @param type $data
+ *    Identifier defined by the extension that the image should be located under.
+ * @param boolean $reset
+ *    Used to by pass the static cache.
+ * @return array
+ *    Array of files indexed by fid and containing file uri's.
+ */
+function dynamic_background_load_images($extension = 'default', $data = -1, $reset = FALSE) {
+  static $images;
+  if (!$images || !isset($images[$extension . $data]) || $reset) {
+    $query = db_select('dynamic_background_images', 'dbi');
+    $query->join('file_managed', 'fm', 'dbi.fid = fm.fid');
+    $query->fields('dbi', array('fid'))
+          ->fields('fm', array('uri'))
+          ->condition('extension', $extension)
+          ->condition('data', $data);
+    $result = $query->execute();
+    if ($result) {
+      $files = array();
+      foreach ($result as $row) {
+        $files[$row->fid] = $row->uri;
+      }
+      $images[$extension . $data] = $files;
+    }
+  }
+
+  return $images[$extension . $data];
+}
+
+/**
+ * Helper function thats used to save an uploaded image on the server and store
+ * it in the database.
+ *
+ * @param type $file_field
+ *    The file field was used to upload the image.
+ * @param string $extension
+ *    The extension that the image should be locationed under.
+ * @param string $data
+ *    Identifier defined by the extension that the image should be located under.
+ * @return type
+ */
+function dynamic_background_save_image($file_field, $extension, $data = -1) {
+  // Load settings.
+  $settings = variable_get('dynamic_background_setting', array());
+
+  // Validate the file extension.
+  $validators = array(
+    'file_validate_extensions' => array($settings['extensions']),
+  );
+
+  // Save the file temporally.
+  if ($file = file_save_upload($file_field, $validators)) {
+    $destination = file_default_scheme() . '://' . $settings['path'] . '/' . $file->filename;
+
+    // Copy file and maybe rename it.
+    if ($file = file_move($file, $destination, FILE_EXISTS_RENAME)) {
+      // Mark file as permanent.
+      $file->status |= FILE_STATUS_PERMANENT;
+      file_save($file);
+
+      // Save the image to the dynamic background tables.
+      db_insert('dynamic_background_images')
+              ->fields(array('fid' => $file->fid,
+                             'data' => $data,
+                             'extension' => $extension))
+              ->execute();
+
+      // Return file id.
+      return $file->fid;
+    }
+    else {
+      throw new Exception(t("Failed to upload the image; the %directory directory doesn't exist or is not writable.", array('%directory' => file_default_scheme() . '://' . $settings['path'])));
+    }
+  }
+  else {
+    throw new Exception(t("Failed to upload the image; the image type should be jpeg, jpg or png."));
+  }
+}
+
+/**
+ * Helper function that can be used to detect if a given image is in usage.
+ *
+ * @param int $fid
+ *    File id.
+ * @return int
+ *    The number of times this image is used at the moment.
+ */
+function dynamic_background_is_image_used($fid) {
+  $query = db_select('dynamic_background_usage', 'dbu');
+  $query->fields('dbu', array('count(*)'))
+        ->condition('fid', $fid);
+  return $query->execute()->fetchField();
+}
+
+/**
+ * Helper function that deletes a given image from the server and the database.
+ *
+ * @param int $fid
+ *    File id.
+ */
+function dynamic_background_delete_image($fid) {
+  // Load file based on the fid.
+  $file = file_load($fid);
+  if ($file) {
+    if (!file_delete($file, TRUE)) {
+      throw new Exception(t('Could not delete %file from the system.', array('%file' => $file->name)));
+    }
+    else {
+      // Delete from usage table.
+      db_delete('dynamic_background_usage')
+        ->condition('fid', $fid)
+        ->execute();
+
+      // Delete from images table.
+      db_delete('dynamic_background_images')
+        ->condition('fid', $fid)
+        ->execute();
+    }
+  }
+  else {
+    throw new Exception(t('Could not delete from the system.'));
+  }
+}
+
+/**
+ * Helper function that sets the active image for the context created by the
+ * parameters passed.
+ *
+ * @param type $fid
+ *    File id.
+ * @param string $type
+ *    The extension that the image should be locationed under.
+ * @param string $data
+ *    Identifier defined by the extension that the image should be located under.
+ */
+function dynamic_background_set_active($fid, $type = 'default', $data = -1) {
+  // Check if active image allready exists, if so run delete old entry.
+  $query = db_select('dynamic_background_usage', 'dbu');
+  $query->fields('dbu', array('id'))
+    ->condition('type', $type)
+    ->condition('data', $data);
+
+  // Current domain condition
+  if ($type == 'default' && module_exists('domain')) {
+    $domain = domain_get_domain();
+    $query->condition('domain_id',$domain['domain_id']);
+  }
+
+  $result = $query->execute()->fetchField();
+  if ($result) {
+    // Delete old entry.
+    db_delete('dynamic_background_usage')
+      ->condition('id', $result)
+      ->execute();
+  }
+
+  // Insert image.
+  if (!is_null($fid)) {
+    $image = array(
+      'fid' => $fid,
+      'type' => $type,
+      'data' => $data,
+    );
+    if(isset($domain)) {
+      $image['domain_id'] = $domain['domain_id'];
+    }
+    db_insert('dynamic_background_usage')
+      ->fields($image)->execute();
+  }
+}

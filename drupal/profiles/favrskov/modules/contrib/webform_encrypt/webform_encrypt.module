@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * Implementation of hook_permission().
+ */
+function webform_encrypt_permission() {
+  return array(
+    'view encrypted values' => array(
+      'title' => t('View Encrypted Values in Webform Results'),
+      'description' => t('Users that do not have this permission will see placeholder text.'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_form_alter()
+ */
+function webform_encrypt_form_alter(&$form, $form_state, $form_id) {
+  // Add our fields to the component add/edit form.
+  if ($form_id == 'webform_component_edit_form') {
+
+    $component = $form_state['build_info']['args'][1];
+
+    // Exclude webform component types that don't make sense to encrypt.
+    $excluded_types = array('fieldset', 'file', 'markup', 'pagebreak');
+    if (!in_array($form['type']['#value'], $excluded_types)) {
+
+      // Add settings for encryption.
+      $form['encryption'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Encryption'),
+        '#tree' => TRUE,
+      );
+      $form['encryption']['encrypt'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Encrypt this field\'s value'),
+        '#description' => t('!link to edit encryption settings.', array('!link' => l('Click here', 'admin/config/system/encrypt'))),
+        '#default_value' => isset($component['extra']['encrypt']) ? $component['extra']['encrypt'] : 0,
+      );
+    }
+
+  }
+}
+
+/**
+ * Implementation of hook_webform_component_presave().
+ * Save encryption settings for a component.
+ */
+function webform_encrypt_webform_component_presave(&$component) {
+  if (!empty($component['encryption'])) {
+    $component['extra'] = array_merge($component['extra'], $component['encryption']);
+    unset($component['encryption']);
+  }
+}
+
+/**
+ * Implementation of hook_webform_submission_presave().
+ * Encrypt the value if the component has been marked as such.
+ */
+function webform_encrypt_webform_submission_presave($node, &$submission) {
+  foreach ($submission->data as $cid => $entry) {
+    if (isset($node->webform['components'][$cid]['extra']['encrypt']) &&
+        $node->webform['components'][$cid]['extra']['encrypt']) {
+      $submission->data[$cid]['value'][0] = encrypt($entry['value'][0], array('base64' => TRUE));
+    }
+  }
+}
+
+/**
+ * Implementation of hook_webform_submission_render_alter().
+ * Decrypt values when displaying webform submissions.
+ */
+function webform_encrypt_webform_submission_render_alter(&$renderable) {
+  foreach ($renderable['#submission']->data as $cid => $entry) {
+    if (isset($renderable['#node']->webform['components'][$cid]['extra']['encrypt']) &&
+        $renderable['#node']->webform['components'][$cid]['extra']['encrypt']) {
+      $form_key = $renderable['#node']->webform['components'][$cid]['form_key'];
+      if (user_access('view encrypted values')) {
+        $renderable[$form_key]['#value'] = decrypt($entry['value'][0], array('base64' => TRUE));
+      } else {
+        $renderable[$form_key]['#value'] = t('[Value Encrypted]');
+      }
+    }
+  }
+}

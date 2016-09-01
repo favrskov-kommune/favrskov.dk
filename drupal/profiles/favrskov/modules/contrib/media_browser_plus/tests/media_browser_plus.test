@@ -1,0 +1,521 @@
+<?php
+/**
+ * @file
+ * Media Browser Plus basic tests.
+ */
+
+/**
+ * Basic media browser plus tests.
+ */
+class MediaBrowserPlusTest extends MediaBrowserPlusTestBase {
+
+  /**
+   * Return meta info about this test.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Media Browser Plus Basic Tests',
+      'description' => 'Tests Media Browser Plus basic features',
+      'group' => 'Media',
+    );
+  }
+
+  /**
+   * Test the ability to create folders.
+   */
+  public function testFolderCreation() {
+    $this->drupalLogin($this->adminUser);
+
+    // Ensure the link to the taxonomy management is available.
+    // Just to have a verbose output.
+    $this->drupalGet('admin/content/file/mbp');
+    $this->assertLinkByHref('admin/structure/taxonomy/media_folders', 0, 'Found link to folder taxonomy');
+
+    // Just to have a verbose output.
+    $this->drupalGet('admin/structure/taxonomy/media_folders');
+
+    // Create a normal folder structure.
+    $hierarchy = array(
+      'root_folder' => array(
+        $this->randomName() => array(
+          $this->randomName() => array(),
+        ),
+        $this->randomName() => array(
+          $this->randomName() => array(),
+        ),
+      ),
+    );
+    $this->folderCreationHelper($hierarchy);
+
+    // Just to have a verbose output.
+    $this->drupalGet('admin/structure/taxonomy/media_folders');
+  }
+
+  /**
+   * Test if invalid structures are automatically fixed.
+   */
+  public function testInvalidFolderCreation() {
+    $this->drupalLogin($this->adminUser);
+
+    // Ensure the link to the taxonomy management is available.
+    // Just to have a verbose output.
+    $this->drupalGet('admin/content/file/mbp');
+    $this->assertLinkByHref('admin/structure/taxonomy/media_folders', 0, 'Found link to folder taxonomy');
+
+    // Just to have a verbose output.
+    $this->drupalGet('admin/structure/taxonomy/media_folders');
+
+    // Create a normal folder structure.
+    $invalid_hierarchy_term = $this->randomName();
+    $hierarchy = array(
+      'root_folder' => array(
+        $this->randomName() => array(
+          $this->randomName() => array(),
+        ),
+        $this->randomName() => array(
+          $this->randomName() => array(),
+        ),
+      ),
+      $invalid_hierarchy_term => array(
+        $this->randomName() => array(
+          $this->randomName() => array(),
+        ),
+      ),
+    );
+    $this->folderCreationHelper($hierarchy, FALSE);
+
+    $root_folder_term = media_browser_plus_get_media_root_folder();
+    $folders = taxonomy_get_term_by_name($invalid_hierarchy_term);
+    $folder = reset($folders);
+    $parents = taxonomy_get_parents($folder->tid);
+    if ($this->assertEqual(count($parents), 1, 'Invalid intialized folder has a parent folder.')) {
+      $this->assertEqual($parents[$root_folder_term->tid]->tid, $root_folder_term->tid, 'Invalid intialized folder now belongs to the root folder.');
+    }
+    $path = media_browser_plus_construct_dir_path($folder);
+    $this->assertEqual($path, $invalid_hierarchy_term, 'Path for folder matches.');
+
+    // Just to have a verbose output.
+    $this->drupalGet('admin/structure/taxonomy/media_folders');
+  }
+
+  /**
+   * Test the ability to move folders.
+   */
+  public function testFolderMovemet() {
+    $this->drupalLogin($this->adminUser);
+
+    // Create test folder structure.
+    $folders = array(
+      'source' => $this->randomName(),
+      'source_child' => $this->randomName(),
+      'source_child_child' => $this->randomName(),
+      'destination' => $this->randomName(),
+    );
+    $hierarchy = array(
+      'root_folder' => array(
+        $folders['source'] => array(
+          $folders['source_child'] => array(
+            $folders['source_child_child'] => array(),
+          ),
+        ),
+        $folders['destination'] => array(),
+      ),
+    );
+    $this->folderCreationHelper($hierarchy, FALSE);
+
+    // Just to have a verbose output.
+    $this->drupalGet('admin/structure/taxonomy/media_folders');
+
+    // Create test files.
+    $files = array();
+    foreach ($folders as $type => $folder_name) {
+      $terms = taxonomy_get_term_by_name($folder_name);
+      $folder = $folders[$type] = reset($terms);
+      foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+        $files[$type][$scheme][] = $this->createTestFile('text/plain', $folder, $scheme);
+        $files[$type][$scheme][] = $this->createTestFile('image/jpg', $folder, $scheme);
+      }
+    }
+    // Just to have a verbose output.
+    $this->drupalGet('admin/content/file/list');
+
+    $source_path = media_browser_plus_construct_dir_path($folders['source']);
+
+    // Now move the folder.
+    $data['parent[]'] = array($folders['destination']->tid);
+    $this->drupalPost('taxonomy/term/' . $folders['source']->tid . '/edit', $data, t('Save'));
+    // Reset the different caches.
+    drupal_static_reset('taxonomy_get_parents');
+    drupal_static_reset('taxonomy_get_parents_all');
+    entity_get_controller('taxonomy_term')->resetCache();
+    entity_get_controller('file')->resetCache();
+
+    $updated_source_path = media_browser_plus_construct_dir_path($folders['source']);
+
+    // And now check if all files and folders were moved properly.
+    foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+      $original_source_path_full = file_stream_wrapper_uri_normalize($scheme . '://' . $source_path);
+      $updated_source_path_full = file_stream_wrapper_uri_normalize($scheme . '://' . $updated_source_path);
+
+      // Check if the path of the source has changed.
+      if ($this->assertNotEqual($original_source_path_full, $updated_source_path_full, 'Source folder changed')) {
+        // Check paths and files of source and its children.
+        $new_parent_folder = 'destination';
+        foreach (array('source', 'source_child', 'source_child_child') as $type) {
+          $folders[$type] = taxonomy_term_load($folders[$type]->tid);
+          $source_path = file_stream_wrapper_uri_normalize($scheme . '://' . media_browser_plus_construct_dir_path($folders[$type]));
+          $destination_path = file_stream_wrapper_uri_normalize($scheme . '://' . media_browser_plus_construct_dir_path($folders[$new_parent_folder]));
+
+          // Check if the new path is a child folder of the destination.
+          $this->assertTrue(
+            stristr($source_path, $destination_path) !== FALSE,
+            'Source folder is child folder of destination.'
+          );
+          // Check if the old path was really deleted.
+          $this->assertFalse(is_dir($original_source_path_full), 'Old source folder deleted');
+
+          // Now check the files.
+          foreach ($files[$type][$scheme] as $file) {
+            // Refresh cached object.
+            $file = file_load($file->fid);
+            // Check if the new path is a child folder of the destination.
+            $this->assertTrue(
+              stristr($file->uri, $destination_path) !== FALSE,
+              'Source file is child of new destination.'
+            );
+          }
+          $new_parent_folder = $type;
+        }
+      }
+    }
+
+    // Just to have a verbose output.
+    $this->drupalGet('admin/structure/taxonomy/media_folders');
+  }
+
+  /**
+   * Test the ability to delete folders.
+   */
+  public function testFolderDeletion() {
+    $this->drupalLogin($this->adminUser);
+
+    // Create test folder structure.
+    $folders = array(
+      'source' => $this->randomName(),
+      'source_child' => $this->randomName(),
+      'source_child_child' => $this->randomName(),
+    );
+    $hierarchy = array(
+      'root_folder' => array(
+        $folders['source'] => array(
+          $folders['source_child'] => array(
+            $folders['source_child_child'] => array(),
+          ),
+        ),
+      ),
+    );
+    $this->folderCreationHelper($hierarchy, FALSE);
+
+    // Create test files.
+    $files = array();
+    foreach ($folders as $type => $folder_name) {
+      $terms = taxonomy_get_term_by_name($folder_name);
+      $folder = $folders[$type] = reset($terms);
+      foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+        $files[$scheme][$type][] = $this->createTestFile('text/plain', $folder, $scheme);
+        $files[$scheme][$type][] = $this->createTestFile('image/jpg', $folder, $scheme);
+      }
+    }
+    // Just to have a verbose output.
+    $this->drupalGet('admin/content/file/list');
+
+    $folder_path = media_browser_plus_construct_dir_path($folders['source']);
+    // Delete the folder.
+    $this->drupalPost('taxonomy/term/' . $folders['source']->tid . '/edit', array(), t('Delete'));
+    $this->drupalPost(NULL, array(), t('Delete'));
+    foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+      $directory = file_stream_wrapper_uri_normalize($scheme . '://' . $folder_path);
+      $this->assertFalse(file_exists($directory), 'Folder and all children deleted');
+    }
+
+    // Just to have a verbose output.
+    $this->drupalGet('admin/structure/taxonomy/media_folders');
+  }
+
+  /**
+   * Test the ability to delete sub-folders.
+   *
+   * Introduced due https://drupal.org/node/2176317
+   * @link https://drupal.org/node/2176317
+   *
+   * At the moment writing this test hook_taxonomy_term_delete() is invoked
+   * after all data are removed from the db. However, there are static caches in
+   * effect that still allow to build the necessary paths to clean up the
+   * filesystem. Unfortunately this is only true for terms that have children.
+   * media_browser_plus_form_taxonomy_term_confirm_delete_submit() fixes that.
+   *
+   * @see media_browser_plus_form_taxonomy_term_confirm_delete_submit()
+   */
+  public function testSubFolderDeletion() {
+    $this->drupalLogin($this->adminUser);
+
+    // Create test folder structure.
+    $folders = array(
+      'source' => $this->randomName(),
+      'source_child' => $this->randomName(),
+      'source_child_child' => $this->randomName(),
+    );
+    $hierarchy = array(
+      'root_folder' => array(
+        $folders['source'] => array(
+          $folders['source_child'] => array(
+            $folders['source_child_child'] => array(),
+          ),
+        ),
+      ),
+    );
+    $this->folderCreationHelper($hierarchy, FALSE);
+
+    $folders = taxonomy_get_term_by_name($folders['source_child_child']);
+    $folder = reset($folders);
+    $folder_path = media_browser_plus_construct_dir_path($folder);
+
+    // Delete the folder.
+    $this->drupalPost('taxonomy/term/' . $folder->tid . '/edit', array(), t('Delete'));
+    $this->drupalPost(NULL, array(), t('Delete'));
+    foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+      $directory = file_stream_wrapper_uri_normalize($scheme . '://' . $folder_path);
+      $this->assertFalse(file_exists($directory), 'Folder deleted');
+    }
+
+    // Just to have a verbose output.
+    $this->drupalGet('admin/structure/taxonomy/media_folders');
+  }
+
+  /**
+   * Test the ability to delete folders when files are used.
+   */
+  public function testFolderDeletionWithUsedFiles() {
+    $this->drupalLogin($this->adminUser);
+
+    // Create test folder structure.
+    $folders = array(
+      'source' => $this->randomName(),
+      'source_child' => $this->randomName(),
+      'source_child_child' => $this->randomName(),
+    );
+    $hierarchy = array(
+      'root_folder' => array(
+        $folders['source'] => array(
+          $folders['source_child'] => array(
+            $folders['source_child_child'] => array(),
+          ),
+        ),
+      ),
+    );
+    $this->folderCreationHelper($hierarchy, FALSE);
+
+    // Create test files.
+    $files = array();
+    foreach ($folders as $type => $folder_name) {
+      $terms = taxonomy_get_term_by_name($folder_name);
+      $folder = $folders[$type] = reset($terms);
+      foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+        $files[$scheme][$type][] = $this->createTestFile('text/plain', $folder, $scheme);
+        $files[$scheme][$type][] = $file = $this->createTestFile('image/jpg', $folder, $scheme);
+        // Mark one file as used.
+        file_usage_add($file, 'node', 'node', 1);
+      }
+    }
+    // Just to have a verbose output.
+    $this->drupalGet('admin/content/file/list');
+
+    $folder_path = media_browser_plus_construct_dir_path($folders['source']);
+    // Delete the folder.
+    $this->drupalPost('taxonomy/term/' . $folders['source']->tid . '/edit', array(), t('Delete'));
+    $this->drupalPost(NULL, array(), t('Delete'));
+    foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+      $directory = file_stream_wrapper_uri_normalize($scheme . '://' . $folder_path);
+      $this->assertTrue(file_exists($directory), 'Folder still exists');
+    }
+
+    // Just to have a verbose output.
+    $this->drupalGet('admin/structure/taxonomy/media_folders');
+  }
+
+  /**
+   * Test if the setting to make MBP the default file management works.
+   */
+  public function testMakeMBPDefaultHandler() {
+    $this->drupalLogin($this->adminUser);
+
+    // Disable MBP as default.
+    $data = array(
+      'media_browser_plus_thumbnails_as_default_browser' => FALSE,
+    );
+    $this->drupalPost('admin/config/media/media_browser_plus_settings', $data, t('Save configuration'));
+    // I don't know why I've to do a menu rebuild here, but it doesn't pass
+    // without it.
+    menu_rebuild();
+
+    $this->drupalGet('admin/content/file');
+    $this->assertText('Show only items where', 'Default file list is shown');
+
+    // Enable mbp as default.
+    $data = array(
+      'media_browser_plus_thumbnails_as_default_browser' => TRUE,
+    );
+    $this->drupalPost('admin/config/media/media_browser_plus_settings', $data, t('Save configuration'));
+    // I don't know why I've to do a menu rebuild here, but it doesn't pass
+    // without it.
+    menu_rebuild();
+
+    $this->drupalGet('admin/content/file');
+    $this->assertText('Media Basket', 'Media Browser plus is default file handler');
+  }
+
+  /**
+   * Test the ability to delete folders.
+   */
+  public function testFolderRename() {
+    $this->drupalLogin($this->adminUser);
+
+    // Create test folder structure.
+    $folders = array(
+      'source' => $this->randomName(),
+      'source_child' => $this->randomName(),
+    );
+    $hierarchy = array(
+      'root_folder' => array(
+        $folders['source'] => array(
+          $folders['source_child'] => array(),
+        ),
+      ),
+    );
+    $this->folderCreationHelper($hierarchy, FALSE);
+
+    $terms = taxonomy_get_term_by_name($folders['source']);
+    $source_folder = reset($terms);
+
+    // Create test files.
+    $files = array();
+    $folder_paths = array();
+    foreach ($folders as $type => $folder_name) {
+      $terms = taxonomy_get_term_by_name($folder_name);
+      $folder = reset($terms);
+      $folder_paths[$type] = media_browser_plus_construct_dir_path($folder);
+      foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+        $files[$scheme][$type][] = $this->createTestFile('text/plain', $folder, $scheme);
+        $files[$scheme][$type][] = $this->createTestFile('image/jpg', $folder, $scheme);
+      }
+    }
+    // Just to have a verbose output.
+    $this->drupalGet('admin/content/file/list');
+
+    // Rename the source folder.
+    $new_folder_name = $this->randomName();
+    $data = array(
+      'name' => $new_folder_name,
+    );
+    $this->drupalPost('taxonomy/term/' . $source_folder->tid . '/edit', $data, t('Save'));
+    $folders['source'] = $data['name'];
+
+    // Check if everything was moved properly.
+    entity_get_controller('taxonomy_term')->resetCache();
+    taxonomy_terms_static_reset();
+    foreach ($folders as $type => $folder_name) {
+      $terms = taxonomy_get_term_by_name($folder_name);
+      $folder = reset($terms);
+      $new_folder_path = media_browser_plus_construct_dir_path($folder);
+      $this->assertNotEqual(
+        $folder_paths[$type],
+        $new_folder_path,
+        format_string('Folder path changed: %source %destination', array(
+          '%source' => $folder_paths[$type],
+          '%destination' => $new_folder_path,
+        ))
+      );
+      foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+        $this->assertTrue(file_exists(drupal_realpath($scheme . '://' . $new_folder_path)), 'Folder found');
+        foreach ($files[$scheme][$type] as $file) {
+          $file_path = $file->uri;
+          $file = file_load($file->fid);
+          $new_file_path = $file->uri;
+          $this->assertNotEqual($new_file_path, $file_path, 'File path changed');
+          $this->assertTrue(file_exists($new_file_path), 'File found');
+        }
+      }
+    }
+
+    // Just to have a verbose output.
+    $this->drupalGet('admin/structure/taxonomy/media_folders');
+  }
+
+
+  /**
+   * Test the ability to delete folders.
+   */
+  public function testFileMovement() {
+    $this->drupalLogin($this->adminUser);
+
+    $root_folder = media_browser_plus_get_media_root_folder();
+    // Create test folder structure.
+    $folders = array(
+      'root_folder' => $root_folder->name,
+      'source' => $this->randomName(),
+      'source_child' => $this->randomName(),
+    );
+    $hierarchy = array(
+      'root_folder' => array(
+        $folders['source'] => array(
+          $folders['source_child'] => array(),
+        ),
+      ),
+    );
+    $this->folderCreationHelper($hierarchy, FALSE);
+    $target_folders = array(
+      'root_folder' => 'source',
+      'source' => 'source_child',
+      'source_child' => 'root_folder',
+    );
+
+    // Create test files.
+    $files = array();
+    $folder_paths = array();
+    foreach ($folders as $type => $folder_name) {
+      $terms = taxonomy_get_term_by_name($folder_name);
+      $folder = reset($terms);
+      $folder_paths[$type] = media_browser_plus_construct_dir_path($folder);
+      foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+        $files[$scheme][$type][] = $this->createTestFile('text/plain', $folder, $scheme);
+        $files[$scheme][$type][] = $this->createTestFile('image/jpg', $folder, $scheme);
+      }
+    }
+    // Just to have a verbose output.
+    $this->drupalGet('admin/content/file/list');
+
+    // Set a new folder for the files and check if they moved accordingly.
+    $moved_files = array();
+    foreach ($files as $scheme => $source_files) {
+      foreach ($source_files as $folder => $folder_files) {
+        $target_folder = $target_folders[$folder];
+        $terms = taxonomy_get_term_by_name($folders[$target_folder]);
+        $target_folder = reset($terms);
+        $path = $scheme . '://' . media_browser_plus_construct_dir_path($target_folder);
+        foreach ($folder_files as $folder_file) {
+          $folder_file->field_folder[LANGUAGE_NONE][0]['tid'] = $target_folder->tid;
+          $source_uri = $folder_file->uri;
+          file_save($folder_file);
+
+          $files = entity_load('file', array($folder_file->fid), array(), TRUE);
+          $folder_file = reset($files);
+          $this->assertNotEqual($source_uri, $folder_file->uri, 'File uri changed');
+          $expected_uri = file_stream_wrapper_uri_normalize($path . '/' . basename($folder_file->uri));
+          $this->assertEqual($folder_file->uri, $expected_uri);
+          clearstatcache();
+          $this->assertTrue(file_exists(drupal_realpath($expected_uri)), 'File properly moved');
+        }
+      }
+    }
+  }
+}

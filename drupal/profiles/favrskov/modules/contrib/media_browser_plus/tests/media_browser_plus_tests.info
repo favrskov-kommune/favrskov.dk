@@ -1,0 +1,20 @@
+name = Media Browser Plus Tests
+description = Media Browser Plus Tests.
+package = Testing
+core = 7.x
+hidden = TRUE
+
+dependencies[] = media_browser_plus
+
+files[] = media_browser_plus.base.test
+files[] = media_browser_plus.test
+files[] = media_browser_plus.root_folder.test
+
+
+
+; Information added by drush on 2015-02-25
+version = "7.x-3.0-beta3+18-dev"
+core = "7.x"
+project = "media_browser_plus"
+datestamp = "1424888396"
+

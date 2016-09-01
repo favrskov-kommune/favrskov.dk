@@ -1,0 +1,194 @@
+<?php
+
+/**
+ * @file
+ * Install/Schema, and uninstall functions for os2web_borger_dk_articles.module
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function os2web_borger_dk_articles_uninstall() {
+  variable_del('os2web_borger_dk_articles_display');
+  variable_del('os2web_borger_dk_articles_editable');
+  variable_del('borger_dk_nightly_article_sync');
+  variable_del('os2web_borger_dk_articles_last_update');
+  variable_del('os2web_borger_dk_webservice');
+  variable_del('os2web_borger_dk_webservice_request_limit');
+  variable_del('os2web_borger_dk_webservice_time_limit');
+  variable_del('os2web_borger_dk_webservice_request_counter');
+  variable_del('os2web_borger_dk_webservice_time_counter');
+  variable_del('os2web_borger_dk_webservice_municipality_code');
+  variable_del('borger_dk_article_titles_sync');
+  variable_del('borger_dk_article_titles_search_auto_submit');
+  variable_del('borger_dk_articles_borger_dk_menus_import');
+  variable_del('borger_dk_articles_nightly_menu_sync');
+
+  if (db_table_exists('os2web_borger_dk_articles')) {
+    db_query('DROP TABLE {os2web_borger_dk_articles}');
+  }
+  if (db_table_exists('os2web_borger_dk_titles')) {
+    db_query('DROP TABLE {os2web_borger_dk_titles}');
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function os2web_borger_dk_articles_install() {
+  // We need to set some standard settings now, and for that
+  // we must have information from field_info_instances on
+  // our new node-type
+  $data = field_info_instances('node', 'borger_dk_article');
+
+  // Some of the fields are locked from from being changed
+  $locked_os2web_types = array('field_os2web_borger_dk_url' => 1);
+
+  if (!empty($data)) {
+    $edit_field_names = array('title' => 'title');
+    $display_field_names = array('title' => 'title');
+    foreach ($data as $type => $item) {
+      if (empty($locked_os2web_types[$type])) {
+        $edit_field_names[$type] = $type;
+      }
+      $display_field_names[$type] = $type;
+    }
+    variable_set('os2web_borger_dk_articles_display', $display_field_names);
+    variable_set('os2web_borger_dk_articles_editable', $edit_field_names);
+  }
+  else {
+    variable_set('os2web_borger_dk_articles_display', array());
+    variable_set('os2web_borger_dk_articles_editable', array());
+  }
+  variable_set('borger_dk_nightly_article_sync', '0');
+  variable_set('os2web_borger_dk_articles_last_update', 1970);
+  variable_set('os2web_borger_dk_webservice', 'https://www.borger.dk/_vti_bin/borger/ArticleExport.svc?wsdl');
+  variable_set('os2web_borger_dk_webservice_request_limit', 100);
+  variable_set('os2web_borger_dk_webservice_time_limit', 60);
+  variable_set('os2web_borger_dk_webservice_request_counter', 0);
+  variable_set('os2web_borger_dk_webservice_time_counter', time());
+  variable_set('os2web_borger_dk_webservice_municipality_code', 0);
+  variable_set('borger_dk_article_titles_sync', 1);
+  variable_set('borger_dk_article_titles_search_auto_submit', 1);
+  variable_set('borger_dk_articles_borger_dk_menus_import', 0);
+  variable_set('borger_dk_articles_nightly_menu_sync', '0');
+
+  // Next we populate the titles-table for title-autocomplete
+  _os2web_borger_dk_articles_titles_cronbatch(TRUE);
+}
+
+/**
+ * Implements hook_enable().
+ */
+function os2web_borger_dk_articles_enable() {
+  drupal_set_message(t('The OS2web - Borger.dk Articles module was successfully enabled.'), 'status');
+  drupal_set_message(t('You should configure the module here "!url" before using it.', array('!url' => l('Borger.dk Settings', 'admin/config/borgerdk/settings'))), 'warning');
+}
+
+/**
+ * Implements hook_schema().
+ */
+function os2web_borger_dk_articles_schema() {
+  $schema['os2web_borger_dk_articles'] = array(
+    'description' => 'Table for storing the individual article items imported from Borger.dk.',
+    'fields' => array(
+      'nid'  => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: the node identifier for an article item.',
+      ),
+      'external_id'  => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'External ID of the article (ie. Borger.dk article-ID).',
+      ),
+      'external_status' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'External status of the article (ie. Borger.dk article-status)',
+      ),
+      'external_url'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'External URL of the article (ie. Borger.dk article-URL).',
+      ),
+      'field_settings' => array(
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+        'description' => 'Field settings of the article item. Which fields are visible',
+      ),
+      'published_date' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Published date of the article item, as a Unix timestamp.',
+      ),
+      'last_updated' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Last updated of the article item, as a Unix timestamp.',
+      ),
+    ),
+    'primary key' => array('nid'),
+    'indexes' => array(
+      'last_updated' => array('last_updated'),
+      'published_date' => array('published_date'),
+    ),
+  );
+
+  $schema['os2web_borger_dk_titles'] = array(
+    'description' => 'Table for storing a list of availlable article items, and articles imported from Borger.dk.',
+    'fields' => array(
+      'ArticleID'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'description' => 'Primary Key: the node identifier for an article item.',
+      ),
+      'ArticleStatus' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Status of the article (ie. Borger.dk article-status): 0 = Not imported, >0 = Node->nid, <0 = Deleted',
+      ),
+      'ArticleTitle'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Title of the Borger.dk article.',
+      ),
+      'ArticleUrl'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Borger.dk-URL of the article (ie. Borger.dk article-URL).',
+      ),
+      'FORMFields' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'size' => 'medium',
+        'description' => 'FORM Fields of the article item.',
+      ),
+      'PublishingDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Published date of the article item, as a Unix timestamp.',
+      ),
+      'LastUpdated' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Last updated of the article item, as a Unix timestamp.',
+      ),
+    ),
+    'primary key' => array('ArticleID'),
+    'indexes' => array(
+      'borger_dk_title_index' => array('ArticleTitle'),
+      'borger_dk_url_index' => array('ArticleUrl'),
+    ),
+  );
+
+  return $schema;
+}

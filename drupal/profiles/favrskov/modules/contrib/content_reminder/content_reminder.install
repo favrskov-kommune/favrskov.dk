@@ -1,0 +1,56 @@
+<?php
+/**
+ * @file
+ * Install, update, and uninstall functions for the content reminder module.
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function content_reminder_field_schema($field) {
+  $columns = array(
+    'enabled' => array(
+      'description' => 'Enabled flag.',
+      'type' => 'int',
+      'size' => 'tiny',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+      'default' => 0,
+    ),
+    'uids' => array(
+      'description' => 'Comma separated list of user IDs whom to send the message.',
+      'type' => 'text',
+      'not null' => FALSE,
+    ),
+    'message' => array(
+      'description' => 'The message to send.',
+      'type' => 'text',
+      'not null' => FALSE,
+    ),
+    'date' => array(
+      'description' => 'Date when to send the notification.',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'pgsql_type' => 'timestamp without time zone',
+      'sqlite_type' => 'varchar',
+      'sqlsrv_type' => 'smalldatetime',
+      'not null' => TRUE,
+    ),
+  );
+  $indexes = array(
+    'date' => array('date'),
+  );
+  return array(
+    'columns' => $columns,
+    'indexes' => $indexes,
+  );
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function content_reminder_uninstall() {
+  // Remove variables.
+  variable_del('content_reminder_presets');
+  variable_del('content_reminder_bundles');
+}
