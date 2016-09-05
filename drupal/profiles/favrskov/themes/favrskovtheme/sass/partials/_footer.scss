@@ -145,3 +145,31 @@
     }
   }
 }
+
+.domain-oplev-favrskov-dk {
+  .footer {
+    .nav.footer-block {
+      float: right;
+    }
+
+    .contacts,
+    .social-links {
+      display: inline-block;
+      @include at-breakpoint(12 $width-1040) {
+        display: block;
+      }
+    }
+
+    .social-links {
+      margin: 0 0 20px 30px;
+      vertical-align: bottom;
+      p {
+        margin: 0;
+      }
+
+      @include at-breakpoint(12 $width-1040) {
+        margin: 0;
+      }
+    }
+  }
+}
