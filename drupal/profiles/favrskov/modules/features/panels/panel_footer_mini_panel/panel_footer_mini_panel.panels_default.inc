@@ -184,7 +184,23 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'favrskov_dk' => 'favrskov_dk',
+              'designguiden_favrskov_dk' => 'designguiden_favrskov_dk',
+              'cykelkommune_favrskov_dk' => 'cykelkommune_favrskov_dk',
+              'oplev_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'admin_title' => 'Address',
       'title' => '',
@@ -250,7 +266,23 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->type = 'block';
     $pane->subtype = 'menu-menu-footer-links';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'favrskov_dk' => 'favrskov_dk',
+              'designguiden_favrskov_dk' => 'designguiden_favrskov_dk',
+              'cykelkommune_favrskov_dk' => 'cykelkommune_favrskov_dk',
+              'oplev_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'override_title' => 1,
       'override_title_text' => 'Links',
@@ -273,7 +305,23 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'favrskov_dk' => 'favrskov_dk',
+              'designguiden_favrskov_dk' => 'designguiden_favrskov_dk',
+              'cykelkommune_favrskov_dk' => 'cykelkommune_favrskov_dk',
+              'oplev_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'admin_title' => 'Social links',
       'title' => '',
@@ -296,6 +344,105 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->uuid = '620c0c1e-51c8-44cd-bebe-b2e7f253655a';
     $display->content['new-620c0c1e-51c8-44cd-bebe-b2e7f253655a'] = $pane;
     $display->panels['navigation'][1] = 'new-620c0c1e-51c8-44cd-bebe-b2e7f253655a';
+    $pane = new stdClass();
+    $pane->pid = 'new-b1cab010-1501-4712-ba3d-19331bc1fe88';
+    $pane->panel = 'navigation';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'oplev_favrskov_dk' => 'oplev_favrskov_dk',
+              'favrskov_dk' => 0,
+              'designguiden_favrskov_dk' => 0,
+              'cykelkommune_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'admin_title' => 'Oplev:contacts',
+      'title' => '',
+      'body' => '<article role="article">
+<h1>Kontakt</h1>
+
+<p class="small-height">Favrskov Kommune<br />
+Skovvej 20<br />
+8382 Hinnerup</p>
+
+<p class="small-height"><a href="tel:89641010">Tlf. 8964 1010</a><br />
+<a href="mailto:favrskov@favrskov.dk">favrskov@favrskov.dk</a></p>
+</article>
+',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'contacts',
+    );
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $pane->uuid = 'b1cab010-1501-4712-ba3d-19331bc1fe88';
+    $display->content['new-b1cab010-1501-4712-ba3d-19331bc1fe88'] = $pane;
+    $display->panels['navigation'][2] = 'new-b1cab010-1501-4712-ba3d-19331bc1fe88';
+    $pane = new stdClass();
+    $pane->pid = 'new-2421b7d3-e29d-4434-a1a4-32b56510a5c9';
+    $pane->panel = 'navigation';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'oplev_favrskov_dk' => 'oplev_favrskov_dk',
+              'favrskov_dk' => 0,
+              'designguiden_favrskov_dk' => 0,
+              'cykelkommune_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'admin_title' => 'Oplev:social links',
+      'title' => '',
+      'body' => '<p><a href="https://www.facebook.com/favrskovkommune">[icon:social_links:icon-facebook]</a></p>
+',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'social-links',
+    );
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $pane->uuid = '2421b7d3-e29d-4434-a1a4-32b56510a5c9';
+    $display->content['new-2421b7d3-e29d-4434-a1a4-32b56510a5c9'] = $pane;
+    $display->panels['navigation'][3] = 'new-2421b7d3-e29d-4434-a1a4-32b56510a5c9';
     $pane = new stdClass();
     $pane->pid = 'new-bd9119fe-56db-475e-bac8-01d7696cb28a';
     $pane->panel = 'policy';
@@ -332,7 +479,23 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'favrskov_dk' => 'favrskov_dk',
+              'designguiden_favrskov_dk' => 'designguiden_favrskov_dk',
+              'cykelkommune_favrskov_dk' => 'cykelkommune_favrskov_dk',
+              'oplev_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'admin_title' => 'Contacts',
       'title' => 'Contact',
