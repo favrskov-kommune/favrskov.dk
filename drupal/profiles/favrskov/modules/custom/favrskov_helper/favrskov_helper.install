@@ -586,3 +586,10 @@ function favrskov_helper_update_7031() {
 function favrskov_helper_update_7032() {
   features_revert_module('panel_header_mini_panel');
 }
+
+/**
+ * Feature revert. Header mini-panel layout update. Oplev visibility restriction.
+ */
+function favrskov_helper_update_7033() {
+  features_revert_module('panel_header_mini_panel');
+}
