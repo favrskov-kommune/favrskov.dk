@@ -161,7 +161,23 @@ function panel_header_mini_panel_default_panels_mini() {
     $pane->type = 'block';
     $pane->subtype = 'menu-menu-header-menu';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'oplev_favrskov_dk' => 'oplev_favrskov_dk',
+              'favrskov_dk' => 0,
+              'designguiden_favrskov_dk' => 0,
+              'cykelkommune_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => TRUE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'override_title' => 1,
       'override_title_text' => '',
@@ -177,6 +193,45 @@ function panel_header_mini_panel_default_panels_mini() {
     $pane->uuid = '6074916a-f226-41a4-9bdb-bed563a2d951';
     $display->content['new-6074916a-f226-41a4-9bdb-bed563a2d951'] = $pane;
     $display->panels['top-navigation'][0] = 'new-6074916a-f226-41a4-9bdb-bed563a2d951';
+    $pane = new stdClass();
+    $pane->pid = 'new-d365cc93-b345-42c0-a0e3-6967c3c126d4';
+    $pane->panel = 'top-navigation';
+    $pane->type = 'block';
+    $pane->subtype = 'menu-menu-header-menu-for-oplev';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'domain',
+          'settings' => array(
+            'domain_site' => 0,
+            'domains' => array(
+              'oplev_favrskov_dk' => 'oplev_favrskov_dk',
+              'favrskov_dk' => 0,
+              'designguiden_favrskov_dk' => 0,
+              'cykelkommune_favrskov_dk' => 0,
+            ),
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = 'd365cc93-b345-42c0-a0e3-6967c3c126d4';
+    $display->content['new-d365cc93-b345-42c0-a0e3-6967c3c126d4'] = $pane;
+    $display->panels['top-navigation'][1] = 'new-d365cc93-b345-42c0-a0e3-6967c3c126d4';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
