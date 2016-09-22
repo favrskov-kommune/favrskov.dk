@@ -112,7 +112,7 @@ function apachesolr_attachments_schema() {
         ),
         'body' => array(
           'description' => 'The cached body (extracted text) of the file, unless it is a text file.',
-          'type' => 'text',
+          'type' => 'blob',
           'not null' => FALSE,
           'size' => 'big',
         ),
@@ -238,7 +238,7 @@ function apachesolr_attachments_update_7003() {
         ),
         'body' => array(
           'description' => 'The cached body (extracted text) of the file, unless it is a text file.',
-          'type' => 'text',
+          'type' => 'blob',
           'not null' => FALSE,
           'size' => 'big',
         ),
@@ -263,4 +263,19 @@ function apachesolr_attachments_update_7003() {
 
   // Repopulate our file table
   apachesolr_attachments_solr_reindex();
+}
+
+/**
+ * Change apachesolr_index_entities_file.body field to longblob.
+ * 
+ * Bypass PDOexception "Incorrect string value" and lost of the information
+ * that is stored as UTF-8 4 bytes character(s) in MySQL.
+ * 
+ * @see https://drupal.org/node/1853836
+ * @see https://drupal.org/node/2014889
+ */
+function apachesolr_attachments_update_7004() {
+  $schema = apachesolr_attachments_schema();
+  $field = $schema['apachesolr_index_entities_file']['fields']['body'];
+  db_change_field('apachesolr_index_entities_file', 'body', 'body', $field);
 }

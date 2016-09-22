@@ -47,6 +47,13 @@ function apachesolr_attachments_settings($form, &$form_state, $env_id) {
     '#description' => t("Extraction will be faster if run locally using tika."),
     '#default_value' => variable_get('apachesolr_attachments_extract_using', 'tika'),
   );
+  $form['apachesolr_attachments_filesize_limit'] = array(
+    '#type' => 'textfield',
+    '#title' => t('File size limit (in bytes) for files to be indexed'),
+    '#size' => 10,
+    '#description' => t('If a file is larger than this limit, do not index it. Default is 41943040 bytes (40MB).'),
+    '#default_value' => variable_get('apachesolr_attachments_filesize_limit', '41943040'),
+  );
   $form['apachesolr_attachments_tika_path'] = array(
     '#type' => 'textfield',
     '#title' => t('Tika directory path'),
@@ -80,6 +87,9 @@ function apachesolr_attachments_settings_validate($form, &$form_state) {
     if (!file_exists($path . '/' . $form_state['values']['apachesolr_attachments_tika_jar'])) {
       form_set_error('apachesolr_attachments_tika_path', t('Tika jar file not found at this path.'));
     }
+  }
+  if (!is_numeric($form_state['values']['apachesolr_attachments_filesize_limit'])) {
+    form_set_error('apachesolr_attachments_filesize_limit', t('File size limit must be a number (in bytes).'));
   }
 }
 
@@ -124,7 +134,14 @@ function apachesolr_attachments_entity_bundle_settings() {
     }
   }
 
-  return system_settings_form($form);
+  if (empty($form)) {
+    // Display a message if there are no indexable bundles.
+    $form['no_bundles']['#markup'] = t('There are no bundles indexable by Apache Solr. You can select entities and bundles that should be indexed via <a href="!url">the Apache Solr search settings</a> page.', array('!url' => url('admin/config/search/apachesolr')));
+    return $form;
+  }
+  else {
+    return system_settings_form($form);
+  }
 }
 
 /**
@@ -290,7 +307,6 @@ function apachesolr_attachments_delete_index() {
   try {
     $solr = apachesolr_get_solr();
     $solr->deleteByQuery("entity_type:file AND hash:" . apachesolr_site_hash());
-    $solr->commit();
     module_load_include('inc', 'apachesolr', 'apachesolr.index');
     apachesolr_attachments_solr_reindex();
     return TRUE;

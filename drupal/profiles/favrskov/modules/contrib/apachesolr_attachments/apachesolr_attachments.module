@@ -77,27 +77,6 @@ function apachesolr_attachments_apachesolr_entity_info_alter(&$entity_info) {
 }
 
 /**
- * Implements hook_cron().
- *
- * Copy of old apachesolr_attachments_clean_index_table().
- */
-function apachesolr_attachments_cron() {
-  $indexer_table = apachesolr_get_indexer_table('file');
-  // Clean all entries where parent_entity_id is empty
-  db_delete($indexer_table)
-  ->condition('parent_entity_id', 0)
-  ->execute();
-  // Clean all entries from entity types that should not be indexed
-  foreach (entity_get_info() as $entity_type => $entity_info) {
-    if (empty($entity_info['apachesolr']['indexable'])) {
-      db_delete($indexer_table)
-      ->condition('parent_entity_type', $entity_type)
-      ->execute();
-    }
-  }
-}
-
-/**
  * Builds the file-specific information for a Solr document.
  *
  * @param ApacheSolrDocument $document
@@ -162,6 +141,13 @@ function apachesolr_attachments_solr_document(ApacheSolrDocument $document, $fil
 
       // Take the top document from the stack
       $filedocument = reset($build_documents);
+
+      // Add node access grants from the parent node to the file so that files
+      // are appropriately shown or filtered out of search results based on
+      // whether the user can access the node they are attached to.
+      if ($parent_entity_type == 'node' && function_exists('apachesolr_access_apachesolr_index_document_build_node')) {
+        apachesolr_access_apachesolr_index_document_build_node($filedocument, $parent_entity, $env_id);
+      }
 
       // Build our separate document and overwrite basic information
       $filedocument->id = apachesolr_document_id($file->fid . '-' . $parent_entity_id, $entity_type);
@@ -263,7 +249,7 @@ function apachesolr_attachments_node_solr_document(ApacheSolrDocument &$document
             if ($status) {
               $text = apachesolr_attachments_get_attachment_text($file);
               // append extracted text to index content field
-              $document->content .= $text;
+              $document->content .= apachesolr_clean_text($file->filename) . ' ' . $text;
             }
           }
         }
@@ -409,6 +395,19 @@ function apachesolr_attachments_apachesolr_file_exclude($entity_id, $row, $env_i
     // Exclude
     return TRUE;
   }
+
+  // Exclude files above the configured limit.
+  $filesize_limit = variable_get('apachesolr_attachments_filesize_limit', '41943040');
+  // load the entity.
+  $entities = entity_load('file', array($entity_id), NULL, TRUE);
+  // Take the first item.
+  $entity = reset($entities);
+
+  // Check if the filesize is higher than the allowed filesize.
+  if (isset($entity->filesize) && $filesize_limit > 0 && $entity->filesize > $filesize_limit) {
+    return TRUE;
+  }
+
   // Do not exclude
   return FALSE;
 }
@@ -505,7 +504,6 @@ function apachesolr_attachments_remove_attachments_from_index($parent_entity_typ
     list($parent_entity_id, $parent_entity_vid, $parent_entity_bundle) = entity_extract_ids($parent_entity_type, $parent_entity);
     $solr = apachesolr_get_solr();
     $solr->deleteByQuery("sm_parent_entity:{$parent_entity_type}-{$parent_entity_bundle}-{$parent_entity_id} AND entity_type:file AND hash:" . apachesolr_site_hash());
-    $solr->commit();
     return TRUE;
   }
   catch (Exception $e) {
@@ -535,6 +533,9 @@ function apachesolr_attachments_apachesolr_query_alter(DrupalSolrQueryInterface 
  * were added to the index table
  */
 function apachesolr_attachments_entity_update($entity, $type) {
+  module_load_include('inc', 'apachesolr_attachments', 'apachesolr_attachments.index');
+  apachesolr_attachments_clean_index_table();
+
   if ($type == 'file') {
     _apachesolr_attachments_update_parent_entity($entity, $type);
   }
@@ -546,6 +547,11 @@ function apachesolr_attachments_entity_insert($entity, $type) {
   if ($type == 'file') {
     _apachesolr_attachments_update_parent_entity($entity, $type);
   }
+}
+
+function apachesolr_attachments_entity_delete($entity, $type) {
+  module_load_include('inc', 'apachesolr_attachments', 'apachesolr_attachments.index');
+  apachesolr_attachments_clean_index_table();
 }
 
 /**
@@ -825,7 +831,7 @@ class ApachesolrAttachmentsEntityFieldQuery extends EntityFieldQuery {
       // This is adding the file id using our metaData field.
       $entity->extraFields = $partial_entity;
       //$entity->file_fid = $partial_entity->{$this->metaData['field_key']};
-      $return[$partial_entity->entity_type][$partial_entity->$id_key] = $entity;
+      $return[$partial_entity->entity_type][$partial_entity->$id_key . '_' . $partial_entity->$column] = $entity;
       $this->ordered_results[] = $partial_entity;
     }
     return $return;
