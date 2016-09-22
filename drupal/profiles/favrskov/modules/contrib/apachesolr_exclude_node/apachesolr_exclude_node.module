@@ -43,7 +43,7 @@ function apachesolr_exclude_node_form_node_type_form_alter(&$form, $form_state) 
  * Implements hook_form_alter().
  */
 function apachesolr_exclude_node_form_alter(&$form, $form_state, $form_id) {
-  if (strpos($form_id, '_node_form') !== FALSE && user_access('exclude nodes from apache solr') && variable_get('apachesolr_exclude_node_enable_' . $form['type']['#value'], 0)) {
+  if (strpos($form_id, '_node_form') !== FALSE && user_access('exclude nodes from apache solr') && isset($form['type']['#value']) && variable_get('apachesolr_exclude_node_enable_' . $form['type']['#value'], 0)) {
     $node = $form['#node'];
     $form['apachesolr_exclude_node'] = array(
       '#type' => 'fieldset',
