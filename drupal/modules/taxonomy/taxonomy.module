@@ -1440,8 +1440,6 @@ function taxonomy_implode_tags($tags, $vid = NULL) {
  *   - parent: a term ID of a term whose children are allowed. This should be
  *     '0' if all terms in a vocabulary are allowed. The allowed values do not
  *     include the parent term.
- * - allow_term_autocreation: a boolean indicating whether or not unknown
- *   values will be converted to new terms in the vocabulary
  *
  */
 function taxonomy_field_info() {
@@ -1458,7 +1456,6 @@ function taxonomy_field_info() {
             'parent' => '0',
           ),
         ),
-        'allow_term_autocreation' => TRUE,
       ),
     ),
   );
@@ -1775,7 +1772,7 @@ function taxonomy_autocomplete_validate($element, &$form_state) {
       if ($possibilities = taxonomy_term_load_multiple(array(), array('name' => trim($typed_term), 'vid' => array_keys($vocabularies)))) {
         $term = array_pop($possibilities);
       }
-      else if (!isset($field['settings']['allow_term_autocreation']) || $field['settings']['allow_term_autocreation']) {
+      else {
         $vocabulary = reset($vocabularies);
         $term = array(
           'tid' => 'autocreate',
@@ -1784,14 +1781,7 @@ function taxonomy_autocomplete_validate($element, &$form_state) {
           'vocabulary_machine_name' => $vocabulary->machine_name,
         );
       }
-      else {
-        $term = NULL;
-        form_error($element, t('%name: illegal value: %value.', array('%name' => t($element['#title']), '%value' => $typed_term)));
-      }
-
-      if (isset($term)) {
-        $value[] = (array)$term;
-      }
+      $value[] = (array)$term;
     }
   }
 
@@ -1833,13 +1823,6 @@ function taxonomy_field_settings_form($field, $instance, $has_data) {
       '#value' => $tree['parent'],
     );
   }
-
-  $form['allow_term_autocreation'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Allow autocreation of new terms'),
-    '#default_value' => (!isset($field['settings']['allow_term_autocreation']) || $field['settings']['allow_term_autocreation']) ? TRUE : FALSE,
-    '#description' => t('When enabled, new terms are automatically created for unknown values.'),
-  );
 
   return $form;
 }
