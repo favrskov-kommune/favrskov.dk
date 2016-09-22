@@ -1,0 +1,13 @@
+diff --git a/panels_ipe/js/panels_ipe.js b/panels_ipe/js/panels_ipe.js
+index f6cae92..2ae0c41 100644
+--- a/panels_ipe/js/panels_ipe.js
++++ b/panels_ipe/js/panels_ipe.js
+@@ -37,7 +37,7 @@ Drupal.behaviors.PanelsIPE = {
+     }
+ 
+     // Initialize new editors.
+-    for (var i in Drupal.settings.PanelsIPECacheKeys) {
++    for (var i = 0; i < Drupal.settings.PanelsIPECacheKeys.length; i++) {
+       var key = Drupal.settings.PanelsIPECacheKeys[i];
+       $('div#panels-ipe-display-' + key + ':not(.panels-ipe-processed)')
+         .addClass('panels-ipe-processed')
