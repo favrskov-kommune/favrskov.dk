@@ -37,9 +37,13 @@ at /admin/config/search/apachesolr/settings:
 
 In the section "Advanced configuration" choose which autocomplete widget to use.
 
-You can choose between a custom JavaScript widget (included with the
-module) or fall back to the core Drupal autocomplete widget. The default is to
-use the custom widget.
+You can choose between:
+
+* a custom JavaScript widget
+* the jQuery UI Autocomplete widget provided by Drupal core.
+* the Drupal autocomplete widget used elsewhere (like for taxonomy autocomplete).
+
+The default is to use the jQuery UI widget.
 
 Normally, the module will make autocomplete responses cacheable by external
 caches (e.g., Varnish) using the page_cache_maximum_age Drupal variable (set in
