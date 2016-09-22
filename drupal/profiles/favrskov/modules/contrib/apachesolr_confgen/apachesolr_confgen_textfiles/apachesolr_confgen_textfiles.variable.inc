@@ -57,6 +57,30 @@ function apachesolr_confgen_textfiles_variable_info($options) {
     'group' => 'apachesolr_confgen_textfiles',
   );
 
+  $variables['apachesolr_confgen_textfiles_contractions_txt'] = array(
+    'type' => 'text',
+    'title' => 'contractions.txt', // file name must not be translated because it's used by some code
+    'default' => '', // TODO
+    'description' => t('Contractions.', array(), $options),
+    'group' => 'apachesolr_confgen_textfiles',
+  );
+
+  $variables['apachesolr_confgen_textfiles_hyphenations_txt'] = array(
+    'type' => 'text',
+    'title' => 'hyphenations.txt', // file name must not be translated because it's used by some code
+    'default' => '', // TODO
+    'description' => t('Hyphenations.', array(), $options),
+    'group' => 'apachesolr_confgen_textfiles',
+  );
+
+  $variables['apachesolr_confgen_textfiles_stemdict_txt'] = array(
+    'type' => 'text',
+    'title' => 'stemdict.txt', // file name must not be translated because it's used by some code
+    'default' => '', // TODO
+    'description' => t('Stemmed dictionary.', array(), $options),
+    'group' => 'apachesolr_confgen_textfiles',
+  );
+
   $variables['apachesolr_confgen_textfiles_mapping_isolatin1accent_txt'] = array(
     'type' => 'text',
     'title' => 'mapping-ISOLatin1Accent.txt', // file name must not be translated because it's used by some code
