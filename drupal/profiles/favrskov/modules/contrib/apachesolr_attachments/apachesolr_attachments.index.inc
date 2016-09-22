@@ -242,19 +242,3 @@ function apachesolr_attachments_delete_file_usage(stdClass $file, $parent_entity
     ->condition('parent_entity_type', $parent_entity_type)
     ->condition('parent_entity_id', $parent_entity_id);
 }
-
-function apachesolr_attachments_clean_index_table() {
-  $indexer_table = apachesolr_get_indexer_table('file');
-  // Clean all entries where parent_entity_id is empty
-  db_delete($indexer_table)
-  ->condition('parent_entity_id', 0)
-  ->execute();
-  // Clean all entries from entity types that should not be indexed
-  foreach (entity_get_info() as $entity_type => $entity_info) {
-    if (empty($entity_info['apachesolr']['indexable'])) {
-       db_delete($indexer_table)
-      ->condition('parent_entity_type', $entity_type)
-      ->execute();
-    }
-  }
-}

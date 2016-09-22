@@ -1,0 +1,78 @@
+diff --git a/apachesolr_attachments.index.inc b/apachesolr_attachments.index.inc
+index ac11c41..835f778 100644
+--- a/apachesolr_attachments.index.inc
++++ b/apachesolr_attachments.index.inc
+@@ -242,19 +242,3 @@ function apachesolr_attachments_delete_file_usage(stdClass $file, $parent_entity
+     ->condition('parent_entity_type', $parent_entity_type)
+     ->condition('parent_entity_id', $parent_entity_id);
+ }
+-
+-function apachesolr_attachments_clean_index_table() {
+-  $indexer_table = apachesolr_get_indexer_table('file');
+-  // Clean all entries where parent_entity_id is empty
+-  db_delete($indexer_table)
+-  ->condition('parent_entity_id', 0)
+-  ->execute();
+-  // Clean all entries from entity types that should not be indexed
+-  foreach (entity_get_info() as $entity_type => $entity_info) {
+-    if (empty($entity_info['apachesolr']['indexable'])) {
+-       db_delete($indexer_table)
+-      ->condition('parent_entity_type', $entity_type)
+-      ->execute();
+-    }
+-  }
+-}
+diff --git a/apachesolr_attachments.module b/apachesolr_attachments.module
+index 6873306..9033fff 100644
+--- a/apachesolr_attachments.module
++++ b/apachesolr_attachments.module
+@@ -77,6 +77,27 @@ function apachesolr_attachments_apachesolr_entity_info_alter(&$entity_info) {
+ }
+ 
+ /**
++ * Implements hook_cron().
++ *
++ * Copy of old apachesolr_attachments_clean_index_table().
++ */
++function apachesolr_attachments_cron() {
++  $indexer_table = apachesolr_get_indexer_table('file');
++  // Clean all entries where parent_entity_id is empty
++  db_delete($indexer_table)
++  ->condition('parent_entity_id', 0)
++  ->execute();
++  // Clean all entries from entity types that should not be indexed
++  foreach (entity_get_info() as $entity_type => $entity_info) {
++    if (empty($entity_info['apachesolr']['indexable'])) {
++      db_delete($indexer_table)
++      ->condition('parent_entity_type', $entity_type)
++      ->execute();
++    }
++  }
++}
++
++/**
+  * Builds the file-specific information for a Solr document.
+  *
+  * @param ApacheSolrDocument $document
+@@ -514,9 +535,6 @@ function apachesolr_attachments_apachesolr_query_alter(DrupalSolrQueryInterface
+  * were added to the index table
+  */
+ function apachesolr_attachments_entity_update($entity, $type) {
+-  module_load_include('inc', 'apachesolr_attachments', 'apachesolr_attachments.index');
+-  apachesolr_attachments_clean_index_table();
+-
+   if ($type == 'file') {
+     _apachesolr_attachments_update_parent_entity($entity, $type);
+   }
+@@ -530,11 +548,6 @@ function apachesolr_attachments_entity_insert($entity, $type) {
+   }
+ }
+ 
+-function apachesolr_attachments_entity_delete($entity, $type) {
+-  module_load_include('inc', 'apachesolr_attachments', 'apachesolr_attachments.index');
+-  apachesolr_attachments_clean_index_table();
+-}
+-
+ /**
+ * trigger an apachesolr_entity_update of parents where the parents are flagged for indexing attachments with the parent
+ **/
