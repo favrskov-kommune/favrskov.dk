@@ -1,5 +1,6 @@
 <?php
 /**
+ * @file
  * Define a Wysiwyg plugin.
  *
  * Supposed to be used for "Drupal plugins" (cross-editor plugins) only.
@@ -32,7 +33,7 @@ function node_embed_node_embed_plugin() {
   drupal_add_library('system', 'ui.draggable');
   drupal_add_library('system', 'ui.droppable');
   drupal_add_library('system', 'ui.dialog');
-  
+
   $plugins['node_embed'] = array(
     // The plugin's title;
     'title' => t('Node Embed'),
@@ -50,10 +51,7 @@ function node_embed_node_embed_plugin() {
     // '[plugin-name].js'.
     'js file' => 'node_embed.js',
     // An array of settings for this button. Required, but API is still in flux.
-    'settings' => array(
-    ),
+    'settings' => array(),
   );
   return $plugins;
 }
-
-?>
