@@ -14,7 +14,10 @@ function panels_search_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'apachesolr_stats_enabled';
-  $strongarm->value = '1';
+  $strongarm->value = array(
+    'core_search' => 'core_search',
+    'taxonomy_search' => 0,
+  );
   $export['apachesolr_stats_enabled'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -45,6 +48,10 @@ function panels_search_strongarm() {
   $strongarm->value = array(
     1 => 0,
     2 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    4 => 0,
   );
   $export['apachesolr_stats_ignore_role_list'] = $strongarm;
 
