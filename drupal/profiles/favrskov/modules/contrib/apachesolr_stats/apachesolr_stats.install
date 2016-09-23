@@ -21,7 +21,6 @@ function apachesolr_stats_uninstall() {
   variable_del('apachesolr_stats_flush_log_timer');
   variable_del('apachesolr_stats_ignore_ip_list');
   variable_del('apachesolr_stats_ignore_role_list');
-  variable_del('apachesolr_stats_gadget_key');
   // Remove cached info.
   cache_clear_all('apachesolr_stats_block_frequent_keywords', 'cache_block');
 }
@@ -120,18 +119,45 @@ function apachesolr_stats_schema() {
         'not null' => TRUE,
         'description' => 'Query sort arguments.',
       ),
-      /*
-      'params' => array(
-        'type' => 'text',
+      'env_id' => array(
+        'description' => 'Identifies the apachesolr environment',
+        'type' => 'varchar',
+        'length' => 64,
         'not null' => TRUE,
-        'size' => 'big',
-        'description' => "Query object's complete parameters.",
-        'default' => 'i:0',
       ),
-       */
+      'page_id' => array(
+        'description' => 'The machine readable name of the search page.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+      ),
     ),
     'primary key' => array('qid'),
   );
 
   return $schema;
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function apachesolr_stats_update_7000() {
+  $ret = array();
+  $default_environment = apachesolr_default_environment();
+  db_add_field('apachesolr_stats', 'env_id',
+    array(
+      'type' => 'varchar',
+      'length' => 64,
+      'not null' => TRUE,
+      'default' => $default_environment,
+    )
+  );
+  db_add_field('apachesolr_stats', 'page_id',
+    array(
+      'type' => 'varchar',
+      'length' => 32,
+      'not null' => TRUE,
+      'default' => 'core_search',
+    )
+  );
 }
