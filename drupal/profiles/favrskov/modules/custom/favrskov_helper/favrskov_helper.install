@@ -603,4 +603,8 @@ function favrskov_helper_update_7034() {
     'taxonomy_search' => 0,
   );
   variable_set('apachesolr_stats_enabled', $enabled_search_pages);
+
+  // Add new apachesolr_stats block due to update of module.
+  // Revert feature with this block.
+  features_revert_module('panels_search');
 }
