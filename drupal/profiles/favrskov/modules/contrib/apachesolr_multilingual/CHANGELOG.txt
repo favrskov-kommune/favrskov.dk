@@ -1,3 +1,28 @@
+Apache Solr Multilingual 7.x-1.3, 2014-xx-xx
+--------------------------------------------
+[        ] mkalkbrenner: added warning about exceeding max_input_vars in bias settings form
+[#2331215] gnindl: Search all language specific fields when CLIR is activated
+[        ] mkalkbrenner: introduced sm_translations and i18n_path_*
+[#2475533] douggreen: DrupalApacheSolrMultilingualService::_makeHttpRequest not setting timeout correctly.
+
+
+Apache Solr Multilingual 7.x-1.2, 2014-08-04
+--------------------------------------------
+[#2315085] eiriksm, mkalkbrenner: apachesolr_multilingual_apachesolr_index_documents_alter overwrites the function parameter, resulting in wrong index
+
+
+Apache Solr Multilingual 7.x-1.1, 2014-08-01
+--------------------------------------------
+[#2217753] mkalkbrenner: avoid duplicate snippets in search result
+[        ] mkalkbrenner: added support of language specific config file replication
+[#2222297] mkalkbrenner: mapping language neutral to all languages does not work without entity translation
+[#2056055] mkalkbrenner: More like this (MLT): Avoid Undefined index: page_id in apachesolr_multilingual_apachesolr_query_alter()
+[#2056055] mkalkbrenner: Provide multilingual settings for More like this (MLT)
+[        ] mkalkbrenner: Keep field sm_missing_translations in sync when using content translation
+[#2307367] mkalkbrenner: make the module compatible with solr attachment
+[#2277121] dunix: Broken link in field bias requirement description
+
+
 Apache Solr Multilingual 7.x-1.0, 2014-02-26
 --------------------------------------------
 [#2150365] mkalkbrenner: Requirement error: Field bias settings of environment ID solr could not be verified.

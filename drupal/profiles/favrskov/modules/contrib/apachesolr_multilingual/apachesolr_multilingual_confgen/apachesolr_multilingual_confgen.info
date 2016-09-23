@@ -15,9 +15,9 @@ files[] = apachesolr_multilingual_confgen.generator.inc
 files[] = apachesolr_multilingual_confgen.variable.inc
 files[] = tests/solr_multilingual.test
 
-; Information added by Drupal.org packaging script on 2014-02-26
-version = "7.x-1.0"
+; Information added by Drupal.org packaging script on 2015-08-31
+version = "7.x-1.3"
 core = "7.x"
 project = "apachesolr_multilingual"
-datestamp = "1393437863"
+datestamp = "1441012448"
 
