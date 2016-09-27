@@ -18,6 +18,10 @@ class DrupalApacheSolrMultilingualService extends DrupalApacheSolrService {
       $options['data'] = NULL;
     }
 
+    // Default timeout of 30s is insufficient for luke requests and indexing.
+    $options += array(
+      'timeout' => variable_get('apachesolr_connection_timeout', '600.0'),
+    );
     $result = drupal_http_request($url, $options);
 
     if (!isset($result->code) || $result->code < 0) {

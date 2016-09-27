@@ -7,9 +7,9 @@ dependencies[] = apachesolr
 ; Views integration
 files[] = views/apachesolr_exclude_node_views_handler_filter_status.inc
 files[] = views/apachesolr_exclude_node.views_default.inc
-; Information added by Drupal.org packaging script on 2014-06-13
-version = "7.x-1.3"
+; Information added by Drupal.org packaging script on 2015-10-06
+version = "7.x-1.4"
 core = "7.x"
 project = "apachesolr_exclude_node"
-datestamp = "1402647230"
+datestamp = "1444115343"
 

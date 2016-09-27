@@ -12,7 +12,7 @@ include_once 'panels_search.features.inc';
  * Customize apache solr search form.
  */
 function panels_search_form_apachesolr_panels_search_form_alter(&$form, $form_state) {
-  $element = & $form['apachesolr_panels_search_form'];
+  $element = &$form['apachesolr_panels_search_form'];
   $element['#size'] = 50;
   $element['#placeholder'] = t('Search');
 
@@ -38,17 +38,21 @@ function panels_search_form_apachesolr_panels_search_form_alter(&$form, $form_st
   );
 
   $form['#submit'] = array('panels_search_search_form_submit');
-  apachesolr_autocomplete_do_alter($element);
+
+  $context_id = 'apachesolr_search_page:' . apachesolr_search_default_search_page();
+  apachesolr_autocomplete_do_alter($element, $form, $context_id);
 }
 
 /**
  * Implementation of hook_form_FORM_ID_alter().
  */
 function panels_search_form_apachesolr_panels_search_block_alter(&$form, $form_state) {
-  $element = & $form['apachesolr_panels_search_form'];
+  $element = &$form['apachesolr_panels_search_form'];
   $element['#size'] = 76;
   $element['#placeholder'] = t('What are you searching?');
-  apachesolr_autocomplete_do_alter($element);
+
+  $context_id = 'apachesolr_search_page:' . apachesolr_search_default_search_page();
+  apachesolr_autocomplete_do_alter($element, $form, $context_id);
 }
 
 /**
@@ -61,6 +65,7 @@ function panels_search_form_apachesolr_panels_search_block_alter(&$form, $form_s
  */
 function panels_search_search_form_submit(&$form, $form_state) {
   $query = array();
+
   if ($form_state['input']['save_filters'] == 1) {
     $query = (array) drupal_get_query_parameters();
     $query += array('retain' => TRUE);
@@ -71,22 +76,23 @@ function panels_search_search_form_submit(&$form, $form_state) {
   $form_state['values']['search_block_form'] = $form_state['values']['apachesolr_panels_search_form'];
   $form_state['values']['apachesolr_panels_search_block'] = $form_state['values']['apachesolr_panels_search_form'];
   search_box_form_submit($form, $form_state);
+
   if (!empty( $form_state['input']['apachesolr_panels_search_form'])){
-  drupal_goto(arg(0) . '/' . $form_state['input']['apachesolr_panels_search_form'], array('query' => $query));
+    drupal_goto(arg(0) . '/' . $form_state['input']['apachesolr_panels_search_form'], array('query' => $query));
   }
-  else{
+  else {
     drupal_goto(arg(0), array('query' => $query));
   }
-
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  *
- * Replace links in solr stats block so they will link to our custom search page.
+ * Replace links in apachesolr_stats popular-searches block
+ * so they will lead to our custom search page.
  */
 function panels_search_preprocess_apachesolr_stats_block(&$variables) {
   foreach ($variables['links'] as &$link) {
-    $link = str_replace('/search/apachesolr_search', SOLR_SEARCH_PAGE, $link);
+    $link = str_replace('/search/site', SOLR_SEARCH_PAGE, $link);
   }
 }

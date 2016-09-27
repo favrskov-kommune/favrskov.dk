@@ -47,17 +47,11 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="robots" content="noindex, nofollow" />
-  <script type="text/javascript">
-    var oEditor   = window.parent.CKEDITOR ;
-    var instance  = oEditor.currentInstance ;
-    var lang      = oEditor.lang ;
-    var config    = oEditor.config ;
-  </script>
-  
+
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
-  <link type="text/css" rel="stylesheet" media="all" href="<?php print drupal_get_path("module", "node_embed") ?>/ckeditor/ck_nodeembed.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="<?php print base_path() . drupal_get_path("module", "node_embed") ?>/ckeditor/ck_nodeembed.css" />
 
   <!--[if IE]>
   <link type="text/css" rel="stylesheet" media="all" href="<?php print base_path() . path_to_theme();?>/css/ie.css" />
@@ -65,14 +59,15 @@
   <!--[if IE 6]>
   <link type="text/css" rel="stylesheet" media="all" href="<?php print base_path() . path_to_theme();?>/css/ie6.css" />
   <![endif]-->
-  <?php print $scripts; ?>
-  <script type="text/javascript" src="<?php 
-    print base_path() . drupal_get_path('module', 'node_embed')?>/ckeditor/ck_nodeembed.js">
-  </script>
+  <?php
+  print $scripts;
+  ?>
+
 </head>
 <body class="view-ck" style="overflow: auto">
   <div id="divInfo">
     <?php print $page; ?>
   </div>
+  <?php print $page_bottom; ?>
 </body>
 </html>

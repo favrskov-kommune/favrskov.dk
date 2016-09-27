@@ -15,9 +15,9 @@ files[] = apachesolr_confgen.class.inc
 files[] = apachesolr_confgen.variable.inc
 files[] = lib/apachesolr_confgen_zipfile.php
 
-; Information added by Drupal.org packaging script on 2014-03-24
-version = "7.x-1.0"
+; Information added by Drupal.org packaging script on 2014-10-23
+version = "7.x-1.1"
 core = "7.x"
 project = "apachesolr_confgen"
-datestamp = "1395672586"
+datestamp = "1414060129"
 

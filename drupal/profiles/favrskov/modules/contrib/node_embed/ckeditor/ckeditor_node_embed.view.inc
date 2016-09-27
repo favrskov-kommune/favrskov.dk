@@ -1,6 +1,8 @@
 <?php
-// $Id: ckeditor_node_embed.view.inc,v 1.1 2010/07/26 20:11:44 emackn Exp $
-// @file ckeditor_node_embed.view.inc
+/* @file
+ * View to allow filtering of nodes in order to select nodes.
+ */
+
 $view = new view;
 $view->name = 'ckeditor_node_embed';
 $view->description = 'View to allow filtering of nodes in order to select nodes.  Used by the Node Embed ckeditor plugin';
@@ -166,10 +168,10 @@ $handler->override_option('cache', array(
 $handler->override_option('use_ajax', TRUE);
 $handler->override_option('items_per_page', 16);
 $handler->override_option('use_pager', '1');
-$handler->override_option('style_plugin', 'list'); 
+$handler->override_option('style_plugin', 'list');
 $handler->override_option('style_options', array(
-	'grouping' => '', 
-	'type' => 'ul', 
+  'grouping' => '',
+  'type' => 'ul',
 ));
 $handler = $view->new_display('page', 'Page', 'page_1');
 $handler->override_option('path', 'ckeditor-node-embed');

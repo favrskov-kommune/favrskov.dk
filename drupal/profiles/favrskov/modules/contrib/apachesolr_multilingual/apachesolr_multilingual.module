@@ -41,11 +41,11 @@ function apachesolr_multilingual_node_delete($node) {
  */
 function apachesolr_multilingual_node_update($node) {
   // If a node is translated using node translation aka content translation
-  // we need to mark all translations as modified.
+  // we need to mark all translations as modified to update field
+  // sm_translations, sm_missing_translations and CLIR.
   if (!empty($node->tnid)) {
     foreach (apachesolr_multilingual_load_all_environments() as $environment) {
-      if ($environment['conf']['apachesolr_multilingual_index_settings']['apachesolr_multilingual_clir']['apachesolr_multilingual_index_translations']
-        && !empty($environment['index_bundles']['node'])
+      if (!empty($environment['index_bundles']['node'])
         && in_array($node->type, $environment['index_bundles']['node'])
       ) {
         $translations = translation_node_get_translations($node->tnid);
@@ -124,6 +124,7 @@ function apachesolr_multilingual_apachesolr_index_documents_alter(&$documents, $
             $translations_key = $entity_info['entity keys']['translations'];
             $original_langcode = $entity->language;
 
+            $document->setField('sm_translations', array_unique(array_merge(array_keys($entity->{$translations_key}->data), array($original_langcode))));
             $document->setField('sm_missing_translations', array_diff($active_langcodes, array_keys($entity->{$translations_key}->data)));
 
             foreach ($entity->{$translations_key}->data as $langcode => $entity_translation) {
@@ -149,53 +150,6 @@ function apachesolr_multilingual_apachesolr_index_documents_alter(&$documents, $
               // Always override the title / label if title module is active.
               $document->label = apachesolr_clean_text(title_entity_label($entity, 'node', $document->ss_language));
             }
-
-            // Create an index entry for each language to node has been translated to.
-            // The id gets a language suffix to be unique.
-            foreach ($additional_documents_langcodes as $langcode) {
-              // Prevent endless recursion if language specific document has been created already
-              // and $reentrance is set to TRUE.
-              if (!array_key_exists($document->id, $documents)) {
-                // Temporarily switch the language context for apachesolr_index_node_solr_document(),
-                // which is not aware of entity_translation.
-                $original_langcode = $entity->language;
-                $entity->language = $langcode;
-                $language_content = $languages[$langcode];
-
-                $id = $document->id . '/' . $langcode;
-                $additional_documents = array();
-                $additional_documents[$id] = clone $document;
-
-                $reentrance = FALSE;
-                // apachesolr_convert_entity_to_documents() calls hook_apachesolr_index_documents_alter().
-                // The variable $reentrance avoids an endless recursion.
-                $tmp_documents = apachesolr_convert_entity_to_documents($entity, $entity_type, $env_id);
-                $reentrance = TRUE;
-
-                $basic_fields = reset($tmp_documents);
-
-                foreach ($basic_fields->getFieldNames() as $field) {
-                  $additional_documents[$id]->$field = $basic_fields->$field;
-                }
-
-                $additional_documents[$id]->id = $id;
-                // Add document_id of original language, so that all translations can be deleted together,
-                // when original document is removed. See apachesolr_index_delete_entity_from_index().
-                $additional_documents[$id]->sm_parent_document_id = array($document->id);
-
-                apachesolr_index_node_solr_document($additional_documents[$id], $entity, $entity_type, $env_id);
-
-                // Recursive call to deal with 'apachesolr_multilingual_index_translations' aka CLIR and title field, see above and below
-                apachesolr_multilingual_apachesolr_index_documents_alter($additional_documents, $entity, $entity_type, $env_id);
-
-                $entity->language = $original_langcode;
-                $language_content = $languages[$original_langcode];
-
-                foreach ($additional_documents as $key => $additional_document) {
-                  $documents[$key] = $additional_document;
-                }
-              }
-            }
           }
           else {
 
@@ -207,6 +161,7 @@ function apachesolr_multilingual_apachesolr_index_documents_alter(&$documents, $
               $translations = translation_node_get_translations($document->is_tnid);
             }
 
+            $document->setField('sm_translations', array_unique(array_merge(array_keys($translations), array($document->ss_language))));
             $document->setField('sm_missing_translations', array_diff($active_langcodes, array_merge(array_keys($translations), array($document->ss_language))));
 
             if (!empty($translations) && $settings['apachesolr_multilingual_clir']['apachesolr_multilingual_index_translations']) {
@@ -223,6 +178,68 @@ function apachesolr_multilingual_apachesolr_index_documents_alter(&$documents, $
               }
             }
           }
+
+          // In case of entity translation, create an index entry for each
+          // language the node has been translated to.
+          // In case of content translation this same code is used when language
+          // undefined content needs to be mapped to different languages.
+          // The document id gets a language suffix to be unique.
+          foreach ($additional_documents_langcodes as $langcode) {
+            // Prevent endless recursion if language specific document has been created already
+            // and $reentrance is set to TRUE.
+            if (!array_key_exists($document->id, $documents)) {
+              // Temporarily switch the language context for apachesolr_index_node_solr_document(),
+              // which is not aware of entity_translation.
+              $original_langcode = $entity->language;
+              $entity->language = $langcode;
+              $language_content = $languages[$langcode];
+
+              $id = $document->id . '/' . $langcode;
+              $additional_documents = array();
+              $additional_documents[$id] = clone $document;
+
+              $reentrance = FALSE;
+              // apachesolr_convert_entity_to_documents() calls hook_apachesolr_index_documents_alter().
+              // The variable $reentrance avoids an endless recursion.
+              $tmp_documents = apachesolr_convert_entity_to_documents($entity, $entity_type, $env_id);
+              $reentrance = TRUE;
+
+              $basic_fields = reset($tmp_documents);
+
+              foreach ($basic_fields->getFieldNames() as $field) {
+                $additional_documents[$id]->$field = $basic_fields->$field;
+              }
+
+              $additional_documents[$id]->id = $id;
+              // Add document_id of original language, so that all translations can be deleted together,
+              // when original document is removed. See apachesolr_index_delete_entity_from_index().
+              $additional_documents[$id]->sm_parent_document_id = array($document->id);
+
+              list(, , $bundle) = entity_extract_ids('node', $entity);
+              //Get the callback array to add stuff to the document
+              $document_callbacks = apachesolr_entity_get_callback($entity_type, 'document callback', $bundle);
+              $tmp_documents = array();
+              foreach ($document_callbacks as $document_callback) {
+                // Call a type-specific callback to add stuff to the document.
+                $tmp_documents = array_merge($tmp_documents, $document_callback($additional_documents[$id], $entity, $entity_type, $env_id));
+                // Generic use case for future reference. Callbacks can
+                // allow you to send back multiple documents.
+                // @see apachesolr_index_node_solr_document()
+                // $tmp_documents is not in use yet.
+              }
+
+              // Recursive call to deal with 'apachesolr_multilingual_index_translations' aka CLIR and title field, see above and below
+              apachesolr_multilingual_apachesolr_index_documents_alter($additional_documents, $entity, $entity_type, $env_id);
+
+              $entity->language = $original_langcode;
+              $language_content = $languages[$original_langcode];
+
+              foreach ($additional_documents as $key => $additional_document) {
+                $documents[$key] = $additional_document;
+              }
+            }
+          }
+
           break;
 
         default:
@@ -248,21 +265,23 @@ function apachesolr_multilingual_apachesolr_index_documents_alter(&$documents, $
 
 function apachesolr_multilingual_copy_common_to_i18n_fields($src_document, $dst_document) {
   $fields = $src_document->getFieldNames();
+  $additionally_store_unstemmed = array(
+    'ts' => 'tus',
+    'tm' => 'tom',
+  );
 
   // Use language-specific stemming and so on by copying all fields of type text
   // to a language-specific text field.
-  if (in_array('label', $fields)) {
-    $dst_document->{'i18n_label_' . $src_document->ss_language} = $src_document->label;
+  foreach (array('label', 'teaser', 'content', 'path_alias') as $field_name) {
+    if (in_array($field_name, $fields)) {
+      $dst_document->{'i18n_' . $field_name . '_' . $src_document->ss_language} =
+      $dst_document->{'i18n_tus_' . $src_document->ss_language . '_' . $field_name} =
+        $src_document->{$field_name};
+    }
   }
-  if (in_array('teaser', $fields)) {
-    $dst_document->{'i18n_teaser_' . $src_document->ss_language} = $src_document->teaser;
-  }
-  if (in_array('content', $fields)) {
-    $dst_document->{'i18n_content_' . $src_document->ss_language} = $src_document->content;
-  }
-  if (in_array('path_alias', $fields)) {
-    $dst_document->{'i18n_path_alias_' . $src_document->ss_language} = $src_document->path_alias;
-  }
+
+  $dst_document->{'i18n_path_' . $src_document->ss_language} = $src_document->{'path'};
+
   foreach ($fields as $field_name) {
     $prefixes = array_keys(apachesolr_multilingual_get_dynamic_text_field_prefixes_and_types());
     $prefixes[] = 'tags_';
@@ -275,7 +294,11 @@ function apachesolr_multilingual_copy_common_to_i18n_fields($src_document, $dst_
           // language-specific dynamic fields and standard dynamic fields.
           // The language suffix is not enough, because someone could define a
           // drupal field name like 'de_foo', which matches ts_de_* but not i18n_ts_*
-          $dst_document->{'i18n_' . $tmp[0] . '_' . $src_document->ss_language . drupal_substr($field_name, drupal_strlen($tmp[0]))} = $src_document->{$field_name};
+          $new_field_name = 'i18n_' . $tmp[0] . '_' . $src_document->ss_language . drupal_substr($field_name, drupal_strlen($tmp[0]));
+          $dst_document->{$new_field_name} = $src_document->{$field_name};
+          if (array_key_exists($tmp[0], $additionally_store_unstemmed)) {
+            $dst_document->{str_replace(array_keys($additionally_store_unstemmed), array_values($additionally_store_unstemmed), $new_field_name)} = $src_document->{$field_name};
+          }
         }
       }
     }
@@ -302,9 +325,10 @@ function apachesolr_multilingual_form_apachesolr_search_bias_form_alter(&$form, 
   $fields = apachesolr_search_get_fields($environment);
   $unspecified_types = $types = array_unique(array_values(apachesolr_multilingual_get_dynamic_text_field_prefixes_and_types()));
   $defaults = array();
+
   foreach (array_keys(apachesolr_multilingual_language_list()) as $language_id) {
     foreach ($unspecified_types as $type) {
-      if (strpos($type, 'text') === 0) {
+      if (strpos($type, 'text') === 0) { // matches text_und, too
         // Register language specific text types to add all fields based on this
         // these types to the bias form.
         $types[] = $type . '_' . $language_id;
@@ -323,6 +347,12 @@ function apachesolr_multilingual_form_apachesolr_search_bias_form_alter(&$form, 
     $defaults['i18n_tags_' . $language_id . '_h4_h5_h6'] = '2.0';
     $defaults['i18n_tags_' . $language_id . '_inline'] = '1.0';
     $defaults['i18n_tags_' . $language_id . '_a'] = '0';
+    $defaults['i18n_tus_' . $language_id . '_content'] = '0';
+    $defaults['i18n_tus_' . $language_id . '_comments'] = '0';
+    $defaults['i18n_tus_' . $language_id . '_label'] = '0';
+    $defaults['i18n_tus_' . $language_id . '_teaser'] = '0';
+    $defaults['i18n_tus_' . $language_id . '_path_alias'] = '0';
+
   }
 
   $qf = apachesolr_environment_variable_get($environment['env_id'], 'field_bias', $defaults);
@@ -346,6 +376,7 @@ function apachesolr_multilingual_form_apachesolr_search_bias_form_alter(&$form, 
 
     // Make sure all the default fields are included, even if they have
     // no indexed content.
+    $additional_vars_count = 0;
     foreach ($defaults as $field_name => $weight) {
       $form['field_bias'][$field_name] = array(
         '#type' => 'select',
@@ -356,6 +387,19 @@ function apachesolr_multilingual_form_apachesolr_search_bias_form_alter(&$form, 
       if (!isset($qf[$field_name])) {
         $incomplete[] = $field_name;
       }
+      $additional_vars_count++;
+    }
+
+    // Based on a default value of 1000 for max_input_vars this is a rough
+    // estimation to warn the user about exceeding this setting.
+    if (
+      $additional_vars_count > (ini_get('max_input_vars') - 400) ||
+      $additional_vars_count > (ini_get('max_input_vars') * 0.6))
+    {
+      drupal_set_message(
+        t('This settings form contains a lot of variables. If you are unable to save the settings try to increase the value of "max_input_vars" in your php.ini. If you use the suhosin extension you have to adjust the values of "suhosin.post.max_vars" and "suhosin.request.max_vars" as well.'),
+        'warning'
+      );
     }
 
     ksort($form['field_bias']);
@@ -367,7 +411,8 @@ function apachesolr_multilingual_form_apachesolr_search_bias_form_alter(&$form, 
         // lot of fields in this form.
         $form['field_bias'][$field_name]['#attributes']['class'][] = 'error';
         // TODO use a theme function to format this message.
-        $form['field_bias'][$field_name]['#description'] .= ' <span class="error">' . t('This field is new and needs to be configured.') . '</span>';
+        $form['field_bias'][$field_name]['#description'] = (isset($form['field_bias'][$field_name]['#description']) ? $form['field_bias'][$field_name]['#description'] : '') .
+          ' <span class="error">' . t('This field is new and needs to be configured.') . '</span>';
       }
       // The form contains at least one field that has never been configured
       // before. Display a corresponding message.
@@ -376,9 +421,6 @@ function apachesolr_multilingual_form_apachesolr_search_bias_form_alter(&$form, 
           array('!field_biases' => t('Field biases'))),
         'warning'
       );
-    }
-
-    if ($incomplete) {
     }
   }
 }
@@ -405,6 +447,12 @@ function apachesolr_multilingual_apachesolr_field_name_map_alter(&$map) {
     $map['i18n_tags_' . $language . '_h4_h5_h6'] = $language_name . ': ' . $map['tags_h4_h5_h6'];
     $map['i18n_tags_' . $language . '_inline'] = $language_name . ': ' . $map['tags_inline'];
     $map['i18n_tags_' . $language . '_a'] = $language_name . ': ' . $map['tags_a'];
+    $map['i18n_tus_' . $language . '_content'] = $language_name . ': ' . $map['content'] . ' ' . t('(Unstemmed)');
+    $map['i18n_tus_' . $language . '_comments'] = $language_name . ': ' . $map['ts_comments'] . ' ' . t('(Unstemmed)');
+    $map['i18n_tus_' . $language . '_label'] = $language_name . ': ' . $map['label'] . ' ' . t('(Unstemmed)');
+    $map['i18n_tus_' . $language . '_teaser'] = $language_name . ': ' . $map['teaser'] . ' ' . t('(Unstemmed)');
+    $map['i18n_tus_' . $language . '_path_alias'] = $language_name . ': ' . $map['path_alias'] . ' ' . t('(Unstemmed)');
+
     if (module_exists('taxonomy')) {
       $map['i18n_taxonomy_names_' . $language] = $language_name . ': ' . $map['taxonomy_names'];
       foreach (taxonomy_get_vocabularies() as $vocab) {
@@ -448,10 +496,10 @@ function apachesolr_multilingual_get_language_filters_by_query($query) {
  * language.
  */
 function apachesolr_multilingual_module_implements_alter(&$implementations, $hook) {
-  if (
-    'apachesolr_query_alter' == $hook ||
-    'apachesolr_field_name_map_alter' == $hook
-  ) {
+  if (in_array($hook, array(
+    'apachesolr_query_alter',
+    'apachesolr_field_name_map_alter',
+  ))) {
     $group = $implementations['apachesolr_multilingual'];
     unset($implementations['apachesolr_multilingual']);
     $implementations['apachesolr_multilingual'] = $group;
@@ -472,12 +520,38 @@ function apachesolr_multilingual_apachesolr_query_alter($query) {
   $environment = apachesolr_multilingual_environment_load($context['env_id']);
   $settings = $environment['conf']['apachesolr_multilingual_index_settings'];
   if ($settings['apachesolr_multilingual_index']) {
-
-    $search_page = apachesolr_search_page_load($context['page_id']);
-    $custom_settings = $search_page['settings'];
+    $custom_settings = array();
+    if (isset($context['search_type']) && 'apachesolr_search_mlt' == $context['search_type']) {
+      // Add multilingual settings to mlt blocks like we do for search pages.
+      // @see https://drupal.org/node/2056055
+      $mlt_block_settings = apachesolr_search_mlt_block_load($context['block_id']);
+      if ($mlt_block_settings && array_key_exists('apachesolr_multilingual_query_settings', $mlt_block_settings)) {
+        $custom_settings = $mlt_block_settings['apachesolr_multilingual_query_settings'];
+      }
+      // Use mlt block is as page id later in this function.
+      $context['page_id'] = $context['block_id'];
+    }
+    elseif (!empty($context['page_id'])) {
+      // Load multilingual custom settings assigned to this search page.
+      $search_page = apachesolr_search_page_load($context['page_id']);
+      $custom_settings = $search_page['settings'];
+    }
+    else {
+      // A custom query has been created by a third party module.
+      // Assume default multilingual settings.
+      // TODO This behavior should be somehow configurable.
+    }
+    // Add defaults for required settings to not yet saved multilingual custom settings.
     apachesolr_multilingual_search_page_settings_add_defaults($custom_settings);
-    $filter_languages = &drupal_static('apachesolr_multilingual_filter_languages_' . $context['page_id']);
+
+    if(!empty($context['page_id'])){
+      $filter_languages = &drupal_static('apachesolr_multilingual_filter_languages_' . $context['page_id']);
+    }else{
+      $filter_languages = &drupal_static('apachesolr_multilingual_filter_languages');
+    }
+
     $filter_languages = apachesolr_multilingual_get_language_filters_by_query($query);
+
     $languages = apachesolr_multilingual_language_list();
     if (empty($filter_languages) && $custom_settings['apachesolr_multilingual_auto_language_filter'] &&
       (!$custom_settings['apachesolr_multilingual_auto_language_filter_detachable'] ||
@@ -498,58 +572,71 @@ function apachesolr_multilingual_apachesolr_query_alter($query) {
       }
     }
 
-    $qf = $query->getParam('qf');
-    // Per default the 'query fields' contain all language un-specific and
-    // specific fields.
-    // If the query filters by language we have to remove all unnecessary
-    // language specific fields.
-    // For the remaining language specific fields we have to apply the boosts as
-    // apachesolr_search_add_boost_params() will do for the unspecific ones.
-    foreach ($qf as $index => $field) {
-      if (strpos($field, 'i18n_') === 0) {
-        if (!empty($filter_languages)) {
-          $remove = TRUE;
-          foreach ($filter_languages as $filter_language) {
-            if (preg_match('@_' . $filter_language . '(\^|_)@', $field)) {
-              $remove = FALSE;
-              break;
+    // When CLIR is activated we want to search all language specific fields
+    if (!$settings['apachesolr_multilingual_clir']['apachesolr_multilingual_index_translations']) {
+      // Per default the 'query fields' contain all language un-specific and
+      // specific fields.
+      // If the query filters by language we have to remove all unnecessary
+      // language specific fields.
+      // For the remaining language specific fields we have to apply the boosts as
+      // apachesolr_search_add_boost_params() will do for the unspecific ones.
+      $qf = $query->getParam('qf');
+      foreach ($qf as $index => $field) {
+        if (strpos($field, 'i18n_') === 0) {
+          if (!empty($filter_languages)) {
+            $remove = TRUE;
+            foreach ($filter_languages as $filter_language) {
+              if (preg_match('@_' . $filter_language . '(\^|_)@', $field)) {
+                $remove = FALSE;
+                break;
+              }
+            }
+            if ($remove) {
+              unset($qf[$index]);
+              continue;
             }
           }
-          if ($remove) {
-            unset($qf[$index]);
-            continue;
+
+          // Because apachesolr_search_add_boost_params() does not recognize the
+          // the i18n_* prefix we have to apply the same logic here to add the
+          // extra boost to language specific normed fields.
+          if (strpos($field, 'i18n_content') === 0 || strpos($field, 'i18n_ts_') === 0 || strpos($field, 'i18n_tm_') === 0) {
+            list($field_name, $boost) = explode('^', $field);
+            // Normed fields tend to have a lower score. Multiplying by 40 is
+            // a rough attempt to bring the score in line with fields that are
+            // not normed.
+            $qf[$index] = $field_name . '^' . sprintf('%.1F', 40.0 * $boost);
           }
         }
-
-        // Because apachesolr_search_add_boost_params() does not recognize the
-        // the i18n_* prefix we have to apply the same logic here to add the
-        // extra boost to language specific normed fields.
-        if (strpos($field, 'i18n_content') === 0 || strpos($field, 'i18n_ts_') === 0 || strpos($field, 'i18n_tm_') === 0) {
-          list($field_name, $boost) = explode('^', $field);
-          // Normed fields tend to have a lower score. Multiplying by 40 is
-          // a rough attempt to bring the score in line with fields that are
-          // not normed.
-          $qf[$index] = $field_name . '^' . sprintf('%.1F', 40.0 * $boost);
-        }
       }
+      $query->replaceParam('qf', $qf);
     }
-
-    $query->replaceParam('qf', $qf);
 
     // Add the teaser to the result fields, because apachesolr_search_run()
     // won't do it anymore if highlighting parameters are set here.
     $query->addParam('fl', 'teaser');
 
+    $hl_fl_removed = FALSE;
     foreach (array_keys($languages) as $language_id) {
       if (!empty($filter_languages) && !in_array($language_id, $filter_languages)) {
         continue;
       }
+      if (!$hl_fl_removed) {
+        // Remove all language un-specific fields from highlighting before
+        // adding language specific ones.
+        $query->removeParam('hl.fl');
+        $hl_fl_removed = TRUE;
+      }
+
+      // TODO avoid snippets in case of CLIR because these might come from machine translation which should be hidden.
+
       $query->addParam('hl.fl', 'i18n_content_' . $language_id);
-      $query->addParam('f.' . 'i18n_content_' . $language_id . '.hl.alternateField', 'i18n_teaser_' . $language_id);
+      $query->addParam('f.i18n_content_' . $language_id . '.hl.alternateField', 'i18n_teaser_' . $language_id);
       $query->addParam('hl.fl', 'i18n_ts_' . $language_id . '_comments');
     }
   }
 }
+
 
 /**
  * Implements hook_form_search_form_alter().
@@ -594,6 +681,77 @@ function apachesolr_multilingual_apachesolr_search_custom_page_search_form_submi
 }
 
 /**
+ * Add multilingual settings to MLT blocks.
+ *
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function apachesolr_multilingual_form_block_admin_configure_alter(&$form, &$form_state, $form_id) {
+  if ('apachesolr_search' == $form['module']['#value'] && 'sort' != $form['delta']['#value']) {
+    $settings = array();
+
+    $mlt_block_settings = apachesolr_search_mlt_block_load($form['delta']['#value']);
+    if ($mlt_block_settings && array_key_exists('apachesolr_multilingual_query_settings', $mlt_block_settings)) {
+      $settings = $mlt_block_settings['apachesolr_multilingual_query_settings'];
+    }
+
+    apachesolr_multilingual_search_page_settings_add_defaults($settings);
+    unset($settings['apachesolr_multilingual_auto_language_filter_detachable']);
+
+    apachesolr_multilingual_add_settings_form_elements($form, $settings);
+
+    array_push($form['#validate'], 'apachesolr_multilingual_block_admin_configure_form_validate');
+    // We have to modify apachesolr_search_mlt_blocks AFTER apachesolr_search.module!
+    array_push($form['#submit'], 'apachesolr_multilingual_block_admin_configure_form_submit');
+  }
+}
+
+function apachesolr_multilingual_block_admin_configure_form_validate($form, &$form_state) {
+}
+
+function apachesolr_multilingual_block_admin_configure_form_submit($form, &$form_state) {
+  $blocks = variable_get('apachesolr_search_mlt_blocks', array());
+  $blocks[$form_state['values']['delta']]['apachesolr_multilingual_query_settings'] =
+    $form_state['values']['apachesolr_multilingual_query_settings'];
+  variable_set('apachesolr_search_mlt_blocks', $blocks);
+}
+
+
+function apachesolr_multilingual_add_settings_form_elements(&$form, $settings) {
+  $form['apachesolr_multilingual_query_settings'] = array(
+    '#type' => 'fieldset',
+    '#tree' => TRUE,
+    '#title' => t('Multilingual Query Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['apachesolr_multilingual_query_settings']['apachesolr_multilingual_auto_language_filter'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Limit search to current language by default'),
+    '#default_value' => $settings['apachesolr_multilingual_auto_language_filter'],
+    '#description' => t('Show only search results that match the current language.'),
+  );
+
+  if (array_key_exists('apachesolr_multilingual_auto_language_filter_detachable', $settings)) {
+    $form['apachesolr_multilingual_query_settings']['apachesolr_multilingual_auto_language_filter_detachable'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Limit search to current language could be disabled by user'),
+      '#default_value' => $settings['apachesolr_multilingual_auto_language_filter_detachable'],
+      '#description' => t('Displays a checkbox on search result page to search over all languages if "%limit_search" is active.', array('%limit_search' => t('Limit search to current language by default'))),
+    );
+  }
+
+  $form['apachesolr_multilingual_query_settings']['apachesolr_multilingual_show_language_undefined_results'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show language-neutral/undefined results by default'),
+    '#default_value' => $settings['apachesolr_multilingual_show_language_undefined_results'],
+    '#description' => t('Show language-neutral/undefined results on search result page if "%limit_search" is active.', array('%limit_search' => t('Limit search to current language by default'))),
+  );
+}
+
+/**
  * Implements hook_form_alter().
  *
  * @param $form_state
@@ -607,36 +765,10 @@ function apachesolr_multilingual_form_apachesolr_search_page_settings_form_alter
     // Add multilingual defaults.
     apachesolr_multilingual_search_page_settings_add_defaults($search_page_settings);
 
-    $form['apachesolr_multilingual_query_settings'] = array(
-      '#type' => 'fieldset',
-      '#tree' => TRUE,
-      '#title' => t('Multilingual Query Settings'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-    );
-
-    $form['apachesolr_multilingual_query_settings']['apachesolr_multilingual_auto_language_filter'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Limit search to current language by default'),
-      '#default_value' => $search_page_settings['apachesolr_multilingual_auto_language_filter'],
-      '#description' => t('Show only search results that match the current language.'),
-    );
-
-    $form['apachesolr_multilingual_query_settings']['apachesolr_multilingual_auto_language_filter_detachable'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Limit search to current language could be disabled by user'),
-      '#default_value' => $search_page_settings['apachesolr_multilingual_auto_language_filter_detachable'],
-      '#description' => t('Displays a checkbox on search result page to search over all languages if "%limit_search" is active.', array('%limit_search' => t('Limit search to current language by default'))),
-    );
-
-    $form['apachesolr_multilingual_query_settings']['apachesolr_multilingual_show_language_undefined_results'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Show language-neutral/undefined results by default'),
-      '#default_value' => $search_page_settings['apachesolr_multilingual_show_language_undefined_results'],
-      '#description' => t('Show language-neutral/undefined results on search result page if "%limit_search" is active.', array('%limit_search' => t('Limit search to current language by default'))),
-    );
+    apachesolr_multilingual_add_settings_form_elements($form, $search_page_settings);
 
     array_unshift($form['#validate'], 'apachesolr_multilingual_search_page_settings_form_validate');
+    // We have to modify $form_state['values']['advanced'] BEFORE apachesolr_search.module!
     array_unshift($form['#submit'], 'apachesolr_multilingual_search_page_settings_form_submit');
   }
 }
@@ -701,7 +833,7 @@ function apachesolr_multilingual_form_apachesolr_environment_edit_form_alter(&$f
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
     '#description' => filter_xss(t('<strong>Cross-language information retrieval</strong>. As a special feature Apache Solr Multilingual could be configured to provide a simple implementation of CLIR. That means that you can find content in any language it has been translated to, no matter which language was used to enter the search phrase. The standard use case for CLIR is to have only a few good translations, but machine translations for the other languages. See !wikipedia for details.',
-        array('!wikipedia' => l(t('CLIR on Wikipedia'), 'http://en.wikipedia.org/wiki/Cross-language_information_retrieval')))),
+      array('!wikipedia' => l(t('CLIR on Wikipedia'), 'http://en.wikipedia.org/wiki/Cross-language_information_retrieval')))),
   );
 
   $form['conf']['apachesolr_multilingual_index_settings']['apachesolr_multilingual_clir']['apachesolr_multilingual_index_translations'] = array(

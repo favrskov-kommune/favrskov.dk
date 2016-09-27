@@ -18,9 +18,9 @@ files[] = theme/page--ckeditor-node-embed.tpl.php
 
 files[] = views/views_handler_node_embed_add_area.inc
 
-; Information added by drupal.org packaging script on 2012-07-18
-version = "7.x-1.1"
+; Information added by Drupal.org packaging script on 2015-10-27
+version = "7.x-1.2"
 core = "7.x"
 project = "node_embed"
-datestamp = "1342646811"
+datestamp = "1445961850"
 

@@ -2,10 +2,11 @@
 /**
  * Adds the custom autocomplete widget behavior.
  */
-Drupal.behaviors.apachesolr_autocomplete = {
-  attach: function(context) {
-    jQuery(".apachesolr-autocomplete.unprocessed", context).add(".apachesolr-autocomplete.unprocessed input", context).apachesolr_autocomplete(Drupal.settings.apachesolr_autocomplete.path,
-    {
+Drupal.apachesolr_autocomplete = {
+  processOne: function(key, settings, context) {
+    // Look for items with the data-apachesolr-autocomplete-id attribute.
+    jQuery(".apachesolr-autocomplete[data-apachesolr-autocomplete-id='" + key + "']", context)
+      .apachesolr_autocomplete(settings.path, {
       // Classnames for the widget.
       inputClass: "",
       loadingClass: "throbbing",
@@ -37,7 +38,25 @@ Drupal.behaviors.apachesolr_autocomplete = {
     }).result(function(item, element) {
       // Handle selection of an element in the autocomplete widget.
       // We should submit the widget's parent form.
-      jQuery(this).get(0).form.submit();
+      jQuery(this).closest("form").submit();
     }).addClass('form-autocomplete'); // Add Drupal autocomplete widget's style.
+  }
+};
+Drupal.behaviors.apachesolr_autocomplete = {
+  attach: function(context) {
+    // Check that settings exist.
+    if (!Drupal.settings.apachesolr_autocomplete || !Drupal.settings.apachesolr_autocomplete.forms) {
+      return;
+    }
+
+    // Cycle thru the settings array which contains:
+    //   key => settingsArray
+    // where
+    //   key: the data-apachesolr-autocomplete-id HTML attribute to look for
+    //        (which was added on the form_alter)
+    //   settings: and
+    jQuery.each(Drupal.settings.apachesolr_autocomplete.forms, function(key, settings) {
+      Drupal.apachesolr_autocomplete.processOne(key, settings, context);
+    });
   }
 };

@@ -593,3 +593,18 @@ function favrskov_helper_update_7032() {
 function favrskov_helper_update_7033() {
   features_revert_module('panel_header_mini_panel');
 }
+
+/**
+ * Enable brand new setting for apachesolr_stats module.
+ */
+function favrskov_helper_update_7034() {
+  $enabled_search_pages = array(
+    'core_search' => 'core_search',
+    'taxonomy_search' => 0,
+  );
+  variable_set('apachesolr_stats_enabled', $enabled_search_pages);
+
+  // Add new apachesolr_stats block due to update of module.
+  // Revert feature with this block.
+  features_revert_module('panels_search');
+}

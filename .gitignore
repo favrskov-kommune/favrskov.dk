@@ -10,3 +10,4 @@ taxon/
 piwik/
 drupal/simplesamlphp/
 drupal/*/files-private/
+**/hacked/

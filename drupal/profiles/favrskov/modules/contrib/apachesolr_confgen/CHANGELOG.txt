@@ -1,3 +1,8 @@
+Apache Solr Config Generator 7.x-1.1, 2014-10-23
+------------------------------------------------
+[#2361351] gnindl: Configurable contractions, hyphenations and stemdicts
+
+
 Apache Solr Config Generator 7.x-1.0, 2014-03-04
 ------------------------------------------------
 [        ] mkalkbrenner: prepared solrcore.properties handling compatible to solr 4.x

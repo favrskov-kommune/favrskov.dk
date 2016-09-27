@@ -30,44 +30,44 @@ Drupal.wysiwyg.plugins.node_embed = {
    *   The ID of the current editor instance.
    */
   invoke: function(data, settings, instanceId) {
-    
-    
-    //Show the node selection Dialog
+
+    // Show the node selection Dialog.
     var iframeSrc = Drupal.settings.basePath + 'ckeditor-node-embed';
-    var dialogMarkup = '<div id="nodeEmbedDialog" title="Embed a Node" style="width:100%; height:100%">' + 
-      '<iframe frameborder="no" style="width:600px; height:350px; border:0" src="'+iframeSrc+'"></iframe>' + 
-      '<div class="nodeEmbedButtons"><button id="buttonEmbedFromDialog">Embed</button><button id="buttonCancelDialog">Cancel</button></div>' + 
+    var dialogMarkup = '<div id="nodeEmbedDialog" title="Embed a Node" style="width:100%; height:100%">' +
+      '<iframe frameborder="no" style="width:600px; height:350px; border:0" src="'+iframeSrc+'"></iframe>' +
+      '<div class="nodeEmbedButtons"><button id="buttonEmbedFromDialog">Embed</button><button id="buttonCancelDialog">Cancel</button></div>' +
       '</div>';
-    
-    var dialog = $(dialogMarkup).dialog(
-      {
-        autoOpen: false,
-        height: 470,
-        width: 650,
-        modal: true,
-        dialogClass: 'node_embed_dialog'
-      }
-    );
-    
-    $(dialog).bind( "dialogclose", function(event, ui) {
+
+    var dialog = $(dialogMarkup).dialog({
+      autoOpen: false,
+      height: 470,
+      width: 650,
+      modal: true,
+      dialogClass: 'node_embed_dialog'
+    });
+
+    $(dialog).bind('dialogclose', function(event, ui) {
       $(this).remove();
     });
-    
+
     $('#buttonEmbedFromDialog').click(function(e) {
-      var node_id = window.currentActiveNid; //set or updated whenever a node is selected
-      if( node_id != null && node_id != "" ) {
+
+      // Set or updated whenever a node is selected.
+      var node_id = window.currentActiveNid;
+      if (node_id != null && node_id != "" ) {
         dialog.editor_content = '[[nid:' + node_id + ']]';
       }
 
-      if(window.currentActiveNid && window.currentActiveNid != ""){
-        var edit_content = "[[nid:"+window.currentActiveNid+"]]";
+      if (window.currentActiveNid && window.currentActiveNid != "") {
+        var edit_content = "[[nid:" + window.currentActiveNid + "]]";
         if (data.format == 'html') {
-          var content = '<div class="embed">'+edit_content+'</div>';
+          var content = '<div class="embed">' + edit_content + '</div>';
         }
         else {
           var content = edit_content;
         }
-        //write the content to the editor
+
+        // Write the content to the editor.
         if (typeof content != 'undefined') {
           Drupal.wysiwyg.instances[instanceId].insert(content);
         }
@@ -75,14 +75,13 @@ Drupal.wysiwyg.plugins.node_embed = {
 
       $(dialog).dialog('close');
     });
-    
+
     $('#buttonCancelDialog').click(function(e) {
       $(dialog).dialog('close');
     });
-    
+
     $(dialog).dialog('open');
-    // Generate HTML markup.
-    
-  },
+  }
 };
+
 })(jQuery);

@@ -6,16 +6,21 @@ or access to a solr server set up for content extraction (e.g. a Solr
 1.4 final release).  For Solr, there is a patch to apply to the solrconfig
 to add another request handler.
 
+When Apache Solr Attachments was added afterwards, then re-indexing is
+necessary. To diagnose functionality, use the solr search at
+<your-domain>:<your-port>/solr/admin/ for something like
+url:*.pdf or url:*.doc. The results will show if any files were indexed.
+
 see:
 http://lucene.apache.org/tika/gettingstarted.html
 http://lucene.apache.org/tika/formats.html
 
 Tika will extract many file formats, including PDFs, MS Office (2003 format
-as well as new docx format).  Java 6 (aka 1.6) may be needed on some
+as well as new docx format).  Java 6 or 7 may be needed on some
 platforms to support all formats.  The page on formats seems not to be 100%
 up to date.  In particular, https://issues.apache.org/jira/browse/TIKA-152
 is committed, so it does currently support MS Office 2007 documents to
-some reasonable degee.
+some reasonable degree.
 
 The easiest-to-find pre-built Tika app is available from the download page:
 http://tika.apache.org/download.html
