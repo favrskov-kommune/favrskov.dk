@@ -608,3 +608,11 @@ function favrskov_helper_update_7034() {
   // Revert feature with this block.
   features_revert_module('panels_search');
 }
+
+/**
+ * Disable contextual links for nodequeues
+ * as a temporary fix for their interaction with views exposed forms.
+ */
+function favrskov_helper_update_7035() {
+  variable_set('nodequeue_show_contextual_links', FALSE);
+}
