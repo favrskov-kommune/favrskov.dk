@@ -17,9 +17,15 @@
 // -----------------------------------------------------------------------------
 // Front page fixes for IPE
 .front-slider {
+  // Administrative mode. Override relative positioning from contextual links.
+  .pane-slider-slider-nav.contextual-links-region {
+    position: absolute;
+  }
+
+  // Drag-and-Drop mode.
   .panels-ipe-sort-container.ui-sortable {
     .pane-slider-slider-nav {
-      position: static
+      position: static;
     }
   }
 }
