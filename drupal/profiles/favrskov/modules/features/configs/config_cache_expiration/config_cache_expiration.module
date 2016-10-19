@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Config cache expiration feature.
+ */
+
+include_once 'config_cache_expiration.features.inc';
