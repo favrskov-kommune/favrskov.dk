@@ -616,3 +616,13 @@ function favrskov_helper_update_7034() {
 function favrskov_helper_update_7035() {
   variable_set('nodequeue_show_contextual_links', FALSE);
 }
+
+/**
+ * Installs Cache Expiration module and configs for it.
+ */
+function favrskov_helper_update_7036() {
+  module_enable(array(
+    'expire',
+    'config_cache_expiration',
+  ));
+}
