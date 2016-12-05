@@ -208,7 +208,7 @@ function varnish_purge_paths($host, array $paths) {
     // Construct patterns and send them to the server when they're full.
     $purge_pattern = '^';
     while (strlen($purge_pattern) < $length_limit && !empty($paths)) {
-      $purge_pattern .= $base_path . array_shift($paths) . '$|^';
+      $purge_pattern .= $base_path . ltrim(array_shift($paths), '/') . '$|^';
     }
     // Chop the final "|^" off the string, leaving "$".
     $purge_pattern = substr($purge_pattern, 0, -2);

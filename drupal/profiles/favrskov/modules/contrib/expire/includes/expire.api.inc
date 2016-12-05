@@ -106,10 +106,8 @@ class ExpireAPI {
 
     // Execute internal or external expiration.
     $status = variable_get('expire_status', EXPIRE_STATUS_DISABLED);
-    if ($status == EXPIRE_STATUS_ENABLED_INTERNAL) {
-      self::executeInternalExpiration($urls, $wildcards);
-    }
-    elseif ($status == EXPIRE_STATUS_ENABLED_EXTERNAL) {
+    self::executeInternalExpiration($urls, $wildcards);
+    if ($status == EXPIRE_STATUS_ENABLED_EXTERNAL) {
       self::executeExternalExpiration($urls, $wildcards, $object_type, $object);
     }
   }
