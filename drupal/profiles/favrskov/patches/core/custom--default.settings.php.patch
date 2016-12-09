@@ -1,10 +1,10 @@
-diff --git a/sites/default/default.settings.php b/sites/default/default.settings.php
-index 7e36a4a..11a50e1 100644
---- a/sites/default/default.settings.php
-+++ b/sites/default/default.settings.php
-@@ -584,3 +584,5 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
-  * Remove the leading hash sign to enable.
+diff --git a/drupal/sites/default/default.settings.php b/drupal/sites/default/default.settings.php
+index b044be3..f178ce6 100644
+--- a/drupal/sites/default/default.settings.php
++++ b/drupal/sites/default/default.settings.php
+@@ -628,3 +628,5 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+  * @see drupal_clean_css_identifier()
   */
- # $conf['theme_debug'] = TRUE;
+ # $conf['allow_css_double_underscores'] = TRUE;
 +
 +$base_url = "http" . (isset($_SERVER["HTTPS"]) && strtolower($_SERVER["HTTPS"]) == "on" ? "s" : "") . "://" . $_SERVER["HTTP_HOST"];
