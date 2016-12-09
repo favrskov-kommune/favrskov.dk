@@ -5,6 +5,9 @@
  *
  * Provides the Feeds Directory Fetcher to feeds.
  */
+define('FEEDS_FETCHER_DIRECTORY_FETCHER_NO_ACTION', 0);
+define('FEEDS_FETCHER_DIRECTORY_FETCHER_DELETE', 1);
+define('FEEDS_FETCHER_DIRECTORY_FETCHER_MOVE', 2);
 
 /**
  * Fetches a file from a specified directory.
@@ -124,6 +127,8 @@ class feeds_fetcher_directory_fetcher extends FeedsFileFetcher {
       'directory' => $scheme . '://feeds',
       'filemask' => '/\.txt$/',
       'updated_files' => FALSE,
+      'after_processed' => FALSE,
+      'move_to_folder' => '',
     );
   }
 
@@ -152,6 +157,29 @@ class feeds_fetcher_directory_fetcher extends FeedsFileFetcher {
       '#type' =>'checkbox',
       '#title' => t('Re-fetch files that are modified'),
       '#default_value' => $this->config['updated_files'],
+    );
+    $form['after_processed'] = array(
+      '#type' => 'radios',
+      '#title' => t('After process'),
+      '#options' => array(
+        FEEDS_FETCHER_DIRECTORY_FETCHER_NO_ACTION => t('No action'),
+        FEEDS_FETCHER_DIRECTORY_FETCHER_DELETE => t('Delete files'),
+        FEEDS_FETCHER_DIRECTORY_FETCHER_MOVE => t('Move to folder')
+      ),
+      '#default_value' => $this->config['after_processed']
+    );
+    $form['move_to_folder'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Move to folder'),
+      '#description' => t('Specify a folder, to which files will be moved after being processed. Available schemes: public, private.'),
+      '#default_value' => $this->config['move_to_folder'],
+      '#states' => array(
+        'visible' => array(
+          ':input[name="after_processed"]' => array(
+            'value' => FEEDS_FETCHER_DIRECTORY_FETCHER_MOVE
+          )
+        )
+      )
     );
     $form['recursive'] = array(
       '#type' =>'checkbox',
@@ -184,6 +212,25 @@ class feeds_fetcher_directory_fetcher extends FeedsFileFetcher {
     // Ensure that the upload directory exists.
     if (!file_prepare_directory($values['directory'], FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
       form_set_error('directory', t('The chosen directory does not exist and attempts to create it failed.'));
+    }
+    // Validate move_to_folder if after_processed set to "move".
+    if ($values['after_processed'] == FEEDS_FETCHER_DIRECTORY_FETCHER_MOVE) {
+      $values['move_to_folder'] = trim($values['move_to_folder']);
+
+      // Validate the URI scheme of the move_to_folder.
+      $move_to_sheme = file_uri_scheme($values['move_to_folder']);
+      if (!$move_to_sheme || !in_array($move_to_sheme, $this->getSchemes())) {
+        form_set_error('move_to_folder', t('Please enter a valid scheme into the move to folder.'));
+
+        // Return here so that attempts to create the folder below don't
+        // throw warnings.
+        return;
+      }
+
+      // Ensure that the move_to_folder exists.
+      if (!file_prepare_directory($values['move_to_folder'], FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
+        form_set_error('move_to_folder', t('The chosen directory does not exist and attempts to create it failed.'));
+      }
     }
   }
 
