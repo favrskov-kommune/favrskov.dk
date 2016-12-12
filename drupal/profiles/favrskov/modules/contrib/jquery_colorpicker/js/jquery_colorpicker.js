@@ -45,11 +45,12 @@
          trigger.ColorPicker({
            color: defaultColor,
            onShow: function (colpkr) {
-             $(colpkr).fadeIn(500).css({zIndex: 2000});
+             $(colpkr).fadeIn(500);
              return false;
            },
            onHide: function (colpkr) {
              $(colpkr).fadeOut(500);
+             $("#" + target + " .color_picker").find("input").blur();
              return false;
            },
            onChange: function (hsb, hex, rgb) {
