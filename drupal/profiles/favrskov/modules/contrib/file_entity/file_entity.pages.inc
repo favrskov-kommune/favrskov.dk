@@ -165,7 +165,7 @@ function file_entity_add_upload_step_scheme($form, &$form_state, array $options 
 
   // Remove any schemes not found in the instance settings.
   if (!empty($options['schemes'])) {
-    $schemes = array_intersect_key($schemes, $options['schemes']);
+    $schemes = array_intersect_key($schemes, array_flip($options['schemes']));
   }
 
   // Determine which scheme to use as the default value.
@@ -268,14 +268,14 @@ function file_entity_usage_page($file) {
         $entity_uri = empty($entities[$entity_id]) ? NULL : entity_uri($entity_type, $entities[$entity_id]);
 
         // Link the label to the URI when possible.
-        if (empty($entity_uri)) {
-          $entity = check_plain($label);
+        if (!empty($entity_uri['path'])) {
+          $entity_label = l($label, $entity_uri['path']);
         }
         else {
-          $entity = l($label, $entity_uri['path']);
+          $entity_label = check_plain($label);
         }
 
-        $rows[] = array($entity, $entity_type, $count);
+        $rows[] = array($entity_label, $entity_type, $count);
 
         // Record the occurrence of the entity to ensure that it isn't listed in
         // the table again.
@@ -424,7 +424,9 @@ function file_entity_add_upload_submit($form, &$form_state) {
     $file = file_load($form_state['storage']['upload']);
     if ($file) {
       if (file_uri_scheme($file->uri) != $form_state['storage']['scheme']) {
-        if ($moved_file = file_move($file, $form_state['storage']['scheme'] . '://' . file_uri_target($file->uri), FILE_EXISTS_RENAME)) {
+        $file_destination = $form_state['storage']['scheme'] . '://' . file_uri_target($file->uri);
+        $file_destination = file_stream_wrapper_uri_normalize($file_destination);
+        if ($moved_file = file_move($file, $file_destination, FILE_EXISTS_RENAME)) {
           // Only re-assign the file object if file_move() did not fail.
           $file = $moved_file;
         }
@@ -508,7 +510,7 @@ function file_entity_add_upload_multiple($form, &$form_state, $params = array())
 
   // Ensure that we call the plupload_element_pre_render function.
   // If it isn't called, it doesn't set the JS settings that transfers the
-  // list of allowed file extentions to the PLUpload widget.
+  // list of allowed file extensions to the PLUpload widget.
   // We override the 'file_entity_upload_validators_pre_render' setting if it
   // exists, because both pre-render hooks adds the upload-help with list of
   // allowed file extensions.
@@ -798,7 +800,7 @@ function file_entity_edit_submit($form, &$form_state) {
   if (!empty($form_state['values']['replace_upload'])) {
     $replacement = $form_state['values']['replace_upload'];
     // Move file from temp to permanent home.
-    $destination_uri = drupal_dirname($file->uri) . '/' . drupal_basename($replacement->uri);
+    $destination_uri = rtrim($file->uri, drupal_basename($file->uri)) . drupal_basename($replacement->uri);
     $replace_mode = $destination_uri == $file->uri ? FILE_EXISTS_REPLACE : FILE_EXISTS_RENAME;
     if ($new_file_uri = file_unmanaged_copy($replacement->uri, $destination_uri, $replace_mode)) {
       // @todo Add watchdog() about replaced file here?
@@ -808,7 +810,7 @@ function file_entity_edit_submit($form, &$form_state) {
 
       // Update if the uri target has changed.
       if ($new_file_uri != $file->uri) {
-       // Store the original file uri to delete if save is sucessful.
+       // Store the original file uri to delete if save is successful.
        $orphaned_uri = $file->uri;
 
         // Update file entity uri.
@@ -839,7 +841,9 @@ function file_entity_edit_submit($form, &$form_state) {
   }
 
   if (file_uri_scheme($file->uri) != $form_state['values']['scheme']) {
-    if ($moved_file = file_move($file, $form_state['values']['scheme'] . '://' . file_uri_target($file->uri), FILE_EXISTS_RENAME)) {
+    $file_destination = $form_state['values']['scheme'] . '://' . file_uri_target($file->uri);
+    $file_destination = file_stream_wrapper_uri_normalize($file_destination);
+    if ($moved_file = file_move($file, $file_destination, FILE_EXISTS_RENAME)) {
       // Only re-assign the file object if file_move() did not fail.
       $file = $moved_file;
     }

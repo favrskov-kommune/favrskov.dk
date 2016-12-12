@@ -29,3 +29,49 @@ function feeds_fetcher_directory_ctools_plugin_api($owner, $api) {
   }
 }
 
+/**
+ * Implements hook_feeds_after_import().
+ *
+ * @param FeedsSource $source
+ */
+function feeds_fetcher_directory_feeds_after_import(FeedsSource $source) {
+  // We alter import only if fetcher is 'feeds_fetcher_directory_fetcher'.
+  if (get_class($source->importer->fetcher) != 'feeds_fetcher_directory_fetcher' || !$source->importer->fetcher->config['after_processed']) {
+    return;
+  }
+
+  foreach ($source->config['feeds_fetcher_directory_fetcher']['feed_files_fetched'] as $file_path => $value) {
+    // Check if file exist, becouse we could already delete it.
+    if (!file_exists($file_path)) {
+      continue;
+    }
+
+    // Determine whatever this is managed or unmanaged file.
+    $file_unmanaged = FALSE;
+    $files = file_load_multiple(array(), array('uri' => $file_path));
+    if (!($file = reset($files))) {
+      $file_unmanaged = TRUE;
+    }
+
+    // Delete or move file, according to config.
+    switch ($source->importer->fetcher->config['after_processed']) {
+      case FEEDS_FETCHER_DIRECTORY_FETCHER_DELETE:
+        $file_unmanaged ? file_unmanaged_delete($file_path) : file_delete($file, TRUE);
+
+        break;
+      case FEEDS_FETCHER_DIRECTORY_FETCHER_MOVE:
+        // Move file, and save folder substructure.
+        $new_file_name = $source->importer->fetcher->config['move_to_folder'] . '/' . substr($file_path, strlen(($source->importer->fetcher->config['directory'])));
+        $dirname = dirname($new_file_name);
+        file_prepare_directory($dirname, FILE_CREATE_DIRECTORY);
+
+        if ($file_unmanaged) {
+          file_unmanaged_move($file_path, $new_file_name, FILE_EXISTS_RENAME);
+        } else {
+          $file_moved = file_move($file, $new_file_name, FILE_EXISTS_RENAME);
+        }
+
+        break;
+    }
+  }
+}
