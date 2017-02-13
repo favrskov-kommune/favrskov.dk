@@ -226,6 +226,34 @@ function favrskov_helper_form_validate(&$form, &$form_state) {
  * Added minimap.js only to article and news pages.
  */
 function favrskov_helper_init() {
+  $field_text_summary = field_read_fields(array('type' => 'text_with_summary'));
+  $field_long_text = field_read_fields(array('type' => 'text_long'));
+  $fields = array_merge($field_long_text, $field_text_summary);
+  $fields_name = array_keys($fields);
+  $result_value = array();
+  foreach ($fields_name as $name) {
+    $data_result = db_select('field_data_' . $name, 'fd')
+      ->fields('fd', array('entity_type', 'entity_id'))
+      ->condition($name . '_value', '%' . db_like('class="media-image') . '%', 'LIKE');
+    $data_result->addField('fd', $name . '_value', 'value');
+    $data_result = $data_result->execute()->fetchAll();
+//    $data_field = db_select('field_data_' . $name, 'fd')
+//      ->fields('fd', array($name . '_value', 'entity_type', 'entity_id'))
+//      ->condition($name . '_value', '%' . db_like('class="media-image') . '%', 'LIKE')
+//      ->execute();
+//    $data_result = $data_field->fetchAll();
+    $res = array_values($data_result);
+  }
+
+  foreach ($result_value as $fields) {
+    if (empty($fields)) {
+      continue;
+    }
+    $founded_url = preg_match('/(<span class="file media-image.*<\/span>)?(<a\s+(?:[^>]*?\s+)?href="([^"]*)")/', $fields['value']);
+    $match = $founded_url;
+    $a = $match;
+  }
+
   $node = menu_get_object();
 
   if (!empty($node) && !empty($node->type) && in_array($node->type, ['article', 'news'])) {
