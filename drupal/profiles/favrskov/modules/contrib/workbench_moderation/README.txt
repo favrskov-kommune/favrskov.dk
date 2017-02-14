@@ -31,7 +31,7 @@ CONTENTS
 ----
 1.  Introduction
 
-Workbench Moderation 
+Workbench Moderation
 
 ----
 1.1  Concepts
@@ -97,8 +97,7 @@ track the moderation history of a particular revision, right up through the
 point where it is published.
 
 Revisions are a linear; revision history may not fork. This means that only the
-latest revision--Workbench Moderation calls this the "current draft"--may be
-edited or moderated.
+latest revision may be edited or moderated.
 
 ----
 2.  Installation
@@ -129,6 +128,13 @@ them where your users can find them.
 
 Using the "Workbench" module with Workbench Moderation enables the display of
 moderation status information and a mini moderation form on node viewing pages.
+
+There is one dependency:
+
+  https://www.drupal.org/project/drafty
+
+The Drafty module is used for managing changes to the node's state and must also
+be installed.
 
 ----
 3.  Configuration
@@ -177,7 +183,7 @@ perform a particular moderation task.
 ----
 3.3.1  Recommended permissions
 
-For reference, these are the permission sets recommended by the "Check 
+For reference, these are the permission sets recommended by the "Check
 Permissions" tab:
 
     Author:
@@ -190,7 +196,7 @@ Permissions" tab:
       Workbench Moderation:
         view moderation messages
         use workbench_moderation my drafts tab
-    
+
     Editor:
       Node:
         access content
@@ -204,7 +210,7 @@ Permissions" tab:
         view moderation history
         use workbench_moderation my drafts tab
         use workbench_moderation needs review tab
-    
+
     Moderator:
       Node:
         access content

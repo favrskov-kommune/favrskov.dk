@@ -628,7 +628,7 @@ function favrskov_helper_update_7036() {
 }
 
 /**
- * Find old token for file usage and increment files count.
+ * Find old token for images, documents and add to file usage.
  */
 function favrskov_helper_update_7037() {
   $field_text_summary = field_read_fields(array('type' => 'text_with_summary'));
@@ -642,13 +642,6 @@ function favrskov_helper_update_7037() {
       ->condition($name . '_value', '%' . db_like('class="media-image') . '%', 'LIKE');
     $data_result->addField('fd', $name . '_value', 'value');
     $data_result = $data_result->execute()->fetchAll();
-
-//    $data_field = db_select('field_revision_' . $name, 'fd')
-//      ->fields('fd', array($name . '_value', 'entity_type', 'entity_id'))
-//      ->condition($name . '_value', '%' . db_like('class="media-image') . '%', 'LIKE')
-//      ->execute();
-//    $data_result = $data_field->fetchAll();
-
     $result_value = array_merge($result_value, array_values($data_result));
   }
 
@@ -657,6 +650,7 @@ function favrskov_helper_update_7037() {
     if (empty($fields)) {
       continue;
     }
+
     $file_pattern = preg_match('/<span.*class="file media-image.*<\/span>/', $fields->value, $file_match);
     $image_patern = preg_match('/<img.*class="media-image.*\/>/', $fields->value, $image_match);
 

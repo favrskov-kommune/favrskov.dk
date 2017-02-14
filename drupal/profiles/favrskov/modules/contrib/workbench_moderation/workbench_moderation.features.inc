@@ -6,28 +6,6 @@
  */
 
 /**
- * Implements hook_features_api().
- */
-function workbench_moderation_features_api() {
-  return array(
-    'workbench_moderation_states' => array(
-      'name' => t('Workbench States'),
-      'default_hook' => 'workbench_moderation_export_states',
-      'feature_source' => TRUE,
-      'default_file' => FEATURES_DEFAULTS_INCLUDED,
-      'file' => drupal_get_path('module', 'workbench_moderation') .'/workbench_moderation.features.inc',
-    ),
-    'workbench_moderation_transitions' => array(
-      'name' => t('Workbench Transitions'),
-      'default_hook' => 'workbench_moderation_export_transitions',
-      'feature_source' => TRUE,
-      'default_file' => FEATURES_DEFAULTS_INCLUDED,
-      'file' => drupal_get_path('module', 'workbench_moderation') .'/workbench_moderation.features.inc',
-    ),
-  );
-}
-
-/**
  * Implements COMPONENT_features_export_options().
  *
  * Inform features about the available states in the database.
@@ -142,7 +120,7 @@ function workbench_moderation_transitions_features_export_render($module_name, $
   foreach ($data as $transition) {
     list($from_name, $to_name) = explode(':', $transition);
     $item = db_select('workbench_moderation_transitions', 't')
-      ->fields('t', array('from_name', 'to_name'))
+      ->fields('t', array('from_name', 'to_name', 'name'))
       ->condition('from_name', $from_name)
       ->condition('to_name', $to_name)
       ->execute()
