@@ -10,6 +10,62 @@
 function fields_shared_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'file-document-field_folder'.
+  $field_instances['file-document-field_folder'] = array(
+    'bundle' => 'document',
+    'cardinality' => 1,
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'field_name' => 'field_folder',
+    'label' => 'Media Folder',
+    'required' => TRUE,
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'media_folders',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'type' => 'taxonomy_term_reference',
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => -4,
+    ),
+  );
+
   // Exported field_instance: 'file-image-field_file_image_alt_text'.
   $field_instances['file-image-field_file_image_alt_text'] = array(
     'bundle' => 'image',
@@ -19,9 +75,8 @@ function fields_shared_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'full' => array(
@@ -72,12 +127,19 @@ function fields_shared_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'file',
     'field_name' => 'field_file_image_alt_text',
     'label' => 'Alt Text',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -105,9 +167,8 @@ function fields_shared_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'media_large' => array(
@@ -152,12 +213,19 @@ function fields_shared_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'file',
     'field_name' => 'field_file_image_description',
     'label' => 'Beskrivelse',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -190,9 +258,8 @@ function fields_shared_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'media_large' => array(
@@ -237,12 +304,19 @@ function fields_shared_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'file',
     'field_name' => 'field_file_image_photographer',
     'label' => 'Photographer',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -270,9 +344,8 @@ function fields_shared_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'full' => array(
@@ -323,12 +396,19 @@ function fields_shared_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'file',
     'field_name' => 'field_file_image_title_text',
     'label' => 'Title Text',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -340,6 +420,62 @@ function fields_shared_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => -3,
+    ),
+  );
+
+  // Exported field_instance: 'file-image-field_folder'.
+  $field_instances['file-image-field_folder'] = array(
+    'bundle' => 'image',
+    'cardinality' => 1,
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'field_name' => 'field_folder',
+    'label' => 'Media Folder',
+    'required' => TRUE,
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'media_folders',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'type' => 'taxonomy_term_reference',
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => -2,
     ),
   );
 
@@ -373,6 +509,7 @@ function fields_shared_field_default_field_instances() {
     'required' => FALSE,
     'settings' => array(
       'display_summary' => TRUE,
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -413,6 +550,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Bannerlink',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -459,6 +597,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Kontaktinformation',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -530,6 +669,7 @@ function fields_shared_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -574,6 +714,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Redaktionel ansvarlig',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -631,6 +772,7 @@ function fields_shared_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -679,6 +821,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Spørgsmål og svar',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -728,6 +871,7 @@ function fields_shared_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -782,6 +926,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Alt tekst',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -826,6 +971,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Billedtekst',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -874,6 +1020,7 @@ function fields_shared_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -943,6 +1090,7 @@ function fields_shared_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -1025,6 +1173,7 @@ function fields_shared_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -1083,6 +1232,7 @@ function fields_shared_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -1144,6 +1294,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Piwik Day',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1194,6 +1345,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Piwik Month',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1244,6 +1396,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Piwik Week',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1294,6 +1447,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Piwik Year',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1331,6 +1485,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Relaterede bokse',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1376,6 +1531,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Relateret indhold',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1421,6 +1577,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Selvbetjening',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1496,6 +1653,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Table',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1535,6 +1693,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Taksonomi, KLE',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1575,6 +1734,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Taksonomi, lokal',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1615,6 +1775,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Taksonomi, lokation',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1655,6 +1816,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Taksonomi, Emneområde',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1695,6 +1857,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Smagsprøve',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1738,6 +1901,7 @@ function fields_shared_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -1818,6 +1982,7 @@ function fields_shared_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -1862,6 +2027,7 @@ function fields_shared_field_default_field_instances() {
     'label' => 'Videobeskrivelse',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -1895,6 +2061,7 @@ function fields_shared_field_default_field_instances() {
   t('Internt link');
   t('Kontaktinformation');
   t('Link');
+  t('Media Folder');
   t('Photographer');
   t('Piwik Day');
   t('Piwik Month');

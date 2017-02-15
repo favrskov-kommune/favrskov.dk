@@ -26,7 +26,9 @@ function fields_shared_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'text_with_summary',
   );
@@ -46,6 +48,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'node_reference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
@@ -89,6 +92,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'node_reference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
@@ -132,6 +136,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 50,
     ),
     'translatable' => 0,
@@ -153,6 +158,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'user_reference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'referenceable_roles' => array(
         2 => 2,
         3 => 0,
@@ -194,6 +200,7 @@ function fields_shared_field_default_field_bases() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'title' => 'optional',
       'title_maxlength' => 128,
       'title_value' => '',
@@ -218,6 +225,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'node_reference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
@@ -261,6 +269,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
     ),
     'translatable' => 0,
@@ -281,7 +290,9 @@ function fields_shared_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'text_long',
   );
@@ -301,6 +312,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
     ),
     'translatable' => 0,
@@ -322,10 +334,43 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_folder'.
+  $field_bases['field_folder'] = array(
+    'active' => 1,
+    'bundle' => 'image',
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_type' => 'file',
+    'entity_types' => array(),
+    'field_name' => 'field_folder',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'label' => 'Media Folder',
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'required' => TRUE,
+    'settings' => array(
+      'allow_term_autocreation' => TRUE,
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'media_folders',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_image'.
@@ -344,6 +389,9 @@ function fields_shared_field_default_field_bases() {
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
@@ -365,6 +413,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
     ),
     'translatable' => 0,
@@ -385,7 +434,9 @@ function fields_shared_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'text_long',
   );
@@ -406,6 +457,9 @@ function fields_shared_field_default_field_bases() {
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
@@ -432,6 +486,7 @@ function fields_shared_field_default_field_bases() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'title' => 'optional',
       'title_maxlength' => 128,
       'title_value' => '',
@@ -456,6 +511,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
     ),
     'translatable' => 0,
@@ -482,6 +538,7 @@ function fields_shared_field_default_field_bases() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'title' => 'optional',
       'title_maxlength' => 128,
       'title_value' => '',
@@ -516,6 +573,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'piwik_stats',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'limit' => 100,
       'period' => 'day',
       'show_in_statistics_page' => 1,
@@ -550,6 +608,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'piwik_stats',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'limit' => 100,
       'period' => 'month',
       'show_in_statistics_page' => 1,
@@ -584,6 +643,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'piwik_stats',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'limit' => 100,
       'period' => 'week',
       'show_in_statistics_page' => 1,
@@ -618,6 +678,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'piwik_stats',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'limit' => 100,
       'period' => 'year',
       'show_in_statistics_page' => 1,
@@ -642,6 +703,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'node_reference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
@@ -685,6 +747,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'node_reference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'referenceable_types' => array(
         'article' => 'article',
         'banner_element' => 0,
@@ -728,6 +791,7 @@ function fields_shared_field_default_field_bases() {
     'locked' => 0,
     'module' => 'node_reference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'referenceable_types' => array(
         'article' => 0,
         'banner_element' => 0,
@@ -768,6 +832,7 @@ function fields_shared_field_default_field_bases() {
     'module' => 'tablefield',
     'settings' => array(
       'cell_processing' => 0,
+      'entity_translation_sync' => FALSE,
       'export' => 0,
       'lock_values' => 0,
       'restrict_rebuild' => 0,
@@ -798,6 +863,7 @@ function fields_shared_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
@@ -825,6 +891,7 @@ function fields_shared_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
@@ -852,6 +919,7 @@ function fields_shared_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
@@ -879,6 +947,7 @@ function fields_shared_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
@@ -898,7 +967,9 @@ function fields_shared_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'text_long',
   );
@@ -919,6 +990,9 @@ function fields_shared_field_default_field_bases() {
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
@@ -939,7 +1013,9 @@ function fields_shared_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'text_long',
   );
@@ -958,7 +1034,9 @@ function fields_shared_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'text_long',
   );
