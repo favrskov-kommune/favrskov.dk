@@ -682,4 +682,9 @@ function favrskov_helper_update_7037() {
 
     file_usage_add($file, 'media', $file->entity_type, $file->entity_id);
   }
+
+  module_enable(array(
+    'media_ckeditor',
+    'media_wysiwyg',
+  ));
 }
