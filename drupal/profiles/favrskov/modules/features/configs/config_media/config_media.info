@@ -4,6 +4,7 @@ package = Config
 version = 7.x-1.0
 project = config_media
 dependencies[] = admin_views
+dependencies[] = config_url_aliases
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = file_entity

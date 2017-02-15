@@ -36,6 +36,12 @@ function config_media_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'file',
     'exclude_cv' => 0,
@@ -43,6 +49,7 @@ function config_media_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
       'wysiwyg_override' => 1,
@@ -67,11 +74,11 @@ function config_media_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'preview' => array(
         'label' => 'above',
@@ -80,6 +87,12 @@ function config_media_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'wysiwyg' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -121,6 +134,7 @@ function config_media_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -148,7 +162,7 @@ function config_media_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
@@ -166,6 +180,12 @@ function config_media_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'file',
     'exclude_cv' => 0,
@@ -173,6 +193,7 @@ function config_media_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
       'wysiwyg_override' => 1,
@@ -197,11 +218,10 @@ function config_media_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'preview' => array(
         'label' => 'above',
@@ -215,6 +235,12 @@ function config_media_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'file',
     'exclude_cv' => 0,
@@ -222,6 +248,7 @@ function config_media_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
       'wysiwyg_override' => 1,
@@ -264,6 +291,12 @@ function config_media_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'file',
     'exclude_cv' => 0,
@@ -271,6 +304,7 @@ function config_media_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
       'wysiwyg_override' => 1,

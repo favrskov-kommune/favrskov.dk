@@ -6,6 +6,7 @@ project = text_formats_all
 dependencies[] = features
 dependencies[] = filter
 dependencies[] = icon_filter
+dependencies[] = media_wysiwyg
 dependencies[] = node_embed
 dependencies[] = os2web_embed_gis_data
 dependencies[] = pathologic
