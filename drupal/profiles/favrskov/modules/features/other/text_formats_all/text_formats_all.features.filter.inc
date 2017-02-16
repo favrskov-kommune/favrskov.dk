@@ -59,6 +59,11 @@ function text_formats_all_filter_default_formats() {
         'status' => 1,
         'settings' => array(),
       ),
+      'media_filter' => array(
+        'weight' => 2,
+        'status' => 1,
+        'settings' => array(),
+      ),
       'filter_htmlcorrector' => array(
         'weight' => 10,
         'status' => 1,
@@ -89,22 +94,27 @@ https://favrskov.propeople.com.ua',
     'weight' => 0,
     'filters' => array(
       'node_embed' => array(
-        'weight' => 0,
-        'status' => 1,
-        'settings' => array(),
-      ),
-      'os2web_embed_gis_data' => array(
-        'weight' => 0,
+        'weight' => -47,
         'status' => 1,
         'settings' => array(),
       ),
       'filter_tokens' => array(
-        'weight' => 0,
+        'weight' => -43,
+        'status' => 1,
+        'settings' => array(),
+      ),
+      'os2web_embed_gis_data' => array(
+        'weight' => -42,
+        'status' => 1,
+        'settings' => array(),
+      ),
+      'media_filter' => array(
+        'weight' => -41,
         'status' => 1,
         'settings' => array(),
       ),
       'pathologic' => array(
-        'weight' => 50,
+        'weight' => -35,
         'status' => 1,
         'settings' => array(
           'local_paths' => 'http://favrskov.dk
@@ -135,6 +145,11 @@ https://favrskov.propeople.com.ua',
           'filter_html_help' => 1,
           'filter_html_nofollow' => 0,
         ),
+      ),
+      'media_filter' => array(
+        'weight' => 2,
+        'status' => 1,
+        'settings' => array(),
       ),
       'pathologic' => array(
         'weight' => 50,

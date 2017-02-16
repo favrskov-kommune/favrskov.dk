@@ -626,3 +626,71 @@ function favrskov_helper_update_7036() {
     'config_cache_expiration',
   ));
 }
+
+/**
+ * Find old token for images, documents and add to file usage.
+ */
+function favrskov_helper_update_7037() {
+  $field_text_summary = field_read_fields(array('type' => 'text_with_summary'));
+  $field_long_text = field_read_fields(array('type' => 'text_long'));
+  $fields = array_merge($field_long_text, $field_text_summary);
+  $fields_name = array_keys($fields);
+  $result_value = array();
+  foreach ($fields_name as $name) {
+    $data_result = db_select('field_data_' . $name, 'fd')
+      ->fields('fd', array('entity_type', 'entity_id'))
+      ->condition($name . '_value', '%' . db_like('class="media-image') . '%', 'LIKE');
+    $data_result->addField('fd', $name . '_value', 'value');
+    $data_result = $data_result->execute()->fetchAll();
+    $result_value = array_merge($result_value, array_values($data_result));
+  }
+
+  $files_usage = array();
+  foreach ($result_value as $fields) {
+    if (empty($fields)) {
+      continue;
+    }
+
+    $file_pattern = preg_match('/<span.*class="file media-image.*<\/span>/', $fields->value, $file_match);
+    $image_patern = preg_match('/<img.*class="media-image.*\/>/', $fields->value, $image_match);
+
+    if ($image_match) {
+      $image_url = preg_match('/src="([^"]+)"/', $image_match[0], $url);
+      $last_part = explode('/', $url[1]);
+      $fields->value = end($last_part);
+      $files_usage[] = $fields;
+    }
+    if ($file_match) {
+      $image_url = preg_match('/href="([^"]+)"/', $file_match[0], $url);
+      $last_part = explode('/', $url[1]);
+      $fields->value = end($last_part);
+      $files_usage[] = $fields;
+    }
+  }
+
+  foreach ($files_usage as $file) {
+    $fid = db_select('file_managed', 'fm')
+      ->fields('fm', array('fid'))
+      ->condition('uri', '%' . db_like($file->value) . '%', 'LIKE')
+      ->execute()
+      ->fetchCol(0);
+    if (!empty($fid[0])) {
+      $file->fid = $fid[0];
+    } else {
+      continue;
+    }
+
+    file_usage_add($file, 'media', $file->entity_type, $file->entity_id);
+  }
+
+  module_enable(array(
+    'media_ckeditor',
+    'media_wysiwyg',
+  ));
+
+  array_map('features_revert_module', array(
+    'config_media',
+    'text_formats_all',
+    'fields_shared',
+  ));
+}
