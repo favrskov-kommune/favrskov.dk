@@ -1,0 +1,42 @@
+diff --git a/token.tokens.inc b/token.tokens.inc
+index e0c0b5e..2c44105 100644
+--- a/token.tokens.inc
++++ b/token.tokens.inc
+@@ -153,7 +153,11 @@ function token_token_info() {
+       'description' => t("The root term of the taxonomy term."),
+       'type' => 'term',
+     );
+-
++    $info['tokens']['term']['real-root'] = array(
++      'name' => t('Real root term'),
++      'description' => t("The real root term of the taxonomy term. (Returns tid even current term)"),
++      'type' => 'term',
++    );
+     $info['tokens']['vocabulary']['machine-name'] = array(
+       'name' => t('Machine-readable name'),
+       'description' => t('The unique machine-readable name of the vocabulary.'),
+@@ -494,6 +498,12 @@ function token_tokens($type, $tokens, array $data = array(), array $options = ar
+             $replacements[$original] = $sanitize ? check_plain($root_term->name) : $root_term->name;
+           }
+           break;
++
++        case 'real-root':
++          $parents = taxonomy_get_parents_all($term->tid);
++          $real_root_term = end($parents);
++          $replacements[$original] = $sanitize ? check_plain($real_root_term->name) : $real_root_term->name;
++          break;
+       }
+     }
+ 
+@@ -514,6 +524,11 @@ function token_tokens($type, $tokens, array $data = array(), array $options = ar
+         $replacements += token_generate('term', $root_tokens, array('term' => $root_term), $options);
+       }
+     }
++    if ($real_root_tokens = token_find_with_prefix($tokens, 'real-root')) {
++      $parents = taxonomy_get_parents_all($term->tid);
++      $real_root_term = end($parents);
++      $replacements += token_generate('term', $real_root_tokens, array('term' => $real_root_term), $options);
++    }
+   }
+ 
+   // Vocabulary tokens.
