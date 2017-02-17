@@ -37,7 +37,7 @@ Drupal.behaviors.PanelsIPE = {
     }
 
     // Initialize new editors.
-    for (var i in Drupal.settings.PanelsIPECacheKeys) {
+    for (var i = 0; i < Drupal.settings.PanelsIPECacheKeys.length; i++) {
       var key = Drupal.settings.PanelsIPECacheKeys[i];
       $('div#panels-ipe-display-' + key + ':not(.panels-ipe-processed)')
         .addClass('panels-ipe-processed')
