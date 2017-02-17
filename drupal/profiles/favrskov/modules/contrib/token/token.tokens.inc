@@ -153,11 +153,7 @@ function token_token_info() {
       'description' => t("The root term of the taxonomy term."),
       'type' => 'term',
     );
-    $info['tokens']['term']['real-root'] = array(
-      'name' => t('Real root term'),
-      'description' => t("The real root term of the taxonomy term. (Returns tid even current term)"),
-      'type' => 'term',
-    );
+
     $info['tokens']['vocabulary']['machine-name'] = array(
       'name' => t('Machine-readable name'),
       'description' => t('The unique machine-readable name of the vocabulary.'),
@@ -498,12 +494,6 @@ function token_tokens($type, $tokens, array $data = array(), array $options = ar
             $replacements[$original] = $sanitize ? check_plain($root_term->name) : $root_term->name;
           }
           break;
-
-        case 'real-root':
-          $parents = taxonomy_get_parents_all($term->tid);
-          $real_root_term = end($parents);
-          $replacements[$original] = $sanitize ? check_plain($real_root_term->name) : $real_root_term->name;
-          break;
       }
     }
 
@@ -523,11 +513,6 @@ function token_tokens($type, $tokens, array $data = array(), array $options = ar
       if ($root_term->tid != $term->tid) {
         $replacements += token_generate('term', $root_tokens, array('term' => $root_term), $options);
       }
-    }
-    if ($real_root_tokens = token_find_with_prefix($tokens, 'real-root')) {
-      $parents = taxonomy_get_parents_all($term->tid);
-      $real_root_term = end($parents);
-      $replacements += token_generate('term', $real_root_tokens, array('term' => $real_root_term), $options);
     }
   }
 
@@ -1407,7 +1392,6 @@ function field_token_info_alter(&$info) {
  */
 function field_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
-  $sanitize = !empty($options['sanitize']);
   $langcode = isset($options['language']) ? $options['language']->language : NULL;
 
   // Entity tokens.
@@ -1452,7 +1436,7 @@ function field_tokens($type, $tokens, array $data = array(), array $options = ar
 /**
  * Pre-render callback for field output used with tokens.
  */
-function token_pre_render_field_token(&$elements) {
+function token_pre_render_field_token($elements) {
   // Remove the field theme hook, attachments, and JavaScript states.
   unset($elements['#theme']);
   unset($elements['#states']);
