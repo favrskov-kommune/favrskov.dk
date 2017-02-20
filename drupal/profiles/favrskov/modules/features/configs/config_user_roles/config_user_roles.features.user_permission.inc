@@ -2752,18 +2752,6 @@ function config_user_roles_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: 'import media'.
-  $permissions['import media'] = array(
-    'name' => 'import media',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Communications Officer' => 'Communications Officer',
-      'Editor' => 'Editor',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'media',
-  );
-
   // Exported permission: 'list custom tokens'.
   $permissions['list custom tokens'] = array(
     'name' => 'list custom tokens',
@@ -3923,6 +3911,18 @@ function config_user_roles_user_default_permissions() {
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'panels',
+  );
+
+  // Exported permission: 'use media wysiwyg'.
+  $permissions['use media wysiwyg'] = array(
+    'name' => 'use media wysiwyg',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'Communications Officer' => 'Communications Officer',
+      'Editor' => 'Editor',
+      'Webmaster' => 'Webmaster',
+    ),
+    'module' => 'media_wysiwyg',
   );
 
   // Exported permission: 'use page manager'.
