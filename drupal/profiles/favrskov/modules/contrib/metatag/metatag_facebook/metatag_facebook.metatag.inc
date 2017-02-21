@@ -30,13 +30,14 @@ function metatag_facebook_metatag_info() {
   );
 
   $info['tags']['fb:admins'] = array(
-    'label' => t('Facebook Admins'),
+    'label' => t('Admins'),
     'description' => t('A comma-separated list of Facebook user IDs of people who are considered administrators or moderators of this page.'),
     'weight' => ++$weight,
+    'multiple' => TRUE,
   ) + $tag_info_defaults;
 
   $info['tags']['fb:app_id'] = array(
-    'label' => t('Facebook Application ID'),
+    'label' => t('Application ID'),
     'description' => t('A comma-separated list of Facebook Platform Application IDs applicable for this site.'),
     'weight' => ++$weight,
     'devel_generate' => array(
@@ -47,8 +48,17 @@ function metatag_facebook_metatag_info() {
   // If the FB_Social module is installed already, disable the app_id field.
   if (module_exists('fb_social')) {
     $info['tags']['fb:app_id']['form']['#disabled'] = TRUE;
-    $info['tags']['fb:app_id']['form']['#description'] = t('The FB_Social module will automatically output this meta tag, go to the <a href="!fb_social">FB_Social settings page</a> to customize it.', array('!fb_social' => url('admin/config/user-interface/fb_social')));
+    $info['tags']['fb:app_id']['form']['#description'] = t('The FB_Social module will automatically output this meta tag, go to the <a href="!fb_social">FB_Social settings page</a> to customize it.', array('!fb_social' => url('admin/structure/fbsocial')));
   }
+
+  $info['tags']['fb:pages'] = array(
+    'label' => t('Pages'),
+    'description' => t('Facebook Instant Articles claim URL token.'),
+    'weight' => ++$weight,
+    'devel_generate' => array(
+      'type' => 'integer',
+    ),
+  ) + $tag_info_defaults;
 
   return $info;
 }
