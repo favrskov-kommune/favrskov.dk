@@ -701,3 +701,86 @@ function favrskov_helper_update_7037() {
 function favrskov_helper_update_7038() {
   features_revert_module('config_user_roles');
 }
+
+/**
+ * Need to use this update in order to find all matches.
+ * Although we found image via uri it's not correct and we lost many of files.
+ * Save file with error output into tmp folder.
+ */
+function favrskov_helper_update_7039() {
+  $field_text_summary = field_read_fields(array('type' => 'text_with_summary'));
+  $field_long_text = field_read_fields(array('type' => 'text_long'));
+  $fields = array_merge($field_long_text, $field_text_summary);
+  $fields_name = array_keys($fields);
+  $result_value = array();
+  foreach ($fields_name as $name) {
+    $data_result = db_select('field_data_' . $name, 'fd')
+      ->fields('fd', array('entity_type', 'entity_id'))
+      ->condition($name . '_value', '%' . db_like('media-image') . '%', 'LIKE');
+    $data_result->addField('fd', $name . '_value', 'value');
+    $data_result = $data_result->execute()->fetchAll();
+    $result_value = array_merge($result_value, $data_result);
+  }
+
+  $location = 'temporary://node_errors.txt';
+  $fp = fopen($location, "w");
+
+  foreach ($result_value as $fields) {
+    if (empty($fields)) {
+      continue;
+    }
+
+    preg_match_all('/<span.*class="file media-image.*<\/span>/', $fields->value, $file_match);
+    preg_match_all('/<img.*class="media-image.*\/>/', $fields->value, $image_match);
+    $array_matches = array_merge($file_match[0], $image_match[0]);
+
+    foreach ($array_matches as $match) {
+      $files_match = preg_match('/"(media-image|file media-image).+img__fid__(\d+)/', $match, $url);
+
+      if ($files_match != 0) {
+        $std_file = new stdClass();
+        $std_file->fid = $url[2];
+        $std_file->entity_id = $fields->entity_id;
+        $std_file->entity_type = $fields->entity_type;
+        $source_pattern = $url[1] == 'media-image' ? '/src="([^"]+)"/' : '/href="([^"]+)"/';
+        preg_match($source_pattern, $match, $src);
+
+        if (isset($src[1])) {
+          $last_part = explode('/', $src[1]);
+          $std_file->link = end($last_part);
+        }
+
+        $error = FALSE;
+
+        if (empty($std_file->fid) || empty($std_file->link)) {
+          continue;
+        }
+
+        $fid = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid', 'uri'))
+          ->condition('fid', $std_file->fid)
+          ->execute()
+          ->fetchAll();
+        if (empty($fid[0])) {
+          $output = sprintf('Doesn\'t exist -> Node entity: %s, node id: %s, file id: %s', $std_file->entity_type, $std_file->entity_id, $std_file->fid);
+          $error = TRUE;
+          fwrite($fp, $output . PHP_EOL);
+        } elseif (isset($std_file->link)) {
+          if (strpos($fid[0]->uri, $std_file->link) === FALSE) {
+            $output = sprintf('Wrong link -> Node entity: %s, node id: %s, file id: %s, actual file name: %s, file name in link: %s',
+              $std_file->entity_type, $std_file->entity_id, $std_file->fid, $fid[0]->uri, $std_file->link);
+            $error = TRUE;
+            fwrite($fp, $output . PHP_EOL);
+          }
+        }
+
+        if (!$error) {
+          file_usage_add($std_file, 'media', $std_file->entity_type, $std_file->entity_id);
+        }
+
+      }
+    }
+  }
+
+  fclose($fp);
+}
