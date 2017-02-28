@@ -14,7 +14,7 @@ function favrskov_helper_field_formatter_info() {
     'description' => t('Displays a link that will force the browser to download the file.'),
     'field types' => ['file', 'image'],
     'settings' => [
-      'text' => t('[file:name]'),
+      'text' => '[file:name]',
     ],
   ];
 
