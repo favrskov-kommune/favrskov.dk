@@ -5,6 +5,7 @@ package = Favrskov
 
 dependencies[] = features
 dependencies[] = metatag
+dependencies[] = media_wysiwyg
 
 files[] = favrskov_helper.metatag.inc
 files[] = views/favrskov_helper_handler_filter_user_current_except_super_admin.inc
