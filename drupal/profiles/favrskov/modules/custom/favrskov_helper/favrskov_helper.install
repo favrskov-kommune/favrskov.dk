@@ -784,3 +784,10 @@ function favrskov_helper_update_7039() {
 
   fclose($fp);
 }
+
+/**
+ * Revert feature.
+ */
+function favrskov_helper_update_7040() {
+  features_revert_module('config_media');
+}

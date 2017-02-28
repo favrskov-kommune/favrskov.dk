@@ -5,6 +5,8 @@
  * Main file of favrskov_helper.module
  */
 
+require_once dirname(__FILE__) . '/favrskov_helper.field.inc';
+
 /**
  * Helper to manually add a single translation string.
  *
@@ -236,5 +238,32 @@ function favrskov_helper_init() {
       '#markup' => "<script type='text/javascript' src='https://webkort.favrskov.dk/clientapi/minimap2/$minimap_version/minimap.js' charset='windows-1252'></script>",
     ];
     drupal_add_html_head($minimap, 'minimap');
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function favrskov_helper_theme($existing, $type, $theme, $path) {
+  return [
+    'file_entity_favrskov_download_link' => [
+      'variables' => ['file' => '', 'text' => ''],
+      'file' => 'favrskov_helper.theme.inc',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_media_wysiwyg_token_to_markup_alter().
+ */
+function favrskov_helper_media_wysiwyg_token_to_markup_alter(&$element, $tag_info, $settings) {
+  $bundle = empty($element['content']['#bundle']) ?
+    NULL : $element['content']['#bundle'];
+  $view_mode = empty($element['content']['#view_mode']) ?
+    NULL : $element['content']['#view_mode'];
+
+  if ('document' == $bundle && 'wysiwyg' == $view_mode) {
+    unset($element['content']['#type']);
+    unset($element['content']['#attributes']);
   }
 }
