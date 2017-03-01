@@ -10,6 +10,62 @@
 function config_media_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'file-audio-field_folder'.
+  $field_instances['file-audio-field_folder'] = array(
+    'bundle' => 'audio',
+    'cardinality' => 1,
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'field_name' => 'field_folder',
+    'label' => 'Media Folder',
+    'required' => TRUE,
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'media_folders',
+          'parent' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'type' => 'taxonomy_term_reference',
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => -4,
+    ),
+  );
+
   // Exported field_instance: 'file-audio-field_tags'.
   $field_instances['file-audio-field_tags'] = array(
     'bundle' => 'audio',
@@ -263,6 +319,62 @@ function config_media_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'file-video-field_folder'.
+  $field_instances['file-video-field_folder'] = array(
+    'bundle' => 'video',
+    'cardinality' => 1,
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'wysiwyg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'field_name' => 'field_folder',
+    'label' => 'Media Folder',
+    'required' => TRUE,
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'media_folders',
+          'parent' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'type' => 'taxonomy_term_reference',
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => -4,
+    ),
+  );
+
   // Exported field_instance: 'file-video-field_tags'.
   $field_instances['file-video-field_tags'] = array(
     'bundle' => 'video',
@@ -322,6 +434,7 @@ function config_media_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Link title');
+  t('Media Folder');
   t('Tags');
 
   return $field_instances;
