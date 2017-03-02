@@ -823,3 +823,10 @@ function favrskov_helper_update_7042() {
     }
   }
 }
+
+/**
+ * Update default view mode for Documents.
+ */
+function favrskov_helper_update_7043() {
+  features_revert_module('config_media');
+}
