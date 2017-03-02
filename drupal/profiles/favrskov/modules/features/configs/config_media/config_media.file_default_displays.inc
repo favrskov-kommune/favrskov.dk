@@ -280,7 +280,7 @@ function config_media_file_default_displays() {
   $file_display->api_version = 1;
   $file_display->name = 'document__default__file_field_favrskov_file_download_link';
   $file_display->weight = 0;
-  $file_display->status = FALSE;
+  $file_display->status = TRUE;
   $file_display->settings = array(
     'text' => '[file:name]',
   );
@@ -290,7 +290,7 @@ function config_media_file_default_displays() {
   $file_display->api_version = 1;
   $file_display->name = 'document__default__file_field_file_download_link';
   $file_display->weight = 0;
-  $file_display->status = TRUE;
+  $file_display->status = FALSE;
   $file_display->settings = array(
     'text' => '[file:name]',
   );
