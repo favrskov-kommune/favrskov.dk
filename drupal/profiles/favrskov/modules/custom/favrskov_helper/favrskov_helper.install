@@ -796,8 +796,30 @@ function favrskov_helper_update_7040() {
  * Revert features for wysiwyg dispaly.
  */
 function favrskov_helper_update_7041() {
-    array_map('features_revert_module', array(
-        'config_media',
-        'fields_shared',
-    ));
+  array_map('features_revert_module', array(
+    'config_media',
+    'fields_shared',
+  ));
+}
+
+/**
+ * Change default view mode to wysiwyg for document files.
+ */
+function favrskov_helper_update_7042() {
+  $field_text_summary = field_read_fields(array('type' => 'text_with_summary'));
+  $field_long_text = field_read_fields(array('type' => 'text_long'));
+  $fields = array_merge($field_long_text, $field_text_summary);
+  $fields_name = array_keys($fields);
+  $result_value = array();
+
+  foreach ($fields_name as $name) {
+    $versions_name = array('field_data_', 'field_revision_');
+    foreach ($versions_name as $version_name) {
+      $table_name = $version_name . $name;
+      $value_name = $name . '_value';
+      db_query('UPDATE '. $table_name .' SET
+      ' . $value_name . ' = REPLACE(' . $value_name . ', \'"view_mode":"default"\', \'"view_mode":"wysiwyg"\') WHERE '
+        . $value_name . ' LIKE \'%media-element%\'');
+    }
+  }
 }
