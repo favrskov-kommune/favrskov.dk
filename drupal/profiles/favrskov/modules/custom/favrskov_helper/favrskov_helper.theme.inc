@@ -13,6 +13,7 @@
 function theme_file_entity_favrskov_download_link($variables) {
   $file = $variables['file'];
   $uri = file_entity_download_uri($file);
+  $file_url = file_create_url($file->uri);
 
   // Set options as per anchor format described at
   // http://microformats.org/wiki/file-format-examples
@@ -28,7 +29,7 @@ function theme_file_entity_favrskov_download_link($variables) {
   $variables['text'] = token_replace($variables['text'], ['file' => $file], ['clear' => TRUE, 'sanitize' => !empty($uri['options']['html'])]);
 
   $output = '<span class="file">';
-  $output .= l($variables['text'], $uri['path'], $uri['options']);
+  $output .= l($variables['text'], $file_url, $uri['options']);
   $output .= '</span>';
 
   return $output;
