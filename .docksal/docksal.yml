@@ -47,3 +47,19 @@ services:
       - docksal_ssh_agent:/.ssh-agent:ro
     environment:
       - XDEBUG_ENABLED=${XDEBUG_ENABLED:-0}
+      - IS_DOCKER=1
+
+  # Memcached
+  memcached:
+    hostname: memcached
+    image: memcached
+    environment:
+      # Memcached memory limit in megabytes
+      - MEMCACHED_MEMORY_LIMIT=256
+
+  # Solr
+  solr:
+    hostname: solr
+    image: hilmutdinov/solr:4.4.0
+    ports:
+      - "8983:8983"
