@@ -206,3 +206,10 @@ function references_potential_references_view($entity_type, $view_name, $display
 
   return $results;
 }
+
+/**
+ * Helper function that returns label of an entity.
+ */
+function _references_get_label($entity_type, $entity) {
+  return entity_access('view', $entity_type, $entity) ? entity_label($entity_type, $entity) : t('- Restricted access -');
+}
