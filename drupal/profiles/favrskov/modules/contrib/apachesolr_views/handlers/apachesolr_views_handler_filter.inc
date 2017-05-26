@@ -1,21 +1,30 @@
 <?php
 
+/**
+ * @file
+ * Main filter handler for Apache Solr Views.
+ */
+
 class apachesolr_views_handler_filter extends views_handler_filter {
-  function query() {
+
+  /**
+   * Add this filter to the query.
+   */
+  public function query() {
     $this->trim_value();
 
     if (!empty($this->value)) {
       if (is_array($this->value)) {
         $this->value = implode(' OR ', $this->value);
       }
-      $this->query->add_where($this->options['group'], "$this->real_field", $this->value, $this->operator);
+      $this->query->add_where($this->options['group'], $this->real_field, $this->value, $this->operator);
     }
   }
 
   /**
    * Trim filter value.
    */
-  function trim_value() {
+  public function trim_value() {
     // Trim both array or scalar value.
     if (is_array($this->value)) {
       array_walk($this->value, 'apachesolr_views_handler_filter::trim');
@@ -29,14 +38,14 @@ class apachesolr_views_handler_filter extends views_handler_filter {
   /**
    * Trim value.
    */
-  function trim(&$value) {
+  public function trim(&$value) {
     $value = trim($value);
   }
 
   /**
-   * Provide a simple textfield for equality
+   * Provide a simple textfield for equality.
    */
-  function value_form(&$form, &$form_state) {
+  public function value_form(&$form, &$form_state) {
     $form['value'] = array(
       '#type' => 'textfield',
       '#title' => t($this->definition['title']),
