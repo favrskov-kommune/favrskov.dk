@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * View template to display a grid of media previews in the media browser.

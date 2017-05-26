@@ -69,27 +69,8 @@ class media_browser_plus_views_handler_field_preview extends views_handler_field
    */
   public function render($values) {
     $file = file_load($values->fid);
-
-    // Prepare file link.
-    switch ($this->options['mbp_settings']['add_link']) {
-      case 'delete':
-      case 'edit':
-      case 'usage':
-      case 'view':
-      case 'download':
-        $uri = file_entity_uri($file);
-        $link = $uri['path'] . '/' . $this->options['mbp_settings']['add_link'];
-        break;
-
-      case 'file':
-        $link = file_create_url($file->uri);
-        break;
-
-      default:
-        $link = NULL;
-    }
-
     $preview = media_get_thumbnail_preview($file);
     return drupal_render($preview);
   }
+
 }

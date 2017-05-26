@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Administrative stuff.
@@ -90,6 +91,6 @@ function media_browser_plus_media_settings_submit($form, &$form_state) {
 
   // If the menu position of MBP was changed, rebuild the menu.
   if ($form_state['values']['media_browser_plus_thumbnails_as_default_browser_current'] != $form_state['values']['media_browser_plus_thumbnails_as_default_browser']) {
-    menu_rebuild();
+    variable_set('menu_rebuild_needed', TRUE);
   }
 }

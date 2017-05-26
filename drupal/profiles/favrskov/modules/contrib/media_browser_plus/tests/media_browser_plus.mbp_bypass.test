@@ -1,0 +1,131 @@
+<?php
+/**
+ * @file
+ * Media Browser Plus folder processing bypass tests.
+ */
+
+/**
+ * Folder processing bypass media browser plus tests.
+ */
+class MediaBrowserPlusBypassTest extends MediaBrowserPlusTestBase {
+
+  /**
+   * Return meta info about this test.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Media Browser Plus Folder Processing Bypass Tests',
+      'description' => 'Tests Media Browser Plus folder processing bypass cases',
+      'group' => 'Media',
+    );
+  }
+
+  /**
+   * Test the ability to bypass folder processing setting mbp_bypass property.
+   */
+  public function testBypassDueProperty() {
+
+    // TEST: Bypass MBP processing since file creation.
+    $uri = file_unmanaged_save_data(str_repeat('01', 512));
+    $file = new stdClass();
+    $file->uri = $uri;
+    $file->uid = 1;
+    $file->filemime = 'text/plain';
+    $file->type = FILE_TYPE_NONE;
+    $file->filename = basename($uri);
+    $file->mbp_bypass = TRUE;
+
+    // Move the file to the right directory.
+    $file = file_save($file);
+
+    // No folder taxonomy term attached to the file.
+    $this->assertFalse(
+      isset($file->field_folder),
+      'File has not been processed by MBP'
+    );
+    unset($file);
+
+    // TEST: Bypass future actions for a file originally processed by MBP.
+    // Create test folder structure.
+    $folders = array(
+      'root_folder' => 'Media Folders',
+      'bypass_folder' => $this->randomName(),
+    );
+    $hierarchy = array(
+      'root_folder' => array(
+        $folders['bypass_folder'] => array(),
+      ),
+    );
+    $this->drupalLogin($this->adminUser);
+    $this->folderCreationHelper($hierarchy, FALSE);
+
+    foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+
+      // Create file on the root folder.
+      $file = $this->createTestFile('text/plain', NULL, $scheme);
+
+      // Get the root_folder.
+      $root_folder = media_browser_plus_get_media_root_folder();
+
+      // File folder TERM is the root folder.
+      $this->assertTrue(
+        $file->field_folder[LANGUAGE_NONE][0]['tid'] === $root_folder->tid,
+        format_string('File saved with the root folder TERM by MBP for scheme %scheme', array('%scheme' => $scheme))
+      );
+
+      // File folder PATH is the root folder.
+      $this->assertTrue(
+        $file->uri === file_stream_wrapper_uri_normalize(file_uri_scheme($file->uri) . '://' . media_browser_plus_construct_dir_path($root_folder) . '/' . basename($file->uri)),
+        format_string('File saved on the root folder by MBP for scheme %scheme', array('%scheme' => $scheme))
+      );
+
+      // Move the file to the TestBypass folder...
+      $terms = taxonomy_get_term_by_name($folders['bypass_folder']);
+      $folder = reset($terms);
+      $file->field_folder[LANGUAGE_NONE][0]['tid'] = $folder->tid;
+
+      // ...but bypass!
+      $file->mbp_bypass = TRUE;
+
+      $file = file_save($file);
+
+      // File folder TERM is not the root folder.
+      $this->assertFalse(
+        $file->field_folder[LANGUAGE_NONE][0]['tid'] === $root_folder->tid,
+        format_string('File saved with the root folder TERM by MBP for scheme %scheme', array('%scheme' => $scheme))
+      );
+
+      // File folder PATH is still the root folder.
+      $this->assertTrue(
+        $file->uri == file_stream_wrapper_uri_normalize(file_uri_scheme($file->uri) . '://' . media_browser_plus_construct_dir_path($root_folder) . '/' . basename($file->uri)),
+        format_string('File saved on the root folder by MBP for scheme %scheme', array('%scheme' => $scheme))
+      );
+
+    }
+
+  }
+
+  /**
+   * Test bypassing folder processing for a file with no folder tid but a path.
+   */
+  public function testBypassDuePath() {
+
+    $dir = 'test_dir';
+    $filename = 'testfile.txt';
+
+    foreach (media_get_local_stream_wrappers() as $scheme => $scheme_info) {
+
+      $dir_uri = $scheme . '://' . $dir;
+      $file_uri = $dir_uri . DIRECTORY_SEPARATOR . $filename;
+      file_prepare_directory($dir_uri, FILE_CREATE_DIRECTORY);
+      $file = file_save_data(str_repeat('01', 512), $file_uri, FILE_EXISTS_REPLACE);
+
+      $this->assertFalse(
+        isset($file->field_folder),
+        format_string('File has not been processed by MBP for scheme %scheme', array('%scheme' => $scheme))
+      );
+
+    }
+  }
+
+}
