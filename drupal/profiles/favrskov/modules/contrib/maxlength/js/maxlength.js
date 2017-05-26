@@ -13,13 +13,13 @@
             ml[editor]();
           }
         });
-      } else if (Drupal.settings.ckeditor != undefined) {
+      } else if (Drupal.settings.ckeditor != undefined && typeof(CKEDITOR) != 'undefined') {
         ml.ckeditor();
       }
 
       $('.maxlength', context).once('maxlength', function() {
         var options = {};
-        options['counterText'] = $(this).attr('maxlength_js_label');  
+        options['counterText'] = $(this).attr('maxlength_js_label');
         if ($(this).hasClass('maxlength_js_enforce')) {
           options['enforce'] = true;
         }
@@ -109,7 +109,7 @@
       counter.removeClass(options.cssExceeded);
     }
 
-    counter.html(options.counterText.replace('@limit', limit).replace('@remaining', available));
+    counter.html(options.counterText.replace('@limit', limit).replace('@remaining', available).replace('@count', count));
   };
 
   /**
@@ -119,9 +119,9 @@
    * @see http://www.sitepoint.com/blogs/2004/02/16/line-endings-in-javascript/
    */
   ml.twochar_lineending = function(str) {
-    return  str.replace(/(\r\n|\r|\n)/g, " ");
+    return str.replace(/(\r\n|\r|\n)/g, "\r\n");
   };
-  
+
   ml.strip_tags = function(input, allowed) {
     // making the lineendings with two chars
     input = ml.twochar_lineending(input);
@@ -139,7 +139,7 @@
          return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
      });
   };
-  
+
   /**
    * Cuts a html text up to limit characters. Still experimental.
    */
@@ -249,7 +249,7 @@
       counterElement: 'div',
       cssWarning: 'messages warning',
       cssExceeded: 'error',
-      counterText: Drupal.t('Content limited to @limit characters, remaining: <strong>@remaining</strong>'),
+      counterText: Drupal.t('Content limitedd to @limit characters, remaining: <strong>@remaining</strong>'),
       action: 'attach',
       enforce: false,
       truncateHtml: false
@@ -265,16 +265,20 @@
       return 'removed';
     }
 
-    $(this).after('<' + options.counterElement + ' id="' + $(this).attr('id') + '-' + options.css + '" class="' + options.css + '"></' + options.counterElement + '>');
-    ml.calculate($(this), options);
-    if (!$(this).hasClass('ckeditor-mod')) {
-      $(this).keyup(function () {
-        ml.calculate($(this), options);
-      });
-      $(this).change(function () {
-        ml.calculate($(this), options);
-      });
+    var counterElement = $('<' + options.counterElement + ' id="' + $(this).attr('id') + '-' + options.css + '" class="' + options.css + '"></' + options.counterElement + '>');
+    if ($(this).next('div.grippie').length) {
+      $(this).next('div.grippie').after(counterElement);
+    } else {
+      $(this).after(counterElement);
     }
+
+    ml.calculate($(this), options);
+    $(this).keyup(function() {
+      ml.calculate($(this), options);
+    });
+    $(this).change(function() {
+      ml.calculate($(this), options);
+    });
 
   };
 
@@ -319,19 +323,38 @@
   ml.tinymceChange = function(ed) {
     // CLone to avoid changing defaults
     var options = $.extend({}, ml.options[ed.editorId]);
+    /* The following lines take the text from the wysiwyg and
+      strip out some html and special characters so an accurate character
+      count can be taken. */
+    var bodyContent = ml.tinymceGetData(ed);
+    bodyContent = bodyContent.replace(/&gt;/g, ' ');
+    bodyContent = bodyContent.replace(/&lt;/g, ' ');
+    bodyContent = bodyContent.replace(/&amp;/g, ' ');
+    bodyContent = bodyContent.replace(/<\/?[^>]+(>|$)/g, "");
+    bodyContent = bodyContent.replace(/\<p>/g, "");
+    bodyContent = bodyContent.replace(/\<\/p>/g, "");
+    bodyContent = bodyContent.replace(/[\n\r]/g, '');
+    bodyContent = bodyContent.replace(/&amp;/g, '&');
+    bodyContent = bodyContent.replace(/&nbsp;/g, ' ');
+    bodyContent = bodyContent.replace(/\<span>/g, ' ');
+    bodyContent = bodyContent.replace(/\<\/span>/g, ' ');
+    bodyContent = bodyContent.replace(/\<br>/g, ' ');
+    bodyContent = bodyContent.replace(/\<BR>/g, ' ');
+    bodyLength = bodyContent.length;
+
     if (options.truncateHtml){
-      ml.calculate($(ed.getElement()), options, ml.strip_tags(ml.tinymceGetData(ed)).length, ed, 'tinymceGetData', 'tinymceSetData');
+      ml.calculate($(ed.getElement()), options, bodyLength, 'tinymceGetData', 'tinymceSetData');
     }
     else {
-      ml.calculate($(ed.getElement()), options, ml.twochar_lineending(ml.tinymceGetData(ed)).length, ed, 'tinymceGetData', 'tinymceSetData');
+      ml.calculate($(ed.getElement()), options, bodyLength, ed, 'tinymceGetData', 'tinymceSetData');
     }
   };
-  
+
   // Gets the data from the tinyMCE. Not tested yet.
   ml.tinymceGetData = function(e) {
     return e.getContent();
   }
-  
+
   // Sets the data into a tinyMCE. Not tested yet.
   ml.tinymceSetData = function(e, data) {
     e.setContent(data);
@@ -385,12 +408,12 @@
       ml.calculate($('#' + e.editor.element.getId()), options, ml.twochar_lineending(ml.ckeditorGetData(e)).length, e, 'ckeditorGetData', 'ckeditorSetData');
     }
   };
-  
+
   // Gets the data from the ckeditor.
   ml.ckeditorGetData = function(e) {
     return e.editor.getData();
   }
-  
+
   // Sets the data into a ckeditor.
   ml.ckeditorSetData = function(e, data) {
     e.editor.setData(data);
