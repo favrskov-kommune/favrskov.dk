@@ -707,14 +707,13 @@ function domain_form_user_form_alter(&$form, &$form_state) {
     }
     $format = domain_select_format();
 
-    $form['domain_user'] = array(
+    $form['domain'] = array(
       '#type' => 'fieldset',
       '#title' => t('Domain access'),
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
-      '#weight' => 1
     );
-    $form['domain_user']['domain_user'] = array(
+    $form['domain']['domain_user'] = array(
       '#type' => empty($format) ? 'checkboxes' : 'select',
       '#options' => $options,
       '#title' => t('Domain access settings'),
@@ -722,14 +721,16 @@ function domain_form_user_form_alter(&$form, &$form_state) {
       '#default_value' => $default
     );
     if ($format) {
-      $form['domain_user']['domain_user']['#multiple'] = TRUE;
-      $form['domain_user']['domain_user']['#size'] = count($options) > 10 ? 10 : count($options);
+      $form['domain']['domain_user']['#multiple'] = TRUE;
+      $form['domain']['domain_user']['#size'] = count($options) > 10 ? 10 : count($options);
     }
   }
   else {
-    $form['domain_user'] = array(
-      '#type' => 'value',
-      '#value' => $default
+    $form['domain'] = array(
+      'domain_user' => array(
+        '#type' => 'value',
+        '#value' => $default
+      ),
     );
   }
 }
@@ -1138,7 +1139,11 @@ function domain_lookup($domain_id = NULL, $subdomain = NULL, $reset = FALSE) {
  */
 function domain_default($reset = FALSE, $alter = TRUE) {
   $default = &drupal_static(__FUNCTION__);
+  $altered = &drupal_static(__FUNCTION__ . '_altered');
+
   if (empty($default) || $reset) {
+    $altered = FALSE;
+
     // Temporary hack for update to 7.x.3.
     if (db_table_exists('domain_export')) {
       $default = db_query("SELECT domain_id, subdomain, sitename, scheme, valid, weight, is_default, machine_name FROM {domain} WHERE is_default = 1")->fetchAssoc();
@@ -1158,11 +1163,14 @@ function domain_default($reset = FALSE, $alter = TRUE) {
         'machine_name' => domain_machine_name($default['subdomain']),
       );
     }
-    if ($alter) {
-      // Let submodules overwrite the defaults, if they wish.
-      $default = domain_api($default, $reset);
-    }
   }
+
+  // If an altered version is requested, has $default been altered before?
+  if ($alter && !$altered) {
+    // Let submodules overwrite the defaults, if they wish.
+    $default = domain_api($default, $reset);
+  }
+
   return $default;
 }
 
@@ -2459,9 +2467,24 @@ function domain_form_alter(&$form, &$form_state, $form_id) {
       '#type' => 'fieldset',
       '#title' => t('Domain access options'),
       '#collapsible' => TRUE,
-      '#collapsed' => FALSE,
-      '#group' => variable_get('domain_vertical_tab', 0) ? 'additional_settings' : '',
+      '#collapsed' => variable_get('domain_collapse_options', 0),
     );
+    // Display in vertical tab group, if required
+    if (variable_get('domain_vertical_tab', 0)) {
+      $form['domain']['#group'] = 'additional_settings';
+      $form['domain']['#attributes'] = array(
+        'class' => array('domain-access-options-form'),
+      );
+      $form['domain']['#attached'] = array(
+        'js' => array(
+          drupal_get_path('module', 'domain') . '/domain.node.js',
+          array(
+            'data' => array('domain' => array('fieldType' => $format)),
+            'type' => 'setting',
+          ),
+        ),
+      );
+    }
     $form['domain']['domain_site'] = array(
       '#type' => 'checkbox',
       '#title' => t('Send to all affiliates'),
@@ -2547,16 +2570,25 @@ function domain_form_alter(&$form, &$form_state, $form_id) {
         case 3:
           // If the user has no available domains, then they cannot post.
           if (empty($user_options)) {
-            $form = array();
-            return drupal_access_denied();
+            drupal_access_denied();
+            drupal_exit();
           }
           $form['domain'] = array(
             '#type' => 'fieldset',
             '#title' => t('Affiliate publishing options'),
             '#collapsible' => TRUE,
-            '#collapsed' => FALSE,
-            '#group' => variable_get('domain_vertical_tab', 0) ? 'additional_settings' : '',
+            '#collapsed' => variable_get('domain_collapse_options', 0),
           );
+          // Display in vertical tab group, if required
+          if (variable_get('domain_vertical_tab', 0)) {
+            $form['domain']['#group'] = 'additional_settings';
+            $form['domain']['#attributes'] = array(
+              'class' => array('domain-access-options-form'),
+            );
+            $form['domain']['#attached'] = array(
+              'js' => array(drupal_get_path('module', 'domain') . '/domain.node.js'),
+            );
+          }
           // We must preserve publishing options that the user cannot access, but only for
           // existing nodes.
           if (!empty($form['#node']->nid)) {
@@ -3670,7 +3702,7 @@ function domain_features_api() {
 function domain_machine_name_load($machine_name, $full = FALSE) {
   $domain = db_query('SELECT domain_id, subdomain, sitename, scheme, valid, weight, is_default, machine_name FROM {domain} WHERE machine_name = :machine_name', array(':machine_name' => $machine_name))->fetchAssoc();
   if ($full && !empty($domain)) {
-    domain_api($domain, TRUE);
+    $domain = domain_api($domain, TRUE);
   }
   return $domain;
 }
@@ -4120,6 +4152,15 @@ function domain_url_replace($matches) {
  */
 function domain_url_filter_tips($filter, $format, $long) {
   return t('Enter a relative URL in the format <em>[canonical-url:path/to/item]</em> to make the URL point to the canonical path.');
+}
+
+/**
+ * Implements hook_metatag_page_cache_cid_parts_alter().
+ */
+function domain_metatag_page_cache_cid_parts_alter(&$cid_parts) {
+  // Make Metatag cache domain specific.
+  $_domain = domain_get_domain();
+  $cid_parts['domain_id'] = $_domain['domain_id'];
 }
 
 /**
