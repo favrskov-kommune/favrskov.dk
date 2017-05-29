@@ -330,14 +330,16 @@ function tablefield_field_is_empty($item, $field) {
     return FALSE;
   }
 
-  // Remove the preference fields to see if the table cells are all empty.
-  unset($item['tablefield']['caption']);
-  unset($item['tablefield']['rebuild']);
-  unset($item['tablefield']['import']);
-  if (!empty($item['tablefield'])) {
-    foreach ($item['tablefield'] as $cell) {
-      if (!empty($cell)) {
-        return FALSE;
+  if (!empty($item['tablefield']['rebuild'])) {
+    $table = $item['tablefield'];
+    $table_rebuild = $table['rebuild'];
+    for ($i = 0; $i < $table_rebuild['count_rows']; $i++) {
+      for ($j = 0; $j < $table_rebuild['count_cols']; $j++) {
+        $cell = 'cell_' . $i . '_' . $j;
+        $cell_weight = 'cell_' . $i . '_weight';
+        if (isset($table[$cell_weight]) && !is_array($table[$cell]) && !empty($table[$cell])) {
+          return FALSE;
+        }
       }
     }
   }
