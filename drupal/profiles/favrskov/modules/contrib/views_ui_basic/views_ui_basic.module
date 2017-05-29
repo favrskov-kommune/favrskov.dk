@@ -8,13 +8,19 @@
  * Return list of editable fields.
  */
 function _views_ui_basic_fields() {
-  return array( // Views form name => label
+  $fields = array( // Views form name => label
     'title'  => t('Title'),
     'header' => t('Header'),
     'footer' => t('Footer'),
     'empty'  => t('Empty text'),
     'pager_options' => t('Pager options'),
   );
+
+  if (module_exists('metatag_views')) {
+    $fields['metatags'] = t('Meta tags');
+  }
+
+  return $fields;
 }
 
 /**
@@ -89,7 +95,7 @@ function views_ui_basic_permission() {
  * Implements hook_block_view_alter().
  */
 function views_ui_basic_block_view_alter(&$build, $block) {
-  if ($block->module == 'views' && isset($build['content']) && is_array($build['content'])) {
+  if ($block->module == 'views' && isset($build['content']) && is_array($build['content']) && !empty($build['content']['#views_contextual_links_info'])) {
     $info = $build['content']['#views_contextual_links_info']['views_ui'];
     $contextual_links = array(
       'views_ui_basic', array($info['view_name'], $info['view_display_id']),
@@ -175,7 +181,7 @@ function views_ui_basic_submit($form, &$form_state) {
   // Redirect back to view page or admin page
   if (_views_ui_basic_is_tab()) {
     $menuitem = menu_get_item();
-    drupal_goto($menuitem['tab_root']);
+    drupal_goto($menuitem['tab_root_href']);
   }
   else {
     drupal_goto("admin/content/views_ui_basic");
@@ -205,16 +211,24 @@ function views_ui_basic_edit_form($view_name, $display_name, $type) {
   $config_item = array('header', 'footer', 'empty');
   $config_area = (isset($_POST['config_area'])) ? $_POST['config_area'] : 'area';
 
-
   // Find view_area to edit
-
   $view_area = (isset($view->display[$display_name]->display_options[$type])) ? $view->display[$display_name]->display_options[$type] : NULL;
 
   // Does default exist?
   if (!$view_area && isset($view->display['default']->display_options[$type])) {
     $view_area_default = $view->display['default']->display_options[$type];
   }
-  $is_default = $view->display[$display_name]->handler->options['defaults'][$type];
+
+  if ($type =='metatags') {
+    if (!module_exists('metatag_views')) {
+      return t('The <em>Metatag UI</em> and <em>Metatag Views</em> modules must be enabled in order to edit meta tags here.');
+    }
+    $is_default = !empty($view->display[$display_name]->handler->options[$type]);
+    $view_area = NULL;
+  }
+  else {
+    $is_default = !empty($view->display[$display_name]->handler->options['defaults'][$type]);
+  }
 
   // If empty config item and empty default, auto-create add form.
   if (in_array($type, $config_item) && empty($view_area) && (empty($view_area_default) || !$is_default)) {
@@ -419,7 +433,9 @@ function _views_ui_basic_define_menu(&$items) {
   // Determine tabs
   $fields = _views_ui_basic_fields();
   foreach (variable_get('views_ui_basic_fields', array()) as $field) {
-    $tabs[$field] = $fields[$field];
+    if (isset($fields[$field])) {
+      $tabs[$field] = $fields[$field];
+    }
   }
 
   if (!isset($tabs)) {
@@ -454,6 +470,12 @@ function _views_ui_basic_define_menu(&$items) {
 
     // Sub tabs
     foreach ($tabs as $field => $label) {
+      if ($field == 'metatags' && !module_exists('metatag_views')) {
+        // metatag_views has been disabled, do not display tab
+        // for metatag
+        continue;
+      }
+
       if ($field == $first_field) {
         $items["$path/views_ui_edit/$first_field"] = array(
           'title' => $label,

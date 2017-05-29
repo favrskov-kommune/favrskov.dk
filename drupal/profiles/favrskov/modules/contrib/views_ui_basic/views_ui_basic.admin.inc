@@ -8,7 +8,7 @@
  * Admin form
  */
 function views_ui_basic_admin_form() {
-  $form["#prefix"] = '<p>' . t('Use this form to define which Views may be editable by users with the "' . l('edit views basic settings', 'admin/people/permissions').'" permission.') . '</p><p>' . t('Please note that the  "override" button will be hidden, so if your view uses multiple displays, you will probably want to modify the header/footer/empty text/title/etc fields to be "overriden," otherwise it will update the default display when the user goes in and modifies them.') . '</p>';
+  $form["#prefix"] = t('Use this form to define which Views may be editable by users with the !permission permission.<br /><strong>Please note that the edits made using this module will automatically override default display settings.</strong>', array('!permission' => l(t('edit views basic settings'), 'admin/people/permissions', array('fragment' => 'module-views_ui_basic'))));
 
   $form['fsfields'] = array(
     '#type'  => 'fieldset',
@@ -84,7 +84,10 @@ function views_ui_basic_admin_form_submit($form, &$form_state) {
 
   variable_set('views_ui_basic', $save);
 
-  menu_rebuild(); // Rebuild our hook_menu() tabs
+  // Rebuild our menu tabs.
+  variable_set('menu_rebuild_needed', TRUE);
+  // Empty path cache so paths are loaded in overlay if needed.
+  cache_clear_all('views_ui_basic_paths', 'cache');
 
   drupal_set_message(t('Views settings have been saved.'));
 }
