@@ -220,9 +220,6 @@ function webform_submission_send_mail($node, $submission, $emails = NULL) {
       $email['subject'] = webform_format_email_subject($email['subject'], $node, $submission);
     }
 
-    // Replace tokens in subject.
-    $email['subject'] = _webform_filter_values($email['subject'], $node, $submission, $email, FALSE, TRUE);
-
     // Update the to e-mail if set in the themed headers.
     if (isset($email['headers']['To'])) {
       $email['email'] = $email['headers']['To'];
@@ -614,7 +611,7 @@ function webform_get_submissions($filters = array(), $header = NULL, $pager_coun
 
   // No need to find SIDs if it was given to us.
   if (isset($filters['sid'])) {
-    $sids = array($filters['sid']);
+    $sids = (array) $filters['sid'];
   }
   // Build the list of SIDs that need to be retrieved.
   else {
