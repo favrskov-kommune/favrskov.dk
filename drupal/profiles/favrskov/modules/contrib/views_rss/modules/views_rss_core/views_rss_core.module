@@ -60,7 +60,8 @@ function views_rss_core_views_rss_channel_elements() {
     'help' => 'http://www.rssboard.org/rss-profile#namespace-elements-atom-link',
   );
   $elements['language'] = array(
-    'description' => t('The language the channel is written in. This allows aggregators to group all Italian language sites, for example, on a single page. See list of <a href="@w3c_url">allowable values</a> for this element defined by the W3C.', array(
+    'preprocess functions' => array('views_rss_core_preprocess_channel_language'),
+    'description' => t("The language the channel is written in. This allows aggregators to group all Italian language sites, for example, on a single page. See list of <a href='@w3c_url'>allowable values</a> for this element defined by the W3C. If left empty, it will use current site's language.", array(
       '@w3c_url' => url('http://www.w3.org/TR/REC-html40/struct/dirlang.html', array('fragment' => 'langcodes')),
     )),
     'help' => 'http://www.rssboard.org/rss-profile#element-channel-language',
