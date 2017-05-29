@@ -43,11 +43,11 @@ function views_load_more_views_ajax_data_alter(&$commands, $view) {
       return;
     }
     foreach ($commands as $key => $command) {
-      // remove "viewsScrollTop" command, as this behavior is unnecessary.
+      // Remove "viewsScrollTop" command, as this behavior is unnecessary.
       if ($command['command'] == 'viewsScrollTop') {
         unset($commands[$key]);
       }
-      // the replace should the only one, but just in case, we'll make sure.
+      // The replace should the only one, but just in case, we'll make sure.
       if ($command['command'] == 'insert' && $command['selector'] == '.view-dom-id-' . $view->dom_id) {
         if ($view->style_plugin->plugin_name == 'list' && in_array($view->style_plugin->options['type'], array('ul', 'ol'))) {
           if (empty($view->style_plugin->options['wrapper_class'])) {
@@ -75,11 +75,17 @@ function views_load_more_views_ajax_data_alter(&$commands, $view) {
           'content' => $view->query->pager->options['advance']['content_class'],
           'pager_selector' => $view->query->pager->options['advance']['pager_selector'],
         );
+        // Trim html to avoid whitespaces.
+        $commands[$key]['data'] = trim($commands[$key]['data']);
       }
     }
   }
 }
 
+/**
+ * Theme function for the view_load_more_pager theme hook.  Based loosely on
+ * theme_pager, outputs markup needed for the Load More pager.
+ */
 function theme_views_load_more_pager($vars) {
   global $pager_page_array, $pager_total;
 
@@ -132,5 +138,46 @@ function views_load_more_views_pre_render(&$view) {
     return;
   }
 
-  drupal_add_js(drupal_get_path('module', 'views_load_more') . '/views_load_more.js');
+  if (isset($view->query->pager->plugin_name) && $view->query->pager->plugin_name == 'load_more') {
+    drupal_add_js(drupal_get_path('module', 'views_load_more') . '/views_load_more.js');
+  }
+}
+
+/**
+ * Implements hook_features_pipe_COMPONENT_alter().
+ *
+ * @param array $pipe
+ *  Further processors to call.
+ * @param $data
+ *  An array of machine names for the component being exported.
+ * @param $export
+ *  An array of components being exported.
+ *
+ * @see hook_features_pipe_COMPONENT_alter()
+ */
+function views_load_more_features_pipe_views_view_alter(&$pipe, $data, &$export) {
+  // Each 'views_view' component in this feature will pass us its machine name.
+  foreach ($data as &$machine_name) {
+    // Try to load the view so we can see what components its using.
+    // If the "Load More" is in use, add this module as a dependency.
+    if ($view = views_get_view($machine_name)) {
+      // It isn't possible to know which display is using this pager,
+      // since the view isn't being executed,
+      // so we'll need to check them all.
+      foreach ($view->display as &$display) {
+        if (!empty($display->display_options['pager']['type'])
+          && $display->display_options['pager']['type'] == 'load_more') {
+          // Although we COULD replace the "views" dependency with our own,
+          // this is a really bad practice, because we will not always know
+          // if another module/component has a similiar intent.
+          // Changing that information could cause unintended errors.
+          $export['dependencies'][] = 'views_load_more';
+          // Check if waypoints is in use as well.
+          if (!empty($display->display_options['pager']['options']['waypoint']['infinite'])) {
+            $export['dependencies'][] = 'waypoints';
+          }
+        }
+      }
+    }
+  }
 }
