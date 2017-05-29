@@ -3011,6 +3011,9 @@ function _webform_filter_values($string, $node = NULL, $submission = NULL, $emai
 
     // Submission edit URL.
     $replacements['unsafe']['%submission_url'] = url('node/' . $node->nid . '/submission/' . $submission->sid, array('absolute' => TRUE));
+
+    // Response view URL. Special for Roskilde Kommune.
+    $replacements['unsafe']['%response_url'] = url('node/' . $node->nid . '/response/' . $submission->sid, array('absolute' => TRUE));
   }
 
   // Token for the entire form tree for e-mails.
@@ -3264,6 +3267,7 @@ function theme_webform_token_help($variables) {
         '%email_values' => t('All included components in a hierarchical structure.'),
         '%email[' . t('key') . '] ' => t('A formatted value and field label. Elements may be accessed such as <em>%email[fieldset_a][key_b]</em>. Do not include quotes.'),
         '%submission_url' => t('The URL for viewing the completed submission.'),
+        '%response_url' => t('The URL for viewing the Hearing Response.'),
       ),
     );
 
