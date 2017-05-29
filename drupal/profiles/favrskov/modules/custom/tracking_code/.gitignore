@@ -31,3 +31,19 @@ xmlrpc.php
 /scripts
 /themes
 
+#IDE
+atlassian-ide-plugin.xml
+.idea
+
+# OS generated files #
+######################
+*~
+.DS_Store*
+.project
+.settings
+ehthumbs.db
+Icon?
+Thumbs.db
+.svn
+.directory
+logs/*
