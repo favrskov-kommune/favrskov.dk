@@ -220,6 +220,9 @@ function webform_submission_send_mail($node, $submission, $emails = NULL) {
       $email['subject'] = webform_format_email_subject($email['subject'], $node, $submission);
     }
 
+    // Replace tokens in subject.
+    $email['subject'] = _webform_filter_values($email['subject'], $node, $submission, $email, FALSE, TRUE);
+
     // Update the to e-mail if set in the themed headers.
     if (isset($email['headers']['To'])) {
       $email['email'] = $email['headers']['To'];
