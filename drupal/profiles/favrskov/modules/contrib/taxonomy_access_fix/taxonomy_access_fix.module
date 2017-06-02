@@ -67,13 +67,18 @@ function taxonomy_access_fix_form_taxonomy_overview_terms_alter(&$form, &$form_s
     return;
   }
 
+  // Wrong part of the form (ie. reset): bail out.
+  if (!isset($form['#vocabulary'])) {
+    return;
+  }
+
   $vocabulary = $form['#vocabulary'];
   $can_edit = user_access('edit terms in ' . $vocabulary->vid);
 
   // Remove edit links.
   if (!$can_edit) {
     foreach (element_children($form) as $item) {
-      if (isset($item['#term'])) {
+      if (isset($form[$item]['#term'])) {
         $form[$item]['edit']['#access'] = FALSE;
       }
     }

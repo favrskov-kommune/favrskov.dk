@@ -5,6 +5,16 @@
  */
 
 /**
+ * Implements hook_schema().
+ */
+function piwik_stats_schema() {
+  $table = drupal_get_schema_unprocessed('system', 'cache');
+  $table['description'] = 'Cache table for Piwik stats module to store XML data from Piwik.';
+  $schema['cache_piwik_stats'] = $table;
+  return $schema;
+}
+
+/**
  * Implements hook_field_schema().
  *
  * This defines the database schema of the piwik statistical field.
@@ -109,5 +119,16 @@ function piwik_stats_update_7101() {
     $field['settings']['show_in_statistics_page'] = TRUE;
     // Update the field config.
     field_update_field($field);
+  }
+}
+
+/**
+ * Create piwik cache stats table.
+ */
+function piwik_stats_update_7102() {
+  if (!db_table_exists('cache_piwik_stats')) {
+    $table = drupal_get_schema_unprocessed('system', 'cache');
+    $table['description'] = 'Cache table for Piwik stats module to store XML data from Piwik.';
+    db_create_table('cache_piwik_stats', $table);
   }
 }

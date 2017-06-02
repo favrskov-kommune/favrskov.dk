@@ -214,6 +214,14 @@ function domain_configure_form($form, &$form_state, $user_submitted = FALSE) {
     '#options' => array(t('No'), t('Yes')),
     '#description' => t('Present the domain form options in a vertical tab.')
   );
+  $form['domain_collapse_options'] = array(
+    '#type' => 'radios',
+    '#title' => t('Collapse domain form options'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('domain_collapse_options', 0),
+    '#options' => array(t('No'), t('Yes')),
+    '#description' => t('When not displayed in a vertical tab, collapse the domain form options fieldset.')
+  );
   $form['domain_select_format'] = array(
     '#type' => 'select',
     '#title' => t('Domain selection format'),
@@ -552,7 +560,7 @@ function domain_form_validate($form, &$form_state) {
 function domain_form_submit($form, &$form_state) {
   $values = domain_values_from_form_state($form_state);
   // Set the proper message.
-  if (!empty($values['domain_id']) || $values['domain_id'] == 0) {
+  if (!empty($values['domain_id'])) {
     $message = t('Domain record updated.');
   }
   else {
@@ -724,7 +732,7 @@ function domain_batch_list($batch) {
   $rows = array();
   foreach ($batch as $key => $value) {
     if (!isset($value['#module'])) {
-      $value['#module'] = t('Other');
+      $batch[$key]['#module'] = t('Other');
     }
   }
   uasort($batch, 'domain_batch_sort');
@@ -838,8 +846,7 @@ function domain_batch_form($form, &$form_state, $action, $batch, $domains) {
         $default[$domain['domain_id']] = $batch['#system_default'];
       }
       // Check for domain-specific settings.
-      $result = db_query("SELECT settings FROM {domain_conf} WHERE domain_id = :domain_id", array(':domain_id' => $domain['domain_id']))->fetchField();
-      $settings = domain_unserialize($result);
+      $settings = domain_conf_data_get($domain['domain_id']);
       if (isset($settings[$action])) {
         $default[$domain['domain_id']] = $settings[$action];
       }

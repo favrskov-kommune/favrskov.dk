@@ -1,5 +1,5 @@
 diff --git a/includes/webform.submissions.inc b/includes/webform.submissions.inc
-index 433914a..269242e 100644
+index 84121ef..66d31b5 100644
 --- a/includes/webform.submissions.inc
 +++ b/includes/webform.submissions.inc
 @@ -220,6 +220,9 @@ function webform_submission_send_mail($node, $submission, $emails = NULL) {

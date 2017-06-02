@@ -251,111 +251,63 @@ function domain_content_process_nodes($form, &$form_state) {
   if ($form_state['values']['operation'] != 'domain') {
     return;
   }
-  $nids = array_filter($form_state['values']['nodes']);
-  $options = domain_content_get_form_option_values($form_state);
-  domain_content_update_nodes($nids, $options);
-}
-
-function domain_content_get_form_option_values($form_state) {
   $options = array();
   $options['domain_site'] = FALSE;
   if ($form_state['values']['domain_site']) {
     $options['domain_site'] = TRUE;
   }
   $options['domain_id'] = array_filter($form_state['values']['domains']);
-  $nids = (isset($form_state['selection'])) ? $form_state['selection'] : $form_state['values']['nodes'];
-  $nids = array_filter($nids);
+  $nids = array_filter($form_state['values']['nodes']);
   $options['behavior'] = $form_state['values']['behavior'];
   domain_content_update_nodes($nids, $options);
-
-  return $options;
 }
 
- /**
-  * Abstraction function that lets us update access rules.
-  */
- function domain_content_update_nodes($nids, $options) {
-  foreach ($nids as $nid) {
-    // Other modules need to respond, we have to load the full node.
-    $node = node_load($nid);
-    domain_content_update_node($node, $options);
-  }
-  // Clear the cache.
-  cache_clear_all();
-}
-
-function domain_content_update_node($node, $options) {
+/**
+ * Abstraction function that lets us update access rules.
+ */
+function domain_content_update_nodes($nids, $options) {
   // If our operation is run, then we have to manually change the
   // {node_access} table.  The rest of the process will clear the cache,
   // so this should be a safe operation.
   $domain_site = $options['domain_site'];
-  $domains = $options['domain_id'];
   $behavior = $options['behavior'];
-
-  // Make sure the node is valid.
-  if ($node->nid > 0) {
-    // If modifying values, do so here.
-    if (!empty($behavior)) {
-      $current = domain_get_node_domains($node->nid);
-      // Add values to the current set.
-      if ($behavior == 1) {
-        if (!empty($current['domain_site'])) {
-          $domain_site = TRUE;
+  foreach ($nids as $nid) {
+    $domains = $options['domain_id'];
+    // Other modules need to respond, we have to load the full node.
+    $node = node_load($nid);
+    // Make sure the node is valid.
+    if ($node->nid > 0) {
+      // If modifying values, do so here.
+      if (!empty($behavior)) {
+        $current = domain_get_node_domains($node->nid);
+        // Add values to the current set.
+        if ($behavior == 1) {
+          if (!empty($current['domain_site'])) {
+            $domain_site = TRUE;
+          }
+          $domains += $current['domain_id'];
         }
-        $domains += $current['domain_id'];
-      }
-      // Remove values from the current set.
-      else {
-        foreach ($domains as $domain_id) {
-          if (isset($current['domain_id'][$domain_id])) {
-            unset($current['domain_id'][$domain_id]);
+        // Remove values from the current set.
+        else {
+          foreach ($domains as $domain_id) {
+            if (isset($current['domain_id'][$domain_id])) {
+              unset($current['domain_id'][$domain_id]);
+            }
+          }
+          $domains = $current['domain_id'];
+          // If all affiliates is selected, remove it.
+          if ($domain_site) {
+            $domain_site = FALSE;
           }
         }
-        $domains = $current['domain_id'];
-        // If all affiliates is selected, remove it.
-        if ($domain_site) {
-          $domain_site = FALSE;
-        }
       }
+      // Use our new options, as set above.
+      $node->domain_site = $domain_site;
+      $node->domains = $domains;
+      // Delete our grants and rebuild.
+      node_access_acquire_grants($node);
     }
-    // Use our new options, as set above.
-    $node->domain_site = $domain_site;
-    $node->domains = $domains;
-    // Delete our grants and rebuild.
-    node_access_acquire_grants($node);
   }
   // Clear the cache.
   cache_clear_all();
-}
-
-/**
- * Implements hook_action_info().
- */
-function domain_content_action_info() {
-  $actions = array();
-  $actions['domain_content_change_affiliate_publishing_options_action'] = array(
-    'type' => 'node',
-    'label' => t('Change affiliate publishing options'),
-    'configurable' => TRUE,
-  );
-
-  return $actions;
-}
-
-function domain_content_change_affiliate_publishing_options_action_form($context) {
-  $form = array();
-  domain_content_add_form_widget($form);
-
-  return $form;
-}
-
-function domain_content_change_affiliate_publishing_options_action_submit($form, $form_state) {
-  return array(
-    'options' => domain_content_get_form_option_values($form_state),
-  );
-}
-
-function domain_content_change_affiliate_publishing_options_action(&$node, $context) {
-  $options = $context['options'];
-  domain_content_update_node($node, $options);
 }

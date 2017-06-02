@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Media Browser Plus - enhanced file management functions.
@@ -34,7 +35,7 @@ function media_browser_plus_menu() {
     'description' => 'Change the behaviour and layout of the media browser plus UI',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('media_browser_plus_media_settings'),
-    'access arguments' => array('administer files'),
+    'access arguments' => array('administer media browser'),
     'file path' => $path . '/includes',
     'file' => 'media_browser_plus.admin.inc',
   );
@@ -255,7 +256,6 @@ function media_browser_plus_download_multiple_files($files) {
     }
 
     // Register cleanup function. The created archive has to be removed again.
-    $cleanup_context = &drupal_static('media_browser_plus_download_action', $archiver_context['destination']);
     drupal_register_shutdown_function('media_browser_plus_download_action_cleanup');
   }
   elseif (count($files) == 1) {
@@ -458,7 +458,17 @@ function media_browser_plus_construct_dir_path($term = NULL) {
  * @return bool
  *   TRUE on success.
  */
-function media_browser_plus_move_file($tid, $file, $replace = FILE_EXISTS_RENAME, $save = TRUE) {
+function media_browser_plus_move_file($tid, $file, $replace = NULL, $save = TRUE) {
+
+  // See which file replace handling has to be used.
+  if (is_null($replace)) {
+    $replace = FILE_EXISTS_RENAME;
+    // See if the file entity provides the file_replace property to indicate how
+    // this has to be handled.
+    if (isset($file->file_replace) && in_array($file->file_replace, array(FILE_EXISTS_REPLACE, FILE_EXISTS_RENAME, FILE_EXISTS_ERROR))) {
+      $replace = $file->file_replace;
+    }
+  }
 
   // Ensure the new location is stored in the file entity.
   $file->field_folder[LANGUAGE_NONE] = array(array('tid' => $tid));
@@ -539,7 +549,7 @@ function media_browser_plus_taxonomy_term_presave($term) {
       }
       // A subfolder term is always child of the root folder. Condition ensures
       // we don't interfere while installing the module.
-      if ($root_folder && (!isset($parent) || (empty($parent) && $term->tid != $root_folder->tid))) {
+      if ($root_folder && (empty($term->tid) || $term->tid != $root_folder->tid) && empty($parent)) {
         $term->parent = array($root_folder->tid);
       }
       // Actions if this is an existing term.
@@ -822,7 +832,7 @@ function media_browser_plus_form_file_entity_add_upload_multiple_submit(&$form, 
   // Iterate over all saved files and add the folder setting.
   if (isset($form_state['values']['field_folder'])) {
     $folder = $form_state['values']['field_folder'];
-    foreach ($form_state['files'] as $fid => $file) {
+    foreach ($form_state['files'] as $file) {
       // Only set folder if not set or different to what will be set.
       if (empty($file->field_folder[LANGUAGE_NONE][0]['tid']) || $file->field_folder[LANGUAGE_NONE][0]['tid'] != $folder) {
         $file->field_folder[LANGUAGE_NONE][0]['tid'] = $folder;
@@ -853,9 +863,10 @@ function media_browser_plus_form_file_entity_add_upload_alter(&$form, &$form_sta
         'vocabulary' => 'media_folders',
         'parent' => 0,
       );
+      $field_folder_info = field_info_field('field_folder');
       $form['field_folder'][LANGUAGE_NONE] = array(
         '#type' => 'select',
-        '#title' => t('Folder'),
+        '#title' => $field_folder_info['label'],
         '#description' => t('Defines the folder where the uploaded files will be saved'),
         '#options' => taxonomy_allowed_values($field),
       );
@@ -864,6 +875,14 @@ function media_browser_plus_form_file_entity_add_upload_alter(&$form, &$form_sta
     // Nothing to do for now.
     case 2:
     case 3:
+      break;
+
+    // Set media folder default value.
+    case 4:
+      if (!empty($form_state['storage']['field_folder'][LANGUAGE_NONE]) && isset($form['field_folder'])) {
+        $form['field_folder'][LANGUAGE_NONE]['#default_value'] = $form_state['storage']['field_folder'][LANGUAGE_NONE];
+      }
+      break;
   }
 }
 

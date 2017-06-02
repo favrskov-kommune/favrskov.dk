@@ -43,11 +43,11 @@
 }
 
 .view .mbp-folders li.active > div.folder-name {
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
 }
 
 .view .mbp-folders li div.folder-name.drag-hover {
-  background-color: #CCCCCC;
+  background-color: #cccccc;
 }
 
 .view .mbp-folders li ol {
@@ -79,7 +79,7 @@ div.view-media-browser-plus .media-list-thumbnails .form-type-checkbox {
   list-style: none;
   margin: 0 10px 10px 0;
 }
-.mbp-file-basket-list .form-type-checkbox{
+.mbp-file-basket-list .form-type-checkbox {
   bottom: 0px;
   left: 0px;
   margin: 0px;

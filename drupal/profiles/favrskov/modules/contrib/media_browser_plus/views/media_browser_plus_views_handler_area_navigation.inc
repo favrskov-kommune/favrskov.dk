@@ -18,6 +18,7 @@ class media_browser_plus_views_handler_area_navigation extends views_handler_are
    * Initialize the handler.
    *
    * This is kind of hackish, how is this done properly?
+   *
    * @todo Review / refactor to meet the proper views coding style.
    */
   public function init(&$view, &$options) {
@@ -52,28 +53,40 @@ class media_browser_plus_views_handler_area_navigation extends views_handler_are
    * Add folder filter to the query.
    */
   public function query() {
+    $root_folder = media_browser_plus_get_media_root_folder();
     if (!empty($this->view->exposed_data['mbp_current_folder'])) {
       $this->value = (int) $this->view->exposed_data['mbp_current_folder'];
       user_cookie_save(array('mbp.current_folder' => $this->value));
     }
-    elseif (empty($_COOKIE['Drupal_visitor_mbp_current_folder']) && (int) $_COOKIE['Drupal_visitor_mbp_current_folder'] > 0) {
+    elseif (!empty($_COOKIE['Drupal_visitor_mbp_current_folder']) && (int) $_COOKIE['Drupal_visitor_mbp_current_folder'] > 0) {
       $this->value = (int) $_COOKIE['Drupal_visitor_mbp_current_folder'];
     }
     else {
-      $root_folder = media_browser_plus_get_media_root_folder();
       $this->value = $root_folder->tid;
     }
     $this->ensure_my_table();
+    $where_group = 1;
+
+    // Ensure folders is always an array.
     $folders = array($this->value);
+    // If including subfolders is enabled fetch all child terms of the current
+    // folder.
     if (isset($this->view->exposed_data['mbp_current_folder_include_subfolders']) && $this->view->exposed_data['mbp_current_folder_include_subfolders'] !== 0) {
       $taxonomy_tree = taxonomy_get_tree(taxonomy_vocabulary_machine_name_load('media_folders')->vid, $this->value);
       if (is_array($taxonomy_tree)) {
         foreach ($taxonomy_tree as $term) {
-          $folders[] = $term->tid;
+          $folders[] = (int) $term->tid;
         }
       }
     }
-    $this->query->add_where(1, "$this->table_alias.$this->real_field", $folders, 'IN');
+
+    // If this is the root folder also show files without a folder.
+    if ($this->value == $root_folder->tid) {
+      // Add new where group to use OR condition.
+      $where_group = $this->query->set_where_group('OR');
+      $this->query->add_where($where_group, "$this->table_alias.$this->real_field", $this->value, 'IS NULL');
+    }
+    $this->query->add_where($where_group, "$this->table_alias.$this->real_field", $folders, 'IN');
   }
 
   /**
@@ -141,4 +154,5 @@ class media_browser_plus_views_handler_area_navigation extends views_handler_are
       '#default_value' => 0,
     );
   }
+
 }

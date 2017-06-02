@@ -6,9 +6,9 @@ core = 7.x
 
 ; Include views handlers
 files[] = includes/views/handlers/views_ifempty_handler_field.inc
-; Information added by drupal.org packaging script on 2013-10-19
-version = "7.x-1.x-dev"
+; Information added by Drupal.org packaging script on 2015-04-26
+version = "7.x-1.0"
 core = "7.x"
 project = "views_ifempty"
-datestamp = "1382164860"
+datestamp = "1430079182"
 

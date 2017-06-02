@@ -56,7 +56,7 @@ class media_browser_plus_views_handler_area_basket extends views_handler_area {
         $file_entities = file_load_multiple(array_keys($files['file']));
         foreach ($file_entities as $file) {
           $preview = media_get_thumbnail_preview($file);
-          $selected_files .= '<li id="media-item-'  . $file->fid . '">' . render($preview) . '</li>';
+          $selected_files .= '<li id="media-item-' . $file->fid . '">' . render($preview) . '</li>';
         }
       }
     }
@@ -74,11 +74,11 @@ class media_browser_plus_views_handler_area_basket extends views_handler_area {
 
     // Add javascript.
     drupal_add_js(array(
-        'mbp' => array(
-          'views' => array(
-            $this->view->name . ':' . $this->view->current_display => array('media_basket' => TRUE),
-          ),
-        )),
+      'mbp' => array(
+        'views' => array(
+          $this->view->name . ':' . $this->view->current_display => array('media_basket' => TRUE),
+        ),
+      )),
       'setting'
     );
     drupal_add_library('media_browser_plus', 'media_browser_plus.area_actions');
@@ -125,4 +125,5 @@ class media_browser_plus_views_handler_area_basket extends views_handler_area {
       ),
     );
   }
+
 }

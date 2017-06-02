@@ -92,6 +92,8 @@ function domain_bootstrap() {
  */
 function _domain_bootstrap($phase) {
   global $_domain;
+  global $install_state;
+
   switch ($phase) {
     case DOMAIN_BOOTSTRAP_INIT:
       // Make sure database is loaded.
@@ -102,15 +104,22 @@ function _domain_bootstrap($phase) {
       // See http://drupal.org/node/1342740 for the latest background.
       $new_phase = FALSE;
       // If running from drush or update.php, we act differently.
-      if (function_exists('drush_verify_cli') || function_exists('update_prepare_d7_bootstrap')) {
+      // Prevent $new_phase = TRUE when running drush site-install by checking
+      // the $install_state global.
+      if ((function_exists('drush_verify_cli') || function_exists('update_prepare_d7_bootstrap')) && empty($install_state)) {
         $new_phase = TRUE;
       }
       drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE, $new_phase);
 
-      // If the Domain Access module has been disabled, stop loading.
-      $table = domain_get_primary_table('system');
-      $check = (bool) db_query("SELECT status FROM $table WHERE name = 'domain' AND type = 'module'")->fetchField();
-      if (empty($check)) {
+      // If the Domain Access module has been disabled, or if we're unable to interact with the database, stop loading.
+      if (function_exists('db_query')) {
+        $table = domain_get_primary_table('system');
+        $check = (bool) db_query("SELECT status FROM $table WHERE name = 'domain' AND type = 'module'")->fetchField();
+        if (empty($check)) {
+          return NULL;
+        }
+      }
+      else {
         return NULL;
       }
 
@@ -294,7 +303,6 @@ function domain_settings_initialize() {
   if (isset($base_url)) {
     // Parse fixed base URL from settings.php.
     $parts = parse_url($base_url);
-    $http_protocol = $parts['scheme'];
     if (!isset($parts['path'])) {
       $parts['path'] = '';
     }
@@ -319,8 +327,6 @@ function domain_settings_initialize() {
       $base_path = '/';
     }
   }
-  $base_secure_url = str_replace('http://', 'https://', $base_url);
-  $base_insecure_url = str_replace('https://', 'http://', $base_url);
 
   if ($cookie_domain) {
     // If the user specifies the cookie domain, also use it for session name.
