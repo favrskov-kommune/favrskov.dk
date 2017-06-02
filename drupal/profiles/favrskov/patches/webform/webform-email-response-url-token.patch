@@ -1,8 +1,8 @@
 diff --git a/webform.module b/webform.module
-index d806684..40d3076 100644
+index d09a59f..84b9c40 100644
 --- a/webform.module
 +++ b/webform.module
-@@ -2974,6 +2974,9 @@ function _webform_filter_values($string, $node = NULL, $submission = NULL, $emai
+@@ -3011,6 +3011,9 @@ function _webform_filter_values($string, $node = NULL, $submission = NULL, $emai
  
      // Submission edit URL.
      $replacements['unsafe']['%submission_url'] = url('node/' . $node->nid . '/submission/' . $submission->sid, array('absolute' => TRUE));
@@ -12,7 +12,7 @@ index d806684..40d3076 100644
    }
  
    // Token for the entire form tree for e-mails.
-@@ -3227,6 +3230,7 @@ function theme_webform_token_help($variables) {
+@@ -3264,6 +3267,7 @@ function theme_webform_token_help($variables) {
          '%email_values' => t('All included components in a hierarchical structure.'),
          '%email[' . t('key') . '] ' => t('A formatted value and field label. Elements may be accessed such as <em>%email[fieldset_a][key_b]</em>. Do not include quotes.'),
          '%submission_url' => t('The URL for viewing the completed submission.'),
