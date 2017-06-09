@@ -8,13 +8,13 @@ dependencies[] = media_browser_plus
 
 files[] = media_browser_plus.base.test
 files[] = media_browser_plus.test
+files[] = media_browser_plus.mbp_bypass.test
 files[] = media_browser_plus.root_folder.test
 
 
-
-; Information added by drush on 2015-02-25
-version = "7.x-3.0-beta3+18-dev"
+; Information added by Drupal.org packaging script on 2016-08-18
+version = "7.x-3.0-beta4"
 core = "7.x"
 project = "media_browser_plus"
-datestamp = "1424888396"
+datestamp = "1471499341"
 

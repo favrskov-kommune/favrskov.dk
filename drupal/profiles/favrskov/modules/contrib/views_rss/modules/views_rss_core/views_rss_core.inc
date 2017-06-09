@@ -46,6 +46,16 @@ function views_rss_core_preprocess_channel_atom_link(&$variables) {
 }
 
 /**
+ * Preprocess function for channel <language> element.
+ */
+function views_rss_core_preprocess_channel_language(&$variables) {
+  global $language;
+  if (empty($variables['elements'][0]['value'])) {
+    $variables['elements'][0]['value'] = $language->language;
+  }
+}
+
+/**
  * Preprocess function for channel <category> element.
  */
 function views_rss_core_preprocess_channel_category(&$variables) {
@@ -110,7 +120,7 @@ function views_rss_core_preprocess_channel_date(&$variables) {
   if (count($variables['view']->result) > 0) {
     $max_date = 0;
     foreach ($variables['view']->result as $row) {
-      $key = strtolower($variables['elements'][0]['key']);
+      $key = $variables['elements'][0]['key'];
       if (isset($row->$key) && $row->$key > $max_date) {
         $max_date = $row->$key;
       }

@@ -13,7 +13,8 @@
  */
 function tracking_code_admin_overview() {
   drupal_add_css(drupal_get_path('module', 'tracking_code') . '/css/tracking_code.css');
-  drupal_add_js(drupal_get_path('module', 'tracking_code') . '/js/tracking_code.js');
+  //make sure we have the ajax library
+  drupal_add_library('system', 'drupal.ajax');
   $output = drupal_get_form('tracking_code_overview_form');
 
   return $output;
@@ -55,11 +56,13 @@ function theme_tracking_code_overview_table($variables) {
     foreach ($snippets as $id => $snippet) {
       $actions = array();
       $enabled = ($snippet->status) ? t('Disable') : t('Enable');
+      $query = array(
+          'token' => drupal_get_token('disable_tc_snippet' . $snippet->tcid),
+        ) + drupal_get_destination();
       $actions = array(
-        l($enabled, 'admin/structure/tracking_code/', array(
-          'attributes' => array('class' => 'tracking-code-disable-link', 'rel' => $snippet->tcid),
-          'html' => TRUE,
-          'fragment' => '',
+        l($enabled, 'admin/structure/tracking_code/disable/nojs/' . $snippet->tcid , array(
+          'attributes' => array('class' => array('tracking-code-toggle-link','use-ajax')),
+          'query' => $query,
         )),
         l(t('Configure'), 'admin/structure/tracking_code/' . $snippet->tcid . '/edit'),
         l(t('Delete'), 'admin/structure/tracking_code/' . $snippet->tcid . '/delete'),
@@ -80,6 +83,7 @@ function theme_tracking_code_overview_table($variables) {
         ),
         // Make all rows draggable.
         'class' => ($snippet->status) ? array('draggable') : array('draggable tracking-code-disabled'),
+        'id' => 'tcid-'. $snippet->tcid,
       );
     }
 
@@ -328,28 +332,48 @@ function tracking_code_delete_form($form, &$form_state, $delta) {
 /**
  * Page callback for AJAX enable/disable request on a codeblock.
  *
- * @param (int) $delta
+ * @param (string) $ajax
+ *   a string containing 'ajax' or 'nojs' to show origin of callback
+ * @param (int) $tcid
  *   the primary key of the tracking code to enable/disable
  *
  * @return string
  *   a JSON object containing the status and label replacement
  */
-function tracking_code_ajax_disable($delta) {
-  $snippet = _tracking_code_read($delta);
+function tracking_code_ajax_disable($ajax, $tcid) {
+  //Check for a proper token
+  if (empty($_GET['token']) || !drupal_valid_token($_GET['token'], 'disable_tc_snippet' . $tcid)) {
+    return MENU_ACCESS_DENIED;
+  }
+  $snippet = _tracking_code_read($tcid);
   $status = ($snippet['status']) ? 0 : 1;
-
+  $is_ajax = $ajax == 'ajax';
   db_update('tracking_code')
     ->fields(array('status' => $status))
-    ->condition('tcid', $delta, '=')
+    ->condition('tcid', $tcid, '=')
     ->execute();
 
-  $response = array(
-    'status' => $status,
-    'label' => ($status ? t('Disable') : t('Enable')),
-  );
-
-  print drupal_json_encode($response);
-  exit();
+  if ($is_ajax) {
+    $commands = array();
+    $enabled = ($status) ? t('Disable') : t('Enable');
+    //build the proper ajax commands
+    $commands[] = ajax_command_invoke('#tcid-' . $tcid . ' a.tracking-code-toggle-link', 'html', array($enabled));
+    if ($status) {
+      $commands[] = ajax_command_invoke('#tcid-' . $tcid, 'removeClass', array('tracking-code-disabled'));
+    }
+    else {
+      $commands[] = ajax_command_invoke('#tcid-' . $tcid, 'addClass', array('tracking-code-disabled'));
+    }
+    //return the commands
+    return array(
+      '#type' => 'ajax',
+      '#commands' => $commands,
+    );
+  }
+  else {
+    drupal_set_message(t('Disabled snippet: @name', array('@name' => $snippet['name'])));
+    drupal_goto();
+  }
 }
 
 

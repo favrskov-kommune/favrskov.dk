@@ -46,7 +46,7 @@ function domain_alias_domain_bootstrap_lookup($domain) {
   if ($alias != -1) {
     $domain['domain_id'] = $alias['domain_id'];
     $domain['active_alias_id'] = $alias['alias_id'];
-    $domain['redirect'] = (boolean) $alias['redirect'];
+    $domain['redirect'] = $alias['redirect'];
     return $domain;
   }
 }
@@ -61,9 +61,10 @@ function domain_alias_init() {
   $_domain = domain_get_domain();
   // Redirect to main domain if active domain alias is set to redirect.
   // $_domain['redirect'] gets set in domain_alias_domain_bootstrap_lookup().
-  if (isset($_domain['redirect']) && $_domain['redirect'] == TRUE) {
+  if (isset($_domain['redirect']) && !empty($_domain['redirect'])) {
     $domain = domain_lookup($_domain['domain_id']);
-    drupal_goto(domain_get_uri($domain));
+    $response_code = ($_domain['redirect'] < 300) ? 302 : $_domain['redirect'];
+    drupal_goto(domain_get_uri($domain), array(), $response_code);
   }
 }
 
@@ -288,7 +289,7 @@ function domain_alias_list($domain_id, $reset = FALSE) {
   $result = &drupal_static(__FUNCTION__ . '_result');
   // Query the db for aliases.
   if (!isset($result) || $reset) {
-    $result = db_query("SELECT domain_id, alias_id, pattern, redirect FROM {domain_alias}", array(), array('fetch' => PDO::FETCH_ASSOC))->FetchAll();
+    $result = db_query("SELECT domain_id, alias_id, pattern, redirect FROM {domain_alias} ORDER BY domain_id, alias_id", array(), array('fetch' => PDO::FETCH_ASSOC))->FetchAll();
   }
   if (!isset($aliases[$domain_id]) || $reset) {
     $aliases[$domain_id] = array();

@@ -290,25 +290,18 @@ function domain_source_update_nodes($form, &$form_state) {
     $source = $form_state['values']['domain_source'];
     foreach ($form_state['values']['nodes'] as $key => $value) {
       if ($key == $value) {
-        domain_source_update_node($key, $source);
+        db_delete('domain_source')
+          ->condition('nid', $key)
+          ->execute();
+        db_insert('domain_source')
+          ->fields(array(
+            'nid' => $key,
+            'domain_id' => $source,
+          ))
+          ->execute();
       }
     }
   }
-}
-
-/**
- * Updates an individual node source domain
- */
-function domain_source_update_node($nid, $source) {
-  db_delete('domain_source')
-    ->condition('nid', $nid)
-    ->execute();
-  db_insert('domain_source')
-    ->fields(array(
-      'nid' => $nid,
-      'domain_id' => $source,
-    ))
-    ->execute();
 }
 
 /**
@@ -347,39 +340,6 @@ function domain_source_validate($form, &$form_state) {
       form_set_error('domain_source', t('The source affiliate must be selected as a publishing option.'));
     }
   }
-}
-
-/**
- * Implements hook_action_info().
- */
-function domain_source_action_info() {
-  $actions = array();
-  $actions['domain_source_change_source_domain_action'] = array(
-    'type' => 'node',
-    'label' => t('Change source domain'),
-    'configurable' => TRUE,
-  );
-
-  return $actions;
-}
-
-function domain_source_change_source_domain_action_form($context) {
-  $form = array();
-  $form_state = array();
-  domain_source_form_domain_content_admin_alter($form, $form_state);
-
-  return $form;
-}
-
-function domain_source_change_source_domain_action_submit($form, $form_state) {
-  return array(
-    'domain_source' => $form_state['values']['domain_source'],
-  );
-}
-
-function domain_source_change_source_domain_action(&$node, $context) {
-  $source = $context['domain_source'];
-  domain_source_update_node($node->nid, $source);
 }
 
 /**

@@ -13,8 +13,8 @@
  */
 function reference_autocomplete_access($entity_type, $bundle, $field_name, $entity = NULL, $account = NULL) {
   return user_access('access content', $account)
-      && ($field = field_info_field($field_name))
       && field_info_instance($entity_type, $field_name, $bundle)
+      && ($field = field_info_field($field_name))
       && field_access('view', $field, $entity_type, $entity, $account)
       && field_access('edit', $field, $entity_type, $entity, $account);
 }
@@ -205,4 +205,11 @@ function references_potential_references_view($entity_type, $view_name, $display
   $results = $view->execute_display($display_name, $args);
 
   return $results;
+}
+
+/**
+ * Helper function that returns label of an entity.
+ */
+function _references_get_label($entity_type, $entity) {
+  return entity_access('view', $entity_type, $entity) ? entity_label($entity_type, $entity) : t('- Restricted access -');
 }

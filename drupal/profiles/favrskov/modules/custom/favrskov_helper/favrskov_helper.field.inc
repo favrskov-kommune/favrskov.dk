@@ -53,13 +53,11 @@ function favrskov_helper_field_formatter_view($entity_type, $entity, $field, $in
     case 'favrskov_file_download_link':
       foreach ($items as $delta => $item) {
         $file = (object) $item;
-        if (file_entity_access('download', $file)) {
-          $element[$delta] = [
-            '#theme' => 'file_entity_favrskov_download_link',
-            '#file' => $file,
-            '#text' => $settings['text'],
-          ];
-        }
+        $element[$delta] = [
+          '#theme' => 'file_entity_favrskov_download_link',
+          '#file' => $file,
+          '#text' => $settings['text'],
+        ];
       }
       break;
   }

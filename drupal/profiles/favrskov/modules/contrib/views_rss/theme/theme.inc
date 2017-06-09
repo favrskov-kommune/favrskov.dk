@@ -72,6 +72,14 @@ function template_preprocess_views_view_views_rss(&$variables) {
         $value = NULL;
       }
 
+      // Avoid double encoding: the $value might be already encoded here,
+      // depending on the field configuration/processing, and because we know
+      // it will be encoded again when the whole feed array will be passed to
+      // format_xml_elements(), let's make sure we decode it here first.
+      if (is_string($value)) {
+        $value = decode_entities($value);
+      }
+
       // Start building XML channel element array compatible with format_xml_elements().
       $rss_elements = array(
         array(
@@ -139,6 +147,14 @@ function template_preprocess_views_view_views_rss(&$variables) {
     // Process each element separately.
     foreach ($item as $module => $module_item_elements) {
       foreach ($module_item_elements as $element => $value) {
+
+        // Avoid double encoding: the $value might be already encoded here,
+        // depending on the field configuration/processing, and because we know
+        // it will be encoded again when the whole feed array will be passed to
+        // format_xml_elements(), let's make sure we decode it here first.
+        if (is_string($value)) {
+          $value = decode_entities($value);
+        }
 
         // Start building XML element array compatible with format_xml_elements().
         $rss_elements = array(

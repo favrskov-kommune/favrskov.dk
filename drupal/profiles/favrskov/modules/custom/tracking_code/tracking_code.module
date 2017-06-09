@@ -12,15 +12,6 @@ define('TRACKING_CODE_VISIBILITY_NOTLISTED', 0);
 define('TRACKING_CODE_VISIBILITY_LISTED', 1);
 
 /**
- * Implements hook_code_update_alter().
- *
- * Remove tracking code module from the list.
- */
-function tracking_code_update_projects_alter(&$projects) {
-  unset($projects['tracking_code']);
-}
-
-/**
  * Implements hook_init().
  */
 function tracking_code_init() {
@@ -114,15 +105,18 @@ function tracking_code_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['admin/structure/tracking_code/%/disable'] = array(
+  $items['admin/structure/tracking_code/disable/nojs/%'] = array(
     'title' => 'Disable/Enable Tracking Code',
     'page callback' => 'tracking_code_ajax_disable',
-    'page arguments' => array(3),
+    'page arguments' => array(4,5),
     'access arguments' => array('administer tracking code'),
     'file' => 'tracking_code.admin.inc',
     'type' => MENU_CALLBACK,
   );
 
+  $items['admin/structure/tracking_code/disable/ajax/%'] = array(
+    'delivery callback' => 'ajax_deliver',
+  ) + $items['admin/structure/tracking_code/disable/nojs/%'];
   return $items;
 }
 

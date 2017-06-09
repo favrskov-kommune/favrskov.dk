@@ -7,7 +7,7 @@
  */
 
 /**
- * Implementation of hook_views_api().
+ * Implements of hook_views_api().
  */
 function apachesolr_views_views_api() {
   return array('api' => '3.0');
@@ -18,10 +18,10 @@ function apachesolr_views_views_api() {
  */
 function apachesolr_views_views_query_alter($view, $query) {
   if (get_class($query) == 'apachesolr_views_query' && isset($view->fields['snippet'])) {
-    // Add aditional parameters to get snippet.
+    // Add additional parameters to get snippet.
     // @see apachesolr_search_highlighting_params().
     $params['hl'] = variable_get('apachesolr_hl_active', NULL);
-    $params['hl.fragsize']= variable_get('apachesolr_hl_textsnippetlength', NULL);
+    $params['hl.fragsize'] = variable_get('apachesolr_hl_textsnippetlength', NULL);
     $params['hl.simple.pre'] = variable_get('apachesolr_hl_pretag', NULL);
     $params['hl.simple.post'] = variable_get('apachesolr_hl_posttag', NULL);
     $params['hl.snippets'] = variable_get('apachesolr_hl_numsnippets', NULL);
