@@ -873,3 +873,10 @@ function favrskov_helper_update_7044() {
     }
   }
 }
+
+/**
+ * Revert feature content type article to remove required from image field.
+ */
+function favrskov_helper_update_7045() {
+  features_revert_module('content_type_article');
+}
