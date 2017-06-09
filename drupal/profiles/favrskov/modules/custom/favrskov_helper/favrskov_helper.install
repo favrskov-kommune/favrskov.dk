@@ -791,3 +791,10 @@ function favrskov_helper_update_7039() {
 function favrskov_helper_update_7040() {
   features_revert_module('config_media');
 }
+
+/**
+ * Revert feature content type article to remove required from image field.
+ */
+function favrskov_helper_update_7041() {
+  features_revert_module('content_type_article');
+}

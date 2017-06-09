@@ -3,6 +3,7 @@ core = 7.x
 package = Content Types
 version = 7.x-1.0
 project = content_type_article
+dependencies[] = config_url_aliases
 dependencies[] = content_reminder
 dependencies[] = content_type_faq
 dependencies[] = content_type_news
