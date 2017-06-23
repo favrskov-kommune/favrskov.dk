@@ -268,8 +268,3 @@ function favrskov_helper_media_wysiwyg_token_to_markup_alter(&$element, $tag_inf
   }
 }
 
-//function favrskov_helper_apachesolr_query_alter($query) {
-//  $query_boost = $query->getParam('bq');
-//  $query_boost[] = '(bundle: "article")^100 ';
-//  $query->replaceParam('bq', $query_boost);
-//}
