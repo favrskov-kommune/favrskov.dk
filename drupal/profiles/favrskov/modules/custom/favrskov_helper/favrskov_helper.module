@@ -235,7 +235,7 @@ function favrskov_helper_init() {
 
     $minimap = [
       '#type' => 'markup',
-      '#markup' => "<script type='text/javascript' src='https://webkort.favrskov.dk/clientapi/minimap2/$minimap_version/minimap.js' charset='windows-1252'></script>",
+      '#markup' => "<script type=\"text/javascript\" src=\"https://webkort.favrskov.dk/clientapi/minimap2/mmloader.js\" charset=\"iso-8859-1\"></script>",
     ];
     drupal_add_html_head($minimap, 'minimap');
   }
@@ -267,3 +267,9 @@ function favrskov_helper_media_wysiwyg_token_to_markup_alter(&$element, $tag_inf
     unset($element['content']['#attributes']);
   }
 }
+
+//function favrskov_helper_apachesolr_query_alter($query) {
+//  $query_boost = $query->getParam('bq');
+//  $query_boost[] = '(bundle: "article")^100 ';
+//  $query->replaceParam('bq', $query_boost);
+//}
