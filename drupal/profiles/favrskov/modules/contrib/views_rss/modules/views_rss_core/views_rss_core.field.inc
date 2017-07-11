@@ -10,15 +10,9 @@
  */
 function views_rss_core_field_formatter_info() {
   $formatters = array(
-    // Generic image formatter for <enclosure> element.
-    'enclosure_image' => array(
+    'enclosure' => array(
       'label' => t('RSS <enclosure> element'),
-      'field types' => array('image'),
-    ),
-    // Generic file formatter for <enclosure> element.
-    'enclosure_file' => array(
-      'label' => t('RSS <enclosure> element'),
-      'field types' => array('file'),
+      'field types' => array('file', 'media', 'image', 'text', 'link_field'),
     ),
   );
   return $formatters;
@@ -61,7 +55,7 @@ function views_rss_core_field_formatter_settings_summary($field, $instance, $vie
     unset($image_styles['']);
     // Styles could be lost because of enabled/disabled modules that defines
     // their styles in code.
-    if (isset($image_styles[$settings['image_style']])) {
+    if (!empty($settings['image_style']) && !empty($image_styles[$settings['image_style']])) {
       $summary[] = t('Image style: @style', array('@style' => $image_styles[$settings['image_style']]));
     }
     else {
@@ -92,7 +86,12 @@ function views_rss_core_field_formatter_view($entity_type, $entity, $field, $ins
   $element = NULL;
   foreach ($items as $delta => $item) {
     // Inside a view item may contain NULL data. In that case, just return.
-    if (empty($item['fid'])) {
+    if (
+      ($field['type'] == 'file' || $field['type'] == 'image') && empty($item['fid'])
+      || $field['type'] == 'media' && empty($item['file']->fid)
+      || $field['type'] == 'text' && empty($item['safe_value'])
+      || $field['type'] == 'link_field' && empty($item['url'])
+    ) {
       unset($items[$delta]);
       continue;
     }
@@ -102,15 +101,27 @@ function views_rss_core_field_formatter_view($entity_type, $entity, $field, $ins
       // Get file size of image preset file (if it has already been created,
       // otherwise just create it first and then get file size).
       $path = image_style_path($display['settings']['image_style'], $item['uri']);
-      $real_path = drupal_realpath($path);
-      if (file_exists($real_path) || image_style_create_derivative($image_style, $item['uri'], $path)) {
-        $item['filesize'] = filesize($real_path);
+      if (file_exists($path) || image_style_create_derivative($image_style, $item['uri'], $path)) {
+        $item['filesize'] = filesize($path);
       }
+    }
+    elseif ($field['type'] == 'media') {
+      $uri = file_create_url($item['file']->uri);
+      $item['filesize'] = $item['file']->filesize;
+      $item['filemime'] = $item['file']->filemime;
+    }
+    elseif ($field['type'] == 'text' || $field['type'] == 'link_field') {
+      $uri = ($field['type'] == 'text') ? $item['safe_value'] : $item['url'];
+      // Great idea to use get_headers() here by Dan Feidt,
+      // http://drupal.org/user/60005 Thanks Dan!
+      $headers = get_headers($uri, $format = 1);
+      $item['filesize'] = $headers['Content-Length'];
+      $item['filemime'] = $headers['Content-Type'];
     }
     else {
       $uri = file_create_url($item['uri']);
     }
-    
+
     // XML element array in format_xml_elements() format.
     $rss_element = array(
       'key' => 'enclosure',
@@ -126,7 +137,7 @@ function views_rss_core_field_formatter_view($entity_type, $entity, $field, $ins
       '#markup' => format_xml_elements(array($rss_element)),
       '#rss_element' => $rss_element,
     );
-        
+
   }
   return $element;
 }
