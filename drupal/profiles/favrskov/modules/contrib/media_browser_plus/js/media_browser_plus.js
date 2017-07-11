@@ -1,11 +1,11 @@
-/*!
+/**!
  * jQuery lightweight plugin boilerplate
  * Original author: @ajpiano
  * Further changes, comments: @addyosmani
  * Licensed under the MIT license
  * http://coding.smashingmagazine.com/2011/10/11/essential-jquery-plugin-patterns/
- */
-;(function ( $, window, document, undefined ) {
+ **/
+ ;(function ($, window, document, undefined) {
   // Create the defaults once
   var pluginName = 'mbp',
     defaults = {

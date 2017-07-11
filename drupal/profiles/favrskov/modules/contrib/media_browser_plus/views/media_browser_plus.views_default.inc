@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Provides the necessary default views for MBP.
  */
-
 
 /**
  * Implements hook_views_default_views().
@@ -117,7 +117,6 @@ function media_browser_plus_views_taxonomy_tree() {
 
   return $view;
 }
-
 
 /**
  * View to display the folders in the library.

@@ -47,7 +47,7 @@ class media_browser_plus_views_handler_area_actions extends views_handler_area {
       // 'usage' => t('Usage'),
     );
     // Check if there's a basket area, if so add basket action.
-    foreach ($this->view->display_handler->handlers as $area => $handlers) {
+    foreach ($this->view->display_handler->handlers as $handlers) {
       foreach ($handlers as $handler) {
         if ($handler instanceof media_browser_plus_views_handler_area_basket) {
           $action_options['basket'] = t('Add to Media basket');
@@ -80,11 +80,11 @@ class media_browser_plus_views_handler_area_actions extends views_handler_area {
 
     // Add javascript.
     drupal_add_js(array(
-        'mbp' => array(
-          'views' => array(
-            $this->view->name . ':' . $this->view->current_display => array('actions' => $actions),
-          ),
-        )),
+      'mbp' => array(
+        'views' => array(
+          $this->view->name . ':' . $this->view->current_display => array('actions' => $actions),
+        ),
+      )),
       'setting'
     );
     drupal_add_library('media_browser_plus', 'media_browser_plus');
@@ -150,4 +150,5 @@ class media_browser_plus_views_handler_area_actions extends views_handler_area {
     );
     return render($element);
   }
+
 }

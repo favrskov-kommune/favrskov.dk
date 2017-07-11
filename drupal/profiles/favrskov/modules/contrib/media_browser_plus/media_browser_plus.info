@@ -1,10 +1,10 @@
 name = Media Browser Plus for Media 2.x
-description = Provides enhanced UX and addtional features for Media.
+description = Provides enhanced UX and additional features for Media.
 package = "Media"
 core = 7.x
 configure = admin/config/media/media_browser_plus_settings
 
-dependencies[] = media
+dependencies[] = media (7.x-2.x)
 dependencies[] = taxonomy
 dependencies[] = views_tree
 dependencies[] = views_bulk_operations
@@ -17,10 +17,9 @@ files[] = views/media_browser_plus_views_handler_area_actions.inc
 files[] = views/media_browser_plus_views_handler_area_basket.inc
 files[] = views/media_browser_plus_views_handler_area_navigation.inc
 
-
-; Information added by drush on 2015-02-25
-version = "7.x-3.0-beta3+18-dev"
+; Information added by Drupal.org packaging script on 2016-08-18
+version = "7.x-3.0-beta4"
 core = "7.x"
 project = "media_browser_plus"
-datestamp = "1424888396"
+datestamp = "1471499341"
 
