@@ -1,6 +1,8 @@
-name = Rabbit Hole
-description = Basic functionality that is shared among the different Rabbit Hole modules.
+name = Rabbit Hole Profile2
+description = Adds Rabbit Hole functionality for profile2.
 core = 7.x
+dependencies[] = rabbit_hole
+dependencies[] = profile2_page
 
 ; Information added by Drupal.org packaging script on 2017-03-20
 version = "7.x-2.24"

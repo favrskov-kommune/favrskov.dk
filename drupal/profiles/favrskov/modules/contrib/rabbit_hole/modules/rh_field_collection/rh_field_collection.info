@@ -1,8 +1,8 @@
-name = Rabbit Hole nodes
-description = Adds Rabbit Hole functionality for nodes.
+name = Rabbit Hole field collections
+description = Adds Rabbit Hole functionality for field collections.
 core = 7.x
 dependencies[] = rabbit_hole
-dependencies[] = node
+dependencies[] = field_collection
 
 ; Information added by Drupal.org packaging script on 2017-03-20
 version = "7.x-2.24"
