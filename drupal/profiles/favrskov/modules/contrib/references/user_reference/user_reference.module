@@ -226,11 +226,16 @@ function user_reference_field_prepare_view($entity_type, $entities, $field, $ins
     // page request.
     $ids_to_check = array_diff($ids, array_keys($checked_ids));
     if (!empty($ids_to_check)) {
-      $accounts = entity_load('user', $ids_to_check);
+      $query = db_select('users', 'u')
+        ->addMetaData('id', 'user_reference_field_prepare_view')
+        ->addMetaData('field', $field)
+        ->fields('u', array('uid'))
+        ->condition('u.uid', $ids_to_check, 'IN');
+      $accessible_ids = $query->execute()->fetchAllAssoc('uid');
 
       // Populate our static list so that we do not query on those ids again.
-      foreach ($accounts as $account) {
-        $checked_ids[$account->uid] = entity_access('view', 'user', $account);
+      foreach ($ids_to_check as $id) {
+        $checked_ids[$id] = isset($accessible_ids[$id]);
       }
     }
 
@@ -549,17 +554,9 @@ function _user_reference_get_user_names($uids, $known_titles = array()) {
   }
   if ($uids_query) {
     $query = db_select('users', 'u')
-      ->fields('u', array('uid'))
+      ->fields('u', array('uid', 'name'))
       ->condition('u.uid', $uids);
-    $results = $query->execute()->fetchAllAssoc('uid');
-
-    $accounts = entity_load('user', array_keys($results));
-
-    foreach ($accounts as $account) {
-      $titles[$account->uid] = _references_get_label('user', $account);
-    }
-
-    $titles += $query->execute()->fetchAllAssoc('uid');
+    $titles += $query->execute()->fetchAllKeyed();
   }
 
   // Build the results array.
@@ -658,8 +655,14 @@ function user_reference_autocomplete_value($element, $input = FALSE, $form_state
     // "user name [uid:n]".
     $uid = $element['#default_value'];
     if (!empty($uid)) {
-      $account = user_load($uid);
-      $value = _references_get_label('user', $account);
+      $q = db_select('users', 'u');
+      $q->addField('u', 'name');
+
+      $q->condition('u.uid', $uid)
+        ->range(0, 1);
+      $result = $q->execute();
+      // @todo If no result (user doesn't exist).
+      $value = $result->fetchField();
       $value .= ' [uid:' . $uid . ']';
       return $value;
     }
@@ -849,7 +852,7 @@ function _user_reference_potential_references_standard($field, $options) {
   $query = db_select('users', 'u')
     // Select the whole record, so that format_username() has enough
     // information.
-    ->fields('u', array('uid'))
+    ->fields('u')
     ->addMetaData('id', ' _user_reference_potential_references_standard')
     ->addMetaData('field', $field)
     ->addMetaData('options', $options);
@@ -894,14 +897,12 @@ function _user_reference_potential_references_standard($field, $options) {
   }
   $query->orderBy('u.name');
 
-  $result = $query->execute()->fetchAllAssoc('uid');
-  $accounts = entity_load('user', array_keys($result));
+  $result = $query->execute()->fetchAll();
   $references = array();
-  foreach ($accounts as $account) {
-    $label = _references_get_label('user', $account);
+  foreach ($result as $account) {
     $references[$account->uid] = array(
-      'title'    => $label,
-      'rendered' => $label,
+      'title'    => $account->name,
+      'rendered' => check_plain(format_username($account)),
     );
   }
   return $references;
@@ -911,8 +912,8 @@ function _user_reference_potential_references_standard($field, $options) {
  * Menu callback; Retrieve a pipe delimited string of autocomplete suggestions for existing users
  */
 function user_reference_autocomplete($entity_type, $bundle, $field_name, $string = '') {
-  $field = field_info_field($field_name);
   $instance = field_info_instance($entity_type, $field_name, $bundle);
+  $field = field_info_field($field_name);
 
   $options = array(
     'string' => $string,
