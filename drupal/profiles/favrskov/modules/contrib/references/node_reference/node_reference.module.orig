@@ -896,28 +896,6 @@ function _node_reference_potential_references_standard($field, $options) {
     $query->condition('n.nid', $options['ids'], 'IN');
   }
 
-  // Unless the user has the right permissions, restrict on the node status.
-  // (note: the 'view any unpublished content' permission is provided by the
-  // 'view_unpublished' contrib module.)
-  if (!user_access('bypass node access') && !user_access('view any unpublished content')) {
-    // ... AND n.status = 1
-    $status_condition = db_or()
-      ->condition('n.status', NODE_PUBLISHED);
-
-    // Take the 'view own unpublished content' permission into account to
-    // decide whether some unpublished nodes should still be visible. We
-    // only need the items in $ids_to_check because those are the only
-    // entries that we are interested in. Any other nodes created by the
-    // user are simply ignored so lets only retrieve that subset.
-    if (user_access('view own unpublished content') && ($own_unpublished = db_query('SELECT nid FROM {node} WHERE uid = :uid AND status = :status AND nid IN (:nodes)', array(':uid' => $GLOBALS['user']->uid, ':status' => NODE_NOT_PUBLISHED, ':nodes' => $ids_to_check))->fetchCol())) {
-      // ... AND (n.status = 1 OR n.nid IN (own unpublished))
-      $status_condition
-        ->condition('n.nid', $own_unpublished, 'IN');
-    }
-
-    $query->condition($status_condition);
-  }
-
   if ($options['limit']) {
     $query->range(0, $options['limit']);
   }
