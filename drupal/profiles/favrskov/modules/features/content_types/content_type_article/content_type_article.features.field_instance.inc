@@ -37,7 +37,7 @@ function content_type_article_field_default_field_instances() {
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_image',
     'label' => 'Image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -54,6 +54,7 @@ function content_type_article_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -68,7 +69,6 @@ function content_type_article_field_default_field_instances() {
           'upload' => 0,
         ),
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 34,

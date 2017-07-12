@@ -830,3 +830,53 @@ function favrskov_helper_update_7042() {
 function favrskov_helper_update_7043() {
   features_revert_module('config_media');
 }
+
+/**
+ * Resave node with empty table field to avoid empty field in UI.
+ */
+function favrskov_helper_update_7044() {
+  $nodes = db_select('field_data_field_table', 'ft')
+    ->fields('ft', array('entity_id'))
+    ->isNotNull('field_table_value')
+    ->execute()->fetchCol();
+
+  $loaded_nodes = node_load_multiple($nodes);
+
+  foreach ($loaded_nodes as $node) {
+    $field_value = unserialize($node->field_table[LANGUAGE_NONE][0]['value']);
+
+    if (!empty($field_value)) {
+      $validation = function($field) {
+        if (!isset($field['rebuild'])) {
+          return TRUE;
+        }
+
+        $table_rebuild = $field['rebuild'];
+
+        for ($i = 0; $i < $table_rebuild['count_rows']; $i++) {
+          for ($j = 0; $j < $table_rebuild['count_cols']; $j++) {
+            $cell = 'cell_' . $i . '_' . $j;
+            if (!empty($field[$cell]) && isset($field[$cell])) {
+              return FALSE;
+            }
+          }
+        }
+
+        return TRUE;
+      };
+
+      if ($validation($field_value)) {
+        $node->field_table[LANGUAGE_NONE][0]['value'] = 'a:0:{}';
+        node_save($node);
+      }
+
+    }
+  }
+}
+
+/**
+ * Revert feature content type article to remove required from image field.
+ */
+function favrskov_helper_update_7045() {
+  features_revert_module('content_type_article');
+}
