@@ -63,16 +63,6 @@ function webform_encrypt_form_webform_component_edit_form_alter(&$form, $form_st
 }
 
 /**
- * Implementation of hook_form_alter().
- */
-function webform_encrypt_form_alter(&$form, &$form_state, $form_id) {
-  // When we are editing a webform submission, 
-  if (strpos($form_id, 'webform_client_form_') === 0 && $form['details']['sid']['#value']) {
-    _webform_encrypt_decrypt_nested_values($form['submitted']);
-  }
-}
-
-/**
  * Implementation of hook_webform_component_presave().
  * Save encryption settings for a component.
  */
@@ -80,6 +70,13 @@ function webform_encrypt_webform_component_presave(&$component) {
   if (!empty($component['encryption'])) {
     $component['extra'] = array_merge($component['extra'], $component['encryption']);
     unset($component['encryption']);
+    
+    if ($component['extra']['encrypt']) {
+      webform_encrypt_encrypt_component_data($component['nid'], $component['cid'], $component['extra']);
+    }
+    else {
+      webform_encrypt_decrypt_component_data($component['nid'], $component['cid'], $component['extra']);
+    }
   }
 }
 
@@ -117,25 +114,6 @@ function webform_encrypt_webform_submission_load($submissions) {
 }
 
 /**
- * Implementation of hook_webform_submission_render_alter().
- * Decrypt values when displaying webform submissions.
- */
-function webform_encrypt_webform_submission_render_alter(&$renderable) {
-  // First, determine if 1) if we are dealing with an email or a page view, and 2) if user matching
-  // is enabled.
-  if (!empty($renderable['#email']) && variable_get('webform_encrypt_match_user', 0)) {
-    // If we are, then try to match a user to the email address we are sending to.
-    $uid = db_query('SELECT uid FROM {users} WHERE mail = ?', array($renderable['#email']['email']))->fetchField();
-    $account = $uid ? user_load($uid) : NULL;
-  } else {
-    $account = NULL;
-  }
-
-  // Next, we loop through components and decrypt as necessary.
-  _webform_encrypt_decrypt_nested_values($renderable, '#value', array('account' => $account));
-}
-
-/**
  * Preprocess for theme('webform_results_table').
  *
  * Decrypt webform values in the table display.
@@ -154,27 +132,53 @@ function webform_encrypt_preprocess_webform_results_table(&$vars) {
 }
 
 /**
- * Helper function to recursively decrypt values in a webform structure.
+ * Encrypt all non-encrypted data of a component.
  */
-function _webform_encrypt_decrypt_nested_values(&$element, $key = '#default_value', $restrict = array()) {
-  // Determine if we are checking access.
-  $access = empty($restrict) ? TRUE : user_access('view encrypted values', $restrict['account']);
-
-  // Loop through each item and decrypt the value.
-  foreach (element_children($element) as $name) {
-    $component = &$element[$name];
-    if (!empty($component['#webform_component']['extra']['encrypt'])) {
-      if (is_array($component[$key])) {
-        foreach ($component[$key] as &$value) {
-          $value = $access ? decrypt($value, array('base64' => TRUE)) : t('[Value Encrypted]');
-        }
-      }
-      else {
-        $component[$key] = $access ? decrypt($component[$key], array('base64' => TRUE)) : t('[Value Encrypted]');
-      }
+function webform_encrypt_encrypt_component_data($nid = NULL, $cid = NULL, $extra = array()) {
+  $results = db_query('SELECT nid, cid, extra FROM {webform_component} where nid = :nid AND cid = :cid', array(':nid' => $nid, ':cid' => $cid))->fetchAll();
+  
+  foreach ($results as $row) {
+    $components[$row->nid . ':' . $row->cid] = unserialize($row->extra);
+  }
+  $data = db_query('SELECT nid, sid, cid, data FROM {webform_submitted_data} where nid = :nid AND cid = :cid', array(':nid' => $nid, ':cid' => $cid))->fetchAll();
+  foreach ($data as $row) {
+    $key = $row->nid . ':' . $row->cid;
+    if (isset($components[$key]['encrypt']) && !$components[$key]['encrypt']) {
+      db_update('webform_submitted_data')
+        ->fields(array(
+          'data' => encrypt($row->data, array('base64' => TRUE)),
+        ))
+        ->condition('nid', $row->nid)
+        ->condition('sid', $row->sid)
+        ->condition('cid', $row->cid)
+        ->execute();
     }
+  }
+}
 
-    // Recurse if the current item has children.
-    _webform_encrypt_decrypt_nested_values($component, $key, $restrict);
+/**
+ * Decrypt all encrypted data of a component.
+ */
+function webform_encrypt_decrypt_component_data($nid = NULL, $cid = NULL, $extra = array()) {
+  $results = db_query('SELECT nid, cid, extra FROM {webform_component} where nid = :nid AND cid = :cid', array(':nid' => $nid, ':cid' => $cid))->fetchAll();
+  
+  foreach ($results as $row) {
+    $components[$row->nid . ':' . $row->cid] = unserialize($row->extra);
+  }
+  $data = db_query('SELECT nid, sid, cid, data FROM {webform_submitted_data} where nid = :nid AND cid = :cid', array(':nid' => $nid, ':cid' => $cid))->fetchAll();
+  foreach ($data as $row) {
+    $key = $row->nid . ':' . $row->cid;
+    
+    if (!empty($components[$key]['encrypt']) && is_array(@unserialize($row->data))) {
+      //echo "<pre>";print_R(decrypt($row->data, array('base64' => TRUE)));exit;
+      db_update('webform_submitted_data')
+        ->fields(array(
+          'data' => decrypt($row->data, array('base64' => TRUE)),
+        ))
+        ->condition('nid', $row->nid)
+        ->condition('sid', $row->sid)
+        ->condition('cid', $row->cid)
+        ->execute();
+    }
   }
 }

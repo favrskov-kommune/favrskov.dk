@@ -18,6 +18,7 @@ class menu_node_views_field_link_title extends views_handler_field {
   function option_definition() {
     $options = parent::option_definition();
     $options['link_to_item'] = array('default' => TRUE);
+    $options['check_access'] = array('default' => FALSE);
     $options['display_depth'] = array('default' => '');
     return $options;
   }
@@ -32,6 +33,12 @@ class menu_node_views_field_link_title extends views_handler_field {
       '#description' => t('This will override any other link you have set.'),
       '#type' => 'checkbox',
       '#default_value' => !empty($this->options['link_to_item']),
+    );
+    $form['check_access'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Evaluate router path for access'),
+      '#default_value' => $this->options['check_access'],
+      '#description' => t('Will check if the path exists and is accessible for the current user. Might be useful, might be slow.'),
     );
     $form['display_depth'] = array(
       '#title' => t('Mark item depth'),
@@ -50,7 +57,15 @@ class menu_node_views_field_link_title extends views_handler_field {
   function render_link($data, $values) {
     if (!empty($this->options['link_to_item']) && $data !== NULL && $data !== '') {
       $this->options['alter']['make_link'] = TRUE;
-      $this->options['alter']['path'] = $this->get_value($values, 'link_path');
+      $path = $this->get_value($values, 'link_path');
+      $this->options['alter']['path'] = $path;
+      // Check router menu item access for the current user.
+      if ($this->options['check_access']) {
+        $menu_item = menu_get_item($path);
+        if (!$menu_item || empty($menu_item['access'])) {
+          return '';
+        }
+      }
     }
     return $data;
   }

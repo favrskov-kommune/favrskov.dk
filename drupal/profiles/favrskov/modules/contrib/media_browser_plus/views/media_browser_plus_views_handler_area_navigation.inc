@@ -79,6 +79,7 @@ class media_browser_plus_views_handler_area_navigation extends views_handler_are
         }
       }
     }
+    $this->query->add_where(1, "$this->table_alias.$this->real_field", $folders, 'IN');
 
     // If this is the root folder also show files without a folder.
     if ($this->value == $root_folder->tid) {
@@ -145,6 +146,13 @@ class media_browser_plus_views_handler_area_navigation extends views_handler_are
       '#attributes' => array(
         'class' => array('mbp-selected-folder'),
       ),
+    );
+
+    // Add a checkbox to include subfolders in the view results.
+    $form['mbp_current_folder_include_subfolders'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Include subfolders in results'),
+      '#default_value' => 0,
     );
 
     // Add a checkbox to include subfolders in the view results.

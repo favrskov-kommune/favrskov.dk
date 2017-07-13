@@ -6,9 +6,9 @@ package = Webform
 dependencies[] = encrypt
 dependencies[] = webform
 
-; Information added by Drupal.org packaging script on 2017-03-30
-version = "7.x-1.2"
+; Information added by Drupal.org packaging script on 2017-06-08
+version = "7.x-1.3"
 core = "7.x"
 project = "webform_encrypt"
-datestamp = "1490863259"
+datestamp = "1496919547"
 
