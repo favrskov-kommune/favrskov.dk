@@ -880,3 +880,11 @@ function favrskov_helper_update_7044() {
 function favrskov_helper_update_7045() {
   features_revert_module('content_type_article');
 }
+
+/**
+ * Reuse old method to avoid empty table fields.
+ */
+function favrskov_helper_update_7046() {
+  favrskov_helper_update_7044();
+  favrskov_helper_update_7045();
+}
