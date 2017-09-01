@@ -22,11 +22,11 @@ function content_type_news_ctools_plugin_api($module = NULL, $api = NULL) {
 function content_type_news_node_info() {
   $items = array(
     'news' => array(
-      'name' => t('News'),
+      'name' => t('Nyheder'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Overskrift'),
       'help' => '',
     ),
   );

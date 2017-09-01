@@ -888,3 +888,11 @@ function favrskov_helper_update_7046() {
   favrskov_helper_update_7044();
   favrskov_helper_update_7045();
 }
+
+/**
+ * Change field table to 0x0 for news content type.
+ */
+function favrskov_helper_update_7047() {
+  features_revert_module('content_type_news');
+  favrskov_helper_update_7044();
+}
