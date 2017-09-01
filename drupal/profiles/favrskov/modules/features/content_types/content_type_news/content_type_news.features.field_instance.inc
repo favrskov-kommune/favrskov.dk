@@ -1032,25 +1032,19 @@ function content_type_news_field_default_field_instances() {
     'default_value' => array(
       0 => array(
         'tablefield' => array(
-          'cell_0_0' => '',
-          'cell_0_1' => '',
-          'cell_0_2' => '',
-          'cell_1_0' => '',
-          'cell_1_1' => '',
-          'cell_1_2' => '',
-          'cell_2_0' => '',
-          'cell_2_1' => '',
-          'cell_2_2' => '',
-          'cell_3_0' => '',
-          'cell_3_1' => '',
-          'cell_3_2' => '',
+          'caption' => '',
           'import' => array(
-            'rebuild_field_table_0' => 'Upload CSV',
-            'tablefield_csv_field_table_0' => '',
+            'file' => '',
+            'import' => 'Upload CSV',
+          ),
+          'paste' => array(
+            'data' => '',
+            'paste_delimiter' => '',
+            'paste_import' => 'Import & Rebuild',
           ),
           'rebuild' => array(
-            'count_cols' => 3,
-            'count_rows' => 4,
+            'count_cols' => 0,
+            'count_rows' => 0,
             'rebuild' => 'Rebuild Table',
           ),
         ),
@@ -1062,8 +1056,11 @@ function content_type_news_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'tablefield',
-        'settings' => array(),
-        'type' => 'default',
+        'settings' => array(
+          'trim_trailing_cols' => FALSE,
+          'trim_trailing_rows' => FALSE,
+        ),
+        'type' => 'tablefield_default',
         'weight' => 24,
       ),
       'print' => array(
@@ -1095,9 +1092,7 @@ function content_type_news_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'tablefield',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'tablefield',
       'weight' => 7,
     ),
