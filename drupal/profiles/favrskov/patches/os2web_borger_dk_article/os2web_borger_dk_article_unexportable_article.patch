@@ -1,0 +1,21 @@
+diff --git a/drupal/profiles/favrskov/modules/contrib/os2web_borger_dk_articles/os2web_borger_dk_articles.module b/drupal/profiles/favrskov/modules/contrib/os2web_borger_dk_articles/os2web_borger_dk_articles.module
+index fcafd0e1..e13c4370 100644
+--- a/drupal/profiles/favrskov/modules/contrib/os2web_borger_dk_articles/os2web_borger_dk_articles.module
++++ b/drupal/profiles/favrskov/modules/contrib/os2web_borger_dk_articles/os2web_borger_dk_articles.module
+@@ -830,7 +830,15 @@ function _os2web_borger_dk_articles_cronbatch() {
+   // Next we get a list of all imported articles
+   $article_id_list = array();
+   $article_id_to_nid = array();
+-  $result = db_query('SELECT nid, external_id FROM {os2web_borger_dk_articles} WHERE external_status > 0');
++
++  // Exclude unexportable article from query which produce SoapFault.
++  $query = db_select('os2web_borger_dk_articles', 'articles');
++  $query->leftJoin('os2web_borger_dk_titles', 'titles', 'articles.external_id = titles.ArticleID');
++  $result = $query->fields('articles', array('nid', 'external_id'))
++    ->condition('articles.external_status', '0', '>')
++    ->condition('titles.ArticleStatus', '-1', '!=')
++    ->execute();
++
+   foreach ($result as $item) {
+     // We also build an index of "external_id" => "nid"
+     $article_id2nid[$item->external_id] = $item->nid;

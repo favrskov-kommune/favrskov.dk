@@ -896,3 +896,14 @@ function favrskov_helper_update_7047() {
   features_revert_module('content_type_news');
   favrskov_helper_update_7044();
 }
+
+/**
+ * Change ArticleStatus from -1 to 0 to avoid Soap error and fetch new
+ * ArticleStatus from borger.dk API.
+ */
+function favrskov_helper_update_7048() {
+  db_update('os2web_borger_dk_titles')
+    ->fields(array('ArticleStatus' => 0))
+    ->condition('ArticleStatus', '-1')
+    ->execute();
+}
