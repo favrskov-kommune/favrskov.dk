@@ -72,49 +72,17 @@ class backup_migrate_destination_email extends backup_migrate_destination {
  *   filename and "filename" which is just the filename.
  */
 function _backup_migrate_destination_email_mail_backup($attachment, $to) {
-  $module = 'backup_migrate';
-  $key = 'database_backup';
-  $language = language_default();
-  $params = array(
-    'headers' => array(
-      'Cc' => '',
-      'Bcc' => '',
-      'Reply-to' => '',
-      'List-unsubscribe' => '',
-    ),
-    'subject' => t('Database backup from !site: !file', array('!site' => variable_get('site_name', 'drupal'), '!file' => $attachment->filename)),
-    'body' => t('Database backup attached.'),
-    'plain' => '',
-    'plaintext' => t('Database backup attached.'),
-    'attachments' => array(
-      0 => array(
-        'filecontent' => fread(fopen($attachment->path, "r"), filesize($attachment->path)),
-        'filename' => $attachment->filename,
-        'filemime' => 'application/x-gzip',
-      ),
-    ),
-  );
-
-  module_load_include('inc', 'mimemail');
-  $from = mimemail_address(array(
-    'name' => variable_get('site_name'),
-    'mail' => variable_get('site_mail'),
-  ));
-
-  $send = TRUE;
-
-  $result = drupal_mail($module, $key, $to, $language, $params, $from, $send);
   // Send mail
-  //$attach        = fread(fopen($attachment->path, "r"), filesize($attachment->path));
-  //$mail          = new mime_mail();
-  //$mail->from    = 'temoor.gilmutdinov@propeople.com.ua';//variable_get('site_mail', ini_get('sendmail_from'));
-  //$mail->headers = 'Errors-To: [EMAIL='. $mail->from .']'. $mail->from .'[/EMAIL]';
-  //$mail->to      = $to;
-  //$mail->subject = t('Database backup from !site: !file', array('!site' => variable_get('site_name', 'drupal'), '!file' => $attachment->filename));
-  //$mail->body    = t('Database backup attached.') ."\n\n";
+  $attach        = fread(fopen($attachment->path, "r"), filesize($attachment->path));
+  $mail          = new mime_mail();
+  $mail->from    = variable_get('site_mail', ini_get('sendmail_from'));
+  $mail->headers = 'Errors-To: [EMAIL='. $mail->from .']'. $mail->from .'[/EMAIL]';
+  $mail->to      = $to;
+  $mail->subject = t('Database backup from !site: !file', array('!site' => variable_get('site_name', 'drupal'), '!file' => $attachment->filename));
+  $mail->body    = t('Database backup attached.') ."\n\n";
 
-  //$mail->add_attachment("$attach", $attachment->filename, "Content-Transfer-Encoding: base64 /9j/4AAQSkZJRgABAgEASABIAAD/7QT+UGhvdG9zaG", NULL, TRUE);
-  //$mail->send();
+  $mail->add_attachment("$attach", $attachment->filename, "Content-Transfer-Encoding: base64 /9j/4AAQSkZJRgABAgEASABIAAD/7QT+UGhvdG9zaG", NULL, TRUE);
+  $mail->send();
 }
 
 class mime_mail {
@@ -125,7 +93,7 @@ class mime_mail {
   var $subject;
   var $body;
 
-  function mime_mail() {
+  function __construct() {
     $this->parts   = array();
     $this->to      = "";
     $this->from    = "";
