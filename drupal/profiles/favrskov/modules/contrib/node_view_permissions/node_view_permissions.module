@@ -125,6 +125,8 @@ function node_view_permissions_query_node_access_alter(QueryAlterableInterface $
     }
     
     if (!$node_table_alias) {
+      //The array internal pointer should be reset before getting the first key bacause it can be NULL here.
+      reset($tables);
       // If the query has 'node_access' meta tag, we can assume that there should be a nid field.
       $query->join('node', 'n', 'n.nid = ' . key($tables) . '.nid');
       $node_table_alias = 'n';

@@ -7,6 +7,9 @@
 
 class menu_node_views_field_link_title extends views_handler_field {
 
+  /**
+   * {@inheritdoc}
+   */
   function construct() {
     parent::construct();
     if (!empty($this->options['link_to_item'])) {
@@ -15,6 +18,9 @@ class menu_node_views_field_link_title extends views_handler_field {
     $this->additional_fields['display_depth'] = array('table' => 'menu_links', 'field' => 'depth');
   }
 
+  /**
+   * {@inheritdoc}
+   */
   function option_definition() {
     $options = parent::option_definition();
     $options['link_to_item'] = array('default' => TRUE);
@@ -24,7 +30,7 @@ class menu_node_views_field_link_title extends views_handler_field {
   }
 
   /**
-   * Provide link to node option
+   * {@inheritdoc}
    */
   function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
@@ -50,9 +56,7 @@ class menu_node_views_field_link_title extends views_handler_field {
   }
 
   /**
-   * Render whatever the data is as a link to the customer profile.
-   *
-   * Data should be made XSS safe prior to calling this function.
+   * {@inheritdoc}
    */
   function render_link($data, $values) {
     if (!empty($this->options['link_to_item']) && $data !== NULL && $data !== '') {
@@ -60,7 +64,7 @@ class menu_node_views_field_link_title extends views_handler_field {
       $path = $this->get_value($values, 'link_path');
       $this->options['alter']['path'] = $path;
       // Check router menu item access for the current user.
-      if ($this->options['check_access']) {
+      if ($this->options['check_access'] && !($path == '<front>' || url_is_external($path))) {
         $menu_item = menu_get_item($path);
         if (!$menu_item || empty($menu_item['access'])) {
           return '';
@@ -70,6 +74,9 @@ class menu_node_views_field_link_title extends views_handler_field {
     return $data;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   function render($values) {
     if (!empty($this->options['display_depth'])) {
       $text = check_plain($this->options['display_depth']);
