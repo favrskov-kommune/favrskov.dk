@@ -6,6 +6,6 @@
  */
 
 function favrskov_helper_banner_iframe($file) {
-  print $file->field_html_and_js[LANGUAGE_NONE][0]['value']; // 'Content of simple page';
+  print $file->field_html_and_js[LANGUAGE_NONE][0]['value'];
   die();
 }
