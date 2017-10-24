@@ -907,3 +907,12 @@ function favrskov_helper_update_7048() {
     ->condition('ArticleStatus', '-1')
     ->execute();
 }
+
+/**
+ * Update for Slider Block: html + js banners.
+ */
+function favrskov_helper_update_7049() {
+  module_enable(array('file_type_banner'));
+  features_revert_module('view_slider');
+  features_revert_module('content_type_slider_element');
+}
