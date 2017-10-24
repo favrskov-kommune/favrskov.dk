@@ -17,6 +17,11 @@ function favrskov_helper_field_formatter_info() {
       'text' => '[file:name]',
     ],
   ];
+  $info['favrskov_banner_iframe'] = [
+    'label' => t('Favrskov Banner Iframe'),
+    'description' => t('Renders an Iframe with link to custom page, that has animates slide'),
+    'field types' => ['file', 'image'],
+  ];
 
   return $info;
 }
@@ -57,6 +62,15 @@ function favrskov_helper_field_formatter_view($entity_type, $entity, $field, $in
           '#theme' => 'file_entity_favrskov_download_link',
           '#file' => $file,
           '#text' => $settings['text'],
+        ];
+      }
+      break;
+    case 'favrskov_banner_iframe':
+      foreach ($items as $delta => $item) {
+        $file = (object) $item;
+        $element[$delta] = [
+          '#theme' => 'file_entity_favrskov_banner_iframe',
+          '#fid' => $file->fid,
         ];
       }
       break;

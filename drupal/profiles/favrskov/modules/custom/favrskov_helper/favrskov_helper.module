@@ -211,6 +211,18 @@ function favrskov_helper_form_alter(&$form, &$form_state, $form_id) {
       $form['#validate'][] = 'favrskov_helper_form_validate';
     }
   }
+  if ($form_id == 'file_entity_edit' || $form_id == 'file_entity_add_upload' && $form_state['step'] == 4) {
+    global $base_path;
+    $scheme = file_uri_scheme($form_state['file']->uri);
+
+    if ($scheme && file_stream_wrapper_valid_scheme($scheme)) {
+      $wrapper = file_stream_wrapper_get_instance_by_scheme($scheme);
+      // Get the file's path
+      $path = $wrapper->getDirectoryPath() . '/' . file_uri_target($form_state['file']->uri);
+      // Set the URL to the (relative) base path plus the file's path
+      $form['filename']['#description'] = "File absolute path: <br><b>" . $base_path . $path . "<b>";
+    }
+  }
 }
 
 /**
@@ -250,6 +262,10 @@ function favrskov_helper_theme($existing, $type, $theme, $path) {
       'variables' => ['file' => '', 'text' => ''],
       'file' => 'favrskov_helper.theme.inc',
     ],
+    'file_entity_favrskov_banner_iframe' => [
+      'variables' => ['fid' => ''],
+      'file' => 'favrskov_helper.theme.inc',
+    ],
   ];
 }
 
@@ -268,3 +284,20 @@ function favrskov_helper_media_wysiwyg_token_to_markup_alter(&$element, $tag_inf
   }
 }
 
+/**
+ * Implements hook_menu().
+ */
+function favrskov_helper_menu() {
+
+  $items['banner-iframe/%file'] = array(
+    'title' => 'Iframe content of the banner',
+    'page callback' => 'favrskov_helper_banner_iframe',
+    'page arguments' => array(
+      1,
+    ),
+    'access callback' => TRUE,
+    'file' => 'favrskov_helper.pages.inc',
+  );
+
+  return $items;
+}
