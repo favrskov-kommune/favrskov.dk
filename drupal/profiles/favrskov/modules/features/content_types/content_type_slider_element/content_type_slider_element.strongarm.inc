@@ -80,22 +80,22 @@ function content_type_slider_element_strongarm() {
           'weight' => '0',
         ),
         'domain' => array(
-          'weight' => '7',
-        ),
-        'language' => array(
           'weight' => '8',
         ),
-        'metatags' => array(
-          'weight' => '12',
-        ),
-        'path' => array(
-          'weight' => '11',
-        ),
-        'redirect' => array(
+        'language' => array(
           'weight' => '10',
         ),
+        'metatags' => array(
+          'weight' => '14',
+        ),
+        'path' => array(
+          'weight' => '13',
+        ),
+        'redirect' => array(
+          'weight' => '12',
+        ),
         'rabbit_hole' => array(
-          'weight' => '2',
+          'weight' => '1',
         ),
       ),
       'display' => array(),
