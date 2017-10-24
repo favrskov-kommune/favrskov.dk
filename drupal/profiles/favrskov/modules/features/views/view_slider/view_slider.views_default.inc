@@ -53,7 +53,7 @@ function view_slider_views_default_views() {
     'front_page_slider' => 'front_page_slider',
     'front_page_banners_block' => 0,
   );
-  /* Relationship: Field: Image (field_image:fid) */
+  /* Relationship: Field: Billede (field_image:fid) */
   $handler->display->display_options['relationships']['field_image_fid']['id'] = 'field_image_fid';
   $handler->display->display_options['relationships']['field_image_fid']['table'] = 'field_data_field_image';
   $handler->display->display_options['relationships']['field_image_fid']['field'] = 'field_image_fid';
@@ -66,7 +66,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_external_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_external_link']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_external_link']['click_sort_column'] = 'url';
-  /* Field: Content: Image alt text */
+  /* Field: Content: Alt tekst */
   $handler->display->display_options['fields']['field_image_alt_text']['id'] = 'field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['table'] = 'field_data_field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['field'] = 'field_image_alt_text';
@@ -74,7 +74,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_image_alt_text']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_image_alt_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_alt_text']['element_default_classes'] = FALSE;
-  /* Field: Field: Image */
+  /* Field: Field: Billede */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -103,7 +103,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Description */
+  /* Field: Content: Beskrivelse */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -180,6 +180,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['style_options']['class'] = 'swiper-wrapper';
   $handler->display->display_options['style_options']['wrapper_class'] = 'swiper-container swiper-content';
+  $handler->display->display_options['style_options']['switcher'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -205,24 +206,27 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_external_link_1']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_external_link_1']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_external_link_1']['type'] = 'link_target';
-  /* Field: Content: Image alt text */
+  /* Field: Content: Alt tekst */
   $handler->display->display_options['fields']['field_image_alt_text']['id'] = 'field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['table'] = 'field_data_field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['field'] = 'field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['label'] = '';
   $handler->display->display_options['fields']['field_image_alt_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_alt_text']['element_default_classes'] = FALSE;
-  /* Field: Field: Image */
+  /* Field: Field: Billede */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_image']['alter']['path'] = '[field_external_link]';
   $handler->display->display_options['fields']['field_image']['element_type'] = '0';
   $handler->display->display_options['fields']['field_image']['element_label_type'] = '0';
   $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_image']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_image']['empty'] = '[field_billede_html_js]';
+  $handler->display->display_options['fields']['field_image']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['type'] = 'picture';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
@@ -232,23 +236,36 @@ function view_slider_views_default_views() {
     'lazyload_aspect_ratio' => 0,
     'image_link' => '',
   );
+  /* Field: Content: Billede iframe */
+  $handler->display->display_options['fields']['field_billede_iframe']['id'] = 'field_billede_iframe';
+  $handler->display->display_options['fields']['field_billede_iframe']['table'] = 'field_data_field_billede_iframe';
+  $handler->display->display_options['fields']['field_billede_iframe']['field'] = 'field_billede_iframe';
+  $handler->display->display_options['fields']['field_billede_iframe']['label'] = '';
+  $handler->display->display_options['fields']['field_billede_iframe']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_billede_iframe']['empty'] = '[field_image]';
+  $handler->display->display_options['fields']['field_billede_iframe']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_billede_iframe']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_billede_iframe']['type'] = 'favrskov_banner_iframe';
+  $handler->display->display_options['fields']['field_billede_iframe']['settings'] = array(
+    'text' => '[file:name]',
+  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'slider_element' => 'slider_element',
   );
-  /* Filterkriterie: Nodequeue: Queue machine name */
+  /* Filter criterion: Nodequeue: Queue machine name */
   $handler->display->display_options['filters']['name']['id'] = 'name';
   $handler->display->display_options['filters']['name']['table'] = 'nodequeue_queue';
   $handler->display->display_options['filters']['name']['field'] = 'name';
@@ -271,7 +288,7 @@ function view_slider_views_default_views() {
     2 => array(),
     3 => array(),
   );
-  /* Filterkriterie: Domain Access: Available on current domain */
+  /* Filter criterion: Domain Access: Available on current domain */
   $handler->display->display_options['filters']['current_all']['id'] = 'current_all';
   $handler->display->display_options['filters']['current_all']['table'] = 'domain_access';
   $handler->display->display_options['filters']['current_all']['field'] = 'current_all';
@@ -302,7 +319,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Description */
+  /* Field: Content: Beskrivelse */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -318,7 +335,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_external_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_external_link']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_external_link']['click_sort_column'] = 'url';
-  /* Field: Content: Image alt text */
+  /* Field: Content: Alt tekst */
   $handler->display->display_options['fields']['field_image_alt_text']['id'] = 'field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['table'] = 'field_data_field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['field'] = 'field_image_alt_text';
@@ -326,7 +343,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_image_alt_text']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_image_alt_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_alt_text']['element_default_classes'] = FALSE;
-  /* Field: Field: Image */
+  /* Field: Field: Billede */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -378,21 +395,21 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'slider_element' => 'slider_element',
   );
-  /* Filterkriterie: Nodequeue: Queue machine name */
+  /* Filter criterion: Nodequeue: Queue machine name */
   $handler->display->display_options['filters']['name']['id'] = 'name';
   $handler->display->display_options['filters']['name']['table'] = 'nodequeue_queue';
   $handler->display->display_options['filters']['name']['field'] = 'name';
@@ -415,7 +432,7 @@ function view_slider_views_default_views() {
     2 => array(),
     3 => array(),
   );
-  /* Filterkriterie: Domain Access: Available on current domain */
+  /* Filter criterion: Domain Access: Available on current domain */
   $handler->display->display_options['filters']['current_all']['id'] = 'current_all';
   $handler->display->display_options['filters']['current_all']['table'] = 'domain_access';
   $handler->display->display_options['filters']['current_all']['field'] = 'current_all';
@@ -466,7 +483,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_external_link_1']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_external_link_1']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_external_link_1']['type'] = 'link_target';
-  /* Field: Content: Image alt text */
+  /* Field: Content: Alt tekst */
   $handler->display->display_options['fields']['field_image_alt_text']['id'] = 'field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['table'] = 'field_data_field_image_alt_text';
   $handler->display->display_options['fields']['field_image_alt_text']['field'] = 'field_image_alt_text';
@@ -487,7 +504,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Description */
+  /* Field: Content: Beskrivelse */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -498,7 +515,7 @@ function view_slider_views_default_views() {
   $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_description']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_description']['element_default_classes'] = FALSE;
-  /* Field: Field: Image */
+  /* Field: Field: Billede */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -518,21 +535,21 @@ function view_slider_views_default_views() {
   );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'slider_element' => 'slider_element',
   );
-  /* Filterkriterie: Nodequeue: Queue machine name */
+  /* Filter criterion: Nodequeue: Queue machine name */
   $handler->display->display_options['filters']['name']['id'] = 'name';
   $handler->display->display_options['filters']['name']['table'] = 'nodequeue_queue';
   $handler->display->display_options['filters']['name']['field'] = 'name';
@@ -555,7 +572,7 @@ function view_slider_views_default_views() {
     2 => array(),
     3 => array(),
   );
-  /* Filterkriterie: Domain Access: Available on current domain */
+  /* Filter criterion: Domain Access: Available on current domain */
   $handler->display->display_options['filters']['current_all']['id'] = 'current_all';
   $handler->display->display_options['filters']['current_all']['table'] = 'domain_access';
   $handler->display->display_options['filters']['current_all']['field'] = 'current_all';
@@ -571,17 +588,20 @@ function view_slider_views_default_views() {
   $handler->display->display_options['allow']['fields_override'] = 0;
   $translatables['slider'] = array(
     t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('mere'),
+    t('Udfør'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Stigende'),
+    t('Faldende'),
     t('queue'),
     t('image from field_image'),
     t('Position'),
     t('Queue machine name'),
     t('Slider block'),
+    t('more'),
+    t('[field_billede_html_js]'),
+    t('[field_image]'),
     t('View panes'),
     t('Slider navigation'),
     t('<div class="inner" title="[field_image_alt_text]">
