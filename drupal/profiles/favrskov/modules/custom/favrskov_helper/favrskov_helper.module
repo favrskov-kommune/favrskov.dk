@@ -211,7 +211,8 @@ function favrskov_helper_form_alter(&$form, &$form_state, $form_id) {
       $form['#validate'][] = 'favrskov_helper_form_validate';
     }
   }
-  if ($form_id == 'file_entity_edit' || $form_id == 'file_entity_add_upload' && $form_state['step'] == 4) {
+  $a = 1;
+  if ($form_id == 'file_entity_edit' || $form_id == 'file_entity_add_upload' && isset($form_state['step']) && $form_state['step'] == 4) {
     global $base_path;
     $scheme = file_uri_scheme($form_state['file']->uri);
 
