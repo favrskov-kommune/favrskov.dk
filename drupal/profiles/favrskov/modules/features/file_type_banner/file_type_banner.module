@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the File type banner feature.
+ */
+
+include_once 'file_type_banner.features.inc';

@@ -34,3 +34,21 @@ function theme_file_entity_favrskov_download_link($variables) {
 
   return $output;
 }
+
+
+/**
+ * Theme callback for Favrskov Banner Iframe formatter.
+ *
+ * @see favrskov_helper_field_formatter_view()
+ */
+function theme_file_entity_favrskov_banner_iframe($variables) {
+  global $base_path;
+  $suffix = $base_path !== '/' ? $base_path : '';
+  $fid = $variables['fid'];
+
+  $output = '<iframe src="' . $suffix . '/banner-iframe/' . $fid . '" width="980" height="460">' .
+    'Your browser doesnt support iframes!' .
+    '</iframe>';
+
+  return $output;
+}
