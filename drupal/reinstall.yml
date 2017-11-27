@@ -44,3 +44,9 @@
 
   - include: devops/reinstall/modules_enable.yml
     tags: [ 'modules-enable' ]
+
+  - include: subsite.yml domain_id=3 code=designguiden.
+
+  - include: subsite.yml domain_id=4 code=cykelkommune.
+
+  - include: subsite.yml domain_id=5 code=oplev.
