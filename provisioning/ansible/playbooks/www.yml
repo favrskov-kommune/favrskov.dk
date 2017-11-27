@@ -28,6 +28,9 @@
       - {
         servername: "favrskov.loc",
         serveralias: "*.*",
+        serveralias1: "designguiden.favrskov.loc",
+        serveralias2: "cykelkommune.favrskov.loc",
+        serveralias3: "oplev.favrskov.loc",
         documentroot: "/var/www/drupal"
       }
     apache_vhosts_ssl:

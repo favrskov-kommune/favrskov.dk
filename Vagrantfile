@@ -40,6 +40,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # Add all the hosts that aren't defined as Ansible vars.
       unless host['servername'].include? "{{"
         config.hostsupdater.aliases.push(host['servername'])
+        config.hostsupdater.aliases.push(host['serveralias1'])
+        config.hostsupdater.aliases.push(host['serveralias2'])
+        config.hostsupdater.aliases.push(host['serveralias3'])
       end
     end
   end
