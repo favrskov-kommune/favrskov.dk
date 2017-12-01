@@ -32,4 +32,4 @@
 
 - name: Change main-domain and subdomain names according to local requirements
   shell: drush sqlq "update domain set subdomain='{{ item.code }}' where domain_id={{ item.domain_id }}"
-  with_items: "{{ domains.subdomains }}"
+  with_items: domains.subdomains
