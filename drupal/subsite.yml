@@ -1,3 +1,0 @@
----
-- name: Inserting domain alias
-  shell: "drush sqlq 'insert into domain_alias (domain_id, pattern) values ({{ domain_id }}, \"{{ code }}{{ env_domain }}\");'"
