@@ -53,7 +53,7 @@ domains:
   main_domain:
     id: 1
     name: favrskov.{{ env_domain }}
-  subdomains:
-    - { domain_id: '3', code: 'designguiden.favrskov.' }
-    - { domain_id: '4', code: 'cykelkommune.favrskov.' }
-    - { domain_id: '5', code: 'oplev.favrskov.' }
+subdomains:
+  - { domain_id: '3', code: 'designguiden.favrskov.' }
+  - { domain_id: '4', code: 'cykelkommune.favrskov.' }
+  - { domain_id: '5', code: 'oplev.favrskov.' }
