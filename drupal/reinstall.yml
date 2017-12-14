@@ -44,3 +44,7 @@
 
   - include: devops/reinstall/modules_enable.yml
     tags: [ 'modules-enable' ]
+
+  - name: Inserting domain alias
+    shell: "drush sqlq 'insert into domain_alias (domain_id, pattern) values ({{ item.domain_id }}, \"{{ item.code }}{{ env_domain }}\");'"
+    with_items: subdomains

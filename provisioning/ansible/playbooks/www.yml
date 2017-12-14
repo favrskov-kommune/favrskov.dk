@@ -16,6 +16,9 @@
     cibox_ssl_folder: /etc/apache/ssl
     cibox_server_ip: 192.168.56.148
 
+    # Site url.
+    site_url: "favrskov.loc"
+
     # Apache configuration.
     apache_create_vhosts: true
     apache_vhosts_filename: "vhosts.conf"
@@ -41,6 +44,10 @@
     apache_mods_enabled:
       - rewrite.load
       - ssl.load
+    subdomains:
+      - { domain_id: '3', code: 'designguiden.' }
+      - { domain_id: '4', code: 'cykelkommune.' }
+      - { domain_id: '5', code: 'oplev.' }
 
   # Disable services to avoid conflicts in port usage.
   pre_tasks:

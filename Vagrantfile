@@ -42,6 +42,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.hostsupdater.aliases.push(host['servername'])
       end
     end
+    for subdomain in apacheConfigValues[0]['vars']['subdomains']
+      config.hostsupdater.aliases.push(subdomain['code'] + apacheConfigValues[0]['vars']['site_url'])
+    end
   end
 
   if data['vm']['network']['private_network'].to_s != ''
