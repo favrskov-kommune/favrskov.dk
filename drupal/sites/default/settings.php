@@ -617,14 +617,37 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  */
 # $conf['theme_debug'] = TRUE;
 
-/**
- * CSS identifier double underscores allowance:
- *
- * To allow CSS identifiers to contain double underscores (.example__selector)
- * for Drupal's BEM-style naming standards, uncomment the line below.
- * Note that if you change this value in existing sites, existing page styles
- * may be broken.
- *
- * @see drupal_clean_css_identifier()
- */
-# $conf['allow_css_double_underscores'] = TRUE;
+// Load the initial variables required for the environments.
+require_once 'init.settings.php';
+
+// Load the required env variables.
+require_once 'env.settings.php';
+
+// Check if environment exists.
+if (!isset($conf['project_env']) && !in_array($conf['project_env'], $available_env)) {
+  throw new \Exception('The PHP ENV cannot be found or it is unknown.');
+}
+
+switch ($conf['project_env']) {
+  case PROD_ENV:
+    require_once 'prod.settings.php';
+    break;
+
+  case DEV_ENV:
+    // This will override settings if needed.
+    if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'dev.override.settings.php')) {
+      require_once 'dev.override.settings.php';
+    }
+    else {
+      require_once 'dev.settings.php';
+    }
+    break;
+
+  case STAGE_ENV:
+    require_once 'stage.settings.php';
+    break;
+
+  case CI_ENV:
+    require_once 'ci.settings.php';
+    break;
+}

@@ -1,0 +1,2 @@
+The following patches from the following thread: https://www.drupal.org/node/2552887 have been applied to this project:
+- https://www.drupal.org/files/issues/add_missing_files_in_registry_to_info_file_2552887-12.patch
