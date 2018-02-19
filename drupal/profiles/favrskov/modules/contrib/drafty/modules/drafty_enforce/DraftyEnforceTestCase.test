@@ -1,24 +1,13 @@
 <?php
 
 /**
- * @file
- * Tests for drafty_enforce.module.
- */
-
-/**
  * Test the node_load_multiple() function.
  */
 class DraftyEnforceTestCase extends DraftyTestCase {
 
-  function setUp() {
-    $modules = func_get_args();
-    if (isset($modules[0]) && is_array($modules[0])) {
-      $modules = $modules[0];
-    }
-    $modules[] = 'drafty_enforce';
-    parent::setUp($modules);
-  }
-
+  /**
+   * Define this test's meta data.
+   */
   public static function getInfo() {
     return array(
       'name' => 'Drafty Enforce',
@@ -30,6 +19,15 @@ class DraftyEnforceTestCase extends DraftyTestCase {
   /**
    * @inheritdoc
    */
+  function setUp(array $modules = array()) {
+    $modules[] = 'drafty_enforce';
+    parent::setUp($modules);
+  }
+
+  /**
+   * @inheritdoc
+   */
   protected function setRevision($entity) {
   }
+
 }

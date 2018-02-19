@@ -5,6 +5,9 @@
  */
 class DraftyTitleTestCase extends DrupalWebTestCase {
 
+  /**
+   * Define this test's meta data.
+   */
   public static function getInfo() {
     return array(
       'name' => 'Drafty with title translation',
@@ -14,8 +17,17 @@ class DraftyTitleTestCase extends DrupalWebTestCase {
     );
   }
 
-  protected function setUp() {
-    parent::setUp('locale', 'entity_translation', 'title', 'drafty', 'drafty_enforce', 'drafty_1992010');
+  /**
+   * {@inheritdoc}
+   */
+  function setUp(array $modules = array()) {
+    $modules[] = 'locale';
+    $modules[] = 'entity_translation';
+    $modules[] = 'title';
+    $modules[] = 'drafty';
+    $modules[] = 'drafty_enforce';
+    $modules[] = 'drafty_1992010';
+    parent::setUp($modules);
 
     // Create a power user.
     $admin_user = $this->drupalCreateUser(array(
