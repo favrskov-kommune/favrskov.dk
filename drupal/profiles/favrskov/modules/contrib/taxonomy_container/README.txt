@@ -2,16 +2,10 @@ Taxonomy container
 ==================
 
 -- SUMMARY --
-The taxonomy container module allows you to organize containers using taxonomy terms.
-This module just adds an extra widget called «Select list (with groups)» to term reference fields.
-
--- REQUIREMENTS --
-  * Taxonomy module enabled
+The provides a select list with optgroups for taxonomy terms selection. This
+module just adds an extra widget called "Select list (with groups)" to term
+reference fields.
 
 -- INSTALLATION --
-  * Place the entire taxonomy_container directory into your Drupal sites/all/modules/ directory.
-  * Enable the taxonomy container module.
-
--- CONTACT --
-Current maintainer: Chi - http://drupal.org/user/556138
-Testing and feedback are welcome.
+Install module as usual. Navigate to field setting page for a given field and
+set widget type to "Select list (with groups)".
