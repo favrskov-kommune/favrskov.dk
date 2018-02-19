@@ -14,7 +14,7 @@ function taxonomy_container_field_widget_info() {
       'label' => t('Select list (with groups)'),
       'field types' => array('taxonomy_term_reference'),
       'behaviors' => array('multiple values' => FIELD_BEHAVIOR_CUSTOM),
-      'settings' => array('multiple_select_size' => 5),
+      'settings' => array('multiple_select_size' => 5, 'prefix' => '-'),
     ),
   );
 }
@@ -23,6 +23,21 @@ function taxonomy_container_field_widget_info() {
  * Implements hook_field_widget_settings_form().
  */
 function taxonomy_container_field_widget_settings_form($field, $instance) {
+
+  // Prefix might not be set if the module was updated from version 7.x-1.2
+  // or earlier.
+  $prefix = isset($instance['widget']['settings']['prefix']) ?
+    $instance['widget']['settings']['prefix'] : '-';
+
+  $form['prefix'] = array(
+    '#type' => 'textfield',
+    '#size' => 3,
+    '#maxlength' => 3,
+    '#title' => t('List item prefix'),
+    '#description' => t('The character before each child term.'),
+    '#default_value' => $prefix,
+  );
+
   $form['multiple_select_size'] = array(
     '#type' => 'textfield',
     '#disabled' => $field['cardinality'] == 1,
@@ -33,6 +48,7 @@ function taxonomy_container_field_widget_settings_form($field, $instance) {
     '#field_suffix' => t('rows'),
     '#element_validate' => array('element_validate_integer_positive'),
   );
+
   return $form;
 }
 
@@ -49,6 +65,9 @@ function taxonomy_container_field_widget_form(&$form, &$form_state, $field, $ins
   $multiple = $field['cardinality'] > 1 || $field['cardinality'] == FIELD_CARDINALITY_UNLIMITED;
   $properties = _options_properties('select', $multiple, $element['#required'], isset($items[0][$value_key]));
   $options = array();
+
+  $prefix = isset($instance['widget']['settings']['prefix']) ?
+    $instance['widget']['settings']['prefix'] : '-';
 
   // Compile the tree of options.
   foreach ($field['settings']['allowed_values'] as $tree) {
@@ -67,7 +86,7 @@ function taxonomy_container_field_widget_form(&$form, &$form_state, $field, $ins
           }
         }
         else {
-          $options[$parent_name][$term->tid] = str_repeat('-', $term->depth) . $term->name;
+          $options[$parent_name][$term->tid] = ltrim(str_repeat($prefix, $term->depth) . ' ' . $term->name);
         }
       }
     }

@@ -5,11 +5,22 @@
  */
 class DraftyFieldCollectionTest extends DraftyWebTestCase {
 
-  function setUp() {
-    $modules = func_get_args();
-    if (isset($modules[0]) && is_array($modules[0])) {
-      $modules = $modules[0];
-    }
+  /**
+   * Define this test's meta data.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Drafty field collection',
+      'description' => 'Test revision manipulation with field collections.',
+      'group' => 'Drafty',
+      'dependencies' => array('field_collection'),
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  function setUp(array $modules = array()) {
     $modules[] = 'field_collection';
     parent::setUp($modules);
 
@@ -40,17 +51,6 @@ class DraftyFieldCollectionTest extends DraftyWebTestCase {
       'bundle' => 'field_collection_test',
     );
     field_create_instance($instance);
-  }
-
-  protected $type;
-
-  public static function getInfo() {
-    return array(
-      'name' => 'Drafty field collection',
-      'description' => 'Test revision manipulation with field collections.',
-      'group' => 'Drafty',
-      'dependencies' => array('field_collection'),
-    );
   }
 
   function testDraftyFieldCollection() {
@@ -175,4 +175,5 @@ class DraftyFieldCollectionTest extends DraftyWebTestCase {
     $not_archived_count = db_query('SELECT COUNT(*) FROM {field_collection_item} WHERE archived = 0')->fetchField();
     $this->assertEqual($not_archived_count, $count);
   }
+
 }

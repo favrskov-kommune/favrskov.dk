@@ -18,6 +18,7 @@ function config_perms_admin_form($form, &$form_state) {
         "<li>" . t("Remove the permission 'Administer site configuration' from roles you wish to give access to only specified custom site configuration permissions") . "</li>\n" .
         "<li>" . t("Nothing will be available under Site building if 'display site building menu' is not checked") . "</li>\n" .
         "<li>" . t("Nothing will be available under Site configuration if 'display site configuration menu' is not checked") . "</li>\n" .
+        "<li>" . t("Custom permissions <strong>cannot</strong> protect dynamic paths, which includes individual content, users, etc. (with system paths that receive an argument via the URL, such as node/1, node/2/edit, user/5, etc.)") . "</li>\n" .
         "<li>" . t("You can use * as wildcard for paths.") .
       "</ul>",
     '#collapsible' => 1,
@@ -167,8 +168,17 @@ function config_perms_admin_form_validate($form, &$form_state) {
     if (empty($perm->name))
       form_set_error("local][". $key ."", t("The name cannot be empty."));
 
-    if (empty($perm->path))
+    if (empty($perm->path)) {
       form_set_error("local][". $key ."", t("The path cannot be empty."));
+    }
+    elseif (!$perm->remove) {
+      foreach (config_perms_parse_path($perm->path) as $path) {
+        $item = menu_get_item($path);
+        if ($item && $item['path'] != $item['href']) {
+          form_set_error("local][". $key ."", t('The path %path is a dynamic path which cannot be protected by custom permissions. You can use a wildcard path like %wildcard to protect all paths of this type.', array('%path' => $path, '%wildcard' => preg_replace('#(^|/)%($|/)#', '${1}*${2}', $item['path']))));
+        }
+      }
+    }
 
     if (array_key_exists(config_perms_generate_machine_name($perm->name), $perms) && !isset($perm->pid)) {
       form_set_error("local][". $key ."", t("A permission with that name already exists."));
