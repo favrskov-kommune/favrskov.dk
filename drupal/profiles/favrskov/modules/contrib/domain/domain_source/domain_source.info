@@ -6,9 +6,9 @@ core = 7.x
 files[] = includes/domain_source_handler_filter_domain_id.inc
 files[] = tests/domain_source.test
 
-; Information added by Drupal.org packaging script on 2017-01-21
-version = "7.x-3.13"
+; Information added by Drupal.org packaging script on 2017-12-04
+version = "7.x-3.14"
 core = "7.x"
 project = "domain"
-datestamp = "1485025694"
+datestamp = "1512407892"
 

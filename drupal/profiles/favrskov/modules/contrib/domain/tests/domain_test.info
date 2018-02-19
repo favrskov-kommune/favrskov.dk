@@ -7,9 +7,9 @@ hidden = TRUE
 dependencies[] = domain
 files[] = domain.test
 
-; Information added by Drupal.org packaging script on 2017-01-21
-version = "7.x-3.13"
+; Information added by Drupal.org packaging script on 2017-12-04
+version = "7.x-3.14"
 core = "7.x"
 project = "domain"
-datestamp = "1485025694"
+datestamp = "1512407892"
 
