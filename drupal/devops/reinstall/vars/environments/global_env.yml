@@ -1,0 +1,18 @@
+---
+global_env:
+  pre_settings:
+    - { name: '$conf["pp_environment"]', status: true, value: "{{ pp_environment }}" }
+    - { name: '$conf["file_temporary_path"]', status: true, value: '{{ tmp_folder }}' }
+    - { name: '$conf["file_public_path"]', status: true, value: 'sites/default/files' }
+    - { name: '$conf["file_private_path"]', status: true, value: 'sites/default/files/private' }
+    - { name: '$conf["pp_environment"]', status: true, value: "{{ pp_environment }}" }
+    - { name: '$conf["memcache_key_prefix"]', status: true, value: "{{ pp_environment }}" }
+    - { name: '$conf["cache_backends"][]', status: true, value: 'profiles/favrskov/modules/contrib/memcache/memcache.inc' }
+    - { name: '$conf["cache_default_class"]', status: true, value: 'MemCacheDrupal' }
+    - { name: '$conf["cache_class_cache_form"]', status: true, value: 'DrupalDatabaseCache' }
+    - { name: '$conf["stage_file_proxy_origin"]', status: true, value: "{{ origin_site_url }}" }
+  modules:
+    - { name: 'stage_file_proxy', status: true }
+  drush_commands:
+    - { name: 'sqlq', status: true, arguments: "\"update apachesolr_environment set url='http://{{ solr_host }}:{{ solr_port }}/{{ solr_url }}' where env_id='solr'\"" }
+  post_settings: []

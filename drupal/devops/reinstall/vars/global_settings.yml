@@ -1,0 +1,59 @@
+---
+drupal_user: admin
+drupal_pass: propeople
+installation_profile_name: pp
+mysql_user: root
+mysql_pass: root
+mysql_db: drupal
+mysql_host: localhost
+cache_folder: /var/www/cache
+backup_folder: /var/www/backup
+drupal_folder: /var/www/drupal
+tmp_folder: /tmp
+php_env_vars: 'PHP_OPTIONS="-d sendmail_path=`which true`" APP_ENV=dev' # APP_ENV=dev - this varible will be set at PR_BUILDER from CI shell executor.
+env_domain: 'loc'
+site_url: 'http://favrskov.{{ env_domain }}'
+build_suffix: ''
+# Site url to download assets via stage_file_proxy.
+origin_site_url: 'https://favrskov.dk'
+# This variable will be used for variable_get('environment'). Can be overridden by CI server.
+# development = 'default', demo = 'demo', staging = 'staging', production = 'production'.
+pp_environment: 'default'
+# This variable allows select type of installation. Can be overridden by CI server.
+# From installation profile = 'profile', from sql dump = 'sql'.
+workflow_type: 'sql'
+is_windows: false
+ci_server_username: 'jenkins'
+# This variable allows make backup from CI environment before processing.
+# true, false.
+make_backup: false
+rebuild_registry: true
+# Local environment that will be used from backup.
+local_backup_environment: 'staging'
+# htpasswd protection for securing backups.
+backup_user: favrskov-backup
+backup_pass: EnVwDywdv4z83FJb
+# Source backup database that will be downloaded to build site.
+# In many cases this is production dump.
+source_backup_name: latest_prod.sql.gz
+# URL to the source database. Can be overridden by CI server.
+source_database: http://{{ backup_user }}:{{ backup_pass }}@cibox03.m1.propeople.com.ua/backup/{{ source_backup_name }}
+# Path where settings.php should be placed.
+settings_file_path: sites/default/settings.php
+settings_default_file_path: sites/default/default.settings.php
+# Socila icons.
+social_icons_archive: "{{ drupal_folder }}/profiles/favrskov/themes/favrskovtheme/images/icon.tar.gz"
+social_icons_dest: "{{ drupal_folder }}/sites/default/files"
+memcache_server: "127.0.0.1:11211"
+solr_host: localhost
+solr_port: 8983
+solr_url: "solr/{{ pp_environment }}"
+# Update domain names stored in DB.
+domains:
+  main_domain:
+    id: 1
+    name: favrskov.{{ env_domain }}
+subdomains:
+  - { domain_id: '3', code: 'designguiden.favrskov.' }
+  - { domain_id: '4', code: 'cykelkommune.favrskov.' }
+  - { domain_id: '5', code: 'oplev.favrskov.' }
