@@ -21,8 +21,8 @@ $databases = array (
 );
 
 // Common settings for all installations.
-require('common.settings.php');
-require('cache.settings.php');
+require 'cache.settings.php';
+require 'common.settings.php';
 
 // Stage File Proxy config - to get images from prod.
 $conf["stage_file_proxy_origin"] = "https://www.favrskov.dk";
