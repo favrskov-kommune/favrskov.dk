@@ -1,0 +1,2 @@
+The following patches from the following thread: https://www.drupal.org/project/apachesolr_attachments/issues/1854088 have been applied to this project:
+- https://www.drupal.org/files/bypass_deadlocks_on_mass_update-1854088-2.patch
