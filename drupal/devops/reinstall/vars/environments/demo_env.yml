@@ -1,0 +1,14 @@
+---
+env:
+  pre_settings: []
+  modules:
+    - { name: 'dblog', status: true }
+    - { name: 'devel', status: false }
+    - { name: 'views_ui', status: false }
+    - { name: 'diff', status: false }
+  drush_commands:
+    - { name: 'solr-delete-index', status: true, arguments: "node" }
+    - { name: 'solr-mark-all', status: true, arguments: "-l {{ site_url }}" }
+    - { name: 'solr-index ', status: true, arguments: "-l {{ site_url }}" }
+  post_settings:
+    - { name: '$conf["error_level"]', status: true, value: '0' }
