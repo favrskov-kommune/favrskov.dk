@@ -1,0 +1,2 @@
+The following patches from the following thread: https://www.drupal.org/project/apachesolr_panels/issues/2315731 have been applied to this project:
+- https://www.drupal.org/files/issues/apachesolr_multilingual-undefined-index-2315731-4.patch

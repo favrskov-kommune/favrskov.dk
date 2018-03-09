@@ -6,8 +6,6 @@
  */
 
 // Memcached.
-include_once('./includes/cache.inc');
-include_once('./profiles/favrskov/modules/contrib/memcache/memcache.inc');
 $conf['memcache_extension'] = 'memcached';
 $conf['cache_backends'] = !empty($conf['cache_backends']) ? $conf['cache_backends'] : array();
 $conf['cache_backends'][] = 'profiles/favrskov/modules/contrib/memcache/memcache.inc';

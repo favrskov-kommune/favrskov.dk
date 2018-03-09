@@ -1,0 +1,2 @@
+The following patches from the following thread: https://www.drupal.org/project/expire/issues/2508970 have been applied to this project:
+- https://www.drupal.org/files/issues/2508970-4-clear-internal-cache-too.patch
