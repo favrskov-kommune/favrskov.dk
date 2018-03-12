@@ -7,10 +7,7 @@
 
 // Memcached.
 $conf['memcache_extension'] = 'memcached';
-$conf['cache_backends'] = !empty($conf['cache_backends']) ? $conf['cache_backends'] : array();
 $conf['cache_backends'][] = 'profiles/favrskov/modules/contrib/memcache/memcache.inc';
-$conf['lock_inc'] = 'profiles/favrskov/modules/contrib/memcache/memcache-lock.inc';
-$conf['memcache_stampede_protection'] = TRUE;
 $conf['cache_default_class'] = 'MemCacheDrupal';
 $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
 $conf['memcache_servers'] = array(
