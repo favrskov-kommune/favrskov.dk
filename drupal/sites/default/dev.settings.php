@@ -52,5 +52,5 @@ $conf['preprocess_js'] = 0;
 $conf['securepages_enable'] = 0;
 
 // Common settings for all installations.
+require 'cache.settings.php';
 require 'common.settings.php';
-//require 'cache.settings.php';

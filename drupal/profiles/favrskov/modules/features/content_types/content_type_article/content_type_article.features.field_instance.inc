@@ -230,6 +230,8 @@ function content_type_article_field_default_field_instances() {
           'media_browser_plus--media_browser_thumbnails' => 0,
           'upload' => 0,
         ),
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 37,
