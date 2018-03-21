@@ -19,7 +19,6 @@ dependencies[] = link
 dependencies[] = list
 dependencies[] = media
 dependencies[] = multiple_selects
-dependencies[] = node
 dependencies[] = node_reference
 dependencies[] = options
 dependencies[] = piwik_stats

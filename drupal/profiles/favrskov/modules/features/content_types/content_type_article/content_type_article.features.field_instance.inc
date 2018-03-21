@@ -208,18 +208,21 @@ function content_type_article_field_default_field_instances() {
       'file_extensions' => 'pdf',
       'max_filesize' => '',
       'user_register_form' => FALSE,
+      'wysiwyg_insert' => 0,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
           'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
+          'banner' => 0,
+          'document' => 'document',
+          'image' => 0,
           'video' => 0,
         ),
         'browser_plugins' => array(
@@ -227,8 +230,6 @@ function content_type_article_field_default_field_instances() {
           'media_browser_plus--media_browser_thumbnails' => 0,
           'upload' => 0,
         ),
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 37,
