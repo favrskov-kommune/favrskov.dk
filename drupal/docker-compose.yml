@@ -24,6 +24,10 @@ services:
       DB_PASSWORD: drupal
       DB_NAME: favrskov
       DB_DRIVER: mysql
+      PHP_XDEBUG_ENABLED: 1 # Set 1 to enable.
+      PHP_XDEBUG_AUTOSTART: 1 # Set 1 to enable.
+      PHP_XDEBUG_REMOTE_CONNECT_BACK: 0         # Disabled for remote.host to work (enabled by default)
+      PHP_XDEBUG_REMOTE_HOST: “10.254.254.254”  # Setting the host (localhost by default)
     volumes:
       # Options for macOS users (https://docker4drupal.readthedocs.io/en/latest/macos)
       - ./:/var/www/html # Docker-sync
