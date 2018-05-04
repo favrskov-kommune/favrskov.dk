@@ -918,10 +918,9 @@ function favrskov_helper_update_7049() {
 }
 
 /**
- * Implements hook_update
+ * Implements hook_update_7050
  * Enable Media bulk upload module and its dependencies.
  */
 function favrskov_helper_update_7050() {
   module_enable(array('media_bulk_upload'));
-
 }
