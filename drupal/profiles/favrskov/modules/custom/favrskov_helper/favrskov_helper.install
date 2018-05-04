@@ -916,3 +916,12 @@ function favrskov_helper_update_7049() {
   features_revert_module('view_slider');
   features_revert_module('content_type_slider_element');
 }
+
+/**
+ * Implements hook_update
+ * Enable Media bulk upload module and its dependencies.
+ */
+function favrskov_helper_update_7050() {
+  module_enable(array('media_bulk_upload'));
+
+}
