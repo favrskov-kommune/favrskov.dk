@@ -1,0 +1,2 @@
+The following patches have been applied to this project:
+- https://www.drupal.org/files/issues/media_browser_plus-views_bulk_actions_broken-2209833-2-7.patch

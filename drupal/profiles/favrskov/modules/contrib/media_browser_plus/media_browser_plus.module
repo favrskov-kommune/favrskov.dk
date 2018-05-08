@@ -98,6 +98,16 @@ function media_browser_plus_menu_alter(&$items) {
 }
 
 /**
+ * Implements hook_views_default_views_alter
+ * Ensure the admin_views_file view's path is pointing at the right location
+ */
+function media_browser_plus_views_default_views_alter(&$views) {
+  if (array_key_exists('admin_views_file', $views) && variable_get('media_browser_plus_thumbnails_as_default_browser', TRUE)) {
+    $views['admin_views_file']->override_path = 'admin/content/file/list';
+  }
+}
+
+/**
  * Implements hook_menu_local_tasks_alter().
  */
 function media_browser_plus_menu_local_tasks_alter(&$data, $router_item, $root_path) {
