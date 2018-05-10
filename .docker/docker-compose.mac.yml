@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  php:
+    volumes:
+      # Options for macOS users (https://docker4drupal.readthedocs.io/en/latest/macos)
+      - docker-favrskov-sync:/var/www/html/docroot # Docker-sync
+
+  apache:
+    volumes:
+      # Options for macOS users (https://docker4drupal.readthedocs.io/en/latest/macos)
+      - docker-favrskov-sync:/var/www/html/docroot # Docker-sync
+
+volumes:
+  # Docker-sync for macOS users
+  docker-favrskov-sync:
+    external: true

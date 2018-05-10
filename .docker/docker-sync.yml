@@ -1,0 +1,11 @@
+version: "2"
+
+options:
+  compose-file-path: 'docker-compose.yml'
+  compose-dev-file-path: 'docker-compose.mac.yml'
+
+syncs:
+  docker-favrskov-sync:
+    src: '../'
+    sync_userid: '82'
+    sync_excludes: ['.gitignore', '.git/', '.idea/']
