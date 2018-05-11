@@ -1,7 +1,7 @@
 name = Feeds Volunteer jobs importer
 core = 7.x
 package = Feeds
-version = 7.x-1.0
+version = 7.x-1.1
 dependencies[] = ctools
 dependencies[] = feeds
 dependencies[] = feeds_ex
