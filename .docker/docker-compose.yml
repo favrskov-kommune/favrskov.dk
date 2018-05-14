@@ -2,56 +2,56 @@ version: "2"
 
 services:
   mariadb:
-    image: wodby/mariadb:10.1-2.3.5
-    container_name: favrskov_mariadb
+    image: wodby/mariadb:$MARIADB_TAG
+    container_name: "${PROJECT_NAME}_mariadb"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: favrskov
-      MYSQL_USER: drupal
-      MYSQL_PASSWORD: drupal
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD
     volumes:
-      - ~/mariadb-init/favrskov:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
-      - ~/docker-runtime/favrskov:/var/lib/mysql # I want to manage volumes manually.
+      - ~/mariadb-init/$PROJECT_NAME:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
+      - ~/docker-runtime/$PROJECT_NAME:/var/lib/mysql # I want to manage volumes manually.
 
   php:
     image: 185836940016.dkr.ecr.eu-west-1.amazonaws.com/php_5.6_main_drupal:latest
-    container_name: favrskov_php
+    container_name: "${PROJECT_NAME}_php"
     environment:
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
       PHP_FPM_CLEAR_ENV: "no"
-      DB_HOST: mariadb
-      DB_USER: drupal
-      DB_PASSWORD: drupal
-      DB_NAME: favrskov
-      DB_DRIVER: mysql
+      DB_HOST: $DB_HOST
+      DB_USER: $DB_USER
+      DB_PASSWORD: $DB_PASSWORD
+      DB_NAME: $DB_NAME
+      DB_DRIVER: $DB_DRIVER
       PHP_XDEBUG_ENABLED: 1 # Set 1 to enable.
       PHP_XDEBUG_AUTOSTART: 1 # Set 1 to enable.
       PHP_XDEBUG_REMOTE_CONNECT_BACK: 0         # Disabled for remote.host to work (enabled by default)
       PHP_XDEBUG_REMOTE_HOST: “10.254.254.254”  # Setting the host (localhost by default)
     volumes:
       # Options for macOS users (https://docker4drupal.readthedocs.io/en/latest/macos)
-      - ./:/var/www/html # Docker-sync
+      - ../:/var/www/html # Docker-sync
 
   apache:
-    image: wodby/php-apache:2.4-2.0.0
-    container_name: favrskov_apache
+    image: wodby/php-apache:$APACHE_TAG
+    container_name: "${PROJECT_NAME}_apache"
     depends_on:
       - php
     environment:
       APACHE_LOG_LEVEL: debug
       APACHE_BACKEND_HOST: php
-      APACHE_SERVER_ROOT: /var/www/html
+      APACHE_SERVER_ROOT: /var/www/html/docroot
     volumes:
       # Options for macOS users (https://docker4drupal.readthedocs.io/en/latest/macos)
-      - ./:/var/www/html # Docker-sync
+      - ../:/var/www/html # Docker-sync
     labels:
       - 'traefik.backend=apache'
       - 'traefik.port=80'
-      - 'traefik.frontend.rule=Host:favrskov.loc'
+      - 'traefik.frontend.rule=Host:${PROJECT_BASE_URL}'
 
   varnish:
-    image: wodby/drupal-varnish:4.1-2.2.0
-    container_name: favrskov_varnish
+    image: wodby/drupal-varnish:$VARNISH_TAG
+    container_name: "${PROJECT_NAME}_varnish"
     depends_on:
       - apache
     environment:
@@ -61,33 +61,33 @@ services:
     labels:
       - 'traefik.backend=varnish'
       - 'traefik.port=6081'
-      - 'traefik.frontend.rule=Host:varnish.drupal.docker.localhost'
+      - 'traefik.frontend.rule=Host:varnish.${PROJECT_BASE_URL}'
 
   solr:
-    image: wodby/drupal-solr:7-5.4-2.2.0
-    container_name: favrskov_solr
+    image: wodby/drupal-solr:$SOLR_TAG
+    container_name: "${PROJECT_NAME}_solr"
     environment:
       SOLR_HEAP: 1024m
     labels:
       - 'traefik.backend=solr'
       - 'traefik.port=8983'
-      - 'traefik.frontend.rule=Host:solr.drupal.docker.localhost'
+      - 'traefik.frontend.rule=Host:solr.${PROJECT_BASE_URL}'
 
   mailhog:
     image: mailhog/mailhog
-    container_name: favrskov_mailhog
+    container_name: "${PROJECT_NAME}_mailhog"
     labels:
       - 'traefik.backend=mailhog'
       - 'traefik.port=8025'
-      - 'traefik.frontend.rule=Host:mailhog.drupal.docker.localhost'
+      - 'traefik.frontend.rule=Host:mailhog.${PROJECT_BASE_URL}'
 
   memcached:
-    image: wodby/memcached:1.4-2.0.0
-    container_name: favrskov_memcached
+    image: wodby/memcached:$MEMCACHED_TAG
+    container_name: "${PROJECT_NAME}_memcached"
 
   traefik:
     image: traefik
-    container_name: favrskov_traefik
+    container_name: "${PROJECT_NAME}_traefik"
     command: -c /dev/null --web --docker --logLevel=INFO
     ports:
       - '8000:80'
