@@ -6,6 +6,6 @@ options:
 
 syncs:
   docker-favrskov-sync:
-    src: './'
+    src: '../'
     sync_userid: '82'
     sync_excludes: ['.gitignore', '.git/', '.idea/']
