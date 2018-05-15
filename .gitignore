@@ -8,6 +8,6 @@ backup/
 build_reports/
 taxon/
 piwik/
-drupal/simplesamlphp/
-drupal/*/files-private/
+docroot/simplesamlphp/
+docroot/*/files-private/
 **/hacked/
