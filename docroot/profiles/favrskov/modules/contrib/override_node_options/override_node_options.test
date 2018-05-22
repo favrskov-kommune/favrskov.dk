@@ -5,57 +5,86 @@
  * Unit tests for the override_node_options module.
  */
 
+/**
+ * Defines a base class for testing the Override Node Options module.
+ */
 class OverrideNodeOptionsTestCase extends DrupalWebTestCase {
-  protected $normal_user;
-  protected $admin_user;
+
+  /**
+   * A standard user with basic permissions.
+   *
+   * @var stdClass
+   */
+  protected $normalUser;
+
+  /**
+   * A page node to test against.
+   *
+   * @var stdClass
+   */
   protected $node;
 
+  /**
+   * {@inheritdoc}
+   */
   public static function getInfo() {
     return array(
       'name' => 'Override node options',
-      'description' => 'Functional tests for overridding options on node forms.',
+      'description' => 'Functional tests for overriding options on node forms.',
       'group' => 'Override node options',
     );
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setUp() {
     parent::setUp('override_node_options');
-    $this->normal_user = $this->drupalCreateUser(array('create page content', 'edit any page content'));
+
+    $this->normalUser = $this->drupalCreateUser(array('create page content', 'edit any page content'));
     $this->node = $this->drupalCreateNode();
   }
 
   /**
-   * Assert that fields in a node were updated to certail values.
+   * Assert that fields in a node were updated to certain values.
    *
-   * @param $node
+   * @param \stdClass $node
    *   The node object to check (will be reloaded from the database).
-   * @param $fields
+   * @param array $fields
    *   An array of values to check equality, keyed by node object property.
    */
-  function assertNodeFieldsUpdated(stdClass $node, array $fields) {
+  private function assertNodeFieldsUpdated(stdClass $node, array $fields) {
     // Re-load the node from the database to make sure we have the current
     // values.
     $node = node_load($node->nid, NULL, TRUE);
     foreach ($fields as $field => $value) {
-      $this->assertEqual($node->$field, $value, t('Node @field was updated to !value, expected !expected.', array('@field' => $field, '!value' => var_export($node->$field, TRUE), '!expected' => var_export($value, TRUE))));
+      $this->assertEqual(
+        $node->$field,
+        $value,
+        t('Node @field was updated to !value, expected !expected.', array(
+          '@field' => $field,
+          '!value' => var_export($node->$field, TRUE),
+          '!expected' => var_export($value, TRUE),
+        ))
+      );
     }
   }
 
   /**
    * Assert that the user cannot access fields on node add and edit forms.
    *
-   * @param $node
+   * @param \stdClass $node
    *   The node object, will be used on the node edit form.
-   * @param $fields
+   * @param array $fields
    *   An array of form fields to check.
    */
-  function assertNodeFieldsNoAccess(stdClass $node, array $fields) {
-    $this->drupalGet('node/add/' . $node->type);
+  private function assertNodeFieldsNoAccess(stdClass $node, array $fields) {
+    $this->drupalGet("node/add/{$node->type}");
     foreach ($fields as $field) {
       $this->assertNoFieldByName($field);
     }
 
-    $this->drupalGet('node/' . $this->node->nid . '/edit');
+    $this->drupalGet("node/{$this->node->nid}/edit");
     foreach ($fields as $field) {
       $this->assertNoFieldByName($field);
     }
@@ -64,61 +93,135 @@ class OverrideNodeOptionsTestCase extends DrupalWebTestCase {
   /**
    * Test the 'Authoring information' fieldset.
    */
-  function testNodeOptions() {
-    $this->admin_user = $this->drupalCreateUser(array('create page content', 'edit any page content', 'override page published option', 'override page promote to front page option', 'override page sticky option'));
-    $this->drupalLogin($this->admin_user);
+  protected function testNodeOptions() {
+    $specific_user = $this->drupalCreateUser(array(
+      'create page content',
+      'edit any page content',
+      'override page published option',
+      'override page promote to front page option',
+      'override page sticky option',
+      'override page comment setting option',
+    ));
 
-    $fields = array(
-      'status' => (bool) !$this->node->status,
-      'promote' => (bool) !$this->node->promote,
-      'sticky' => (bool) !$this->node->sticky,
-    );
-    $this->drupalPost('node/' . $this->node->nid . '/edit', $fields, t('Save'));
-    $this->assertNodeFieldsUpdated($this->node, $fields);
+    $general_user = $this->drupalCreateUser(array(
+      'create page content',
+      'edit any page content',
+      'override all published option',
+      'override all promote to front page option',
+      'override all sticky option',
+      'override all comment setting option',
+    ));
 
-    $this->drupalLogin($this->normal_user);
+    foreach (array($specific_user, $general_user) as $account) {
+      $this->drupalLogin($account);
+
+      $fields = array(
+        'status' => (bool) !$this->node->status,
+        'promote' => (bool) !$this->node->promote,
+        'sticky' => (bool) !$this->node->sticky,
+        'comment' => COMMENT_NODE_OPEN,
+      );
+      $this->drupalPost("node/{$this->node->nid}/edit", $fields, t('Save'));
+      $this->assertNodeFieldsUpdated($this->node, $fields);
+    }
+
+    $this->drupalLogin($this->normalUser);
     $this->assertNodeFieldsNoAccess($this->node, array_keys($fields));
   }
 
   /**
    * Test the 'Revision information' fieldset.
    */
-  function testNodeRevisions() {
-    $this->admin_user = $this->drupalCreateUser(array('create page content', 'edit any page content', 'override page revision option'));
-    $this->drupalLogin($this->admin_user);
+  protected function testNodeRevisions() {
+    $specific_user = $this->drupalCreateUser(array(
+      'create page content',
+      'edit any page content',
+      'override page revision option',
+    ));
 
-    $fields = array(
-      'revision' => TRUE,
-    );
-    $this->drupalPost('node/' . $this->node->nid . '/edit', $fields, t('Save'));
-    $this->assertNodeFieldsUpdated($this->node, array('vid' => $this->node->vid + 1));
+    $general_user = $this->drupalCreateUser(array(
+      'create page content',
+      'edit any page content',
+      'override all revision option',
+    ));
 
-    $this->drupalLogin($this->normal_user);
+    foreach (array($specific_user, $general_user) as $account) {
+      $this->drupalLogin($account);
+
+      // Ensure that we have the latest node data.
+      $node = node_load($this->node->nid, NULL, TRUE);
+
+      $fields = array(
+        'revision' => TRUE,
+      );
+      $this->drupalPost("node/{$node->nid}/edit", $fields, t('Save'));
+      $this->assertNodeFieldsUpdated($node, array('vid' => $node->vid + 1));
+    }
+
+    $this->drupalLogin($this->normalUser);
     $this->assertNodeFieldsNoAccess($this->node, array_keys($fields));
   }
 
   /**
    * Test the 'Authoring information' fieldset.
    */
-  function testNodeAuthor() {
-    $this->admin_user = $this->drupalCreateUser(array('create page content', 'edit any page content', 'override page authored on option', 'override page authored by option'));
-    $this->drupalLogin($this->admin_user);
+  protected function testNodeAuthor() {
+    $specific_user = $this->drupalCreateUser(array(
+      'create page content',
+      'edit any page content',
+      'override page authored on option',
+      'override page authored by option',
+    ));
 
-    $this->drupalPost('node/' . $this->node->nid . '/edit', array('name' => 'invalid-user'), t('Save'));
-    $this->assertText('The username invalid-user does not exist.');
+    $general_user = $this->drupalCreateUser(array(
+      'create page content',
+      'edit any page content',
+      'override all authored on option',
+      'override all authored by option',
+    ));
 
-    $this->drupalPost('node/' . $this->node->nid . '/edit', array('date' => 'invalid-date'), t('Save'));
-    $this->assertText('You have to specify a valid date.');
+    foreach (array($specific_user, $general_user) as $account) {
+      $this->drupalLogin($account);
 
-    $time = time() + 500;
-    $fields = array(
-      'name' => '',
-      'date' => format_date($time, 'custom', 'Y-m-d H:i:s O'),
-    );
-    $this->drupalPost('node/' . $this->node->nid . '/edit', $fields, t('Save'));
-    $this->assertNodeFieldsUpdated($this->node, array('uid' => 0, 'created' => $time));
+      $this->drupalPost("node/{$this->node->nid}/edit", array('name' => 'invalid-user'), t('Save'));
+      $this->assertText('The username invalid-user does not exist.');
 
-    $this->drupalLogin($this->normal_user);
+      $this->drupalPost("node/{$this->node->nid}/edit", array('date' => 'invalid-date'), t('Save'));
+      $this->assertText('You have to specify a valid date.');
+
+      $time = time() + 500;
+      $fields = array(
+        'name' => '',
+        'date' => format_date($time, 'custom', 'Y-m-d H:i:s O'),
+      );
+      $this->drupalPost("node/{$this->node->nid}/edit", $fields, t('Save'));
+      $this->assertNodeFieldsUpdated($this->node, array('uid' => 0, 'created' => $time));
+    }
+
+    $this->drupalLogin($this->normalUser);
     $this->assertNodeFieldsNoAccess($this->node, array_keys($fields));
   }
+
+  /**
+   * Ensure that the node created date does not change when the node is edited.
+   */
+  public function testNodeCreatedDateDoesNotChange() {
+    $this->drupalLogin(
+      $this->drupalCreateUser(array('edit any page content'))
+    );
+
+    $node = $this->drupalCreateNode();
+
+    // Update the node.
+    $this->drupalPost("node/{$node->nid}/edit", array(), t('Save'));
+
+    // Load a new instance of the node.
+    $node2 = node_load($node->nid);
+
+    // Ensure that the node was updated by comparing the changed dates, but the
+    // created dates still match.
+    $this->assertNotEqual($node->changed, $node2->changed, t('Changed values do not match.'));
+    $this->assertEqual($node->created, $node2->created, t('Created values do match.'));
+  }
+
 }
