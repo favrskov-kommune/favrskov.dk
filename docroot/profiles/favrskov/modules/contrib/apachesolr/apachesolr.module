@@ -10,16 +10,6 @@ define('APACHESOLR_READ_ONLY', 1);
 define('APACHESOLR_API_VERSION', '3.0');
 
 /**
- * Implements hook_init().
- */
-function apachesolr_init() {
-  if (arg(0) == 'admin') {
-    // Add the CSS for this module
-    drupal_add_css(drupal_get_path('module', 'apachesolr') . '/apachesolr.css');
-  }
-}
-
-/**
  * Implements hook_menu().
  */
 function apachesolr_menu() {
@@ -652,7 +642,7 @@ function apachesolr_user_update(&$edit, $account, $category) {
 }
 
 /**
- * Implements hook_term_update().
+ * Implements hook_taxonomy_term_update().
  *
  * Mark nodes as needing re-indexing if a term name changes.
  *
@@ -959,10 +949,10 @@ function apachesolr_cron($env_id = NULL) {
 
   // Optimize the index (by default once a day).
   $optimize_interval = variable_get('apachesolr_optimize_interval', 60 * 60 * 24);
-  $time = REQUEST_TIME;
+  // Protect from too-frequent optimizations.
+  $optimize_attempt_interval = variable_get('apachesolr_optimize_attempt_interval', 60 * 60);
 
   foreach($environments as $env_id) {
-    $last = apachesolr_environment_variable_get($env_id, 'apachesolr_last_optimize', 0);
 
     // Indexes in read-only mode do not change the index, so will not update, delete, or optimize during cron.
     if (apachesolr_environment_variable_get($env_id, 'apachesolr_read_only', APACHESOLR_READ_WRITE) == APACHESOLR_READ_ONLY) {
@@ -984,17 +974,33 @@ function apachesolr_cron($env_id = NULL) {
       }
     }
 
-    try {
-      $solr = apachesolr_get_solr($env_id);
-      if ($optimize_interval && ($time - $last > $optimize_interval)) {
-        $solr->optimize(FALSE, FALSE);
-        apachesolr_environment_variable_set($env_id, 'apachesolr_last_optimize', $time);
+    // Optimize index.
+    $time = time();
+    $last_optimize_success = apachesolr_environment_variable_get($env_id, 'apachesolr_last_optimize_success', 0);
+    $last_optimize_attempt = apachesolr_environment_variable_get($env_id, 'apachesolr_last_optimize_attempt', 0);
+    if (
+      $optimize_interval && $optimize_attempt_interval
+      && ($time - $last_optimize_success >= $optimize_interval)
+      && ($time - $last_optimize_attempt >= $optimize_attempt_interval)
+    ) {
+      try {
+        $solr = apachesolr_get_solr($env_id);
+        apachesolr_environment_variable_set($env_id, 'apachesolr_last_optimize_attempt', $time);
+        $solr->optimize(FALSE, FALSE, 600);
+        apachesolr_environment_variable_set($env_id, 'apachesolr_last_optimize_success', $time);
         apachesolr_set_last_index_updated($env_id, $time);
       }
-      // Only clear the cache if the index changed.
-      // TODO: clear on some schedule if running multi-site.
-      $updated = apachesolr_get_last_index_updated($env_id);
-      if ($updated > 0) {
+      catch (Exception $e) {
+        apachesolr_log_exception($env_id, $e);
+      }
+    }
+
+    // Only clear the cache if the index changed.
+    // TODO: clear on some schedule if running multi-site.
+    $updated = apachesolr_get_last_index_updated($env_id);
+    if ($updated > 0) {
+      try {
+        $solr = apachesolr_get_solr($env_id);
         $solr->clearCache();
         // Re-populate the luke cache.
         $solr->getLuke();
@@ -1004,9 +1010,9 @@ function apachesolr_cron($env_id = NULL) {
           apachesolr_set_last_index_updated($env_id);
         }
       }
-    }
-    catch (Exception $e) {
-      apachesolr_log_exception($env_id, $e);
+      catch (Exception $e) {
+        apachesolr_log_exception($env_id, $e);
+      }
     }
 
     // We can safely process the apachesolr_cron_limit nodes at a time without a
@@ -2065,10 +2071,13 @@ function apachesolr_get_indexer_table($type) {
  */
 function apachesolr_entity_delete($entity, $entity_type) {
   list($entity_id) = entity_extract_ids($entity_type, $entity);
-  // Get all environments and delete it from their table and index
-  $environments = apachesolr_load_all_environments();
-  foreach ($environments as $environment) {
-    apachesolr_remove_entity($environment['env_id'], $entity_type, $entity_id);
+
+  if (apachesolr_entity_should_index($entity, $entity_type)) {
+    // Get all environments and delete it from their table and index
+    $environments = apachesolr_load_all_environments();
+    foreach ($environments as $environment) {
+      apachesolr_remove_entity($environment['env_id'], $entity_type, $entity_id);
+    }
   }
 }
 
@@ -2941,7 +2950,8 @@ function apachesolr_environment_load_subrecords(&$environments) {
  *   Second configuration array.
  * @param bool  $ignore_state
  *   Whether to ignore state variables, such as `apachesolr_index_last`,
- *   `apachesolr_index_updated`, and `apachesolr_last_optimize`.
+ *   `apachesolr_index_updated`, `apachesolr_last_optimize_success` and
+ *   `apachesolr_last_optimize_attempt`
  *
  * @return TRUE if both arrays are considered equal, FALSE otherwise.
  */
@@ -2966,7 +2976,8 @@ function apachesolr_environment_conf_state_variables() {
     $_keys = array(
       'apachesolr_index_last',
       'apachesolr_index_updated',
-      'apachesolr_last_optimize',
+      'apachesolr_last_optimize_attempt',
+      'apachesolr_last_optimize_success',
     );
     // Use array_combine() to make it easier to use in array_diff_key().
     // @see apachesolr_environment_conf_equals()

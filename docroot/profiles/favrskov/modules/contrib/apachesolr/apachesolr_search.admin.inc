@@ -199,7 +199,6 @@ function apachesolr_search_page_settings_form($form, &$form_state, $search_page 
   $form['label'] = array(
     '#type' => 'textfield',
     '#title' => t('Label'),
-    '#description' => '',
     '#required' => TRUE,
     '#size' => 30,
     '#maxlength' => 32,
@@ -215,7 +214,6 @@ function apachesolr_search_page_settings_form($form, &$form_state, $search_page 
       'exists' => 'apachesolr_search_page_exists',
       'source' => array('label'),
     ),
-    '#description' => '',
     '#default_value' => !empty($search_page['page_id']) ? $search_page['page_id'] : '',
     '#disabled' => !empty($search_page),
     '#description' => t('A unique machine-readable identifier for the search page configuration. It must only contain lowercase letters, numbers, and underscores.'),
