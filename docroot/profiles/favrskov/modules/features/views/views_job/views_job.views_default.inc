@@ -49,26 +49,26 @@ function views_job_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Title */
+  /* Field: Indhold: Overskrift */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Sort criterion: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Filter criterion: Indhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -119,7 +119,7 @@ function views_job_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
+  /* Field: Indhold: Overskrift */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -128,11 +128,11 @@ function views_job_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Place of work */
+  /* Field: Indhold: Place of work */
   $handler->display->display_options['fields']['field_job_place_of_work']['id'] = 'field_job_place_of_work';
   $handler->display->display_options['fields']['field_job_place_of_work']['table'] = 'field_data_field_job_place_of_work';
   $handler->display->display_options['fields']['field_job_place_of_work']['field'] = 'field_job_place_of_work';
-  /* Field: Content: Start date */
+  /* Field: Indhold: Start date */
   $handler->display->display_options['fields']['field_job_start_date']['id'] = 'field_job_start_date';
   $handler->display->display_options['fields']['field_job_start_date']['table'] = 'field_data_field_job_start_date';
   $handler->display->display_options['fields']['field_job_start_date']['field'] = 'field_job_start_date';
@@ -145,7 +145,7 @@ function views_job_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Destination link */
+  /* Field: Indhold: Destination link */
   $handler->display->display_options['fields']['field_job_destination_link']['id'] = 'field_job_destination_link';
   $handler->display->display_options['fields']['field_job_destination_link']['table'] = 'field_data_field_job_destination_link';
   $handler->display->display_options['fields']['field_job_destination_link']['field'] = 'field_job_destination_link';
@@ -154,12 +154,12 @@ function views_job_views_default_views() {
   $handler->display->display_options['fields']['field_job_destination_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_job_destination_link']['type'] = 'link_plain';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Sort criterion: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Sort criterion: Content: Start date (field_job_start_date) */
+  /* Sort criterion: Indhold: Start date (field_job_start_date) */
   $handler->display->display_options['sorts']['field_job_start_date_value']['id'] = 'field_job_start_date_value';
   $handler->display->display_options['sorts']['field_job_start_date_value']['table'] = 'field_data_field_job_start_date';
   $handler->display->display_options['sorts']['field_job_start_date_value']['field'] = 'field_job_start_date_value';
@@ -193,7 +193,7 @@ function views_job_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
+  /* Field: Indhold: Overskrift */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -203,12 +203,12 @@ function views_job_views_default_views() {
   $handler->display->display_options['fields']['title']['element_type'] = '0';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Place of work */
+  /* Field: Indhold: Place of work */
   $handler->display->display_options['fields']['field_job_place_of_work']['id'] = 'field_job_place_of_work';
   $handler->display->display_options['fields']['field_job_place_of_work']['table'] = 'field_data_field_job_place_of_work';
   $handler->display->display_options['fields']['field_job_place_of_work']['field'] = 'field_job_place_of_work';
   $handler->display->display_options['fields']['field_job_place_of_work']['element_default_classes'] = FALSE;
-  /* Field: Content: Start date */
+  /* Field: Indhold: Start date */
   $handler->display->display_options['fields']['field_job_start_date']['id'] = 'field_job_start_date';
   $handler->display->display_options['fields']['field_job_start_date']['table'] = 'field_data_field_job_start_date';
   $handler->display->display_options['fields']['field_job_start_date']['field'] = 'field_job_start_date';
@@ -222,7 +222,7 @@ function views_job_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Destination link */
+  /* Field: Indhold: Destination link */
   $handler->display->display_options['fields']['field_job_destination_link']['id'] = 'field_job_destination_link';
   $handler->display->display_options['fields']['field_job_destination_link']['table'] = 'field_data_field_job_destination_link';
   $handler->display->display_options['fields']['field_job_destination_link']['field'] = 'field_job_destination_link';
@@ -233,7 +233,7 @@ function views_job_views_default_views() {
   $handler->display->display_options['fields']['field_job_destination_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_job_destination_link']['type'] = 'link_plain';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Sort criterion: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
@@ -273,8 +273,6 @@ function views_job_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'job_html';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
@@ -310,7 +308,7 @@ function views_job_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
+  /* Field: Indhold: Overskrift */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -318,27 +316,27 @@ function views_job_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Place of work */
+  /* Field: Indhold: Place of work */
   $handler->display->display_options['fields']['field_job_place_of_work']['id'] = 'field_job_place_of_work';
   $handler->display->display_options['fields']['field_job_place_of_work']['table'] = 'field_data_field_job_place_of_work';
   $handler->display->display_options['fields']['field_job_place_of_work']['field'] = 'field_job_place_of_work';
   $handler->display->display_options['fields']['field_job_place_of_work']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Sort criterion: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Filter criterion: Indhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -346,7 +344,7 @@ function views_job_views_default_views() {
     'job' => 'job',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Title */
+  /* Filter criterion: Indhold: Overskrift */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -365,7 +363,7 @@ function views_job_views_default_views() {
     6 => 0,
     4 => 0,
   );
-  /* Filter criterion: Content: Place of work (field_job_place_of_work) */
+  /* Filter criterion: Indhold: Place of work (field_job_place_of_work) */
   $handler->display->display_options['filters']['field_job_place_of_work_value']['id'] = 'field_job_place_of_work_value';
   $handler->display->display_options['filters']['field_job_place_of_work_value']['table'] = 'field_data_field_job_place_of_work';
   $handler->display->display_options['filters']['field_job_place_of_work_value']['field'] = 'field_job_place_of_work_value';
@@ -416,7 +414,6 @@ function views_job_views_default_views() {
     t('View panes'),
     t('Job listing by list'),
     t('Advanced options'),
-    t('Select any filter and click on Apply to see results'),
   );
   $export['job'] = $view;
 
