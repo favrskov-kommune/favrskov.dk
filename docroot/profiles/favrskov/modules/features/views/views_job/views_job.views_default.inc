@@ -163,7 +163,6 @@ function views_job_views_default_views() {
   $handler->display->display_options['sorts']['field_job_start_date_value']['id'] = 'field_job_start_date_value';
   $handler->display->display_options['sorts']['field_job_start_date_value']['table'] = 'field_data_field_job_start_date';
   $handler->display->display_options['sorts']['field_job_start_date_value']['field'] = 'field_job_start_date_value';
-  $handler->display->display_options['sorts']['field_job_start_date_value']['order'] = 'DESC';
 
   /* Display: Job listing by list */
   $handler = $view->new_display('panel_pane', 'Job listing by list', 'job_listing_by_list');
