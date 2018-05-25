@@ -924,3 +924,11 @@ function favrskov_helper_update_7049() {
 function favrskov_helper_update_7050() {
   module_enable(array('media_bulk_upload'));
 }
+
+/**
+ * Implements hook_update_7051
+ * Revert feature 'views_job'.
+ */
+function favrskov_helper_update_7051() {
+  features_revert_module('views_job');
+}
