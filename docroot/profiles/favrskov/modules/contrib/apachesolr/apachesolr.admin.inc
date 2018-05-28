@@ -461,6 +461,8 @@ function apachesolr_settings(array $form, array &$form_state) {
     $rows[$environment_id]['data'] = array_merge($rows[$environment_id]['data'], $confs);
     $rows[$environment_id]['data'] = array_merge($rows[$environment_id]['data'], $ops);
   }
+  // Custom CSS for Admin ApacheSolr table.
+  $form['#attached']['css'][] = drupal_get_path('module', 'apachesolr') . '/apachesolr.css';
 
   $form['apachesolr_host_settings']['actions'] = array(
     '#markup' => '<ul class="action-links">' . drupal_render($actions) . '</ul>',
