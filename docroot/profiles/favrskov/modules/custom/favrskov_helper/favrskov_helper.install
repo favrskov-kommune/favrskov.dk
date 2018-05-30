@@ -932,3 +932,50 @@ function favrskov_helper_update_7050() {
 function favrskov_helper_update_7051() {
   features_revert_module('views_job');
 }
+
+/**
+ * Delete {system} records for missing modules.
+ */
+function favrskov_helper_update_7052() {
+  $modules = array(
+    'ajax_comments',
+    'comment_notify',
+    'menu_editor',
+    'config_background_image',
+    'config_comments',
+    'content_type_blog',
+    'content_type_hearing',
+    'content_type_location',
+    'fields_esdh_case_document',
+    'os2web_hrmanager_job',
+    'os2web_kultunaut',
+    'os2web_social_directory',
+    'panels_comments_unsubscribe',
+    'panels_social_directory',
+    'panels_social_directory_listing',
+    'panel_article_below_body_mini_panel',
+    'panel_blog_page',
+    'panel_front_page',
+    'panel_hearing_page',
+    'panel_hearing_response_form',
+    'panel_hearing_response_page',
+    'panel_kultunaut_event',
+    'panel_location_page',
+    'pane_hearing_responses',
+    'rss_blog',
+    'rule_send_email_on_comment_posting',
+    'taxonomy_hearing_category',
+    'views_administration_nodes',
+    'views_events',
+    'views_hearings',
+    'views_hr_manager_job_custom_panes',
+    'views_locations',
+    'view_matrix'
+  );
+
+  db_delete('system')
+    ->condition('name', $modules, 'IN')
+    ->condition('type', 'module')
+    ->execute();
+}
+
