@@ -7,7 +7,6 @@ html/
 backup/
 build_reports/
 taxon/
-piwik/
 docroot/simplesamlphp/
 docroot/*/files-private/
 **/hacked/
