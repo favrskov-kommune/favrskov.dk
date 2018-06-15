@@ -302,3 +302,12 @@ function favrskov_helper_menu() {
 
   return $items;
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ * Hide form elements for file replacement in file_entity file edit form
+ */
+function favrskov_helper_form_file_entity_edit_alter(&$form, &$form_state, $form_id) {
+  unset($form['replace_upload']);
+  unset($form['replace_keep_original_filename']);
+}
