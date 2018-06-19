@@ -40,6 +40,7 @@ function token_custom_permission() {
     'administer custom tokens' => array(
       'title' => t('Manage custom tokens using PHP.'),
       'description' => t('Create/edit/delete custom tokens using markup or PHP.'),
+      'restrict access' => TRUE,
     ),
     'list custom tokens' => array(
       'title' => t("Access the custom token's administration page."),
