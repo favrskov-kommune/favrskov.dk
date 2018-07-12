@@ -940,3 +940,11 @@ function favrskov_helper_update_7051() {
 function favrskov_helper_update_7052() {
   drupal_uninstall_modules(array('devel','stage_file_proxy'), FALSE);
 }
+
+/**
+ * Implements hook_update_7053
+ * Revert feature 'views_news'.
+ */
+function favrskov_helper_update_7053() {
+  features_revert_module('views_news');
+}
