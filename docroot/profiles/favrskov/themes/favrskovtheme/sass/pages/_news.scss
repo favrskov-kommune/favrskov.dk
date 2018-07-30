@@ -16,7 +16,7 @@
     font: 22px $sans-book;
   }
   .news-list {
-    font-size: 0;
+    color: $slategrey;
     @include container;
     @extend %clearfix;
     margin-top: 30px;

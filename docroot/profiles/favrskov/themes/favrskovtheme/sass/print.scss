@@ -141,3 +141,10 @@ object,
     display: none;
 }
 
+@media print {
+  /* line 147, ../sass/print.scss */
+  .footer-block, .footer-block * {
+    display: none !important;
+  }
+}
+
