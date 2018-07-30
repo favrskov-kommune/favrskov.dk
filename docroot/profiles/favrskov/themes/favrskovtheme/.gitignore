@@ -1,3 +1,9 @@
-# Ignore SAAS generated css
+# Ignore SASS generated css
 .sass-cache/
 .sass-cache*
+
+# Ignore CSS file to prevent conflicts
+css/
+css*
+/css/
+/css*
