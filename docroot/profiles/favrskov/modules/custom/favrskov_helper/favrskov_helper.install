@@ -932,11 +932,26 @@ function favrskov_helper_update_7050() {
 function favrskov_helper_update_7051() {
   features_revert_module('views_job');
 }
+/**
+ * Implements hook_update_7052
+ * Uninstall devel and stage_file_proxy modules
+ */
+function favrskov_helper_update_7052() {
+  drupal_uninstall_modules(array('devel','stage_file_proxy'), FALSE);
+}
+
+/**
+ * Implements hook_update_7053
+ * Revert feature 'views_news'.
+ */
+function favrskov_helper_update_7053() {
+  features_revert_module('views_news');
+}
 
 /**
  * Delete {system} records for missing modules.
  */
-function favrskov_helper_update_7052() {
+function favrskov_helper_update_7054() {
   $modules = array(
     'ajax_comments',
     'comment_notify',
