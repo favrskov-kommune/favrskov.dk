@@ -1,4 +1,4 @@
-# Ignore SAAS generated css 
+# Ignore SASS generated css
 .sass-cache/
 .sass-cache*
 
