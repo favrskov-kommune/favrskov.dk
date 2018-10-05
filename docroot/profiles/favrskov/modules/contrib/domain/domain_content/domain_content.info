@@ -4,9 +4,8 @@ package = Domain Access
 dependencies[] = domain
 core = 7.x
 
-; Information added by Drupal.org packaging script on 2017-12-04
-version = "7.x-3.14"
+; Information added by Drupal.org packaging script on 2018-09-07
+version = "7.x-3.15"
 core = "7.x"
 project = "domain"
-datestamp = "1512407892"
-
+datestamp = "1536328404"
