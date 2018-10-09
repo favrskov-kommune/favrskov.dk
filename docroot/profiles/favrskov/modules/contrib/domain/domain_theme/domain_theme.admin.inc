@@ -146,13 +146,25 @@ function theme_domain_theme_form($variables) {
     if ($form['theme'][$key]['#value'] == $key) {
       $default = t('(default theme)');
     }
+    $screenshot = $themes[$key]->info['screenshot'];
+    // With sub-theming, screenshot may be inherited from base theme
+    if (!is_file($screenshot) && !empty($themes[$key]->info['base theme']) && isset($themes[$themes[$key]->info['base theme']])) {
+      $screenshot = $themes[$themes[$key]->info['base theme']]->info['screenshot'];
+    }
+    // Add image attributes.
+    $screenshot_options = array(
+      'path' => $screenshot,
+      'alt' => $themes[$key]->info['name'],
+      'title' => $themes[$key]->info['name'],
+      'attributes' => array('class' => 'screenshot'),
+    );
     $row = array(
-      theme('image', array('path' => $themes[$key]->info['screenshot'])),
+      theme('image', $screenshot_options),
       '<h3>' . $themes[$key]->info['name'] . ' ' . (isset($themes[$key]->info['version']) ? $themes[$key]->info['version'] : '') . ' ' . $default . '</h3>' . t($themes[$key]->info['description']),
       drupal_render($form['theme'][$key]),
       l(t('configure'), 'admin/structure/domain/view/' . $form['domain_id']['#value'] . '/theme/' . $key . '/theme-settings')
     );
-    $rows[] = $row;
+    $rows[] = array('data' => $row, 'class' => array('theme-selector'));
   }
 
   $output .= theme('table', array('header' => $header, 'rows' => $rows));
