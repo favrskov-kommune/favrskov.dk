@@ -114,12 +114,7 @@ function file_entity_file_display_content_type_edit_form($form, &$form_state) {
       $defaults = !empty($formatter['default settings']) ? $formatter['default settings'] : array();
       $settings = !empty($conf['displays'][$name]['settings']) ? $conf['displays'][$name]['settings'] : array();
       $settings += $defaults;
-      if (strpos($name, 'file_field_') === 0) {
-        $settings_form = $function($form, $form_state, $settings, $name, '', '');
-      }
-      else {
-        $settings_form = $function($form, $form_state, $settings);
-      }
+      $settings_form = $function($form, $form_state, $settings, $name, $file_type, $view_mode);
       if (!empty($settings_form)) {
         $form['displays']['settings'][$name] = array(
           '#type' => 'fieldset',
