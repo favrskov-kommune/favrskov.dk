@@ -47,6 +47,10 @@ function media_ckeditor_pre_render_text_format($element) {
     'data' => array(
       'media_ckeditor' => array(
         'fully_rendered_files' => _media_ckeditor_fully_rendered_files_in_wysiwyg(),
+        'labels' => array(
+          'settings' => t('Media settings'),
+          'add' => t('Add media'),
+        ),
       ),
     ),
     'type' => 'setting',
@@ -84,6 +88,11 @@ function media_ckeditor_media_browser_params_alter(&$stored_params) {
         'document',
       ));
     }
+    if (empty($stored_params['file_extensions'])) {
+      $stored_params['file_extensions'] = variable_get('media_wysiwyg_wysiwyg_allowed_file_extensions',
+        'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov mp4 m4a m4v mpeg avi ogg oga ogv weba webp webm'
+      );
+    }
   }
 }
 
@@ -110,11 +119,11 @@ function media_ckeditor_form_field_ui_field_edit_form_alter(&$form, &$form_state
 function media_ckeditor_pre_render_media($element) {
   // If the media widget has been configured to have an Insert button, we'll
   // communicate that information through javascript settings.
-  if (!isset($element['#entity_type']) && !isset($element['#field_name']) && !isset($element['#bundle'])) {
-    $instance = FALSE;
+  if (isset($element['#entity_type']) && isset($element['#field_name']) && isset($element['#bundle'])) {
+    $instance = field_info_instance($element['#entity_type'], $element['#field_name'], $element['#bundle']);
   }
   else {
-    $instance = field_info_instance($element['#entity_type'], $element['#field_name'], $element['#bundle']);
+    $instance = FALSE;
   }
   if (!empty($instance['settings']['wysiwyg_insert'])) {
     $element['#attached']['js'][] = array(
