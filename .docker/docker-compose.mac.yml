@@ -1,14 +1,16 @@
-version: "2"
+version: "3"
 
 services:
   php:
     volumes:
-      # Options for macOS users (https://docker4drupal.readthedocs.io/en/latest/macos)
+      ## For macOS users (https://wodby.com/stacks/drupal/docs/local/docker-for-mac/)
+      #- ./:/var/www/html:cached # User-guided caching
       - docker-favrskov-sync:/var/www/html # Docker-sync
 
   apache:
     volumes:
-      # Options for macOS users (https://docker4drupal.readthedocs.io/en/latest/macos)
+      ## For macOS users (https://wodby.com/stacks/drupal/docs/local/docker-for-mac/)
+      #- ./:/var/www/html:cached # User-guided caching
       - docker-favrskov-sync:/var/www/html # Docker-sync
 
 volumes:

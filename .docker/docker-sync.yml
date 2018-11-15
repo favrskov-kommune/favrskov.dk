@@ -7,5 +7,9 @@ options:
 syncs:
   docker-favrskov-sync:
     src: '../'
-    sync_userid: '82'
+    sync_userid: '501'
+    sync_excludes: ['.gitignore', '.git/', '.idea/']
+  docker-favrskov-files:
+    src: '../.docker_files'
+    sync_userid: '501'
     sync_excludes: ['.gitignore', '.git/', '.idea/']
