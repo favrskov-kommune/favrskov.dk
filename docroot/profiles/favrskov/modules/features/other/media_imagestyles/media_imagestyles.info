@@ -1,7 +1,7 @@
 name = Media Imagestyles
 core = 7.x
 package = Media
-version = 7.x-1.0
+version = 7.x-1.1
 project = media_imagestyles
 dependencies[] = image
 features[features_api][] = api:2
@@ -20,6 +20,7 @@ features[image][] = newsletter
 features[image][] = newsletter_news
 features[image][] = node_slide
 features[image][] = picture
+features[image][] = publications_thumb
 features[image][] = slider_default
 features[image][] = slider_thumb
 features[image][] = slidercustom_user_full_1x
