@@ -994,3 +994,11 @@ function favrskov_helper_update_7054() {
     ->condition('type', 'module')
     ->execute();
 }
+
+/**
+ * Implements hook_update_7055
+ * Revert feature 'media_imagestyles'.
+ */
+function favrskov_helper_update_7055() {
+  features_revert_module('media_imagestyles');
+}
