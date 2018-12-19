@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * content_type_phone_book.features.inc
@@ -19,11 +20,11 @@ function content_type_phone_book_ctools_plugin_api($module = NULL, $api = NULL) 
 function content_type_phone_book_node_info() {
   $items = array(
     'phone_book' => array(
-      'name' => t('Contact item'),
+      'name' => t('Kontaktoplysning'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Overskrift'),
       'help' => '',
     ),
   );

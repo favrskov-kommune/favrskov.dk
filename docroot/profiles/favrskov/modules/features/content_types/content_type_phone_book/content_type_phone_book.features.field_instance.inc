@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * content_type_phone_book.features.field_instance.inc
@@ -292,17 +293,7 @@ function content_type_phone_book_field_default_field_instances() {
   // Exported field_instance: 'node-phone_book-field_phone_book_address'.
   $field_instances['node-phone_book-field_phone_book_address'] = array(
     'bundle' => 'phone_book',
-    'default_value' => array(
-      0 => array(
-        'element_key' => 'node|phone_book|field_phone_book_address|und|0',
-        'thoroughfare' => '',
-        'premise' => '',
-        'postal_code' => '',
-        'locality' => '',
-        'country' => 'DK',
-        'name_line' => '',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -351,14 +342,17 @@ function content_type_phone_book_field_default_field_instances() {
         'available_countries' => array(
           'DK' => 'DK',
         ),
+        'default_country' => 'site_default',
         'format_handlers' => array(
           'address' => 'address',
           'address-hide-country' => 'address-hide-country',
           'name-full' => 'name-full',
+          'address-optional' => 'address-optional',
+          'address-hide-postal-code' => 0,
+          'address-hide-street' => 0,
           'organisation' => 0,
           'name-oneline' => 0,
         ),
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'addressfield_standard',
       'weight' => 8,
