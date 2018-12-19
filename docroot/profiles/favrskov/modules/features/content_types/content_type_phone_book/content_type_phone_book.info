@@ -1,7 +1,7 @@
 name = Content Type Phone Book
 core = 7.x
 package = Content Types
-version = 7.x-1.1
+version = 7.x-1.2
 project = content_type_phone_book
 dependencies[] = addressfield
 dependencies[] = content_reminder
