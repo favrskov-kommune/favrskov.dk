@@ -1002,3 +1002,11 @@ function favrskov_helper_update_7054() {
 function favrskov_helper_update_7055() {
   features_revert_module('media_imagestyles');
 }
+
+/**
+ * Implements hook_update_7056
+ * Revert feature 'content_type_phone_book'.
+ */
+function favrskov_helper_update_7056() {
+  features_revert_module('content_type_phone_book');
+}
