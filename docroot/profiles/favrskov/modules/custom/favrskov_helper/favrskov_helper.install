@@ -1013,16 +1013,11 @@ function favrskov_helper_update_7056() {
 
 /**
  * Implements hook_update_7057
- * Disable backup_migrate module.
+ * Disable and uninstall backup_migrate module.
  */
 function favrskov_helper_update_7057() {
-  module_disable(array('backup_migrate'));
-}
-
-/**
- * Implements hook_update_7058
- * Uninstall backup_migrate module.
- */
-function favrskov_helper_update_7058() {
-  drupal_uninstall_modules(array('backup_migrate'));
+  if (module_exists('backup_migrate')) {
+    module_disable(array('backup_migrate'));
+    drupal_uninstall_modules(array('backup_migrate'));
+  }
 }
