@@ -1010,3 +1010,14 @@ function favrskov_helper_update_7055() {
 function favrskov_helper_update_7056() {
   features_revert_module('content_type_phone_book');
 }
+
+/**
+ * Implements hook_update_7057
+ * Disable and uninstall backup_migrate module.
+ */
+function favrskov_helper_update_7057() {
+  if (module_exists('backup_migrate')) {
+    module_disable(array('backup_migrate'));
+    drupal_uninstall_modules(array('backup_migrate'));
+  }
+}
