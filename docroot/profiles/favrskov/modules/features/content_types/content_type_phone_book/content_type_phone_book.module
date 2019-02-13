@@ -123,3 +123,15 @@ function content_type_phone_book_check_telephone_number($node, $field_name, $hum
       array('@name' => $human_name)));
   }
 }
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Changing default Address module fields.
+ */
+function content_type_phone_book_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id === 'phone_book_node_form') {
+    $form['field_phone_book_address'][LANGUAGE_NONE][0]['name_block']['first_name']['#title'] = t('Name', array(), array('context' => 'phonebook'));
+    $form['field_phone_book_address'][LANGUAGE_NONE][0]['name_block']['last_name']['#access'] = FALSE;
+  }
+}

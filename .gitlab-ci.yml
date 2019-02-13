@@ -1,0 +1,90 @@
+image: docker:latest
+
+before_script:
+  - apk add --no-cache curl jq python py-pip bash findutils git zlib-dev openssh-client php7 php7-json php7-phar php7-iconv php7-openssl php7-mbstring php7-simplexml php7-tokenizer php7-xmlwriter php7-ctype php7-curl php7-dom
+  - pip install --upgrade pip
+  - pip install awscli
+  - curl --silent --show-error https://getcomposer.org/installer | php
+
+stages:
+  - build
+  - deploy
+  - test
+
+variables:
+  PROJECT_NAME: "favrskov"
+  REPO_PATH: "/FFW-CSO/D7/favrskov"
+
+build:
+  stage: build
+  variables:
+    PNAME: "$PROJECT_NAME"
+    PURL: "$CI_COMMIT_REF_SLUG"
+  script:
+    - /bin/bash ecsrun.sh $PNAME $PURL build
+  only:
+    - develop
+    - /^feature.*$/
+
+code-quality-checks:
+  stage: test
+  variables:
+    BUILDS_PATH: "$REPO_PATH"
+  script:
+    - echo "Code Sniffer"
+    - php composer.phar global require drupal/coder
+    - ~/.composer/vendor/bin/phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
+    - ~/.composer/vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme /builds/FFW-CSO/D7/favrskov/docroot/profiles/favrskov/modules/custom
+    - ~/.composer/vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme /builds/FFW-CSO/D7/favrskov/docroot/profiles/favrskov/themes/favrskovtheme
+
+visual-regression-checks:
+  stage: test
+  variables:
+    BUILDS_PATH: "$REPO_PATH"
+  script:
+    - echo "Make new screenshots in Trakr"
+    - curl --header 'x-api-key:d8cc4d46a595893b1be98f53aecab28c' --request POST https://app.trakr.tech/api/v1/project/243/screenshot --data '{"environment":"production"}'
+  only:
+    - tags
+
+deploy:develop:
+  stage: deploy
+  variables:
+    PNAME: "$PROJECT_NAME"
+    PURL: "$CI_COMMIT_REF_SLUG"
+  environment:
+    name: "$PROJECT_NAME-$CI_COMMIT_REF_SLUG"
+    url: "https://$PROJECT_NAME.demo.ffw-cs.com"
+  only:
+    - develop
+  script:
+    - /bin/bash ecsrun.sh $PNAME $PURL deploydev
+
+deploy:feature:
+  stage: deploy
+  variables:
+    PNAME: "$PROJECT_NAME"
+    PURL: "$CI_COMMIT_REF_SLUG"
+  environment:
+    name: "$PROJECT_NAME-$CI_COMMIT_REF_SLUG"
+    url: "https://$PROJECT_NAME-$CI_COMMIT_REF_SLUG.demo.ffw-cs.com"
+    on_stop: stop:feature
+  only:
+    - /^feature.*$/
+  script:
+    - /bin/bash ecsrun.sh $PNAME $PURL deployfeat 
+
+stop:feature:
+  stage: deploy
+  variables:
+    PNAME: "$PROJECT_NAME"
+    PURL: "$CI_COMMIT_REF_SLUG"
+  when: manual
+  only:
+    - /^feature.*$/
+  environment:
+    name: "$PROJECT_NAME-$CI_COMMIT_REF_SLUG"
+    url: "https://$PROJECT_NAME-$CI_COMMIT_REF_SLUG.demo.ffw-cs.com"
+    action: stop
+  script:
+    - /bin/bash ecsrun.sh $PNAME $PURL stopfeat
