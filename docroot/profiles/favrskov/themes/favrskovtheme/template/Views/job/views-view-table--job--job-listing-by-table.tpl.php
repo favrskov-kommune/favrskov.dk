@@ -19,17 +19,20 @@
  * @ingroup views_templates
  */
 ?>
+<?php $categories = array(); ?>
+<?php foreach ($rows as $row_count => $row): ?>
+  <?php
+    $categories[] = $row['field_job_category'];
+  ?>
+<?php endforeach; ?>
 <table <?php if ($classes) { print 'class="'. $classes . '" '; } ?><?php print $attributes; ?>>
-  <?php if (!empty($title) || !empty($caption)) : ?>
-    <caption><?php print $caption . $title; ?></caption>
-  <?php endif; ?>
   <?php if (!empty($header)) : ?>
     <thead>
     <tr>
       <?php unset($header['field_job_destination_link']); ?>
       <?php foreach ($header as $field => $label): ?>
         <th <?php if ($header_classes[$field]) { print 'class="'. $header_classes[$field] . '" '; } ?> scope="col">
-          <?php print $label; ?>
+          <span style="color: #fff;"><?php if($field == 'title') {print $title . " " . "(" . count($categories) . ")";} else {print $label;} ?></span>
         </th>
       <?php endforeach; ?>
     </tr>
@@ -41,23 +44,21 @@
       <?php $destination_link = $row['field_job_destination_link']; ?>
       <?php unset($row['field_job_destination_link']); ?>
     <?php endif; ?>
-
-    <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
+    <tr style="cursor: pointer;" class='clickable-row' data-href='<?php print $destination_link; ?>' <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
       <?php foreach ($row as $field => $content): ?>
         <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
-          <?php if (!empty($destination_link) && $field_classes[$field][$row_count] == 'views-field views-field-title') : ?>
-            <a href="<?php print $destination_link; ?>">
-          <?php endif; ?>
-
           <?php print $content; ?>
-
-          <?php if (!empty($destination_link)) : ?>
-            </a>
-          <?php endif; ?>
         </td>
-
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
   </tbody>
 </table>
+
+<?php
+drupal_add_js('jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});', 'inline');
+?>
