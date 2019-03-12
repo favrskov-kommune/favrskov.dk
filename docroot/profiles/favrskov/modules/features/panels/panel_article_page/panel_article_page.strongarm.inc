@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * panel_article_page.strongarm.inc
