@@ -1,7 +1,8 @@
 .pane-job-job-listing-by-table {
   @include pager-table;
-  @include at-breakpoint(12 $width-768) {
-    display: none;
+
+  td.views-align-left {
+    width:70%;
   }
 
   h2 {
@@ -11,7 +12,12 @@
   table {
     font-family: $sans;
     border-collapse: inherit;
-    border-spacing: 3px;
+    width: 100%;
+    margin-bottom: 20px;
+
+    .views-align-right {
+      text-align: right;
+    }
 
     th, td {
       @include font-size(14);
@@ -60,6 +66,10 @@
   tbody {
     tr:nth-child(2n) {
       background-color: $grey;
+    }
+
+    tr:hover {
+      background-color: #bbbbbb;
     }
 
     td {
