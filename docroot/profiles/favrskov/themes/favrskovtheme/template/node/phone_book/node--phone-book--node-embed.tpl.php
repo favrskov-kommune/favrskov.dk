@@ -16,11 +16,6 @@
   'field_phone_book_stuff',
 );
 
-// Throw node url to formatter.
-$content['field_phone_book_address'][0]['name_block']['first_name']['#url'] = $node_url;
-$content['field_phone_book_address'][0]['name_block']['last_name']['#url'] = $node_url;
-$content['field_phone_book_address'][0]['name_block']['last_name']['#view_mode'] = $view_mode;
-$content['field_phone_book_address'][0]['name_block']['last_name']['#view_mode'] = $view_mode;
 ?>
 <?php print '<div id="contact-item-' . $phone_book_id . '" class="contact-item group">'; ?>
   <div class='contact-info'>
