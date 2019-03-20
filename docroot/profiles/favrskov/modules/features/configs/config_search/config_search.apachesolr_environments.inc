@@ -37,12 +37,8 @@ function config_search_apachesolr_environments() {
   $environment->index_bundles = array(
     'node' => array(
       0 => 'article',
-      1 => 'job',
-      2 => 'news',
-      3 => 'phone_book',
-      4 => 'shared',
-      5 => 'slider_element',
-      6 => 'volunteer_jobs',
+      1 => 'news',
+      2 => 'phone_book',
     ),
     'file' => array(
       0 => 'document',
