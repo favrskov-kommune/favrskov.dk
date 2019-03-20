@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * config_search.strongarm.inc
@@ -30,27 +31,6 @@ function config_search_strongarm() {
   $strongarm->name = 'apachesolr_attachments_entity_bundle_indexing_news';
   $strongarm->value = 'none';
   $export['apachesolr_attachments_entity_bundle_indexing_news'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'apachesolr_attachments_entity_bundle_indexing_os2web_meetings_bullet';
-  $strongarm->value = 'seperate';
-  $export['apachesolr_attachments_entity_bundle_indexing_os2web_meetings_bullet'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'apachesolr_attachments_entity_bundle_indexing_os2web_meetings_bullet_attach';
-  $strongarm->value = 'seperate';
-  $export['apachesolr_attachments_entity_bundle_indexing_os2web_meetings_bullet_attach'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'apachesolr_attachments_entity_bundle_indexing_os2web_meetings_meeting';
-  $strongarm->value = 'seperate';
-  $export['apachesolr_attachments_entity_bundle_indexing_os2web_meetings_meeting'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -200,7 +180,7 @@ function config_search_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'apachesolr_sort_sort_bundle';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['apachesolr_sort_sort_bundle'] = $strongarm;
 
   $strongarm = new stdClass();

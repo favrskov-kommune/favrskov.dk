@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * config_search.features.inc
