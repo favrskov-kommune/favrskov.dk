@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * config_search.apachesolr_search_defaults.inc
