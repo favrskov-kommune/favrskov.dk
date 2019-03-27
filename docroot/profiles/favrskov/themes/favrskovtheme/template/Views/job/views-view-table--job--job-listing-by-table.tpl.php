@@ -16,23 +16,20 @@
  *   $rows are keyed by row number, fields within rows are keyed by field ID.
  * - $field_classes: An array of classes to apply to each field, indexed by
  *   field id, then row number. This matches the index in $rows.
+ * - $categories_count: the count of nodes of each category
  * @ingroup views_templates
  */
 ?>
-<?php $categories = array(); ?>
-<?php foreach ($rows as $row_count => $row): ?>
-  <?php
-    $categories[] = $row['field_job_category'];
-  ?>
-<?php endforeach; ?>
+
 <table <?php if ($classes) { print 'class="'. $classes . '" '; } ?><?php print $attributes; ?>>
   <?php if (!empty($header)) : ?>
     <thead>
     <tr>
       <?php unset($header['field_job_destination_link']); ?>
+      <?php unset($header['field_job_category']); ?>
       <?php foreach ($header as $field => $label): ?>
         <th <?php if ($header_classes[$field]) { print 'class="'. $header_classes[$field] . '" '; } ?> scope="col">
-          <span style="color: #fff;"><?php if($field == 'title') {print $title . " " . "(" . count($categories) . ")";} else {print $label;} ?></span>
+          <span style="color: #fff;"><?php if ($field == 'title') { print $category_title; } else { print $label; } ?></span>
         </th>
       <?php endforeach; ?>
     </tr>
@@ -40,6 +37,7 @@
   <?php endif; ?>
   <tbody>
   <?php foreach ($rows as $row_count => $row): ?>
+    <?php unset($row['field_job_category']); ?>
     <?php if (!empty($row['field_job_destination_link'])): ?>
       <?php $destination_link = $row['field_job_destination_link']; ?>
       <?php unset($row['field_job_destination_link']); ?>

@@ -414,8 +414,17 @@ function favrskovtheme_file_link($variables) {
  * Implements template_preprocess_views_view_table().
  */
 function favrskovtheme_preprocess_views_view_table(&$vars) {
-  $view = $vars['view'];
+  // Count of nodes in each category and concatenate with title to create
+  // job list table title
+  $categories = array();
+  foreach ($vars['rows'] as $row_count => $row) {
+    $categories[] = $row['field_job_category'];
+  }
 
+  $categories_count = count($categories);
+  $vars['category_title'] = $vars['title'] . " " . "(" . $categories_count . ")";
+
+  $view = $vars['view'];
   // We need the raw data for this grouping, which is passed in as $vars['rows'].
   // However, the template also needs to use for the rendered fields.  We
   // therefore swap the raw data out to a new variable and reset $vars['rows']
