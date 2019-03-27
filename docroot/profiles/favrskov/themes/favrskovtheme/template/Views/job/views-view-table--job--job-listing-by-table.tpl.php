@@ -16,7 +16,8 @@
  *   $rows are keyed by row number, fields within rows are keyed by field ID.
  * - $field_classes: An array of classes to apply to each field, indexed by
  *   field id, then row number. This matches the index in $rows.
- * - $categories_count: the count of nodes of each category
+ * - $category_title: the category title concatenated with the count of nodes
+ *   for the corresponding category
  * @ingroup views_templates
  */
 ?>
@@ -29,7 +30,7 @@
       <?php unset($header['field_job_category']); ?>
       <?php foreach ($header as $field => $label): ?>
         <th <?php if ($header_classes[$field]) { print 'class="'. $header_classes[$field] . '" '; } ?> scope="col">
-          <span style="color: #fff;"><?php if ($field == 'title') { print $category_title; } else { print $label; } ?></span>
+          <?php if ($field == 'title') { print $category_title; } else { print $label; } ?>
         </th>
       <?php endforeach; ?>
     </tr>
@@ -42,7 +43,7 @@
       <?php $destination_link = $row['field_job_destination_link']; ?>
       <?php unset($row['field_job_destination_link']); ?>
     <?php endif; ?>
-    <tr style="cursor: pointer;" class='clickable-row' data-href='<?php print $destination_link; ?>' <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
+    <tr class='clickable-row' data-href='<?php print $destination_link; ?>' <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
       <?php foreach ($row as $field => $content): ?>
         <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
           <?php print $content; ?>
@@ -52,11 +53,3 @@
   <?php endforeach; ?>
   </tbody>
 </table>
-
-<?php
-drupal_add_js('jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.location = $(this).data("href");
-    });
-});', 'inline');
-?>
