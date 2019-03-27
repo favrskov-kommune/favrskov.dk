@@ -1,6 +1,10 @@
 .pane-job-job-listing-by-table {
   @include pager-table;
 
+  .clickable-row {
+    cursor: pointer;
+  }
+
   td.views-align-left {
     width:70%;
   }
@@ -27,6 +31,7 @@
   }
 
   thead {
+    color: $white;
     a {
       color: $white;
       position: relative;
