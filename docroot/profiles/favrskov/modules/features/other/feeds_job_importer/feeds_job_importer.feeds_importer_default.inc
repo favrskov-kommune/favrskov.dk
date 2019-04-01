@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * feeds_job_importer.feeds_importer_default.inc
@@ -22,86 +23,43 @@ function feeds_job_importer_feeds_importer_default() {
       'config' => array(
         'auto_detect_feeds' => 0,
         'use_pubsubhubbub' => 1,
-        'designated_hub' => 'http://feeds.favrskov.dk/joblistings.json',
+        'designated_hub' => 'https://signatur.frontlab.com/ExtJobs/Rss.aspx?ClientId=1435',
         'request_timeout' => '',
         'auto_scheme' => 'http',
-        'accept_invalid_cert' => FALSE,
-        'cache_http_result' => TRUE,
+        'accept_invalid_cert' => 0,
+        'cache_http_result' => 1,
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsExJsonPath',
+      'plugin_key' => 'FeedsXPathParserXML',
       'config' => array(
-        'context' => array(
-          'value' => '$.*',
-        ),
         'sources' => array(
-          'title' => array(
-            'name' => 'Title',
-            'value' => '$.job_headline',
-            'debug' => 1,
-            'weight' => '0',
-          ),
-          'apply_link_title' => array(
-            'name' => 'Apply link title',
-            'value' => '$.job_headline',
-            'debug' => 0,
-            'weight' => '1',
-          ),
-          'apply_link' => array(
-            'name' => 'Apply link',
-            'value' => '$.apply_link',
-            'debug' => 0,
-            'weight' => '2',
-          ),
-          'destination_link_title' => array(
-            'name' => 'Destination link title',
-            'value' => '$.job_headline',
-            'debug' => 0,
-            'weight' => '3',
-          ),
-          'destination_link' => array(
-            'name' => 'Destination link',
-            'value' => '$.destination_link',
-            'debug' => 0,
-            'weight' => '4',
-          ),
-          'headline' => array(
-            'name' => 'Headline',
-            'value' => '$.job_headline',
-            'debug' => 0,
-            'weight' => '5',
-          ),
-          'job_id' => array(
-            'name' => 'Job ID',
-            'value' => '$.job_id',
-            'debug' => 0,
-            'weight' => '6',
-          ),
-          'place_of_work' => array(
-            'name' => 'Place of work',
-            'value' => '$.place_of_work',
-            'debug' => 0,
-            'weight' => '7',
-          ),
-          'start_date' => array(
-            'name' => 'Start date',
-            'value' => '$.apply_date',
-            'debug' => 0,
-            'weight' => '8',
-          ),
-          'language' => array(
-            'name' => 'Language',
-            'value' => '',
-            'debug' => 0,
-            'weight' => '9',
+          'xpathparser:0' => 'title',
+          'xpathparser:2' => 'category',
+          'xpathparser:4' => 'link',
+          'xpathparser:5' => 'description',
+          'xpathparser:6' => 'deadline',
+        ),
+        'rawXML' => array(
+          'xpathparser:0' => 0,
+          'xpathparser:2' => 0,
+          'xpathparser:4' => 0,
+          'xpathparser:5' => 0,
+          'xpathparser:6' => 0,
+        ),
+        'context' => '//item',
+        'exp' => array(
+          'errors' => 0,
+          'debug' => array(
+            'context' => 0,
+            'xpathparser:0' => 0,
+            'xpathparser:2' => 0,
+            'xpathparser:4' => 0,
+            'xpathparser:5' => 0,
+            'xpathparser:6' => 0,
           ),
         ),
-        'display_errors' => 0,
-        'debug_mode' => 0,
-        'source_encoding' => array(
-          0 => 'auto',
-        ),
+        'allow_override' => 1,
       ),
     ),
     'processor' => array(
@@ -112,54 +70,34 @@ function feeds_job_importer_feeds_importer_default() {
         'authorize' => 0,
         'mappings' => array(
           0 => array(
-            'source' => 'title',
+            'source' => 'xpathparser:0',
             'target' => 'title',
-            'unique' => FALSE,
+            'unique' => 0,
+            'language' => 'und',
           ),
           1 => array(
-            'source' => 'apply_link_title',
-            'target' => 'field_job_apply_link:title',
+            'source' => 'xpathparser:2',
+            'target' => 'field_job_category',
             'unique' => FALSE,
+            'language' => 'und',
           ),
           2 => array(
-            'source' => 'apply_link',
-            'target' => 'field_job_apply_link:url',
-            'unique' => FALSE,
-          ),
-          3 => array(
-            'source' => 'destination_link_title',
-            'target' => 'field_job_destination_link:title',
-            'unique' => FALSE,
-          ),
-          4 => array(
-            'source' => 'destination_link',
+            'source' => 'xpathparser:4',
             'target' => 'field_job_destination_link:url',
             'unique' => FALSE,
+            'language' => 'und',
           ),
-          5 => array(
-            'source' => 'headline',
-            'target' => 'field_job_headline',
+          3 => array(
+            'source' => 'xpathparser:5',
+            'target' => 'field_job_description',
             'unique' => FALSE,
+            'language' => 'und',
           ),
-          6 => array(
-            'source' => 'job_id',
-            'target' => 'field_job_id',
+          4 => array(
+            'source' => 'xpathparser:6',
+            'target' => 'field_job_deadline:start',
             'unique' => FALSE,
-          ),
-          7 => array(
-            'source' => 'place_of_work',
-            'target' => 'field_job_place_of_work',
-            'unique' => FALSE,
-          ),
-          8 => array(
-            'source' => 'start_date',
-            'target' => 'field_job_start_date:start',
-            'unique' => FALSE,
-          ),
-          9 => array(
-            'source' => 'language',
-            'target' => 'language',
-            'unique' => FALSE,
+            'language' => 'und',
           ),
         ),
         'update_existing' => '1',
