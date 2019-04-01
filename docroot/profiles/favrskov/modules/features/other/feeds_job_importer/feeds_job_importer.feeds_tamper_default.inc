@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * feeds_job_importer.feeds_tamper_default.inc
@@ -11,7 +12,7 @@ function feeds_job_importer_feeds_tamper_default() {
   $export = array();
 
   $feeds_tamper = new stdClass();
-  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->disabled = TRUE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'job_importer-description-find_replace_regex';
   $feeds_tamper->importer = 'job_importer';
@@ -28,7 +29,7 @@ function feeds_job_importer_feeds_tamper_default() {
   $export['job_importer-description-find_replace_regex'] = $feeds_tamper;
 
   $feeds_tamper = new stdClass();
-  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->disabled = TRUE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'job_importer-start_date-date_converter';
   $feeds_tamper->importer = 'job_importer';

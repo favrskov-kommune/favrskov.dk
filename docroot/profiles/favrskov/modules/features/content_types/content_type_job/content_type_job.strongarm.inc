@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * content_type_job.strongarm.inc
@@ -93,25 +94,25 @@ function content_type_job_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'language' => array(
-          'weight' => '8',
+          'weight' => '6',
         ),
         'metatags' => array(
-          'weight' => '12',
+          'weight' => '10',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '10',
+          'weight' => '8',
         ),
         'rabbit_hole' => array(
-          'weight' => '11',
-        ),
-        'redirect' => array(
           'weight' => '9',
         ),
+        'redirect' => array(
+          'weight' => '7',
+        ),
         'domain' => array(
-          'weight' => '2',
+          'weight' => '1',
         ),
       ),
       'display' => array(
@@ -119,6 +120,12 @@ function content_type_job_strongarm() {
           'default' => array(
             'weight' => '6',
             'visible' => FALSE,
+          ),
+        ),
+        'domain' => array(
+          'default' => array(
+            'weight' => '1',
+            'visible' => TRUE,
           ),
         ),
       ),

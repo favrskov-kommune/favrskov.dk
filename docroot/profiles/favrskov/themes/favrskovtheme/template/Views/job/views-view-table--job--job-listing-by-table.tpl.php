@@ -16,20 +16,21 @@
  *   $rows are keyed by row number, fields within rows are keyed by field ID.
  * - $field_classes: An array of classes to apply to each field, indexed by
  *   field id, then row number. This matches the index in $rows.
+ * - $category_title: the category title concatenated with the count of nodes
+ *   for the corresponding category
  * @ingroup views_templates
  */
 ?>
+
 <table <?php if ($classes) { print 'class="'. $classes . '" '; } ?><?php print $attributes; ?>>
-  <?php if (!empty($title) || !empty($caption)) : ?>
-    <caption><?php print $caption . $title; ?></caption>
-  <?php endif; ?>
   <?php if (!empty($header)) : ?>
     <thead>
     <tr>
       <?php unset($header['field_job_destination_link']); ?>
+      <?php unset($header['field_job_category']); ?>
       <?php foreach ($header as $field => $label): ?>
         <th <?php if ($header_classes[$field]) { print 'class="'. $header_classes[$field] . '" '; } ?> scope="col">
-          <?php print $label; ?>
+          <?php if ($field == 'title') { print $category_title; } else { print $label; } ?>
         </th>
       <?php endforeach; ?>
     </tr>
@@ -37,25 +38,16 @@
   <?php endif; ?>
   <tbody>
   <?php foreach ($rows as $row_count => $row): ?>
+    <?php unset($row['field_job_category']); ?>
     <?php if (!empty($row['field_job_destination_link'])): ?>
       <?php $destination_link = $row['field_job_destination_link']; ?>
       <?php unset($row['field_job_destination_link']); ?>
     <?php endif; ?>
-
-    <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
+    <tr class='clickable-row' data-href='<?php print $destination_link; ?>' <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
       <?php foreach ($row as $field => $content): ?>
         <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
-          <?php if (!empty($destination_link) && $field_classes[$field][$row_count] == 'views-field views-field-title') : ?>
-            <a href="<?php print $destination_link; ?>">
-          <?php endif; ?>
-
           <?php print $content; ?>
-
-          <?php if (!empty($destination_link)) : ?>
-            </a>
-          <?php endif; ?>
         </td>
-
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>

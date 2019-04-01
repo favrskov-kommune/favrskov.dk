@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * content_type_job.features.inc
@@ -23,7 +24,7 @@ function content_type_job_node_info() {
       'base' => 'node_content',
       'description' => t('Used to collect information about actual job positions in Favrskov. Content type items generates automatically.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Overskrift'),
       'help' => '',
     ),
   );
