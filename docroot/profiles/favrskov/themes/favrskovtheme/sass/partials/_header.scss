@@ -300,7 +300,7 @@
       width: 100%;
     }
 
-    @include at-breakpoint(12 $width-480) {
+    @include at-breakpoint(12 $width-550) {
       min-height: 0;
     }
   }
