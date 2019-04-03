@@ -43,11 +43,11 @@ index f170430..d9ff16c 100644
 +      }
      }
    }
- 
+
 @@ -1572,6 +1582,13 @@ function taxonomy_field_settings_form($field, $instance, $has_data) {
      );
    }
- 
+
 +  $form['allow_term_autocreation'] = array(
 +    '#type' => 'checkbox',
 +    '#title' => t('Allow autocreation of new terms'),
@@ -57,4 +57,4 @@ index f170430..d9ff16c 100644
 +
    return $form;
  }
- 
+
