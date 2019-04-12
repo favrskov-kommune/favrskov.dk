@@ -1,0 +1,135 @@
+diff --git a/docroot/modules/image/image.admin.inc b/docroot/modules/image/image.admin.inc
+index cebe894..11125df 100644
+--- a/docroot/modules/image/image.admin.inc
++++ b/docroot/modules/image/image.admin.inc
+@@ -81,6 +81,12 @@ function image_style_form($form, &$form_state, $style) {
+     ),
+   );
+ 
++  // Note about SVG images and effects.
++  $form['effects_svg'] = array(
++      '#type' => 'item',
++      '#title' => t('Note regarding SVG!'),
++      '#description' => t('Effects don\'t apply to SVG images, except for the Scale effect.'),
++  );
+   // Build the list of existing image effects for this image style.
+   $form['effects'] = array(
+     '#theme' => 'image_style_effects',
+diff --git a/modules/image/image.field.inc b/modules/image/image.field.inc
+index 6d1867c..822ad2e 100644
+--- a/docroot/modules/image/image.field.inc
++++ b/docroot/modules/image/image.field.inc
+@@ -18,7 +18,7 @@ function image_field_info() {
+         'default_image' => 0,
+       ),
+       'instance_settings' => array(
+-        'file_extensions' => 'png gif jpg jpeg',
++        'file_extensions' => 'png gif jpg jpeg svg',
+         'file_directory' => '',
+         'max_filesize' => '',
+         'alt_field' => 0,
+@@ -339,7 +339,7 @@ function image_field_widget_form(&$form, &$form_state, $field, $instance, $langc
+     }
+ 
+     // If not using custom extension validation, ensure this is an image.
+-    $supported_extensions = array('png', 'gif', 'jpg', 'jpeg');
++    $supported_extensions = array('png', 'gif', 'jpg', 'jpeg', 'svg');
+     $extensions = isset($elements[$delta]['#upload_validators']['file_validate_extensions'][0]) ? $elements[$delta]['#upload_validators']['file_validate_extensions'][0] : implode(' ', $supported_extensions);
+     $extensions = array_intersect(explode(' ', $extensions), $supported_extensions);
+     $elements[$delta]['#upload_validators']['file_validate_extensions'][0] = implode(' ', $extensions);
+diff --git a/modules/image/image.module b/modules/image/image.module
+index dab8836..8a5a8c8 100644
+--- a/docroot/modules/image/image.module
++++ b/docroot/modules/image/image.module
+@@ -925,8 +925,13 @@ function image_style_create_derivative($style, $source, $destination) {
+     return FALSE;
+   }
+ 
+-  foreach ($style['effects'] as $effect) {
+-    image_effect_apply($image, $effect);
++  if ($image->info['extension'] == 'svg') {
++    // Don't process SVG images.
++  }
++  else {
++    foreach ($style['effects'] as $effect) {
++      image_effect_apply($image, $effect);
++    }
+   }
+ 
+   if (!image_save($image, $destination)) {
+diff --git a/modules/system/image.gd.inc b/modules/system/image.gd.inc
+index 913b0de..a03d13d 100644
+--- a/docroot/modules/system/image.gd.inc
++++ b/docroot/modules/system/image.gd.inc
+@@ -28,6 +28,24 @@ function image_gd_settings() {
+       '#default_value' => variable_get('image_jpeg_quality', 75),
+       '#field_suffix' => t('%'),
+     );
++    $form['image_svg_width'] = array(
++        '#type' => 'textfield',
++        '#title' => t('SVG width'),
++        '#description' => t('Define the default width of a SVG image. Note that the changing this only affects new uploads!'),
++        '#size' => 10,
++        '#maxlength' => 4,
++        '#default_value' => variable_get('image_svg_width', 480),
++        '#field_suffix' => t('px'),
++    );
++    $form['image_svg_height'] = array(
++        '#type' => 'textfield',
++        '#title' => t('SVG height'),
++        '#description' => t('Define the default height of a SVG image. Note that the changing this only affects new uploads!'),
++        '#size' => 10,
++        '#maxlength' => 4,
++        '#default_value' => variable_get('image_svg_height', 320),
++        '#field_suffix' => t('px'),
++    );
+     $form['#element_validate'] = array('image_gd_settings_validate');
+ 
+     return $form;
+@@ -246,6 +264,10 @@ function image_gd_load(stdClass $image) {
+     }
+     return (bool) $image->resource;
+   }
++  else if ($extension == 'svg') {
++    // Pass through SVG images.
++    return TRUE;
++  }
+   return FALSE;
+ }
+ 
+@@ -277,12 +299,16 @@ function image_gd_save(stdClass $image, $destination) {
+ 
+   $extension = str_replace('jpg', 'jpeg', $image->info['extension']);
+   $function = 'image' . $extension;
+-  if (!function_exists($function)) {
++  if (!function_exists($function) && $extension != 'svg') {
+     return FALSE;
+   }
+   if ($extension == 'jpeg') {
+     $success = $function($image->resource, $destination, variable_get('image_jpeg_quality', 75));
+   }
++  else if ($extension == 'svg') {
++    // Pass through SVG images.
++    $success = (bool) file_unmanaged_copy($image->source, $destination, FILE_EXISTS_REPLACE);
++  }
+   else {
+     // Always save PNG images with full transparency.
+     if ($extension == 'png') {
+@@ -384,6 +410,17 @@ function image_gd_get_info(stdClass $image) {
+       'mime_type' => $data['mime'],
+     );
+   }
++  else if ($mimetype = file_get_mimetype($image->source) == 'image/svg+xml') {
++    // Pass throught SVG images.
++    $width = variable_get('image_svg_width', 480);
++    $height = variable_get('image_svg_height', 320);
++    $details = array(
++        'width'     => $width,
++        'height'    => $height,
++        'extension' => 'svg',
++        'mime_type' => $mimetype,
++    );
++  }
+ 
+   return $details;
+ }
