@@ -1,7 +1,7 @@
-diff --git a/modules/taxonomy/taxonomy.module b/modules/taxonomy/taxonomy.module
+diff --git a/docroot/modules/taxonomy/taxonomy.module b/docroot/modules/taxonomy/taxonomy.module
 index f170430..d9ff16c 100644
---- a/modules/taxonomy/taxonomy.module
-+++ b/modules/taxonomy/taxonomy.module
+--- a/docroot/modules/taxonomy/taxonomy.module
++++ b/docroot/modules/taxonomy/taxonomy.module
 @@ -1204,6 +1204,8 @@ function taxonomy_implode_tags($tags, $vid = NULL) {
   *   - parent: a term ID of a term whose children are allowed. This should be
   *     '0' if all terms in a vocabulary are allowed. The allowed values do not
