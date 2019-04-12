@@ -10,3 +10,4 @@ taxon/
 docroot/simplesamlphp/
 docroot/*/files-private/
 **/hacked/
+docroot/sites/default/env.settings.php
