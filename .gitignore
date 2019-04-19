@@ -1,6 +1,6 @@
 # Ignore list
 .idea/
-.DS_Store/
+.DS_Store
 **/Gemfile.lock
 .vagrant/
 html/
@@ -10,3 +10,13 @@ taxon/
 docroot/simplesamlphp/
 docroot/*/files-private/
 **/hacked/
+docroot/sites/default/env.settings.php
+
+# Hidden files and folders
+#.*
+.well-known/
+
+# Hide env.settings.php
+docroot/sites/*/env.settings.php
+docroot/sites/default/files-private
+!docroot/sites/*/settings.php
