@@ -239,6 +239,11 @@ function _stage_file_proxy_get_current_file_uri($path = NULL) {
     $path = $_GET['q'];
   }
 
+  // Disallow directory traversal.
+  if (in_array('..', explode('/', $path))) {
+    return FALSE;
+  }
+
   // Make sure we're requesting a file in the files dir.
   // Currently this only works for PUBLIC files.
   $file_dir = _stage_file_proxy_file_dir();
@@ -336,6 +341,15 @@ function stage_file_proxy_fetch_file($relative_path, array $options = array()) {
     return FALSE;
   }
 
+  $headers = _stage_file_proxy_create_headers_array(variable_get('stage_file_proxy_headers', ''));
+  $result = drupal_http_request($url, array('headers' => $headers));
+  if ($result->code != 200) {
+    watchdog('stage_file_proxy', 'HTTP error @errorcode occurred when trying to fetch @remote.', array('@errorcode' => $result->code, '@remote' => $url), WATCHDOG_ERROR);
+    $failures[$url] = TRUE;
+    cache_set('stage_file_proxy_fetch_url_failures', $failures, 'cache', CACHE_TEMPORARY);
+    return FALSE;
+  }
+
   $destination = _stage_file_proxy_file_dir();
   if (($dirname = dirname($relative_path)) !== '.') {
     $destination = $destination . '/'. $dirname;
@@ -346,15 +360,6 @@ function stage_file_proxy_fetch_file($relative_path, array $options = array()) {
   }
 
   $destination = str_replace('///', '//', "$destination/") . drupal_basename($relative_path);
-
-  $headers = _stage_file_proxy_create_headers_array(variable_get('stage_file_proxy_headers', ''));
-  $result = drupal_http_request($url, array('headers' => $headers));
-  if ($result->code != 200) {
-    watchdog('stage_file_proxy', 'HTTP error @errorcode occurred when trying to fetch @remote.', array('@errorcode' => $result->code, '@remote' => $url), WATCHDOG_ERROR);
-    $failures[$url] = TRUE;
-    cache_set('stage_file_proxy_fetch_url_failures', $failures, 'cache', CACHE_TEMPORARY);
-    return FALSE;
-  }
 
   $local = file_unmanaged_save_data($result->data, $destination, FILE_EXISTS_REPLACE);
   if (!$local) {
