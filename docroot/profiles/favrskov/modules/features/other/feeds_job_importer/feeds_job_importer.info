@@ -14,3 +14,4 @@ features[features_api][] = api:2
 features[feeds_importer][] = job_importer
 features[feeds_tamper][] = job_importer-description-find_replace_regex
 features[feeds_tamper][] = job_importer-start_date-date_converter
+features[feeds_tamper][] = job_importer-xpathparser_6-strtotime

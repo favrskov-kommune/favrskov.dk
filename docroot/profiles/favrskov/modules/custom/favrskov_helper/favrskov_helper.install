@@ -1021,3 +1021,11 @@ function favrskov_helper_update_7057() {
     drupal_uninstall_modules(array('backup_migrate'));
   }
 }
+
+/**
+ * Implements hook_update_7058
+ * Revert feature 'feeds_job_importer'.
+ */
+function favrskov_helper_update_7058() {
+  features_revert_module('feeds_job_importer');
+}
