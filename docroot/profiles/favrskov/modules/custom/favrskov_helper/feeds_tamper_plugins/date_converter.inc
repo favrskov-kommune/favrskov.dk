@@ -36,21 +36,13 @@ function favrskov_helper_plugin_date_to_proper_format_form($importer, $element_k
  * Callback that will be called during import on field that plugin was attached.
  */
 function favrskov_helper_plugin_date_to_proper_format_callback($result, $item_key, $element_key, &$field, $settings) {
-  $field =  strtotime(favrskov_helper_feeds_tamper_danish_month_to_english($field));
+
+  $current_local = locale_get_default();
+  setlocale(LC_ALL,"da_DK");
+  $date = DateTime::createFromFormat("d. M Y", $field);
+  $field = $date->getTimestamp();
+  // Restore default local.
+  setlocale(LC_ALL, $current_local);
+
 }
 
-function favrskov_helper_feeds_tamper_danish_month_to_english($str) {
-  $str = str_replace('januar', 'January', $str);
-  $str = str_replace('februar', 'February', $str);
-  $str = str_replace('marts', 'March', $str);
-  $str = str_replace('april', 'April', $str);
-  $str = str_replace('maj', 'May', $str);
-  $str = str_replace('juni', 'June', $str);
-  $str = str_replace('juli', 'July', $str);
-  $str = str_replace('august', 'August', $str);
-  $str = str_replace('september', 'September', $str);
-  $str = str_replace('oktober', 'October', $str);
-  $str = str_replace('november', 'November', $str);
-  $str = str_replace('december', 'December', $str);
-  return $str;
-}
