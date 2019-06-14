@@ -36,8 +36,13 @@ function favrskov_helper_plugin_date_to_proper_format_form($importer, $element_k
  * Callback that will be called during import on field that plugin was attached.
  */
 function favrskov_helper_plugin_date_to_proper_format_callback($result, $item_key, $element_key, &$field, $settings) {
-  $date       = new DateTime($field);
-  $timestamp  = $date->getTimestamp();
 
-  $field = format_date($timestamp, $settings['type']);
+  $current_local = locale_get_default();
+  setlocale(LC_ALL,"da_DK");
+  $date = DateTime::createFromFormat("d. M Y", $field);
+  $field = $date->getTimestamp();
+  // Restore default local.
+  setlocale(LC_ALL, $current_local);
+
 }
+
