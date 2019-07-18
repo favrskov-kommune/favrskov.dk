@@ -20,9 +20,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
     hidpi: true,
     onLoad: function() {
       // Check if this instance has widget support.
-      mediaPluginDefinition.hasWidgetSupport = typeof(CKEDITOR.plugins.registered.widget) != 'undefined';
+      // mediaPluginDefinition.hasWidgetSupport = typeof(CKEDITOR.plugins.registered.widget) != 'undefined';
       // Add dependency to widget plugin if possible.
-      if (parseFloat(CKEDITOR.version) >= 4.3 && mediaPluginDefinition.hasWidgetSupport) {
+      if (Drupal.settings.ckeditor.plugins['media'].compareVersions(CKEDITOR.version, '4.3') >= 0 && mediaPluginDefinition.hasWidgetSupport) {
         mediaPluginDefinition.requires.push('widget');
       }
     },
@@ -90,7 +90,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
         editor.addMenuGroup('mediaGroup');
         editor.addMenuItem('mediaConfigureItem', {
           label: Drupal.settings.media_ckeditor.labels['settings'],
-          icon: this.path + 'images/icon.gif',
+          icon: this.path + 'icons/media.png',
           command: 'mediaConfigure',
           group: 'mediaGroup'
         });
@@ -110,8 +110,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
         command: 'media'
       });
 
-      var ckeditorversion = parseFloat(CKEDITOR.version);
-
       // Because the media comment wrapper don't work well for CKEditor we
       // replace them by using a custom mediawrapper element.
       // Instead having
@@ -123,7 +121,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
       CKEDITOR.dtd.$blockLimit['mediawrapper'] = 1;
       CKEDITOR.dtd.$inline['mediawrapper'] = 1;
       CKEDITOR.dtd.$nonEditable['mediawrapper'] = 1;
-      if (ckeditorversion >= 4.1) {
+      if (Drupal.settings.ckeditor.plugins['media'].compareVersions(CKEDITOR.version, '4.1') >= 0) {
         // Register allowed tag for advanced filtering.
         editor.filter.allow( 'mediawrapper[!data]', 'mediawrapper', true);
         // Don't remove the data-file_info attribute added by media!
@@ -205,7 +203,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
           }
         });
       }
-      else if (ckeditorversion >= 4) {
+      else if (Drupal.settings.ckeditor.plugins['media'].compareVersions(CKEDITOR.version, '4') >= 0) {
         // CKEditor >=4.0
         editor.on('setData', function( event ) {
           event.data.dataValue = prepareDataForWysiwygMode(event.data.dataValue);
@@ -254,7 +252,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
                   // While v3 plays nice with setting start and end to avoid
                   // editing within the media wrapper element, v4 ignores that.
                   // Thus we try to move the cursor further away.
-                  if (parseInt(CKEDITOR.version) > 3) {
+                  if (Drupal.settings.ckeditor.plugins['media'].compareVersions(CKEDITOR.version, '3') > 0) {
                     range.setStart(commonAncestor.getPrevious());
                     range.setEnd(commonAncestor.getPrevious());
                   }
@@ -266,7 +264,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
                   // While v3 plays nice with setting start and end to avoid
                   // editing within the media wrapper element, v4 ignores that.
                   // Thus we try to move the cursor further away.
-                  if (parseInt(CKEDITOR.version) > 3) {
+                  if (Drupal.settings.ckeditor.plugins['media'].compareVersions(CKEDITOR.version, '3') > 0) {
                     range.setStart(commonAncestor.getNext(), 1);
                     range.setEnd(commonAncestor.getNext(), 1);
                   }
