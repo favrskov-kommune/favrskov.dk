@@ -8,6 +8,16 @@
 class apachesolr_views_snippet_handler_field extends views_handler_field {
 
   /**
+   * @TODO: Document this method.
+   */
+  function query() {
+    $this->query->add_parameter('hl', true);
+    $this->query->add_parameter('hl.fl', array('content', 'ts_comments'));
+    $this->query->add_parameter('f.content.hl.alternateField', 'teaser');
+    $this->query->add_parameter('hl.snippets', 3);
+  }
+
+  /**
    * Retrieve value from Solr result document.
    */
   public function get_value($doc, $field = NULL) {
@@ -29,7 +39,7 @@ class apachesolr_views_snippet_handler_field extends views_handler_field {
       if (isset($response->highlighting->{$doc->id}->$hl_param)) {
         // Merge arrays preserving keys.
         foreach ($response->highlighting->{$doc->id}->$hl_param as $value) {
-          $snippets[$hl_param] = $value;
+          $snippets[$hl_param] = is_array($value) ? $value : array($value);
         }
       }
     }

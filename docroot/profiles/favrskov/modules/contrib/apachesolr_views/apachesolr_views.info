@@ -19,9 +19,8 @@ files[] = handlers/apachesolr_views_handler_filter_string.inc
 files[] = handlers/apachesolr_views_keyword_handler_filter.inc
 files[] = handlers/apachesolr_views_handler_argument.inc
 
-; Information added by Drupal.org packaging script on 2015-05-21
-version = "7.x-1.1-beta1"
+; Information added by Drupal.org packaging script on 2019-08-15
+version = "7.x-1.1-beta2"
 core = "7.x"
 project = "apachesolr_views"
-datestamp = "1432238584"
-
+datestamp = "1565842084"
