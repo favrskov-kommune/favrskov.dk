@@ -65,6 +65,15 @@ class apachesolr_views_query extends views_plugin_query {
       $params['fl'] = array_merge($params['fl'], $this->params['fl']);
     }
     $params['fl'] = implode(',', $params['fl']);
+    if (isset($this->params['hl'])) {
+      $params['hl'] = $this->params['hl'];
+    }
+    if (isset($this->params['hl'])) {
+      $params['f.content.hl.alternateField'] = $this->params['f.content.hl.alternateField'];
+    }
+    if (isset($this->params['hl.snippets'])) {
+      $params['hl.snippets'] = $this->params['hl.snippets'];
+    }
 
     $where = $this->where;
     // Remove any empty conditions (exposed filters), they will cause an error.
@@ -147,15 +156,17 @@ class apachesolr_views_query extends views_plugin_query {
       list($final_query, $response) = apachesolr_do_query($query);
       apachesolr_has_searched($solr->getId(), TRUE);
 
-      // Store results.
-      $view->result = $response->response->docs;
+      if ($response) {
+        // Store results.
+        $view->result = $response->response->docs;
 
-      // Store apachesolr cached response.
-      $this->apachesolr_response = $response;
+        // Store apachesolr cached response.
+        $this->apachesolr_response = $response;
 
-      // Store the results.
-      $this->pager->total_items = $view->total_rows = $this->apachesolr_response->response->numFound;
-      $this->pager->update_page_info();
+        // Store the results.
+        $this->pager->total_items = $view->total_rows = $this->apachesolr_response->response->numFound;
+        $this->pager->update_page_info();
+      }
     }
     catch (Exception $e) {
       $view->result = array();

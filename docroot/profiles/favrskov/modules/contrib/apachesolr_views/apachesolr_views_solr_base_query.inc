@@ -58,4 +58,11 @@ class ApachesolrViewsSolrBaseQuery extends SolrBaseQuery {
   public function getView() {
     return $this->view;
   }
+
+  /**
+   * Override method, so views sorts do not become overriden randomly.
+   */
+  protected function parseSortString() {
+    // Do nothing.
+  }
 }
