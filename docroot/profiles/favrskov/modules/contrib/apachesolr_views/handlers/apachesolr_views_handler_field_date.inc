@@ -9,7 +9,12 @@ class apachesolr_views_handler_field_date extends views_handler_field_date {
   function get_value($values, $field = NULL) {
     $value = parent::get_value($values, $field);
     if (isset($value)) {
-      return strtotime($value);
+      if (is_array($value)) {
+        return strtotime($value[0]);
+      }
+      else {
+        return strtotime($value);
+      }
     }
   }
 

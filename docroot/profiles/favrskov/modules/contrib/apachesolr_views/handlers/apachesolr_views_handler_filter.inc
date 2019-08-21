@@ -13,7 +13,7 @@ class apachesolr_views_handler_filter extends views_handler_filter {
   public function query() {
     $this->trim_value();
 
-    if (!empty($this->value)) {
+    if (!empty($this->value) || $this->value === '0') {
       if (is_array($this->value)) {
         $this->value = implode(' OR ', $this->value);
       }

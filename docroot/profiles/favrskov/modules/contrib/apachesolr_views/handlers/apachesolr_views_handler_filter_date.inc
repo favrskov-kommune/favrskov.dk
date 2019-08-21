@@ -28,8 +28,7 @@ class apachesolr_views_handler_filter_date extends views_handler_filter_date {
     $value = intval(strtotime($this->value['value']));
     $value = new DateObject($value);
 
-    // Probably there is a better way with dateobject, but no way to find how.
-    $has_time = strpos($this->value['value'], ':');
+    $has_time = $value->hasTime();
 
     $value_format = $value->format(APACHESOLR_VIEWS_DATE_ISO8601);
     switch ($this->operator) {
