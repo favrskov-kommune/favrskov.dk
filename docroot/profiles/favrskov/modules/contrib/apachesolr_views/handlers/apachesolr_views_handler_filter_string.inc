@@ -28,7 +28,7 @@ class apachesolr_views_handler_filter_string extends views_handler_filter_string
     if ($this->operator == '!=') {
       $this->real_field = '-' . $this->real_field;
     }
-    $this->query->add_where($this->options['group'], $this->real_field, '"' . htmlspecialchars($this->value, ENT_QUOTES) . '"');
+    $this->query->add_where($this->options['group'], $this->real_field, $this->value);
   }
 
   /**
