@@ -322,7 +322,7 @@ function nodequeue_action_add_node($node, $queue_name, $unique) {
           nodequeue_subqueue_add($queue, $subqueue, $node->nid);
         }
       }
-      if (!$smartqueue_domain_enabled && !$smartqueue_domain_enabled){
+      if (!$smartqueue_enabled && !$smartqueue_domain_enabled){
         nodequeue_subqueue_add($queue, $subqueue, $node->nid);
       }
     }
