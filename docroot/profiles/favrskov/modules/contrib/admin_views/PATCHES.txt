@@ -1,2 +1,0 @@
-The following patches from the following thread: https://www.drupal.org/project/admin_views/issues/2951251 have been applied to this project:
-- https://www.drupal.org/files/issues/admin_views-content_domain_filter-2951251-2.patch
