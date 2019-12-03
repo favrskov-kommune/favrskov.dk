@@ -21,7 +21,8 @@ $handler->display->display_options['title'] = 'Content';
 $handler->display->display_options['css_class'] = 'admin-views-view';
 $handler->display->display_options['use_ajax'] = TRUE;
 $handler->display->display_options['use_more_always'] = FALSE;
-$handler->display->display_options['access']['type'] = 'menu';
+$handler->display->display_options['access']['type'] = 'perm';
+$handler->display->display_options['access']['perm'] = 'access administration pages';
 $handler->display->display_options['cache']['type'] = 'none';
 $handler->display->display_options['query']['type'] = 'views_query';
 $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -350,24 +351,6 @@ $handler->display->display_options['filters']['vid']['expose']['label'] = 'Vocab
 $handler->display->display_options['filters']['vid']['expose']['operator'] = 'vid_op';
 $handler->display->display_options['filters']['vid']['expose']['identifier'] = 'vid';
 $handler->display->display_options['filters']['vid']['expose']['remember'] = TRUE;
-/* Filter criterion: Domain Access: Domain ID */
-$handler->display->display_options['filters']['gid']['id'] = 'gid';
-$handler->display->display_options['filters']['gid']['table'] = 'domain_access';
-$handler->display->display_options['filters']['gid']['field'] = 'gid';
-$handler->display->display_options['filters']['gid']['exposed'] = TRUE;
-$handler->display->display_options['filters']['gid']['expose']['operator_id'] = 'gid_op';
-$handler->display->display_options['filters']['gid']['expose']['label'] = 'Domain';
-$handler->display->display_options['filters']['gid']['expose']['operator'] = 'gid_op';
-$handler->display->display_options['filters']['gid']['expose']['identifier'] = 'gid';
-$handler->display->display_options['filters']['gid']['expose']['remember'] = TRUE;
-$handler->display->display_options['filters']['gid']['expose']['remember_roles'] = array(
-  2 => '2',
-  1 => 0,
-  6 => 0,
-  3 => 0,
-  4 => 0,
-  5 => 0,
-);
 
 /* Display: System */
 $handler = $view->new_display('system', 'System', 'system_1');
@@ -411,6 +394,5 @@ $translatables['admin_views_node'] = array(
   t('Updated'),
   t('Operations'),
   t('Vocabulary'),
-  t('Domain'),
   t('System'),
 );
