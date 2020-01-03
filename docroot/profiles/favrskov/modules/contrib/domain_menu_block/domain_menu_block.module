@@ -11,27 +11,26 @@
 function domain_menu_block_init() {
   global $conf;
   $_domain = domain_get_domain();
+
   // Sets the allowed menus for content types dynamically.
-  $base = array_filter(variable_get('domain_menu_block_content_menu', array()));
+  $dmbs = domain_menu_block_load_multiple();
   $types = node_type_get_types();
-  if (empty($base) || empty($types) || !isset($_domain['machine_name'])) {
+  $killswitch = variable_get('domain_menu_block_preselect_menus', 0);
+  if (empty($killswitch) || empty($dmbs) || empty($types) || !isset($_domain['machine_name'])) {
     return;
   }
-  $menus = array();
+
   // Get the menu blocks for this domain.
-  $dmbs = domain_menu_block_load_multiple($base);
-  $parent = variable_get('domain_menu_block_parent_menu', '');
-  foreach ($base as $name) {
-    $menu = domain_menu_block_menu_name($dmbs[$name], $_domain);
+  $menus = array();
+  foreach ($dmbs as $dmb) {
+    $menu = domain_menu_block_menu_name($dmb, $_domain);
     $menus[$menu] = $menu;
-    if ($name == $parent) {
-      $parent_menu = "$menu:0";
-    }
+    $parent_menu = "$menu:0";
   }
   // Set this for every content type.
-  foreach ($types as $type => $info) {
-    $conf['menu_options_' . $type] = $menus;
-    if (!empty($parent)) {
+  if (!empty($menus)) {
+    foreach ($types as $type => $info) {
+      $conf['menu_options_' . $type] = $menus;
       $conf['menu_parent_' . $type] = $parent_menu;
     }
   }
