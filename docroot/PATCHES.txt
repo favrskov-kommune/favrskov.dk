@@ -1,3 +1,3 @@
 The following patches have been applied to this project:
-- https://www.drupal.org/files/issues/1078878-DisableAutoCreation-D7-UTF-8.patch 
-- https://www.drupal.org/files/issues/drupal-add_basic_svg_support-2539478-3-D7.patch
+- https://www.drupal.org/files/issues/1078878-DisableAutoCreation-D7-UTF-8.patch
+- https://www.drupal.org/files/issues/drupal-add_basic_svg_support-2539478-5-D7.patch
