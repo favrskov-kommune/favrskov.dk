@@ -12,7 +12,7 @@ $text = render($content['field_displayed_title']);
 $text .= render($content['field_teaser']);
 $text .= '<span class="require-type"></span>';
 
-print l($text, $link['url'], array(
+print l($text, $link['original_url'], array(
   'html' => TRUE,
   'attributes' => array(
     'title' => $content['field_image_alt_text'][0]['#markup'],
