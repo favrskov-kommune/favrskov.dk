@@ -1,0 +1,7 @@
+name = DDS Monitor
+description = Generation of feed to Novicell Drupal status monitor.
+core = 7.x
+version = 7.x-1.0
+package = Drupal Design Suite
+
+dependencies[] = basic_auth:basic_auth

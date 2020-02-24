@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Basic HTTP Authentication (Test).
+ */
+
+/**
+ * Implements hook_views_api().
+ */
+function basic_auth_test_views_api() {
+  return ['api' => 3];
+}
