@@ -12,7 +12,7 @@ $text .= '<span class="banner-link-icon">';
 $text .= '</span>';
 $text .= '<span class="require-type"></span>';
 
-print l($text, $link['url'], array(
+print l($text, $link['original_url'], array(
   'html' => TRUE,
   'attributes' => array(
     'title' => empty($content['field_image_alt_text'][0]['#markup']) ? '' : $content['field_image_alt_text'][0]['#markup'],

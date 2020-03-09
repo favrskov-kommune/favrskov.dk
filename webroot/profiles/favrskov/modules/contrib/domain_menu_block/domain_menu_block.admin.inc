@@ -34,6 +34,7 @@ function domain_menu_block_admin() {
   }
   $output['content']['#markup'] = theme('table', array('header' => $header, 'rows' => $rows));
   $output['form'] = drupal_get_form('domain_menu_block_settings_form', $dmbs);
+
   return $output;
 }
 
@@ -45,6 +46,12 @@ function domain_menu_block_settings_form($form, &$form_state, $dmbs) {
   foreach ($dmbs as $dmb) {
     $options[$dmb->machine_name] = $dmb->base_name;
   }
+  $form['domain_menu_block_preselect_menus'] = array(
+    '#title' => t('Preselect menu options when creating nodes.'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('domain_menu_block_preselect_menus', 0),
+    '#description' => t('When checked, a node can only be assigned to the menu tied to the active domain.'),
+  );
   /* UNTESTED.
   $form['wrapper'] = array(
     '#type' => 'fieldset',

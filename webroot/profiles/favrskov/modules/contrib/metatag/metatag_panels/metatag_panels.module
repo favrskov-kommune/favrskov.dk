@@ -172,13 +172,22 @@ function metatag_panels_ctools_render_alter($info, $page, $context) {
   }
   $metatags = $all_metatags;
 
+  $instance = 'panels:' . $handler->name;
+  $options = array(
+    'instance' => $instance,
+  );
+
+  // Trigger hook_metatag_metatags_alter(). Allow the raw meta tags to be
+  // modified prior to rendering.
+  drupal_alter('metatag_metatags', $metatags, $instance, $options);
+
   if (empty($metatags)) {
     return;
   }
 
   // Substitute Panels context variables.
   foreach ($metatags as $metatag => $data) {
-    if (is_string($data['value']) && strpos($data['value'], '%') !== FALSE) {
+    if (isset($data['value']) && is_string($data['value']) && strpos($data['value'], '%') !== FALSE) {
       $metatags[$metatag]['value'] = check_plain(urldecode(ctools_context_keyword_substitute($data['value'], array(), $context['handler']->conf['display']->context)));
     }
   }
@@ -205,14 +214,11 @@ function metatag_panels_ctools_render_alter($info, $page, $context) {
   $current_pager = metatag_get_current_pager();
 
   // Build the Metatag.
-  $options = array(
-    'instance' => 'panels:' . $handler->name,
-    'token data' => $tokens,
-  );
+  $options['token data'] = $tokens;
   foreach ($metatags as $metatag => $data) {
     // Render CTools context substitution values prior to rendering the meta
     // tag.
-    if (is_string($data['value'])) {
+    if (isset($data['value']) && is_string($data['value'])) {
       $data['value'] = check_plain(urldecode(ctools_context_keyword_substitute(trim($data['value']), array(), $task_contexts)));
     }
     $metatag_instance = metatag_get_instance($metatag, $data);

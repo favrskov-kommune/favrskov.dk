@@ -154,7 +154,7 @@ function metatag_metatag_info() {
 
   $info['tags']['title'] = array(
     'label' => t('Page title'),
-    'description' => t("The text to display in the title bar of a visitor's web browser when they view this page. This meta tag may also be used as the title of the page when a visitor bookmarks or favorites this page."),
+    'description' => t("The text to display in the title bar of a visitor's web browser when they view this page. This meta tag may also be used as the title of the page when a visitor bookmarks or favorites this page, or as the page title in a search engine result. It is common to append '[site:name]' to the end of this, so the site's name is automatically added. It is recommended that the title be no greater than 55 - 65 characters long, including spaces."),
     'maxlength' => 0,
     'class' => 'DrupalTitleMetaTag',
     'group' => 'basic',
@@ -163,7 +163,7 @@ function metatag_metatag_info() {
 
   $info['tags']['description'] = array(
     'label' => t('Description'),
-    'description' => t("A brief and concise summary of the page's content, preferably 320 characters or less. The description meta tag may be used by search engines to display a snippet about the page in search results."),
+    'description' => t("A brief and concise summary of the page's content, preferably 150 characters or less. Where as the description meta tag may be used by search engines to display a snippet about the page in search results, the abstract tag is used by search engines to archive a summary about the page."),
     'maxlength' => 380,
     'class' => 'DrupalTextMetaTag',
     'group' => 'basic',
@@ -189,9 +189,18 @@ function metatag_metatag_info() {
     ),
   );
 
+  $info['tags']['author'] = array(
+    'label' => t('Author'),
+    'description' => t('Author(s) of the web page; little used though an official part of the <a href="https://www.w3.org/TR/html52/document-metadata.html#author">HTML 5.2 specification</a>.'),
+    'class' => 'DrupalTextMetaTag',
+    'group' => 'advanced',
+    'weight' => ++$weight,
+    'name' => 'author',
+  );
+
   $info['tags']['keywords'] = array(
     'label' => t('Keywords'),
-    'description' => t("A comma-separated list of keywords about the page. This meta tag is <em>not</em> supported by most search engines anymore."),
+    'description' => t("A comma-separated list of keywords about the page. This meta tag is <em>no longer</em> supported by most search engines anymore."),
     'maxlength' => 0,
     'class' => 'DrupalTextMetaTag',
     'group' => 'basic',
@@ -207,16 +216,16 @@ function metatag_metatag_info() {
     'weight' => ++$weight,
     'form' => array(
       '#options' => array(
-        'index' => t('Allow search engines to index this page (assumed).'),
-        'follow' => t('Allow search engines to follow links on this page (assumed).'),
-        'noindex' => t('Prevents search engines from indexing this page.'),
-        'nofollow' => t('Prevents search engines from following links on this page.'),
-        'noarchive' => t('Prevents cached copies of this page from appearing in search results.'),
-        'nosnippet' => t('Prevents descriptions from appearing in search results, and prevents page caching.'),
-        'noodp' => t('Blocks the <a href="!opendirectory">Open Directory Project</a> description from appearing in search results.', array('!opendirectory' => 'http://www.dmoz.org/')),
-        'noydir' => t('Prevents Yahoo! from listing this page in the <a href="@ydir">Yahoo! Directory</a>.', array('@ydir' => 'http://dir.yahoo.com/')),
-        'noimageindex' => t('Prevent search engines from indexing images on this page.'),
-        'notranslate' => t('Prevent search engines from offering to translate this page in search results.'),
+        'index' => t('index - Allow search engines to index this page (assumed).'),
+        'follow' => t('follow - Allow search engines to follow links on this page (assumed).'),
+        'noindex' => t('noindex - Prevents search engines from indexing this page.'),
+        'nofollow' => t('nofollow - Prevents search engines from following links on this page.'),
+        'noarchive' => t('noarchive - Prevents cached copies of this page from appearing in search results.'),
+        'nosnippet' => t('nosnippet - Prevents descriptions from appearing in search results, and prevents page caching.'),
+        'noodp' => t('noodp - Blocks the <a href="!opendirectory">Open Directory Project</a> description from appearing in search results.', array('!opendirectory' => 'http://www.dmoz.org/')),
+        'noydir' => t('noydir - Prevents Yahoo! from listing this page in the <a href="@ydir">Yahoo! Directory</a>.', array('@ydir' => 'http://dir.yahoo.com/')),
+        'noimageindex' => t('noimageindex - Prevent search engines from indexing images on this page.'),
+        'notranslate' => t('notranslate - Prevent search engines from offering to translate this page in search results.'),
       ),
     ),
   );
@@ -313,7 +322,7 @@ function metatag_metatag_info() {
 
   $info['tags']['canonical'] = array(
     'label' => t('Canonical URL'),
-    'description' => t("Preferred page location or URL to help eliminate duplicate content for search engines."),
+    'description' => t("The URl of the preferred page location or URL of the content of this page, to help eliminate duplicate content penalties from search engines."),
     'class' => 'DrupalLinkMetaTag',
     'group' => 'advanced',
     'weight' => ++$weight,
@@ -479,6 +488,14 @@ function metatag_metatag_info() {
     'devel_generate' => array(
       'type' => 'date',
     ),
+  );
+
+  $info['tags']['google'] = array(
+    'label' => t('Google'),
+    'description' => t("This meta tag communicates with Google. There are currently two directives supported: 'nositelinkssearchbox' to not to show the sitelinks search box, and 'notranslate' to ask Google not to offer a translation of the page. Both options may be added, just separate them with a comma. See <a href='@docs'>meta tags that Google understands</a> for further details.", array('@docs' => 'https://support.google.com/webmasters/answer/79812?hl=en')),
+    'class' => 'DrupalTextMetaTag',
+    'weight' => ++$weight,
+    'group' => 'advanced',
   );
 
   return $info;

@@ -29,22 +29,22 @@ function image_gd_settings() {
       '#field_suffix' => t('%'),
     );
     $form['image_svg_width'] = array(
-        '#type' => 'textfield',
-        '#title' => t('SVG width'),
-        '#description' => t('Define the default width of a SVG image. Note that the changing this only affects new uploads!'),
-        '#size' => 10,
-        '#maxlength' => 4,
-        '#default_value' => variable_get('image_svg_width', 480),
-        '#field_suffix' => t('px'),
+      '#type' => 'textfield',
+      '#title' => t('SVG width'),
+      '#description' => t('Define the default width of a SVG image. Note that the changing this only affects new uploads!'),
+      '#size' => 10,
+      '#maxlength' => 4,
+      '#default_value' => variable_get('image_svg_width', 480),
+      '#field_suffix' => t('px'),
     );
     $form['image_svg_height'] = array(
-        '#type' => 'textfield',
-        '#title' => t('SVG height'),
-        '#description' => t('Define the default height of a SVG image. Note that the changing this only affects new uploads!'),
-        '#size' => 10,
-        '#maxlength' => 4,
-        '#default_value' => variable_get('image_svg_height', 320),
-        '#field_suffix' => t('px'),
+      '#type' => 'textfield',
+      '#title' => t('SVG height'),
+      '#description' => t('Define the default height of a SVG image. Note that the changing this only affects new uploads!'),
+      '#size' => 10,
+      '#maxlength' => 4,
+      '#default_value' => variable_get('image_svg_height', 320),
+      '#field_suffix' => t('px'),
     );
     $form['#element_validate'] = array('image_gd_settings_validate');
 
@@ -439,10 +439,10 @@ function image_gd_get_info(stdClass $image) {
     $width = variable_get('image_svg_width', 480);
     $height = variable_get('image_svg_height', 320);
     $details = array(
-        'width'     => $width,
-        'height'    => $height,
-        'extension' => 'svg',
-        'mime_type' => $mimetype,
+      'width'     => $width,
+      'height'    => $height,
+      'extension' => 'svg',
+      'mime_type' => $mimetype,
     );
   }
 

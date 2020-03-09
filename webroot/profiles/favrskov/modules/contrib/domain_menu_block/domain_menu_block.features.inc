@@ -23,8 +23,8 @@ function domain_menu_block_features_export_options() {
 function domain_menu_block_features_export($data, &$export, $module_name) {
   $export['dependencies']['domain_menu_block'] = 'domain_menu_block';
   $dmbs = domain_menu_block_load_multiple();
-  foreach ($data as $key => $value) {
-    $export['features']['domain_menu_block'][$key] = $dmbs[$key];
+  foreach ($data as $machine_name) {
+    $export['features']['domain_menu_block'][$machine_name] = $machine_name;
   }
   return array();
 }
@@ -33,12 +33,12 @@ function domain_menu_block_features_export($data, &$export, $module_name) {
  * Implements hook_features_export_render().
  */
 function domain_menu_block_features_export_render($module_name, $data, $export = NULL) {
-  domain_features_load($module_name, 'domain_alias_default_aliases', FALSE);
+  domain_features_load($module_name, 'domain_menu_block_default_domain_menu_blocks', FALSE);
   $code = array();
   if (is_null($export)) {
     $data = domain_menu_block_load_multiple();
   }
-  $code[] = '$dmbs = array();';
+  $code[] = '  $dmbs = array();';
   foreach ($data as $name => $value) {
     // When features runs a check for normal / overridden, it passes only
     // array keys, so we account for that.
@@ -46,9 +46,9 @@ function domain_menu_block_features_export_render($module_name, $data, $export =
       $name = $value;
       $value = $dmb;
     }
-    $code[] = "  \$dmbs['{$name}'] = " . features_var_export($value) . ";";
+    $code[] = "  \$dmbs['{$name}'] = " . features_var_export($value, '  ') . ";";
   }
-  $code[] = "\nreturn \$dmbs;";
+  $code[] = "\n  return \$dmbs;";
   $output = implode("\n", $code);
   return array('domain_menu_block_default_domain_menu_blocks' => $output);
 }

@@ -5,11 +5,10 @@ core = 7.x
 dependencies[] = metatag:metatag
 
 ; Tests.
-files[] = tests/metatag_app_links.test
-files[] = tests/metatag_app_links.tags.test
+files[] = tests/MetatagAppLinksTagsTest.test
 
-; Information added by Drupal.org packaging script on 2018-04-04
-version = "7.x-1.25"
+; Information added by Drupal.org packaging script on 2020-02-10
+version = "7.x-1.27"
 core = "7.x"
 project = "metatag"
-datestamp = "1522849089"
+datestamp = "1581369088"

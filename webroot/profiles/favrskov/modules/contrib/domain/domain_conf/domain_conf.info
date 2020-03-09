@@ -6,8 +6,8 @@ core = 7.x
 
 files[] = tests/domain_conf.test
 
-; Information added by Drupal.org packaging script on 2018-12-17
-version = "7.x-3.16"
+; Information added by Drupal.org packaging script on 2019-12-17
+version = "7.x-3.17"
 core = "7.x"
 project = "domain"
-datestamp = "1545060487"
+datestamp = "1576608571"
