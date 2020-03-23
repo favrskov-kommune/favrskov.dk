@@ -7,16 +7,16 @@ html/
 backup/
 build_reports/
 taxon/
-docroot/simplesamlphp/
-docroot/*/files-private/
+webroot/simplesamlphp/
+webroot/*/files-private/
 **/hacked/
-docroot/sites/default/env.settings.php
+webroot/sites/default/env.settings.php
 
 # Hidden files and folders
 #.*
 .well-known/
 
 # Hide env.settings.php
-docroot/sites/*/env.settings.php
-docroot/sites/default/files-private
-!docroot/sites/*/settings.php
+webroot/sites/*/env.settings.php
+webroot/sites/default/files-private
+!webroot/sites/*/settings.php

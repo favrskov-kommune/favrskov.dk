@@ -1,23 +1,23 @@
 FROM php:5.6-apache AS base
 RUN apt-get update && apt-get install -y \
 		git \
-			libicu-dev \
-			openssh-client \
-			sudo \
-			libzip-dev \
-			libpng-dev \
-			libxml2-dev \
-			vim \
-			curl \
-			msmtp \
-			irb \
-			cron \
-			wget \
-			mysql-client \
-			libmemcached-dev \
-			libfreetype6-dev \
-			libjpeg62-turbo-dev \
-			zlib1g-dev && \
+        libicu-dev \
+        openssh-client \
+        sudo \
+        libzip-dev \
+        libpng-dev \
+        libxml2-dev \
+        vim \
+        curl \
+        msmtp \
+        irb \
+        cron \
+        wget \
+        mysql-client \
+        libmemcached-dev \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        zlib1g-dev && \
 		rm -rf /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | php \
@@ -59,7 +59,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 COPY webroot/ /src
 WORKDIR /src
 
-COPY webroot/entrypoint.sh .
+COPY config/entrypoint.sh .
 USER root
 
 RUN chmod +x entrypoint.sh
