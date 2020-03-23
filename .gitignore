@@ -15,6 +15,4 @@ webroot/sites/default/env.settings.php
 #.*
 .well-known/
 
-# Hide env.settings.php
-webroot/sites/*/env.settings.php
-!webroot/sites/*/settings.php
+!webroot/sites/*/settings.*.php

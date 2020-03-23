@@ -1,8 +1,7 @@
 webroot/sites/*/files/
 webroot/sites/*/files-private/
 webroot/vendor
-webroot/sites/*/settings.php
-webroot/sites/*/settings.ddev.php
+webroot/sites/*/settings.*.php
 **/*.patch
 .idea/
 .DS_Store
