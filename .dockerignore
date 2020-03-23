@@ -1,2 +1,4 @@
 webroot/sites/favrskov.dk/files
 webroot/vendor
+webroot/sites/*/settings.php
+webroot/sites/*/settings.ddev.php
