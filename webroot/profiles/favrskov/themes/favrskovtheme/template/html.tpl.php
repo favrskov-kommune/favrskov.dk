@@ -21,6 +21,5 @@
 
   <?php print $scripts; ?>
   <?php print $page_bottom; ?>
-  <script id="CookieDeclaration" src="https://consent.cookiebot.com/bb014a72-0672-471f-81f9-41b6df94bb55/cd.js" type="text/javascript" async></script>
 </body>
 </html>
