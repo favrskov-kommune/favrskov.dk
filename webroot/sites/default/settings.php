@@ -479,23 +479,6 @@ ini_set('session.cookie_lifetime', 2000000);
 # $conf['block_cache_bypass_node_grants'] = TRUE;
 
 /**
- * Expiration of cache_form entries:
- *
- * Drupal's Form API stores details of forms in cache_form and these entries are
- * kept for at least 6 hours by default. Expired entries are cleared by cron.
- * Busy sites can encounter problems with the cache_form table becoming very
- * large. It's possible to mitigate this by setting a shorter expiration for
- * cached forms. In some cases it may be desirable to set a longer cache
- * expiration, for example to prolong cache_form entries for Ajax forms in
- * cached HTML.
- *
- * @see form_set_cache()
- * @see system_cron()
- * @see ajax_get_form()
- */
-# $conf['form_cache_expiration'] = 21600;
-
-/**
  * String overrides:
  *
  * To override specific strings on your site with or without enabling the Locale
@@ -635,27 +618,41 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 # $conf['theme_debug'] = TRUE;
 
 /**
- * CSS identifier double underscores allowance:
- *
- * To allow CSS identifiers to contain double underscores (.example__selector)
- * for Drupal's BEM-style naming standards, uncomment the line below.
- * Note that if you change this value in existing sites, existing page styles
- * may be broken.
- *
- * @see drupal_clean_css_identifier()
+ * Define the different environments in the projects.
  */
-# $conf['allow_css_double_underscores'] = TRUE;
+define('PROD_ENV', 'prod');
+define('DEV_ENV', 'dev');
+define('STAGE_ENV', 'stage');
+define('CI_ENV', 'ci');
 
-/**
- * The default list of directories that will be ignored by Drupal's file API.
- *
- * By default ignore node_modules and bower_components folders to avoid issues
- * with common frontend tools and recursive scanning of directories looking for
- * extensions.
- *
- * @see file_scan_directory()
- */
-$conf['file_scan_ignore_directories'] = array(
-  'node_modules',
-  'bower_components',
+// Available environments.
+$available_env = array(
+  PROD_ENV,
+  DEV_ENV,
+  STAGE_ENV,
+  CI_ENV,
 );
+
+// Set the environment variable.
+$conf['project_env'] = DEV_ENV;
+
+// Check if environment exists.
+if (!isset($conf['project_env']) && !in_array($conf['project_env'], $available_env)) {
+  throw new \Exception('The PHP ENV cannot be found or it is unknown.');
+}
+
+$databases['default']['default'] = array (
+  'database' => getenv('DB_NAME'),
+  'username' => getenv('DB_USER'),
+  'password' => getenv('DB_PASS'),
+  'prefix' => '',
+  'host' => getenv('DB_HOST'),
+  'port' => getenv('DB_PORT'),
+  'namespace' => 'Drupal\Core\Database\Driver\mysql',
+  'driver' => 'mysql',
+);
+
+$local_settings = dirname(__FILE__) . '/settings.local.php';
+if (is_readable($local_settings)) {
+  require $local_settings;
+}
