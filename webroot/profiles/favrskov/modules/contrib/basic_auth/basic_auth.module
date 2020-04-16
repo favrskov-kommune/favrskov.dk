@@ -1,0 +1,274 @@
+<?php
+
+/**
+ * @file
+ * Basic HTTP Authentication.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function basic_auth_menu() {
+  $items = [];
+
+  $items['admin/config/system/basic-auth'] = [
+    'file' => 'includes/basic_auth.admin.inc',
+    'title' => 'Basic HTTP authentication',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['basic_auth_configuration_form'],
+    'access arguments' => ['configure basic auth'],
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function basic_auth_menu_alter(array &$items) {
+  foreach (basic_auth_get_entries() as $entry) {
+    if (isset($items[$entry->path]) && $entry->enabled) {
+      $item =& $items[$entry->path];
+      $callback = '';
+      $arguments = [];
+
+      // Allow to execute original callback with a list of arguments for it.
+      if (isset($item['access arguments'])) {
+        $callback = isset($item['access callback']) ? $item['access callback'] : 'user_access';
+        $arguments = $item['access arguments'];
+      }
+
+      $item['access callback'] = 'basic_auth';
+      $item['access arguments'] = [
+        $entry->path,
+        $entry->username,
+        $entry->password,
+        str_replace('/', '_', $entry->path),
+        $callback,
+        $arguments,
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function basic_auth_permission() {
+  $permissions = [];
+
+  $permissions['configure basic auth'] = [
+    'title' => t('Configure basic HTTP authentication'),
+  ];
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function basic_auth_module_implements_alter(array &$implementations, $hook) {
+  // The "views" module has heaviest weight and forces own access callback to
+  // be set for menu item even if we have configured basic HTTP authentication
+  // for this item. This leads to loss of basic HTTP authentication. Let's make
+  // our implementation the most important one to prevent such things.
+  if ('menu_alter' === $hook) {
+    $group = $implementations['basic_auth'];
+    unset($implementations['basic_auth']);
+    $implementations['basic_auth'] = $group;
+  }
+}
+
+/**
+ * Perform basic HTTP authentication.
+ *
+ * @param string $path
+ *   Path to protect.
+ * @param string $username
+ *   Desired username.
+ * @param string $password
+ *   Desired password.
+ * @param string $id
+ *   An unique ID for flood controlling.
+ * @param string $callback
+ *   Additional callback for checking accessibility.
+ * @param array $arguments
+ *   List of arguments for additional access callback.
+ *
+ * @return bool
+ *   A state of authentication.
+ */
+function basic_auth($path, $username, $password, $id = 'basic_auth', $callback = '', array $arguments = []) {
+  // We're facing cases when useful navigation modules are rendering whole menu
+  // structure to provide flexible navigation and, during the rendering, access
+  // callbacks are triggers in order to check whether menu item can be shown.
+  // As a result this forces basic HTTP authentication headers to be sent when
+  // they are not needed to be sent. Let's try to prevent this for some of the
+  // cases...
+  if (current_path() !== $path) {
+    return TRUE;
+  }
+
+  // Initialize received user and password.
+  $received_username = NULL;
+  $received_password = NULL;
+  if (isset($_SERVER['PHP_AUTH_PW'], $_SERVER['PHP_AUTH_USER'])) {
+    $received_username = $_SERVER['PHP_AUTH_USER'];
+    $received_password = $_SERVER['PHP_AUTH_PW'];
+  }
+  // The Authorization HTTP header is forwarded via Drupal's .htaccess file even
+  // for PHP CGI SAPIs.
+  elseif (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+    // Resemble PHP_AUTH_USER and PHP_AUTH_PW for a Basic authentication from
+    // the HTTP_AUTHORIZATION header. See
+    // http://www.php.net/manual/features.http-auth.php
+    list($received_username, $received_password) = explode(':', base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));
+  }
+  // If using CGI on Apache with mod_rewrite, the forwarded HTTP header appears
+  // in the redirected HTTP headers. See
+  // https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpFoundation/ServerBag.php#L61
+  elseif (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+    list($received_username, $received_password) = explode(':', base64_decode(substr($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 6)));
+  }
+
+  // Credentials for authentication were received.
+  if (isset($received_password, $received_username)) {
+    $event = $id . '_basic_auth_failed_login_ip';
+    $limit = variable_get($id . '_basic_auth_threshold_limit', 5);
+    $window = variable_get($id . '_basic_auth_threshold_window', 3600);
+
+    if (flood_is_allowed($event, $limit, $window)) {
+      if ($password === $received_password && $username === $received_username) {
+        flood_clear_event($event);
+
+        return !empty($callback) && is_callable($callback) ? (bool) call_user_func_array($callback, $arguments) : TRUE;
+      }
+
+      flood_register_event($event, $window);
+    }
+  }
+
+  header('WWW-Authenticate: Basic realm="Restricted Area"');
+  header('HTTP/1.1 401 Unauthorized');
+
+  exit('Access denied.');
+}
+
+/**
+ * Check that path is available in a system.
+ *
+ * @param string $path
+ *   Any path.
+ *
+ * @return bool
+ *   A state of check.
+ */
+function basic_auth_path_is_valid($path) {
+  return (bool) db_select('menu_router', 'mr')
+    ->fields('mr', ['path'])
+    ->condition('path', $path)
+    ->execute()
+    ->fetchField();
+}
+
+/**
+ * Check whether config exists for a path.
+ *
+ * @param string $path
+ *   Path in a system.
+ * @param bool $enabled
+ *   Check whether configuration is enabled/disabled.
+ *
+ * @return bool
+ *   A state of check.
+ */
+function basic_auth_config_exists($path, $enabled = NULL) {
+  $query = db_select('basic_auth', 'ba')
+    ->fields('ba', ['id'])
+    ->condition('path', $path);
+
+  if (NULL !== $enabled) {
+    $query->condition('enabled', $enabled);
+  }
+
+  return (bool) $query
+    ->execute()
+    ->fetchField();
+}
+
+/**
+ * Remove basic HTTP authentication from a path.
+ *
+ * @param string $path
+ *   Path in a system.
+ */
+function basic_auth_config_remove($path) {
+  db_delete('basic_auth')
+    ->condition('path', $path)
+    ->execute();
+
+  menu_rebuild();
+}
+
+/**
+ * Add/edit basic HTTP authorisation configuration for a path.
+ *
+ * @param string $path
+ *   Path in a system.
+ * @param bool $enabled
+ *   Enable/disabled configuration.
+ * @param string $username
+ *   Username for authentication.
+ * @param string $password
+ *   Password for authentication.
+ */
+function basic_auth_config_edit($path, $enabled = TRUE, $username = NULL, $password = NULL) {
+  if (!basic_auth_path_is_valid($path)) {
+    throw new \InvalidArgumentException(t('The @path path is not registered in system.', [
+      '@path' => $path,
+    ]));
+  }
+
+  if ((empty($username) || empty($password)) && !basic_auth_config_exists($path)) {
+    throw new \InvalidArgumentException(t('You are trying to create new entry without required data!'));
+  }
+
+  $fields = [
+    'path' => $path,
+    'enabled' => (int) $enabled,
+  ];
+
+  if (!empty($username)) {
+    $fields['username'] = $username;
+  }
+
+  if (!empty($password)) {
+    $fields['password'] = $password;
+  }
+
+  db_merge('basic_auth')
+    ->key(['path' => $path])
+    ->fields($fields)
+    ->execute();
+
+  menu_rebuild();
+}
+
+/**
+ * Get entries for which basic authentication is enabled.
+ *
+ * @return \stdClass[]
+ *   A list of entries.
+ */
+function basic_auth_get_entries() {
+  $data =& drupal_static(__FUNCTION__, []);
+
+  if (empty($data)) {
+    $data = db_select('basic_auth', 'ba')
+      ->fields('ba')
+      ->execute()
+      ->fetchAll();
+  }
+
+  return $data;
+}

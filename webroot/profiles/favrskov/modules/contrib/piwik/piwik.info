@@ -1,0 +1,14 @@
+name = "Piwik Web Analytics"
+description = Adds Piwik javascript tracking code to all your site's pages.
+core = 7.x
+package = Statistics
+configure = admin/config/system/piwik
+files[] = piwik.test
+test_dependencies[] = token
+dependencies[] = matomo
+
+; Information added by Drupal.org packaging script on 2018-06-08
+version = "7.x-2.12"
+core = "7.x"
+project = "piwik"
+datestamp = "1528483689"

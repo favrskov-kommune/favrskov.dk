@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+  database:
+    image: mysql:5.5
+    volumes:
+      - favrskov:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=$DATABASE_NAME
+      - MYSQL_USER=$DATABASE_USER
+      - MYSQL_PASSWORD=$DATABASE_PASSWORD
+      - MYSQL_ROOT_PASSWORD=$DATABASE_ROOT_PASSWORD
+    restart: always
+
+  app:
+    image: favrskov.dk:dev
+    depends_on:
+      - database
+    ports:
+      - "80:80"
+    links:
+      - database
+    environment:
+      - APP_ENV=$ENV
+      - DB_HOST=$DATABASE_HOST
+      - DB_NAME=$DATABASE_NAME
+      - DB_USER=$DATABASE_USER
+      - DB_PASS=$DATABASE_PASSWORD
+      - DB_PORT=$DATABASE_PORT
+      - DRUPAL_URL=$DRUPAL_URL
+      - DOMAIN=$DOMAIN
+
+  mailhog:
+    image: mailhog/mailhog
+
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.2
+    environment:
+      - "discovery.type=single-node"
+
+  solr:
+    image: solr:7.4
+    environment:
+      SOLR_DEFAULT_CONFIG_SET: search_api_solr_8.x-2.1
+      SOLR_HEAP: 1024m
+    links:
+      - app
+
+  memcached:
+    image: memcached:1.5
+    links:
+      - app
+
+volumes:
+  favrskov:

@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Installation and updating tasks.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function basic_auth_schema() {
+  $schema = [];
+
+  $schema['basic_auth'] = [
+    'description' => 'Collect paths and credentials for basic authentication',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The primary identifier of an entry.',
+      ],
+      'enabled' => [
+        'type' => 'int',
+        'size' => 'tiny',
+        'default' => 1,
+        'not null' => TRUE,
+        'description' => 'Boolean indicating whether the an entry is active.',
+      ],
+      'path' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'not null' => TRUE,
+        'description' => 'Path where basic HTTP authorisation will be enabled.',
+      ],
+      'username' => [
+        'type' => 'varchar',
+        'length' => 60,
+        'default' => '',
+        'not null' => TRUE,
+        'description' => 'Username for authentication.',
+      ],
+      'password' => [
+        'type' => 'varchar',
+        'length' => 128,
+        'default' => '',
+        'not null' => TRUE,
+        'description' => 'Password for authentication.',
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+    'unique keys' => [
+      'path' => ['path'],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Update menu entries.
+ */
+function basic_auth_update_7001() {
+  menu_rebuild();
+}

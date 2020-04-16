@@ -1,0 +1,24 @@
+<?php
+/**
+ * Implements hook_menu().
+ */
+function dds_monitor_7_menu()
+{
+    $items = [];
+
+    // The path that the endpoint will be registered to
+    $items['dds_monitor.json'] = array(
+        'file' => 'includes/dds_monitor.admin.inc',
+
+        // The name of the function called when the path is accessed
+        'page callback' => 'dds_monitor_callback',
+
+        // Set this value to TRUE to allow access to any user
+        'access callback' => TRUE, // 'basic_auth',
+
+        // Declare this as a simple registered path
+        'type' => MENU_CALLBACK,
+    );
+
+    return $items;
+}
