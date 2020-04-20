@@ -8,7 +8,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
   <?php print $head; ?>
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="bb014a72-0672-471f-81f9-41b6df94bb55" data-blockingmode="auto" type="text/javascript"></script>
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="bb014a72-0672-471f-81f9-41b6df94bb55" type="text/javascript"></script>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
   <?php print $html5shiv; ?>
