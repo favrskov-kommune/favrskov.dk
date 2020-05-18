@@ -45,6 +45,7 @@ RUN a2enmod rewrite && \
 				soap \
         zip
 COPY config/php.ini /usr/local/etc/php/conf.d/php-overwrite.ini
+RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 RUN pecl install memcached-2.2.0
 #Shell setup
