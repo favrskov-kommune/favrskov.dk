@@ -1,2 +1,0 @@
-The following patches from the following thread: https://www.drupal.org/project/ckeditor/issues/1898958 have been applied to this project:
-- https://www.drupal.org/files/ckeditor-media-plugin-files-1898958-4.patch

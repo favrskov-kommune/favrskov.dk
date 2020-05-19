@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install -y \
         zlib1g-dev && \
 		rm -rf /var/lib/apt/lists/*
 
+COPY config/php.ini /usr/local/etc/php/conf.d/php-zz.ini
+RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+
 RUN curl -sS https://getcomposer.org/installer | php \
 	&& mv composer.phar /usr/bin/composer
 
@@ -44,7 +47,6 @@ RUN a2enmod rewrite && \
 				gd \
 				soap \
         zip
-COPY config/php.ini /usr/local/etc/php/conf.d/php-overwrite.ini
 
 RUN pecl install memcached-2.2.0
 #Shell setup
