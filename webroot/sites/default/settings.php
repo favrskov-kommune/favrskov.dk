@@ -656,3 +656,10 @@ $local_settings = dirname(__FILE__) . '/settings.local.php';
 if (is_readable($local_settings)) {
   require $local_settings;
 }
+
+$ddev_settings = dirname(__FILE__) . '/settings.ddev.php';
+if (is_readable($ddev_settings)) {
+  require $ddev_settings;
+}
+
+include DRUPAL_ROOT . '/profiles/favrskov/modules/contrib/domain/settings.inc';
