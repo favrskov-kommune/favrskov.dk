@@ -22,16 +22,16 @@
       <?php print $content['header']; ?>
   <?php endif; ?>
 
-  <main id="main-wrapper" class="main-wrapper group clearfix" role="main">
-    <section id="main-content" class="content-container">
+  <div id="main-wrapper" class="main-wrapper group clearfix">
+    <div id="main-content" class="content-container">
 
       <div class="content">
 
-        <section id="node-content" class="node-content">
+        <main id="node-content" class="node-content">
           <?php if ($content['node-content']): ?>
             <?php print $content['node-content']; ?>
           <?php endif; ?>
-        </section>
+        </main>
 
         <aside class="sidebar">
           <?php if ($content['node-sidebar']): ?>
@@ -41,8 +41,8 @@
 
       </div>
 
-    </section>
-  </main>
+    </div>
+  </div>
 
   <?php if ($content['footer']): ?>
     <?php print $content['footer']; ?>

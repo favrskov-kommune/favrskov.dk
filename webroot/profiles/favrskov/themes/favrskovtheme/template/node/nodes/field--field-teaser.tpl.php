@@ -1,4 +1,6 @@
-<section class="teaser">
-  <?php print render($items); ?>
-</section>
+<div class="teaser">
+  <p>
+    <?php print render($items); ?>
+  </p>
+</div>
 

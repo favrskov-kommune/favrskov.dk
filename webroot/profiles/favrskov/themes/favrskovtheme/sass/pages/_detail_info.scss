@@ -20,7 +20,7 @@
         font: 12px Arial;
         font-weight: bold;
         text-transform: uppercase;
-        color: $liteGray;
+        @include links($dark-grey, $red);
       }
     }
     @include at-breakpoint(12 $width-1040) {
@@ -185,6 +185,7 @@
           margin: 10px 0;
           a {
             color: $red;
+            &:focus,
             &:hover {
               color: $dimgray;
             }
@@ -288,6 +289,10 @@
           }
           a {
             font-weight: bold;
+            &:focus,
+            &:hover {
+              color: $link-red;
+            }
           }
         }
         .hours-field {
