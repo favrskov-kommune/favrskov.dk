@@ -125,6 +125,7 @@
         &:focus,
         &:hover {
           color: $red;
+          text-decoration: underline;
         }
       }
       @extend %clearfix;
@@ -156,7 +157,7 @@
               font-weight: bold;
               color: $white;
               position: relative;
-              &:focus {
+              &:focus, &:hover {
                 background: $dark-green;
                 color: $lightgrey;
               }

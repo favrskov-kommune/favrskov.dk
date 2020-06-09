@@ -203,13 +203,17 @@
       background-color: $light-blue;
       @include border-radius(5px);
       padding: 0 40px 0 10px;
+      color: $grayMedium;
+      &::placeholder {
+        color: $grayMedium;
+      }
 
       // For ie8
       .lt-ie8 & {
         padding-top: 10px;
       }
       &:focus {
-        outline: $link-red auto 1px;
+        outline: $dark-green auto 1px;
       }
 
       @include at-breakpoint(12 $width-550) {
@@ -229,7 +233,7 @@
       z-index: 1;
       background: url(../images/search_icon.png) no-repeat center center;
       &:focus {
-        outline: $link-red auto 1px;
+        outline: $dark-green auto 1px;
       }
 
     }

@@ -24,7 +24,7 @@
       <?php print $content['header']; ?>
   <?php endif; ?>
 
-  <main id="main-wrapper" class="main-wrapper group" role="main">
+  <main id="main-wrapper" class="main-wrapper group">
     <section id="main-content" class="content-container ">
 
       <?php if ($content['top-full-section']): ?>

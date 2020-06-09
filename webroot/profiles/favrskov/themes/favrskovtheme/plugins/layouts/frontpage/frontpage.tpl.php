@@ -22,8 +22,8 @@
       <?php print $content['header']; ?>
   <?php endif; ?>
 
-  <main id="main-wrapper" class="main-wrapper group" role="main">
-    <section id="main-content" class="content-container">
+  <main id="main-wrapper" class="main-wrapper group">
+    <div id="main-content" class="content-container">
 
     <?php if ($content['region-two']): ?>
       <?php print $content['region-two']; ?>
@@ -51,7 +51,7 @@
       <?php print $content['region-seven']; ?>
     <?php endif; ?>
 
-  </section>
+    </div>
   </main>
 
 

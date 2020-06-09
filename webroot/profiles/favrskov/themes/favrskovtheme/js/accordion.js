@@ -93,6 +93,28 @@
 
     $this.each(function (e) {
       var element = $(this);
+      element.keydown(function (e) {
+        if(e.keyCode == 13) {
+          e.preventDefault();
+          var self = $(this);
+
+          // case: clicked archive is not open
+          if (!self.hasClass('open')) {
+            if (options == null || options.keepOpen == false) {
+              openCloseMethods.close();
+            }
+            openCloseMethods.show(self);
+          }
+          // case: clicked archive is open
+          else {
+            if (options == null || options.keepOpen == false) {
+              openCloseMethods.close();
+            } else {
+              openCloseMethods.close(self);
+            }
+          }
+        }
+      });
 
       element.click(function (e) {
         e.preventDefault();

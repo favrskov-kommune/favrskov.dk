@@ -40,7 +40,7 @@ $background = implode(', ', $background);
 
     <div class="header-menu-wrapper">
       <?php if (!empty($content['top-navigation'])): ?>
-        <div class="secondary-nav" role="navigation" aria-label="sekundær menu">
+        <div class="secondary-nav" role="navigation" aria-label="service menu">
           <?php print $content['top-navigation']; ?>
         </div>
       <?php endif; ?>

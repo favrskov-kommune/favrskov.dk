@@ -16,12 +16,13 @@
 //------------------------------------------------------------------------------
 // Links
 
-@mixin links($color: $dark-grey, $hover: $red, $text-decoration: none) {
+@mixin links($color: $dark-grey, $hover: $red, $text-decoration: none, $text-decoration-hover: underline) {
   color: $color;
   text-decoration: $text-decoration;
 
   &:hover, &:focus {
     color: $hover;
+    text-decoration: $text-decoration-hover;
   }
 }
 

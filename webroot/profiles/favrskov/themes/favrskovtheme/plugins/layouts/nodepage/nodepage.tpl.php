@@ -27,17 +27,17 @@
 
       <div class="content">
 
+        <nav aria-label="sekundær navigation" class="sidebar">
+          <?php if ($content['node-sidebar']): ?>
+            <?php print $content['node-sidebar']; ?>
+          <?php endif; ?>
+        </nav>
+
         <main id="node-content" class="node-content">
           <?php if ($content['node-content']): ?>
             <?php print $content['node-content']; ?>
           <?php endif; ?>
         </main>
-
-        <aside class="sidebar">
-          <?php if ($content['node-sidebar']): ?>
-            <?php print $content['node-sidebar']; ?>
-          <?php endif; ?>
-        </aside>
 
       </div>
 
