@@ -1,0 +1,917 @@
+core: 7.x
+api: 2
+projects:
+  drupal:
+    type: core
+    version: '7.43'
+    patch:
+      1078878: 'https://drupal.org/files/issues/1078878-DisableAutoCreation-D7-UTF-8.patch'
+    translations:
+      - da
+  admin_menu:
+    subdir: contrib
+    version: 3.0-rc5
+    translations:
+      - da
+  ctools:
+    subdir: contrib
+    version: '1.9'
+    translations:
+      - da
+  views:
+    subdir: contrib
+    version: '3.13'
+    translations:
+      - da
+  views_field_view:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  draggableviews:
+    subdir: contrib
+    version: '2.1'
+    translations:
+      - da
+  media:
+    subdir: contrib
+    version: 2.0-alpha2
+    patch:
+      1870538: 'https://drupal.org/files/media-permission_check_multiple_upload-1870538-10.patch'
+      2715797: 'https://www.drupal.org/files/issues/media-incorrect-like-condition-2715797-41.patch'
+    translations:
+      - da
+  file_entity:
+    subdir: contrib
+    version: 2.x-dev
+    translations:
+      - da
+  views_tree:
+    subdir: contrib
+    version: '2.0'
+    translations:
+      - da
+  multiform:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  media_browser_plus:
+    subdir: contrib
+    download:
+      type: git
+      url: 'http://git.drupal.org/project/media_browser_plus.git'
+      branch: 7.x-3.x
+      revision: 'warning: redirecting to https://git.drupalcode.org/project/media_browser_plus.git/'
+    translations:
+      - da
+  media_crop:
+    subdir: contrib
+    version: 1.x-dev
+    patch:
+      2075161: 'https://drupal.org/files/wysiwyg-dependece-remove_2075161_1.patch'
+      2077823: 'https://drupal.org/files/image-crop-functionality-for-gifs-2077823.patch'
+    translations:
+      - da
+  ckeditor:
+    subdir: contrib
+    version: '1.16'
+    patch:
+      1898958: 'https://www.drupal.org/files/ckeditor-media-plugin-files-1898958-4.patch'
+    translations:
+      - da
+  feeds:
+    subdir: contrib
+    version: 2.0-beta1
+    translations:
+      - da
+  feeds_tamper:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  feeds_xpathparser:
+    subdir: contrib
+    version: 1.0-beta4
+    translations:
+      - da
+  feeds_fetcher_directory:
+    subdir: contrib
+    version: 2.0-beta5
+    patch:
+      2023775: 'https://drupal.org/files/feeds_fetcher_directory-config-form-validate-errors.patch'
+    translations:
+      - da
+  feeds_ex:
+    subdir: contrib
+    version: 1.0-beta2
+    translations:
+      - da
+  elysia_cron:
+    subdir: contrib
+    version: '2.1'
+    translations:
+      - da
+  piwik:
+    subdir: contrib
+    version: '2.7'
+    translations:
+      - da
+  piwik_stats:
+    subdir: contrib
+    version: 2.x-dev
+    patch:
+      2217169: 'https://www.drupal.org/files/issues/2217169-filter_limit.patch'
+      2171029: 'https://www.drupal.org/files/issues/piwik_stats-cron-lost-data-2171029-2.patch'
+    translations:
+      - da
+  references_dialog:
+    subdir: contrib
+    version: 1.0-beta1
+    patch:
+      2315905: 'https://www.drupal.org/files/issues/references_dialog_beta1-fix_theme_links-2315905-20.patch'
+    translations:
+      - da
+  entity:
+    subdir: contrib
+    version: '1.7'
+    translations:
+      - da
+  rabbit_hole:
+    subdir: contrib
+    version: '2.23'
+    translations:
+      - da
+  linkit:
+    subdir: contrib
+    version: '2.7'
+    translations:
+      - da
+  linkit_target:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  linkit_views:
+    subdir: contrib
+    version: '1.2'
+    translations:
+      - da
+  linkit_panel_pages:
+    subdir: contrib
+    version: '2.0'
+    translations:
+      - da
+  panelizer:
+    subdir: contrib
+    version: '3.1'
+    translations:
+      - da
+  devel:
+    subdir: contrib
+    version: '1.5'
+    translations:
+      - da
+  breakpoints:
+    subdir: contrib
+    version: '1.4'
+    translations:
+      - da
+  picture:
+    subdir: contrib
+    version: '2.13'
+    translations:
+      - da
+  panels:
+    subdir: contrib
+    version: '3.5'
+    patch:
+      2226011: 'https://drupal.org/files/issues/panels-ipe-js-loop-2226011-4.patch'
+    translations:
+      - da
+  features:
+    subdir: contrib
+    version: '2.10'
+    translations:
+      - da
+  job_scheduler:
+    subdir: contrib
+    version: 2.0-alpha3
+    translations:
+      - da
+  jquery_update:
+    subdir: contrib
+    version: '2.7'
+    translations:
+      - da
+  module_filter:
+    subdir: contrib
+    version: '2.0'
+    translations:
+      - da
+  transliteration:
+    subdir: contrib
+    version: '3.2'
+    translations:
+      - da
+  strongarm:
+    subdir: contrib
+    version: '2.0'
+    translations:
+      - da
+  date:
+    subdir: contrib
+    version: '2.9'
+    translations:
+      - da
+  link:
+    subdir: contrib
+    version: '1.4'
+    translations:
+      - da
+  potx:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  references:
+    subdir: contrib
+    version: '2.1'
+    translations:
+      - da
+  coder:
+    subdir: contrib
+    version: '2.6'
+    translations:
+      - da
+  coder_tough_love:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  webform:
+    subdir: contrib
+    version: '3.24'
+    patch:
+      - 'https://raw.githubusercontent.com/geo0000/custom-patches/master/webform-submission-mail-subject-tokens.patch'
+      - 'https://raw.githubusercontent.com/geo0000/custom-patches/master/webform-email-response-url-token.patch'
+    translations:
+      - da
+  metatag:
+    subdir: contrib
+    version: 1.0-rc1
+    translations:
+      - da
+  redirect:
+    subdir: contrib
+    version: 1.0-rc1
+    translations:
+      - da
+  path_redirect_import:
+    subdir: contrib
+    version: 1.0-rc4
+    translations:
+      - da
+  globalredirect:
+    subdir: contrib
+    version: '1.5'
+    translations:
+      - da
+  pathauto:
+    subdir: contrib
+    version: '1.2'
+    translations:
+      - da
+  linkchecker:
+    subdir: contrib
+    version: '1.2'
+    translations:
+      - da
+  xmlsitemap:
+    subdir: contrib
+    version: '2.3'
+    translations:
+      - da
+  site_map:
+    subdir: contrib
+    version: '1.2'
+    translations:
+      - da
+  site_verify:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  diff:
+    subdir: contrib
+    version: '3.2'
+    translations:
+      - da
+  token:
+    subdir: contrib
+    version: '1.6'
+    patch:
+      2050421: 'https://drupal.org/files/term-token-real-root-2050421-1.patch'
+    translations:
+      - da
+  field_collection:
+    subdir: contrib
+    version: 1.0-beta8
+    patch:
+      1063434: 'https://drupal.org/files/field_collection-feeds-1063434-121.patch'
+    translations:
+      - da
+  scheduler:
+    subdir: contrib
+    version: '1.5'
+    translations:
+      - da
+  libraries:
+    subdir: contrib
+    version: '2.3'
+    translations:
+      - da
+  views_ui_basic:
+    subdir: contrib
+    version: '1.2'
+    patch:
+      1995896: 'https://drupal.org/files/undefined_index_title_1995896.patch'
+    translations:
+      - da
+  views_ifempty:
+    subdir: contrib
+    version: 1.x-dev
+    translations:
+      - da
+  views_rss:
+    subdir: contrib
+    version: 2.0-rc3
+    translations:
+      - da
+  features_extra:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  nodequeue:
+    subdir: contrib
+    version: '2.0'
+    translations:
+      - da
+  apachesolr:
+    subdir: contrib
+    version: '1.8'
+    translations:
+      - da
+  apachesolr_autocomplete:
+    subdir: contrib
+    version: '1.4'
+    translations:
+      - da
+  apachesolr_exclude_node:
+    subdir: contrib
+    version: '1.3'
+    translations:
+      - da
+  apachesolr_sort:
+    subdir: contrib
+    version: 1.x-dev
+    translations:
+      - da
+  apachesolr_panels:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  apachesolr_multilingual:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  apachesolr_confgen:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  apachesolr_views:
+    subdir: contrib
+    version: 1.0-beta2
+    patch:
+      1807028: 'https://drupal.org/files/1807028-exposed-filters-are-only-text-fields-7.patch'
+    translations:
+      - da
+  apachesolr_attachments:
+    subdir: contrib
+    version: '1.3'
+    patch:
+      1854088: 'https://drupal.org/files/bypass_deadlocks_on_mass_update-1854088-2.patch'
+      2195095: 'https://www.drupal.org/files/issues/apachesolr-attachments-issue-2195095-6.patch'
+    translations:
+      - da
+  facetapi:
+    subdir: contrib
+    version: '1.5'
+    translations:
+      - da
+  i18n:
+    subdir: contrib
+    version: '1.13'
+    translations:
+      - da
+  variable:
+    subdir: contrib
+    version: '2.5'
+    translations:
+      - da
+  querypath:
+    subdir: contrib
+    version: '2.1'
+    translations:
+      - da
+  email:
+    subdir: contrib
+    version: '1.3'
+    translations:
+      - da
+  menu_block:
+    subdir: contrib
+    version: '2.4'
+    translations:
+      - da
+  panels_breadcrumbs:
+    subdir: contrib
+    version: '2.2'
+    translations:
+      - da
+  placeholder:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  better_exposed_filters:
+    subdir: contrib
+    version: '3.2'
+    translations:
+      - da
+  views_load_more:
+    subdir: contrib
+    download:
+      type: git
+      url: 'http://git.drupal.org/project/views_load_more.git'
+      branch: 7.x-1.x
+      revision: 'warning: redirecting to https://git.drupalcode.org/project/views_load_more.git/'
+    translations:
+      - da
+  login_destination:
+    subdir: contrib
+    version: '1.4'
+    translations:
+      - da
+  views_bulk_operations:
+    subdir: contrib
+    version: '3.3'
+    translations:
+      - da
+  admin_views:
+    subdir: contrib
+    version: '1.6'
+    patch:
+      - 'https://raw.githubusercontent.com/geo0000/custom-patches/master/admin_views-content_domain_filter.patch'
+    translations:
+      - da
+  total_control:
+    subdir: contrib
+    version: '2.4'
+    patch:
+      - 'https://raw.githubusercontent.com/geo0000/custom-patches/master/total_control-content_domain_filter.patch'
+    translations:
+      - da
+  clientside_validation:
+    subdir: contrib
+    version: '1.37'
+    translations:
+      - da
+  override_node_options:
+    subdir: contrib
+    version: '1.13'
+    translations:
+      - da
+  fapi_validation:
+    subdir: contrib
+    version: '2.2'
+    translations:
+      - da
+  os2web_borger_dk_articles:
+    subdir: contrib
+    download:
+      type: git
+      url: 'https://github.com/ffwagency/os2web_borger_dk_articles.git'
+      branch: develop
+      revision: ce35f746d6ae0cbf311b4809a2c36fefc6a5fc3b
+    patch:
+      - 'https://raw.githubusercontent.com/sergey347/os2web_borger_dk_articles_patch/master/os2web_borger_dk-mysql_warning_fix.patch'
+      - 'https://raw.githubusercontent.com/sergey347/os2web_borger_dk_articles_patch/master/os2web_borger_dk-broken-actions-fix.patch'
+      - 'https://raw.githubusercontent.com/sergey347/os2web_borger_dk_articles_patch/master/os2web_borger_dk-wrong-import-during-cron.patch'
+    translations:
+      - da
+  better_formats:
+    subdir: contrib
+    version: 1.0-beta2
+    translations:
+      - da
+  multiple_selects:
+    subdir: contrib
+    version: '1.2'
+    translations:
+      - da
+  apachesolr_stats:
+    subdir: contrib
+    version: 1.0-alpha1
+    translations:
+      - da
+  memcache:
+    subdir: contrib
+    version: '1.2'
+    translations:
+      - da
+  token_custom:
+    subdir: contrib
+    version: 2.0-beta3
+    translations:
+      - da
+  token_filter:
+    subdir: contrib
+    version: 1.x-dev
+    translations:
+      - da
+  smart_trim:
+    subdir: contrib
+    version: '1.5'
+    translations:
+      - da
+  taxonomy_formatter:
+    subdir: contrib
+    version: '1.4'
+    translations:
+      - da
+  node_embed:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  colorfield:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  encrypt:
+    subdir: contrib
+    version: '2.3'
+    translations:
+      - da
+  webform_encrypt:
+    subdir: contrib
+    version: '1.0'
+    patch:
+      1344804: 'https://drupal.org/files/issues/1344804-12.patch'
+    translations:
+      - da
+  term_merge:
+    subdir: contrib
+    version: '1.2'
+    translations:
+      - da
+  taxonomy_manager:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  menu_node:
+    subdir: contrib
+    version: '1.2'
+    patch:
+      2118693: 'https://drupal.org/files/menu_node-nodesymlinks-2118693-0.patch'
+    translations:
+      - da
+  menu_node_views:
+    subdir: contrib
+    version: 1.x-dev
+    translations:
+      - da
+  menu_attributes:
+    subdir: contrib
+    version: 1.0-rc2
+    translations:
+      - da
+  domain:
+    subdir: contrib
+    version: '3.11'
+    patch:
+      804926: 'https://www.drupal.org/files/issues/domain-vbo-804926-34.patch'
+    translations:
+      - da
+  domain_ctools:
+    subdir: contrib
+    version: '1.3'
+    translations:
+      - da
+  domain_menu_block:
+    subdir: contrib
+    version: 1.0-beta2
+    translations:
+      - da
+  domain_views:
+    subdir: contrib
+    version: '1.5'
+    translations:
+      - da
+  nodesymlinks:
+    subdir: contrib
+    version: 1.0-rc1
+    patch:
+      2076405: 'https://drupal.org/files/issues/nodesymlinks-2076405-2-empty_page_callback.patch'
+    translations:
+      - da
+  ct_per_menu:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  menu_admin_per_menu:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  domain_xmlsitemap:
+    subdir: contrib
+    version: 1.0-beta2
+    translations:
+      - da
+  maxlength:
+    subdir: contrib
+    version: 3.0-beta1
+    patch:
+      1761480: 'https://drupal.org/files/line_breaks_in_text-1761480.patch'
+      2032655: 'https://drupal.org/files/maxlength-calculate_keyup_change-2032655-2.patch'
+    translations:
+      - da
+  autoarch:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  cnr:
+    subdir: contrib
+    version: 4.x-dev
+    translations:
+      - da
+  eu-cookie-compliance:
+    subdir: contrib
+    version: '1.13'
+    patch:
+      2289733: 'https://www.drupal.org/files/issues/leave-uid1-alone-2289733-1.patch'
+    translations:
+      - da
+  node_view_permissions:
+    subdir: contrib
+    version: '1.5'
+    translations:
+      - da
+  themekey:
+    subdir: contrib
+    version: '3.3'
+    translations:
+      - da
+  mailchimp:
+    subdir: contrib
+    version: '2.12'
+    patch:
+      1689730: 'https://drupal.org/files/1689730-mailchimp_translate_error_codes_from_api-2.patch'
+      1: 'https://raw.githubusercontent.com/geo0000/custom-patches/master/mailchimp-subscribe-form-groups-check.patch'
+      823916: 'https://www.drupal.org/files/mailchimp_domain_support-823916-11.patch'
+    translations:
+      - da
+  entityreference:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  video_embed_field:
+    subdir: contrib
+    version: 2.0-beta11
+    translations:
+      - da
+  rules:
+    subdir: contrib
+    version: '2.9'
+    translations:
+      - da
+  addressfield:
+    subdir: contrib
+    version: 1.0-beta5
+    translations:
+      - da
+  field_group:
+    subdir: contrib
+    version: '1.5'
+    translations:
+      - da
+  tablefield:
+    subdir: contrib
+    version: '2.3'
+    patch:
+      2200577: 'https://drupal.org/files/issues/converting_non_utf8_files_to_utf8-2200577-1.patch'
+    translations:
+      - da
+  mollom:
+    subdir: contrib
+    version: '2.10'
+    translations:
+      - da
+  node_clone:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  jquery_colorpicker:
+    subdir: contrib
+    version: 1.0-rc2
+    patch:
+      0: 'https://raw.githubusercontent.com/geo0000/custom-patches/master/jquery_colorpicker-states-fix-0.patch'
+      1991042: 'https://www.drupal.org/files/set-higher-zindex-1991042-2.patch'
+    translations:
+      - da
+  jslider_field:
+    subdir: contrib
+    version: 1.0-alpha3
+    translations:
+      - da
+  pathologic:
+    subdir: contrib
+    version: '2.12'
+    translations:
+      - da
+  taxonomy_container:
+    subdir: contrib
+    version: '1.2'
+    translations:
+      - da
+  webform_features:
+    subdir: contrib
+    version: 3.0-beta3
+    translations:
+      - da
+  mailsystem:
+    subdir: contrib
+    version: '2.34'
+    translations:
+      - da
+  mimemail:
+    subdir: contrib
+    version: 1.0-beta3
+    translations:
+      - da
+  synonyms:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  dynamic_background:
+    subdir: contrib
+    version: 2.0-rc4
+    patch:
+      1904738: 'https://drupal.org/files/issues/dynamic_background-domain-1904738-4.patch'
+    translations:
+      - da
+  content_reminder:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  workbench_moderation:
+    subdir: contrib
+    version: '1.3'
+    patch:
+      1314508: 'https://www.drupal.org/files/1314508-workbench-moderation-features.patch'
+    translations:
+      - da
+  taxonomy_access_fix:
+    subdir: contrib
+    version: '2.1'
+    translations:
+      - da
+  simplesamlphp_auth:
+    subdir: contrib
+    version: 2.0-alpha2
+    translations:
+      - da
+  securepages:
+    subdir: contrib
+    version: 1.0-beta2
+    translations:
+      - da
+  varnish:
+    subdir: contrib
+    version: '1.1'
+    translations:
+      - da
+  hierarchical_select:
+    subdir: contrib
+    version: 3.0-beta7
+    translations:
+      - da
+  icon:
+    subdir: contrib
+    version: 1.0-beta6
+    translations:
+      - da
+  fontello:
+    subdir: contrib
+    version: '1.0'
+    translations:
+      - da
+  uuid:
+    subdir: contrib
+    version: 1.0-beta1
+    translations:
+      - da
+  config_perms:
+    subdir: contrib
+    version: '2.1'
+    translations:
+      - da
+  node_export:
+    subdir: contrib
+    version: '3.1'
+    translations:
+      - da
+  adaptivetheme:
+    subdir: contrib
+    version: '3.1'
+    type: theme
+    translations:
+      - da
+libraries:
+  ckeditor:
+    download:
+      type: get
+      url: 'http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.3/ckeditor_4.3_full.zip'
+    destination: libraries
+    directory_name: ckeditor
+    type: library
+  imgareaselect:
+    download:
+      type: get
+      url: 'http://odyniec.net/projects/imgareaselect/jquery.imgareaselect-0.9.10.zip'
+    destination: libraries
+    directory_name: jquery.imgareaselect
+    type: library
+  selectboxit:
+    download:
+      type: get
+      url: 'https://raw.github.com/gfranko/jquery.selectBoxIt.js/master/src/javascripts/jquery.selectBoxIt.min.js'
+    destination: libraries
+    directory_name: selectboxit
+    type: library
+  swiper:
+    download:
+      type: get
+      url: 'https://raw.githubusercontent.com/undertext/Swiper/master/dist/idangerous.swiper.min.js'
+    destination: libraries
+    directory_name: swiper
+    type: library
+  iframedialog:
+    download:
+      type: get
+      url: 'http://download.ckeditor.com/iframedialog/releases/iframedialog_4.2.zip'
+    destination: libraries/ckeditor/plugins
+    directory_name: iframedialog
+    type: library
+  placeholder:
+    download:
+      type: get
+      url: 'https://github.com/mathiasbynens/jquery-placeholder/archive/v1.8.7.zip'
+    destination: libraries
+    directory_name: placeholder
+    type: library
+  mailchimp:
+    download:
+      type: get
+      url: 'http://apidocs.mailchimp.com/api/downloads/mailchimp-api-class.zip'
+    destination: libraries
+    directory_name: mailchimp
+    type: library
+  colorpicker:
+    download:
+      type: get
+      url: 'http://www.eyecon.ro/colorpicker/colorpicker.zip'
+    destination: libraries
+    directory_name: colorpicker
+    type: library
+  malihu:
+    download:
+      type: get
+      url: 'https://github.com/malihu/malihu-custom-scrollbar-plugin/archive/master.zip'
+    destination: libraries
+    directory_name: malihu
+    type: library

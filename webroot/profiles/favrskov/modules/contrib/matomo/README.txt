@@ -1,6 +1,6 @@
 
 Module: Matomo Analytics
-Author: Alexander Hass <http://www.hass.de/>
+Author: Alexander Hass <https://www.hass.de/>
 
 
 Description
@@ -49,7 +49,7 @@ Value: [current-user:matomo-role-ids]
 Scope: Visitor
 
 More details about custom variables can be found in the Matomo API documentation
-at http://matomo.org/docs/javascript-tracking/#toc-custom-variables.
+at https://matomo.org/docs/javascript-tracking/#toc-custom-variables.
 
 
 Advanced Settings
@@ -66,7 +66,7 @@ download mode.
 
 Known issues
 ============
-Drupal requirements (http://drupal.org/requirements) tell you to configure 
+Drupal requirements (https://drupal.org/requirements) tell you to configure 
 PHP with "session.save_handler = user", but your Matomo installation may
 not work with this configuration and gives you a server error 500.
 

@@ -7,7 +7,7 @@
  * Adds the required Javascript to all your Drupal pages to allow tracking by
  * the Matomo statistics package.
  *
- * @author: Alexander Hass <http://drupal.org/user/85918>
+ * @author: Alexander Hass <https://drupal.org/user/85918>
  */
 
 /**
@@ -17,7 +17,7 @@ define('MATOMO_TRACKFILES_EXTENSIONS', '7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x
 
 /**
  * Define default path exclusion list to remove tracking from admin pages,
- * see http://drupal.org/node/34970 for more information.
+ * see https://drupal.org/node/34970 for more information.
  */
 define('MATOMO_PAGES', "admin\nadmin/*\nbatch\nnode/add*\nnode/*/*\nuser/*/*");
 
@@ -27,7 +27,7 @@ define('MATOMO_PAGES', "admin\nadmin/*\nbatch\nnode/add*\nnode/*/*\nuser/*/*");
 function matomo_help($path, $arg) {
   switch ($path) {
     case 'admin/config/system/matomo':
-      return t('<a href="@pk_url">Matomo Analytics</a> is an open source (GPL license) web analytics software. It gives interesting reports on your website visitors, your popular pages, the search engines keywords they used, the language they speak... and so much more. Matomo aims to be an open source alternative to Google Analytics.', array('@pk_url' => 'http://www.matomo.org/'));
+      return t('<a href="@pk_url">Matomo Analytics</a> is an open source (GPL license) web analytics software. It gives interesting reports on your website visitors, your popular pages, the search engines keywords they used, the language they speak... and so much more. Matomo aims to be an open source alternative to Google Analytics.', array('@pk_url' => 'https://www.matomo.org/'));
   }
 }
 
@@ -239,7 +239,7 @@ function matomo_page_alter(&$page) {
     $codesnippet_before = variable_get('matomo_codesnippet_before', '');
     $codesnippet_after = variable_get('matomo_codesnippet_after', '');
 
-    // Build tracker code. See http://matomo.org/docs/javascript-tracking/#toc-asynchronous-tracking
+    // Build tracker code. See https://matomo.org/docs/javascript-tracking/#toc-asynchronous-tracking
     $script = 'var _paq = _paq || [];';
     $script .= '(function(){';
     $script .= 'var u=(("https:" == document.location.protocol) ? "' . check_url($url_https) . '" : "' . check_url($url_http) . '");';
@@ -319,7 +319,7 @@ function matomo_page_alter(&$page) {
       );
       // Disable the download & outlink tracking for specific CSS classes.
       // Custom code snippets with 'setIgnoreClasses' will override the value.
-      // http://developer.matomo.org/api-reference/tracking-javascript#disable-the-download-amp-outlink-tracking-for-specific-css-classes
+      // https://developer.matomo.org/api-reference/tracking-javascript#disable-the-download-amp-outlink-tracking-for-specific-css-classes
       $script .= '_paq.push(["setIgnoreClasses", ' . drupal_json_encode($ignore_classes) . ']);';
 
       // Enable download & outlink link tracking.
@@ -553,7 +553,7 @@ function matomo_clear_js_cache() {
 /**
  * Helper function for grabbing search keys. Function is missing in D7.
  *
- * http://api.drupal.org/api/function/search_get_keys/6
+ * https://api.drupal.org/api/function/search_get_keys/6
  */
 function matomo_search_get_keys() {
   static $return;
