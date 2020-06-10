@@ -1,42 +1,38 @@
-Token Filter
------------
+INTRODUCTION
+------------
 
-This is a very simple module to make token values available as an input filter.
+Token Filter is a very simple module to make token values available as an input
+filter.
 
-This initial development version only works for global and user token types.
 
-Installation:
+REQUIREMENTS
+------------
 
-1) Enable the module
-2) Go to /admin/settings/filters and enable the token_filter for any of your existing filter type or if you wish, create a new one.
+This module requires the following modules:
 
-Then in the text where you use that input filter you can use substitution tokens with
+ * Token (https://www.drupal.org/project/token)
 
-[token global site-name] etc.
 
-Tokens typically available are:
+INSTALLATION
+------------
 
-global:
--------
-user-name
-user-id
-user-mail
-site-url
-site-name
-site-slogan
-site-mail
-site-date
+ * Install as you would normally install a contributed Drupal module. Visit
+   https://www.drupal.org/documentation/install/modules-themes/modules-7
+   for further information.
 
-user:
------
-user
-user-raw
-uid
-mail
-reg-date
-reg-since
-log-date
-log-since
-date-in-tz
-account-url
-account-edit
+ * You may want to disable Toolbar module, since its output clashes with
+   Administration Menu.
+
+
+CONFIGURATION
+-------------
+
+    1. Enable the module.
+    2. Go to /admin/config/content/formats and enable the token_filter for any
+       of your existing filter type or if you wish, create a new one.
+    3. In the text where you use that input filter, you can use substitution
+       tokens enclosing your token square brackets, i.e., [site:name] .
+       Token Filter will replace this entry with the name of your site.
+
+You will find an extensive list of tokens on this page:
+http://drupal.org/node/390482#drupal7tokenslist

@@ -662,4 +662,4 @@ if (is_readable($ddev_settings)) {
   require $ddev_settings;
 }
 
-include DRUPAL_ROOT . '/profiles/favrskov/modules/contrib/domain/settings.inc';
+include_once DRUPAL_ROOT . '/profiles/favrskov/modules/contrib/domain/settings.inc';

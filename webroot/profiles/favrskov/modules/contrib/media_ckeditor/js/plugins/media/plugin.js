@@ -19,8 +19,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
     mediaLegacyWrappers: false,
     hidpi: true,
     onLoad: function() {
-      // Check if this instance has widget support.
-      // mediaPluginDefinition.hasWidgetSupport = typeof(CKEDITOR.plugins.registered.widget) != 'undefined';
+      // Check if Image Properties option is set, and this instance has widget support.
+      if (!Drupal.settings.media_ckeditor.image_properties) {
+        mediaPluginDefinition.hasWidgetSupport = typeof(CKEDITOR.plugins.registered.widget) != 'undefined';
+      }
       // Add dependency to widget plugin if possible.
       if (Drupal.settings.ckeditor.plugins['media'].compareVersions(CKEDITOR.version, '4.3') >= 0 && mediaPluginDefinition.hasWidgetSupport) {
         mediaPluginDefinition.requires.push('widget');

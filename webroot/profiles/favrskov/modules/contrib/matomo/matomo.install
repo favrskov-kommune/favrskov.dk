@@ -6,7 +6,7 @@
  */
 
 function matomo_install() {
-  // Remove tracking from all administrative pages, see http://drupal.org/node/34970.
+  // Remove tracking from all administrative pages, see https://drupal.org/node/34970.
   variable_set('matomo_visibility_roles', 0);
   variable_set('matomo_visibility_pages', 0);
   $pages = array(
