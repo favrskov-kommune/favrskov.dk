@@ -395,7 +395,7 @@ class MatomoStatusMessagesTest extends DrupalWebTestCase {
     //drupal_set_message('Example status message.', 'status');
     //drupal_set_message('Example warning message.', 'warning');
     //drupal_set_message('Example error message.', 'error');
-    //drupal_set_message('Example error <em>message</em> with html tags and <a href="http://example.com/">link</a>.', 'error');
+    //drupal_set_message('Example error <em>message</em> with html tags and <a href="https://example.com/">link</a>.', 'error');
     //$this->drupalGet('');
     //$this->assertNoRaw('_paq.push(["trackEvent", "Messages", "Status message", "Example status message."]);', '[testMatomoStatusMessages]: Example status message is not enabled for tracking.');
     //$this->assertNoRaw('_paq.push(["trackEvent", "Messages", "Warning message", "Example warning message."]);', '[testMatomoStatusMessages]: Example warning message is not enabled for tracking.');
