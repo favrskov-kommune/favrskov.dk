@@ -3,29 +3,27 @@ api: 2
 projects:
   drupal:
     type: core
-    version: '7.43'
-    patch:
-      1078878: 'https://drupal.org/files/issues/1078878-DisableAutoCreation-D7-UTF-8.patch'
+    version: '7.71'
     translations:
       - da
   admin_menu:
     subdir: contrib
-    version: 3.0-rc5
+    version: 3.0-rc6
     translations:
       - da
   ctools:
     subdir: contrib
-    version: '1.9'
+    version: '1.15'
     translations:
       - da
   views:
     subdir: contrib
-    version: '3.13'
+    version: '3.24'
     translations:
       - da
   views_field_view:
     subdir: contrib
-    version: '1.1'
+    version: '1.2'
     translations:
       - da
   draggableviews:
@@ -35,15 +33,12 @@ projects:
       - da
   media:
     subdir: contrib
-    version: 2.0-alpha2
-    patch:
-      1870538: 'https://drupal.org/files/media-permission_check_multiple_upload-1870538-10.patch'
-      2715797: 'https://www.drupal.org/files/issues/media-incorrect-like-condition-2715797-41.patch'
+    version: '2.26'
     translations:
       - da
   file_entity:
     subdir: contrib
-    version: 2.x-dev
+    version: '2.30'
     translations:
       - da
   views_tree:
@@ -53,93 +48,79 @@ projects:
       - da
   multiform:
     subdir: contrib
-    version: '1.1'
+    version: '1.6'
     translations:
       - da
   media_browser_plus:
     subdir: contrib
-    download:
-      type: git
-      url: 'http://git.drupal.org/project/media_browser_plus.git'
-      branch: 7.x-3.x
-      revision: 'warning: redirecting to https://git.drupalcode.org/project/media_browser_plus.git/'
+    version: 3.0-beta4
     translations:
       - da
   media_crop:
     subdir: contrib
-    version: 1.x-dev
+    version: '1.4'
     patch:
       2075161: 'https://drupal.org/files/wysiwyg-dependece-remove_2075161_1.patch'
-      2077823: 'https://drupal.org/files/image-crop-functionality-for-gifs-2077823.patch'
     translations:
       - da
   ckeditor:
     subdir: contrib
-    version: '1.16'
-    patch:
-      1898958: 'https://www.drupal.org/files/ckeditor-media-plugin-files-1898958-4.patch'
+    version: '1.19'
     translations:
       - da
   feeds:
     subdir: contrib
-    version: 2.0-beta1
+    version: 2.0-beta4
     translations:
       - da
   feeds_tamper:
     subdir: contrib
-    version: '1.1'
+    version: '1.2'
     translations:
       - da
   feeds_xpathparser:
     subdir: contrib
-    version: 1.0-beta4
+    version: '1.1'
     translations:
       - da
   feeds_fetcher_directory:
     subdir: contrib
-    version: 2.0-beta5
-    patch:
-      2023775: 'https://drupal.org/files/feeds_fetcher_directory-config-form-validate-errors.patch'
+    version: 2.0-beta6
     translations:
       - da
   feeds_ex:
     subdir: contrib
-    version: 1.0-beta2
+    version: 1.0-rc1
     translations:
       - da
   elysia_cron:
     subdir: contrib
-    version: '2.1'
+    version: '2.7'
     translations:
       - da
   piwik:
     subdir: contrib
-    version: '2.7'
+    version: '2.12'
     translations:
       - da
   piwik_stats:
     subdir: contrib
-    version: 2.x-dev
-    patch:
-      2217169: 'https://www.drupal.org/files/issues/2217169-filter_limit.patch'
-      2171029: 'https://www.drupal.org/files/issues/piwik_stats-cron-lost-data-2171029-2.patch'
+    version: 2.0-beta3
     translations:
       - da
   references_dialog:
     subdir: contrib
-    version: 1.0-beta1
-    patch:
-      2315905: 'https://www.drupal.org/files/issues/references_dialog_beta1-fix_theme_links-2315905-20.patch'
+    version: 1.0-beta2
     translations:
       - da
   entity:
     subdir: contrib
-    version: '1.7'
+    version: '1.9'
     translations:
       - da
   rabbit_hole:
     subdir: contrib
-    version: '2.23'
+    version: '2.25'
     translations:
       - da
   linkit:
@@ -164,17 +145,17 @@ projects:
       - da
   panelizer:
     subdir: contrib
-    version: '3.1'
+    version: '3.4'
     translations:
       - da
   devel:
     subdir: contrib
-    version: '1.5'
+    version: '1.7'
     translations:
       - da
   breakpoints:
     subdir: contrib
-    version: '1.4'
+    version: '1.6'
     translations:
       - da
   picture:
@@ -184,19 +165,17 @@ projects:
       - da
   panels:
     subdir: contrib
-    version: '3.5'
-    patch:
-      2226011: 'https://drupal.org/files/issues/panels-ipe-js-loop-2226011-4.patch'
+    version: '3.9'
     translations:
       - da
   features:
     subdir: contrib
-    version: '2.10'
+    version: '2.11'
     translations:
       - da
   job_scheduler:
     subdir: contrib
-    version: 2.0-alpha3
+    version: '2.0'
     translations:
       - da
   jquery_update:
@@ -206,7 +185,7 @@ projects:
       - da
   module_filter:
     subdir: contrib
-    version: '2.0'
+    version: '2.2'
     translations:
       - da
   transliteration:
@@ -221,12 +200,12 @@ projects:
       - da
   date:
     subdir: contrib
-    version: '2.9'
+    version: '2.10'
     translations:
       - da
   link:
     subdir: contrib
-    version: '1.4'
+    version: '1.7'
     translations:
       - da
   potx:
@@ -236,7 +215,7 @@ projects:
       - da
   references:
     subdir: contrib
-    version: '2.1'
+    version: '2.2'
     translations:
       - da
   coder:
@@ -251,7 +230,7 @@ projects:
       - da
   webform:
     subdir: contrib
-    version: '3.24'
+    version: '3.30'
     patch:
       - 'https://raw.githubusercontent.com/geo0000/custom-patches/master/webform-submission-mail-subject-tokens.patch'
       - 'https://raw.githubusercontent.com/geo0000/custom-patches/master/webform-email-response-url-token.patch'
@@ -259,12 +238,12 @@ projects:
       - da
   metatag:
     subdir: contrib
-    version: 1.0-rc1
+    version: '1.27'
     translations:
       - da
   redirect:
     subdir: contrib
-    version: 1.0-rc1
+    version: 1.0-rc3
     translations:
       - da
   path_redirect_import:
@@ -274,51 +253,49 @@ projects:
       - da
   globalredirect:
     subdir: contrib
-    version: '1.5'
+    version: '1.6'
     translations:
       - da
   pathauto:
     subdir: contrib
-    version: '1.2'
+    version: '1.3'
     translations:
       - da
   linkchecker:
     subdir: contrib
-    version: '1.2'
+    version: '1.4'
     translations:
       - da
   xmlsitemap:
     subdir: contrib
-    version: '2.3'
+    version: '2.6'
     translations:
       - da
   site_map:
     subdir: contrib
-    version: '1.2'
+    version: '1.3'
     translations:
       - da
   site_verify:
     subdir: contrib
-    version: '1.1'
+    version: '1.2'
     translations:
       - da
   diff:
     subdir: contrib
-    version: '3.2'
+    version: '3.4'
     translations:
       - da
   token:
     subdir: contrib
-    version: '1.6'
+    version: '1.7'
     patch:
       2050421: 'https://drupal.org/files/term-token-real-root-2050421-1.patch'
     translations:
       - da
   field_collection:
     subdir: contrib
-    version: 1.0-beta8
-    patch:
-      1063434: 'https://drupal.org/files/field_collection-feeds-1063434-121.patch'
+    version: '1.1'
     translations:
       - da
   scheduler:
@@ -328,24 +305,22 @@ projects:
       - da
   libraries:
     subdir: contrib
-    version: '2.3'
+    version: '2.5'
     translations:
       - da
   views_ui_basic:
     subdir: contrib
-    version: '1.2'
-    patch:
-      1995896: 'https://drupal.org/files/undefined_index_title_1995896.patch'
+    version: '1.3'
     translations:
       - da
   views_ifempty:
     subdir: contrib
-    version: 1.x-dev
+    version: '1.0'
     translations:
       - da
   views_rss:
     subdir: contrib
-    version: 2.0-rc3
+    version: 2.0-rc4
     translations:
       - da
   features_extra:
@@ -355,27 +330,27 @@ projects:
       - da
   nodequeue:
     subdir: contrib
-    version: '2.0'
+    version: '2.2'
     translations:
       - da
   apachesolr:
     subdir: contrib
-    version: '1.8'
+    version: '1.11'
     translations:
       - da
   apachesolr_autocomplete:
     subdir: contrib
-    version: '1.4'
+    version: '1.6'
     translations:
       - da
   apachesolr_exclude_node:
     subdir: contrib
-    version: '1.3'
+    version: '1.4'
     translations:
       - da
   apachesolr_sort:
     subdir: contrib
-    version: 1.x-dev
+    version: '1.0'
     translations:
       - da
   apachesolr_panels:
@@ -385,37 +360,36 @@ projects:
       - da
   apachesolr_multilingual:
     subdir: contrib
-    version: '1.0'
+    version: '1.3'
     translations:
       - da
   apachesolr_confgen:
     subdir: contrib
-    version: '1.0'
+    version: '1.1'
     translations:
       - da
   apachesolr_views:
     subdir: contrib
-    version: 1.0-beta2
+    version: 1.1-beta3
     patch:
       1807028: 'https://drupal.org/files/1807028-exposed-filters-are-only-text-fields-7.patch'
     translations:
       - da
   apachesolr_attachments:
     subdir: contrib
-    version: '1.3'
+    version: '1.4'
     patch:
       1854088: 'https://drupal.org/files/bypass_deadlocks_on_mass_update-1854088-2.patch'
-      2195095: 'https://www.drupal.org/files/issues/apachesolr-attachments-issue-2195095-6.patch'
     translations:
       - da
   facetapi:
     subdir: contrib
-    version: '1.5'
+    version: '1.6'
     translations:
       - da
   i18n:
     subdir: contrib
-    version: '1.13'
+    version: '1.26'
     translations:
       - da
   variable:
@@ -435,12 +409,12 @@ projects:
       - da
   menu_block:
     subdir: contrib
-    version: '2.4'
+    version: '2.8'
     translations:
       - da
   panels_breadcrumbs:
     subdir: contrib
-    version: '2.2'
+    version: '2.4'
     translations:
       - da
   placeholder:
@@ -450,7 +424,7 @@ projects:
       - da
   better_exposed_filters:
     subdir: contrib
-    version: '3.2'
+    version: '3.6'
     translations:
       - da
   views_load_more:
@@ -469,12 +443,12 @@ projects:
       - da
   views_bulk_operations:
     subdir: contrib
-    version: '3.3'
+    version: '3.6'
     translations:
       - da
   admin_views:
     subdir: contrib
-    version: '1.6'
+    version: '1.7'
     patch:
       - 'https://raw.githubusercontent.com/geo0000/custom-patches/master/admin_views-content_domain_filter.patch'
     translations:
@@ -488,12 +462,12 @@ projects:
       - da
   clientside_validation:
     subdir: contrib
-    version: '1.37'
+    version: '1.47'
     translations:
       - da
   override_node_options:
     subdir: contrib
-    version: '1.13'
+    version: '1.14'
     translations:
       - da
   fapi_validation:
@@ -526,27 +500,27 @@ projects:
       - da
   apachesolr_stats:
     subdir: contrib
-    version: 1.0-alpha1
+    version: 1.0-beta1
     translations:
       - da
   memcache:
     subdir: contrib
-    version: '1.2'
+    version: '1.6'
     translations:
       - da
   token_custom:
     subdir: contrib
-    version: 2.0-beta3
+    version: '2.0'
     translations:
       - da
   token_filter:
     subdir: contrib
-    version: 1.x-dev
+    version: '1.1'
     translations:
       - da
   smart_trim:
     subdir: contrib
-    version: '1.5'
+    version: '1.6'
     translations:
       - da
   taxonomy_formatter:
@@ -556,12 +530,12 @@ projects:
       - da
   node_embed:
     subdir: contrib
-    version: '1.1'
+    version: '1.2'
     translations:
       - da
   colorfield:
     subdir: contrib
-    version: '1.1'
+    version: '1.2'
     translations:
       - da
   encrypt:
@@ -571,14 +545,12 @@ projects:
       - da
   webform_encrypt:
     subdir: contrib
-    version: '1.0'
-    patch:
-      1344804: 'https://drupal.org/files/issues/1344804-12.patch'
+    version: '1.3'
     translations:
       - da
   term_merge:
     subdir: contrib
-    version: '1.2'
+    version: '1.4'
     translations:
       - da
   taxonomy_manager:
@@ -600,12 +572,12 @@ projects:
       - da
   menu_attributes:
     subdir: contrib
-    version: 1.0-rc2
+    version: '1.1'
     translations:
       - da
   domain:
     subdir: contrib
-    version: '3.11'
+    version: '3.17'
     patch:
       804926: 'https://www.drupal.org/files/issues/domain-vbo-804926-34.patch'
     translations:
@@ -617,7 +589,7 @@ projects:
       - da
   domain_menu_block:
     subdir: contrib
-    version: 1.0-beta2
+    version: '1.0'
     translations:
       - da
   domain_views:
@@ -639,7 +611,7 @@ projects:
       - da
   menu_admin_per_menu:
     subdir: contrib
-    version: '1.0'
+    version: '1.1'
     translations:
       - da
   domain_xmlsitemap:
@@ -649,7 +621,7 @@ projects:
       - da
   maxlength:
     subdir: contrib
-    version: 3.0-beta1
+    version: '3.3'
     patch:
       1761480: 'https://drupal.org/files/line_breaks_in_text-1761480.patch'
       2032655: 'https://drupal.org/files/maxlength-calculate_keyup_change-2032655-2.patch'
@@ -662,7 +634,7 @@ projects:
       - da
   cnr:
     subdir: contrib
-    version: 4.x-dev
+    version: '4.22'
     translations:
       - da
   eu-cookie-compliance:
@@ -674,26 +646,25 @@ projects:
       - da
   node_view_permissions:
     subdir: contrib
-    version: '1.5'
+    version: '1.6'
     translations:
       - da
   themekey:
     subdir: contrib
-    version: '3.3'
+    version: '3.4'
     translations:
       - da
   mailchimp:
     subdir: contrib
-    version: '2.12'
+    version: '2.13'
     patch:
       1689730: 'https://drupal.org/files/1689730-mailchimp_translate_error_codes_from_api-2.patch'
       1: 'https://raw.githubusercontent.com/geo0000/custom-patches/master/mailchimp-subscribe-form-groups-check.patch'
-      823916: 'https://www.drupal.org/files/mailchimp_domain_support-823916-11.patch'
     translations:
       - da
   entityreference:
     subdir: contrib
-    version: '1.1'
+    version: '1.5'
     translations:
       - da
   video_embed_field:
@@ -703,29 +674,27 @@ projects:
       - da
   rules:
     subdir: contrib
-    version: '2.9'
+    version: '2.12'
     translations:
       - da
   addressfield:
     subdir: contrib
-    version: 1.0-beta5
+    version: '1.3'
     translations:
       - da
   field_group:
     subdir: contrib
-    version: '1.5'
+    version: '1.6'
     translations:
       - da
   tablefield:
     subdir: contrib
-    version: '2.3'
-    patch:
-      2200577: 'https://drupal.org/files/issues/converting_non_utf8_files_to_utf8-2200577-1.patch'
+    version: '2.8'
     translations:
       - da
   mollom:
     subdir: contrib
-    version: '2.10'
+    version: '2.15'
     translations:
       - da
   node_clone:
@@ -735,10 +704,7 @@ projects:
       - da
   jquery_colorpicker:
     subdir: contrib
-    version: 1.0-rc2
-    patch:
-      0: 'https://raw.githubusercontent.com/geo0000/custom-patches/master/jquery_colorpicker-states-fix-0.patch'
-      1991042: 'https://www.drupal.org/files/set-higher-zindex-1991042-2.patch'
+    version: '1.3'
     translations:
       - da
   jslider_field:
@@ -753,7 +719,7 @@ projects:
       - da
   taxonomy_container:
     subdir: contrib
-    version: '1.2'
+    version: '1.3'
     translations:
       - da
   webform_features:
@@ -763,17 +729,17 @@ projects:
       - da
   mailsystem:
     subdir: contrib
-    version: '2.34'
+    version: '2.35'
     translations:
       - da
   mimemail:
     subdir: contrib
-    version: 1.0-beta3
+    version: '1.1'
     translations:
       - da
   synonyms:
     subdir: contrib
-    version: '1.1'
+    version: '1.6'
     translations:
       - da
   dynamic_background:
@@ -785,19 +751,17 @@ projects:
       - da
   content_reminder:
     subdir: contrib
-    version: '1.0'
+    version: '1.2'
     translations:
       - da
   workbench_moderation:
     subdir: contrib
-    version: '1.3'
-    patch:
-      1314508: 'https://www.drupal.org/files/1314508-workbench-moderation-features.patch'
+    version: '1.4'
     translations:
       - da
   taxonomy_access_fix:
     subdir: contrib
-    version: '2.1'
+    version: '2.4'
     translations:
       - da
   simplesamlphp_auth:
@@ -812,17 +776,17 @@ projects:
       - da
   varnish:
     subdir: contrib
-    version: '1.1'
+    version: '1.9'
     translations:
       - da
   hierarchical_select:
     subdir: contrib
-    version: 3.0-beta7
+    version: 3.0-beta9
     translations:
       - da
   icon:
     subdir: contrib
-    version: 1.0-beta6
+    version: '1.0'
     translations:
       - da
   fontello:
@@ -832,12 +796,12 @@ projects:
       - da
   uuid:
     subdir: contrib
-    version: 1.0-beta1
+    version: '1.3'
     translations:
       - da
   config_perms:
     subdir: contrib
-    version: '2.1'
+    version: '2.2'
     translations:
       - da
   node_export:
@@ -847,7 +811,7 @@ projects:
       - da
   adaptivetheme:
     subdir: contrib
-    version: '3.1'
+    version: '3.4'
     type: theme
     translations:
       - da
@@ -893,13 +857,6 @@ libraries:
       url: 'https://github.com/mathiasbynens/jquery-placeholder/archive/v1.8.7.zip'
     destination: libraries
     directory_name: placeholder
-    type: library
-  mailchimp:
-    download:
-      type: get
-      url: 'http://apidocs.mailchimp.com/api/downloads/mailchimp-api-class.zip'
-    destination: libraries
-    directory_name: mailchimp
     type: library
   colorpicker:
     download:
