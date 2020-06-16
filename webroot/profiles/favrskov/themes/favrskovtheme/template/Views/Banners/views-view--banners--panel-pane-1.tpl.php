@@ -27,7 +27,7 @@
  * @ingroup views_templates
  */
 ?>
-<section id="banners" class="banners">
+<div id="banners" class="banners">
   <div class="<?php print $classes; ?>">
     <?php print render($title_prefix); ?>
     <?php if ($title): ?>
@@ -89,4 +89,4 @@
     <?php endif; ?>
 
   </div><?php /* class view */ ?>
-</section>
+</div>

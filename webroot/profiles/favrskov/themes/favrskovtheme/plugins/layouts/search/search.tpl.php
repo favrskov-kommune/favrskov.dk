@@ -22,8 +22,8 @@
       <?php print $content['header']; ?>
   <?php endif; ?>
 
-  <main id="main-wrapper" class="main-wrapper group" role="main">
-    <section id="main-content" class="content-container">
+  <main id="main-wrapper" class="main-wrapper group">
+    <div id="main-content" class="content-container">
 
       <div class="content clearfix">
 
@@ -45,7 +45,7 @@
           <?php endif; ?>
       </div>
 
-    </section>
+    </div>
   </main>
 
   <?php if ($content['footer']): ?>

@@ -17,29 +17,29 @@
  */
 $background = theme_get_setting('favrskovtheme_footer_background') ? theme_get_setting('favrskovtheme_footer_background') : '586464';
 ?>
-<footer id="footer" class="footer" role="contentinfo">
+<footer id="footer" class="footer">
   <div id="footer-wrapper" class="footer-wrapper group" style="background-color: <?php print "#$background"; ?>;">
     <div class="content">
       <?php if (!empty($content['header'])): ?>
-        <section class="logo footer-block" role="region">
+        <div class="logo footer-block">
           <?php print $content['header']; ?>
-        </section>
+        </div>
       <?php endif; ?>
 
       <?php if (!empty($content['social'])): ?>
-        <section class="social footer-block" role="region">
+        <div class="social footer-block" aria-label="kontaktoplysninger">
           <?php print $content['social']; ?>
-        </section>
+        </div>
       <?php endif; ?>
 
       <?php if (!empty($content['contacts'])): ?>
-        <section class="contacts footer-block" role="region">
+        <div class="contacts footer-block" aria-label="åbningstider">
           <?php print $content['contacts']; ?>
-        </section>
+        </div>
       <?php endif; ?>
 
       <?php if (!empty($content['navigation'])): ?>
-        <nav class="nav footer-block" role="navigation">
+        <nav class="nav footer-block" aria-label="nyttige links">
           <?php print $content['navigation']; ?>
         </nav>
       <?php endif; ?>

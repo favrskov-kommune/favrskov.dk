@@ -37,3 +37,15 @@ $grid-padding   : 0;  // grid-padding equal to gutters
     min-width: 990px;
   }
 }
+
+.skip-to-content-link {
+  height: 30px;
+  padding: 8px;
+  position: absolute;
+  top: -30px;
+  background: $white;
+}
+.skip-to-content-link:focus {
+  top:0;
+  font-weight: bold;
+}

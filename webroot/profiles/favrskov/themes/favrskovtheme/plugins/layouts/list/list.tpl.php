@@ -22,7 +22,7 @@
       <?php print $content['header']; ?>
   <?php endif; ?>
 
-  <main id="main-wrapper" class="main-wrapper group" role="main">
+  <main id="main-wrapper" class="main-wrapper group">
     <section id="main-content" class="content-container ">
 
       <div class="content">
@@ -34,11 +34,11 @@
           </div>
         </section>
 
-        <aside class="list-sidebar">
+        <nav aria-label="sekundær navigation" class="list-sidebar">
           <?php if ($content['sidebar']): ?>
               <?php print $content['sidebar']; ?>
             <?php endif; ?>
-        </aside>
+        </nav>
       </div>
     </section>
   </main>

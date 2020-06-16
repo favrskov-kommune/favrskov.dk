@@ -369,6 +369,14 @@ function views_news_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  /* Felt: Indhold: Overskrift */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
   /* Felt: Indhold: Dato */
   $handler->display->display_options['fields']['field_date_1']['id'] = 'field_date_1';
   $handler->display->display_options['fields']['field_date_1']['table'] = 'field_data_field_date';
@@ -463,7 +471,7 @@ function views_news_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<article>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<article aria-label="[title_1]">
   <header class="group">
    <h1>[title]</h1>
    <div class="general-info">[field_date] | [field_taxonomy_subject_area]</div>
@@ -651,7 +659,7 @@ function views_news_views_default_views() {
     t('næste ›'),
     t('sidste »'),
     t('Hent flere'),
-    t('<article>
+    t('<article aria-label="[title_1]">
   <header class="group">
    <h1>[title]</h1>
    <div class="general-info">[field_date] | [field_taxonomy_subject_area]</div>

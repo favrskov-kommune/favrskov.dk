@@ -122,8 +122,10 @@
         font: 14px Arial;
         color: $dimgray;
         text-transform: uppercase;
+        &:focus,
         &:hover {
           color: $red;
+          text-decoration: underline;
         }
       }
       @extend %clearfix;
@@ -155,6 +157,10 @@
               font-weight: bold;
               color: $white;
               position: relative;
+              &:focus, &:hover {
+                background: $dark-green;
+                color: $lightgrey;
+              }
               &:after {
                 width: 22px;
                 @extend %before-after;
@@ -169,6 +175,10 @@
             font: 16px Arial;
             color: $dark-grey;
             font-weight: bold;
+            &:focus, &:hover {
+              background: #cccccc;
+              color: $grayMedium;
+            }
           }
           .menu {
             padding: 20px 34px;
@@ -195,7 +205,11 @@
                 padding: 5px 20px;
                 padding-right: 0;
                 @include sprite(-60px, -104px);
-                &:hover,
+                &:focus,
+                &:hover{
+                  font-weight: bold;
+                  color: $dark-white-grey;
+                }
                 &.active-trail {
                   font-weight: bold;
                 }
@@ -210,13 +224,18 @@
                   a {
                     background: none;
                     padding: 0;
-                    color: #999;
+                    color: $dark-grey;
                     font-size: 15px;
-                    &:hover,
+                    &:focus, &:hover {
+                      text-decoration: underline;
+                      font-weight: normal;
+                    }
                     &.active-trail {
                       background: none;
-                      font-weight: normal;
-                      color: $dark-grey;
+                      font-weight: bold;
+                      &:focus, &:hover {
+                        font-weight: bold;
+                      }
                     }
                   }
                 }

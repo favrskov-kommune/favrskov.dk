@@ -63,6 +63,9 @@
       @include border-radius(0px);
       height: 100%;
       width: 100%;
+      &:focus {
+        border: 1px solid $dark-green;
+      }
 
       // For ie8
       .lt-ie8 & {
@@ -88,7 +91,7 @@
       @include transition-duration(.2s);
       cursor: pointer;
       padding: 0;
-      &:hover {
+      &:hover, &:focus {
         background-color: $dark-grey;
       }
     }

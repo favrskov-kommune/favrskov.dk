@@ -204,7 +204,7 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->configuration = array(
       'admin_title' => 'Address',
       'title' => '',
-      'body' => '<article role="article">
+      'body' => '<div>
 <h1>Åbningstider</h1>
 
 <p class="small-height">Besøgstid:<br />
@@ -222,7 +222,7 @@ function panel_footer_mini_panel_default_panels_mini() {
 <span class="first-span">Torsdag</span> 9.00-17.00<br />
 <span class="first-span">Fredag</span> 9.00-12.00
 </p>
-</article>',
+</div>',
       'format' => 'full_html',
       'substitute' => TRUE,
     );
@@ -370,7 +370,7 @@ function panel_footer_mini_panel_default_panels_mini() {
     $pane->configuration = array(
       'admin_title' => 'Oplev:contacts',
       'title' => '',
-      'body' => '<article role="article">
+      'body' => '<div>
 <h1>Kontakt</h1>
 
 <p class="small-height">Favrskov Kommune<br />
@@ -379,7 +379,7 @@ Skovvej 20<br />
 
 <p class="small-height"><a href="tel:89641010">Tlf. 8964 1010</a><br />
 <a href="mailto:favrskov@favrskov.dk">favrskov@favrskov.dk</a></p>
-</article>
+</div>
 ',
       'format' => 'full_html',
       'substitute' => TRUE,
@@ -499,7 +499,7 @@ Skovvej 20<br />
     $pane->configuration = array(
       'admin_title' => 'Contacts',
       'title' => 'Contact',
-      'body' => '<article role="article">
+      'body' => '<div>
 <h1>Kontakt</h1>
 
 <p class="small-height">Hovednummer:<br />
@@ -517,7 +517,7 @@ Skovvej 20,<br />
 
 <p class="small-height">CVR:<br />
 29 18 97 14</p>
-</article>
+</div>
 ',
       'format' => 'full_html',
       'substitute' => TRUE,

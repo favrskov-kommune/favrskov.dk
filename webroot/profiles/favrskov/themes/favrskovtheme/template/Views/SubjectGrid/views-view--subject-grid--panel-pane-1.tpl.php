@@ -27,7 +27,7 @@
  * @ingroup views_templates
  */
 ?>
-<section id="subject-grid" class="subject-grid">
+<nav aria-label="sekundær menu" id="subject-grid" class="subject-grid">
   <div class="content">
 
     <div class="<?php print $classes; ?>">
@@ -92,4 +92,4 @@
     </div><?php /* class view */ ?>
 
   </div>
-</section>
+</nav>

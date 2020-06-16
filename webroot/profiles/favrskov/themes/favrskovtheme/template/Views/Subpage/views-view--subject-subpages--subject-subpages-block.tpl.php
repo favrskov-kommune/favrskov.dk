@@ -27,7 +27,7 @@
  * @ingroup views_templates
  */
 ?>
-<section id="teasers" class="teasers">
+<div id="teasers" class="teasers">
   <div class="content">
     <div class="<?php print $classes; ?>">
       <?php print render($title_prefix); ?>
@@ -91,4 +91,4 @@
 
     </div><?php /* class view */ ?>
   </div>
-</section>
+</div>
