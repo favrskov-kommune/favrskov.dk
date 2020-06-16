@@ -24,8 +24,8 @@
       <?php print $content['header']; ?>
   <?php endif; ?>
 
-  <main id="main-wrapper" class="main-wrapper group" role="main">
-    <section id="main-content" class="content-container" role="region">
+  <main id="main-wrapper" class="main-wrapper group">
+    <div id="main-content" class="content-container">
 
       <?php if ($content['top_region']): ?>
         <?php print $content['top_region']; ?>
@@ -51,7 +51,7 @@
       </section>
 
       <?php if ($content['menu_items']): ?>
-        <nav class="menuitems content group" role="navigation">
+        <nav class="menuitems content group" aria-label="sekundær menu">
           <?php print $content['menu_items']; ?>
         </nav>
       <?php endif; ?>
@@ -68,7 +68,7 @@
           <?php print $content['news']; ?>
       <?php endif; ?>
 
-    </section>
+    </div>
   </main>
 
   <?php if ($content['footer']): ?>

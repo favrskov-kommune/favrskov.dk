@@ -368,6 +368,14 @@ function favrskovtheme_js_alter(&$js) {
   }
 
   $js = array_diff_key($js, $exclude);
+
+  $override_file = drupal_get_path('module', 'views_load_more') . '/views_load_more.js';
+  if(isset($js[$override_file])) {
+    $js[$override_file]['data'] = drupal_get_path('theme', 'favrskovtheme') . '/js/override_views_load_more.js';
+  }
+//  dpm($js);
+//  dpm(drupal_get_path('module', 'views_load_more') . '/views_load_more.js');
+//  dpm(drupal_get_path('theme', 'favrskovtheme') . '/js/override_views_load_more.js');
 }
 
 /**

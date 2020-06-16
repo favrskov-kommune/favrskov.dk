@@ -21,7 +21,8 @@ $background[] = theme_get_setting('favrskovtheme_header_opacity') ? theme_get_se
 $background = implode(', ', $background);
 ?>
 <header id="header" class="header" role="banner" style="background: rgba(<?php print "$background"; ?>);">
-  <section class="header-content">
+  <a class="skip-to-content-link" href="#main-content"><?php print t('Skip to main content') ?></a>
+  <div class="header-content">
 
     <div class="nav-bar">
       <a class="btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -32,19 +33,19 @@ $background = implode(', ', $background);
     </div>
 
     <?php if (!empty($content['logo'])): ?>
-      <section class="logo inline-block-header">
+      <div class="logo inline-block-header">
         <?php print $content['logo']; ?>
-      </section>
+      </div>
     <?php endif; ?>
 
     <div class="header-menu-wrapper">
       <?php if (!empty($content['top-navigation'])): ?>
-        <div class="secondary-nav">
+        <div class="secondary-nav" role="navigation" aria-label="service menu">
           <?php print $content['top-navigation']; ?>
         </div>
       <?php endif; ?>
 
-      <section class="search-contact inline-block-header">
+      <section class="search-contact inline-block-header" role="search">
         <?php if (!empty($content['search'])): ?>
           <div class="search">
             <?php print $content['search']; ?>
@@ -53,12 +54,12 @@ $background = implode(', ', $background);
       </section>
 
       <?php if (!empty($content['navigation'])): ?>
-        <nav class="nav inline-block-header">
+        <nav class="nav inline-block-header" aria-label="primær menu">
           <?php print $content['navigation']; ?>
         </nav>
       <?php endif; ?>
     </div>
-  </section>
+  </div>
 
   <?php if (!empty($content['system'])): ?>
     <div class="drupal-system group">

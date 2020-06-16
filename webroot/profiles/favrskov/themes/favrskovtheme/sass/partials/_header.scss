@@ -80,6 +80,9 @@
     @include at-breakpoint(12 $width-550) {
       margin: 50px auto 15px;
     }
+    a:focus {
+      border-left: 2px solid $white;
+    }
   }
 
   .nav {
@@ -127,6 +130,10 @@
           background: $grey;
         }
       }
+      a:focus {
+        background: $grey;
+        text-decoration: underline;
+      }
     }
 
     @include at-breakpoint(12 $width-550) {
@@ -154,6 +161,7 @@
         padding: 15px 10px;
         height: auto;
         border-bottom: 1px solid $dark-grey;
+        &:focus,
         &:hover {
           background: $dark-grey;
         }
@@ -195,10 +203,17 @@
       background-color: $light-blue;
       @include border-radius(5px);
       padding: 0 40px 0 10px;
+      color: $grayMedium;
+      &::placeholder {
+        color: $grayMedium;
+      }
 
       // For ie8
       .lt-ie8 & {
         padding-top: 10px;
+      }
+      &:focus {
+        outline: $dark-green auto 1px;
       }
 
       @include at-breakpoint(12 $width-550) {
@@ -217,6 +232,9 @@
       text-indent: -9999px;
       z-index: 1;
       background: url(../images/search_icon.png) no-repeat center center;
+      &:focus {
+        outline: $dark-green auto 1px;
+      }
 
     }
     @include at-breakpoint(12 $width-550) {

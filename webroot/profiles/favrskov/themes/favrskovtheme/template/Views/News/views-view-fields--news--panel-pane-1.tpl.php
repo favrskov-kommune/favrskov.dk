@@ -25,9 +25,9 @@
  */
 ?>
 
-<a href="<?php print $fields['path']->content ?>" class="global-link"></a>
+<!--<a href="--><?php //print $fields['path']->content ?><!--" class="global-link"></a>-->
 
-<article>
+<article aria-label="<?php print $fields['title']->raw ?>">
   <header>
     <?php print $fields['title']->content ?>
     <?php print $fields['field_date']->content ?>

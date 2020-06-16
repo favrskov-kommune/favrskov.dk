@@ -52,6 +52,9 @@
       width: 100%;
       height: 69px;
       display: block;
+      &:focus {
+        border-top: 2px solid $grey;
+      }
     }
   }
   h2, h1 {
@@ -79,7 +82,13 @@
   a {
     line-height: 26px;
 
-    &:hover {
+    &:hover, &:focus {
+      text-decoration: underline;
+      color: $link-red;
+    }
+  }
+  &.social {
+    a {
       text-decoration: underline;
     }
   }
@@ -92,7 +101,7 @@
 
     a {
       display: inline-block;
-      background-color: $lightergray;
+      background-color: $grayMediumLight;
       border-radius: 19px;
       line-height: 30px;
       width: 38px;

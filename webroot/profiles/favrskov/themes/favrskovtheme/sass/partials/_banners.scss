@@ -10,6 +10,9 @@
     a {
       display: block;
       background: rgba($dark-grey, .6);
+      &:hover, &:focus {
+        background: rgba($dark-grey, .8);
+      }
 
       // For ie8
       .lt-ie8 & {
@@ -22,7 +25,7 @@
       width: 100%;
       @include box-sizing(border-box);
       @include font-size(22);
-      @include links($white, $white);
+      @include links($white, $white, none, none);
       &:before {
         font-family: "fontello";
         font-style: normal;
@@ -99,6 +102,9 @@
       top: 0;
       left: 0;
       z-index: 0;
+      &:focus {
+        border: 2px solid $grey;
+      }
     }
     // For ie8
     .lt-ie8 & {
