@@ -1,52 +1,5 @@
-FROM php:5.6-fpm-stretch AS base
-RUN apt-get update && apt-get install -y \
-		git \
-        libicu-dev \
-        openssh-client \
-        sudo \
-        libzip-dev \
-        libpng-dev \
-        libxml2-dev \
-        vim \
-        curl \
-        msmtp \
-        irb \
-        cron \
-        wget \
-        mysql-client \
-        libmemcached-dev \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        zlib1g-dev && \
-	rm -rf /var/lib/apt/lists/*
+FROM novicell.azurecr.io/php:7.3-fpm-stretch
 
-RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
-
-# Install PHP extensions
-# Configure the gd library
-RUN docker-php-ext-configure gd \
-  --with-freetype-dir=/usr \
-  --with-jpeg-dir=/usr \
-  --with-png-dir=/usr
-RUN docker-php-ext-configure opcache --enable-opcache
-RUN docker-php-ext-configure calendar
-RUN docker-php-ext-configure zip
-
-RUN docker-php-ext-install \
-        bcmath \
-        intl \
-        calendar \
-        mbstring \
-        pdo \
-        pdo_mysql \
-        mysql \
-        mysqli \
-        sockets \
-        gd \
-        soap \
-        zip
-
-RUN pecl install memcached-2.2.0
 #Shell setup
 RUN echo 'alias ll="ls -lah"' >> ~/.bashrc
 RUN echo "export PATH=\$PATH:/src/vendor/drush/drush" >> ~/.bashrc
