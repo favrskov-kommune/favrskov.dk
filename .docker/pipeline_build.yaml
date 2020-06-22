@@ -1,0 +1,118 @@
+variables:
+  vmImage: 'ubuntu-18.04'
+  majorVersion: 1
+  minorVersion: 0
+  sharedRegistry: 'Novicell shared registry'
+  projectRegistry: 'Favrskov registry'
+  projectRegistryUrl: 'favrskov.azurecr.io'
+  buildPrefix: ${{ variables['Build.SourceBranchName'] }}-
+  environment: 'staging'
+  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+    environment: 'prod'
+
+name: $(buildPrefix)$(majorVersion).$(minorVersion)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - azure-pipeline
+  paths:
+    exclude:
+      - .ddev/
+
+pool:
+  name: Azure Pipelines
+  vmImage: $(vmImage)
+
+jobs:
+  - job: codebase
+    displayName: Codebase
+    variables:
+      - group: codebase-variables
+    steps:
+      - task: Docker@2
+        displayName: Build
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'favrskov-codebase'
+          command: build
+          Dockerfile: '.docker/build/codebase/Dockerfile'
+          buildContext: .
+          tags: |
+            latest
+      - task: Bash@3
+        displayName: Get Archive
+        inputs:
+          targetType: 'inline'
+          script: |
+            python -m pip install --upgrade pip setuptools wheel && \
+            pip install undocker && \
+            docker save $(projectRegistryUrl)/favrskov-codebase | /home/vsts/.local/bin/undocker -o codebase && \
+            mv codebase/codebase.tar.gz codebase.tar.gz && \
+            rm -rf codebase
+      - task: PublishPipelineArtifact@1
+        displayName: Save Artifact
+        inputs:
+          targetPath: 'codebase.tar.gz'
+          artifact: favrskov-codebase
+          publishLocation: 'pipeline'
+
+  - job: apache
+    displayName: Apache
+    variables:
+      - group: favrskov-${{ variables.environment }}-apache
+    dependsOn: codebase
+    steps:
+      - task: DownloadPipelineArtifact@2
+        displayName: Download Artifact
+        inputs:
+          artifact: favrskov-codebase
+          path: $(Build.SourcesDirectory)
+      - task: Docker@2
+        displayName: Build
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'favrskov-apache'
+          command: build
+          Dockerfile: '.docker/build/apache/Dockerfile'
+          buildContext: .
+          tags: |
+            $(Build.BuildNumber)
+      - task: Docker@2
+        displayName: Push
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'favrskov-apache'
+          command: push
+          tags: |
+            $(Build.BuildNumber)
+
+  - job: php
+    displayName: PHP
+    variables:
+      - group: favrskov-${{ variables.environment }}-php
+    dependsOn: codebase
+    steps:
+      - task: DownloadPipelineArtifact@2
+        displayName: Download Artifact
+        inputs:
+          artifact: favrskov-codebase
+          path: $(Build.SourcesDirectory)
+      - task: Docker@2
+        displayName: Build
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'favrskov-php'
+          command: build
+          Dockerfile: '.docker/build/php/Dockerfile'
+          buildContext: .
+          tags: |
+            $(Build.BuildNumber)
+      - task: Docker@2
+        displayName: Push
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'favrskov-php'
+          command: push
+          tags: |
+            $(Build.BuildNumber)

@@ -2,8 +2,15 @@ webroot/sites/*/files/
 webroot/sites/*/files-private/
 webroot/vendor
 webroot/sites/*/settings.*.php
+
 **/*.patch
 .idea/
 .DS_Store
 **/Gemfile.lock
 .vagrant/
+.git
+.idea
+*/node_modules
+.gitignore
+.ddev
+.dockerignore
