@@ -15,7 +15,7 @@ name: $(buildPrefix)$(majorVersion).$(minorVersion)$(Rev:.r)
 trigger:
   branches:
     include:
-      - azure-pipeline
+      - azure-devops
   paths:
     exclude:
       - .ddev/
