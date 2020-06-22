@@ -652,6 +652,41 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
 );
 
+
+if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])
+  && _ysci_is_private($_SERVER['REMOTE_ADDR'])) {
+  $conf['reverse_proxy'] = TRUE;
+  $conf['reverse_proxy_addresses'] = [$_SERVER['REMOTE_ADDR']];
+}
+/**
+ * Match an IP to a CIDR range.
+ */
+function _ysci_cidr_match($ip, $range) {
+  [$subnet, $bits] = explode('/', $range);
+  $ip = ip2long($ip);
+  $subnet = ip2long($subnet);
+  $mask = -1 << (32 - $bits);
+  $subnet &= $mask;
+  return ($ip & $mask) == $subnet;
+}
+
+/**
+ * Check if $ip is a private IP.
+ */
+function _ysci_is_private($ip) {
+  $private_addrs = [
+    '10.0.0.0/24',
+    '192.168.0.0/16',
+    '172.16.0.0/12',
+  ];
+  foreach ($private_addrs as $range) {
+    if (_ysci_cidr_match($ip, $range)) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
 $local_settings = dirname(__FILE__) . '/settings.local.php';
 if (is_readable($local_settings)) {
   require $local_settings;
