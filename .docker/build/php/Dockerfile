@@ -1,5 +1,15 @@
 FROM novicell.azurecr.io/php:7.3-fpm-stretch
 
+# Install Memcached
+RUN apt-get update \
+  && apt-get upgrade -y \
+  && apt-get install -y --no-install-recommends \
+  libz-dev \
+  libmemcached-dev
+
+RUN pecl install memcached
+RUN docker-php-ext-enable memcached
+
 #Shell setup
 RUN echo 'alias ll="ls -lah"' >> ~/.bashrc
 RUN echo "export PATH=\$PATH:/src/vendor/drush/drush" >> ~/.bashrc
