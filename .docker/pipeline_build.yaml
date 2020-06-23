@@ -70,7 +70,7 @@ jobs:
     dependsOn: codebase
     steps:
       - task: DownloadPipelineArtifact@2
-        displayName: Download Artifact
+        displayName: Download Archive
         inputs:
           artifact: favrskov-codebase
           path: $(Build.SourcesDirectory)
@@ -100,7 +100,7 @@ jobs:
     dependsOn: codebase
     steps:
       - task: DownloadPipelineArtifact@2
-        displayName: Download Artifact
+        displayName: Download Archive
         inputs:
           artifact: favrskov-codebase
           path: $(Build.SourcesDirectory)
