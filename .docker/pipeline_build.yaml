@@ -51,10 +51,16 @@ jobs:
             mv codebase/codebase.tar.gz codebase.tar.gz && \
             rm -rf codebase
       - task: PublishPipelineArtifact@1
-        displayName: Save Artifact
+        displayName: Save Archive
         inputs:
           targetPath: 'codebase.tar.gz'
           artifact: favrskov-codebase
+          publishLocation: 'pipeline'
+      - task: PublishPipelineArtifact@1
+        displayName: Save Scripts
+        inputs:
+          targetPath: '.docker/deploy'
+          artifact: favrskov-scripts
           publishLocation: 'pipeline'
 
   - job: apache
