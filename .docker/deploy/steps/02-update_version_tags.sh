@@ -2,7 +2,7 @@
 
 cd /mnt/data/docker/favrskov/
 sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=TAGGING_START/" .env
-# Local .env
+# Load the .env variables to the environment so they can be used.
 if [ -f .env ]; then
     # Load Environment Variables
     export $(cat .env | grep -v '#' | awk '/=/ {print $1}')
