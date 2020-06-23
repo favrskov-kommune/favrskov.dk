@@ -6,8 +6,8 @@
 # $4 = webhook for #notif-deployments channel
 # $5 = webhook for #notif-php-devops channel
 # $6 = webhook for #notif-php-test channel
-
-echo "notif-php-test: $6"
+# $7 = deployed site URL
+# $8 = deployed site domain
 
 cd /mnt/data/docker/favrskov/
 sed -i "s/AZURE_DEPLOY_STATUS=.*/AZURE_DEPLOY_STATUS=STARTED/" .env

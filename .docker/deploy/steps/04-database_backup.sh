@@ -6,6 +6,8 @@
 # $4 = webhook for #notif-deployments channel
 # $5 = webhook for #notif-php-devops channel
 # $6 = webhook for #notif-php-test channel
+# $7 = deployed site URL
+# $8 = deployed site domain
 
 cd /mnt/data/docker/favrskov/
 sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=DATABASE_BACKUP_START/" .env
