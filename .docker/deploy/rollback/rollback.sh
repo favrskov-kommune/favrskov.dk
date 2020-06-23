@@ -9,7 +9,7 @@
 # $7 = deployed site URL
 # $8 = deployed site domain
 
-curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \"Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":bangbang: Release of \`$2\` to <$7|$8> failed, starting rollback.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $6
+curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \"Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":bangbang: Release of \`$2\` to <$7|$8> failed, starting rollback.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
 
 cd /mnt/data/docker/favrskov/
 # Local .env
@@ -17,5 +17,12 @@ if [ -f .env ]; then
     # Load Environment Variables
     export $(cat .env | grep -v '#' | awk '/=/ {print $1}')
     # Do rollback here
-    curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \"Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":white_check_mark: Release of \`$2\` to <$7|$8> successfully rolled back.\",\"color\": \"4AB441\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $6
+
+    # Finishing with a notification
+    curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \"Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":white_check_mark: Release of \`$2\` to <$7|$8> successfully rolled back.\",\"color\": \"4AB441\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
+
+    # If master branch also notify in #notif-deployments
+    if [ $2 = "master" ]; then
+        curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \"Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":white_check_mark: Release of \`$2\` to <$7|$8> successfully rolled back.\",\"color\": \"4AB441\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $4
+    fi
 fi
