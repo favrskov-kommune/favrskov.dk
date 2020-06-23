@@ -13,6 +13,4 @@ if [ -f .env ]; then
     # Load Environment Variables
     export $(cat .env | grep -v '#' | awk '/=/ {print $1}')
     # Do rollback here
-
-    echo "notif-php-test: $6"
 fi

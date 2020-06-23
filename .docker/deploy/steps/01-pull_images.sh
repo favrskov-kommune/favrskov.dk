@@ -7,6 +7,8 @@
 # $5 = webhook for #notif-php-devops channel
 # $6 = webhook for #notif-php-test channel
 
+echo "notif-php-test: $6"
+
 cd /mnt/data/docker/favrskov/
 sed -i "s/AZURE_DEPLOY_STATUS=.*/AZURE_DEPLOY_STATUS=STARTED/" .env
 sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=IMAGE_PULL_START/" .env
