@@ -10,6 +10,7 @@
 # $8 = deployed site domain
 
 cd /mnt/data/docker/favrskov/
-sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=DATABASE_UPDATE_START/" .env
-docker-compose exec php bash -c "cd sites/default/ && drush updb -y"
-sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=DATABASE_UPDATE_STOP/" .env
+sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=ROLLBACK_START_START/" .env
+docker-compose exec php bash -c "cd sites/default/ && drush vset maintenance_mode 0"
+docker-compose exec php bash -c "cd sites/default/ && drush cc all"
+sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=ROLLBACK_START_STOP/" .env

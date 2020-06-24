@@ -5,7 +5,7 @@
 # $3 = webhook for #notif-drupal-deploy channel
 # $4 = webhook for #notif-deployments channel
 # $5 = webhook for #notif-php-devops channel
-# $6 = webhook for #notif-php-test channel
+# $6 = webhook for #notif-drupal-test channel
 # $7 = deployed site URL
 # $8 = deployed site domain
 
