@@ -144,6 +144,7 @@ projects[strongarm][version] = 2
 
 projects[date][subdir] = contrib
 projects[date][version] = 2
+projects[date][patch][3009740] = https://www.drupal.org/files/issues/2018-10-27/3009740-1-php-7.3-compatibility.patch
 
 projects[link][subdir] = contrib
 projects[link][version] = 1
