@@ -7,7 +7,7 @@ RUN apt-get update \
   libz-dev \
   libmemcached-dev \
   libxml2-dev \
-  php-soap
+  php7.3-soap
 
 RUN docker-php-ext-install soap
 
