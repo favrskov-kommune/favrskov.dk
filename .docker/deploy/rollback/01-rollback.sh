@@ -9,7 +9,7 @@
 # $7 = deployed site URL
 # $8 = deployed site domain
 
-curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"author_icon\": \"https://staging.favrskov.drupal.dk/favrskov-logo.png\", \"author_name\": \"Favrskov.dk\", \"author_link\" : \"$7\", \"text\": \":bangbang: Release of branch \`$2\` to <$7|$8> failed, starting rollback.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
+curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \":favrskov-logo: Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":bangbang: Release of branch \`$2\` to <$7|$8> failed, starting rollback.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
 
 cd /mnt/data/docker/favrskov/
 # Local .env
@@ -57,7 +57,7 @@ if [ -f .env ]; then
         sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=TAG_RESTORE_START/" .env
 
         if [ -z "$PREVIOUS_TAG" ]; then
-            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"author_icon\": \"https://staging.favrskov.drupal.dk/favrskov-logo.png\", \"author_name\": \"Favrskov.dk\", \"author_link\" : \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing previous version, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
+            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \":favrskov-logo: Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing previous version, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
             return false
         fi
 
@@ -71,7 +71,7 @@ if [ -f .env ]; then
         sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=DATABASE_RESTORE_START/" .env
 
         if [ -z "AZURE_DEPLOY_DB_BACKUP" ]; then
-            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"author_icon\": \"https://staging.favrskov.drupal.dk/favrskov-logo.png\", \"author_name\": \"Favrskov.dk\", \"author_link\" : \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing database backup, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
+            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \":favrskov-logo: Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing database backup, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
             return false
         fi
 
@@ -85,7 +85,7 @@ if [ -f .env ]; then
         sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=IMAGE_RESTORE_START/" .env
 
         if [ -z "$restore_tag" ]; then
-            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"author_icon\": \"https://staging.favrskov.drupal.dk/favrskov-logo.png\", \"author_name\": \"Favrskov.dk\", \"author_link\" : \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing previous version, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
+            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \":favrskov-logo: Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing previous version, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
             return false
         fi
 
