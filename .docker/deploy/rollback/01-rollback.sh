@@ -24,27 +24,27 @@ if [ -f .env ]; then
             restore_database=false
             restore_tags=false
         ;;
-        "TAGGING_START")
+        "IMAGE_PULL_STOP" | "TAGGING_START")
             restore_image=false
             restore_database=false
             restore_tags=false
         ;;
-        "MAINTENANCE_ON_START")
+        "TAGGING_STOP" | "MAINTENANCE_ON_START")
             restore_image=false
             restore_database=false
             restore_tags=true
         ;;
-        "DATABASE_BACKUP_START")
+        "MAINTENANCE_ON_STOP" | "DATABASE_BACKUP_START")
             restore_image=false
             restore_database=false
             restore_tags=true
         ;;
-        "IMAGE_SWITCH_START")
+        "DATABASE_BACKUP_STOP" | "IMAGE_SWITCH_START")
             restore_image=false
             restore_database=true
             restore_tags=true
         ;;
-        "DATABASE_UPDATE_START" | "MAINTENANCE_OFF_START" | "CLEANUP_START")
+        "*")
             restore_image=true
             restore_database=true
             restore_tags=true
@@ -56,6 +56,11 @@ if [ -f .env ]; then
     if $restore_tags ; then
         sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=TAG_RESTORE_START/" .env
 
+        if [ -z "$PREVIOUS_TAG" ]; then
+            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \"Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing previous version, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
+            return false
+        fi
+
         sed -i "s/RELEASE_TAG=.*/RELEASE_TAG=$PREVIOUS_TAG/" .env
         sed -i "s/PREVIOUS_TAG=.*/PREVIOUS_TAG=/" .env
 
@@ -65,6 +70,11 @@ if [ -f .env ]; then
     if $restore_database ; then
         sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=DATABASE_RESTORE_START/" .env
 
+        if [ -z "AZURE_DEPLOY_DB_BACKUP" ]; then
+            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \"Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing database backup, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
+            return false
+        fi
+
         docker-compose exec php sh -c "drush sql-drop"
         docker-compose exec php sh -c "drush sql-cli" < dumps/${AZURE_DEPLOY_DB_BACKUP}
 
@@ -73,6 +83,11 @@ if [ -f .env ]; then
 
     if $restore_image ; then
         sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=IMAGE_RESTORE_START/" .env
+
+        if [ -z "$restore_tag" ]; then
+            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \"Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing previous version, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
+            return false
+        fi
 
         docker pull favrskov.azurecr.io/favrskov-apache:$restore_tag
         docker pull favrskov.azurecr.io/favrskov-php:$restore_tag
