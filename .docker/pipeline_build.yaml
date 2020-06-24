@@ -16,6 +16,8 @@ trigger:
   branches:
     include:
       - azure-devops
+      - develop
+      - master
   paths:
     exclude:
       - .ddev/
