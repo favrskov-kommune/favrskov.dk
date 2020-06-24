@@ -16,9 +16,9 @@ docker-compose exec php bash -c "cd sites/default/ && drush cc all"
 sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=ROLLBACK_START_STOP/" .env
 
 # Finishing with a notification
-curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \"Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":white_check_mark: Release of branch \`$2\` to <$7|$8> successfully rolled back.\",\"color\": \"4AB441\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
+curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"author_icon\": \"https://staging.favrskov.drupal.dk/favrskov-logo.png\", \"author_name\": \"Favrskov.dk\", \"author_link\" : \"$7\", \"text\": \":white_check_mark: Release of branch \`$2\` to <$7|$8> successfully rolled back.\",\"color\": \"4AB441\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
 
 # If master branch also notify in #notif-deployments
 if [ $2 = "master" ]; then
-    curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \"Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":white_check_mark: Release of branch \`$2\` to <$7|$8> successfully rolled back.\",\"color\": \"4AB441\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $4
+    curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"author_icon\": \"https://staging.favrskov.drupal.dk/favrskov-logo.png\", \"author_name\": \"Favrskov.dk\", \"author_link\" : \"$7\", \"text\": \":white_check_mark: Release of branch \`$2\` to <$7|$8> successfully rolled back.\",\"color\": \"4AB441\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $4
 fi
