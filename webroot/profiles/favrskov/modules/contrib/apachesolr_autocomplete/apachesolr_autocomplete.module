@@ -152,7 +152,7 @@ function apachesolr_autocomplete_callback($context_id) {
   if (apachesolr_autocomplete_variable_get_widget() == 'custom') {
     // Keys for custom widget come from $_GET.
     $keys = isset($_GET['query']) ? $_GET['query'] : '';
-  } 
+  }
   elseif (apachesolr_autocomplete_variable_get_widget() == 'jqueryui') {
     // Keys for custom widget come from $_GET.
     $keys = isset($_GET['term']) ? $_GET['term'] : '';
@@ -603,6 +603,8 @@ function apachesolr_autocomplete_get_stopwords($solr = NULL) {
     $static_cache[$env_id] = array();
     return array();
   }
+
+  $words = array();
 
   foreach (explode("\n", $response->data) as $line) {
     if (drupal_substr($line, 0, 1) == "#") {

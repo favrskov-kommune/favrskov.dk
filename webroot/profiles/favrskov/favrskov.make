@@ -243,6 +243,7 @@ projects[apachesolr][version] = 1
 projects[apachesolr_autocomplete][subdir] = contrib
 ;projects[apachesolr_autocomplete][version] = 1
 projects[apachesolr_autocomplete][version] = 1
+projects[apachesolr_autocomplete][patch][2628364] = https://www.drupal.org/files/issues/apachesolr_autocomplete_2628364.patch
 
 projects[apachesolr_exclude_node][subdir] = contrib
 ;projects[apachesolr_exclude_node][version] = 1
