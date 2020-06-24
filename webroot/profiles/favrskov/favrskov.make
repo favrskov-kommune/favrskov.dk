@@ -56,6 +56,7 @@ projects[ckeditor][version] = 1
 
 projects[feeds][subdir] = contrib
 projects[feeds][version] = 2
+projects[feeds][patch][3013743] = https://www.drupal.org/files/issues/2020-04-05/feeds-php73-3013743-12-d7.patch
 ;projects[feeds][patch][2085701] = https://drupal.org/files/strings_are_imported_as_null_for_textfields-2085701.patch
 
 projects[feeds_tamper][subdir] = contrib
