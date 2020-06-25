@@ -40,7 +40,6 @@
           <?php print render($field_collection_item['field_publications_description']); ?>
 
           <?php if (!empty($field_collection_item['field_pdf_file'])): ?>
-            <?php $field_collection_item['field_pdf_file'][0]['#file']->target = $target; ?>
             <?php print render($field_collection_item['field_pdf_file']); ?>
           <?php endif ?>
         </div>

@@ -974,7 +974,7 @@ function panel_article_page_default_page_manager_handlers() {
     'follow' => 0,
     'depth' => '0',
     'expanded' => 0,
-    'sort' => 1,
+    'sort' => 0,
     'override_title' => 1,
     'override_title_text' => '',
     'depth_relative' => 0,
