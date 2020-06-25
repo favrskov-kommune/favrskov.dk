@@ -56,8 +56,16 @@ function content_type_article_preprocess_field(&$variables, $hook) {
         $item['link'] = '';
 
         if (!empty($field_collection_item['field_pdf_file'])) {
-          $item['link'] = $field_collection_item['field_pdf_file'];
-          $item['link']['#items'][0]['attributes'] = array();
+          $test = $field_collection_item['field_pdf_file']['#object']->field_pdf_file['und'][0];
+          $new_window = $field_collection_item['field_pdf_file']['#object']->field_open_in_new_window['und'][0]['value'] == 1;
+          $field_collection_item['field_pdf_file'] = [
+            '#theme' => 'link',
+            '#text' => $test['field_link_title']['und'][0]['safe_value'],
+            '#path' => file_create_url($test['uri']),
+            '#options' => ['attributes' => ['target' => ($new_window ? '_blank' : '_self')]],
+            '#prefix' => '<span class="file">',
+            '#suffix' => '</span>',
+          ];
         }
         else {
           if (!empty($field_collection_item['field_link'])) {
