@@ -258,6 +258,7 @@ projects[apachesolr_panels][version] = 1
 projects[apachesolr_multilingual][subdir] = contrib
 ;projects[apachesolr_multilingual][version] = 1
 projects[apachesolr_multilingual][version] = 1
+projects[apachesolr_multilingual][patch][2998996] = https://www.drupal.org/files/issues/2019-06-26/apachesolr_multilingual-each_deprecated-2998996-8-D7.patch
 
 projects[apachesolr_confgen][subdir] = contrib
 ;projects[apachesolr_confgen][version] = 1

@@ -16,12 +16,11 @@ function apachesolr_multilingual_fields_default_indexing_callback_implementation
   $numeric = TRUE;
   if (!empty($entity->{$field_name})) {
     $field = $entity->$field_name;
-    $values = array();
     if (array_key_exists($entity->language, $field) && is_array($field[$entity->language])) {
       $values = $field[$entity->language];
     }
     else {
-      list($lang, $values) = each($field);
+      $values = current($field);
       if (!is_array($values)) {
         $values = array();
       }
@@ -82,12 +81,11 @@ function apachesolr_multilingual_date_default_indexing_callback_implementation($
   $fields = array();
   if (!empty($entity->{$field_name})) {
     $field = $entity->$field_name;
-    $values = array();
     if (array_key_exists($entity->language, $field) && is_array($field[$entity->language])) {
       $values = $field[$entity->language];
     }
     else {
-      list($lang, $values) = each($field);
+      $values = current($field);
       if (!is_array($values)) {
         $values = array();
       }
@@ -139,12 +137,11 @@ function apachesolr_multilingual_datestamp_default_indexing_callback_implementat
     // $fields may end up having two values; one for the start date
     // and one for the end date.
     $field = $entity->$field_name;
-    $values = array();
     if (array_key_exists($entity->language, $field) && is_array($field[$entity->language])) {
       $values = $field[$entity->language];
     }
     else {
-      list($lang, $values) = each($field);
+      $values = current($field);
       if (!is_array($values)) {
         $values = array();
       }
@@ -288,12 +285,11 @@ function apachesolr_multilingual_term_reference_indexing_callback_implementation
   $fields = array();
   $vocab_names = array();
   if (!empty($node->{$field_name}) && function_exists('taxonomy_get_parents_all')) {
-    $items = array();
     if (array_key_exists($node->language, $node->{$field_name}) && is_array($node->{$field_name}[$node->language])) {
       $items = $node->{$field_name}[$node->language];
     }
     else {
-      list($lang, $items) = each($node->{$field_name});
+      $items = current($node->{$field_name});
       if (!is_array($items)) {
         $items = array();
       }
