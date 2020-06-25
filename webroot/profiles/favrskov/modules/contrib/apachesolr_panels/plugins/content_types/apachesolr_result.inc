@@ -260,7 +260,7 @@ function apachesolr_panels_apachesolr_result_content_type_edit_form($form, &$for
     '#title' => t('No result text'),
     '#type' => 'text_format',
     '#base_type' => 'textarea',
-    '#default_value' => $conf['empty_override_text'],
+    '#default_value' => $conf['empty_override_text']['value'],
     '#format' => $conf['empty_override_format'],
     '#process' => array('filter_process_format', 'ctools_dependent_process'),
     '#dependency' => array('edit-empty-override' => array(1)),

@@ -255,6 +255,7 @@ projects[apachesolr_sort][version] = 1
 projects[apachesolr_panels][subdir] = contrib
 projects[apachesolr_panels][version] = 1
 projects[apachesolr_panels][patch][2919074] = https://www.drupal.org/files/issues/apachesolr_panels-autocomplete_fix-2919074-2.patch
+projects[apachesolr_panels][patch][2462115] = https://www.drupal.org/files/issues/apachesolr_panels-override-no-result-text-2462115-4.patch
 
 projects[apachesolr_multilingual][subdir] = contrib
 ;projects[apachesolr_multilingual][version] = 1
