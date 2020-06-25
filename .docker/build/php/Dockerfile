@@ -1,14 +1,4 @@
-FROM novicell.azurecr.io/php:7.3-fpm-stretch
-
-# Install Memcached
-RUN apt-get update \
-  && apt-get upgrade -y \
-  && apt-get install -y --no-install-recommends \
-  libz-dev \
-  libmemcached-dev
-
-RUN pecl install memcached
-RUN docker-php-ext-enable memcached
+FROM novicell.azurecr.io/php:7.2-fpm-stretch
 
 #Shell setup
 RUN echo 'alias ll="ls -lah"' >> ~/.bashrc
