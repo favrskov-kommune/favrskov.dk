@@ -1,4 +1,4 @@
-FROM php:5.6-fpm-stretch AS base
+FROM php:5.5-fpm AS base
 RUN apt-get update && apt-get install -y \
 		git \
         libicu-dev \
