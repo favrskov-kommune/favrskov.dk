@@ -1,4 +1,4 @@
-FROM novicell.azurecr.io/php:7.2-fpm-stretch
+FROM novicell.azurecr.io/php:7.3-fpm-stretch
 
 # Install Memcached
 RUN apt-get update \
