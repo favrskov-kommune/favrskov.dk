@@ -6,9 +6,6 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
   libz-dev \
   libmemcached-dev \
-  libxml2-dev
-
-RUN docker-php-ext-install soap
 
 RUN pecl install memcached
 RUN docker-php-ext-enable memcached
