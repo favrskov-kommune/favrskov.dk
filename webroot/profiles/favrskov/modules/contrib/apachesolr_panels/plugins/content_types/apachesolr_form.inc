@@ -146,6 +146,8 @@ function apachesolr_panels_form_apachesolr_panels_search_form_alter(&$form, &$fo
 
   // Support the Apache Solr Autocomplete module if it exists.
   if (module_exists('apachesolr_autocomplete')) {
-    $form['basic']['inline']['keys']['#autocomplete_path'] = 'apachesolr_autocomplete';
+    $element = &$form['apachesolr_panels_search_form'];
+    $context_id = 'apachesolr_search_page:' . apachesolr_search_default_search_page();
+    apachesolr_autocomplete_do_alter($element, $form, $context_id);
   }
 }

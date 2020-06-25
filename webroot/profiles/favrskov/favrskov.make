@@ -254,6 +254,7 @@ projects[apachesolr_sort][version] = 1
 
 projects[apachesolr_panels][subdir] = contrib
 projects[apachesolr_panels][version] = 1
+projects[apachesolr_panels][patch][2919074] = https://www.drupal.org/files/issues/apachesolr_panels-autocomplete_fix-2919074-2.patch
 
 projects[apachesolr_multilingual][subdir] = contrib
 ;projects[apachesolr_multilingual][version] = 1
@@ -271,6 +272,7 @@ projects[apachesolr_views][patch][1807028] = https://drupal.org/files/1807028-ex
 projects[apachesolr_attachments][subdir] = contrib
 projects[apachesolr_attachments][version] = 1
 projects[apachesolr_attachments][patch][1854088] = https://drupal.org/files/bypass_deadlocks_on_mass_update-1854088-2.patch
+projects[apachesolr_attachments][patch][3143051] = https://www.drupal.org/files/issues/2020-05-26/apachesolr_attachments_solr_7_x.patch
 ; projects[apachesolr_attachments][patch][2195095] = https://www.drupal.org/files/issues/apachesolr-attachments-issue-2195095-6.patch
 
 projects[facetapi][subdir] = contrib

@@ -130,34 +130,11 @@ function apachesolr_stats_schema() {
         'type' => 'varchar',
         'length' => 32,
         'not null' => TRUE,
+        'default' => '',
       ),
     ),
     'primary key' => array('qid'),
   );
 
   return $schema;
-}
-
-/**
- * Implements hook_update_N().
- */
-function apachesolr_stats_update_7000() {
-  $ret = array();
-  $default_environment = apachesolr_default_environment();
-  db_add_field('apachesolr_stats', 'env_id',
-    array(
-      'type' => 'varchar',
-      'length' => 64,
-      'not null' => TRUE,
-      'default' => $default_environment,
-    )
-  );
-  db_add_field('apachesolr_stats', 'page_id',
-    array(
-      'type' => 'varchar',
-      'length' => 32,
-      'not null' => TRUE,
-      'default' => 'core_search',
-    )
-  );
 }

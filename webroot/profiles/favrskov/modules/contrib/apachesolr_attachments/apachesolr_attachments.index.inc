@@ -149,6 +149,7 @@ function apachesolr_attachments_extract_using_solr($filepath) {
   $solr = apachesolr_get_solr($env_id);
   $filename = basename($filepath);
   $params = array(
+    'extractOnly' => 'true',
     'resource.name' => $filename,
     'extractFormat' => 'text', // Matches the -t command for the tika CLI app.
   );

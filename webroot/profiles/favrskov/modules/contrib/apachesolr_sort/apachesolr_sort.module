@@ -89,8 +89,7 @@ function apachesolr_sort_process_response($response, DrupalSolrQueryInterface $q
     $results = apachesolr_search_process_response($response_individual, $query);
     foreach ($results as &$result) {
       $result['fields']['groupId'] = $groupId;
-      $result['fields']['groupValue'] = strlen($grouped_response->groupValue) ?
-	$grouped_response->groupValue : 'un-grouped';
+      $result['fields']['groupValue'] = $grouped_response->groupValue;
     }
     $grouped_results = array_merge($grouped_results, $results);
   }
@@ -108,8 +107,10 @@ function apachesolr_sort_process_response($response, DrupalSolrQueryInterface $q
 function apachesolr_sort_preprocess_search_result(&$variables) {
   if (isset($variables['result']['fields']['groupValue'])) {
     $variables['classes_array'][] = "solr-grouped";
-    $identifier = drupal_clean_css_identifier($variables['result']['fields']['groupValue']);
-    $variables['classes_array'][] = "solr-group-".$identifier;
+    if (isset($variables['result']['fields']['groupValue'])) {
+      $identifier = drupal_clean_css_identifier($variables['result']['fields']['groupValue']);
+      $variables['classes_array'][] = "solr-group-".$identifier;
+    }
   }
 }
 
@@ -166,7 +167,7 @@ function apachesolr_sort_block_view($delta) {
 /**
  * Implements hook_form_FORM_ID_alter().
  *
- * Adds a "grouped-enable" option in the settings of any environment
+ * Adds a "make multisite" option in the settings of any environment
  */
 function apachesolr_sort_form_apachesolr_environment_edit_form_alter(&$form, &$form_state, $form_id) {
   if (!count($form_state['build_info']['args'])) {
@@ -224,14 +225,13 @@ function apachesolr_sort_form_apachesolr_environment_edit_form_alter(&$form, &$f
     ),
   );
   $form['actions']['save']['#submit'][] = 'apachesolr_sort_environment_edit_submit';
-  $form['actions']['save_edit']['#submit'][] = 'apachesolr_sort_environment_edit_submit';
 }
 
 /**
- * Submit callback for saving an environment to make it grouped-enabled
+ * Submit callback for saving an environment to make it multisite capabe
  */
 function apachesolr_sort_environment_edit_submit($form, &$form_state) {
-  // Enable or disable grouping
+  // Enable or disable multisite
   if ($form_state['values']['make_grouped']) {
     apachesolr_environment_variable_set($form_state['values']['env_id'], 'process_response_callback', 'apachesolr_sort_process_response');
   }
