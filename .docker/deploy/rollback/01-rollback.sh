@@ -67,20 +67,6 @@ if [ -f .env ]; then
         sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=TAG_RESTORE_STOP/" .env
     fi
 
-    if $restore_database ; then
-        sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=DATABASE_RESTORE_START/" .env
-
-        if [ -z "AZURE_DEPLOY_DB_BACKUP" ]; then
-            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \":favrskov-logo: Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing database backup, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
-            return false
-        fi
-
-        docker-compose exec php sh -c "drush sql-drop"
-        docker-compose exec php sh -c "drush sql-cli" < dumps/${AZURE_DEPLOY_DB_BACKUP}
-
-        sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=DATABASE_RESTORE_STOP/" .env
-    fi
-
     if $restore_image ; then
         sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=IMAGE_RESTORE_START/" .env
 
@@ -93,5 +79,19 @@ if [ -f .env ]; then
         docker pull favrskov.azurecr.io/favrskov-php:$restore_tag
 
         sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=IMAGE_RESTORE_STOP/" .env
+    fi
+
+    if $restore_database ; then
+        sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=DATABASE_RESTORE_START/" .env
+
+        if [ -z "AZURE_DEPLOY_DB_BACKUP" ]; then
+            curl -s -X POST -H 'Content-type: application/json' --data "{\"attachments\": [{\"title\": \":favrskov-logo: Favrskov.dk\", \"title_link\": \"$7\", \"text\": \":x: Rollback of branch \`$2\` to <$7|$8> failed, missing database backup, manual rollback required!!.\",\"color\": \"CF423F\",\"mrkdwn_in\": [\"title\",\"text\"]}]}" $3
+            return false
+        fi
+
+        docker-compose exec php sh -c "drush sql-drop"
+        docker-compose exec php sh -c "drush sql-cli" < dumps/${AZURE_DEPLOY_DB_BACKUP}
+
+        sed -i "s/AZURE_DEPLOY_STAGE=.*/AZURE_DEPLOY_STAGE=DATABASE_RESTORE_STOP/" .env
     fi
 fi
