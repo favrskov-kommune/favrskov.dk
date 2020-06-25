@@ -39,6 +39,7 @@ jobs:
           repository: 'favrskov-codebase'
           command: build
           Dockerfile: '.docker/build/codebase/Dockerfile'
+          arguments: '--build-arg GITHUB_TOKEN=$(GITHUB_TOKEN)'
           buildContext: .
           tags: |
             latest
