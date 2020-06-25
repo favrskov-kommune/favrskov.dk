@@ -46,9 +46,10 @@ RUN docker-php-ext-install \
         soap \
         zip
 
+RUN pecl install memcached-2.2.0
+
 RUN pecl install -o -f \
-  uploadprogress \
-  memcached-2.2.0
+  uploadprogress
 
 RUN docker-php-ext-enable \
   uploadprogress
