@@ -662,7 +662,10 @@ if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])
  * Match an IP to a CIDR range.
  */
 function _ysci_cidr_match($ip, $range) {
-  [$subnet, $bits] = explode('/', $range);
+  $tmp = explode('/', $range);
+  $subnet = $tmp[0];
+  $bits = $tmp[1];
+  unset($tmp);
   $ip = ip2long($ip);
   $subnet = ip2long($subnet);
   $mask = -1 << (32 - $bits);
