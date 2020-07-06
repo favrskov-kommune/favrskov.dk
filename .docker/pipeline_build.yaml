@@ -7,8 +7,10 @@ variables:
   projectRegistryUrl: 'favrskov.azurecr.io'
   buildPrefix: ${{ variables['Build.SourceBranchName'] }}-
   environment: 'staging'
+  pool_name: Drupal-Staging
   ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
     environment: 'prod'
+    pool_name: Drupal-Production
 
 name: $(buildPrefix)$(majorVersion).$(minorVersion)$(Rev:.r)
 
@@ -23,7 +25,7 @@ trigger:
       - .ddev/
 
 pool:
-  name: Azure Pipelines
+  name: $(pool_name)
   vmImage: $(vmImage)
 
 jobs:
