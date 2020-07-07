@@ -50,9 +50,12 @@ jobs:
         inputs:
           targetType: 'inline'
           script: |
-            docker run --name codebase --rm -d $(projectRegistryUrl)/codebase:latest
+            docker run --name codebase --detach $(projectRegistryUrl)/codebase:latest
             docker cp codebase:codebase/codebase.tar.gz $(System.DefaultWorkingDirectory)
             docker stop codebase
+            docker container ls
+            docker ps
+            docker image ls
       - task: PublishPipelineArtifact@1
         displayName: Save Archive
         inputs:
