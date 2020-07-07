@@ -96,6 +96,12 @@ jobs:
           command: push
           tags: |
             $(Build.BuildNumber)
+      - task: Bash@3
+        displayName: Cleanup
+        inputs:
+          targetType: 'inline'
+          script: |
+            docker rmi $(projectRegistryUrl)/favrskov-apache:$(Build.BuildNumber)
 
   - job: php
     displayName: PHP
@@ -136,3 +142,9 @@ jobs:
         inputs:
           containerRegistry: $(sharedRegistry)
           command: logout
+      - task: Bash@3
+        displayName: Cleanup
+        inputs:
+          targetType: 'inline'
+          script: |
+            docker rmi $(projectRegistryUrl)/favrskov-apache:$(Build.BuildNumber)
