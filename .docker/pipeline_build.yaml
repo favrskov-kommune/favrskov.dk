@@ -38,36 +38,32 @@ jobs:
         displayName: Build
         inputs:
           containerRegistry: $(projectRegistry)
-          repository: 'favrskov-codebase'
+          repository: 'codebase'
           command: build
           Dockerfile: '.docker/build/codebase/Dockerfile'
           arguments: '--build-arg GITHUB_TOKEN=$(GITHUB_TOKEN)'
           buildContext: .
           tags: |
             latest
-      - task: UsePythonVersion@0
-        displayName: Install Python
       - task: Bash@3
         displayName: Get Archive
         inputs:
           targetType: 'inline'
           script: |
-            python -m pip install --upgrade pip setuptools wheel && \
-            pip install undocker && \
-            docker save $(projectRegistryUrl)/favrskov-codebase | /home/vsts/.local/bin/undocker -o codebase && \
-            mv codebase/codebase.tar.gz codebase.tar.gz && \
-            rm -rf codebase
+            docker run --name codebase --rm -d $(projectRegistryUrl)/codebase:latest
+            docker cp codebase:codebase.tar.gz $(System.DefaultWorkingDirectory)
+            docker stop codebase
       - task: PublishPipelineArtifact@1
         displayName: Save Archive
         inputs:
           targetPath: 'codebase.tar.gz'
-          artifact: favrskov-codebase
+          artifact: codebase
           publishLocation: 'pipeline'
       - task: PublishPipelineArtifact@1
         displayName: Save Scripts
         inputs:
           targetPath: '.docker/deploy'
-          artifact: favrskov-scripts
+          artifact: scripts
           publishLocation: 'pipeline'
 
   - job: apache
@@ -79,7 +75,7 @@ jobs:
       - task: DownloadPipelineArtifact@2
         displayName: Download Archive
         inputs:
-          artifact: favrskov-codebase
+          artifact: codebase
           path: $(Build.SourcesDirectory)
       - task: Docker@2
         displayName: Build
@@ -109,7 +105,7 @@ jobs:
       - task: DownloadPipelineArtifact@2
         displayName: Download Archive
         inputs:
-          artifact: favrskov-codebase
+          artifact: codebase
           path: $(Build.SourcesDirectory)
       - task: Docker@2
         displayName: Login
