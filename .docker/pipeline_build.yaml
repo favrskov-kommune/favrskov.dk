@@ -147,4 +147,4 @@ jobs:
         inputs:
           targetType: 'inline'
           script: |
-            docker rmi $(projectRegistryUrl)/favrskov-apache:$(Build.BuildNumber)
+            docker rmi $(projectRegistryUrl)/favrskov-php:$(Build.BuildNumber)
