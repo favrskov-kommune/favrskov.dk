@@ -47,9 +47,6 @@ jobs:
             latest
       - task: UsePythonVersion@0
         displayName: Install Python
-        inputs:
-          versionSpec: '3.x'
-          addToPath: true
       - task: Bash@3
         displayName: Get Archive
         inputs:
