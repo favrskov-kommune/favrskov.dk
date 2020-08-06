@@ -80,8 +80,8 @@
     @include at-breakpoint(12 $width-550) {
       margin: 50px auto 15px;
     }
-    a:focus {
-      border-left: 2px solid $white;
+    a:focus img {
+      opacity: 0.5;
     }
   }
 

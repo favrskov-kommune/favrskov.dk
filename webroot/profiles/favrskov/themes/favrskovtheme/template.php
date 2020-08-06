@@ -924,3 +924,16 @@ function favrskovtheme_theme() {
 
   return $items;
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function favrskovtheme_preprocess_panels_pane(&$variables) {
+//  dpm($variables);
+  $pane = $variables['pane'];
+  if($pane->type == 'footer_logo' || $pane->type == 'page_logo') {
+    $content = $variables['content'];
+    $content = str_replace('alt="Hjem"', 'alt="Favrskov Kommune"', $content);
+    $variables['content'] = $content;
+  }
+}
