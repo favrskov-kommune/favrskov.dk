@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Code for the Chatbot feature.
+ */
+
+include_once 'chatbot.features.inc';
+
+function chatbot_preprocess_page(&$variables) {
+  $node = $variables['node'];
+
+  if ($node->type === 'article') {
+    if (isset($node->field_chatbot_enable) && $node->field_chatbot_enable[LANGUAGE_NONE][0]['value'] == 1 && !path_is_admin(current_path())) {
+      $chatbot_name = $node->field_chatbot_name[LANGUAGE_NONE][0]['value'];
+      $chatbot_category = $node->field_chatbot_category[LANGUAGE_NONE][0]['value'];
+
+      drupal_add_js([
+        'chatbot' => [
+          'name' => isset($chatbot_name) ? $chatbot_name : 'Muni',
+          'category' => isset($chatbot_category) ? $chatbot_category : NULL
+        ]
+      ],
+        'setting'
+      );
+
+      drupal_add_js(drupal_get_path('module', 'chatbot') . '/js/muni.js');
+    }
+  }
+}
