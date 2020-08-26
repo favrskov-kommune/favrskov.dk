@@ -20,7 +20,7 @@
         font: 12px Arial;
         font-weight: bold;
         text-transform: uppercase;
-        color: $liteGray;
+        @include links($dark-grey, $red);
       }
     }
     @include at-breakpoint(12 $width-1040) {
@@ -53,7 +53,11 @@
           font: 9pt Arial;
           font-weight: 700;
           text-transform: uppercase;
-          color: $lightergray;
+          color: $liteGray;
+          &:focus, &:hover {
+            text-decoration: underline;
+            color: $link-red;
+          }
         }
       }
       .swiper-container {
@@ -185,6 +189,7 @@
           margin: 10px 0;
           a {
             color: $red;
+            &:focus,
             &:hover {
               color: $dimgray;
             }
@@ -219,7 +224,7 @@
           }
         }
         &:hover {
-          background: #999;
+          background: $dark-grey;
         }
         a, span {
           display: block;
@@ -231,6 +236,10 @@
           width: 100%;
           height: 100%;
           padding: 20px;
+          background: $red;
+          &:hover, &:focus {
+            background: $dark-grey;
+          }
         }
         span {
           font-family: Arial;
@@ -252,10 +261,10 @@
             font-size: 14px;
           }
         }
-        &.red-background {
+        &.red-background a {
           background: $red;
-          &:hover {
-            background: #999;
+          &:hover, &:focus {
+            background: $dark-grey;
           }
         }
         &.light-grey-background {
@@ -264,10 +273,10 @@
             background: $grey;
           }
         }
-        &.blue-background {
+        &.blue-background a {
           background: $blue-bannerlink;
-          &:hover {
-            background: $grey-bannerlink;
+          &:hover, &:focus {
+            background: $dark-grey;
           }
         }
       }
@@ -288,6 +297,10 @@
           }
           a {
             font-weight: bold;
+            &:focus,
+            &:hover {
+              color: $link-red;
+            }
           }
         }
         .hours-field {
@@ -372,6 +385,10 @@
             cursor: pointer;
             position: relative;
             font: $sans-book !important;
+            &:hover, &:focus {
+              outline: none;
+              text-decoration: underline;
+            }
             &:after {
               @extend %before-after;
               width: 20px;
@@ -411,7 +428,7 @@
             }
             a {
               color: $red;
-              &:hover {
+              &:hover, &:focus {
                 color: $dimgray;
               }
             }

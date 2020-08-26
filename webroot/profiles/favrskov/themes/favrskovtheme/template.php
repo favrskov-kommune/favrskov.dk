@@ -368,6 +368,14 @@ function favrskovtheme_js_alter(&$js) {
   }
 
   $js = array_diff_key($js, $exclude);
+
+  $override_file = drupal_get_path('module', 'views_load_more') . '/views_load_more.js';
+  if(isset($js[$override_file])) {
+    $js[$override_file]['data'] = drupal_get_path('theme', 'favrskovtheme') . '/js/override_views_load_more.js';
+  }
+//  dpm($js);
+//  dpm(drupal_get_path('module', 'views_load_more') . '/views_load_more.js');
+//  dpm(drupal_get_path('theme', 'favrskovtheme') . '/js/override_views_load_more.js');
 }
 
 /**
@@ -915,4 +923,17 @@ function favrskovtheme_theme() {
   );
 
   return $items;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function favrskovtheme_preprocess_panels_pane(&$variables) {
+//  dpm($variables);
+  $pane = $variables['pane'];
+  if($pane->type == 'footer_logo' || $pane->type == 'page_logo') {
+    $content = $variables['content'];
+    $content = str_replace('alt="Hjem"', 'alt="Favrskov Kommune"', $content);
+    $variables['content'] = $content;
+  }
 }

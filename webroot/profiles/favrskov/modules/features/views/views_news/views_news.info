@@ -3,7 +3,6 @@ core = 7.x
 package = Views
 version = 7.x-1.1
 project = views_news
-dependencies[] = views_load_more
 dependencies[] = fe_nodequeue
 dependencies[] = views
 dependencies[] = views_content

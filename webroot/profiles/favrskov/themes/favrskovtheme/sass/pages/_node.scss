@@ -837,9 +837,9 @@
     background: #eee;
 
     // Links
-    a:hover {
-      background-color: #989e9e;
-      color: $white;
+    a:focus, a:hover {
+      background: #cccccc;
+      color: $grayMedium;
     }
 
     // Active link

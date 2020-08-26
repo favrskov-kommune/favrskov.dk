@@ -1,0 +1,17 @@
+name = Chatbot
+description = Add Muni chatbot to articles
+core = 7.x
+package = Other
+version = 7.x-1.0
+dependencies[] = content_type_article
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = list
+dependencies[] = text
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_base][] = field_chatbot_category
+features[field_base][] = field_chatbot_enable
+features[field_base][] = field_chatbot_name
+features[field_group][] = group_chatbot|node|article|form

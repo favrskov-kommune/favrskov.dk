@@ -36,7 +36,7 @@
       }
     }
     .view-content-by-taxonomy-term {
-      a:hover {
+      a:hover, a:focus {
         text-decoration: underline;
       }
     }
@@ -44,7 +44,7 @@
 
   .taxonomy:hover {
     a {
-      color: $liteGray;
+      color: $gray;
 
       &:hover {
 
@@ -77,6 +77,9 @@
       @include opacity(0.5);
     }
   }
+  .taxonomy-pic a:focus {
+    @include opacity(0.5);
+  }
 
   // Header
   h3 {
@@ -86,6 +89,9 @@
     a {
       color: $dark-green;
       text-transform: uppercase;
+      &:hover, &:focus {
+        color: $gray;
+      }
     }
   }
 
@@ -96,7 +102,7 @@
     font-family: Arial;
     font-weight: bold;
     a {
-      @include links(#000, $liteGray);
+      @include links(#000, $gray);
     }
   }
 

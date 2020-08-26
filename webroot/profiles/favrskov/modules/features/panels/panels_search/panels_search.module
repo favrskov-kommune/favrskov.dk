@@ -15,6 +15,7 @@ function panels_search_form_apachesolr_panels_search_form_alter(&$form, $form_st
   $element = &$form['apachesolr_panels_search_form'];
   $element['#size'] = 50;
   $element['#placeholder'] = t('Search');
+  $element['#attributes']['aria-label'] = t('Search');
 
   $form['search_phonebooks'] = array(
     '#type' => 'checkbox',
@@ -50,6 +51,9 @@ function panels_search_form_apachesolr_panels_search_block_alter(&$form, $form_s
   $element = &$form['apachesolr_panels_search_form'];
   $element['#size'] = 76;
   $element['#placeholder'] = t('What are you searching?');
+  $element['#attributes']['aria-label'] = t('What are you searching?');
+
+//  print '<pre>';var_dump(($form['apachesolr_panels_search_form']));die('tester');
 
   $context_id = 'apachesolr_search_page:' . apachesolr_search_default_search_page();
   apachesolr_autocomplete_do_alter($element, $form, $context_id);

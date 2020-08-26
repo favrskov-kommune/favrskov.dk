@@ -24,7 +24,7 @@
       <?php print $content['header']; ?>
   <?php endif; ?>
 
-  <main id="main-wrapper" class="main-wrapper group clearfix" role="main">
+  <main id="main-wrapper" class="main-wrapper group clearfix">
     <section id="main-content" class="content-container">
       <div class="content">
         <section id="node-content" class="node-content">

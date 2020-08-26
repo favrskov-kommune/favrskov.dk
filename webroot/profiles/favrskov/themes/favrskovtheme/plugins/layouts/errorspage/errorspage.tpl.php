@@ -17,7 +17,7 @@
  */
 ?>
 <div class="panel-errorspage errors-page" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
-  <main id="main-wrapper" class="main-wrapper group" role="main">
+  <main id="main-wrapper" class="main-wrapper group">
     <section id="main-content" class="content-container">
       <div class="content">
 
