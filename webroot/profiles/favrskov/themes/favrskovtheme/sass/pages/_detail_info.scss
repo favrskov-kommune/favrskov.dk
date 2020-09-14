@@ -96,7 +96,7 @@
         }
 
         a {
-          @include links($link-red, $dimgray);
+          @include links($link-red, $dimgray, underline);
         }
       }
       .teaser {

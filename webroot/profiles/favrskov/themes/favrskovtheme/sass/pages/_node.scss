@@ -114,7 +114,7 @@
    line-height: 1.4;
 
    a {
-    @include links($link-red, $dimgray);
+    @include links($link-red, $dimgray, underline);
    }
 
    h2,
@@ -994,13 +994,13 @@
     display: block;
 
     a {
-      background: url(../images/pdf-icon.png) no-repeat left center;
+      //background: url(../images/pdf-icon.png) no-repeat left center;
       display: block;
-      padding-left: 30px;
+      //padding-left: 30px;
       min-height: 30px;
       padding-top: 12px;
       line-height: 1.5;
-      @include links ($red, $dark-grey);
+      @include links ($red, $dark-grey, underline);
     }
   }
 

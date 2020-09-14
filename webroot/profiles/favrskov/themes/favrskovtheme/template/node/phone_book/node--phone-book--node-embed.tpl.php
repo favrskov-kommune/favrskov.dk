@@ -17,7 +17,7 @@
 );
 
 ?>
-<?php print '<div id="contact-item-' . $phone_book_id . '" class="contact-item group">'; ?>
+<?php print '<div class="contact-item group">'; ?>
   <div class='contact-info'>
     <?php foreach ($fields as $field): ?>
 
