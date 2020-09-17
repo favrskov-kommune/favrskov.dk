@@ -292,14 +292,12 @@
           line-height: 25px;
           float: left;
           width: 50%;
-          &, a {
-            color: $dimgray;
-          }
           a {
             font-weight: bold;
+            color: $link-red;
             &:focus,
             &:hover {
-              color: $link-red;
+              color: $dimgray;
             }
           }
         }
