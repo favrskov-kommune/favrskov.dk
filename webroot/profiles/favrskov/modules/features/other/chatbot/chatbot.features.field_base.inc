@@ -27,10 +27,10 @@ function chatbot_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'passport' => 'Passport',
-        'doctor' => 'Doctor',
-        'driver_license' => 'Driver license',
-        'moving' => 'Moving',
+        'passport' => 'Pas',
+        'doctor' => 'Læge',
+        'driver_license' => 'Kørekort',
+        'moving' => 'Flytning',
       ),
       'allowed_values_function' => '',
     ),
