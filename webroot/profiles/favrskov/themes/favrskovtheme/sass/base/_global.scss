@@ -92,14 +92,11 @@ $phone-port: 12 320px;
 
 //  Global links styles
 a {
-  @include links($link-red, $dimgray);
+  @include links($link-red, $dimgray, underline);
   outline: medium none;
 
   &:focus {
     outline: medium none;
-  }
-  &:hover {
-    text-decoration: none;
   }
 }
 
