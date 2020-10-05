@@ -106,10 +106,11 @@
         display: block;
         padding: 30px 35px;
         min-height: 290px;
+        text-decoration: none;
         h2 {
           font-size: 24px;
           font-weight: bold;
-          @include links(#666, $red);
+          @include links(#666, $red, none, none);
           letter-spacing: 0.5px;
           line-height: 24px;
           word-wrap: break-word;
@@ -117,7 +118,7 @@
         p {
           margin-top: 25px;
           font: 16px/22px Arial;
-          @include links(#666, $red);
+          @include links(#666, $red, none, none);
         }
       }
       &:hover {
