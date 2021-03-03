@@ -1,0 +1,107 @@
+/**
+ * @file
+ *   CSS for the Cludo Search module.
+ */
+
+/* Full search form */
+.cludo-search-search-form {
+  margin-bottom: 1em;
+}
+.cludo-search-search-form input {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+.cludo-search-results,
+.cludo-search-keymatch-results {
+  list-style: none;
+}
+
+/* Result entries */
+.search-gooogle-appliance-results p {
+  margin-top: 0;
+}
+.cludo-search-result .title {
+  margin-bottom: 0px;
+  font-size: 1.2em;
+}
+.cludo-search-result .cludo-search-snippet {
+  margin-bottom: 0px;
+}
+.cludo-search-result li {
+  margin-bottom: 1em;
+}
+.cludo-search-results .cludo-search-snippet-info {
+  padding-left: 0;
+}
+.cludo-search-results .cludo-search-info,
+.cludo-search-keymatch-results {
+  font-size: 0.85em;
+  color: #888;
+}
+
+/* Key match results */
+.cludo-search-keymatch-results {
+  padding-left: 0;
+}
+.cludo-search-keymatch-results li {
+  background: #f1f1ed;
+  border-bottom: 1px solid #e7e7e3;
+  padding: 10px 10px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  margin-bottom: 10px;
+}
+.cludo-search-keymatch-results h3 {
+  margin: 0;
+}
+.cludo-search-keymatch-results p {
+  margin: 0;
+}
+
+/* Synonyms */
+/* Allow synonyms on search results page to be snug under the search box */
+form.search-cludo-search-search-form {
+  margin-bottom: 2px;
+}
+
+/* Add back the margin that formerly separated the search box from the "Search Results" heading */
+#search-results-heading {
+  margin-top: 1em;
+}
+
+.cludo-search-synonyms ul,
+.cludo-search-synonyms li {
+  display: inline;
+  list-style-type: none;
+}
+
+/* Results listings "control" bar */
+.cludo-search-results-control-bar {
+  border: 1px solid #ddd;
+  background-color: #f6f6f2;
+  border-color: #eee;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  padding: 4px 6px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.cludo-search-results-control-bar .cludo-search-search-stats {
+  float: left;
+}
+.cludo-search-results-control-bar .cludo-search-sort-headers {
+  float: right;
+}
+.cludo-search-sort-headers .cludo-search-sorter {
+  padding-right: 14px;
+  display: block;
+  float: left;
+}
+.cludo-search-sort-headers .cludo-search-sorter:last-child {
+  padding-right: 4px;
+}
+.cludo-search-sorter .active-sort {
+  font-weight: bold;
+}

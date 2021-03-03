@@ -1,0 +1,485 @@
+<?php
+
+/**
+ * @file
+ * Cludo search module enables searching via a dedicated cludo Search search.
+ *
+ * See README.txt and the help page at admin/help/cludo_search.
+ */
+// Helpers.
+require_once drupal_get_path('module', 'cludo_search') . '/cludo_search.helpers.inc';
+
+// Default theme impementations.
+require_once drupal_get_path('module', 'cludo_search') . '/theme/cludo_search.theme.inc';
+
+/**
+ * Implements hook_features_api().
+ */
+function cludo_search_features_api() {
+  return array(
+    'cludo_search_profile' => array(
+      'name' => t('Config for Cludo search'),
+      'file' => drupal_get_path('module', 'cludo_search') . '/cludo_search.features.inc',
+      'default_file' => FEATURES_DEFAULTS_INCLUDED,
+      'default_hook' => 'cludo_search_defaults',
+      'feature_source' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_help().
+ */
+function cludo_search_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#cludo_search':
+      $output = '';
+      $output .= '<h2>' . t('About') . '</h2>' . PHP_EOL;
+      $output .= '<p>' . t('The cludo search module provides a search form.') . '</p>' . PHP_EOL;
+      $output .= '<p>' . t('If you will use core search along with this module, core search results will show up normally at <code>search/{search terms}</code>, while Cludo Search searches will show up at <code>csearch/{search terms}</code>.') . '</p>' . PHP_EOL;
+      $output .= '<h2>' . t('Blocks') . '</h2>';
+      $output .= '<p>' . t('The module provides:') . '</p>' . PHP_EOL;
+      $output .= '<ol><li>' . t('the block search form') . '</li>' . PHP_EOL;
+      $output .= '<p>' . t('Both can be enabled and configured on the <a href="@blocks-admin">Blocks administration page</a>. The block search form provides a search form that can be placed into any block.', array('@blocks-admin' => url('admin/structure/block'))) . '</p>';
+
+      return $output;
+
+    case 'admin/config/cludo_search/settings':
+      $output = '<p>' . t('The Cludo Search account settings . Visit <a href="@CS-help">Cludo Search help section</a> for more information on setting up the integration.', array('@CS-help' => url('admin/help/cludo_search'))) . '</p>';
+
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function cludo_search_menu() {
+  $items = array();
+
+  $settings = _cludo_search_get_settings();
+
+  // Search results page.
+  $items[$settings['search_page']] = array(
+    'title' => 'Site Search',
+    'page callback' => 'cludo_search_search_view',
+    // (1) search query, (2) results sort param.
+    'page arguments' => array(1, 2),
+    'access arguments' => array('access_cludo_search_content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+
+  // Admin page.
+  $items['admin/config/search/cludo_search/settings'] = array(
+    'title' => 'Cludo Search',
+    'description' => 'Configure options for Cludo Search.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('cludo_search_admin_settings'),
+    'file' => 'cludo_search.admin.inc',
+    'access arguments' => array('administer_cludo_search'),
+    'weight' => -30,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function cludo_search_permission() {
+  $perms = array();
+  $perms['administer_cludo_search'] = array(
+    'title' => t('Administer Cludo Search settings'),
+  );
+  $perms['access_cludo_search_content'] = array(
+    'title' => t('Use Cludo searches'),
+  );
+
+  return $perms;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function cludo_search_block_info() {
+  $blocks = array();
+
+  // Block search form.
+  $blocks['ca_block_search_form'] = array(
+    'info' => t('cludo search search form'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $settings = _cludo_search_get_settings();
+
+  // Related searches block.
+  $blocks['ca_result_searches'] = array(
+    'info' => t('Search Results'),
+    'cache' => DRUPAL_NO_CACHE,
+    // Set default visibility to appear only on results pages (just a
+    // suggestion).
+    'visibility' => 1,
+    'pages' => $settings['search_page'] . '*',
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function cludo_search_block_view($delta = '') {
+  $block = array();
+  $settings = _cludo_search_get_settings();
+
+  if (user_access('access_cludo_search_content')) {
+    switch ($delta) {
+      // Provide the search form.
+      case 'ca_block_search_form':
+        $block['content'] = drupal_get_form('cludo_search_block_form');
+        cludo_search_insert_js_css($settings);
+
+        break;
+
+      case 'ca_result_searches':
+        $block['content'] = drupal_get_form('cludo_search_block_form') . '
+            <div>Search results blockview</div>
+            <div id="cludo-search-results">
+              <div class="cludo-r">
+                <div class="cludo-c-12">
+                  <div class="search-result-count"></div>
+                  <div class="search-did-you-mean"></div>
+                  <div class="search-results"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ';
+        cludo_search_insert_js_css($settings);
+
+        break;
+    }
+  }
+
+  return $block;
+}
+
+/**
+ * Form builder outputs the search form for the search block.
+ *
+ * @ingroup forms
+ * @see cludo_search_block_form_submit()
+ * @see cludo_search-block-form.tpl.php
+ */
+function cludo_search_block_form($form, &$form_state) {
+
+  $form['search_keys'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Enter the terms you wish to search for.'),
+    '#title_display' => 'before',
+    '#size' => 15,
+    '#attributes' => array(
+      'autocomplete' => 'off',
+    ),
+    '#default_value' => '',
+  );
+
+  $form['actions'] = array(
+    '#type' => 'actions',
+    'submit' => array(
+      '#type' => 'submit',
+      '#value' => t('Search'),
+    ),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit handler for block search form.
+ *
+ * Just sets the redirect for the form based on the search query.
+ */
+function cludo_search_block_form_submit($form, &$form_state) {
+  // Kill any dynamic destinations, as the results page is always the
+  // destination.
+  if (isset($_GET['destination'])) {
+    unset($_GET['destination']);
+  }
+
+  // Set the redirect, decode to remove + and %20.
+  $search_query = urldecode($form_state['values']['search_keys']);
+
+  $settings = _cludo_search_get_settings();
+
+  // Grab any query params and pass back into redirect.
+  $query = drupal_get_query_parameters();
+
+  // Set cludo fragment.
+  $cludo_fragment = drupal_http_build_query(array('cludoquery' => $search_query));
+
+  $form_state['redirect'] = array(
+    $settings['search_page'], array(
+      'query' => $query,
+      'fragment' => '?' . $cludo_fragment,
+    ),
+  );
+
+  // Search execution happens in page callback.
+  $form['#action'] = '';
+  return $form;
+}
+
+/**
+ * Form builder outputs the search form for results pages.
+ *
+ * @ingroup forms
+ * @see cludo_search_search_form_submit()
+ * @see cludo_search-search-form.tpl.php
+ * @see cludo_search-results.tpl.php
+ */
+function cludo_search_search_form($form, &$form_state, $query = '', $prompt = '') {
+
+  $prompt = ($prompt == '') ? t('Enter the terms you wish to search for.') : $prompt;
+
+  // Basic search.
+  $form['basic'] = array(
+    '#type' => 'container',
+  );
+  $form['basic']['search_keys'] = array(
+    '#type' => 'textfield',
+    '#default_value' => $query,
+    '#attributes' => array(
+      'title' => $prompt,
+      'autocomplete' => 'off',
+    ),
+    '#title' => check_plain($prompt),
+    '#title_display' => 'before',
+  );
+
+  // Only prompt if we haven't searched yet.
+  if ($query == '') {
+    $form['basic']['prompt'] = array(
+      '#type' => 'item',
+      '#markup' => '<p><b>' . $prompt . '</b></p>',
+    );
+  }
+
+  $form['basic']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Search'),
+  );
+
+  // Submit points to search page without any keys (pre-search state)
+  // the redirect happens in _submit handler
+  // $form_state['action'] = 'csearch/';
+  // This one impacts the form: $form['#action'] = '4';
+  // $form['#action'] = 'csearch/';.
+  $form['#action'] = '';
+
+  // Use core search CSS in addition to this module's css
+  // (keep it general in case core search is enabled)
+  $form['#attributes']['class'][] = 'search-form';
+  $form['#attributes']['class'][] = 'search-cludo-search-search-form';
+
+  return $form;
+}
+
+/**
+ * Submit handler for full search form.
+ */
+function cludo_search_search_form_submit($form, &$form_state) {
+
+  // Set the redirect.
+  $search_query = urlencode($form_state['values']['search_keys']);
+
+  // Dirty change to get rid of +.
+  $search_query = str_replace('+', '%20', $search_query);
+
+  $form_state['redirect'] = url($form_state['action'] . $search_query, array('absolute' => TRUE));
+  $data = "submit info: " . $search_query . " \n redirect: " . $form_state['redirect'] . "\n";
+}
+
+/**
+ * Top level search execution (menu callback).
+ *
+ * - performs a query of the csa device for a SINGLE PAGE of search results.
+ *
+ * @arg $query
+ *    the search query from url [ arg(1) ]
+ * @arg $sort
+ *    optional sort parameter, either "rel" (default) or "date" [ arg(2) ]
+ *
+ * @return array
+ *   themed results: error messages or results listing
+ */
+function cludo_search_search_view($query = '', $sort = NULL) {
+
+  $data = "Query: " . $query . " encoded query: " . urldecode($query) . "\n";
+  $query = urldecode($query);
+
+  // Get the results page form.
+  $form = drupal_get_form('cludo_search_search_form', $query);
+
+  // When POSTing back to the search form on a search results page, the original
+  // URL is accessed (which re-runs that search) and then the redirect for
+  // the new search takes place, executing the second (correct) search.
+  // Prevent hitting the device twice per search by checking if we've POSTed
+  // yet.
+  if (!isset($_POST['form_id']) && ($query != '')) {
+
+    // Response processing structures
+    // cURL arguments for the query.
+    $search_query_data = array();
+    // Processed response.
+    $response_data = array();
+    // Get the sort parameter from the url.
+    $sort_param = '';
+    if (($sort != NULL) && ($sort == 'date')) {
+      $sort_param = 'date:D:S:d1';
+    }
+
+    // Determine how deep into the results to start viewing (paging)
+    if (isset($_GET['page'])) {
+      $results_view_start = check_plain($_GET['page']) * $settings['results_per_page'];
+    }
+    else {
+      $results_view_start = 0;
+    }
+
+    // Allow implementation of hook_cludo_search_query_alter() by other modules
+    // drupal_alter('cludo_search_query', $search_query_data);
+    // check for handshake errors
+    // cURL returned an error (can't connect)
+    if ($csa_response['is_error'] == TRUE) {
+      $response_data['error']['curl_error'] = 'error';
+    }
+    // cURL gave us something back -> attempt to parse.
+    else {
+      $response_data = $csa_response['response'];
+    }
+
+    // Render results.
+    $search_query_data['csa_query_params']['urlencoded_q'] = urlencode($query);
+    $template_data = array(
+      'search_query_data' => $search_query_data,
+      'response_data' => $response_data,
+    );
+
+    return $form;
+  }
+  // Return the form so the (real) second search is performed.
+  else {
+    return $form;
+  }
+}
+
+/**
+ * Implements theme_preprocess_block().
+ */
+function cludo_search_preprocess_block(&$variables) {
+  if (in_array($variables['block']->delta, array('ca_block_search_form', 'ca_result_searches'))) {
+    $settings = _cludo_search_get_settings();
+    cludo_search_insert_js_css($settings);
+  }
+}
+
+/**
+ * Adding javascript to header and footer.
+ *
+ * @see https://cludo.zendesk.com/hc/en-us/articles/115003954911-How-to-use-and-customize-in-line-templates
+ * (In the long run, this should be rendered via processed flat file)
+ */
+function cludo_search_preprocess_page(&$variables) {
+  $settings = _cludo_search_get_settings();
+  if (current_path() == $settings['search_page']) {
+    cludo_search_insert_js_css($settings);
+  }
+}
+
+/**
+ * Adds Cludo code required for display.
+ *
+ * @param array $settings
+ *
+ * @global string $base_url
+ */
+function cludo_search_insert_js_css(array $settings) {
+  $added = &drupal_static(__FUNCTION__);
+  if (empty($added)) {
+    // Insert at end of head".
+    $head_search_css = '<link href="//customer.cludo.com/css/templates/v1.1/essentials/cludo-search.min.css" type="text/css" rel="stylesheet">';
+    $head_search_css .= '<!--[if lte IE 9]>';
+    $head_search_css .= '<script src="//api.cludo.com/scripts/xdomain.js" slave="//api.cludo.com/proxy.html" type="text/javascript">';
+    $head_search_css .= '</script><![endif]-->';
+
+    $markup_array = array(
+      '#type' => 'markup',
+      '#markup' => $head_search_css,
+    );
+
+    drupal_add_html_head($markup_array, 'cludo_search');
+    $disable_autocomplete = $settings['disable_autocomplete'] ? 'true' : 'false';
+    $hide_results = $settings['hide_results_count'] ? 'true' : 'false';
+    $hide_did_you_mean = $settings['hide_did_you_mean'] ? 'true' : 'false';
+    $hide_search_filters = $settings['hide_search_filters'] ? 'true' : 'false';
+    global $base_url;
+    $search_url = $base_url . DIRECTORY_SEPARATOR . $settings['search_page'];
+
+    // Insert at bottom of footer.
+    $footer_search_js = "
+    var CludoSearch;
+    jQuery(function() {
+      var cludoSettings = {
+        customerId: " . $settings['customerId'] . ",
+        engineId: " . $settings['engineId'] . ",
+        searchUrl: '" . $search_url . "',
+        disableAutocomplete: " . $disable_autocomplete . ",
+        hideResultsCount: " . $hide_results . ",
+        hideSearchDidYouMean: " . $hide_did_you_mean . ",
+        hideSearchFilters: " . $hide_search_filters . ",
+        language: 'en',
+        searchInputs: [\"cludo-search-block-form\",\"cludo-search-search-form\"],
+        type: 'inline',
+        hideSearchFilters: true
+      };
+    CludoSearch = new Cludo(cludoSettings);
+    CludoSearch.init();
+    });
+  ";
+
+    drupal_add_js('//customer.cludo.com/scripts/bundles/search-script.min.js', array(
+      'type' => 'external',
+      'scope' => 'header',
+      'group' => JS_THEME,
+      'every_page' => TRUE,
+      'weight' => -1,
+    ));
+
+    drupal_add_js($footer_search_js, array(
+      'type' => 'inline',
+      'scope' => 'footer',
+      'every_page' => TRUE,
+      'weight' => 5,
+    ));
+    $added = TRUE;
+  }
+}
+
+/**
+ * Returns field keys.
+ *
+ * @return array
+ *   An array of all the variables.
+ */
+function _cludo_search_get_field_keys() {
+  return array(
+    'customerId',
+    'engineId',
+    'search_page',
+    'disable_autocomplete',
+    'hide_results_count',
+    'hide_did_you_mean',
+    'hide_search_filters',
+  );
+}

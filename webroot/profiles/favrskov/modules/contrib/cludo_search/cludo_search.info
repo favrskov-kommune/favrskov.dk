@@ -1,0 +1,13 @@
+name = "Cludo Search"
+package = Cludo Search
+description = "Provides a search interface to a dedicated Cludo Search."
+core = 7.x
+configure = admin/config/search/cludo_search/settings
+
+stylesheets[all][] = theme/cludo_search.css
+
+; Information added by Drupal.org packaging script on 2019-01-21
+version = "7.x-1.1"
+core = "7.x"
+project = "cludo_search"
+datestamp = "1548087188"

@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall hooks.
+ * @see cludo_search.module
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function cludo_search_uninstall() {
+  // Include all module files.
+  drupal_load('module', 'cludo_search');
+  // Removed unused vars.
+  $field_keys = _cludo_search_get_field_keys();
+
+  foreach ($field_keys as $field) {
+    variable_del('cludo_search_' . $field);
+  }
+}
