@@ -1,0 +1,9 @@
+{
+  "title": "Checkbox",
+  "status": "ready",
+  "context": {
+    "name": "checkbox",
+    "id": "checkbox_id",
+    "label": "Checkbox label"
+  }
+}

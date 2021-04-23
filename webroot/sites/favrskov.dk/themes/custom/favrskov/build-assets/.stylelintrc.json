@@ -1,0 +1,51 @@
+{
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": [
+    "./node_modules/**/*.css"
+  ],
+  "rules": {
+    "no-descending-specificity": null,
+    "selector-max-empty-lines": 0,
+    "number-leading-zero": "never",
+    "block-no-empty": true,
+    "color-no-invalid-hex": true,
+    "selector-max-class": 4,
+    "declaration-no-important": true,
+    "unit-no-unknown": true,
+    "at-rule-no-unknown": null,
+    "selector-nested-pattern": "^([.]|&|img|figcaption|a|picture|li|ul|>|svg|form|input|iframe|div)",
+    "selector-class-pattern": "^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$",
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": [
+          "/tap-highlight-color/",
+          "string"
+        ]
+      }
+    ],
+    "selector-max-id": 1,
+    "unit-allowed-list": [
+      "em",
+      "rem",
+      "%",
+      "s",
+      "px",
+      "deg",
+      "vh",
+      "ms",
+      "vw",
+      "fr"
+    ],
+    "indentation": 2,
+    "selector-pseudo-class-no-unknown": true,
+    "max-empty-lines": [
+      2,
+      {
+        "ignore": [
+          "comments"
+        ]
+      }
+    ]
+  }
+}

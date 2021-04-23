@@ -1,0 +1,22 @@
+uuid: cabd54d0-bf40-4961-b0eb-ffb503bd088d
+langcode: da
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - favrskov
+_core:
+  default_config_hash: GMjPKpIb7XFp1qmMgfyP1gDYNbtwwtyMTC-J99XVlXw
+id: messages
+theme: favrskov
+region: preheader
+weight: -2
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Beskeder
+  provider: system
+  label_display: '0'
+visibility: {  }

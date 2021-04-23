@@ -1,0 +1,16 @@
+<p>You can browse the component library using the navigation on the left.</p>
+
+<h3>Component statuses</h3>
+<p>Components and their variants have been given statuses reflecting their state of completion. The available statuses are listed below.</p>
+<table>
+  <tr>
+    <th>Label</th>
+    <th>Description</th>
+  </tr>
+  {% for status in _config.components.statuses %}
+    <tr>
+      <td><div class="Status-label" style="background-color: {{ status.color }}; border-color: {{ status.color }};">{{ status.label }}</div></td>
+      <td>{{ status.description }}</td>
+    </tr>
+  {% endfor %}
+</table>

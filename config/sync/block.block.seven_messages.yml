@@ -1,0 +1,22 @@
+uuid: f006d137-68c1-4706-a9c3-93c0eb12f889
+langcode: da
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - seven
+_core:
+  default_config_hash: GMjPKpIb7XFp1qmMgfyP1gDYNbtwwtyMTC-J99XVlXw
+id: seven_messages
+theme: seven
+region: header
+weight: -2
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Beskeder
+  provider: system
+  label_display: '0'
+visibility: {  }

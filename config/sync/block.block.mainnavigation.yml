@@ -1,0 +1,27 @@
+uuid: 96494de7-8453-45fc-9577-5b0a5fac0d25
+langcode: da
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - favrskov
+_core:
+  default_config_hash: mGvNQShNSaA6YxvSZSJPNucN8GPaTfoH3twLm46U9As
+id: mainnavigation
+theme: favrskov
+region: header
+weight: 1
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Primær navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 2
+  expand_all_items: true
+visibility: {  }

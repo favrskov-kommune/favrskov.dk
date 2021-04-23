@@ -1,0 +1,20 @@
+{
+  "title": "Local tasks",
+  "status": "ready",
+  "context": {
+    "primary": [
+      {
+        "url": "/",
+        "title": "Show"
+      },
+      {
+        "url": "/",
+        "title": "Edit"
+      },
+      {
+        "url": "/",
+        "title": "Delete"
+      }
+    ]
+  }
+}

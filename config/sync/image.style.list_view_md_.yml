@@ -1,0 +1,19 @@
+uuid: 56c9c009-08b4-4b88-9187-26e54ce821f3
+langcode: da
+status: true
+dependencies:
+  module:
+    - focal_point
+_core:
+  default_config_hash: qdutlDGJLeLTODh-tFBKmgIdQyNoMYvQXSKkRNZADE0
+name: list_view_md_
+label: 'List view (MD)'
+effects:
+  1c61892c-9868-4872-84e0-d9bc2169a7da:
+    uuid: 1c61892c-9868-4872-84e0-d9bc2169a7da
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 275
+      height: 200
+      crop_type: focal_point

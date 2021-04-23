@@ -1,0 +1,10 @@
+uuid: 564a528a-d227-4054-9107-bbd890e8249a
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: rHj0msK71uw3IYZP3RjHcfUi6SxNzHyYZ3givdkhsn8
+id: divider
+label: Divider
+revision: 0
+description: 'En blok der indeholder et divider.'

@@ -1,0 +1,10 @@
+uuid: 7efb194e-2561-46a9-891b-aca4bd5c64d8
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: iarLrzD0NiTlA4vIQMwEG_nE9sRYK7dK0d5fU9YiTp4
+id: code
+label: Kode
+revision: 0
+description: 'En blok hvor redaktører kan tilføje scripts.'

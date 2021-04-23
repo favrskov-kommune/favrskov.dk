@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% embed '@organisms/header/header.twig' with {
+  'display_burger_toggle': true,
+  'display_search_toggle': true
+} %}
+  {% block site_branding %}
+    {{ elements.site_branding }}
+  {% endblock %}
+  {% block navigation %}
+    {{ elements.mainnavigation }}
+  {% endblock %}
+  {% block topbar %}
+    {% embed '@molecules/meta-menu/meta-menu.twig' %}
+      {% block meta_menu_content %}
+        {{ elements.languageswitcher }}
+        {{ elements.metamenu }}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,91 @@
+/**
+ * Type: Base.
+ * Variables.
+ */
+
+:root {
+  /* Colors
+  ********************/
+  --color-primary: #263ed3;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-gray: #b0afaf;
+  --color-gray-dark: #272727;
+  --color-error: #f00;
+
+  /* Default theme-colors
+  ********************/
+  --theme-background-color: var(--color-white);
+  --theme-color: var(--color-black);
+  --theme-button-background-color: var(--color-black);
+  --theme-button-color: var(--color-white);
+  --theme-link-color: var(--color-black);
+  --theme-divider-background-color: var(--color-black);
+  --theme-accordion-border-color: #d4d4d4;
+  --theme-accordion-background-color: transparent;
+  --theme-accordion-text-color: var(--color-black);
+  --theme-input-border: #e5e3de;
+  --theme-input-color-marked: var(--color-primary);
+  --theme-status-message-background-color: #c6c6c6;
+  --theme-status-message-background-color-status: #dff0d8;
+  --theme-status-message-color-status: #3c763d;
+  --theme-status-message-background-color-warning: #fcf8e3;
+  --theme-status-message-color-warning: #8a6d3b;
+  --theme-status-message-background-color-error: #fce3e3;
+  --theme-status-message-color-error: #763c3c;
+
+  /* Typography
+  ********************/
+  --base-font-family: 'Roboto Slab', 'sans-serif';
+  --base-font-size-xxxlarge: 40px;
+  --base-font-size-xxlarge: 30px;
+  --base-font-size-xlarge: 25px;
+  --base-font-size-large: 20px;
+  --base-font-size-medium: 18px;
+  --base-font-size: 16px;
+  --base-font-size-small: 14px;
+  --base-font-size-extra-small: 12px;
+  --base-font-weight: 300;
+  --heading-font-family: 'Roboto', 'sans-serif';
+  --heading-font-weight: 700;
+
+  /* Layout
+  ********************/
+  --site-background-color: var(--color-white);
+  --container-width: 1560px;
+  --grid-section-spacing: 100px;
+  --grid-section-spacing--mobile: calc(var(--grid-section-spacing) / 2);
+  --gutter-width: 100px;
+  --gutter-width-mobile: 35px;
+  --half-gutter-width: calc(var(--gutter-width) * .5);
+  --half-gutter-width-mobile: calc(var(--gutter-width-mobile) * .5);
+  --half-gutter-compensation: calc(var(--half-gutter-width) * -1);
+  --half-gutter-compensation-mobile: calc(var(--half-gutter-width-mobile) * -1);
+  --container-spacing--mobile: 20px;
+  --container-spacing: 50px;
+
+  /* Header */
+  --header-height: 95px;
+  --header-height-mobile: 80px;
+  --header-background-color: var(--color-white);
+  --header-font-family: 'Roboto', 'sans-serif';
+  --header-text-color: #232323;
+  --header-font-weight: 500;
+  --header-selected-text-color: var(--color-primary);
+  --header-border-color: #ededed;
+
+  /* Meta menu */
+  --meta-menu-height: 40px;
+  --meta-menu-background-color: #f7f7f7;
+  --meta-menu-text-color: var(--color-primary);
+
+  /* Button */
+  --button-border-radius: 50px;
+  --button-border-width: 1px;
+  --button-border-color: transparent;
+  --button-height: 60px;
+  --button-padding: 0 60px;
+  --button-font-weight: 500;
+  --button-font-family: var(--heading-font-family);
+  --button-font-size: var(--base-font-size);
+}

@@ -1,0 +1,20 @@
+uuid: a29d27c3-6d1d-4e84-89f1-ee8fe1fa692f
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.accordion
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: Fdo929gRK97xkIikSTKcFip31MyPWJc_9iFYMwoSUZs
+id: block_content.accordion
+target_entity_type_id: block_content
+target_bundle: accordion
+default_langcode: site_default
+language_alterable: true

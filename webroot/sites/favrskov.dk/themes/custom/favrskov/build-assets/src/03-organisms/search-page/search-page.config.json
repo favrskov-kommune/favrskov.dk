@@ -1,0 +1,40 @@
+{
+  "title": "Search page",
+  "context": {
+    "title": "Search",
+    "no_of_results": "1 result found",
+    "pager": {
+      "items": {
+        "next": {
+          "href": "#",
+          "text": "››"
+        },
+        "previous": {
+          "href": "#",
+          "text": "‹‹"
+        },
+        "current": "1"
+      }
+    },
+    "results": [
+      {
+        "url": "/",
+        "image": "https://www.novicell.dk/media/67333/hero.jpg",
+        "title": "Title",
+        "excerpt": "<p>Text</p>"
+      },
+      {
+        "url": "/",
+        "image": "https://www.novicell.dk/media/67333/hero.jpg",
+        "title": "Title",
+        "excerpt": "<p>Text</p>"
+      },
+      {
+        "url": "/",
+        "image": "https://www.novicell.dk/media/67333/hero.jpg",
+        "title": "Title",
+        "excerpt": "<p>Text</p>"
+      }
+    ]
+  }
+}

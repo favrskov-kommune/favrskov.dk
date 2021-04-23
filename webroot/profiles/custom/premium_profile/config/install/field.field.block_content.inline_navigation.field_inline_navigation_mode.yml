@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.inline_navigation
+    - field.storage.block_content.field_inline_navigation_mode
+  module:
+    - options
+id: block_content.inline_navigation.field_inline_navigation_mode
+field_name: field_inline_navigation_mode
+entity_type: block_content
+bundle: inline_navigation
+label: 'Selection mode'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: parent
+default_value_callback: ''
+settings: {  }
+field_type: list_string

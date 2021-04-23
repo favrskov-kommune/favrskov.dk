@@ -1,0 +1,23 @@
+{{ attach_library('favrskov/image') }}
+
+{% macro image(media, caption, attributes, block_content) %}
+  {% import _self as self_image %}
+  <figure>
+    {{ media }}
+    {% if caption %}
+      <figcaption>{{ caption }}</figcaption>
+    {% endif %}
+  </figure>
+{% endmacro %}
+
+<div{{ (not attributes ? create_attribute() : attributes).addClass('image') }}>
+  {% block block_content %}{% endblock %}
+  {% import _self as self_image %}
+  {% if link.url %}
+    <a {{ create_attribute().setAttribute('href', link.url).setAttribute('target', link.target) }}>
+      {{ self_image.image(media, caption, attributes, block_content) }}
+    </a>
+  {% else %}
+    {{ self_image.image(media, caption, attributes, block_content) }}
+  {% endif %}
+</div>

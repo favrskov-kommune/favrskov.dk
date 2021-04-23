@@ -1,0 +1,22 @@
+uuid: fc4bf997-78fc-4be6-a55b-8ae2dd8ab88c
+langcode: da
+status: true
+dependencies:
+  theme:
+    - favrskov
+_core:
+  default_config_hash: AGbvVrExCI_kiswKbSfKzurTaRcnfSb_tE65kZGEY6E
+id: tabs
+theme: favrskov
+region: preheader
+weight: -3
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Faner
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

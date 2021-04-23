@@ -1,0 +1,8 @@
+{
+  "title": "Logo",
+  "status": "ready",
+  "context": {
+    "logo_path": "/dist/images/logo.svg",
+    "alt": "Logo"
+  }
+}

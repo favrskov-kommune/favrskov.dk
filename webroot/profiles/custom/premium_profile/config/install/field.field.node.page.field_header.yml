@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_header
+    - node.type.page
+    - paragraphs.paragraphs_type.basic_hero
+  module:
+    - entity_reference_revisions
+id: node.page.field_header
+field_name: field_header
+entity_type: node
+bundle: page
+label: Header
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      basic_hero: basic_hero
+    target_bundles_drag_drop:
+      accordion_item:
+        weight: 4
+        enabled: false
+      basic_hero:
+        enabled: true
+        weight: 5
+      inline_hero:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

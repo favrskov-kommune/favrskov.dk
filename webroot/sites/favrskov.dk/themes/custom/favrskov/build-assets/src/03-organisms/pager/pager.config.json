@@ -1,0 +1,17 @@
+{
+  "title": "Pagination",
+  "status": "ready",
+  "context": {
+    "items": {
+      "next": {
+        "href": "#",
+        "text": "››"
+      },
+      "previous": {
+        "href": "#",
+        "text": "‹‹"
+      },
+      "current": "1"
+    }
+  }
+}

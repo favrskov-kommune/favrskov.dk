@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: appetizer
+label: Appetizer
+revision: 0
+description: 'A block that contains image, text and a CTA-button.'

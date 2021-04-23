@@ -1,0 +1,23 @@
+uuid: 3e843f6a-8873-4f1e-8b87-930e94c79cf7
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_overlay
+    - paragraphs.paragraphs_type.inline_hero
+_core:
+  default_config_hash: XcyQYPKuEmUyeln291zmsptvYPwKezE_vmHCyuHQFMI
+id: paragraph.inline_hero.field_overlay
+field_name: field_overlay
+entity_type: paragraph
+bundle: inline_hero
+label: Overlay
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean

@@ -1,0 +1,108 @@
+/**
+ * Type: Organisms.
+ * Search overlay.
+ */
+
+.search-overlay {
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .9);
+  color: white;
+  pointer-events: none;
+  transition: opacity .4s;
+  z-index: 99999;
+
+  &__close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    cursor: pointer;
+    flex-direction: column;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: var(--base-font-size);
+
+    .icon--close {
+      width: 60px;
+      height: 60px;
+      background-color: white;
+      border: solid 1px white;
+      border-radius: 50%;
+      padding: 15px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__close-label {
+    display: none;
+
+    @media (--viewport-md-min) {
+      display: block;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__input-field {
+    position: relative;
+    width: 100%;
+
+    .input {
+      font-size: var(--base-font-size-large);
+      padding-left: 25px;
+      height: 65px;
+      border: 0;
+      outline: none;
+      border-bottom: solid 1px white;
+      background: transparent;
+      color: white;
+      font-weight: 300;
+
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: white;
+      }
+
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: white;
+      }
+
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: white;
+      }
+
+      &:-moz-placeholder { /* Firefox 18- */
+        color: white;
+      }
+    }
+  }
+
+  &__submit {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    cursor: pointer;
+    padding: 0;
+
+    .icon--search {
+      width: 40px;
+      height: 40px;
+      fill: white;
+    }
+  }
+
+  &--open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

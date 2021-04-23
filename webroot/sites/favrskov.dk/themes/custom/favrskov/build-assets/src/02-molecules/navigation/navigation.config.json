@@ -1,0 +1,28 @@
+{
+  "title": "Navigation",
+  "status": "ready",
+  "context": {
+    "items": [
+      {
+        "in_active_trail": true,
+        "url": "/",
+        "title": "Menu item",
+        "below": [
+          {
+            "url": "/",
+            "title": "Menu item"
+          },
+          {
+            "url": "/",
+            "title": "Menu item",
+            "in_active_trail": true
+          },
+          {
+            "url": "/",
+            "title": "Menu item"
+          }
+        ]
+      }
+    ]
+  }
+}

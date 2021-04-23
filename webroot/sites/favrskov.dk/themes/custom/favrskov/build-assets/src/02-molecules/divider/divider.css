@@ -1,0 +1,19 @@
+/**
+ * Type: Molecules.
+ * Divider.
+ */
+
+.divider {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  &::before {
+    content: '';
+    height: 1px;
+    display: block;
+    background-color: var(--theme-divider-background-color);
+  }
+}

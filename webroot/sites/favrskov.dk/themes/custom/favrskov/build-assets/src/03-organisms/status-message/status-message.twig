@@ -1,0 +1,21 @@
+{{ attach_library('favrskov/status-message') }}
+
+{% if message_list|length > 0 %}
+  <div class="status-messages">
+    {% for type, messages in message_list %}
+      <div role="contentinfo" aria-label="{{ status_headings[type] }}"{{ attributes|without('role', 'aria-label').addClass('status-message-container') }}>
+        <div class="status-message status-message--{{ type }}">
+          {% if messages|length > 1 %}
+            <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            {{ messages|first }}
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

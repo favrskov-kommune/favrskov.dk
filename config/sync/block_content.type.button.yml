@@ -1,0 +1,10 @@
+uuid: aa6b145c-8a1a-4475-8f2a-f9c4d35d47b3
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: c9s5-SMg_Iinl-mFselCq-ounnim-OataRS2Xsmqyvg
+id: button
+label: Knap
+revision: 0
+description: "A block that contains a button.\t"

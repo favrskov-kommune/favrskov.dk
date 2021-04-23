@@ -1,0 +1,18 @@
+/**
+ * Type: Theme.
+ * Seashell theme.
+ */
+
+.theme-seashell {
+  --theme-background-color: #ffefe5;
+  --theme-color: #1fc8a9;
+  --theme-button-background-color: #1fc8a9;
+  --theme-button-color: #ffefe5;
+  --theme-link-color: #1fc8a9;
+  --theme-divider-background-color: #1fc8a9;
+  --theme-accordion-border-color: #ffefe5;
+  --theme-accordion-background-color: var(--color-white);
+  --theme-accordion-text-color: var(--color-black);
+  --theme-input-border: #1fc8a9;
+  --theme-input-color-marked: #1fc8a9;
+}

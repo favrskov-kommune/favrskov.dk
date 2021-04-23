@@ -1,0 +1,22 @@
+uuid: 05514fcb-addb-4e8f-baec-1125121351c8
+langcode: da
+status: true
+dependencies:
+  module:
+    - premium_theme_helper
+  theme:
+    - favrskov
+_core:
+  default_config_hash: VFmRvZT3qcLg99LYrtw3VmzfYZ0M6j3EMRerIg0SyRo
+id: pageheader
+theme: favrskov
+region: pageheader
+weight: 0
+provider: null
+plugin: premium_hero_block
+settings:
+  id: premium_hero_block
+  label: Pageheader
+  provider: premium_theme_helper
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,10 @@
+uuid: 6352d371-c864-4732-a350-18aec8ae4894
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: nUyRRHGhpXUHeAZ1h4VDnrYg4AlQ7ROgBkv-eIqCoVg
+id: hero
+label: Hero
+revision: 0
+description: 'En blok der indeholder en hero.'

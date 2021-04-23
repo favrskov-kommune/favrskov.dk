@@ -1,0 +1,13 @@
+uuid: 58e4ecd1-0302-418b-8f0f-9e0063c26ed9
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.button
+_core:
+  default_config_hash: i193RWFFJvlOn5dnfdsTbdta6MnJOm9BOES7awxe_8Y
+id: block_content.button
+target_entity_type_id: block_content
+target_bundle: button
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,28 @@
+{% render '@header' %}
+<section class="section section--no-spacing">
+  {% render '@hero' %}
+</section>
+<section class="section section--no-spacing">
+  {% render '@appetiser' %}
+</section>
+<section class="section section--no-spacing">
+  {% render '@image-slideshow' %}
+</section>
+<section class="section theme theme-blue">
+  <div class="container">
+    {% render '@inline-navigation' %}
+  </div>
+</section>
+<section class="section theme theme-blue">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 pb-xs pb-0-md">{% render '@image' %}</div>
+      <div class="col-xs-12 col-md-6">
+        {% render '@image' %}
+      </div>
+    </div>
+  </div>
+</section>
+{% render '@burger-menu' %}
+{% render '@search-overlay' %}
+{% render '@footer' %}

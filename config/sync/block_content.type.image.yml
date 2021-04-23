@@ -1,0 +1,10 @@
+uuid: 12fac6b1-3bf6-4adf-859b-8a38ec8640c3
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: IIzIs0BYg_xT3sd4g1OTJxm4YfQA8xzPsP4gmIBzOvw
+id: image
+label: Billede
+revision: 0
+description: 'En blok der indeholder et billede.'

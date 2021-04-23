@@ -1,0 +1,14 @@
+/**
+ * Type: Organisms.
+ * Footer.
+ */
+
+.footer {
+  & > *:last-child {
+    padding-bottom: 70px;
+
+    @media (--viewport-md-min) {
+      padding-bottom: var(--grid-section-spacing);
+    }
+  }
+}

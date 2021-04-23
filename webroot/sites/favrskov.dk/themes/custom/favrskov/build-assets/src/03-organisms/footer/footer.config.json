@@ -1,0 +1,20 @@
+{
+  "title": "Footer",
+  "status": "ready",
+  "context": {
+    "cols": [
+      {
+        "headline": "Headline",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+      },
+      {
+        "headline": "Headline",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+      },
+      {
+        "headline": "Headline",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+      }
+    ]
+  }
+}

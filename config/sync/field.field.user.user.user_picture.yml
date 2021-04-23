@@ -1,0 +1,40 @@
+uuid: ba30640b-5d33-4edf-921e-3a853dee5114
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.user.user_picture
+  module:
+    - image
+    - user
+_core:
+  default_config_hash: h2lmvqD-N3hvkIcK9djab3VGkdL5qzgnFGzqsbJ_4M4
+id: user.user.user_picture
+field_name: user_picture
+entity_type: user
+bundle: user
+label: Billede
+description: 'Dit virtuelle ansigt eller billede.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_extensions: 'png gif jpg jpeg'
+  file_directory: 'pictures/[date:custom:Y]-[date:custom:m]'
+  max_filesize: '30 KB'
+  alt_field: false
+  title_field: false
+  max_resolution: 85x85
+  min_resolution: ''
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  alt_field_required: false
+  title_field_required: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

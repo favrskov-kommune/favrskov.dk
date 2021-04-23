@@ -1,0 +1,22 @@
+uuid: e46a691e-252d-4ec6-b48e-2e0a111cbb37
+langcode: da
+status: true
+dependencies:
+  module:
+    - premium_tools
+  theme:
+    - premium_theme
+_core:
+  default_config_hash: hPk-IHdtcwR5tUcvBwyOnVH0EOcviIGvOU5EMsM2MiY
+id: premium_theme_languageswitcher
+theme: premium_theme
+region: header
+weight: 0
+provider: null
+plugin: 'improved_language_block:language_interface'
+settings:
+  id: 'improved_language_block:language_interface'
+  label: Sprogvælger
+  provider: premium_tools
+  label_display: '0'
+visibility: {  }

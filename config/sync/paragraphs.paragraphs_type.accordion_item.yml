@@ -1,0 +1,12 @@
+uuid: 4d3b7088-9d0e-4453-9497-494d22d04d3a
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: uapDkNEaTtBmLnrSHOoPQcmyNmp0u9391dZCUIA4f5k
+id: accordion_item
+label: 'Accordion Item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

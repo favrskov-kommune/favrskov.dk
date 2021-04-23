@@ -1,0 +1,65 @@
+/**
+ * Type: Base.
+ * Helpers.
+ */
+
+.xs-hidden {
+  @media (--viewport-xs-max) {
+    display: none;
+  }
+}
+
+.ms-hidden {
+  @media (--viewport-ms-min) and (--viewport-ms-max) {
+    display: none;
+  }
+}
+
+.sm-hidden {
+  @media (--viewport-sm-min) and (--viewport-sm-max) {
+    display: none;
+  }
+}
+
+.md-hidden {
+  @media (--viewport-md-min) and (--viewport-md-max) {
+    display: none;
+  }
+}
+
+.lg-hidden {
+  @media (--viewport-lg-min) and (--viewport-lg-max) {
+    display: none;
+  }
+}
+
+.xl-hidden {
+  @media (--viewport-xl-min) {
+    display: none;
+  }
+}
+
+/*  Accessability helpers
+    https://getbootstrap.com/docs/4.4/getting-started/accessibility/#visually-hidden-content
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}

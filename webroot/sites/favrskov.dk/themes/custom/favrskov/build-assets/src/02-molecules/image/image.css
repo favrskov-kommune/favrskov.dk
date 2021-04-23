@@ -1,0 +1,20 @@
+/**
+ * Type: Molecules.
+ * Image.
+ */
+
+.image {
+  position: relative;
+  width: 100%;
+
+  picture,
+  img {
+    height: inherit;
+    display: block;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+}

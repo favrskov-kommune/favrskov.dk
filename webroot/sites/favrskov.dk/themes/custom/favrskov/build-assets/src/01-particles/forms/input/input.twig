@@ -1,0 +1,1 @@
+<input {{ (not attributes ? create_attribute() : attributes).addClass('input').setAttribute('type', type).setAttribute('aria-label', placeholder).setAttribute('placeholder', placeholder).setAttribute('name', name).setAttribute('value', value).setAttribute('id', id) }}>

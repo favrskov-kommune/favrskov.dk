@@ -1,0 +1,44 @@
+/**
+ * Type: Organisms.
+ * Status messages.
+ */
+
+.status-messages {
+  margin: 0 auto;
+
+  .status-message-container {
+    position: relative;
+    z-index: 5;
+  }
+
+  .status-message {
+    background-color: var(--theme-status-message-background-color);
+    color: var(--theme-color);
+    padding: 10px;
+    font-size: var(--base-font-size-small);
+    position: relative;
+    display: block;
+    text-align: center;
+
+    ul {
+      margin: 0;
+      list-style: none;
+      padding: 0 20px;
+    }
+
+    &--status {
+      background-color: var(--theme-status-message-background-color-status);
+      color: var(--theme-status-message-color-status);
+    }
+
+    &--warning {
+      background-color: var(--theme-status-message-background-color-warning);
+      color: var(--theme-status-message-color-warning);
+    }
+
+    &--error {
+      background-color: var(--theme-status-message-background-color-error);
+      color: var(--theme-status-message-color-error);
+    }
+  }
+}

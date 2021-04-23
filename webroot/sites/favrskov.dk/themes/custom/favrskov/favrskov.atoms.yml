@@ -1,0 +1,88 @@
+atoms:
+  footer-col1-header:
+    type: textfield
+    title: Header
+    description: The header in the footer column.
+    category: Page layout
+    group: Footer
+    subgroup: Column 1
+    default:
+      da: ''
+
+  footer-col1-text:
+    type: text_format
+    title: Text
+    description: The text in the footer column.
+    category: Page layout
+    group: Footer
+    subgroup: Column 1
+    options:
+      format: full_html
+    default:
+      da: '<p></p>'
+
+  footer-col2-header:
+    type: textfield
+    title: Header
+    description: The header in the footer column.
+    category: Page layout
+    group: Footer
+    subgroup: Column 2
+    default:
+      da: ''
+
+  footer-col2-text:
+    type: text_format
+    title: Text
+    description: The text in the footer column.
+    category: Page layout
+    group: Footer
+    subgroup: Column 2
+    options:
+      format: full_html
+    default:
+      da: '<p></p>'
+
+  footer-col3-header:
+    type: textfield
+    title: Header
+    description: The header in the footer column.
+    category: Page layout
+    group: Footer
+    subgroup: Column 3
+    default:
+      da: ''
+
+  footer-col3-text:
+    type: text_format
+    title: Text
+    description: The text in the footer column.
+    category: Page layout
+    group: Footer
+    subgroup: Column 3
+    options:
+      format: full_html
+    default:
+      da: '<p></p>'
+
+  footer-col4-header:
+    type: textfield
+    title: Header
+    description: The header in the footer column.
+    category: Page layout
+    group: Footer
+    subgroup: Column 4
+    default:
+      da: ''
+
+  footer-col4-text:
+    type: text_format
+    title: Text
+    description: The text in the footer column.
+    category: Page layout
+    group: Footer
+    subgroup: Column 4
+    options:
+      format: full_html
+    default:
+      da: '<p></p>'

@@ -1,0 +1,21 @@
+{{ attach_library('favrskov/footer') }}
+
+<footer class="footer">
+  <div{{ (not attributes ? create_attribute() : attributes).addClass(['footer__inner', 'section', 'theme', 'theme-primary']) }}>
+    <div class="container">
+      <div class="row">
+        {% if cols|length > 0 %}
+          {% set number_of_cols = 12 / cols|length %}
+          {% for col in cols %}
+            <div class="col-xs-12 col-md-{{ number_of_cols }}">
+              {% if col.headline %}
+                <div><b>{{ col.headline }}</b></div>
+              {% endif %}
+              {{ col.content }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>

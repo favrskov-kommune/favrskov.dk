@@ -1,0 +1,41 @@
+/**
+ * Type: Molecules.
+ * Breadcrumb.
+ */
+
+.breadcrumb {
+  position: relative;
+  padding: 30px 0;
+  font-size: var(--base-font-size-small);
+
+  &__items {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: inline-block;
+    list-style: none;
+
+    & + &::before {
+      content: '/';
+      padding: 5px 3px;
+      color: var(--color-gray);
+    }
+  }
+
+  &__link {
+    color: var(--color-gray);
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    transition: color .2s;
+
+    &--active {
+      color: var(--color-black);
+      font-weight: 600;
+    }
+  }
+}

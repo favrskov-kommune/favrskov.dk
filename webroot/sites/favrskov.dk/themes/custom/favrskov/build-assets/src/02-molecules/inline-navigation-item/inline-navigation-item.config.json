@@ -1,0 +1,10 @@
+{
+  "title": "Inline navigation item",
+  "status": "ready",
+  "context": {
+    "url": "/",
+    "image": "https://www.novicell.dk/media/67333/hero.jpg",
+    "label": "Title",
+    "teaser": "Teaser"
+  }
+}

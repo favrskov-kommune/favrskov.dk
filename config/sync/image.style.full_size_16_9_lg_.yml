@@ -1,0 +1,19 @@
+uuid: cf84d7f8-054f-42ac-8200-a5e2aaeb0293
+langcode: da
+status: true
+dependencies:
+  module:
+    - focal_point
+_core:
+  default_config_hash: DkuOuFDtYsSt7kGzW-MmyNYjrVbKOlr6YJjzXyEKKaU
+name: full_size_16_9_lg_
+label: 'Full size (16:9) (LG)'
+effects:
+  a0faea80-56c1-4f44-9e27-f9deeebb7df4:
+    uuid: a0faea80-56c1-4f44-9e27-f9deeebb7df4
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 1080
+      crop_type: focal_point

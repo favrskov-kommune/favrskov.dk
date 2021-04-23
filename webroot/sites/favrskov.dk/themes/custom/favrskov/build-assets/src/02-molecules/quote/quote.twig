@@ -1,0 +1,17 @@
+{{ attach_library('favrskov/quote') }}
+
+<div{{ (not attributes ? create_attribute() : attributes).addClass('quote') }}>
+  {% block block_content %}{% endblock %}
+  {% include '@particles/svg-icon/svg-icon.twig' with {
+    'attributes': '',
+    'svgIconName': 'quote'
+  } %}
+  <p>{{ quote_text }}</p>
+  {% include '@particles/svg-icon/svg-icon.twig' with {
+    'attributes': '',
+    'svgIconName': 'quote'
+  } %}
+  {% if quote_source %}
+    <div class="quote__author">{{ quote_source }}</div>
+  {% endif %}
+</div>

@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - premium_theme_helper
+  theme:
+    - favrskov
+id: breadcrumbs
+theme: favrskov
+region: breadcrumb
+weight: 0
+provider: null
+plugin: premium_breadcrumb_block
+settings:
+  id: premium_breadcrumb_block
+  label: Breadcrumbs
+  provider: premium_theme_helper
+  label_display: '0'
+visibility: {  }

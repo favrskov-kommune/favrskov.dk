@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a two-column layout.
+ *
+ * Available variables:
+ * - content: The content for this layout.
+ * - attributes: HTML attributes for the layout <div>.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set columns = {
+  '50-50': { left: 'col-xs-12 col-md-6', right: 'col-xs-12 col-md-6' },
+  '33-67': { left: 'col-xs-12 col-md-4', right: 'col-xs-12 col-md-8' },
+  '67-33': { left: 'col-xs-12 col-md-8', right: 'col-xs-12 col-md-4' }
+} %}
+
+{% set classes = [
+  'layout',
+  'layout--twocol',
+  settings.color_theme != 'none' ? 'theme theme-' ~ settings.color_theme,
+  'section',
+  'section--spacing-top-' ~ settings.column_spacing_top,
+  'section--spacing-bottom-' ~ settings.column_spacing_bottom
+] %}
+
+{% if settings.color_theme != 'none' %}
+  {{ attach_library('favrskov/theme-' ~ settings.color_theme) }}
+{% endif %}
+
+<section {{ attributes.addClass(classes) }}>
+  <div class="container">
+    {% if header and header is not empty %}
+    <div class="row">
+      <div class="layout-builder__section--header">
+        {{ header }}
+      </div>
+    </div>
+    {% endif %}
+    <div class="row">
+      <div {{ region_attributes.first.addClass([columns[settings.column_widths].left, 'layout__region', 'layout__region--first']).addClass(content.second ? ['pb-xs', 'pb-0-md']) }}>
+        {{ content.first }}
+      </div>
+      <div {{ region_attributes.second.addClass([columns[settings.column_widths].right, 'layout__region', 'layout__region--second']) }}>
+        {{ content.second }}
+      </div>
+    </div>
+  </div>
+</section>

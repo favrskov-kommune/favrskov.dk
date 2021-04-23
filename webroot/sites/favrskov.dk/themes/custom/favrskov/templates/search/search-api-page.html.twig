@@ -1,0 +1,39 @@
+{#{{ form }}#}
+
+{#{% if search_title %}#}
+{#    <h2>{{ search_title }}</h2>#}
+{#{% endif %}#}
+
+{#{% if no_of_results %}#}
+{#    <p>{{ no_of_results }}</p>#}
+{#{% endif %}#}
+
+{#{{ search_help }}#}
+
+{#{{ results }}#}
+
+{#{{ pager }}#}
+
+{% embed '@organisms/search-page/search-page.twig' with {
+    'form': form,
+    'title': search_title,
+    'no_of_results': no_of_results,
+    'no_results_found': no_results_found,
+    'search_help': search_help,
+    'results': results,
+    'pager': pager,
+} %}
+    {% block form %}
+        {{ form }}
+    {% endblock %}
+
+    {% block results %}
+        {{ results }}
+        {{ no_results_found }}
+    {% endblock %}
+
+    {% block pager %}
+        {{ pager }}
+    {% endblock %}
+
+{% endembed %}

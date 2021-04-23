@@ -1,0 +1,5 @@
+<button {{ (not attributes ? create_attribute() : attributes).addClass(not skip_button_class ? 'button').setAttribute('type', type) }}>
+  {% block content %}
+    {{ text }}
+  {% endblock %}
+</button>

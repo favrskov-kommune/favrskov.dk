@@ -1,0 +1,6 @@
+{% set directory = (not directory ? '' : directory ~ '/build-assets/') %}
+{% set iconPath = (not iconPath ? directory ~ 'dist/icons/icons.svg' : iconPath) %}
+
+<svg{{ (not attributes ? create_attribute() : attributes).addClass(['icon', 'icon--' ~ svgIconName]) }}>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/{{ iconPath }}#{{ svgIconName }}"></use>
+</svg>

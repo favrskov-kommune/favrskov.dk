@@ -1,0 +1,46 @@
+/**
+ * Type: Atom.
+ * Button.
+ */
+
+.button,
+a.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: var(--button-border-radius);
+  min-height: var(--button-height);
+  padding: var(--button-padding);
+  background-color: var(--theme-button-background-color);
+  color: var(--theme-button-color);
+  font-weight: var(--button-font-weight);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  border: var(--button-border-width) solid var(--button-border-color);
+
+  &[disabled],
+  [disabled] & {
+    opacity: .6;
+    pointer-events: none;
+  }
+
+  &--ghost {
+    border: var(--button-border-width) solid var(--theme-button-background-color);
+    background-color: transparent;
+    color: currentColor;
+  }
+
+  &--center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &--right {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+}

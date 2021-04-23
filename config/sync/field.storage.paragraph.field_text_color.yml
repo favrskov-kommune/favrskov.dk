@@ -1,0 +1,29 @@
+uuid: 8a1345a8-a54f-41bb-9e4a-058c2a9ef354
+langcode: da
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: b5ITQG6lJhfBmjjBXGwkxXF2O1OkLg0ROBE-1XBsIws
+id: paragraph.field_text_color
+field_name: field_text_color
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: light
+      label: Light
+    -
+      value: dark
+      label: Dark
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

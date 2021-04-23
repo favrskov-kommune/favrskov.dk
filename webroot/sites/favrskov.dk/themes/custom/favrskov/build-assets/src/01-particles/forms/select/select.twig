@@ -1,0 +1,6 @@
+<select {{ (not attributes ? create_attribute() : attributes).addClass('select').setAttribute('name', name).setAttribute('aria-label', label).setAttribute('id', id) }}>
+  <option selected="selected" disabled="disabled">{{ label }}</option>
+  {% for option in options %}
+    <option value="{{ option.value }}">{{ option.name }}</option>
+  {% endfor %}
+</select>

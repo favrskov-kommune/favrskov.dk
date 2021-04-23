@@ -1,0 +1,12 @@
+uuid: dd1ebd80-21cf-4857-aea5-cd2706d4ac7e
+langcode: da
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: 71CSAr_LNPcgu6D6jI4INl1KATkahmeyUFBETAWya8g
+id: user.compact
+label: Kompakt
+targetEntityType: user
+cache: true

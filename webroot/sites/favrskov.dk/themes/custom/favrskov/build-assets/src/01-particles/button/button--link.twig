@@ -1,0 +1,18 @@
+{% set attributes = (not attributes ? create_attribute() : attributes) %}
+
+{% if target %}
+  {% set attributes = attributes.setAttribute('target', target) %}
+  {% if target == '_blank' %}
+    {% set attributes = attributes.setAttribute('rel', 'noopener') %}
+  {% endif %}
+{% endif %}
+
+{% if type != 'plain' %}
+  {% set attributes = attributes.addClass('button') %}
+{% endif %}
+
+<a {{ attributes.setAttribute('href', url) }}>
+  {% block content %}
+    {{ text }}
+  {% endblock %}
+</a>

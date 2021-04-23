@@ -1,0 +1,25 @@
+{
+  "title": "Status messages",
+  "status": "ready",
+  "context": {
+    "status_headings": {
+      "status": "Status",
+      "warning": "Warning",
+      "error": "Error"
+    },
+    "message_list": {
+      "status": [
+        "Status message first",
+        "Status message second"
+      ],
+      "warning": [
+        "Warning message first",
+        "Warning message second"
+      ],
+      "error": [
+        "Error message first",
+        "Error message second"
+      ]
+    }
+  }
+}

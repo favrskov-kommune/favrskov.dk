@@ -1,0 +1,40 @@
+.base: &base
+  application: PROJECT_NAME
+  roles: app
+  branch: develop
+  slack_webhook: ""
+  drupal_site: "DOMAIN_NAME"
+  docroot: 'webroot'
+  repository: "git@bitbucket.org:novicell/PROJECT_NAME.git"
+  git_tty: true
+  shared_dirs:
+    - 'webroot/sites/DOMAIN_NAME/files'
+  shared_files:
+    - 'webroot/sites/DOMAIN_NAME/settings.local.php'
+    - 'webroot/sites/DOMAIN_NAME/services.local.yml'
+    - 'webroot/sites/sites.local.php'
+    - '.env'
+  writable_dirs:
+    - 'webroot/sites/DOMAIN_NAME/files'
+  allow_anonymous_stats: false
+  keep_releases: 5
+  drupal_core_version: 9
+  use_locale_update: true
+  use_composer: true
+  use_npm: true
+  theme_exec_path: sites/DOMAIN_NAME/themes/custom/PROJECT_NAME/build-assets
+prod:
+  <<: *base
+  branch: master
+  deploy_path: /data/www/vhost/DOMAIN_NAME
+  hostname: '81.95.247.112'
+  user: PROJECT_NAME
+  disable_slack: true
+staging:
+  <<: *base
+  branch: develop
+  deploy_path: /data/www/vhost/STAGING_SITE
+  hostname: '81.95.247.111'
+  user: PROJECT_NAME
+  disable_slack: true
+  keep_releases: 2

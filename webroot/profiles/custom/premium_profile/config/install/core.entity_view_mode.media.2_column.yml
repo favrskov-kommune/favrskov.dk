@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.2_column
+label: '2 column'
+targetEntityType: media
+cache: true

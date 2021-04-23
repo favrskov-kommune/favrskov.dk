@@ -1,0 +1,65 @@
+{
+  "title": "Accordion",
+  "status": "ready",
+  "context": {
+    "headline": "See all FAQ items",
+    "show_more_text": "See all FAQ items",
+    "items": [
+      {
+        "id": 1,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      },
+      {
+        "id": 2,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      },
+      {
+        "id": 3,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      },
+      {
+        "id": 4,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      },
+      {
+        "id": 5,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      },
+      {
+        "id": 6,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      },
+      {
+        "id": 7,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      },
+      {
+        "id": 8,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      },
+      {
+        "id": 9,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      },
+      {
+        "id": 10,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      },
+      {
+        "id": 11,
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius dignissim aliquet. Suspendisse at aliquet justo, in dapibus urna. Morbi sit amet lorem eu est aliquet dignissim. Donec leo ipsum, suscipit eu felis at, faucibus suscipit tellus. Suspendisse cursus massa at dolor fringilla pellentesque. Sed vitae leo in mi vehicula porttitor. Phasellus condimentum diam sit amet ipsum porttitor, nec sollicitudin eros efficitur. Vivamus at tincidunt risus. Duis velit dolor, facilisis sit amet tristique quis, finibus vel mauris. Fusce eget ornare tortor. Curabitur volutpat nibh non risus mollis, nec molestie nisi semper. Phasellus ac semper libero. Donec finibus maximus dolor. Aliquam mi lorem, scelerisque eu ipsum ac, aliquet convallis ligula. Vestibulum vel turpis ac est venenatis interdum et quis ligula. Donec interdum dui ac lorem dapibus lobortis."
+      }
+    ]
+  }
+}

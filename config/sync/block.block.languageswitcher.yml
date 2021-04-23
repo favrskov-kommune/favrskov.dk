@@ -1,0 +1,22 @@
+uuid: adde6198-feee-4971-a1f0-2f21b7c213d9
+langcode: da
+status: true
+dependencies:
+  module:
+    - premium_tools
+  theme:
+    - favrskov
+_core:
+  default_config_hash: hPk-IHdtcwR5tUcvBwyOnVH0EOcviIGvOU5EMsM2MiY
+id: languageswitcher
+theme: favrskov
+region: header
+weight: 0
+provider: null
+plugin: 'improved_language_block:language_interface'
+settings:
+  id: 'improved_language_block:language_interface'
+  label: Sprogvælger
+  provider: premium_tools
+  label_display: '0'
+visibility: {  }

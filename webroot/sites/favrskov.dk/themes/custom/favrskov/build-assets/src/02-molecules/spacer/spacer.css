@@ -1,0 +1,23 @@
+/**
+ * Type: Molecules.
+ * Spacer.
+ */
+
+.spacer {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  &--small {
+    height: var(--container-spacing);
+  }
+
+  &--medium {
+    height: calc(var(--container-spacing) * 2);
+  }
+
+  &--large {
+    height: calc(var(--container-spacing) * 3);
+  }
+}

@@ -1,0 +1,5 @@
+{{ attach_library('favrskov/divider') }}
+
+<div{{ (not attributes ? create_attribute() : attributes).addClass('divider') }}>
+  {% block block_content %}{% endblock %}
+</div>

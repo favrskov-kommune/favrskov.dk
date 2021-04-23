@@ -1,0 +1,2 @@
+<input {{ (not attributes ? create_attribute() : attributes).addClass('radio').setAttribute('type', 'radio').setAttribute('name', name).setAttribute('value', value).setAttribute('id', id) }}>
+<label for="{{ id }}" class="label">{{ label }}</label>

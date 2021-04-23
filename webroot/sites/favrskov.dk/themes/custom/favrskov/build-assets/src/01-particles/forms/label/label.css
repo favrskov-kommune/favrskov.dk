@@ -1,0 +1,23 @@
+/**
+ * Type: Atom.
+ * Label.
+ */
+
+.label {
+  display: inline-block;
+  font-family: var(--base-font-family);
+  color: currentColor;
+  max-width: 100%;
+  margin-bottom: 5px;
+
+  &--block {
+    display: block;
+  }
+
+  &.form-required::after {
+    content: '*';
+    color: var(--color-error);
+    display: inline-block;
+    margin-left: 5px;
+  }
+}

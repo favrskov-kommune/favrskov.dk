@@ -1,0 +1,91 @@
+/**
+ * Type: Molecules.
+ * Navigation.
+ */
+
+.navigation {
+  height: 100%;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: none;
+
+  @media (--viewport-lg-min) {
+    display: flex;
+  }
+}
+
+.navigation-item {
+  margin: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  color: var(--header-text-color);
+  cursor: pointer;
+
+  @media (--viewport-lg-min) {
+    margin: 0 20px;
+  }
+
+  .icon--arrow-line-down {
+    fill: currentColor;
+    width: 16px;
+    height: 16px;
+    margin-left: 7px;
+    display: none;
+  }
+
+  &.active {
+    .navigation-item__link {
+      color: var(--header-selected-text-color);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--has-children {
+    .icon--arrow-line-down {
+      display: inline-block;
+    }
+  }
+
+  &.open-sub-navigation {
+    .sub-navigation {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    .navigation-item__link {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    font-weight: var(--header-font-weight);
+    color: currentColor;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50px;
+      background-color: var(--header-selected-text-color);
+      transition: opacity .3s;
+      left: 50%;
+      top: auto;
+      bottom: -10px;
+      opacity: 0;
+    }
+  }
+}

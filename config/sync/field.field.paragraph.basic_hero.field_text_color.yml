@@ -1,0 +1,25 @@
+uuid: 2ae85207-b5cd-4bc3-9445-1e05acc166a1
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_color
+    - paragraphs.paragraphs_type.basic_hero
+  module:
+    - options
+_core:
+  default_config_hash: lz5UdOiaJXFpNzKP4Wb6L99fthNXyVm0LiCE1R3OayI
+id: paragraph.basic_hero.field_text_color
+field_name: field_text_color
+entity_type: paragraph
+bundle: basic_hero
+label: Tekstfarve
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: light
+default_value_callback: ''
+settings: {  }
+field_type: list_string

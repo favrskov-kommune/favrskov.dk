@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.meta-menu
+  module:
+    - system
+  theme:
+    - favrskov
+id: metamenu
+theme: favrskov
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:meta-menu'
+settings:
+  id: 'system_menu_block:meta-menu'
+  label: 'Meta menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

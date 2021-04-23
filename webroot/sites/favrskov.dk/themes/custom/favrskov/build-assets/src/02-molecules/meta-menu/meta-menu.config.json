@@ -1,0 +1,20 @@
+{
+  "title": "Meta menu",
+  "status": "ready",
+  "context": {
+    "items": [
+      {
+        "url": "/",
+        "text": "Menu item"
+      },
+      {
+        "url": "/",
+        "text": "Menu item"
+      },
+      {
+        "url": "/",
+        "text": "Menu item"
+      }
+    ]
+  }
+}

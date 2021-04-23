@@ -1,0 +1,20 @@
+{
+  "title": "Sub navigation",
+  "status": "ready",
+  "context": {
+    "items": [
+      {
+        "url": "/",
+        "title": "Menu item"
+      },
+      {
+        "url": "/",
+        "title": "Menu item"
+      },
+      {
+        "url": "/",
+        "title": "Menu item"
+      }
+    ]
+  }
+}

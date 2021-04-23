@@ -1,0 +1,23 @@
+uuid: b40921a6-526c-47b7-8a41-6ed496b89f52
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_position
+    - paragraphs.paragraphs_type.inline_hero
+  module:
+    - options
+_core:
+  default_config_hash: l0amLj9ttK-hpM0zLAxpM2BZrKQzjMllIq4TQscSbYg
+id: paragraph.inline_hero.field_text_position
+field_name: field_text_position
+entity_type: paragraph
+bundle: inline_hero
+label: 'Text Position'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,83 @@
+/**
+ * Type: Atom.
+ * Input.
+ */
+
+.input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 0 40px 0 15px;
+  font-size: var(--base-font-size);
+  line-height: 1;
+  font-family: var(--base-font-family);
+  color: var(--theme-color);
+  background-color: var(--theme-background-color);
+  background-image: none;
+
+  /* Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214 */
+  border: 1px solid var(--theme-input-border);
+  vertical-align: bottom;
+  appearance: none;
+
+  &:focus {
+    outline: 0;
+    border-color: var(--color-gray);
+  }
+
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: currentColor;
+  }
+
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: currentColor;
+  }
+
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: currentColor;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: currentColor;
+  }
+
+  &__description {
+    font-size: var(--base-font-size-small);
+    color: var(--color-gray);
+    font-style: italic;
+    margin-top: 5px;
+
+    &[type='text'],
+    &[type='search'],
+    &[type='email'],
+    &[type='password'],
+    &[type='url'],
+    &[type='tel'],
+    &[type='number'] {
+      -webkit-border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  }
+}
+
+/* clears the 'X' from Internet Explorer */
+input::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* clears the 'X' from Chrome */
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+  display: none;
+}

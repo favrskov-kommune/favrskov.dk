@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: rte
+label: Text
+revision: 0
+description: 'A block containing an rich text editor.'

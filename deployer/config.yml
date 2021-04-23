@@ -1,0 +1,40 @@
+.base: &base
+  application: favrskov
+  roles: app
+  branch: develop
+  slack_webhook: ""
+  drupal_site: "favrskov.dk"
+  docroot: 'webroot'
+  repository: "git@bitbucket.org:novicell/favrskov.git"
+  git_tty: true
+  shared_dirs:
+    - 'webroot/sites/favrskov.dk/files'
+  shared_files:
+    - 'webroot/sites/favrskov.dk/settings.local.php'
+    - 'webroot/sites/favrskov.dk/services.local.yml'
+    - 'webroot/sites/sites.local.php'
+    - '.env'
+  writable_dirs:
+    - 'webroot/sites/favrskov.dk/files'
+  allow_anonymous_stats: false
+  keep_releases: 5
+  drupal_core_version: 9
+  use_locale_update: true
+  use_composer: true
+  use_npm: true
+  theme_exec_path: sites/favrskov.dk/themes/custom/favrskov/build-assets
+prod:
+  <<: *base
+  branch: master
+  deploy_path: /data/www/vhost/favrskov.dk
+  hostname: '81.95.247.112'
+  user: favrskov
+  disable_slack: true
+staging:
+  <<: *base
+  branch: develop
+  deploy_path: /data/www/vhost/staging.favrskov.drupal.dk
+  hostname: '81.95.247.111'
+  user: favrskov
+  disable_slack: true
+  keep_releases: 2

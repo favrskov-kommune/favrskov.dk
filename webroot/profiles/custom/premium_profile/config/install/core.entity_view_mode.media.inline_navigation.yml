@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.inline_navigation
+label: 'Inline navigation'
+targetEntityType: media
+cache: true

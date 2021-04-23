@@ -1,0 +1,26 @@
+{
+  "title": "Inline navigation",
+  "status": "ready",
+  "context": {
+    "items": [
+      {
+        "url": "/",
+        "media": "<img src=\"https://www.novicell.dk/media/67333/hero.jpg\">",
+        "label": "Title",
+        "teaser": "Teaser"
+      },
+      {
+        "url": "/",
+        "media": "<img src=\"https://www.novicell.dk/media/67333/hero.jpg\">",
+        "label": "Title",
+        "teaser": "Teaser"
+      },
+      {
+        "url": "/",
+        "media": "<img src=\"https://www.novicell.dk/media/67333/hero.jpg\">",
+        "label": "Title",
+        "teaser": "Teaser"
+      }
+    ]
+  }
+}

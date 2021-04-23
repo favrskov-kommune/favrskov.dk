@@ -1,0 +1,10 @@
+uuid: a216aafc-7da9-4cf8-82cb-e7a0e8c0ec75
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: XLY7YgXrDz5j2MakF3eGWSRbnnb2Dazi7PXYHjiw3Q4
+id: accordion
+label: Accordion
+revision: 0
+description: 'En blok der indeholder en accordion.'

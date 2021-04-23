@@ -1,0 +1,29 @@
+{{ attach_library('favrskov/appetiser') }}
+
+<div {{ (not attributes ? create_attribute() : attributes).addClass('appetiser').addClass(text_alignment ? 'appetiser--content-' ~ text_alignment).addClass(orientation and not is_small_version ? 'appetiser--image-' ~ orientation).addClass(is_small_version ? 'appetiser--small') }}>
+  {% block block_content %}{% endblock %}
+  <div class="appetiser__content-wrapper">
+    {% if display_as_fullwidth %}
+    <div class="container">
+      {% endif %}
+      <div class="appetiser__content">
+        <h2 class="appetiser__title">{{ title }}</h2>
+        <div class="appetiser__description">{{ text }}</div>
+        {% if cta.url and cta.title %}
+          {% include '@particles/button/button--link.twig' with {
+            'url': cta.url,
+            'text': cta.title,
+            'attributes': create_attribute().setAttribute('target', cta.target)
+          } %}
+        {% endif %}
+      </div>
+      {% if display_as_fullwidth %}
+    </div>
+    {% endif %}
+  </div>
+  {% if media %}
+    <figure{{ create_attribute().addClass('appetiser__image') }}>
+      {{ media }}
+    </figure>
+  {% endif %}
+</div>

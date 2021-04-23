@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_icons
+id: icon
+label: Icon
+description: 'An icon from a local icon pack.'
+source: media_icons
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_icons
+field_map:
+  icon_id: name

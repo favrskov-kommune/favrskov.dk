@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "corejs": "3.6.5"
+      }
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-transform-object-assign"
+  ]
+}

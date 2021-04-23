@@ -1,0 +1,14 @@
+uuid: 3f4d5da8-ca36-473b-88dc-7005777900b4
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: 8rVcRXLnTAEoWs7zl8du-7RIUnayqUcGYnvb3JT21-o
+id: time_zones
+label: Tidszoner
+category: 'Dato og tid'
+likert: false
+options: ''

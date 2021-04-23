@@ -1,0 +1,18 @@
+/**
+ * Type: Theme.
+ * Green theme.
+ */
+
+.theme-green {
+  --theme-background-color: #1fc8a9;
+  --theme-color: #ffefe5;
+  --theme-button-background-color: #ffefe5;
+  --theme-button-color: #1fc8a9;
+  --theme-link-color: #ffefe5;
+  --theme-divider-background-color: #ffefe5;
+  --theme-accordion-border-color: #1fc8a9;
+  --theme-accordion-background-color: var(--color-white);
+  --theme-accordion-text-color: var(--color-black);
+  --theme-input-border: #ffefe5;
+  --theme-input-color-marked: #ffefe5;
+}

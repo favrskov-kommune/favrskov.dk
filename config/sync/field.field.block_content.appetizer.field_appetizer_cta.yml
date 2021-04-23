@@ -1,0 +1,25 @@
+uuid: 7407cda4-0961-42f9-9fab-944fe1158cc4
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.appetizer
+    - field.storage.block_content.field_appetizer_cta
+  module:
+    - premium_tools
+_core:
+  default_config_hash: qZHhPaVaxw33QaG-dsQlG8DiYn4aFKpJf70hBVgc0E8
+id: block_content.appetizer.field_appetizer_cta
+field_name: field_appetizer_cta
+entity_type: block_content
+bundle: appetizer
+label: CTA
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: '17'
+  title: '2'
+field_type: link_with_target

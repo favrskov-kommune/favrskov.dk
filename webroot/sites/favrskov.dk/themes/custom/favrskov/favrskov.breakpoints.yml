@@ -1,0 +1,38 @@
+favrskov.xxs:
+  label: 'Extra extra small'
+  mediaQuery: 'all and (max-width: 480px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+favrskov.xs:
+  label: 'Extra small'
+  mediaQuery: 'all and (min-width : 481px) and (max-width: 767px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+favrskov.sm:
+  label: 'Small'
+  mediaQuery: 'all and (min-width : 768px) and (max-width: 991px)'
+  weight: 2
+  multipliers:
+    - 1x
+favrskov.md:
+  label: 'Medium'
+  mediaQuery: 'all and (min-width : 992px) and (max-width: 1199px)'
+  weight: 3
+  multipliers:
+    - 1x
+favrskov.lg:
+  label: 'Large'
+  mediaQuery: 'all and (min-width : 1200px) and (max-width: 1920px)'
+  weight: 4
+  multipliers:
+    - 1x
+favrskov.xl:
+  label: 'Extra large'
+  mediaQuery: 'all and (min-width : 1921px)'
+  weight: 5
+  multipliers:
+    - 1x

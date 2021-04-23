@@ -1,0 +1,13 @@
+uuid: 3c964ee9-2e91-4487-96ef-fdf3335bf58f
+langcode: da
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: DyypzTfThX10FFQw-399qPfEbLLyrhXgQrKPVsmAoJ4
+id: user_block_user_action
+label: 'Blokér de(n) valgte bruger(e)'
+type: user
+plugin: user_block_user_action
+configuration: {  }

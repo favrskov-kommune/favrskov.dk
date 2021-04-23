@@ -1,0 +1,74 @@
+label: Media
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Gendan
+          exposed_sorts_label: 'Sortér efter'
+          sort_asc_label: Stigende
+          sort_desc_label: Faldende
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Antal elementer'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Forskydning
+          tags:
+            previous: '‹ Forrige'
+            next: 'Næste ›'
+            first: '« Første'
+            last: 'Sidste »'
+      fields:
+        media_bulk_form:
+          action_title: Handling
+        thumbnail__target_id:
+          label: Thumbnail
+          separator: ', '
+        name:
+          separator: ', '
+        bundle:
+          label: Type
+          separator: ', '
+        uid:
+          label: Forfatter
+          separator: ', '
+        status:
+          label: Status
+          settings:
+            format_custom_true: Udgivet
+            format_custom_false: 'Ikke udgivet'
+          separator: ', '
+        changed:
+          label: Opdateret
+          separator: ', '
+        operations:
+          label: Handlinger
+      filters:
+        bundle:
+          expose:
+            label: Type
+        status:
+          expose:
+            label: Sandt
+          group_info:
+            label: Publiceringsstatus
+            group_items:
+              1:
+                title: Udgivet
+              2:
+                title: 'Ikke udgivet'
+        langcode:
+          expose:
+            label: Sprog
+      title: Media
+      empty:
+        area_text_custom:
+          content: 'Ingen tilgængelige media'
+  media_page_list:
+    display_title: Media
+    display_options:
+      menu:
+        title: Media

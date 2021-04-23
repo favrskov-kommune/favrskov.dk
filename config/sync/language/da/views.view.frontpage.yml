@@ -1,0 +1,31 @@
+label: Forside
+description: 'Alt indhold som vises på forsiden.'
+display:
+  default:
+    display_options:
+      empty:
+        title:
+          title: 'Velkommen til [site:name]'
+      exposed_form:
+        options:
+          submit_button: Udfør
+          reset_button_label: Gendan
+          exposed_sorts_label: 'Sortér efter'
+          sort_asc_label: Stigende
+          sort_desc_label: Faldende
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Antal elementer'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Forskydning
+          tags:
+            previous: '‹ Forrige'
+            next: 'Næste ›'
+            first: '« Første'
+            last: 'Sidste »'
+    display_title: Master
+  feed_1:
+    display_title: Feed
+  page_1:
+    display_title: Side

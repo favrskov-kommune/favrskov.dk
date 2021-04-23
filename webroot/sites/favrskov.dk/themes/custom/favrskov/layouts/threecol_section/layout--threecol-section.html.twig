@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a three-column layout.
+ *
+ * Available variables:
+ * - content: The content for this layout.
+ * - attributes: HTML attributes for the layout <div>.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set classes = [
+  'layout',
+  'layout--threecol',
+  settings.color_theme != 'none' ? 'theme theme-' ~ settings.color_theme,
+  'section',
+  'section--spacing-top-' ~ settings.column_spacing_top,
+  'section--spacing-bottom-' ~ settings.column_spacing_bottom
+] %}
+
+{% if settings.color_theme != 'none' %}
+  {{ attach_library('favrskov/theme-' ~ settings.color_theme) }}
+{% endif %}
+
+<section {{ attributes.addClass(classes) }}>
+  <div class="container">
+    {% if header and header is not empty %}
+    <div class="row">
+      <div class="layout-builder__section--header">
+        {{ header }}
+      </div>
+    </div>
+    {% endif %}
+    <div class="row">
+      <div {{ region_attributes.first.addClass(['col-xs-12', 'col-md-4', 'layout__region', 'layout__region--first']).addClass(content.second or content.third ? ['pb-xs', 'pb-0-md']) }}>
+        {{ content.first }}
+      </div>
+      <div {{ region_attributes.second.addClass(['col-xs-12', 'col-md-4', 'layout__region', 'layout__region--second']).addClass(content.third ? ['pb-xs', 'pb-0-md']) }}>
+        {{ content.second }}
+      </div>
+      <div {{ region_attributes.third.addClass(['col-xs-12', 'col-md-4', 'layout__region', 'layout__region--third']) }}>
+        {{ content.third }}
+      </div>
+    </div>
+  </div>
+</section>

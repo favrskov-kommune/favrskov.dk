@@ -1,0 +1,14 @@
+{
+  "title": "Hero",
+  "status": "ready",
+  "context": {
+    "title": "Hero",
+    "teaser": "<p>Teaser</p>",
+    "position": "left",
+    "media": "<img src=\"https://www.novicell.dk/media/67333/hero.jpg\">",
+    "cta": {
+      "url": "/",
+      "title": "CTA text"
+    }
+  }
+}

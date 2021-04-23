@@ -1,0 +1,24 @@
+{{ attach_library('favrskov/local-tasks') }}
+
+{% block primary_content %}
+  {% if primary %}
+    <ul class="local-tasks">
+      {% for item in primary %}
+        <li>
+          {{ link(item.title, item.url) }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
+{% block secondary_content %}
+  {% if secondary %}
+    <ul class="local-tasks">
+      {% for item in secondary %}
+        <li>
+          {{ link(item.title, item.url) }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

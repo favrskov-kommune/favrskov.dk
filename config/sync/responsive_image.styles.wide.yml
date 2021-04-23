@@ -1,0 +1,62 @@
+uuid: 18d01b4e-601f-442d-adf5-e5c68726f3c8
+langcode: da
+status: true
+dependencies:
+  config:
+    - image.style.wide_lg_
+    - image.style.wide_md_
+    - image.style.wide_sm_
+    - image.style.wide_xl_
+    - image.style.wide_xs_
+    - image.style.wide_xs_x2_
+    - image.style.wide_xxs_
+    - image.style.wide_xxsx2_
+  theme:
+    - favrskov
+_core:
+  default_config_hash: mBLJj-PcOShSPnmm7IlCM1m0RGFNXUX0bkVbThIiB0w
+id: wide
+label: Bred
+image_style_mappings:
+  -
+    breakpoint_id: favrskov.xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: wide_xl_
+  -
+    breakpoint_id: favrskov.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: wide_lg_
+  -
+    breakpoint_id: favrskov.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: wide_md_
+  -
+    breakpoint_id: favrskov.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: wide_sm_
+  -
+    breakpoint_id: favrskov.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: wide_xs_
+  -
+    breakpoint_id: favrskov.xs
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: wide_xs_x2_
+  -
+    breakpoint_id: favrskov.xxs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: wide_xxs_
+  -
+    breakpoint_id: favrskov.xxs
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: wide_xxsx2_
+breakpoint_group: favrskov
+fallback_image_style: wide_xxs_

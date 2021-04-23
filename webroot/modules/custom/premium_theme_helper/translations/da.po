@@ -1,0 +1,255 @@
+# Danish translation of Drupal Premium (all releases)
+# Copyright (c) 2021 Novicell
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Drupal Premium (all releases)\n"
+"POT-Creation-Date: 2019-01-25 11:59+0000\n"
+"PO-Revision-Date: 2019-01-25 13:08+0100\n"
+"Language-Team: Danish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Last-Translator: \n"
+"Language: da\n"
+"X-Generator: Poedit 1.8.11\n"
+
+msgid "Description is used for meta tags, search results and inline navigation"
+msgstr "Beskrivelsen er brugt til meta tags, søgeresultater og inline navigation"
+
+msgid "Page settings"
+msgstr "Sideindstillinger"
+
+msgid "One column"
+msgstr "En kolonne"
+
+msgid "Two column"
+msgstr "To kolonne"
+
+msgid "Three column"
+msgstr "Tre kolonne"
+
+msgid "Section @section"
+msgstr "Sektion @section"
+
+msgid "Section (@type): @label"
+msgstr "Sektion (@type): @label"
+
+msgid "Sections"
+msgstr "Sektioner"
+
+msgid "Sections in @storage_label layout"
+msgstr "Sektioner i @storage_label layout"
+
+msgid "Layout Section"
+msgstr "Layout Sektion"
+
+msgid "Add section"
+msgstr "Tilføj sektion"
+
+msgid "Add section <span class=\"visually-hidden\">at start of layout</span>"
+msgstr "Tilføj sektion <span class=\"visually-hidden\">ved starten af layout</span>"
+
+msgid "Add section <span class=\"visually-hidden\">at end of layout</span>"
+msgstr "Tilføj sektion <span class=\"visually-hidden\">ved slutningen af layout</span>"
+
+msgid "Add section <span class=\"visually-hidden\">between @first and @second</span>"
+msgstr "Tilføj sektion <span class=\"visually-hidden\">mellem @first og @second</span>"
+
+msgid "Add block"
+msgstr "Tilføj blok"
+
+msgid "Add block <span class=\"visually-hidden\">in @section, @region region</span>"
+msgstr "Tilføj blok <span class=\"visually-hidden\">i @section, @region region</span>"
+
+msgid "Configure section"
+msgstr "Konfigurér sektion"
+
+msgid "Choose a layout for this section"
+msgstr "Vælg et layout for denne sektion"
+
+msgid "Reorder sections"
+msgstr "Omarranger sektioner"
+
+msgid "Show content preview"
+msgstr "Vis forhåndsvisning af indhold"
+
+msgid "Color theme"
+msgstr "Farve tema"
+
+msgid "Choose color theme this layout."
+msgstr "Vælg farve tema for dette layout."
+
+msgid "Column width"
+msgstr "Kolonnebredde"
+
+msgid "Choose column width for this layout."
+msgstr "Vælg kolonnebredde for dette layout."
+
+msgid "Column spacing top"
+msgstr "Kolonneafstand i top"
+
+msgid "Column spacing bottom"
+msgstr "Kolonneafstand i bund"
+
+msgid "Choose column spacing for this layout."
+msgstr "Vælg kolonneafstand for dette layout."
+
+msgid "Change to"
+msgstr "Ændre til"
+
+msgid "Create New Draft"
+msgstr "Opret ny kladde"
+
+msgid "Create @entity_type"
+msgstr "Opret @entity_type"
+
+msgid "Saving draft..."
+msgstr "Gemmer kladde..."
+
+msgid "Save Draft"
+msgstr "Gem Kladde"
+
+msgid "Draft"
+msgstr "Kladde"
+
+msgid "Save layout"
+msgstr "Gem layout"
+
+msgid "You are editing the layout for this @bundle @singular_label. <a href=\":link\">Edit the template for all @bundle @plural_label instead.</a>"
+msgstr "Du redigerer layoutet for denne @bundle @singular_label. <a href=\":link\">Rediger skabelonen til al @bundle @plural_label i stedet.</a>"
+
+msgid "You are editing the layout for this @bundle @singular_label."
+msgstr "Du redigerer layoutet for denne @bundle @singular_label."
+
+msgid "Congratulations, you installed Drupal Premium!"
+msgstr "Tillykke, du har installeret Drupal Premium!"
+
+msgid "Are you sure you want to remove the %label block?"
+msgstr "Er du sikker på, at du vil fjerne %label blokken?"
+
+msgid "Are you sure you want to remove section @section?"
+msgstr "Er du sikker på, at du vil fjerne sektion @section?"
+
+msgid "Are you sure you want to discard your layout changes?"
+msgstr "Er du sikker på, at du vil kassere dine layoutændringer?"
+
+msgid "Editorial"
+msgstr "Redaktionelt arbejdsflow"
+
+msgctxt "Workflow state label"
+msgid "Draft"
+msgstr "Kladde"
+
+msgctxt "Workflow transition label"
+msgid "Restore to Draft"
+msgstr "Gendan til Kladde"
+
+msgctxt "Workflow transition label"
+msgid "Create New Draft"
+msgstr "Opret Ny Kladde"
+
+msgctxt "Workflow transition label"
+msgid "Publish"
+msgstr "Udgiv"
+
+msgctxt "Workflow state label"
+msgid "Published"
+msgstr "Udgivet"
+
+msgctxt "Workflow state label"
+msgid "Archived"
+msgstr "Arkiveret"
+
+msgctxt "Workflow transition label"
+msgid "Archive"
+msgstr "Arkiver"
+
+msgctxt "Workflow transition label"
+msgid "Restore"
+msgstr "Gendan"
+
+msgid "Full width"
+msgstr "Fuld bredde"
+
+msgid "Add a new custom block"
+msgstr "Tilføj en ny brugerdefineret blok"
+
+msgid "Accordion"
+msgstr "Accordion"
+
+msgid "A block that contains an accordion."
+msgstr "En blok der indeholder en accordion."
+
+msgid "Appetizer"
+msgstr "Appetizer"
+
+msgid "A block that contains image, text and a CTA-button."
+msgstr "En blok der indeholder et billede, tekst og en CTA knap."
+
+msgid "Code"
+msgstr "Kode"
+
+msgid "A block where editors can add scripts."
+msgstr "En blok hvor redaktører kan tilføje scripts."
+
+msgid "A block that contains image."
+msgstr "En blok der indeholder et billede."
+
+msgid "Quote"
+msgstr "Citat"
+
+msgid "A block contains a quote."
+msgstr "En blok der indeholder et citat."
+
+msgid "Divider"
+msgstr "Divider"
+
+msgid "A block that contains an divider"
+msgstr "En blok der indeholder et divider."
+
+msgid "Hero"
+msgstr "Hero"
+
+msgid "A block contains a hero."
+msgstr "En blok der indeholder en hero."
+
+msgid "Inline Navigation"
+msgstr "Inline Navigation"
+
+msgid "A block containing a inline navigation."
+msgstr "En blok der indeholder en inline navigation."
+
+msgid "	A block that contains a button."
+msgstr "En blok der indeholder en knap."
+
+msgid "Slideshow"
+msgstr "Slideshow"
+
+msgid "A block containing a slideshow of images."
+msgstr "En blok der indeholder et slideshow af billeder."
+
+msgid "Spacer"
+msgstr "Spacer"
+
+msgid "A block that contains a spacer."
+msgstr "En blok der indeholder en spacer."
+
+msgid "A block containing an rich text editor."
+msgstr "En blok der indeholder en rich tekst editor."
+
+msgid "Video"
+msgstr "Video"
+
+msgid "A block contains a video."
+msgstr "En blok der indeholder en video."
+
+msgid "Apply to selected items"
+msgstr "Anvend på valgte elementer"
+
+msgid "If selected and this menu link has children, the menu will always appear expanded. This option may be overridden for the entire menu tree when placing a menu block."
+msgstr "Hvis dette er valgt og dette menulink har underpunkter, vil menuen altid være udvidet. Dette valg kan være overskrevet for hele menu træet via en menu blok."
+
+msgid "The layout override has been saved."
+msgstr "Layoutoverskrivelsen er blevet gemt."

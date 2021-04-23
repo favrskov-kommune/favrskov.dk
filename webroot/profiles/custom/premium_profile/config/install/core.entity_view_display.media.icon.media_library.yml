@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.icon.field_media_icons
+    - media.type.icon
+  module:
+    - media_icons
+id: media.icon.media_library
+targetEntityType: media
+bundle: icon
+mode: media_library
+content:
+  field_media_icons:
+    weight: 0
+    label: hidden
+    settings:
+      height: '180'
+      width: '180'
+    third_party_settings: {  }
+    type: icon_formatter
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

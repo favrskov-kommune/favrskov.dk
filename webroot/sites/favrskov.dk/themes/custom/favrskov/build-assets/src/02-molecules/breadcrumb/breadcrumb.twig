@@ -1,0 +1,18 @@
+{{ attach_library('favrskov/breadcrumb') }}
+
+{% if breadcrumb and disable == FALSE %}
+  <div{{ (not attributes ? create_attribute() : attributes).addClass('breadcrumb') }}>
+    <ol{{ (not items_attributes ? create_attribute() : items_attributes).addClass('breadcrumb__items') }}>
+      {% for item in breadcrumb %}
+        <li class="breadcrumb__item">
+          {% if item.url %}
+            <a class="breadcrumb__link" href="{{ item.url }}">{{ item.text }}</a>
+          {% else %}
+            <span class="breadcrumb__link breadcrumb__link--active">{{ item.text }}</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+  {{ breadcrumb_json_data }}
+{% endif %}

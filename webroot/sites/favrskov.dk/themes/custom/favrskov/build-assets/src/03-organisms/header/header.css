@@ -1,0 +1,50 @@
+/**
+ * Type: Organisms.
+ * Header.
+ */
+
+/* When user is logged in, we remove fixed from header */
+body.adminimal-admin-toolbar header.header {
+  position: relative;
+}
+
+.header {
+  position: fixed;
+  background-color: var(--header-background-color);
+  font-family: var(--header-font-family);
+  font-weight: var(--header-font-weight);
+  color: var(--header-text-color);
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0 25px 75px rgba(0, 0, 0, .1);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height-mobile);
+
+    @media (--viewport-md-min) {
+      height: var(--header-height);
+      justify-content: flex-end;
+    }
+
+    .search-toggle {
+      margin-right: 50px;
+
+      @media (--viewport-md-min) {
+        margin-right: 0;
+      }
+    }
+
+    .burger {
+      order: 2;
+
+      @media (--viewport-md-min) {
+        order: 0;
+      }
+    }
+  }
+}

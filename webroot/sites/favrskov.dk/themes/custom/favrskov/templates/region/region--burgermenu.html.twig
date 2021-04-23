@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% embed '@organisms/burger-menu/burger-menu.twig' with {
+  'contacts': contacts
+} %}
+  {% block navigation %}
+    {{ elements.mainnavigation_bm }}
+  {% endblock %}
+  {% block meta_menu %}
+    {{ elements.metamenu_bm }}
+  {% endblock %}
+{% endembed %}

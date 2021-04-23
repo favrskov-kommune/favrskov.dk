@@ -1,0 +1,40 @@
+/**
+ * Type: Base.
+ * Form styling inside wrapper.
+ */
+
+.premium-layout-wrapper {
+  @nestedimport "./src/01-particles/button/button.css";
+  @nestedimport "./src/01-particles/forms/checkbox/checkbox.css";
+  @nestedimport "./src/01-particles/forms/input/input.css";
+  @nestedimport "./src/01-particles/forms/label/label.css";
+  @nestedimport "./src/01-particles/forms/radio/radio.css";
+  @nestedimport "./src/01-particles/forms/select/select.css";
+  @nestedimport "./src/01-particles/forms/textarea/textarea.css";
+
+  .form-item {
+    margin-bottom: 15px;
+
+    & .description {
+      margin-top: 5px;
+      opacity: .5;
+    }
+  }
+
+  .form-actions {
+    margin-top: 15px;
+
+    .button + .button {
+      margin-left: 5px;
+    }
+  }
+
+  .user-pass,
+  .user-login-form {
+    max-width: 816px;
+    margin: 40px auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+

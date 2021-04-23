@@ -1,0 +1,24 @@
+{{ attach_library('favrskov/meta-menu') }}
+
+{% block meta_menu %}
+  <div class="meta-menu">
+    <div class="container">
+      <div class="meta-menu__inner">
+        {% block meta_menu_content %}
+          {% include '@molecules/language-menu/language-menu.twig' with {
+            'links': links
+          } %}
+          {% if items %}
+            <ul class="meta-menu-list">
+              {% for item in items %}
+                <li class="meta-menu-item">
+                  {{ link(item.text, item.url, {'class': 'meta-menu-item__link'}) }}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

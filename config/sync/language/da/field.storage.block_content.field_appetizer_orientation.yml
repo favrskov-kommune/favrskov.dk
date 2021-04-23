@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    1:
+      label: 'Billede til højre'
+    0:
+      label: 'Billede til venstre'

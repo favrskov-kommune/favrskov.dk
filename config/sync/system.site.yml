@@ -1,0 +1,14 @@
+uuid: f8f007bc-fc5d-4065-8ffe-1205e76f6127
+name: Favrskov.dk
+mail: webmaster@favrskov.dk
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /user/login
+admin_compact_mode: false
+weight_select_max: 100
+langcode: da
+default_langcode: da
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI

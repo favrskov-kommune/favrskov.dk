@@ -1,0 +1,37 @@
+/**
+ * Type: Molecules.
+ * Quote.
+ */
+
+.quote {
+  font-weight: 300;
+  font-size: var(--base-font-size-large);
+  position: relative;
+
+  & > p {
+    display: inline;
+  }
+
+  @media (--viewport-md-min) {
+    font-size: var(--base-font-size-xxlarge);
+  }
+
+  .icon--quote {
+    fill: currentColor;
+    opacity: .3;
+    width: 14px;
+    height: 18px;
+    transform: translateY(-50%);
+
+    @media (--viewport-md-min) {
+      width: 20px;
+      height: 24px;
+    }
+  }
+
+  &__author {
+    padding-left: 40px;
+    font-size: var(--base-font-size-large);
+    font-style: italic;
+  }
+}

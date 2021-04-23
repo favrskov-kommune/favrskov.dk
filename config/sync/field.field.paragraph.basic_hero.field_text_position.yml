@@ -1,0 +1,25 @@
+uuid: a574035b-9899-4bff-8977-877f0213b7e4
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_position
+    - paragraphs.paragraphs_type.basic_hero
+  module:
+    - options
+_core:
+  default_config_hash: U8XAaW8i9C0Hgam-M_1ZEmCxlRNVM5EzpBaskq_cYck
+id: paragraph.basic_hero.field_text_position
+field_name: field_text_position
+entity_type: paragraph
+bundle: basic_hero
+label: 'Text Position'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

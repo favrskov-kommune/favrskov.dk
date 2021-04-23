@@ -1,0 +1,52 @@
+{{ attach_library('favrskov/search-page') }}
+
+<div{{ (not attributes ? create_attribute() : attributes).addClass('container') }}>
+  <div class="search-page">
+    <div class="search-page__title">
+      {% if title %}
+        <h2>{{ title }}</h2>
+      {% endif %}
+    </div>
+    <div class="search-page__no-of-results">
+      {% if no_of_results %}
+        <p>{{ no_of_results }}</p>
+      {% endif %}
+    </div>
+    <div class="search-page__form">
+      {% block form %}
+        <form action="/search" method="get" class="search-page__keys-submit">
+          <div class="form-item">
+            {% include '@particles/forms/input/input.twig' with {
+              'attributes': '',
+              'type': 'search',
+              'placeholder': 'Search'|t,
+              'name': 'keys'
+            } %}
+          </div>
+          {% embed '@particles/button/button.twig' with {
+            'type': 'submit'
+          } %}
+            {% block content %}
+              {{ 'Search'|t }}
+            {% endblock %}
+          {% endembed %}
+        </form>
+      {% endblock %}
+    </div>
+    {% block facets %}{% endblock %}
+    <div class="search-page__results">
+      {% block results %}
+        {% for item in results %}
+          <div>{{ item.title }}</div>
+        {% endfor %}
+      {% endblock %}
+    </div>
+    <div class="search-page__pager">
+      {% block pager %}
+        {% include '@organisms/pager/pager.twig' with {
+          'items': pager.items
+        } %}
+      {% endblock %}
+    </div>
+  </div>
+</div>

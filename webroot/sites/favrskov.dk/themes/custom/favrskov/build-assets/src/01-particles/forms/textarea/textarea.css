@@ -1,0 +1,43 @@
+/**
+ * Type: Atom.
+ * Select.
+ */
+
+.textarea {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  font-size: var(--base-font-size);
+  line-height: 1.3;
+  font-family: var(--base-font-family);
+  color: var(--theme-color);
+  background-color: var(--theme-background-color);
+
+  /* Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214 */
+  background-image: none;
+  border: 1px solid var(--theme-input-border);
+  resize: none;
+  appearance: none;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-gray);
+  }
+
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: currentColor;
+  }
+
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: currentColor;
+  }
+
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: currentColor;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: currentColor;
+  }
+}

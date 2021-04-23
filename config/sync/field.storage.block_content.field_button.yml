@@ -1,0 +1,21 @@
+uuid: d1e65ce2-481d-4791-8047-31044536fbd3
+langcode: da
+status: true
+dependencies:
+  module:
+    - block_content
+    - premium_tools
+_core:
+  default_config_hash: 7b8jBkUfrb3x4bBYiT8vYn6SaYcPafHoPfGRg36rRxg
+id: block_content.field_button
+field_name: field_button
+entity_type: block_content
+type: link_with_target
+settings: {  }
+module: premium_tools
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

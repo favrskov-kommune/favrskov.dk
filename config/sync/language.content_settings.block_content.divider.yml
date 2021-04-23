@@ -1,0 +1,20 @@
+uuid: c1f6fc9b-cf7e-4389-a73c-04080e8800fe
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.divider
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: jANm0uP2AbOIPGvdjXndXTLpT4dMmK-nFxWV1m72gow
+id: block_content.divider
+target_entity_type_id: block_content
+target_bundle: divider
+default_langcode: site_default
+language_alterable: true

@@ -1,0 +1,18 @@
+/**
+ * Type: Theme.
+ * Red theme.
+ */
+
+.theme-red {
+  --theme-background-color: #ef3e4a;
+  --theme-color: #ffefe5;
+  --theme-button-background-color: #ffefe5;
+  --theme-button-color: #ef3e4a;
+  --theme-link-color: #ffefe5;
+  --theme-divider-background-color: var(--color-white);
+  --theme-accordion-border-color: #ef3e4a;
+  --theme-accordion-background-color: var(--color-white);
+  --theme-accordion-text-color: var(--color-black);
+  --theme-input-border: #ffefe5;
+  --theme-input-color-marked: #ffefe5;
+}

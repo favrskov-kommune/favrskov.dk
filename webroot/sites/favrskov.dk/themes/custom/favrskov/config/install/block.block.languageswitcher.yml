@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - premium_tools
+  theme:
+    - favrskov
+id: languageswitcher
+theme: favrskov
+region: header
+weight: 0
+provider: null
+plugin: 'improved_language_block:language_interface'
+settings:
+  id: 'improved_language_block:language_interface'
+  label: 'Language switcher'
+  provider: premium_tools
+  label_display: '0'
+visibility: {  }

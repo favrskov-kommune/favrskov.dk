@@ -1,0 +1,21 @@
+uuid: ee0b5aa4-828f-48e6-8e43-5fe8a63c8932
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.quote
+    - field.storage.block_content.field_quote_text
+_core:
+  default_config_hash: eqMx8P3GgHkw8mH3sBZyZa2xbO6g7LDMVAy-hZM4W4o
+id: block_content.quote.field_quote_text
+field_name: field_quote_text
+entity_type: block_content
+bundle: quote
+label: Tekst
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

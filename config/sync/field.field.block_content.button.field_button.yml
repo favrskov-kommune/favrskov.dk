@@ -1,0 +1,25 @@
+uuid: cccef11d-29d6-4543-a9f5-677082b45ead
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.button
+    - field.storage.block_content.field_button
+  module:
+    - premium_tools
+_core:
+  default_config_hash: uGCZRc2KMBxFg-JnCDp7g3yfC8tpCKqYM7QkjYp2Hss
+id: block_content.button.field_button
+field_name: field_button
+entity_type: block_content
+bundle: button
+label: Knap
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: '17'
+  title: '2'
+field_type: link_with_target

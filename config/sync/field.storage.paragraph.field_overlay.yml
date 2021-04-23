@@ -1,0 +1,20 @@
+uuid: e5df4a9f-c90d-4b3b-8bdb-1d8f74cd5258
+langcode: da
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: hgkDwsykqRSFL96ZJRUmVHwUra0LDUI7xsLxaTvTqDY
+id: paragraph.field_overlay
+field_name: field_overlay
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

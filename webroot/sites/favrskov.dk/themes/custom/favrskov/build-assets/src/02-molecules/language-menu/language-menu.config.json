@@ -1,0 +1,14 @@
+{
+  "title": "Language menu",
+  "status": "ready",
+  "context": {
+    "links": [
+      {
+        "link": "<a href=\"\" class=\"language-menu-list-item__link\">DK</a>"
+      },
+      {
+        "link": "<a href=\"\" class=\"language-menu-list-item__link\">EN</a>"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+uuid: cbf25b7e-c5e1-4006-8cb9-353ccbe69efb
+langcode: da
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: CsK6TseQ2DatEbZgbd30swOlZ28_HHwAESU2LvEnWq0
+id: media_unpublish_action
+label: 'Afpublicér medie'
+type: media
+plugin: 'entity:unpublish_action:media'
+configuration: {  }

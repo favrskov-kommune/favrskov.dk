@@ -1,0 +1,21 @@
+{% render '@header' %}
+{% render '@breadcrumb' %}
+<section class="section section--no-spacing">
+  {% render '@image' %}
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section__inner theme-white">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+          {% render '@quote' %}
+          {% render '@video' with {'autoplay': 'false', 'video_oembed': '{"url":"https://www.youtube.com/watch?v=zrHZpg8EoPM","oEmbed":{"type":"video","version":"1.0","title":"Om Novicell","author_name":"Novicell","author_url":"https:\/\/www.youtube.com\/user\/novicelldk","provider_name":"YouTube","provider_url":"https:\/\/www.youtube.com\/","thumbnail_url":"https:\/\/i.ytimg.com\/vi\/zrHZpg8EoPM\/hqdefault.jpg","thumbnail_width":480,"thumbnail_height":360,"html":"\u003ciframe width=\"480\" height=\"270\" src=\"https:\/\/www.youtube.com\/embed\/zrHZpg8EoPM?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen\u003e\u003c\/iframe\u003e","width":480,"height":270}}'} %}
+          {% render '@video' with {'autoplay': 'true', 'video_oembed': '{"url":"https://www.youtube.com/watch?v=zrHZpg8EoPM","oEmbed":{"type":"video","version":"1.0","title":"Om Novicell","author_name":"Novicell","author_url":"https:\/\/www.youtube.com\/user\/novicelldk","provider_name":"YouTube","provider_url":"https:\/\/www.youtube.com\/","thumbnail_url":"https:\/\/i.ytimg.com\/vi\/zrHZpg8EoPM\/hqdefault.jpg","thumbnail_width":480,"thumbnail_height":360,"html":"\u003ciframe width=\"480\" height=\"270\" src=\"https:\/\/www.youtube.com\/embed\/zrHZpg8EoPM?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen\u003e\u003c\/iframe\u003e","width":480,"height":270}}'} %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% render '@burger-menu' %}
+{% render '@search-overlay' %}
+{% render '@footer' %}

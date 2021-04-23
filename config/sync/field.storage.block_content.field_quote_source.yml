@@ -1,0 +1,23 @@
+uuid: 46500b77-0f96-4659-8814-1c8a08608a39
+langcode: da
+status: true
+dependencies:
+  module:
+    - block_content
+_core:
+  default_config_hash: lZWaKL5AagnV9PJ0eYlsNQTlEirE6uPMffNlPL0RM3c
+id: block_content.field_quote_source
+field_name: field_quote_source
+entity_type: block_content
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

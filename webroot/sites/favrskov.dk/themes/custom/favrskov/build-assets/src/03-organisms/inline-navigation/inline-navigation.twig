@@ -1,0 +1,17 @@
+{{ attach_library('favrskov/inline-navigation') }}
+
+<div{{ (not attributes ? create_attribute() : attributes).addClass('inline-navigation') }}>
+  {% block block_content %}{% endblock %}
+  <ul class="inline-navigation__list js-inline-navigation-slider">
+    {% block content %}
+      {% for item in items %}
+        {% include '@molecules/inline-navigation-item/inline-navigation-item.twig' with {
+          'url': item.url,
+          'media': item.media,
+          'label': item.label,
+          'teaser': item.teaser
+        } %}
+      {% endfor %}
+    {% endblock %}
+  </ul>
+</div>

@@ -1,0 +1,18 @@
+/**
+ * Type: Theme.
+ * Secondary theme.
+ */
+
+.theme-secondary {
+  --theme-background-color: #d1d1d1;
+  --theme-color: #232323;
+  --theme-button-background-color: #232323;
+  --theme-button-color: #d1d1d1;
+  --theme-link-color: #232323;
+  --theme-divider-background-color: #232323;
+  --theme-accordion-border-color: #d1d1d1;
+  --theme-accordion-background-color: var(--color-white);
+  --theme-accordion-text-color: #232323;
+  --theme-input-border: #232323;
+  --theme-input-color-marked: #232323;
+}

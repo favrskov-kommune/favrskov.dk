@@ -1,0 +1,8 @@
+{
+  "title": "Image",
+  "status": "ready",
+  "context": {
+    "caption": "Text",
+    "image": "https://www.novicell.dk/media/67333/hero.jpg"
+  }
+}

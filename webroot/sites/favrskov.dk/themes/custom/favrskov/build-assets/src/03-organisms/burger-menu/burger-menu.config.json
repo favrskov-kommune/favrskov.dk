@@ -1,0 +1,61 @@
+{
+  "title": "Burger menu",
+  "status": "ready",
+  "context": {
+    "navigation": {
+      "title": "Main links",
+      "items": [
+        {
+          "url": "/",
+          "title": "Menu item"
+        },
+        {
+          "url": "/",
+          "title": "Menu item",
+          "below": [
+            {
+              "url": "/",
+              "title": "Menu item"
+            },
+            {
+              "url": "/",
+              "title": "Menu item"
+            },
+            {
+              "url": "/",
+              "title": "Menu item"
+            }
+          ]
+        }
+      ]
+    },
+    "meta_menu": {
+      "title": "Meta menu",
+      "items": [
+        {
+          "url": "/",
+          "title": "Menu item"
+        },
+        {
+          "url": "/",
+          "title": "Menu item"
+        },
+        {
+          "url": "/",
+          "title": "Menu item"
+        }
+      ]
+    },
+    "contacts": [
+      {
+        "title": "Office",
+        "cvr": "20297743",
+        "address": "Søren Nymarks Vej 6",
+        "zip": "8270",
+        "city": "Højbjerg",
+        "telephone": "12345678",
+        "email": "test@email.dk"
+      }
+    ]
+  }
+}

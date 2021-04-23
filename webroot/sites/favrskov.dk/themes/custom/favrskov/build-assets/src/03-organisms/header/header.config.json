@@ -1,0 +1,70 @@
+{
+  "title": "Header",
+  "status": "ready",
+  "context": {
+    "display_burger_toggle": true,
+    "display_search_toggle": true,
+    "logo": {
+      "logo_path": "/dist/images/logo.svg",
+      "alt": "Logo"
+    },
+    "meta_menu": {
+      "items": [
+        {
+          "url": "/",
+          "text": "Menu item"
+        },
+        {
+          "url": "/",
+          "text": "Menu item"
+        }
+      ],
+      "links": [
+        {
+          "link": "<a href=\"\" class=\"language-menu-list-item__link\">DK</a>"
+        },
+        {
+          "link": "<a href=\"\" class=\"language-menu-list-item__link\">EN</a>"
+        }
+      ]
+    },
+    "navigation": {
+      "items": [
+        {
+          "url": "/",
+          "title": "Menu item"
+        },
+        {
+          "url": "/",
+          "title": "Menu item",
+          "below": [
+            {
+              "url": "/",
+              "title": "Menu item"
+            },
+            {
+              "url": "/",
+              "title": "Menu item"
+            },
+            {
+              "url": "/",
+              "title": "Menu item"
+            },
+            {
+              "url": "/",
+              "title": "Menu item"
+            }
+          ]
+        },
+        {
+          "url": "/",
+          "title": "Menu item"
+        },
+        {
+          "url": "/",
+          "title": "Menu item"
+        }
+      ]
+    }
+  }
+}

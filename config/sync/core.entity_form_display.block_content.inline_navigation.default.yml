@@ -1,0 +1,45 @@
+uuid: d8bad951-33a6-4c35-be23-5bc204396464
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.inline_navigation
+    - field.field.block_content.inline_navigation.field_inline_navigation_mode
+    - field.field.block_content.inline_navigation.field_inline_navigation_pages
+    - field.field.block_content.inline_navigation.field_inline_navigation_parent
+_core:
+  default_config_hash: EOgJLLeY-XFLLpjRyezMSBVBT3n_UVAZQ55GOR1jRBU
+id: block_content.inline_navigation.default
+targetEntityType: block_content
+bundle: inline_navigation
+mode: default
+content:
+  field_inline_navigation_mode:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_inline_navigation_pages:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_inline_navigation_parent:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  info: true
+  langcode: true

@@ -1,0 +1,10 @@
+{
+  "title": "Radio",
+  "status": "ready",
+  "context": {
+    "name": "radio",
+    "id": "radio",
+    "label": "Radio label",
+    "value": "1"
+  }
+}

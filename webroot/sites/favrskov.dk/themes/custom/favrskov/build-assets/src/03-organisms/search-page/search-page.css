@@ -1,0 +1,38 @@
+/**
+ * Type: Organisms.
+ * Search page.
+ */
+
+.search-page {
+  &__keys-submit {
+    display: flex;
+    margin-bottom: 30px;
+
+    .form-item {
+      margin-bottom: 0;
+      margin-right: 20px;
+      width: 100%;
+
+      input[type="search"] {
+        height: 100%;
+      }
+
+      .button {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__form,
+  &__no-of-results {
+    margin-top: 25px;
+  }
+
+  &__results {
+    margin-top: 60px;
+  }
+
+  &__pager {
+    margin-bottom: 40px;
+  }
+}

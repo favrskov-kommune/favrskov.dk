@@ -1,0 +1,23 @@
+uuid: 8ce294c8-c6af-4360-9083-195948df3bf0
+langcode: da
+status: true
+dependencies:
+  module:
+    - block_content
+_core:
+  default_config_hash: umPOahAFMgIE7iWOcvHdKyxqaJqxJ807iriuepZCur0
+id: block_content.field_accordion_show_more
+field_name: field_accordion_show_more
+entity_type: block_content
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

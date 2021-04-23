@@ -1,0 +1,17 @@
+{{ attach_library('favrskov/sub-navigation') }}
+
+<div class="sub-navigation">
+  <ul class="sub-navigation__list">
+    {%- for item in items -%}
+      <li class="sub-navigation__item">
+        <a href="{{ item.url }}" class="sub-navigation__link">
+          {{ item.title }}
+          {% include '@particles/svg-icon/svg-icon.twig' with {
+            'attributes': '',
+            'svgIconName': 'arrow-right'
+          } %}
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>

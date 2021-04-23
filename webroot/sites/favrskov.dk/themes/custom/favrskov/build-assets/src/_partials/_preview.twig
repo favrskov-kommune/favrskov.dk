@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="robots" content="noindex,nofollow"/>
+    {# Load CSS #}
+    <link media="all" rel="stylesheet" href="/dist/css/_base/_variables.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-primary.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-secondary.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-green.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-red.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-seashell.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-yellow.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_base/_normalize.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_base/_base.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_base/_fonts.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_base/_grid.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_base/_helpers.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_base/_form-styling.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/breadcrumb/breadcrumb.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/burger/burger.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/divider/divider.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/image/image.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/image-slideshow/image-slideshow.css"/>
+    <link media="all" rel="stylesheet" href="/dist/js/02-molecules/image-slideshow/image-slideshow.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/inline-navigation-item/inline-navigation-item.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/language-menu/language-menu.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/logo/logo.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/meta-menu/meta-menu.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/navigation/navigation.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/quote/quote.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/search-toggle/search-toggle.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/spacer/spacer.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/sub-navigation/sub-navigation.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/02-molecules/video/video.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/accordion/accordion.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/appetiser/appetiser.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/burger-menu/burger-menu.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/footer/footer.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/header/header.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/hero/hero.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/inline-navigation/inline-navigation.css"/>
+    <link media="all" rel="stylesheet" href="/dist/js/03-organisms/inline-navigation/inline-navigation.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/local-tasks/local-tasks.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/pager/pager.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/search-overlay/search-overlay.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/search-page/search-page.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/status-message/status-message.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/03-organisms/maintenance-page/maintenance-page.css"/>
+    {% set componentsWithDarkBackground = [] %}
+    {% if _target.alias in componentsWithDarkBackground %}
+      <style type="text/css">
+        body {
+          background-color: #dadada;
+        }
+      </style>
+    {% endif %}
+    <title>{{ _target.title }}</title>
+  </head>
+  <body id="site" class="premium-layout-wrapper" {{ _target.alias not in ['frontpage', 'search', 'article'] ? 'style="padding-top: 0;"' }}>
+    <main>
+      {{ yield }}
+    </main>
+    {# Load JS #}
+    <script src="/fractal/drupal.js"></script>
+    <script src="/dist/js/02-molecules/image-slideshow/image-slideshow.js"></script>
+    <script src="/dist/js/02-molecules/language-menu/language-menu.js"></script>
+    <script src="/dist/js/02-molecules/navigation/navigation.js"></script>
+    <script src="/dist/js/02-molecules/search-toggle/search-toggle.js"></script>
+    <script src="/dist/js/02-molecules/video/video.js"></script>
+    <script src="/dist/js/03-organisms/accordion/accordion.js"></script>
+    <script src="/dist/js/03-organisms/burger-menu/burger-menu.js"></script>
+    <script src="/dist/js/03-organisms/hero/hero.js"></script>
+    <script src="/dist/js/03-organisms/inline-navigation/inline-navigation.js"></script>
+    <script src="/dist/js/03-organisms/search-overlay/search-overlay.js"></script>
+  </body>
+</html>

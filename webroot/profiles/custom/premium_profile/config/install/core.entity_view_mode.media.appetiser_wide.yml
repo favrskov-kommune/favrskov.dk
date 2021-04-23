@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.appetiser_wide
+label: 'Appetiser wide'
+targetEntityType: media
+cache: true

@@ -1,0 +1,10 @@
+{
+  "title": "Video",
+  "status": "ready",
+  "context": {
+    "title": "This is a video container which opens and plays in an overlay",
+    "subtitle": "with autoplay set to",
+    "media_image": "<img src=\"https://www.novicell.dk/media/67331/video-preview.jpg\">",
+    "media": "<iframe width=\"480\" height=\"270\" src=\"https://www.youtube.com/embed/zrHZpg8EoPM?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+  }
+}

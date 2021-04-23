@@ -1,0 +1,33 @@
+{
+  "title": "appetiser",
+  "status": "ready",
+  "context": {
+    "image": "https://www.novicell.dk/media/67332/building.jpg",
+    "title": "I am a headline – I can be placed left, center or right",
+    "text": "<p>I am a subline. I have a maximum amount of characters and can also be placed left, center or right…</p>",
+    "is_small_version": false,
+    "display_as_fullwidth": true,
+    "orientation": "right",
+    "text_alignment": "left",
+    "cta": {
+      "url": "/",
+      "title": "CTA - I Have different colors"
+    }
+  },
+  "variants": [
+    {
+      "name": "image-left",
+      "context": {
+        "orientation": "left"
+      }
+    },
+    {
+      "name": "small",
+      "context": {
+        "is_small_version": true,
+        "orientation": "",
+        "display_as_fullwidth": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+uuid: f4ef1537-f461-4b97-a881-a0faf944df9b
+langcode: da
+status: true
+dependencies:
+  config:
+    - image.style.full_size_16_9_lg_
+    - image.style.full_size_16_9_md_
+    - image.style.full_size_16_9_sm_
+    - image.style.full_size_16_9_xl_
+    - image.style.full_size_16_9_xs_
+    - image.style.full_size_16_9_xsx2_
+    - image.style.full_size_16_9_xxs_
+    - image.style.full_size_16_9_xxsx2_
+  theme:
+    - favrskov
+_core:
+  default_config_hash: StCchuhLdyJE4Z66TkHuDLVTUKmJDijKDYN_HUgiCRk
+id: full_width_16_9
+label: 'Full width (16:9)'
+image_style_mappings:
+  -
+    breakpoint_id: favrskov.xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_xl_
+  -
+    breakpoint_id: favrskov.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_lg_
+  -
+    breakpoint_id: favrskov.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_md_
+  -
+    breakpoint_id: favrskov.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_sm_
+  -
+    breakpoint_id: favrskov.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_xs_
+  -
+    breakpoint_id: favrskov.xs
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_xsx2_
+  -
+    breakpoint_id: favrskov.xxs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_xxs_
+  -
+    breakpoint_id: favrskov.xxs
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_xxsx2_
+breakpoint_group: favrskov
+fallback_image_style: full_size_16_9_xxs_

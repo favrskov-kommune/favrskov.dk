@@ -1,0 +1,271 @@
+master:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/_base/_variables.css: {}
+      build-assets/dist/css/_base/_normalize.css: {}
+      build-assets/dist/css/_base/_base.css: {}
+      build-assets/dist/css/_base/_fonts.css: {}
+      build-assets/dist/css/_base/_grid.css: {}
+      build-assets/dist/css/_base/_helpers.css: {}
+      build-assets/dist/css/_base/_form-styling.css: {}
+      build-assets/dist/css/01-particles/forms/textarea/textarea.css: {}
+
+# Themes.
+theme:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/_themes/theme.css: {}
+
+theme-primary:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/_themes/theme-primary.css: {}
+  dependencies:
+    - favrskov/theme
+
+theme-secondary:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/_themes/theme-secondary.css: {}
+  dependencies:
+    - favrskov/theme
+
+theme-green:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/_themes/theme-green.css: {}
+  dependencies:
+    - favrskov/theme
+
+theme-red:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/_themes/theme-red.css: {}
+  dependencies:
+    - favrskov/theme
+
+theme-seashell:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/_themes/theme-seashell.css: {}
+  dependencies:
+    - favrskov/theme
+
+theme-yellow:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/_themes/theme-yellow.css: {}
+  dependencies:
+    - favrskov/theme
+
+# Molecules.
+breadcrumb:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/breadcrumb/breadcrumb.css: {}
+
+burger:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/burger/burger.css: {}
+
+divider:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/divider/divider.css: {}
+
+image:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/image/image.css: {}
+
+image-slideshow:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/image-slideshow/image-slideshow.css: {}
+      build-assets/dist/js/02-molecules/image-slideshow/image-slideshow.css: {}
+  js:
+    build-assets/dist/js/02-molecules/image-slideshow/image-slideshow.js: { preprocess: false }
+  dependencies:
+    - core/drupal
+
+inline-navigation-item:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/inline-navigation-item/inline-navigation-item.css: {}
+
+language-menu:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/language-menu/language-menu.css: {}
+  js:
+    build-assets/dist/js/02-molecules/language-menu/language-menu.js: { preprocess: false }
+
+logo:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/logo/logo.css: {}
+
+meta-menu:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/meta-menu/meta-menu.css: {}
+
+navigation:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/navigation/navigation.css: {}
+  js:
+    build-assets/dist/js/02-molecules/navigation/navigation.js: { preprocess: false }
+
+quote:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/quote/quote.css: {}
+
+search-toggle:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/search-toggle/search-toggle.css: {}
+  js:
+    build-assets/dist/js/02-molecules/search-toggle/search-toggle.js: { preprocess: false }
+
+spacer:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/spacer/spacer.css: {}
+
+sub-navigation:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/sub-navigation/sub-navigation.css: {}
+
+video:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/video/video.css: {}
+  js:
+    build-assets/dist/js/02-molecules/video/video.js: { preprocess: false }
+  dependencies:
+    - core/drupal
+
+# Organisms
+accordion:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/accordion/accordion.css: {}
+  js:
+    build-assets/dist/js/03-organisms/accordion/accordion.js: { preprocess: false }
+  dependencies:
+    - core/drupal
+
+appetiser:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/appetiser/appetiser.css: {}
+
+burger-menu:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/burger-menu/burger-menu.css: {}
+  js:
+    build-assets/dist/js/03-organisms/burger-menu/burger-menu.js: { preprocess: false }
+
+footer:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/footer/footer.css: {}
+  dependencies:
+    - favrskov/theme-primary
+
+header:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/header/header.css: {}
+
+hero:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/hero/hero.css: {}
+  js:
+    build-assets/dist/js/03-organisms/hero/hero.js: { preprocess: false }
+  dependencies:
+    - core/drupal
+
+inline-navigation:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/inline-navigation/inline-navigation.css: {}
+      build-assets/dist/js/03-organisms/inline-navigation/inline-navigation.css: {}
+  js:
+    build-assets/dist/js/03-organisms/inline-navigation/inline-navigation.js: { preprocess: false }
+  dependencies:
+    - core/drupal
+
+local-tasks:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/local-tasks/local-tasks.css: {}
+
+pager:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/pager/pager.css: {}
+
+search-overlay:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/search-overlay/search-overlay.css: {}
+  js:
+    build-assets/dist/js/03-organisms/search-overlay/search-overlay.js: { preprocess: false }
+
+search-page:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/search-page/search-page.css: {}
+
+status-message:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/status-message/status-message.css: {}
+
+maintenance-page:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/maintenance-page/maintenance-page.css: {}

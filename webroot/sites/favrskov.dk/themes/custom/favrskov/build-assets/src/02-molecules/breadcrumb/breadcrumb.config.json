@@ -1,0 +1,20 @@
+{
+  "title": "Breadcrumb",
+  "status": "ready",
+  "context": {
+    "disable": false,
+    "breadcrumb": [
+      {
+        "url": "#",
+        "text": "Link 1"
+      },
+      {
+        "url": "#",
+        "text": "Link 2"
+      },
+      {
+        "text": "Link 3"
+      }
+    ]
+  }
+}

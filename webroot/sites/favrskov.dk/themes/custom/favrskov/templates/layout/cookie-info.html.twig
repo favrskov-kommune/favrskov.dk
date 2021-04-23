@@ -1,0 +1,17 @@
+<button class="cookie-info__open" id="cookie-info-open">
+  {{ open }}
+</button>
+<section{{ attributes.setAttribute('id', 'cookie-info').addClass('cookie-info') }}>
+  <div class="cookie-info__text">
+    {% if title %}
+      <h3 class="cookie-info__headline">{{ title }}</h3>
+    {% endif %}
+    {% if body %}
+      <div class="cookie-info__body">{{ body.value | raw }}</div>
+    {% endif %}
+    {% include '@particles/button/button.twig' with {
+      'text': close,
+      'attributes': create_attribute().setAttribute('id', 'cookie-info-close').addClass('cookie-info__close')
+    } %}
+  </div>
+</section>

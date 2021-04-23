@@ -1,0 +1,54 @@
+label: 'Modereret indhold'
+description: 'Find og moderér indhold.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Gendan
+          exposed_sorts_label: 'Sortér efter'
+          sort_asc_label: Stigende
+          sort_desc_label: Faldende
+      pager:
+        options:
+          tags:
+            previous: '‹ Forrige'
+            next: 'Næste ›'
+            first: '« Første'
+            last: 'Sidste »'
+          expose:
+            items_per_page_label: 'Antal elementer'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Forskydning
+      fields:
+        title:
+          label: Titel
+          separator: ', '
+        type:
+          label: Indholdstype
+          separator: ', '
+        name:
+          label: Forfatter
+          separator: ', '
+        moderation_state:
+          separator: ', '
+        changed:
+          label: Opdateret
+          separator: ', '
+        operations:
+          label: Handlinger
+      filters:
+        title:
+          expose:
+            label: Titel
+        type:
+          expose:
+            label: Indholdstype
+        langcode:
+          expose:
+            label: Sprog
+      title: 'Modereret indhold'
+  moderated_content:
+    display_title: 'Modereret indhold'
