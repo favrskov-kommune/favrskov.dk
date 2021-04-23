@@ -203,11 +203,11 @@ msgstr "Citat"
 msgid "A block contains a quote."
 msgstr "En blok der indeholder et citat."
 
-msgid "Divider"
+msgid "Delelinje"
 msgstr "Divider"
 
 msgid "A block that contains an divider"
-msgstr "En blok der indeholder et divider."
+msgstr "En blok der indeholder en delelinje."
 
 msgid "Hero"
 msgstr "Hero"
@@ -253,3 +253,6 @@ msgstr "Hvis dette er valgt og dette menulink har underpunkter, vil menuen altid
 
 msgid "The layout override has been saved."
 msgstr "Layoutoverskrivelsen er blevet gemt."
+
+msgid "Would you like to be able to reuse this block? This option can not be changed after saving."
+msgstr "Vil du gerne være i stand til at genbruge denne blok? Dette valg kan ikke ændres når det er gemt."
