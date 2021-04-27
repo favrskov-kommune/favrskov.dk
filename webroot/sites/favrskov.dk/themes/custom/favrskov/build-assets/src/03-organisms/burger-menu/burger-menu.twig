@@ -11,54 +11,35 @@
   <div class="container">
     <div class="burger-menu__inner">
       <div class="row">
-        <div class="col-xs-12 col-md-8 col-lg-6">
           {% block navigation %}
             {% if navigation %}
-              <div class="burger-menu-list__label">{{ navigation.title }}</div>
-              <ul class="burger-menu-list">
-                {% for item in navigation.items %}
-                  <li class="burger-menu-list-item js-burger-menu-list-item">
-                    <a href="{{ item.url }}" class="burger-menu-list-item__link">
-                      {{ item.title }}
-                      {% if item.below %}
-                        {% include '@particles/svg-icon/svg-icon.twig' with {
-                          'attributes': create_attribute().setAttribute('@click', 'triggerSubNavigation($event)'),
-                          'svgIconName': 'arrow-line-down'
-                        } %}
-                      {% endif %}
-                    </a>
-                    {% if item.below %}
-                      <ul class="burger-menu-list burger-menu-list--secondary">
-                        <div class="burger-menu-list__label">{{ item.below.title }}</div>
-                        {% for sub_item in navigation.items %}
-                          <li class="burger-menu-list-item">
-                            <a href="{{ sub_item.url }}" class="burger-menu-list-item__link">{{ sub_item.title }}</a>
-                          </li>
-                        {% endfor %}
-                      </ul>
-                    {% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
+              {% for item in navigation.items %}
+                <div class="col-xs-12 col-md-8 col-lg-6 col-lg-offset-2">
+                  <h3>{{ item.title }}</h3>
+                  {% if item.below %}
+                    <ul class="burger-menu-list">
+                      <div class="burger-menu-list__label">{{ item.below.title }}</div>
+                      {% for sub_item in navigation.items %}
+                        <li class="burger-menu-list-item js-burger-menu-list-item">
+                          <a href="{{ sub_item.url }}" class="burger-menu-list-item__link">{{ sub_item.title }}</a>
+                          {% if sub_item.below %}
+                            <ul class="burger-menu-list burger-menu-list--secondary">
+                              <div class="burger-menu-list__label">{{ sub_item.below.title }}</div>
+                              {% for second_sub_item in sub_item.items %}
+                                <li class="burger-menu-list-item">
+                                  <a href="{{ second_sub_item.url }}" class="burger-menu-list-item__link">{{ second_sub_item.title }}</a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </div>
+              {% endfor %}
             {% endif %}
           {% endblock %}
-        </div>
-        <div class="col-xs-12 col-md-4">
-          {% block meta_menu %}
-            {% if meta_menu %}
-              <div class="burger-menu-list__label">{{ meta_menu.title }}</div>
-              <ul class="burger-menu-list burger-menu-list--highlighted">
-                {% for item in meta_menu.items %}
-                  <li class="burger-menu-list-item">
-                    <a href="{{ item.url }}" class="burger-menu-list-item__link">
-                      {{ item.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-          {% endblock %}
-        </div>
       </div>
     </div>
   </div>

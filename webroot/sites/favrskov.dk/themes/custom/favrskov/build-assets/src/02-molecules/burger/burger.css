@@ -11,16 +11,17 @@
   flex-shrink: 0;
   flex-grow: 0;
   cursor: pointer;
+  width: 50%;
 
-  @media (--viewport-md-min) {
-    margin-left: 20px;
-  }
+  /*@media (--viewport-md-min) {*/
+  /*  margin-left: 20px;*/
+  /*}*/
 
   &__lines {
     > span {
       display: block;
       width: 40px;
-      height: 1px;
+      height: 2px;
       margin-bottom: 10px;
       background-color: var(--header-selected-text-color);
 
@@ -31,12 +32,9 @@
   }
 
   &__label {
-    font-size: var(--base-font-size-extra-small);
+    font-size: var(--base-font-size);
     margin-left: 15px;
     font-weight: 300;
 
-    @media (--viewport-md-min) {
-      display: none;
-    }
   }
 }

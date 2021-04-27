@@ -20,15 +20,27 @@ body.adminimal-admin-toolbar header.header {
   z-index: 100;
   box-shadow: 0 25px 75px rgba(0, 0, 0, .1);
 
-  &__inner {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &__logo {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+   }
+
+  &__inner {
+    margin-top: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: var(--header-height-mobile);
 
     @media (--viewport-md-min) {
+      align-self: end;
       height: var(--header-height);
-      justify-content: flex-end;
+      justify-content: center;
     }
 
     .search-toggle {

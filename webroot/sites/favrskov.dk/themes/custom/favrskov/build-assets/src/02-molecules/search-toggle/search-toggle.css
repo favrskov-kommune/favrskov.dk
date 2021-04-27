@@ -8,6 +8,7 @@
   flex-shrink: 0;
   flex-grow: 0;
   height: 100%;
+  width: 50%;
   display: inline-flex;
   align-items: center;
   font-weight: 300;
@@ -15,17 +16,17 @@
   justify-content: center;
 
   @media (--viewport-md-min) {
-    height: 70%;
-    margin-left: 40px;
-    padding-left: 40px;
-    border-left: solid 1px var(--color-gray);
+    height: 100%;
+    /*margin-left: 40px;*/
+    /*padding-left: 40px;*/
+    border-right: solid 1px var(--color-gray);
     font-size: var(--base-font-size);
   }
 
   .icon--search {
     width: 26px;
     height: 26px;
-    fill: var(--header-selected-text-color);
+    fill: var(--color-cta);
     margin-right: 10px;
   }
 }

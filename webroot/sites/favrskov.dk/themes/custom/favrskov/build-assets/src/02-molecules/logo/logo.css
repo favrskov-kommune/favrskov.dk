@@ -4,12 +4,14 @@
  */
 
 .logo {
-  margin-right: auto;
   z-index: 3;
+  @media (--viewport-md-min) {
+    margin-left: var(--container-spacing);
+  }
 
   &__image {
     display: block;
-    margin: 0 auto;
-    height: 35px;
+    margin: 0;
+    height: 75px;
   }
 }

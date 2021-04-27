@@ -35,11 +35,11 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
   height: 100vh;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   background-color: white;
   box-shadow: 0 25px 50px 0 rgba(0, 0, 0, .1);
   z-index: 200;
-  transform: translateX(-100px);
+  transform: translateX(100px);
   opacity: 0;
   transition: transform .4s, opacity .4s;
   will-change: transform;
@@ -59,7 +59,7 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
     top: 40px;
     right: 40px;
     font-size: var(--base-font-size);
-    color: var(--color-gray);
+    color: var(--color-gray-dark);
     font-weight: 300;
     display: inline-flex;
     align-items: center;

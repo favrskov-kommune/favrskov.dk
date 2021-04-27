@@ -1,27 +1,31 @@
 {{ attach_library('favrskov/header') }}
 
 <header class="header">
-  {% block topbar %}
-    {% include '@molecules/meta-menu/meta-menu.twig' with {
-      'links': meta_menu.links,
-      'items': meta_menu.items,
-    } %}
-  {% endblock %}
-  <div class="container">
-    <div class="header__inner">
+  <div class="row">
+    {% block topbar %}
+      {% include '@molecules/meta-menu/meta-menu.twig' with {
+        'links': meta_menu.links,
+        'items': meta_menu.items,
+      } %}
+    {% endblock %}
+    <div class="header__logo col-md-3">
       {% block site_branding %}
         {% include '@molecules/logo/logo.twig' with logo %}
       {% endblock %}
+    </div>
+    <div class="header__inner col-md-6 pl-xs-0 pr-xs-0">
       {% block navigation %}
         {% include '@molecules/navigation/navigation.twig' with {
           'items': navigation.items
         } %}
       {% endblock %}
-      {% if display_burger_toggle %}
-        {% include '@molecules/burger/burger.twig' %}
-      {% endif %}
+    </div>
+    <div class="header__inner col-md-3 pl-xs-0 pr-xs-0">
       {% if display_search_toggle %}
         {% include '@molecules/search-toggle/search-toggle.twig' %}
+      {% endif %}
+      {% if display_burger_toggle %}
+        {% include '@molecules/burger/burger.twig' %}
       {% endif %}
     </div>
   </div>
