@@ -17,8 +17,6 @@
 
   @media (--viewport-md-min) {
     height: 100%;
-    /*margin-left: 40px;*/
-    /*padding-left: 40px;*/
     border-right: solid 1px var(--color-gray);
     font-size: var(--base-font-size);
   }

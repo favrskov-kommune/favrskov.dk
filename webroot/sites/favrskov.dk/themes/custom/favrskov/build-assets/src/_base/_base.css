@@ -34,7 +34,8 @@ body {
   }
 
   &.no-scroll {
-    overflow: hidden;
+    position: fixed;
+    overflow-y: scroll;
   }
 }
 

@@ -14,13 +14,6 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu {
   top: 79px;
 }
 
-@media (--viewport-md-min) {
-  /* When user is logged in, we change position of secondary menu in burger menu */
-  body.adminimal-admin-toolbar .burger-menu-list--secondary {
-    top: 41px;
-  }
-}
-
 /* When user is logged in, we change height for burger menu inner element */
 body.adminimal-admin-toolbar .burger-menu__inner {
   height: calc(100vh - 39px);
@@ -99,55 +92,74 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
   padding: 0;
   margin: 0 0 30px;
   color: var(--color-black);
-  font-size: var(--base-font-size-xxlarge);
+  font-size: var(--base-font-size-large);
   font-weight: 900;
   line-height: 1.3;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  @media (--viewport-md-min) {
-    max-width: 240px;
-  }
 
   &__label {
-    color: var(--color-gray);
-    font-size: var(--base-font-size);
-    font-weight: 300;
-    line-height: 1.3;
-    margin-bottom: 21px;
     display: none;
+  }
 
-    @media (--viewport-md-min) {
-      display: block;
+  &.burger-menu-list--primary {
+    display: flex;
+
+    > .burger-menu-list-item {
+      display: flex;
+      flex-direction: column;
+      width: 33.333333%;
+      padding: 0 var(--half-gutter-width);
+      margin-bottom: 0;
+
+      > .burger-menu-list-item__link {
+        margin-bottom: 30px;
+      }
     }
   }
 
   &--secondary {
-    font-size: var(--base-font-size-large);
-    font-weight: 900;
+    font-size: var(--base-font-size);
+    font-weight: 400;
     line-height: 1.3;
     margin-bottom: 0;
     transition: all .3s;
-    opacity: 0;
-    transform: translateX(-10px);
-    visibility: hidden;
-    max-height: 0;
-    margin-left: 20px;
+    display: block;
+    width: 100%;
+    border-top: 1px solid var(--header-border-color);
 
-    @media (--viewport-md-min) {
-      position: absolute;
-      top: 0;
-      left: 300px;
-      max-height: initial;
-      margin-left: 0;
+    .burger-menu-list-item {
+      width: 100%;
+      padding: 0;
+
+      &__link {
+        border-bottom: 1px solid var(--header-border-color);
+        padding: 14px 40px 13px 0;
+        width: 100%;
+        display: block;
+      }
     }
+  }
 
-    .burger-menu-list__label {
-      position: absolute;
-      top: -40px;
+  &--tertiary {
+    font-size: var(--base-font-size);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 0;
+    transition: all .3s;
+    display: block;
+    width: 100%;
+    padding: 15px 0 15px 20px;
+
+    .burger-menu-list-item {
+      width: 100%;
+      padding: 0;
+
+      &__link {
+        border-bottom: none;
+        padding: 9px 0;
+        width: 100%;
+        display: block;
+      }
     }
   }
 
@@ -160,13 +172,8 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
 }
 
 .burger-menu-list-item {
-  font-family: var(--heading-font-family);
-  display: flex;
-  flex-direction: column;
-
-  @media (--viewport-md-min) {
-    display: block;
-  }
+  font-family: var(--base-font-family);
+  position: relative;
 
   &--active,
   &:hover {
@@ -181,24 +188,8 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
     position: relative;
     text-decoration: none;
     color: currentColor;
-    margin-bottom: 20px;
-    display: flex;
     align-items: center;
 
-    &::after {
-      content: "";
-      width: 10px;
-      height: 10px;
-      background: var(--color-primary);
-      display: block;
-      position: absolute;
-      top: 50%;
-      border-radius: 50%;
-      left: -20px;
-      transform: translateY(-50%);
-      transition: opacity .3s;
-      opacity: 0;
-    }
 
     .icon--arrow-line-down {
       width: 40px;
@@ -238,5 +229,33 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
         transform: rotate(-90deg) translateY(5px);
       }
     }
+  }
+}
+
+.burger-menu-list-item__expand-trigger {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 30px;
+  height: 30px;
+
+  &-line1,
+  &-line2 {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: var(--color-primary);
+    transform: translate(-50%, -50%);
+  }
+
+  &-line1 {
+    width: 16px;
+    height: 2px;
+  }
+
+  &-line2 {
+    width: 2px;
+    height: 16px;
   }
 }

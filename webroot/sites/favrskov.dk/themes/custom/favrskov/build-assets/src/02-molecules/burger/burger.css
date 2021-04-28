@@ -13,10 +13,6 @@
   cursor: pointer;
   width: 50%;
 
-  /*@media (--viewport-md-min) {*/
-  /*  margin-left: 20px;*/
-  /*}*/
-
   &__lines {
     > span {
       display: block;
@@ -35,6 +31,5 @@
     font-size: var(--base-font-size);
     margin-left: 15px;
     font-weight: 300;
-
   }
 }

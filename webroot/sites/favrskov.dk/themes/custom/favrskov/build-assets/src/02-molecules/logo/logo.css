@@ -5,6 +5,7 @@
 
 .logo {
   z-index: 3;
+
   @media (--viewport-md-min) {
     margin-left: var(--container-spacing);
   }

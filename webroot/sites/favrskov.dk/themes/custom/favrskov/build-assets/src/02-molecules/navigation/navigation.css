@@ -71,6 +71,7 @@
   &:focus {
     .navigation-item__link {
       background-color: var(--color-primary-hover);
+
       &::after {
         width: 40%;
       }

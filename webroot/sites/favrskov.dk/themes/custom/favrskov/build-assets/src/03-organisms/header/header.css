@@ -28,7 +28,7 @@ body.adminimal-admin-toolbar header.header {
   &__logo {
     display: flex;
     align-items: center;
-   }
+  }
 
   &__inner {
     margin-top: 43px;
