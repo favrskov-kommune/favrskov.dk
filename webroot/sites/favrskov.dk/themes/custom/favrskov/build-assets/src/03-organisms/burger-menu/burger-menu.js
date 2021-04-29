@@ -30,7 +30,7 @@ Drupal.behaviors.burgerMenu = {
           e.preventDefault();
           const trigger = e.currentTarget;
           const parent = trigger.closest('.js-burger-menu-list-item--expandable');
-          this.hideSubNavigations(parent);
+          // this.hideSubNavigations(parent);
 
           parent.classList.toggle(showSubNavigationClass);
         },

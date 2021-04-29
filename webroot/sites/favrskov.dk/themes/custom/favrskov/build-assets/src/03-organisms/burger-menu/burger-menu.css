@@ -63,6 +63,7 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
       width: 20px;
       height: 20px;
       margin-left: 15px;
+      fill: var(--color-primary);
     }
   }
 
@@ -234,16 +235,6 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
       &-line2 {
         height: 0;
       }
-
-    }
-  }
-
-  &--active,
-  &:hover {
-    > .burger-menu-list-item__link::after {
-      @media (--viewport-md-min) {
-        opacity: 1;
-      }
     }
   }
 
@@ -252,6 +243,10 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
     text-decoration: none;
     color: currentColor;
     align-items: center;
+
+    &:hover {
+      text-decoration: underline solid var(--color-cta);
+    }
   }
 }
 

@@ -196,6 +196,8 @@ burger-menu:
       build-assets/dist/css/03-organisms/burger-menu/burger-menu.css: {}
   js:
     build-assets/dist/js/03-organisms/burger-menu/burger-menu.js: { preprocess: false }
+  dependencies:
+    - core/drupal
 
 footer:
   version: VERSION

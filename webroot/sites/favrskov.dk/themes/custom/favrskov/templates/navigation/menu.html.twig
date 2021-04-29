@@ -25,16 +25,23 @@
   @see https://twig.symfony.com/doc/1.x/tags/macro.html
 #}
 {{ menus.menu_links(items, attributes, next_level_attributes, 0, directory) }}
-
 {% macro menu_links(items, attributes, next_level_attributes, menu_level, directory) %}
   {% import _self as menus %}
   {% if items %}
-    {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('burger-menu-list--primary') }}>
-    {% elseif menu_level == 1 %}
-      <ul{{ next_level_attributes.addClass('burger-menu-list--secondary') }}>
-    {% elseif menu_level == 2 %}
-      <ul{{ next_level_attributes.addClass('burger-menu-list--tertiary').removeClass('burger-menu-list--secondary') }}>
+    {% if attributes.region == 'burgermenu' %}
+      {% if menu_level == 0 %}
+        <ul{{ attributes.addClass('burger-menu-list--primary') }}>
+      {% elseif menu_level == 1 %}
+          <ul{{ next_level_attributes.addClass('burger-menu-list--secondary').removeClass('burger-menu-list--tertiary') }}>
+      {% elseif menu_level == 2 %}
+        <ul{{ next_level_attributes.addClass('burger-menu-list--tertiary').removeClass('burger-menu-list--secondary') }}>
+      {% endif %}
+    {% else %}
+      {% if menu_level == 0 %}
+        <ul{{ attributes }}>
+      {% else %}
+        <ul{{ next_level_attributes }}>
+      {% endif %}
     {% endif %}
     {% for item in items %}
       {% if menu_level == 1 and item.below %}
