@@ -14,6 +14,7 @@
   font-weight: 300;
   font-size: var(--base-font-size-extra-small);
   justify-content: center;
+  text-decoration: none;
 
   @media (--viewport-md-min) {
     height: 100%;
