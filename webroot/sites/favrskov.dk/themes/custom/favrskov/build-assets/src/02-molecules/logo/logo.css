@@ -6,13 +6,17 @@
 .logo {
   z-index: 3;
 
-  @media (--viewport-md-min) {
+  @media (--viewport-lg-min) {
     margin-left: var(--container-spacing);
   }
 
   &__image {
     display: block;
     margin: 0;
-    height: 75px;
+    height: 41px;
+
+    @media (--viewport-md-min) {
+      height: 75px;
+    }
   }
 }

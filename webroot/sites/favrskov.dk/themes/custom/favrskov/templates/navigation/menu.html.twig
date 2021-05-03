@@ -47,19 +47,21 @@
       {% if menu_level == 1 and item.below %}
         <li{{ item.attributes.addClass('burger-menu-list-item--expandable','js-burger-menu-list-item--expandable') }}>
       {% else %}
-        {% if item.url %}
+        {% if item.url and attributes.region == 'burgermenu' %}
           <li{{ item.attributes.addClass('burger-menu-list-item') }}>
         {% else %}
           <li{{ item.attributes }}>
         {% endif %}
       {% endif %}
-        {% if item.url %}
+        {% if item.url and attributes.region == 'burgermenu' %}
           <a href="{{ item.url }}" class="burger-menu-list-item__link">{{ item.title }}</a>
+        {% elseif item.url %}
+          <a href="{{ item.url }}">{{ item.title }}</a>
         {% else %}
           {{ item.title }}
         {% endif %}
         {% if item.below %}
-          {% if menu_level == 1 %}
+          {% if menu_level == 1 and attributes.region == 'burgermenu' %}
             <a href="#" class="burger-menu-list-item__expand-trigger" {{ create_attribute().setAttribute('@click', 'triggerSubNavigation($event)') }}>
               <span class="burger-menu-list-item__expand-trigger-line1"></span>
               <span class="burger-menu-list-item__expand-trigger-line2"></span>

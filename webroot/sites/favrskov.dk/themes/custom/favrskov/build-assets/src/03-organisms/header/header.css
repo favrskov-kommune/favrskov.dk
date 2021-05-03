@@ -28,14 +28,28 @@ body.adminimal-admin-toolbar header.header {
   &__logo {
     display: flex;
     align-items: center;
+    order: 0;
+  }
+
+  @media (--viewport-md-min) {
+    &__navigation {
+      order: 1;
+    }
+
+    &__search-burger {
+      order: 2;
+    }
+
+    &__inner {
+      margin-top: calc(var(--meta-menu-height) - 1px);
+    }
   }
 
   &__inner {
-    margin-top: 43px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: var(--header-height-mobile);
+    height: var(--header-height);
 
     @media (--viewport-md-min) {
       align-self: end;
