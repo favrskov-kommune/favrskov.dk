@@ -42,7 +42,7 @@
 
   /* Typography
   ********************/
-  --base-font-family: "Arial", "Helvetica", "sans-serif";
+  --base-font-family: "FoundrySterlingBook", "sans-serif";
   --base-font-size-xxxxlarge: 60px;
   --base-font-size-xxxlarge: 50px;
   --base-font-size-xxlarge: 40px;
@@ -52,9 +52,9 @@
   --base-font-size: 16px;
   --base-font-size-small: 14px;
   --base-font-size-extra-small: 12px;
-  --base-font-weight: 300;
-  --heading-font-family: "Arial", "Helvetica", "sans-serif";
-  --heading-font-weight: 700;
+  --base-font-weight: normal;
+  --heading-font-family: "FoundrySterlingBold", "sans-serif";
+  --heading-font-weight: normal;
 
   /* Layout
   ********************/
@@ -73,7 +73,7 @@
 
   /* Header */
   --header-height: 76px;
-  --header-height-mobile: 80px;
+  --header-height-mobile: 76px;
   --header-font-family: 'Roboto', 'sans-serif';
   --header-text-color: #232323;
   --header-font-weight: 500;
@@ -81,7 +81,8 @@
   --header-border-color: #ced3c8;
 
   /* Meta menu */
-  --meta-menu-height: 40px;
+  --meta-menu-height: 44px;
+  --meta-menu-height-mobile: 32px;
   --meta-menu-background-color: #f7f7f7;
   --meta-menu-text-color: var(--color-primary);
 
