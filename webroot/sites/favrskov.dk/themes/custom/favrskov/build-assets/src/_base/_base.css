@@ -29,6 +29,14 @@ body {
   margin: 0;
   padding-top: calc(var(--header-height) + var(--meta-menu-height));
 
+  @media (--viewport-sm-max) {
+    padding-top: calc(var(--header-height) + var(--header-height) + var(--meta-menu-height-mobile));
+  }
+
+  @media (--viewport-ms-max) {
+    padding-top: calc(var(--header-height-mobile) + var(--header-height-mobile) + var(--meta-menu-height-mobile));
+  }
+
   &.no-scroll {
     position: fixed;
     overflow-y: scroll;

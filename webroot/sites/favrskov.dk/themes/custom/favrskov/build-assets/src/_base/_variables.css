@@ -11,6 +11,7 @@
   --color-black: #000;
   --color-white: #fff;
   --color-gray: #e7ebe3;
+  --color-gray-medium: #474747;
   --color-gray-dark: #282828;
   --color-error: #f00;
   --color-cta: #d8204c;
@@ -53,8 +54,8 @@
   --base-font-size-small: 14px;
   --base-font-size-extra-small: 12px;
   --base-font-weight: normal;
-  --heading-font-family: "FoundrySterlingBold", "sans-serif";
-  --heading-font-weight: normal;
+  --medium-font-family: "FoundrySterlingMedium", "sans-serif";
+  --medium-font-weight: normal;
 
   /* Layout
   ********************/
@@ -73,10 +74,10 @@
 
   /* Header */
   --header-height: 76px;
-  --header-height-mobile: 76px;
-  --header-font-family: 'Roboto', 'sans-serif';
+  --header-height-mobile: 60px;
+  --heading-font-family: "FoundrySterlingBold", "sans-serif";
+  --heading-font-weight: normal;
   --header-text-color: #232323;
-  --header-font-weight: 500;
   --header-selected-text-color: var(--color-primary);
   --header-border-color: #ced3c8;
 

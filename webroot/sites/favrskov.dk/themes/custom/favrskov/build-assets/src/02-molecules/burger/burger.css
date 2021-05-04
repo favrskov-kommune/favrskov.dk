@@ -4,7 +4,6 @@
  */
 
 .burger {
-  font-size: var(--base-font-size-extra-small);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +22,16 @@
       margin-bottom: 10px;
       background-color: var(--header-selected-text-color);
 
+      @media (--viewport-sm-max) {
+        width: 28px;
+        margin-bottom: 6px;
+      }
+
+      @media (--viewport-ms-max) {
+        width: 20px;
+        margin-bottom: 4px;
+      }
+
       &:last-of-type {
         margin-bottom: 0;
       }
@@ -30,8 +39,18 @@
   }
 
   &__label {
-    font-size: var(--base-font-size);
+    font-size: var(--base-font-size-medium);
+    font-family: var(--medium-font-family);
+    font-weight: var(--medium-font-weight);
+    color: var(--color-gray-medium);
+    text-transform: uppercase;
     margin-left: 15px;
-    font-weight: 300;
+
+    @media (--viewport-ms-max) {
+      font-size: var(--base-font-size-small);
+    }
+    @media (--viewport-xs-max) {
+      display: none;
+    }
   }
 }

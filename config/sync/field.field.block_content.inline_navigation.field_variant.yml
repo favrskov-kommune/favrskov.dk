@@ -1,0 +1,23 @@
+uuid: 71b403ee-84d0-4377-8723-e04c78544cea
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.inline_navigation
+    - field.storage.block_content.field_variant
+  module:
+    - options
+id: block_content.inline_navigation.field_variant
+field_name: field_variant
+entity_type: block_content
+bundle: inline_navigation
+label: Variant
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: inline_navigation
+default_value_callback: ''
+settings: {  }
+field_type: list_string

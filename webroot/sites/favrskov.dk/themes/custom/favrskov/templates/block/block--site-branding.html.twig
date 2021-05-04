@@ -26,10 +26,11 @@
  */
 #}
 {% if site_logo %}
+  {% set logo_path = '/' ~ directory ~ '/build-assets/dist/images/logo.svg' %}
   {% include '@molecules/logo/logo.twig' with {
     'attributes': attributes.setAttribute('title', 'Home'|t).setAttribute('rel', 'home'),
     'href': path('<front>'),
-    'logo_path': site_logo,
+    'logo_path': logo_path,
     'alt':  'Home'|t
   } %}
 {% endif %}

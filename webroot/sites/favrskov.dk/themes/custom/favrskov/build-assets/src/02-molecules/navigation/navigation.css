@@ -31,6 +31,7 @@
   height: 100%;
   color: var(--header-text-color);
   cursor: pointer;
+  background-color: var(--color-white);
 
   .icon--arrow-line-down {
     fill: currentColor;
@@ -80,13 +81,18 @@
     height: 100%;
     position: relative;
     text-decoration: none;
-    font-size: var(--base-font-size-large);
+    font-size: var(--base-font-size-medium);
     font-weight: var(--header-font-weight);
     color: var(--color-white);
     background-color: var(--color-primary);
     text-align: center;
-    line-height: var(--header-height);
+    line-height: var(--header-height-mobile);
     transition: background-color .3s;
+
+    @media (--viewport-sm-min) {
+      line-height: var(--header-height);
+      font-size: var(--base-font-size-large);
+    }
 
     &::after {
       content: '';

@@ -13,7 +13,11 @@
   &__image {
     display: block;
     margin: 0;
-    height: 41px;
+    height: 45px;
+
+    @media (--viewport-sm-min) {
+      height: 60px;
+    }
 
     @media (--viewport-md-min) {
       height: 75px;
