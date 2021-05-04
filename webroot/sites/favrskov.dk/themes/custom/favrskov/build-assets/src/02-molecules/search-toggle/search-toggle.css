@@ -11,15 +11,17 @@
   width: 50%;
   display: inline-flex;
   align-items: center;
-  font-weight: 300;
-  font-size: var(--base-font-size-extra-small);
   justify-content: center;
   text-decoration: none;
+  border-right: solid 1px var(--header-border-color);
 
   @media (--viewport-md-min) {
     height: 100%;
-    border-right: solid 1px var(--color-gray);
     font-size: var(--base-font-size);
+  }
+
+  @media (--viewport-sm-max) {
+    border-left: 1px solid var(--header-border-color);
   }
 
   .icon--search {
@@ -27,5 +29,26 @@
     height: 26px;
     fill: var(--color-cta);
     margin-right: 10px;
+
+    @media (--viewport-ms-max) {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__label {
+    font-family: var(--medium-font-family);
+    font-weight: var(--medium-font-weight);
+    font-size: var(--base-font-size-medium);
+    text-transform: uppercase;
+    color: var(--color-gray-medium);
+
+    @media (--viewport-ms-max) {
+      font-size: var(--base-font-size-small);
+    }
+
+    @media (--viewport-xs-max) {
+      display: none;
+    }
   }
 }

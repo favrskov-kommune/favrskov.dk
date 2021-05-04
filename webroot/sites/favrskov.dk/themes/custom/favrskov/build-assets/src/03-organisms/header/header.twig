@@ -13,7 +13,7 @@
         {% include '@molecules/logo/logo.twig' with logo %}
       {% endblock %}
     </div>
-    <div class="header__inner header__search-burger col-xs-6 col-md-3 pl-xs-0 pr-xs-0">
+    <div class="header__inner header__search-burger col-xs-6 col-xs-offset-0 col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-0 pl-xs-0 pr-xs-0 pr-md-0">
       {% if display_search_toggle %}
         {% include '@molecules/search-toggle/search-toggle.twig' %}
       {% endif %}
