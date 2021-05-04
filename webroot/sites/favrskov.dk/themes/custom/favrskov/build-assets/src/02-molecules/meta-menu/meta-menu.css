@@ -59,6 +59,8 @@
     text-decoration: none;
     color: var(--meta-menu-text-color);
     font-size: var(--base-font-size);
+    font-family: var(--header-font-family);
+    font-weight: var(--header-font-weight);
     line-height: 1.3;
 
     @media (--viewport-xs-max) {
