@@ -23,8 +23,12 @@
       background-color: var(--header-selected-text-color);
 
       @media (--viewport-sm-max) {
-        width: 18px;
-        height: 1px;
+        width: 28px;
+        margin-bottom: 6px;
+      }
+
+      @media (--viewport-ms-max) {
+        width: 20px;
         margin-bottom: 4px;
       }
 
