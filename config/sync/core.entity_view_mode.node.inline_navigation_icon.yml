@@ -1,0 +1,10 @@
+uuid: f6ac8b18-45f6-49a4-b418-7d866085b4f0
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: node.inline_navigation_icon
+label: 'Inline Navigation Icon'
+targetEntityType: node
+cache: true

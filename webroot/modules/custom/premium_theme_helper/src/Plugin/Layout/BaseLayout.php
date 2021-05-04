@@ -52,6 +52,7 @@ class BaseLayout extends MultiWidthLayoutBase {
       '#multiple' => FALSE,
       '#title' => $this->t('Column spacing top'),
       '#options' => [
+        'negative' => $this->t('Negative'),
         'none' => $this->t('None'),
         'small' => $this->t('Small'),
         'medium' => $this->t('Medium'),

@@ -1,0 +1,10 @@
+uuid: cf91abc2-0ef9-40ab-89aa-d628cb3bcf46
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: node.inline_navigation_arrow
+label: 'Inline Navigation Arrow'
+targetEntityType: node
+cache: true

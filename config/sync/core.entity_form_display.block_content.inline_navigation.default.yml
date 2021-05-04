@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.inline_navigation.field_inline_navigation_mode
     - field.field.block_content.inline_navigation.field_inline_navigation_pages
     - field.field.block_content.inline_navigation.field_inline_navigation_parent
+    - field.field.block_content.inline_navigation.field_variant
 _core:
   default_config_hash: EOgJLLeY-XFLLpjRyezMSBVBT3n_UVAZQ55GOR1jRBU
 id: block_content.inline_navigation.default
@@ -39,6 +40,12 @@ content:
       match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_variant:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
 hidden:
   info: true
