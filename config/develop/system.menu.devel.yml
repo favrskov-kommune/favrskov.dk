@@ -1,4 +1,5 @@
-langcode: en
+uuid: 4979c730-18de-4785-96bb-24e93553d7f8
+langcode: da
 status: true
 dependencies:
   enforced:

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c4fe3f7e2c015c11de0bc42a0144543d",
+    "content-hash": "4571fd3cf75a3512d3d38ad28e6a296b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2149,11 +2149,6 @@
                         "[web-root]/profiles/README.txt": "assets/scaffold/files/profiles.README.txt",
                         "[web-root]/themes/README.txt": "assets/scaffold/files/themes.README.txt"
                     }
-                },
-                "patches_applied": {
-                    "(#2999491) Allow creation of reuseable inline blocks": "https://www.drupal.org/files/issues/2020-05-21/2999491--reusable-title-display--49.patch",
-                    "(#3080606) Reorder Layout Builder sections": "https://www.drupal.org/files/issues/2020-06-18/3080606-reorder-layout-sections-43.patch",
-                    "(#2985882) Call to a member function getLabel() after enabling layout_builder": "https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch"
                 }
             },
             "autoload": {
@@ -3358,9 +3353,6 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
-                },
-                "patches_applied": {
-                    "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2020-06-25/paragraphs-2901390-51.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5377,10 +5369,10 @@
         },
         {
             "name": "novicell/drupal-premium-theme",
-            "version": "0.2.8",
+            "version": "0.2.7",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_16ih2f/novicelldrupalpremiumtheme-0-2-8.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_1QvlgI/novicelldrupalpremiumtheme-0-2-7.zip"
             },
             "type": "drupal-theme",
             "license": [
@@ -10038,10 +10030,10 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.4",
+        "php": ">=7.3",
         "ext-json": "*",
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

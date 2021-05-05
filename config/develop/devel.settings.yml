@@ -8,3 +8,4 @@ debug_mail_directory: 'temporary://devel-mails'
 devel_dumper: kint
 debug_logfile: 'temporary://drupal_debug.txt'
 debug_pre: true
+langcode: da
