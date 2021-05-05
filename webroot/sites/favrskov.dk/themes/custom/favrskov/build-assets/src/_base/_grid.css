@@ -26,6 +26,11 @@
     padding-bottom: 0;
   }
 
+  &--spacing-top-negative {
+    padding-top: 0;
+    margin-top: calc(var(--grid-section-spacing) * -1);
+  }
+
   &--spacing-top-none {
     padding-top: 0;
   }
@@ -59,6 +64,10 @@
   }
 
   @media (--viewport-md-min) {
+    &--spacing-top-negative {
+      margin-top: calc(var(--grid-section-spacing) * 2 * -1);
+    }
+
     &--spacing-top-medium {
       padding-top: var(--grid-section-spacing);
     }

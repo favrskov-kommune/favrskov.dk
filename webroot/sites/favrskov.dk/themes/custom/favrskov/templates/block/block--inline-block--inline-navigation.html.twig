@@ -26,7 +26,8 @@
  */
 #}
 {% embed '@organisms/inline-navigation/inline-navigation.twig' with {
-  'attributes': attributes
+  'attributes': attributes,
+  'is_slider': is_slider
 } %}
   {% block block_content %}
     {{ title_prefix }}
