@@ -6,7 +6,7 @@ feedbackTest:
     _access: 'TRUE'
 
 feedbackForm:
-  path: /_ajax/feedback/{answer}
+  path: /ajax/feedback/{answer}
   defaults:
     _controller: Drupal\favrskov_feedback\Controller\FeedbackController::form
   requirements:
