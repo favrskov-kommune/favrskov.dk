@@ -1,0 +1,19 @@
+{{ attach_library('favrskov/inline-navigation-item') }}
+
+<li {{ (not attributes ? create_attribute() : attributes ).addClass('inline-navigation-item','inline-navigation-item-campaign') }}>
+  <a href="{{ url }}" class="inline-navigation-item__link">
+    <h3 class="inline-navigation-item__title">{{ label }}</h3>
+    {% if teaser %}
+      <div class="inline-navigation-item__text">
+        {{ teaser }}
+      </div>
+    {% endif %}
+    <div class="inline-navigation-item__read-more">
+      <div class="inline-navigation-item__arrow">
+        <span></span>
+        <span></span>
+      </div>
+      <label>{{ 'Read more'|t }}</label>
+    </div>
+  </a>
+</li>

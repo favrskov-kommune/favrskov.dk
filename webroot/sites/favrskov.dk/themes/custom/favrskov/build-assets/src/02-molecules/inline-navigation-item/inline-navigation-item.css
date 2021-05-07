@@ -11,7 +11,28 @@
   flex-shrink: 0;
   flex-grow: 0;
   width: 100%;
-  padding: 20px;
+  padding: 25px;
+
+  &.inline-navigation-item-campaign {
+    &:nth-child(3n-2) {
+      .inline-navigation-item__link {
+         background-color: var(--color-white);
+       }
+    }
+
+    &:nth-child(3n-1) {
+      .inline-navigation-item__link {
+         background-color: var(--color-secondary-light);
+       }
+    }
+
+    &:nth-child(3n) {
+      .inline-navigation-item__link {
+         background-color: var(--color-light-mint);
+       }
+    }
+
+  }
 
   picture,
   img {
@@ -30,7 +51,6 @@
 
   @media (--viewport-md-min) {
     width: calc(100% / 3);
-    padding: 25px;
 
     .section--spacing-top-negative & {
       padding-top: 0;
@@ -39,15 +59,13 @@
 
   @media (--viewport-xl-min) {
     width: calc(100% / 4);
-    padding: 50px;
-
-    &.inline-navigation-item-arrow,
-    &.inline-navigation-item-icon {
-      padding: 25px;
-    }
 
     .section--spacing-top-negative & {
       padding-top: 0;
+    }
+
+    &.inline-navigation-item-campaign {
+      width: calc(100% / 3);
     }
   }
 
@@ -125,6 +143,12 @@
       left: 40px;
       transform: translate(-50%, -50%);
     }
+
+    .inline-navigation-item-campaign & {
+      top: 0;
+      left: 0;
+      transform: translateX(0);
+    }
   }
 
   &__link {
@@ -188,6 +212,25 @@
         }
       }
     }
+
+    .inline-navigation-item-campaign & {
+      height: 100%;
+      padding: 60px 40px 100px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .1);
+
+      &:hover {
+        .inline-navigation-item__read-more {
+          & label {
+            visibility: visible;
+            opacity: 1;
+            max-width: 150px;
+            padding-left: 10px;
+          }
+        }
+      }
+    }
   }
 
   &__image {
@@ -197,11 +240,16 @@
     display: block;
 
     &--fallback {
+      height: 0;
+      padding-bottom: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
 
       svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         width: 20%;
         height: 20%;
         opacity: .5;
@@ -271,5 +319,28 @@
 
   &__read-more {
     text-decoration: underline;
+
+    .inline-navigation-item-campaign & {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      padding-left: 44px;
+      overflow: hidden;
+      line-height: 44px;
+      height: 44px;
+      text-decoration: none;
+
+      & label {
+        display: inline-block;
+        visibility: hidden;
+        opacity: 0;
+        max-width: 0;
+        font-size: var(--base-font-size-medium);
+        font-family: var(--heading-font-family);
+        font-weight: var(--header-font-weight);
+        color: var(--color-cta);
+        transition: all .3s ease;
+      }
+    }
   }
 }
