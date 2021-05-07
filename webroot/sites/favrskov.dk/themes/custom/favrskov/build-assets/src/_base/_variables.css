@@ -80,6 +80,7 @@
   --header-text-color: #232323;
   --header-selected-text-color: var(--color-primary);
   --header-border-color: #ced3c8;
+  --header-background-color: #fff;
 
   /* Meta menu */
   --meta-menu-height: 44px;
