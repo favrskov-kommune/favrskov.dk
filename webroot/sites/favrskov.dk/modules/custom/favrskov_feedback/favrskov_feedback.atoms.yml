@@ -6,6 +6,7 @@ atoms:
     category: Page layout
     group: Footer
     subgroup: Feedback
+    weight: -10
     default:
       da: Hjalp siden dig?
 
@@ -16,6 +17,7 @@ atoms:
     category: Page layout
     group: Footer
     subgroup: Feedback
+    weight: 0
     default:
       da: Ja
 
@@ -26,6 +28,7 @@ atoms:
     category: Page layout
     group: Footer
     subgroup: Feedback
+    weight: 1
     options:
       entity_type: webform
 
@@ -36,6 +39,7 @@ atoms:
     category: Page layout
     group: Footer
     subgroup: Feedback
+    weight: 10
     default:
       da: Nej
 
@@ -46,5 +50,6 @@ atoms:
     category: Page layout
     group: Footer
     subgroup: Feedback
+    weight: 11
     options:
       entity_type: webform
