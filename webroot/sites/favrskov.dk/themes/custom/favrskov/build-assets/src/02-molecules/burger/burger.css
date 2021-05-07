@@ -49,6 +49,7 @@
     @media (--viewport-ms-max) {
       font-size: var(--base-font-size-small);
     }
+
     @media (--viewport-xs-max) {
       display: none;
     }
