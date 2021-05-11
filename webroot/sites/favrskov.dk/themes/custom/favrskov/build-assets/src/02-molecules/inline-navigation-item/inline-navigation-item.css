@@ -16,22 +16,21 @@
   &.inline-navigation-item-campaign {
     &:nth-child(3n-2) {
       .inline-navigation-item__link {
-         background-color: var(--color-white);
-       }
+        background-color: var(--color-white);
+      }
     }
 
     &:nth-child(3n-1) {
       .inline-navigation-item__link {
-         background-color: var(--color-secondary-light);
-       }
+        background-color: var(--color-secondary-light);
+      }
     }
 
     &:nth-child(3n) {
       .inline-navigation-item__link {
-         background-color: var(--color-light-mint);
-       }
+        background-color: var(--color-light-mint);
+      }
     }
-
   }
 
   picture,
@@ -219,8 +218,15 @@
       overflow: hidden;
       position: relative;
       box-shadow: 0 4px 24px rgba(0, 0, 0, .1);
+      transition: all .3s ease;
 
       &:hover {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, .2);
+
+        @media (--viewport-ms-max) {
+          box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+        }
+
         .inline-navigation-item__read-more {
           & label {
             visibility: visible;
