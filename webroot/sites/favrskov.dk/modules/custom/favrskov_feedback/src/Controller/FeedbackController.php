@@ -23,7 +23,7 @@ class FeedbackController extends ControllerBase {
   public function form($answer) {
     $response = new AjaxResponse();
 
-    $webform = atom_view('feedback.' . $answer)->toValue();
+    $webform = atom_view('feedback.' . $answer . '.form')->toValue();
     if (empty($webform)) {
       return $response->setStatusCode(204);
     } else {
@@ -31,7 +31,7 @@ class FeedbackController extends ControllerBase {
       $build = Drupal::entityTypeManager()
         ->getViewBuilder('webform')
         ->view($webform);
-      $response->addCommand(new ReplaceCommand('.layout-content', $build));
+      $response->addCommand(new ReplaceCommand('.js-footer__feedback-form form', $build));
     }
     return $response;
   }
