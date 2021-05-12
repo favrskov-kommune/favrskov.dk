@@ -24,7 +24,7 @@
   ********************/
   --theme-background-color: var(--color-white);
   --theme-color: var(--color-black);
-  --theme-button-background-color: var(--color-black);
+  --theme-button-background-color: var(--color-cta);
   --theme-button-color: var(--color-white);
   --theme-link-color: var(--color-black);
   --theme-divider-background-color: var(--color-black);
