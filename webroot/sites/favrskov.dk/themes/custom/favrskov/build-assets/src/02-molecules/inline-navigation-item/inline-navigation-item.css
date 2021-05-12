@@ -33,6 +33,18 @@
     }
   }
 
+  .js-inline-navigation-slider & {
+    @media (--viewport-sm-max) {
+      width: 40%;
+      min-height: 100%;
+      padding: 20px;
+    }
+
+    @media (--viewport-ms-max) {
+      width: 80%;
+    }
+  }
+
   picture,
   img {
     height: inherit;
