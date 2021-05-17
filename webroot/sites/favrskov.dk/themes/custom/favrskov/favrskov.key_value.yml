@@ -1,19 +1,10 @@
 color_themes:
-  primary:
-    name: Blue
-    color: '#263ed3'
-  secondary:
-    name: Gray
-    color: '#d1d1d1'
-  green:
-    name: Green
-    color: '#1fc8a9'
-  red:
-    name: Red
-    color: '#ef3e4a'
-  seashell:
-    name: Seashell
-    color: '#ffefe5'
-  yellow:
-    name: Yellow
-    color: '#f0cf61'
+  gray_blue:
+    name: Gray/Blue
+    color: '#C6D9DF'
+  mint:
+    name: Mint
+    color: '#9BC2BD'
+  douce:
+    name: Douce
+    color: '#E7EBE3'
