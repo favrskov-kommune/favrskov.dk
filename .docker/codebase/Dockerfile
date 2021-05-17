@@ -12,7 +12,7 @@ RUN apk add --no-cache --virtual .build-deps \
         autoconf \
         g++ \
         make \
-    && apk add --no-cache imagemagick-dev imagemagick \
+    && apk add --no-cache imagemagick \
     && pecl install imagick \
     && apk del .build-deps
 
