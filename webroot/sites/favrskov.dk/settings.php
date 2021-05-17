@@ -90,8 +90,6 @@ use Symfony\Component\HttpFoundation\Request;
  * @endcode
  */
 
-use Symfony\Component\HttpFoundation\Request;
-
 $databases = [];
 $databases['default']['default'] = [
   'database' => $_ENV['DB_NAME'],
