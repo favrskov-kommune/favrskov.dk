@@ -1,0 +1,23 @@
+---
+apiVersion: batch/v1
+kind: Job
+
+metadata:
+  name: website-cache-warm
+  namespace: favrskovdk
+spec:
+  backoffLimit: 4
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: php
+          image: acrfavrskov.azurecr.io/website-php:kubernetes-1.0.17
+
+          envFrom:
+            - configMapRef:
+                name: php-env
+            - secretRef:
+                name: akvs-drupal
+
+          command: ["/release/entrypoint.cache_warm.sh"]

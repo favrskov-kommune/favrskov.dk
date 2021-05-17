@@ -1,0 +1,51 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+
+metadata:
+  name: website-ingress-unsecure
+  namespace: favrskovdk
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`prod.favrskov.drupal.dk`, `www.favrskov.dk`, `favrskov.dk`) && PathPrefix(`/`)
+      kind: Rule
+      priority: 1
+      middlewares:
+        - name: redirect-https
+          namespace: traefik
+        - name: redirect-favrskov-dk
+          namespace: favrskovdk
+        - name: gzip-compress
+          namespace: favrskovdk
+      services:
+        - name: website-apache-svc
+          namespace: favrskovdk
+          port: 80
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+
+metadata:
+  name: website-ingress
+  namespace: favrskovdk
+spec:
+  entryPoints:
+    - websecure
+  tls:
+    secretName: website-favrskovdk-cert
+  routes:
+    - match: Host(`prod.favrskov.drupal.dk`, `www.favrskov.dk`, `favrskov.dk`) && PathPrefix(`/`)
+      kind: Rule
+      priority: 2
+      middlewares:
+        - name: redirect-favrskov-dk
+          namespace: favrskovdk
+        - name: gzip-compress
+          namespace: favrskovdk
+      services:
+        - name: website-apache-svc
+          namespace: favrskovdk
+          port: 80

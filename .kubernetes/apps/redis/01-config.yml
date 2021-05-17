@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: redis-transient-single-config
+  namespace: favrskovdk
+data:
+  master.conf: |+
+    protected-mode no
+    save ""

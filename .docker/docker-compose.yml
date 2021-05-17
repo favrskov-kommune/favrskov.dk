@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  codebase:
+    image: website-codebase
+    build:
+      context: ../
+      dockerfile: .docker/codebase/Dockerfile
+
+  apache:
+    image: website-apache
+    depends_on:
+      - codebase
+    build:
+      context: ../
+      dockerfile: .docker/apache/Dockerfile
+      args:
+        CODEBASE_IMAGE: website-codebase
+
+  php:
+    image: website-php
+    depends_on:
+      - codebase
+    build:
+      context: ../
+      dockerfile: .docker/php/Dockerfile
+      args:
+        CODEBASE_IMAGE: website-codebase
+
+  redis:
+    image: redis:6.2.1-alpine
+    # todo Mount conf file in
+#    ports:
+#      - "6379:6379"
+

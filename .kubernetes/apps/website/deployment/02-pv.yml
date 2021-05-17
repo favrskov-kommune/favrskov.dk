@@ -1,0 +1,103 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+
+metadata:
+  name: files-public-azfp-pv
+  namespace: favrskovdk
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  azureFile:
+    secretName: azure-premium-storage-secret
+    secretNamespace: favrskovdk
+    shareName: favrskov-files-public
+    readOnly: false
+  mountOptions:
+    - dir_mode=0775
+    - file_mode=0664
+    - mfsymlinks
+    - nobrl
+    - cache=strict
+#    - fsc
+
+---
+apiVersion: v1
+kind: PersistentVolume
+
+metadata:
+  name: log-azfp-pv
+  namespace: favrskovdk
+spec:
+  capacity:
+    storage: 50Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  azureFile:
+    secretName: azure-premium-storage-secret
+    secretNamespace: favrskovdk
+    shareName: favrskovdk-log
+    readOnly: false
+  mountOptions:
+    - dir_mode=0775
+    - file_mode=0664
+    - mfsymlinks
+    - nobrl
+    - cache=strict
+#    - fsc
+
+---
+apiVersion: v1
+kind: PersistentVolume
+
+metadata:
+  name: files-private-azf-pv
+  namespace: favrskovdk
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  azureFile:
+    secretName: azure-storage-secret
+    secretNamespace: favrskovdk
+    shareName: favrskov-dk-files-private
+    readOnly: false
+  mountOptions:
+    - dir_mode=0775
+    - file_mode=0664
+    - mfsymlinks
+    - nobrl
+    - cache=none
+#    - fsc
+
+---
+apiVersion: v1
+kind: PersistentVolume
+
+metadata:
+  name: backup-azf-pv
+  namespace: favrskovdk
+spec:
+  capacity:
+    storage: 25Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  azureFile:
+    secretName: azure-storage-secret
+    secretNamespace: favrskovdk
+    shareName: favrskov-dk-backup
+    readOnly: false
+  mountOptions:
+    - dir_mode=0775
+    - file_mode=0664
+    - mfsymlinks
+    - nobrl
+    - cache=none
+#    - fsc

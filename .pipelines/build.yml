@@ -1,0 +1,164 @@
+variables:
+  projectRegistry: 'Favrskov Docker Registry'
+  projectRegistryUrl: 'acrfavrskov.azurecr.io'
+  sharedRegistry: 'Novicell shared registry'
+
+#  buildPrefix: ${{ variables['Build.SourceBranchName'] }}-
+  environment: 'qa'
+
+  majorVersion: 1
+  minorVersion: 0
+  patchVersion: 0
+  version: $[format('{0}.{1}.{2}', variables.majorVersion, variables.minorVersion, variables.patchVersion)]
+
+#  agentPool: Drupal-Staging
+
+  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+    release: true
+    # Versioning: 1.0.123
+    semVersionBase: $[format('{0}.{1}', variables.majorVersion, variables.minorVersion)]
+    semVersionRev: $[counter(variables.semVersionBase, 0)]
+    semVersion: $[format('{0}.{1}', variables.semVersionBase, variables.semVersionRev)]
+    agentPool: Drupal-Production
+  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
+    # Versioning: 1.0.0-develop.123
+    release: true
+    semVersionBase: $[format('{0}-develop', variables.version)]
+    semVersionRev: $[counter(variables.semVersionBase, 0)]
+    semVersion: $[format('{0}.{1}', variables.semVersionBase, variables.semVersionRev)]
+    agentPool: Drupal-Staging
+  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/staging') }}:
+    # Versioning: 1.0.0-staging.123
+    release: true
+    semVersionBase: $[format('{0}-staging', variables.version)]
+    semVersionRev: $[counter(variables.semVersionBase, 0)]
+    semVersion: $[format('{0}.{1}', variables.semVersionBase, variables.semVersionRev)]
+    agentPool: Drupal-Staging
+  ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/release/') }}:
+    # Versioning: 1.0.0-release.branch.123
+    release: true
+    semVersionBase: $[format('{0}-alpha.{1}', variables.version, variables['Build.SourceBranchName'])]
+    semVersionRev: $[counter(variables.semVersionBase, 0)]
+    semVersion: $[format('{0}.{1}', variables.semVersionBase, variables.semVersionRev)]
+    agentPool: Drupal-Staging
+  ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/') }}:
+    # Versioning: 1.0.0-feature.branch.123
+    release: true
+    semVersionBase: $[format('{0}-feature.{1}', variables.version, variables['Build.SourceBranchName'])]
+    semVersionRev: $[counter(variables.semVersionBase, 0)]
+    semVersion: $[format('{0}.{1}', variables.semVersionBase, variables.semVersionRev)]
+    agentPool: Drupal-Staging
+  ${{ if startsWith(variables['Build.SourceBranch'], 'refs/pull/') }}: # Pull requests
+    # Versioning: 1.0.0-pr.1.123
+    release: false
+    semVersionBase: $[format('{0}-pr.{1}', variables.version, variables['System.PullRequest.PullRequestId'])]
+    semVersionRev: $[counter(variables.semVersionBase, 0)]
+    semVersion: $[format('{0}.{1}', variables.semVersionBase, variables.semVersionRev)]
+    agentPool: Drupal-Staging
+
+name: $(semVersion)
+
+trigger:
+  branches:
+    include:
+    - feature/kubernetes
+  paths:
+    exclude:
+    - .ddev/
+#    - .pipelines/deploy.yml
+
+pool:
+  name: $(agentPool)
+
+jobs:
+  - job: codebase
+    displayName: Codebase
+#    variables:
+#      - group: codebase-variables
+    steps:
+      - task: CopyFiles@2
+        displayName: Copy kubernetes deployment config
+        inputs:
+          sourceFolder: '.kubernetes/apps/website/deployment'
+#          contents: '*.yml'
+          targetFolder: '$(Build.ArtifactStagingDirectory)/kubernetes/deployment'
+      - task: CopyFiles@2
+        displayName: Copy kubernetes jobs config
+        inputs:
+          sourceFolder: '.kubernetes/apps/website/jobs'
+          contents: '*.yml'
+          targetFolder: '$(Build.ArtifactStagingDirectory)/kubernetes/jobs'
+      - task: PublishBuildArtifacts@1 # Used for kubernetes deployment jobs
+        displayName: Save deployment as artifact
+        inputs:
+          pathToPublish: '$(Build.ArtifactStagingDirectory)/kubernetes'
+          artifactName: kubernetes-deployment
+  - job: apache
+    displayName: Apache
+    dependsOn: codebase
+    steps:
+      - task: Docker@2
+        displayName: Build codebase
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'flyttilfavrskov-codebase'
+          command: build
+          Dockerfile: '.docker/codebase/Dockerfile'
+          buildContext: .
+          tags: |
+            $(Build.BuildNumber)
+      - task: Docker@2
+        displayName: Build docker image
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'flyttilfavrskov-apache'
+          command: build
+          Dockerfile: '.docker/apache/Dockerfile'
+          buildContext: .
+          arguments: '--build-arg CODEBASE_IMAGE=$(projectRegistryUrl)/flyttilfavrskov-codebase:$(Build.BuildNumber)'
+          tags: |
+            $(Build.BuildNumber)
+      - task: Docker@2
+        displayName: Push docker image to repo
+        condition: and(succeeded(), eq(variables.release, 'true'))
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'flyttilfavrskov-apache'
+          command: push
+          tags: |
+            $(Build.BuildNumber)
+
+  - job: php
+    displayName: PHP
+    dependsOn: codebase
+    steps:
+      - task: Docker@2
+        displayName: Build codebase
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'flyttilfavrskov-codebase'
+          command: build
+          Dockerfile: '.docker/codebase/Dockerfile'
+          buildContext: .
+          tags: |
+            $(Build.BuildNumber)
+      - task: Docker@2
+        displayName: Build docker image
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'flyttilfavrskov-php'
+          command: build
+          Dockerfile: '.docker/php/Dockerfile'
+          buildContext: .
+          arguments: '--build-arg CODEBASE_IMAGE=$(projectRegistryUrl)/flyttilfavrskov-codebase:$(Build.BuildNumber) --build-arg VERSION=$(Build.BuildNumber)'
+          tags: |
+            $(Build.BuildNumber)
+      - task: Docker@2
+        displayName: Push docker image to repo
+        condition: and(succeeded(), eq(variables.release, 'true'))
+        inputs:
+          containerRegistry: $(projectRegistry)
+          repository: 'flyttilfavrskov-php'
+          command: push
+          tags: |
+            $(Build.BuildNumber)

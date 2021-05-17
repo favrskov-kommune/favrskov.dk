@@ -1,0 +1,21 @@
+# Meta files
+**/.git
+.git
+.idea
+.gitignore
+.ddev
+deployer
+
+# Node dependencies
+**/node_modules
+node_modules
+**/build-assets/dist
+
+# Php dependencies
+**/vendor
+vendor
+
+# Local folders
+sql
+logs
+webroot/sites/*/files

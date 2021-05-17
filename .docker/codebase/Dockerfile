@@ -1,0 +1,39 @@
+FROM composer:2.0.11 as website-build
+
+# Install system dependencies
+RUN apk add --no-cache \
+  --repository http://dl-cdn.alpinelinux.org/alpine/v3.12/main/ \
+  nodejs=12.21.0-r0 \
+  npm
+
+# Set root folder
+WORKDIR /app
+
+# Install nodejs dependencies
+ADD webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets/package.json \
+  webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets/package-lock.json \
+  /app/webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets/
+RUN cd /app/webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets \
+    && npm ci
+
+# Go to root directory
+WORKDIR /app
+
+# Install PHP dependencies
+ADD composer.json \
+  composer.lock \
+  /app/
+COPY scripts/composer /app/scripts/composer
+COPY assets /app/assets
+RUN composer install --ignore-platform-reqs --optimize-autoloader --no-dev --no-interaction --no-progress --prefer-dist
+
+# Build frontend
+COPY webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets /app/webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets
+RUN cd /app/webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets \
+    && npm run build:prod
+
+# Clean node_modules for lighter multi-stage build size in images copying from this image
+RUN rm -rf /app/webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets/node_modules
+
+# Copy application
+COPY . /app
