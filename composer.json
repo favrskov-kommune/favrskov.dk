@@ -60,6 +60,7 @@
         "drupal/paragraphs_asymmetric_translation_widgets": "^1.0@beta",
         "drupal/pathauto": "^1.0",
         "drupal/redirect": "^1.0",
+        "drupal/redis": "^1.5",
         "drupal/role_delegation": "^1.1",
         "drupal/scheduled_transitions": "^2.0",
         "drupal/search_api": "^1.0",

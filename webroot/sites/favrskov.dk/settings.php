@@ -1,6 +1,7 @@
 <?php
 
 // @codingStandardsIgnoreFile
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @file
