@@ -3,7 +3,7 @@ FROM composer:2.0.11 as website-build
 # Install system dependencies
 RUN apk add --no-cache \
   --repository http://dl-cdn.alpinelinux.org/alpine/v3.12/main/ \
-  nodejs=12.21.0-r0 \
+  nodejs=12.22.1-r0 \
   npm
 
 RUN apk add --no-cache --virtual .build-deps \
@@ -19,6 +19,7 @@ RUN apk add --no-cache --virtual .build-deps \
 RUN echo "extension=imagick.so" > /usr/local/etc/php/conf.d/imagick.ini
 
 RUN apk add --no-cache libpng libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev && docker-php-ext-install gd && apk del libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev
+#RUN echo "extension=gd.so" > /usr/local/etc/php/conf.d/gd.ini
 
 # Set root folder
 WORKDIR /app
