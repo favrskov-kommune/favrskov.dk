@@ -11,7 +11,7 @@ spec:
   resources:
     requests:
       storage: 100Gi
-  volumeName: files-public-azfp-pv
+  volumeName: favrskovdk-files-public-azfp-pv
   storageClassName: ""
 
 ---
@@ -27,7 +27,7 @@ spec:
   resources:
     requests:
       storage: 50Gi
-  volumeName: log-azfp-pv
+  volumeName: favrskovdk-log-azfp-pv
   storageClassName: ""
 
 ---
@@ -58,7 +58,7 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  volumeName: files-private-azf-pv
+  volumeName: favrskovdk-files-private-azf-pv
   storageClassName: ""
 
 ---
@@ -74,5 +74,5 @@ spec:
   resources:
     requests:
       storage: 25Gi
-  volumeName: backup-azf-pv
+  volumeName: favrskovdk-backup-azf-pv
   storageClassName: ""

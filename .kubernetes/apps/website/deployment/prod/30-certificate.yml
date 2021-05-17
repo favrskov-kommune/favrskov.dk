@@ -3,10 +3,10 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 
 metadata:
-  name: website-favrskovdk-cert
-  namespace: favrskov
+  name: website-cert
+  namespace: favrskovdk
 spec:
-  secretName: website-favrskovdk-cert
+  secretName: website-cert
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
