@@ -13,7 +13,7 @@ WORKDIR /app
 ADD webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets/package.json \
   webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets/package-lock.json \
   /app/webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets/
-RUN cd /app/webroot/sites/favrskov.dk/themes/favrskov/build-assets \
+RUN cd /app/webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets \
     && npm ci
 
 # Go to root directory
