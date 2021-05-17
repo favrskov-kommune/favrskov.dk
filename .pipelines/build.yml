@@ -61,7 +61,8 @@ name: $(semVersion)
 trigger:
   branches:
     include:
-    - feature/kubernetes
+    - develop
+    - master
   paths:
     exclude:
     - .ddev/
