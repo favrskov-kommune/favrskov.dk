@@ -7,35 +7,61 @@
 {{ attach_library('favrskov/hero') }}
 
 <div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media_image ? 'hero--image-added' : 'hero--narrow-height') }}>
-  {% if media_image %}
-    <div class="hero__image-wrapper">
-      {{ media_image }}
-    </div>
-  {% endif %}
-  <div class="hero__iframe-wrapper js-hero-iframe-wrapper">
-    {% if media %}
-      {{ media }}
-    {% endif %}
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="{{ hero_position[position] }}">
-        <div{{ (not content_attributes ? create_attribute() : content_attributes).addClass('hero__content') }}>
-          {% if title %}
-            <h1>{{ title }}</h1>
-          {% endif %}
-          {% if text %}
-            {{ text }}
-          {% endif %}
-          {% if cta.url and cta.title %}
-            {% include '@particles/button/button--link.twig' with {
-              'url': cta.url,
-              'text': cta.title,
-              'attributes': create_attribute().setAttribute('target', cta.target)
-            } %}
-          {% endif %}
+  {{ show_search }}
+  {% if show_search == 1 %}
+    {% include '@particles/svg-icon/svg-icon.twig' with {
+      'attributes': '',
+      'svgIconName': 'tree'
+    } %}
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-10 col-md-8 col-lg-6 col-xs-offset-1 col-md-offset-2 col-lg-offset-3">
+          <div{{ (not content_attributes ? create_attribute() : content_attributes).addClass('hero__content') }}>
+            <div class="hero__search">
+              <input type="text" placeholder="Hvad kan vi hjælpe med?" class="hero__search--text">
+              <input type="submit" value="" class="hero__search--submit">
+              {% include '@particles/svg-icon/svg-icon.twig' with {
+                'attributes': '',
+                'svgIconName': 'search'
+              } %}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  {% else %}
+    {% if media_image %}
+      <div class="hero__image-wrapper">
+        {{ media_image }}
+      </div>
+    {% else %}
+      {% include '@particles/svg-icon/svg-icon.twig' with {
+        'attributes': '',
+        'svgIconName': 'tree'
+      } %}
+    {% endif %}
+    {% if media %}
+      <div class="hero__iframe-wrapper js-hero-iframe-wrapper">
+        {{ media }}
+      </div>
+    {% endif %}
+    <div class="container">
+      <div class="row">
+        <div class="{{ hero_position[position] }}">
+          <div{{ (not content_attributes ? create_attribute() : content_attributes).addClass('hero__content') }}>
+            {% if text %}
+              {{ text }}
+            {% endif %}
+            {% if cta.url and cta.title %}
+              {% include '@particles/button/button--link.twig' with {
+                'url': cta.url,
+                'text': cta.title,
+                'attributes': create_attribute().setAttribute('target', cta.target)
+              } %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 </div>

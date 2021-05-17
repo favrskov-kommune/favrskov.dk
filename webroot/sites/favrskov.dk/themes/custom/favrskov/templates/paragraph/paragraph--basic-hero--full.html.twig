@@ -51,6 +51,7 @@
   {% set text_color = paragraph.field_text_color.value %}
   {% set color_theme = paragraph.field_color_theme.value %}
   {% set overlay = paragraph.field_overlay.value %}
+  {% set show_search = paragraph.field_show_search.value %}
 
   {% if color_theme != '' and color_theme != 'none' %}
     {% set attributes = attributes.addClass('theme').addClass('theme-' ~ color_theme) %}
@@ -65,6 +66,7 @@
       'position': position,
       'title': title,
       'text': content.field_text,
+      'show_search': show_search,
       'cta': link,
     } %}
   </section>
