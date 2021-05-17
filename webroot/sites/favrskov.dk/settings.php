@@ -790,7 +790,7 @@ if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
     $settings['redis.connection']['host'] = getenv('REDIS_HOST');
     $settings['redis.connection']['port'] = '6379';
     $settings['cache']['default'] = 'cache.backend.redis';
-    $settings['cache_prefix'] = 'flyttilfavrskov_';
+    $settings['cache_prefix'] = 'favrskovdk_';
 }
 
 // Ensure https behind load balancer

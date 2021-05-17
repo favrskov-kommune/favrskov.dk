@@ -33,7 +33,7 @@ spec:
 
           containers:
           - name: php
-            image: acrfavrskov.azurecr.io/website-php:1.0.2
+            image: acrfavrskov.azurecr.io/favrskovdk-php:1.0.2
             securityContext:
               runAsUser: 0
               privileged: true

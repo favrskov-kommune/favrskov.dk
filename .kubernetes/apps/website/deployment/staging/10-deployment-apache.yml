@@ -63,7 +63,7 @@ spec:
 
       containers:
         - name: apache
-          image: acrfavrskov.azurecr.io/website-apache:1.0.0-staging.11
+          image: acrfavrskov.azurecr.io/favrskovdk-apache:1.0.0-staging.11
           ports:
             - containerPort: 80
           securityContext:

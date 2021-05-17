@@ -13,7 +13,7 @@ spec:
 
       containers:
         - name: php
-          image: acrfavrskov.azurecr.io/website-php:kubernetes-1.0.12
+          image: acrfavrskov.azurecr.io/favrskovdk-php:kubernetes-1.0.12
 
           envFrom:
             - configMapRef:
