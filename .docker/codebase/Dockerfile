@@ -10,10 +10,10 @@ RUN apk add --no-cache \
 WORKDIR /app
 
 # Install nodejs dependencies
-ADD webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets/package.json \
-  webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets/package-lock.json \
-  /app/webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets/
-RUN cd /app/webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets \
+ADD webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets/package.json \
+  webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets/package-lock.json \
+  /app/webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets/
+RUN cd /app/webroot/sites/favrskov.dk/themes/favrskov/favrskov/build-assets \
     && npm ci
 
 # Go to root directory
@@ -28,12 +28,12 @@ COPY assets /app/assets
 RUN composer install --ignore-platform-reqs --optimize-autoloader --no-dev --no-interaction --no-progress --prefer-dist
 
 # Build frontend
-COPY webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets /app/webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets
-RUN cd /app/webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets \
+COPY webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets /app/webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets
+RUN cd /app/webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets \
     && npm run build:prod
 
 # Clean node_modules for lighter multi-stage build size in images copying from this image
-RUN rm -rf /app/webroot/sites/favrskov.dk/themes/custom/dds_premium/build-assets/node_modules
+RUN rm -rf /app/webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets/node_modules
 
 # Copy application
 COPY . /app
