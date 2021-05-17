@@ -6,6 +6,20 @@ RUN apk add --no-cache \
   nodejs=12.21.0-r0 \
   npm
 
+RUN apk add --no-cache --virtual .build-deps \
+        libxml2-dev \
+        shadow \
+        autoconf \
+        g++ \
+        make \
+    && apk add --no-cache imagemagick-dev imagemagick \
+    && pecl install imagick \
+    && apk del .build-deps
+
+RUN echo "extension=imagick.so" > /usr/local/etc/php/conf.d/imagick.ini
+
+RUN apk add --no-cache libpng libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev && docker-php-ext-install gd && apk del libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev
+
 # Set root folder
 WORKDIR /app
 
