@@ -6,20 +6,10 @@ RUN apk add --no-cache \
   nodejs=12.22.1-r0 \
   npm
 
-RUN apk add --no-cache --virtual .build-deps \
-        libxml2-dev \
-        shadow \
-        autoconf \
-        g++ \
-        make \
-    && apk add --no-cache imagemagick \
-    && pecl install imagick \
-    && apk del .build-deps
-
-RUN echo "extension=imagick.so" > /usr/local/etc/php/conf.d/imagick.ini
-
-RUN apk add --no-cache libpng libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev && docker-php-ext-install gd && apk del libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev
-#RUN echo "extension=gd.so" > /usr/local/etc/php/conf.d/gd.ini
+mkdir -p /usr/src/php/ext/imagick; \
+curl -fsSL https://github.com/Imagick/imagick/archive/06116aa24b76edaf6b1693198f79e6c295eda8a9.tar.gz | tar xvz -C "/usr/src/php/ext/imagick" --strip 1; \
+docker-php-ext-install imagick; \
+docker-php-ext-enable imagick;
 
 # Set root folder
 WORKDIR /app
