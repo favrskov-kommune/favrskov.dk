@@ -33,7 +33,7 @@ spec:
 
           containers:
           - name: php
-            image: acrfavrskov.azurecr.io/favrskovdk-php:1.0.0-staging.11
+            image: acrfavrskov.azurecr.io/favrskovdk-php:1.0.0-develop.16
 #            ports:
 #              - containerPort: 9001
             securityContext:
