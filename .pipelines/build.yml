@@ -61,7 +61,7 @@ name: $(semVersion)
 trigger:
   branches:
     include:
-    - develop
+    - staging
     - master
   paths:
     exclude:
