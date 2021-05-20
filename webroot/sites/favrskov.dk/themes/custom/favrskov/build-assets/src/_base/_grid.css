@@ -29,6 +29,8 @@
   &--spacing-top-negative {
     padding-top: 0;
     margin-top: calc(var(--grid-section-spacing) * -1);
+    position: relative;
+    z-index: 3;
   }
 
   &--spacing-top-none {
