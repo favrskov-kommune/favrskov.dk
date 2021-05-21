@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.inline_navigation
     - field.field.node.page.body
-    - field.field.node.page.content_hierarchy
     - field.field.node.page.field_description
     - field.field.node.page.field_header
     - field.field.node.page.field_hide_breadcrumb
@@ -61,7 +60,6 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
-  content_hierarchy: true
   content_moderation_control: true
   field_header: true
   field_hide_breadcrumb: true

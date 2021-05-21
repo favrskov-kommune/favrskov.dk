@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
-    - field.field.node.page.content_hierarchy
     - field.field.node.page.field_description
     - field.field.node.page.field_header
     - field.field.node.page.field_hide_breadcrumb
@@ -15,7 +14,6 @@ dependencies:
     - node.type.page
     - workflows.workflow.editorial
   module:
-    - content_hierarchy
     - content_moderation
     - field_group
     - media_library
@@ -61,12 +59,6 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
-  content_hierarchy:
-    type: content_hierarchy_select
-    weight: 26
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 8
