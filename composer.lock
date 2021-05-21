@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32b4497f5fdd27c7f009efb72746b965",
+    "content-hash": "7046675688f0a91de48ce8c9a36d7c6a",
     "packages": [
         {
             "name": "algolia/places",
@@ -5786,6 +5786,27 @@
             ],
             "description": "Atoms",
             "homepage": "https://www.novicell.dk"
+        },
+        {
+            "name": "novicell/content_hierarchy",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://packages.drupal.dk/php/~/up/ver_W85hh/novicellcontent_hierarchy-1-0-0.zip"
+            },
+            "require": {
+                "drupal/pathauto": "~1.0",
+                "drupal/token": "~1.0"
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Content hierarchy, alternative to content list and breadcrumbs",
+            "homepage": "https://www.novicell.dk",
+            "keywords": [
+                "Novicell"
+            ]
         },
         {
             "name": "novicell/drupal-premium-theme",
