@@ -5860,10 +5860,10 @@
         },
         {
             "name": "novicell/premium_search",
-            "version": "0.2.1",
+            "version": "0.2.2",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_pSEWg/novicellpremium_search-0-2-1.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_18ow04/novicellpremium_search-0-2-2.zip"
             },
             "require": {
                 "drupal/search_api": "^1.0",
