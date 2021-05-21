@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.page.body
+    - field.field.node.page.content_hierarchy
     - field.field.node.page.field_description
     - field.field.node.page.field_header
     - field.field.node.page.field_hide_breadcrumb
@@ -27,6 +28,7 @@ content:
     region: content
 hidden:
   body: true
+  content_hierarchy: true
   content_moderation_control: true
   field_description: true
   field_header: true

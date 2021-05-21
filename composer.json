@@ -71,6 +71,7 @@
         "drupal/webp": "^1.0.0-beta5",
         "drush/drush": "^10.0",
         "novicell/atoms": "^0.1",
+        "novicell/content_hierarchy": "^1.0",
         "novicell/drupal-premium-theme": "^0.2",
         "novicell/dynamic_key_value": "^0.1",
         "novicell/media_icons": "^0.1",

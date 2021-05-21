@@ -91,16 +91,16 @@ use Symfony\Component\HttpFoundation\Request;
  */
 
 $databases = [];
-$databases['default']['default'] = [
-  'database' => $_ENV['DB_NAME'],
-  'username' => $_ENV['DB_USER'],
-  'password' => $_ENV['DB_PASS'],
-  'host' => $_ENV['DB_HOST'],
-  'port' => $_ENV['DB_PORT'],
-  'driver' => 'mysql',
+$databases['default']['default'] = array (
+  'database' => getenv('DB_SCHEMA'),
+  'username' => getenv('DB_USER'),
+  'password' => getenv('DB_PASS'),
   'prefix' => '',
-  'collation' => 'utf8mb4_general_ci',
-];
+  'host' => getenv('DB_HOST'),
+  'port' => getenv('DB_PORT'),
+  'namespace' => 'Drupal\Core\Database\Driver\mysql',
+  'driver' => 'mysql',
+);
 
 /**
  * Customizing database settings.
@@ -806,18 +806,6 @@ $settings['file_private_path'] = $app_root . '/../private-files';
 $settings['trusted_host_patterns'] = explode(',', getenv('TRUSTED_HOST_PATTERNS'));
 
 $settings['config_sync_directory'] = '../config/sync';
-
-$databases['default']['default'] = array (
-    'database' => getenv('DB_SCHEMA'),
-    'username' => getenv('DB_USER'),
-    'password' => getenv('DB_PASS'),
-    'prefix' => '',
-    'host' => getenv('DB_HOST'),
-    'port' => getenv('DB_PORT'),
-    'namespace' => 'Drupal\Core\Database\Driver\mysql',
-    'driver' => 'mysql',
-);
-
 
 if (file_exists($app_root . '/sites/default/settings.ddev.php') && getenv('IS_DDEV_PROJECT') == 'true') {
   include $app_root . '/sites/default/settings.ddev.php';
