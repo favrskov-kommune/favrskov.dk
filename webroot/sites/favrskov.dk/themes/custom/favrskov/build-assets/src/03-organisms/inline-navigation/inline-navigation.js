@@ -14,8 +14,8 @@ function addSlider() {
     current.classList.add('loaded');
     setTimeout(() => {
       const currentFlkty = new Flickity(current, {
-        cellAlign: 'left',
         contain: true,
+        prevNextButtons: false,
         cellSelector: '.inline-navigation-item',
         pageDots: false,
       });
@@ -40,7 +40,7 @@ function checkMediaQuery(x) {
 
 Drupal.behaviors.inlineNavigation = {
   attach(context) {
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const mediaQuery = window.matchMedia('(min-width: 992px)');
     checkMediaQuery(mediaQuery); // Call listener function at run time
     mediaQuery.addListener(checkMediaQuery); // Attach listener function on state changes
   },

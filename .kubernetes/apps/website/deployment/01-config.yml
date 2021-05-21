@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: php-env
+  namespace: favrskovdk
+data:
+  MEMCACHED_HOST: ""
+  REDIS_HOST: redis-transient-single-service
+  INTERNAL_DOMAIN: website-php-svc
+
+---
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: apache-env
+  namespace: favrskovdk
+data:
+  PHP_CONTAINER_NAME: website-php-svc
+

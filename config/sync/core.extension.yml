@@ -1,5 +1,6 @@
 module:
   admin_toolbar: 0
+  admin_toolbar_tools: 0
   adminimal_admin_toolbar: 0
   allowed_formats: 0
   atoms: 0
@@ -19,6 +20,8 @@ module:
   config_ignore: 0
   config_split: 0
   config_translation: 0
+  content_hierarchy: 0
+  content_hierarchy_breadcrumb: 0
   content_moderation: 0
   contextual: 0
   crop: 0
@@ -34,6 +37,7 @@ module:
   entity_clone: 0
   entity_reference_revisions: 0
   entity_usage: 0
+  favrskov_feedback: 0
   field: 0
   field_group: 0
   field_ui: 0
@@ -42,6 +46,7 @@ module:
   focal_point: 0
   help: 0
   history: 0
+  honeypot: 0
   hreflang: 0
   image: 0
   inline_block_title_automatic: 0
@@ -73,6 +78,7 @@ module:
   quickedit: 0
   rdf: 0
   redirect: 0
+  redis: 0
   responsive_image: 0
   role_delegation: 0
   scheduled_transitions: 0

@@ -20,23 +20,44 @@ body.adminimal-admin-toolbar header.header {
   z-index: 100;
   box-shadow: 0 25px 75px rgba(0, 0, 0, .1);
 
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    order: 0;
+  }
+
+  @media (--viewport-md-min) {
+    &__navigation {
+      order: 1;
+    }
+
+    &__search-burger {
+      order: 2;
+    }
+
+    &__inner {
+      margin-top: calc(var(--meta-menu-height) - 1px);
+    }
+  }
+
   &__inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: var(--header-height-mobile);
 
-    @media (--viewport-md-min) {
+    @media (--viewport-sm-min) {
       height: var(--header-height);
-      justify-content: flex-end;
     }
 
-    .search-toggle {
-      margin-right: 50px;
-
-      @media (--viewport-md-min) {
-        margin-right: 0;
-      }
+    @media (--viewport-md-min) {
+      align-self: end;
+      justify-content: center;
     }
 
     .burger {

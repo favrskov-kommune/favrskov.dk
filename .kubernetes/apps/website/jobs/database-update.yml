@@ -1,0 +1,24 @@
+---
+apiVersion: batch/v1
+kind: Job
+
+metadata:
+  name: website-database-update
+  namespace: favrskovdk
+spec:
+  backoffLimit: 4
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: php
+          image: acrfavrskov.azurecr.io/favrskovdk-php:kubernetes-1.0.12
+
+          envFrom:
+            - configMapRef:
+                name: php-env
+            - secretRef:
+                name: akvs-drupal
+
+          command: ["/release/entrypoint.database_update.sh"]
+

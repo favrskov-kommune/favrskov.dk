@@ -5,7 +5,7 @@ require('../../../config/vue.config')(Vue);
 Drupal.behaviors.burgerMenu = {
   attach(context) {
     const burgerMenu = document.getElementById('js-burger-menu');
-    const showSubNavigationClass = 'open-sub-navigation';
+    const showSubNavigationClass = 'burger-menu-list--expanded';
     if (!burgerMenu || burgerMenu.classList.contains('loaded')) {
       return;
     }
@@ -29,8 +29,8 @@ Drupal.behaviors.burgerMenu = {
         triggerSubNavigation(e) {
           e.preventDefault();
           const trigger = e.currentTarget;
-          const parent = trigger.closest('.js-burger-menu-list-item');
-          this.hideSubNavigations(parent);
+          const parent = trigger.closest('.js-burger-menu-list-item--expandable');
+          // this.hideSubNavigations(parent);
 
           parent.classList.toggle(showSubNavigationClass);
         },
@@ -47,7 +47,7 @@ Drupal.behaviors.burgerMenu = {
           document.body.classList.remove('no-scroll');
         },
         hideSubNavigations(parent) {
-          const items = document.querySelectorAll('.js-burger-menu-list-item');
+          const items = document.querySelectorAll('.js-burger-menu-list-item--expandable');
           for (let i = 0; i < items.length; i += 1) {
             if (parent !== items[i]) {
               items[i].classList.remove(showSubNavigationClass);

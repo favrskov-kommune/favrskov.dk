@@ -6,5 +6,34 @@
     "image": "https://www.novicell.dk/media/67333/hero.jpg",
     "label": "Title",
     "teaser": "Teaser"
-  }
+  },
+  "variants": [
+    {
+      "name": "arrow",
+      "context": {
+        "url": "/",
+        "image": "https://www.novicell.dk/media/67333/hero.jpg",
+        "label": "Title",
+        "teaser": "Teaser"
+      }
+    },
+    {
+      "name": "icon",
+      "context": {
+        "url": "/",
+        "image": "https://www.novicell.dk/media/67333/hero.jpg",
+        "label": "Title",
+        "teaser": "Teaser"
+      }
+    },
+    {
+      "name": "campaign",
+      "context": {
+        "url": "/",
+        "image": "https://www.novicell.dk/media/67333/hero.jpg",
+        "label": "Title",
+        "teaser": "Teaser"
+      }
+    }
+  ]
 }

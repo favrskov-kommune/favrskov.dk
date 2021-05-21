@@ -1,0 +1,55 @@
+atoms:
+  feedback.text:
+    type: textfield
+    title: Feedback tekst
+    description: Teksten i sidefoden der spørger om feedback.
+    category: Page layout
+    group: Footer
+    subgroup: Feedback
+    weight: -10
+    default:
+      da: Hjalp siden dig?
+
+  feedback.yes.button:
+    type: textfield
+    title: Ja knaptekst
+    description: Teksten på "Ja" knappen
+    category: Page layout
+    group: Footer
+    subgroup: Feedback
+    weight: 0
+    default:
+      da: Ja
+
+  feedback.yes.form:
+    type: entity
+    title: Ja formular
+    description: Formularen vist hvis brugeren trykker "Ja"
+    category: Page layout
+    group: Footer
+    subgroup: Feedback
+    weight: 1
+    options:
+      entity_type: webform
+
+  feedback.no.button:
+    type: textfield
+    title: Nej knaptekst
+    description: Teksten på "Nej" knappen
+    category: Page layout
+    group: Footer
+    subgroup: Feedback
+    weight: 10
+    default:
+      da: Nej
+
+  feedback.no.form:
+    type: entity
+    title: Nej formular
+    description: Formularen vist hvis brugeren trykker "Nej"
+    category: Page layout
+    group: Footer
+    subgroup: Feedback
+    weight: 11
+    options:
+      entity_type: webform

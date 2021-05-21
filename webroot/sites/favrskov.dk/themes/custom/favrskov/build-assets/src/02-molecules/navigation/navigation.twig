@@ -6,15 +6,6 @@
     {%- for item in items -%}
       <li{{ create_attribute().addClass(['navigation-item', 'js-navigation-item']).addClass(item.in_active_trail ? 'active').addClass(item.below ? 'navigation-item--has-children') }}>
         {{ link(item.title, item.url, {'class': 'navigation-item__link'}) }}
-        {% if item.below %}
-          {% include '@particles/svg-icon/svg-icon.twig' with {
-            'attributes': '',
-            'svgIconName': 'arrow-line-down'
-          } %}
-          {% include '@molecules/sub-navigation/sub-navigation.twig' with {
-            'items': item.below
-          } %}
-        {% endif %}
       </li>
     {%- endfor -%}
   </ul>

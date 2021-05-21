@@ -1,17 +1,45 @@
 {{ attach_library('favrskov/footer') }}
 
 <footer class="footer">
+  <div class="footer__top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 footer__feedback-wrapper">
+          <div class="footer__feedback_label">
+            {{ atom('feedback.text') }}
+          </div>
+          <div class="footer__feedback_actions">
+            <a href="" class="footer__feedback--action_link js-footer__feedback--action_link footer__feedback--thumbs_up" data-feedback="yes">{% include '@particles/svg-icon/svg-icon.twig' with { 'attributes': '', 'svgIconName': 'thumbs-up' } %}</a>
+            <a href="" class="footer__feedback--action_link js-footer__feedback--action_link footer__feedback--thumbs_down" data-feedback="no">{% include '@particles/svg-icon/svg-icon.twig' with { 'attributes': '', 'svgIconName': 'thumbs-up' } %}</a>
+            <div class="footer__feedback-form js-footer__feedback-form">
+              <form></form>
+              <div class="footer__feedback-form--arrow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__background">
+    <img src="/{{ directory }}/build-assets/dist/images/favrskov-kommune-footer.svg" alt="Favrskov Kommune" />
+  </div>
   <div{{ (not attributes ? create_attribute() : attributes).addClass(['footer__inner', 'section', 'theme', 'theme-primary']) }}>
     <div class="container">
       <div class="row">
+        <div class="col-xs-12 col-ms-4 col-sm-4">
+          <div class="footer__logo">
+            <a title="Hjem" rel="home" href="/">
+              <img class="logo__image" src="/{{ directory }}/build-assets/dist/images/logo-neg.svg" alt="Favrskov" />
+            </a>
+          </div>
+        </div>
         {% if cols|length > 0 %}
-          {% set number_of_cols = 12 / cols|length %}
           {% for col in cols %}
-            <div class="col-xs-12 col-md-{{ number_of_cols }}">
+            <div class="col-xs-12 col-ms-8 col-sm-4{{ loop.index == 2 ? ' col-ms-offset-4 col-sm-offset-0' }}">
               {% if col.headline %}
-                <div><b>{{ col.headline }}</b></div>
+                <div class="footer__headline">{{ col.headline }}</div>
               {% endif %}
-              {{ col.content }}
+              <div class="footer__content">{{ col.content }}</div>
             </div>
           {% endfor %}
         {% endif %}

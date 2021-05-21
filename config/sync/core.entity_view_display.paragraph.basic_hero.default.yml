@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.basic_hero.field_cta
     - field.field.paragraph.basic_hero.field_link
     - field.field.paragraph.basic_hero.field_overlay
+    - field.field.paragraph.basic_hero.field_show_search
     - field.field.paragraph.basic_hero.field_text
     - field.field.paragraph.basic_hero.field_text_color
     - field.field.paragraph.basic_hero.field_text_position
@@ -49,6 +50,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: link_with_target
+    region: content
+  field_show_search:
+    weight: 6
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_text:
     weight: 2

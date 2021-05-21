@@ -1,0 +1,107 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: website-apache
+  namespace: favrskovdk
+spec:
+  replicas: 1
+
+  # Define deployment strategy to allow unavailable
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1 # Allow running with 1 unavailable replicas on version rollout, required to roll out updates with topologySpreadConstraints.maxSkew
+      maxSurge: 1 # Allow surging up to 1 extra replicas on version rollout
+
+  selector:
+    matchLabels:
+      app: website-apache
+  template:
+    metadata:
+      labels:
+        app: website-apache
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+
+      volumes:
+        - name: files-public-azfp
+          persistentVolumeClaim:
+            claimName: files-public-azfp-pvc
+
+        - name: files-cache
+          persistentVolumeClaim:
+            claimName: files-cache-longhorn-pvc
+
+      # Allow max skew of 2, to prevent putting all pods on one node
+      topologySpreadConstraints:
+        - maxSkew: 2
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchExpressions:
+              - key: app
+                operator: In
+                values:
+                  - website-apache
+
+      # Setup affinity to prefer spreading pods across different nodes
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - website-apache
+                topologyKey: kubernetes.io/hostname
+
+      containers:
+        - name: apache
+          image: acrfavrskov.azurecr.io/favrskovdk-apache:1.0.0-develop.16
+          ports:
+            - containerPort: 80
+          securityContext:
+            runAsUser: 0
+            privileged: true
+            capabilities:
+              add:
+                - SYS_ADMIN # Enabled to bind mounts correctly
+
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+
+          readinessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 3
+            timeoutSeconds: 2
+
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+
+          volumeMounts:
+            - name: files-public-azfp
+              mountPath: /var/www/html/webroot/sites/favrskov.dk/files
+
+            - name: files-cache
+              mountPath: /mnt/cache
+              subPath: cache # Store under cache subdir on mounted storage
+
+          envFrom:
+            - configMapRef:
+                name: apache-env
+            - secretRef:
+                name: akvs-apache

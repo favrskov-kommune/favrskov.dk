@@ -6,18 +6,25 @@
 :root {
   /* Colors
   ********************/
-  --color-primary: #263ed3;
+  --color-primary: #006e73;
+  --color-primary-hover: #00595d;
   --color-black: #000;
   --color-white: #fff;
-  --color-gray: #b0afaf;
-  --color-gray-dark: #272727;
+  --color-gray: #e7ebe3;
+  --color-gray-medium: #474747;
+  --color-gray-dark: #282828;
   --color-error: #f00;
+  --color-cta: #d8204c;
+  --color-cta-hover: #c21d44;
+  --color-secondary: #8db2c3;
+  --color-secondary-light: #c6d9df;
+  --color-light-mint: #9bc2bd;
 
   /* Default theme-colors
   ********************/
   --theme-background-color: var(--color-white);
   --theme-color: var(--color-black);
-  --theme-button-background-color: var(--color-black);
+  --theme-button-background-color: var(--color-cta);
   --theme-button-color: var(--color-white);
   --theme-link-color: var(--color-black);
   --theme-divider-background-color: var(--color-black);
@@ -36,46 +43,48 @@
 
   /* Typography
   ********************/
-  --base-font-family: 'Roboto Slab', 'sans-serif';
-  --base-font-size-xxxlarge: 40px;
-  --base-font-size-xxlarge: 30px;
-  --base-font-size-xlarge: 25px;
-  --base-font-size-large: 20px;
+  --base-font-family: "FoundrySterlingBook", "sans-serif";
+  --base-font-size-xxxxlarge: 60px;
+  --base-font-size-xxxlarge: 50px;
+  --base-font-size-xxlarge: 40px;
+  --base-font-size-xlarge: 28px;
+  --base-font-size-large: 22px;
   --base-font-size-medium: 18px;
   --base-font-size: 16px;
   --base-font-size-small: 14px;
   --base-font-size-extra-small: 12px;
-  --base-font-weight: 300;
-  --heading-font-family: 'Roboto', 'sans-serif';
-  --heading-font-weight: 700;
+  --base-font-weight: normal;
+  --medium-font-family: "FoundrySterlingMedium", "sans-serif";
+  --medium-font-weight: normal;
 
   /* Layout
   ********************/
   --site-background-color: var(--color-white);
   --container-width: 1560px;
-  --grid-section-spacing: 100px;
+  --grid-section-spacing: 50px;
   --grid-section-spacing--mobile: calc(var(--grid-section-spacing) / 2);
-  --gutter-width: 100px;
+  --gutter-width: 50px;
   --gutter-width-mobile: 35px;
   --half-gutter-width: calc(var(--gutter-width) * .5);
   --half-gutter-width-mobile: calc(var(--gutter-width-mobile) * .5);
   --half-gutter-compensation: calc(var(--half-gutter-width) * -1);
   --half-gutter-compensation-mobile: calc(var(--half-gutter-width-mobile) * -1);
   --container-spacing--mobile: 20px;
-  --container-spacing: 50px;
+  --container-spacing: 25px;
 
   /* Header */
-  --header-height: 95px;
-  --header-height-mobile: 80px;
-  --header-background-color: var(--color-white);
-  --header-font-family: 'Roboto', 'sans-serif';
+  --header-height: 76px;
+  --header-height-mobile: 60px;
+  --heading-font-family: "FoundrySterlingBold", "sans-serif";
+  --heading-font-weight: normal;
   --header-text-color: #232323;
-  --header-font-weight: 500;
   --header-selected-text-color: var(--color-primary);
-  --header-border-color: #ededed;
+  --header-border-color: #ced3c8;
+  --header-background-color: #fff;
 
   /* Meta menu */
-  --meta-menu-height: 40px;
+  --meta-menu-height: 44px;
+  --meta-menu-height-mobile: 32px;
   --meta-menu-background-color: #f7f7f7;
   --meta-menu-text-color: var(--color-primary);
 

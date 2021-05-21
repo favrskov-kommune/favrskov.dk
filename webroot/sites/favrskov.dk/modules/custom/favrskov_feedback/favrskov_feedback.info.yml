@@ -1,0 +1,8 @@
+name: Favrskov feedback
+description: Favrskov feedback
+package: Favrskov
+type: module
+core_version_requirement: ^8 || ^9
+
+interface translation project: favrskov_feedback
+interface translation server pattern: modules/custom/favrskov_feedback/translations/%language.po

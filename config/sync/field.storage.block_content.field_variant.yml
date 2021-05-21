@@ -1,0 +1,33 @@
+uuid: ee681d69-4657-445b-b362-4e6094735f16
+langcode: da
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_variant
+field_name: field_variant
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: inline_navigation
+      label: Image
+    -
+      value: inline_navigation_icon
+      label: Icon
+    -
+      value: inline_navigation_arrow
+      label: Arrow
+    -
+      value: inline_navigation_campaign
+      label: Campaign
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

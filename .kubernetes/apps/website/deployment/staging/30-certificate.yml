@@ -1,0 +1,16 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+
+metadata:
+  name: website-cert
+  namespace: favrskovdk
+spec:
+  secretName: website-cert
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: staging.favrskov.drupal.dk
+  dnsNames:
+    - staging.favrskov.drupal.dk
+

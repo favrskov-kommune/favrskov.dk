@@ -1,0 +1,124 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: website-php
+  namespace: favrskovdk
+spec:
+  replicas: 1
+
+  # Define deployment strategy to allow unavailable
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1 # Allow running with 1 unavailable replicas on version rollout, required to roll out updates with topologySpreadConstraints.maxSkew
+      maxSurge: 1 # Allow surging up to 1 extra replicas on version rollout
+
+  selector:
+    matchLabels:
+      app: website-php
+  template:
+    metadata:
+      labels:
+        app: website-php
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+
+      volumes:
+        - name: files-public-azfp
+          persistentVolumeClaim:
+            claimName: files-public-azfp-pvc
+
+        - name: log-azfp
+          persistentVolumeClaim:
+            claimName: log-azfp-pvc
+
+        - name: files-private-azf
+          persistentVolumeClaim:
+            claimName: files-private-azf-pvc
+
+        - name: files-cache
+          persistentVolumeClaim:
+            claimName: files-cache-longhorn-pvc
+
+      # Allow max skew of 2, to prevent putting all pods on one node
+      topologySpreadConstraints:
+        - maxSkew: 2
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchExpressions:
+              - key: app
+                operator: In
+                values:
+                  - website-php
+
+      # Setup affinity to prefer spreading pods across different nodes
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - website-php
+                topologyKey: kubernetes.io/hostname
+
+      containers:
+        - name: php
+          image: acrfavrskov.azurecr.io/favrskovdk-php:1.0.0-develop.16
+          ports:
+            - containerPort: 9000
+          securityContext:
+            runAsUser: 0
+            privileged: true
+            capabilities:
+              add:
+                - SYS_ADMIN # Enabled to bind mounts correctly
+
+          livenessProbe:
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+
+          readinessProbe:
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: 10
+            periodSeconds: 3
+            timeoutSeconds: 2
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+
+          volumeMounts:
+            - name: files-public-azfp
+              mountPath: /app/webroot/sites/favrskov.dk/files
+
+            - name: log-azfp
+              mountPath: /mnt/logs
+              subPath: website # Store under website subdir on mounted storage
+
+            - name: files-private-azf
+              mountPath: /app/private-files
+
+            - name: files-cache
+              mountPath: /mnt/cache
+              subPath: cache # Store under cache subdir on mounted storage
+
+          envFrom:
+            - configMapRef:
+                name: php-env
+            - secretRef:
+                name: akvs-drupal
+            - secretRef:
+                name: akvs-newrelic

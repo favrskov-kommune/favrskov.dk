@@ -14,11 +14,10 @@
     width: 100%;
     outline: none;
     list-style: none;
-    overflow-x: hidden;
     padding-left: 20px;
     padding-right: 20px;
 
-    @media (--viewport-sm-min) {
+    @media (--viewport-md-min) {
       display: flex;
       flex-wrap: wrap;
     }
@@ -29,6 +28,10 @@
 
     @media (--viewport-lg-min) {
       margin: -50px;
+
+      .section--spacing-top-negative & {
+        margin: 0;
+      }
     }
   }
 

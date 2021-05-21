@@ -4,3 +4,30 @@
  */
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,600|Roboto:300,400,500,700,900&display=swap');
+
+@font-face {
+  font-family: 'FoundrySterlingBook';
+  src:
+    url('../../fonts/foundrysterling-book-webfont.woff2') format('woff2'),
+    url('../../fonts/foundrysterling-book-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FoundrySterlingMedium';
+  src:
+    url('../../fonts/foundrysterling-medium-webfont.woff2') format('woff2'),
+    url('../../fonts/foundrysterling-medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FoundrySterlingBold';
+  src:
+    url('../../fonts/foundrysterling-bold-webfont.woff') format('woff2'),
+    url('../../fonts/foundrysterling-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

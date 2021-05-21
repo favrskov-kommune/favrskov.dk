@@ -1,0 +1,10 @@
+uuid: 70184ac0-aa76-4aee-ae53-0afbac4537d9
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: node.inline_navigation_campaign
+label: 'Inline Navigation Campaign'
+targetEntityType: node
+cache: true

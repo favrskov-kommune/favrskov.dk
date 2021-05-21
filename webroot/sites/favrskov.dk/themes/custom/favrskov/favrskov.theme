@@ -1,2 +1,17 @@
 <?php
 
+function favrskov_preprocess_block__inline_block__inline_navigation(array &$variables) {
+
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables['elements']['content']['#block_content'];
+  $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+  $block_view_mode = $block->get('field_variant')->value;
+  $rendered_content = [];
+
+  foreach ($variables['content'] as $value) {
+    $rendered_content[] = $view_builder->view($value['#node'], $block_view_mode);
+  }
+
+  $variables['is_slider'] = $block_view_mode === 'inline_navigation_campaign';
+  $variables['content'] = $rendered_content;
+}

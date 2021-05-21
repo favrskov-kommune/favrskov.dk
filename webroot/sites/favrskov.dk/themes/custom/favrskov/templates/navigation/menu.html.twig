@@ -25,26 +25,48 @@
   @see https://twig.symfony.com/doc/1.x/tags/macro.html
 #}
 {{ menus.menu_links(items, attributes, next_level_attributes, 0, directory) }}
-
 {% macro menu_links(items, attributes, next_level_attributes, menu_level, directory) %}
   {% import _self as menus %}
   {% if items %}
-    {% if menu_level == 0 %}
-      <ul{{ attributes }}>
+    {% if attributes.region == 'burgermenu' %}
+      {% if menu_level == 0 %}
+        <ul{{ attributes.addClass('burger-menu-list--primary') }}>
+      {% elseif menu_level == 1 %}
+          <ul{{ next_level_attributes.addClass('burger-menu-list--secondary').removeClass('burger-menu-list--tertiary') }}>
+      {% elseif menu_level == 2 %}
+        <ul{{ next_level_attributes.addClass('burger-menu-list--tertiary').removeClass('burger-menu-list--secondary') }}>
+      {% endif %}
     {% else %}
-      <ul{{ next_level_attributes }}>
+      {% if menu_level == 0 %}
+        <ul{{ attributes }}>
+      {% else %}
+        <ul{{ next_level_attributes }}>
+      {% endif %}
     {% endif %}
     {% for item in items %}
-      <li{{ item.attributes }}>
-        {% set svg_icon = (item.svg_icon ? '<svg '~(item.svg_icon.clickAction ? '@click='~(item.svg_icon.clickAction)~'')~' class="icon icon--'~item.svg_icon.name~'">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/'~directory~'/build-assets/dist/icons/icons.svg#'~item.svg_icon.name~'"></use>
-        </svg>') %}
-        {% if item.url %}
-          <a href="{{ item.url }}" {{ item.link_options.class ? 'class='~(item.link_options.class|join(' '))~'' }}>{{ item.title }} {{ svg_icon|raw }}</a>
+      {% if menu_level == 1 and item.below %}
+        <li{{ item.attributes.addClass('burger-menu-list-item--expandable','js-burger-menu-list-item--expandable') }}>
+      {% else %}
+        {% if item.url and attributes.region == 'burgermenu' %}
+          <li{{ item.attributes.addClass('burger-menu-list-item') }}>
+        {% else %}
+          <li{{ item.attributes }}>
+        {% endif %}
+      {% endif %}
+        {% if item.url and attributes.region == 'burgermenu' %}
+          <a href="{{ item.url }}" class="burger-menu-list-item__link">{{ item.title }}</a>
+        {% elseif item.url %}
+          <a href="{{ item.url }}">{{ item.title }}</a>
         {% else %}
           {{ item.title }}
         {% endif %}
         {% if item.below %}
+          {% if menu_level == 1 and attributes.region == 'burgermenu' %}
+            <a href="#" class="burger-menu-list-item__expand-trigger" {{ create_attribute().setAttribute('@click', 'triggerSubNavigation($event)') }}>
+              <span class="burger-menu-list-item__expand-trigger-line1"></span>
+              <span class="burger-menu-list-item__expand-trigger-line2"></span>
+            </a>
+          {% endif %}
           {{ menus.menu_links(item.below, attributes, next_level_attributes, menu_level + 1, directory) }}
         {% endif %}
       </li>

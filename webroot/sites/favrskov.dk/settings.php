@@ -1,6 +1,7 @@
 <?php
 
 // @codingStandardsIgnoreFile
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @file
@@ -88,17 +89,18 @@
  * ];
  * @endcode
  */
+
 $databases = [];
-$databases['default']['default'] = [
-  'database' => $_ENV['DB_NAME'],
-  'username' => $_ENV['DB_USER'],
-  'password' => $_ENV['DB_PASS'],
-  'host' => $_ENV['DB_HOST'],
-  'port' => $_ENV['DB_PORT'],
-  'driver' => 'mysql',
+$databases['default']['default'] = array (
+  'database' => getenv('DB_SCHEMA'),
+  'username' => getenv('DB_USER'),
+  'password' => getenv('DB_PASS'),
   'prefix' => '',
-  'collation' => 'utf8mb4_general_ci',
-];
+  'host' => getenv('DB_HOST'),
+  'port' => getenv('DB_PORT'),
+  'namespace' => 'Drupal\Core\Database\Driver\mysql',
+  'driver' => 'mysql',
+);
 
 /**
  * Customizing database settings.
@@ -300,7 +302,9 @@ $databases['default']['default'] = [
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = $_ENV['HASH_SALT'];
+if (!empty(getenv('HASH_SALT'))) {
+    $settings['hash_salt'] = getenv('HASH_SALT');
+}
 
 /**
  * Deployment identifier.
@@ -780,6 +784,26 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  *
  * Keep this code block at the end of this file to take full effect.
  */
+
+$config['image.settings']['allow_insecure_derivatives'] = TRUE;
+
+if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
+    $settings['redis.connection']['interface'] = 'PhpRedis';
+    $settings['redis.connection']['host'] = getenv('REDIS_HOST');
+    $settings['redis.connection']['port'] = '6379';
+    $settings['cache']['default'] = 'cache.backend.redis';
+    $settings['cache_prefix'] = 'favrskovdk_';
+}
+
+// Ensure https behind load balancer
+$settings['reverse_proxy'] = TRUE;
+$settings['reverse_proxy_addresses'] = [$_SERVER['REMOTE_ADDR']];
+$settings['reverse_proxy_trusted_headers'] = Request::HEADER_X_FORWARDED_ALL;
+
+$config['config_split.config_split.develop']['status'] = strtolower(getenv('CONFIG_SPLIT_DEVELOPMENT')) === 'true';
+
+$settings['file_private_path'] = $app_root . '/../private-files';
+$settings['trusted_host_patterns'] = explode(',', getenv('TRUSTED_HOST_PATTERNS'));
 
 $settings['config_sync_directory'] = '../config/sync';
 

@@ -4,6 +4,8 @@
  */
 
 .footer {
+  padding-top: 30px;
+
   & > *:last-child {
     padding-bottom: 70px;
 
@@ -11,4 +13,225 @@
       padding-bottom: var(--grid-section-spacing);
     }
   }
+
+  @media (--viewport-ms-max) {
+    .logo__image {
+      height: 60px;
+    }
+  }
+
+  &__feedback-wrapper {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 70px;
+
+    @media (--viewport-ms-max) {
+      flex-direction: column;
+    }
+  }
+
+  &__feedback_label,
+  &__feedback_actions {
+    align-items: center;
+    display: flex;
+
+    @media (--viewport-ms-max) {
+      align-self: center;
+    }
+  }
+
+  &__feedback_actions {
+    position: relative;
+  }
+
+  &__feedback_label {
+    font-size: var(--base-font-size-xlarge);
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    margin: 0 30px 0 5px;
+
+    @media (--viewport-ms-max) {
+      font-size: var(--base-font-size-large);
+      margin: 0 5px 10px;
+    }
+  }
+
+  &__feedback--action_link {
+    display: inline-flex;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--color-gray);
+    margin: 0 5px;
+    position: relative;
+
+    @media (--viewport-ms-max) {
+      width: 60px;
+      height: 60px;
+    }
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40%;
+      height: 35%;
+      fill: var(--color-cta);
+      transition: fill .3s ease;
+      pointer-events: none;
+    }
+
+    &:hover,
+    &.active {
+      .icon {
+        fill: var(--color-primary);
+      }
+    }
+  }
+
+  &__feedback--thumbs_down {
+    .icon {
+      transform: rotate(180deg) translate(-50%, -50%);
+      transform-origin: left top;
+    }
+  }
+
+  &__background {
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 11%;
+    position: relative;
+
+    @media (max-width: 2100px) {
+      padding-bottom: 225px;
+    }
+
+    img {
+      display: block;
+
+      @media (max-width: 2100px) {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2100px;
+      }
+    }
+  }
+
+  @media (--viewport-xs-max) {
+    &__logo {
+      margin-bottom: 40px;
+    }
+
+    &__inner {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  &__headline {
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    font-size: var(--base-font-size-xlarge);
+    margin-bottom: 30px;
+
+    @media (--viewport-xs-max) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__content {
+    line-height: var(--base-font-size-xlarge);
+    font-family: var(--medium-font-family);
+    font-weight: var(--medium-font-weight);
+
+    & p {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__feedback-form--arrow {
+    content: "";
+    position: absolute;
+    bottom: -17px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg) translateX(-50%);
+    background-color: var(--color-gray);
+    z-index: 1;
+  }
+
+  &__feedback-form {
+    position: absolute;
+    bottom: 100%;
+    width: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      margin-bottom: 20px;
+      background-color: var(--color-gray);
+
+      form {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+    }
+
+    &.active-yes {
+      .footer__feedback-form--arrow {
+        margin-left: -51px;
+
+        @media (--viewport-ms-max) {
+          margin-left: -38px;
+        }
+      }
+    }
+
+    &.active-no {
+      .footer__feedback-form--arrow {
+        margin-left: 44px;
+
+        @media (--viewport-ms-max) {
+          margin-left: 32px;
+        }
+      }
+    }
+
+    form {
+      background: var(--color-gray);
+      position: relative;
+      padding-left: 20px;
+      padding-right: 20px;
+      text-align: left;
+      z-index: 2;
+    }
+
+    .premium-layout-wrapper & {
+      form {
+        .label {
+          color: var(--color-primary);
+          font-weight: var(--medium-font-weight);
+          font-family: var(--medium-font-family);
+
+          @media (--viewport-ms-max) {
+            font-size: var(--base-font-size-small);
+          }
+        }
+
+        .form-wrapper {
+          text-align: center;
+        }
+      }
+    }
+  }
 }
+

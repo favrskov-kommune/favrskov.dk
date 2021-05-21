@@ -203,11 +203,11 @@ msgstr "Citat"
 msgid "A block contains a quote."
 msgstr "En blok der indeholder et citat."
 
-msgid "Divider"
+msgid "Delelinje"
 msgstr "Divider"
 
 msgid "A block that contains an divider"
-msgstr "En blok der indeholder et divider."
+msgstr "En blok der indeholder en delelinje."
 
 msgid "Hero"
 msgstr "Hero"
@@ -253,3 +253,45 @@ msgstr "Hvis dette er valgt og dette menulink har underpunkter, vil menuen altid
 
 msgid "The layout override has been saved."
 msgstr "Layoutoverskrivelsen er blevet gemt."
+
+msgid "Would you like to be able to reuse this block? This option can not be changed after saving."
+msgstr "Vil du gerne være i stand til at genbruge denne blok? Dette valg kan ikke ændres når det er gemt."
+
+msgid "This block is reusable! Any changes made will be applied globally."
+msgstr "Denne block er genanvendelig! Rettelser til denne vil gælde alle steder hvor den bliver brugt."
+
+msgid "Choose the height of the spacer."
+msgstr "Vælg højden på din \"spacer\"."
+
+msgid "Start typing to find content."
+msgstr "Begynd at skrive for at finde indhold."
+
+msgid "Open in new window/tab"
+msgstr "Åben i et nyt vindue/faneblad"
+
+msgid "Linkit could not find any suggestions. This URL will be used as is."
+msgstr "Linkit kunne ikke finde nogle foreslag. Denne URL vil blive brugt som den er."
+
+msgid "The maximum number of media items have been selected."
+msgstr "Det maksimale antal medie emner er valgt."
+
+msgid "Choose parent page"
+msgstr "Vælg forældreside"
+
+msgid "Choose specific pages"
+msgstr "Vælg specifikke sider"
+
+msgid "Selection mode"
+msgstr "Valgtilstand"
+
+msgid "Read more"
+msgstr "Læs mere"
+
+msgid "See WCAG guidance on <a href=\"https://www.w3.org/WAI/WCAG21/Techniques/general/G200\" target=\"_blank\">opening links in new windows/tabs</a>."
+msgstr "Se WCAG-vejledning om <a href=\"https://www.w3.org/WAI/WCAG21/Techniques/general/G200\" target=\"_blank\">åbning af links i nye vinduer/faner</a>."
+
+msgid "Start typing the title of a piece of content to select it. You can also enter an internal path such as %add-node or an external URL such as %url. Enter %front to link to the front page. Enter %nolink to display link text only. Enter %button to display keyboard-accessible link text only."
+msgstr "Begynd at skrive titlen på et stykke indhold for at vælge det. Du kan også indtaste en intern sti såsom %add-node eller en ekstern URL såsom %url. Indtast %front for at linke til forsiden. Indtast %nolink for kun at vise linktekst. Indtast %button for kun at vise tastaturtilgængelig linktekst."
+
+msgid "Close (Esc)"
+msgstr "Luk (Esc)"

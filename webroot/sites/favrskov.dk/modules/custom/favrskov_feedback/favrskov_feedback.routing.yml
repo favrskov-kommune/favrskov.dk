@@ -1,0 +1,13 @@
+feedbackTest:
+  path: /_test/feedback
+  defaults:
+    _controller: Drupal\favrskov_feedback\Controller\FeedbackController::test
+  requirements:
+    _access: 'TRUE'
+
+feedbackForm:
+  path: /ajax/feedback/{answer}
+  defaults:
+    _controller: Drupal\favrskov_feedback\Controller\FeedbackController::form
+  requirements:
+    _access: 'TRUE'

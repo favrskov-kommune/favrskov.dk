@@ -11,10 +11,9 @@
   <div class="container">
     <div class="burger-menu__inner">
       <div class="row">
-        <div class="col-xs-12 col-md-8 col-lg-6">
+        <div class="col-xs-12">
           {% block navigation %}
             {% if navigation %}
-              <div class="burger-menu-list__label">{{ navigation.title }}</div>
               <ul class="burger-menu-list">
                 {% for item in navigation.items %}
                   <li class="burger-menu-list-item js-burger-menu-list-item">
@@ -37,22 +36,6 @@
                         {% endfor %}
                       </ul>
                     {% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-          {% endblock %}
-        </div>
-        <div class="col-xs-12 col-md-4">
-          {% block meta_menu %}
-            {% if meta_menu %}
-              <div class="burger-menu-list__label">{{ meta_menu.title }}</div>
-              <ul class="burger-menu-list burger-menu-list--highlighted">
-                {% for item in meta_menu.items %}
-                  <li class="burger-menu-list-item">
-                    <a href="{{ item.url }}" class="burger-menu-list-item__link">
-                      {{ item.title }}
-                    </a>
                   </li>
                 {% endfor %}
               </ul>

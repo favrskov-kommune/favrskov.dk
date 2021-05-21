@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: website-php-svc
+  namespace: favrskovdk
+spec:
+  # Internal service used for routing from Apache to PHP
+  type: ClusterIP
+  ports:
+    - port: 9000
+  selector:
+    app: website-php
+
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: website-apache-svc
+  namespace: favrskovdk
+spec:
+  # Internal service used to access from Traefik Proxy
+  type: ClusterIP
+  ports:
+    - port: 80
+  selector:
+    app: website-apache
+
