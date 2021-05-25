@@ -5793,10 +5793,10 @@
         },
         {
             "name": "novicell/content_hierarchy",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1vhZHW/novicellcontent_hierarchy-1-0-4.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_1JhNJX/novicellcontent_hierarchy-1-0-5.zip"
             },
             "require": {
                 "drupal/pathauto": "~1.0",
