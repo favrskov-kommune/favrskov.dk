@@ -1,0 +1,22 @@
+uuid: 5ba7852d-af49-4287-a8da-47d44e1ac323
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: content_hierarchy_pattern
+label: 'Content Hierarchy Pattern'
+type: 'canonical_entities:node'
+pattern: '[node:ancestors-joined-path]/[node:title]'
+selection_criteria:
+  1a0c9cfa-45cc-4ac7-bb73-d0a35e789e5e:
+    id: node_type
+    bundles:
+      page: page
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 1a0c9cfa-45cc-4ac7-bb73-d0a35e789e5e
+selection_logic: and
+weight: 0
+relationships: {  }
