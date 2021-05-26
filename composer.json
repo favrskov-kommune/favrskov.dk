@@ -25,6 +25,7 @@
         "php": ">=7.4",
         "ext-json": "*",
         "ext-pdo": "*",
+        "bower-asset/chosen": "^1.8",
         "bower-asset/jquery-simple-color": "^1.2",
         "bower-asset/spectrum": "^1.8",
         "composer/installers": "^1.2",
@@ -34,6 +35,7 @@
         "drupal/adminimal_theme": "^1.6",
         "drupal/allowed_formats": "^1.0",
         "drupal/autosave_form": "^1.0",
+        "drupal/chosen": "^3.0",
         "drupal/color_field": "^2.0",
         "drupal/components": "^2.0@beta",
         "drupal/config_ignore": "^2.3",
@@ -78,6 +80,7 @@
         "novicell/premium_search": "^0.2",
         "novicell/premium_tools": "^0.2",
         "novicell/status_feed": "^0.1",
+        "oomphinc/composer-installers-extender": "^2.0",
         "vlucas/phpdotenv": "^5.3",
         "wikimedia/composer-merge-plugin": "^2.0"
     },
