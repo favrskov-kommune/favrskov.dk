@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - image.style.thumbnail
+    - taxonomy.vocabulary.media_categories
   module:
     - image
     - media
+    - taxonomy
     - user
 _core:
   default_config_hash: UZP23LgBdE1XbvscbLCdd9uTk5t4qqA1Z56koqbvYP0
@@ -631,10 +633,12 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: 'Media name'
+            label: Navn
             description: ''
             use_operator: false
             operator: name_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: name
             required: false
             remember: false
@@ -643,8 +647,10 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
-            operator_limit_selection: false
-            operator_list: {  }
+              editor: '0'
+              webmaster: '0'
+              monitor: '0'
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -677,6 +683,8 @@ display:
             description: ''
             use_operator: false
             operator: bundle_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: type
             required: false
             remember: false
@@ -685,9 +693,10 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+              editor: '0'
+              webmaster: '0'
+              monitor: '0'
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -720,17 +729,17 @@ display:
             description: null
             use_operator: false
             operator: status_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: status
             required: true
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: true
           group_info:
-            label: Publiceringsstatus
+            label: Status
             description: ''
             identifier: status
             optional: true
@@ -833,6 +842,56 @@ display:
           entity_type: media
           entity_field: langcode
           plugin_id: language
+        field_media_category_target_id:
+          id: field_media_category_target_id
+          table: media__field_media_category
+          field: field_media_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: and
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_media_category_target_id_op
+            label: 'Medie kategori'
+            description: ''
+            use_operator: false
+            operator: field_media_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_category_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              webmaster: '0'
+              monitor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          type: textfield
+          limit: true
+          vid: media_categories
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
       sorts:
         created:
           id: created

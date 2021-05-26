@@ -1,9 +1,10 @@
 uuid: 6e19bc13-61d3-4f12-8b89-d362190d452a
-langcode: da
+langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.media.hero
+    - field.field.media.remote_video.field_media_category
     - field.field.media.remote_video.field_media_oembed_video
     - media.type.remote_video
     - responsive_image.styles.wide
@@ -14,8 +15,6 @@ third_party_settings:
   layout_builder:
     allow_custom: false
     enabled: false
-_core:
-  default_config_hash: 0ePpqCwrC6mqak4xa-ntI5XcIMOTSEfGw1KfpSq1yiI
 id: media.remote_video.hero
 targetEntityType: media
 bundle: remote_video
@@ -32,6 +31,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_media_category: true
   field_media_oembed_video: true
   langcode: true
   name: true

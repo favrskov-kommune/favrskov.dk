@@ -1,16 +1,15 @@
 uuid: ee733608-f78f-4360-830d-9f9fa66a9832
-langcode: da
+langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.media.hero
+    - field.field.media.image.field_media_category
     - field.field.media.image.field_media_image
     - media.type.image
     - responsive_image.styles.wide
   module:
     - responsive_image
-_core:
-  default_config_hash: ztTteV_xHq_i0uw6F1pgJiI_pOiDiwQCHwDvRlZuy2Q
 id: media.image.hero
 targetEntityType: media
 bundle: image
@@ -27,6 +26,7 @@ content:
     region: content
 hidden:
   created: true
+  field_media_category: true
   langcode: true
   name: true
   search_api_excerpt: true

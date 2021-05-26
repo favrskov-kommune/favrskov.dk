@@ -1,14 +1,13 @@
 uuid: b9f92d7d-c7b0-47be-9121-0f64d38aaa31
-langcode: da
+langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.video.field_media_category
     - field.field.media.video.field_media_video_file
     - media.type.video
   module:
     - file
-_core:
-  default_config_hash: JqE6i8XiZNmVyM3nR4EByWoc3Up4AABq9lblUptgoGc
 id: media.video.default
 targetEntityType: media
 bundle: video
@@ -30,6 +29,7 @@ content:
     region: content
 hidden:
   created: true
+  field_media_category: true
   langcode: true
   name: true
   search_api_excerpt: true

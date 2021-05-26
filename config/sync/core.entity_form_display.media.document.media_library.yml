@@ -1,21 +1,30 @@
 uuid: c6170d90-a4a1-4668-9b6b-6f0eaf7b61a5
-langcode: da
+langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_library
+    - field.field.media.document.field_media_category
     - field.field.media.document.field_media_document
     - media.type.document
-_core:
-  default_config_hash: q2Qk9jjWqwnRJ9PNgrfPONPv56l8xT_TAYWmvr30zPA
 id: media.document.media_library
 targetEntityType: media
 bundle: document
 mode: media_library
 content:
+  field_media_category:
+    type: entity_reference_autocomplete_tags
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 1
     region: content
     settings:
       include_locked: true

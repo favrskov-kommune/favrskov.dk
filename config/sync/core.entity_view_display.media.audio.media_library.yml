@@ -1,16 +1,15 @@
 uuid: 3628eefe-6620-4c46-bd8d-8dfd33a66fe6
-langcode: da
+langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
     - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_media_category
     - image.style.thumbnail
     - media.type.audio
   module:
     - image
-_core:
-  default_config_hash: OFJ4SaDtNA_IYSVWIimVhkfxEFBHxPtxv0uWu_gauz4
 id: media.audio.media_library
 targetEntityType: media
 bundle: audio
@@ -28,6 +27,7 @@ content:
 hidden:
   created: true
   field_media_audio_file: true
+  field_media_category: true
   langcode: true
   name: true
   search_api_excerpt: true
