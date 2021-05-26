@@ -1,0 +1,21 @@
+uuid: 90a8007c-5fee-4efd-b983-ffc02e9dcb06
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_cdn_video
+    - media.type.cdn_video
+_core:
+  default_config_hash: afT9JpccniXL3PklTMTEsZSkygM9mOMdLbdgbjSrlAA
+id: media.cdn_video.field_media_cdn_video
+field_name: field_media_cdn_video
+entity_type: media
+bundle: cdn_video
+label: 'CDN Video URL'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

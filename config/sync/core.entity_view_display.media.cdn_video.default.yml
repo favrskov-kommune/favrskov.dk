@@ -1,0 +1,34 @@
+uuid: bcdc89fa-10df-4bdf-90eb-f3448f7ae7d8
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.media.cdn_video.field_media_category
+    - field.field.media.cdn_video.field_media_cdn_video
+    - field.field.media.cdn_video.field_media_image
+    - media.type.cdn_video
+  module:
+    - premium_cdn_video
+_core:
+  default_config_hash: RhEXIenClzTeWXv3B8Hh3YUvMJ2kLuXCSTlRVviw9SE
+id: media.cdn_video.default
+targetEntityType: media
+bundle: cdn_video
+mode: default
+content:
+  field_media_cdn_video:
+    type: cdn_video_formatter
+    weight: 0
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_category: true
+  field_media_image: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

@@ -280,7 +280,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Media name'
+          label: Navn
           exclude: false
           element_type: ''
           element_class: ''
