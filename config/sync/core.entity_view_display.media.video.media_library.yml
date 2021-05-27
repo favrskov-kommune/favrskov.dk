@@ -4,13 +4,12 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
+    - field.field.media.video.field_media_category
     - field.field.media.video.field_media_video_file
     - image.style.thumbnail
     - media.type.video
   module:
     - image
-_core:
-  default_config_hash: GEzU_kBAwP0eDhrquqKE-7ZonQKeg7rnUcVpAcY_Bv0
 id: media.video.media_library
 targetEntityType: media
 bundle: video
@@ -27,6 +26,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_media_category: true
   field_media_video_file: true
   langcode: true
   name: true

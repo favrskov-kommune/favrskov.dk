@@ -3,13 +3,12 @@ langcode: da
 status: true
 dependencies:
   config:
+    - field.field.media.icon.field_media_category
     - field.field.media.icon.field_media_icons
     - media.type.icon
   module:
     - media_icons
     - path
-_core:
-  default_config_hash: gZdIbbI02jsCYcCl8uabXOEdOl0guF7yNxs1GDneFiQ
 id: media.icon.default
 targetEntityType: media
 bundle: icon
@@ -17,12 +16,22 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_media_category:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
   field_media_icons:
-    weight: 0
+    weight: 1
     settings:
       height: 100
       width: 100
@@ -31,14 +40,14 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 2
+    weight: 3
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   name:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
@@ -46,7 +55,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -54,16 +63,17 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 100
+    weight: 7
     region: content
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     region: content
     third_party_settings: {  }
 hidden: {  }

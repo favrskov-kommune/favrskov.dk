@@ -7,7 +7,6 @@
 {{ attach_library('favrskov/hero') }}
 
 <div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media_image ? 'hero--image-added' : 'hero--narrow-height') }}>
-  {{ show_search }}
   {% if show_search == 1 %}
     {% include '@particles/svg-icon/svg-icon.twig' with {
       'attributes': '',

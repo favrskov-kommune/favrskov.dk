@@ -358,6 +358,7 @@
         font-weight: var(--header-font-weight);
         color: var(--color-cta);
         transition: all .3s ease;
+        pointer-events: none;
       }
     }
   }

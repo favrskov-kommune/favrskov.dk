@@ -3,13 +3,12 @@ langcode: da
 status: true
 dependencies:
   config:
+    - field.field.media.image.field_media_category
     - field.field.media.image.field_media_image
     - image.style.large
     - media.type.image
   module:
     - image
-_core:
-  default_config_hash: YShslPyUCH1Y0jy8wHqiA27ULh6tXdpqa9Iky3wW0F8
 id: media.image.default
 targetEntityType: media
 bundle: image
@@ -22,10 +21,11 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
-    weight: 1
+    weight: 0
     region: content
 hidden:
   created: true
+  field_media_category: true
   langcode: true
   name: true
   search_api_excerpt: true

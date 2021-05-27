@@ -1,0 +1,20 @@
+uuid: cbac164e-8940-4365-8e1d-501fe64e9269
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - premium_cdn_video
+  module:
+    - premium_cdn_video
+_core:
+  default_config_hash: 56uutwVLPh-ugkGsIUGNbbXQx-JjhAE9qbodFzvmIwI
+id: cdn_video
+label: 'CDN Video'
+description: 'Use this for video files hosted on external CDN services'
+source: cdn_video
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_cdn_video
+field_map: {  }

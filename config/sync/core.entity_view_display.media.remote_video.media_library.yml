@@ -4,13 +4,12 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
+    - field.field.media.remote_video.field_media_category
     - field.field.media.remote_video.field_media_oembed_video
     - image.style.medium
     - media.type.remote_video
   module:
     - image
-_core:
-  default_config_hash: RTAeXA5fKJucu_aG3_Olh5yofxZle7vfGbezjpT3iZU
 id: media.remote_video.media_library
 targetEntityType: media
 bundle: remote_video
@@ -27,6 +26,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_media_category: true
   field_media_oembed_video: true
   langcode: true
   name: true

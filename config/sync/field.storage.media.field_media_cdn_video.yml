@@ -1,0 +1,26 @@
+uuid: d90e5be1-e22f-4ef4-a503-1ff37853ab8f
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - premium_cdn_video
+  module:
+    - media
+_core:
+  default_config_hash: zMODFzzaiJLQYIv4JSZKO-yHCZxO-Q8fNLvMMsX2kMQ
+id: media.field_media_cdn_video
+field_name: field_media_cdn_video
+entity_type: media
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

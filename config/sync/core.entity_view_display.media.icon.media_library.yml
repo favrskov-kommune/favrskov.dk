@@ -4,12 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
+    - field.field.media.icon.field_media_category
     - field.field.media.icon.field_media_icons
     - media.type.icon
   module:
     - media_icons
-_core:
-  default_config_hash: NXZZ4YLnnS2iVcBMehUHWv9Pc_feFi99HjwgBtsLEFI
 id: media.icon.media_library
 targetEntityType: media
 bundle: icon
@@ -26,6 +25,7 @@ content:
     region: content
 hidden:
   created: true
+  field_media_category: true
   langcode: true
   name: true
   search_api_excerpt: true

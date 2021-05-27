@@ -20,6 +20,9 @@ module:
   config_ignore: 0
   config_split: 0
   config_translation: 0
+  content_hierarchy: 0
+  content_hierarchy_breadcrumb: 0
+  content_hierarchy_path: 0
   content_moderation: 0
   contextual: 0
   crop: 0
@@ -70,6 +73,7 @@ module:
   paragraphs_asymmetric_translation_widgets: 0
   path: 0
   path_alias: 0
+  premium_cdn_video: 0
   premium_search: 0
   premium_theme_helper: 0
   premium_tools: 0
