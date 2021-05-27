@@ -9,6 +9,8 @@
 # o = return the exit code of the last command that had a non-zero code.
 set -euo pipefail
 
+/release/mount_drupal_folders.sh
+
 filelist=$(ls -r backup_${DB_SCHEMA}_${VERSION}_* 2>/dev/null || echo "" | head -6);
 filename=$(echo "$filelist" | head -n 1);
 

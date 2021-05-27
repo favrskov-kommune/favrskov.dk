@@ -9,10 +9,7 @@
 # o = return the exit code of the last command that had a non-zero code.
 set -euo pipefail
 
-#mkdir -p dumps
-#filename=sows_`date +%d-%m-%Y_%H-%M-%S`.sql
-#mysqldump -h $DB_HOST -u"$DB_USER"'@'"$DB_HOST" -p$DB_PASS $DB_SCHEMA --single-transaction --quick > dumps/${filename}
-#ls -la dumps/
+/release/mount_drupal_folders.sh
 
 filename=backup_${DB_SCHEMA}_${VERSION}_`date +%Y-%m-%d_%H-%M-%S`.sql
 cd /app \
