@@ -11,7 +11,7 @@ WORKDIR /app
 # Copy configurations
 COPY .docker/php/usr/local/etc/php/conf.d/*.ini /usr/local/etc/php/conf.d/
 COPY .docker/php/usr/local/etc/php-fpm.d/*.conf /usr/local/etc/php-fpm.d/
-COPY .docker/php/root/.msmtprc /root/
+COPY .docker/php/usr/local/etc/smtp/*.conf /usr/local/etc/smtp/
 
 # Copy application
 COPY --from=codebase /app /app
