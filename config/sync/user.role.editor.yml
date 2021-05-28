@@ -5,7 +5,7 @@ dependencies: {  }
 _core:
   default_config_hash: gSOLYzJGPWXHs0Oj0qMrkOYq3OLSXAVr9yA343pB0iQ
 id: editor
-label: Editor
+label: Redaktør
 weight: 3
 is_admin: null
 permissions:
