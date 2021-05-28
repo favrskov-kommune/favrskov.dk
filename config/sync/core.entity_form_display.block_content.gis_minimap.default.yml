@@ -1,0 +1,36 @@
+uuid: 24267fd2-0baf-468d-81aa-57828f7aa3b1
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.gis_minimap
+    - field.field.block_content.gis_minimap.field_gis_minimap_id
+id: block_content.gis_minimap.default
+targetEntityType: block_content
+bundle: gis_minimap
+mode: default
+content:
+  field_gis_minimap_id:
+    weight: 27
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }
