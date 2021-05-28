@@ -1,0 +1,8 @@
+name: Favrskov maps
+description: Favrskov kort funktioner
+package: Favrskov
+type: module
+core_version_requirement: ^8 || ^9
+
+interface translation project: favrskov_maps
+interface translation server pattern: modules/custom/favrskov_maps/translations/%language.po

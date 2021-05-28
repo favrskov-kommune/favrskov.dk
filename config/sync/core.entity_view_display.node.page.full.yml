@@ -24,9 +24,13 @@ third_party_settings:
     enabled: true
   layout_builder_restrictions:
     allowed_block_categories:
+      - Block
+      - Bruger
       - 'Chaos Tools'
       - 'Content fields'
       - 'Custom block types'
+      - 'Custom blocks'
+      - Devel
       - Forms
       - Help
       - 'Inline blocks'
@@ -34,39 +38,44 @@ third_party_settings:
       - Menus
       - Premium
       - System
-      - User
       - Webform
       - core
     entity_view_mode_restriction:
       whitelisted_blocks:
+        Block: {  }
+        Bruger: {  }
         'Chaos Tools': {  }
         'Content fields': {  }
         'Custom block types':
-          - inline_navigation
           - accordion
           - appetizer
           - button
           - code
           - divider
+          - gis_minimap
           - hero
           - image
+          - inline_navigation
           - quote
           - rte
           - slideshow
           - spacer
           - video
+        'Custom blocks': {  }
+        Devel: {  }
         Forms: {  }
         Help: {  }
         'Inline blocks':
           - 'inline_block:accordion'
           - 'inline_block:appetizer'
+          - 'inline_block:image'
+          - 'inline_block:quote'
+          - 'inline_block:divider'
+          - 'inline_block:gis_minimap'
+          - 'inline_block:hero'
+          - 'inline_block:inline_navigation'
           - 'inline_block:button'
           - 'inline_block:code'
-          - 'inline_block:divider'
-          - 'inline_block:hero'
-          - 'inline_block:image'
-          - 'inline_block:inline_navigation'
-          - 'inline_block:quote'
           - 'inline_block:slideshow'
           - 'inline_block:spacer'
           - 'inline_block:rte'
@@ -75,7 +84,6 @@ third_party_settings:
         Menus: {  }
         Premium: {  }
         System: {  }
-        User: {  }
         Webform: {  }
         core: {  }
       blacklisted_blocks: {  }

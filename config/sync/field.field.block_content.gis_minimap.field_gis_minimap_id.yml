@@ -1,0 +1,19 @@
+uuid: ba2888b5-52c4-4f47-b461-68c299962754
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.gis_minimap
+    - field.storage.block_content.field_gis_minimap_id
+id: block_content.gis_minimap.field_gis_minimap_id
+field_name: field_gis_minimap_id
+entity_type: block_content
+bundle: gis_minimap
+label: 'MiniMap ID'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

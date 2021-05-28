@@ -1,0 +1,21 @@
+uuid: ae7d43f0-683e-4bb4-85d0-192f09c70919
+langcode: da
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.field_gis_minimap_id
+field_name: field_gis_minimap_id
+entity_type: block_content
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
