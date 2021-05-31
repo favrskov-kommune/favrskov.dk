@@ -16,7 +16,7 @@ if [ "$SMTP_PORT" != "" -a "$SMTP_HOST" != "" -a "$SMTP_AUTH_USERNAME" != "" -a 
       -e "s/REPLACE_WITH_REAL_SMTP_HOST/${SMTP_HOST}/" \
       -e "s/REPLACE_WITH_REAL_SMTP_AUTH_USERNAME/${SMTP_AUTH_USERNAME}/" \
       -e "s/REPLACE_WITH_REAL_SMTP_AUTH_PASSWORD/${SMTP_AUTH_PASSWORD}/" \
-      /root/.msmtprc ;
+      /usr/local/etc/smtp/msmtp.conf ;
 fi
 
 # first arg is `-f` or `--some-option`
