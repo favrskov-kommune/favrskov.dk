@@ -28,13 +28,3 @@ rm -rf /app/webroot/sites/favrskov.dk/files/styles/*
 mount -o bind /mnt/cache/styles /app/webroot/sites/favrskov.dk/files/styles
 
 echo "Cache mounts complete."
-
-# Mount logs dir
-if [[ ! -d /app/logs ]]; then
-    mkdir /app/logs
-fi
-
-rm -rf /app/logs/*  /app/logs/.keep
-mount -o bind /mnt/logs /app/logs
-
-echo "Logs mounts complete."

@@ -9,8 +9,6 @@
 # o = return the exit code of the last command that had a non-zero code.
 set -euo pipefail
 
-/release/mount_drupal_folders.sh
-
 filename=backup_${DB_SCHEMA}_${VERSION}_`date +%Y-%m-%d_%H-%M-%S`.sql
 cd /app \
     && vendor/drush/drush/drush sql:dump --structure-tables-list=cache,cache_* > /tmp/${filename} \

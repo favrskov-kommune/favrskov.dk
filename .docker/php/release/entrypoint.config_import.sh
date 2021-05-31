@@ -4,7 +4,8 @@
 # o = return the exit code of the last command that had a non-zero code.
 set -euo pipefail
 
-/release/mount_drupal_folders.sh
+/release/mount.public_files_cache_folders.sh
+/release/mount.log_folder.sh
 
 cd /app && \
     vendor/drush/drush/drush cim -y
