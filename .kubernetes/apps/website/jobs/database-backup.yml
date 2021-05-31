@@ -35,6 +35,12 @@ spec:
       containers:
         - name: php
           image: acrfavrskov.azurecr.io/favrskovdk-php:kubernetes-1.0.12
+          securityContext:
+            runAsUser: 0
+            privileged: true
+            capabilities:
+              add:
+                - SYS_ADMIN # Enabled to bind mounts correctly
 
           volumeMounts:
             - name: files-public-azfp
