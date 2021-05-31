@@ -6,6 +6,7 @@ dependencies:
     - image.style.wide_lg_
     - image.style.wide_md_
     - image.style.wide_sm_
+    - image.style.wide_xl_
     - image.style.wide_xs_
     - image.style.wide_xs_x2_
     - image.style.wide_xxs_
@@ -21,7 +22,7 @@ image_style_mappings:
     breakpoint_id: favrskov.xl
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: wide_lg_
+    image_mapping: wide_xl_
   -
     breakpoint_id: favrskov.lg
     multiplier: 1x
