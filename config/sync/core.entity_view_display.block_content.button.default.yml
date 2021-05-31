@@ -6,6 +6,7 @@ dependencies:
     - block_content.type.button
     - field.field.block_content.button.field_button
     - field.field.block_content.button.field_button_alignment
+    - field.field.block_content.button.field_call_to_action_color
   module:
     - options
     - premium_tools
@@ -26,6 +27,13 @@ content:
   field_button_alignment:
     weight: 1
     label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_call_to_action_color:
+    weight: 3
+    label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default

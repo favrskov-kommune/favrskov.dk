@@ -9,6 +9,7 @@
 
 {% if type != 'plain' %}
   {% set attributes = attributes.addClass('button') %}
+  {% set attributes = attributes.addClass('button--' ~ btn_color) %}
 {% endif %}
 
 <a {{ attributes.setAttribute('href', url) }}>

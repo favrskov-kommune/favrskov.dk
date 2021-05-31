@@ -1,0 +1,23 @@
+uuid: f94406de-9521-4d47-9342-7d6fc5aebd50
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.button
+    - field.storage.block_content.field_call_to_action_color
+  module:
+    - options
+id: block_content.button.field_call_to_action_color
+field_name: field_call_to_action_color
+entity_type: block_content
+bundle: button
+label: 'Call to action color'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: red
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -10,6 +10,7 @@ dependencies:
     - field.field.block_content.appetizer.field_appetizer_orientation
     - field.field.block_content.appetizer.field_appetizer_text
     - field.field.block_content.appetizer.field_appetizer_text_alignment
+    - field.field.block_content.appetizer.field_call_to_action_color
   module:
     - media_library
     - premium_tools
@@ -61,6 +62,12 @@ content:
     region: content
   field_appetizer_text_alignment:
     weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_call_to_action_color:
+    weight: 26
     settings: {  }
     third_party_settings: {  }
     type: options_select

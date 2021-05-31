@@ -39,6 +39,7 @@
     {% include '@particles/button/button--link.twig' with {
       'url': url,
       'text': title,
+      'btn_color': content['#block_content'].field_call_to_action_color.value,
       'attributes': button_attributes
     } %}
   {% endif %}

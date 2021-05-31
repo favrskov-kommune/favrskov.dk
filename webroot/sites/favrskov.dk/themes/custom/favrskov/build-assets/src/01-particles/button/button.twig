@@ -1,4 +1,8 @@
-<button {{ (not attributes ? create_attribute() : attributes).addClass(not skip_button_class ? 'button').setAttribute('type', type) }}>
+{% if not skip_button_class %}
+  {% set classes = ['button', 'button--' ~ btn_color] %}
+{% endif %}
+
+<button {{ (not attributes ? create_attribute() : attributes).addClass(not skip_button_class ? classes).setAttribute('type', type) }}>
   {% block content %}
     {{ text }}
   {% endblock %}

@@ -28,6 +28,10 @@ a.button {
     pointer-events: none;
   }
 
+  &:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+  }
+
   &--ghost {
     border: var(--button-border-width) solid var(--theme-button-background-color);
     background-color: transparent;
@@ -42,5 +46,42 @@ a.button {
   &--right {
     left: 100%;
     transform: translateX(-100%);
+  }
+
+  &--red {
+    background-color: var(--color-cta);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-cta-hover);
+    }
+  }
+
+  &--green {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
+  }
+
+  &--gray {
+    background-color: var(--color-gray);
+    color: var(--color-text);
+
+    &:hover {
+      background-color: var(--color-gray-hover);
+    }
+  }
+
+  &--white {
+    background-color: var(--color-white);
+    color: var(--color-text);
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
   }
 }

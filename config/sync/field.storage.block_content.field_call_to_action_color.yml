@@ -1,0 +1,33 @@
+uuid: 5b7f22f9-8d92-4659-95c5-e01e0e24bf4c
+langcode: da
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_call_to_action_color
+field_name: field_call_to_action_color
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: red
+      label: Red
+    -
+      value: green
+      label: Green
+    -
+      value: gray
+      label: Gray
+    -
+      value: white
+      label: White
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

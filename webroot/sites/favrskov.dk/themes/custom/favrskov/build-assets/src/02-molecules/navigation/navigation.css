@@ -69,7 +69,7 @@
   &.active {
     .navigation-item__link {
       background-color: var(--color-primary-hover);
-    color: var(--color-white);
+      color: var(--color-white);
 
       &::after {
         width: 40%;

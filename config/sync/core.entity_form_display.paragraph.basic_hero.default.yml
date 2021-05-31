@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.basic_hero.field_background
+    - field.field.paragraph.basic_hero.field_call_to_action_color
     - field.field.paragraph.basic_hero.field_color_theme
     - field.field.paragraph.basic_hero.field_cta
     - field.field.paragraph.basic_hero.field_link
@@ -32,8 +33,14 @@ content:
       media_types: {  }
     third_party_settings: {  }
     region: content
+  field_call_to_action_color:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_color_theme:
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: dynamic_key_value_color_widget
@@ -48,7 +55,7 @@ content:
     type: link_with_target
     region: content
   field_show_search:
-    weight: 4
+    weight: 5
     settings:
       display_label: true
     third_party_settings: {  }
@@ -63,13 +70,13 @@ content:
     type: text_textarea
     region: content
   field_text_position:
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   translation:
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

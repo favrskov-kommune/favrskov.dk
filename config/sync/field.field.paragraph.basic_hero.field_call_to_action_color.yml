@@ -1,0 +1,23 @@
+uuid: 4ccd6b12-01f8-4823-b572-2c181a5093d2
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_call_to_action_color
+    - paragraphs.paragraphs_type.basic_hero
+  module:
+    - options
+id: paragraph.basic_hero.field_call_to_action_color
+field_name: field_call_to_action_color
+entity_type: paragraph
+bundle: basic_hero
+label: 'Call to action color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: red
+default_value_callback: ''
+settings: {  }
+field_type: list_string

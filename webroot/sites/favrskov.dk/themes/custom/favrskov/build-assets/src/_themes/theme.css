@@ -19,11 +19,11 @@
     background-color: var(--color-gray);
   }
 
-  a {
+  a:not(.button--red):not(.button--green):not(.button--gray):not(.button--white) {
     color: var(--theme-link-color);
   }
 
-  .button {
+  .button:not(.button--red):not(.button--green):not(.button--gray):not(.button--white) {
     background-color: var(--theme-button-background-color);
     color: var(--theme-button-color);
 
