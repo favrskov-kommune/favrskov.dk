@@ -71,7 +71,7 @@ spec:
 
       containers:
         - name: php
-          image: acrfavrskov.azurecr.io/favrskovdk-php:1.0.0-develop.16
+          image: acrfavrskov.azurecr.io/favrskovdk-php:1.0.3
           ports:
             - containerPort: 9000
           securityContext:

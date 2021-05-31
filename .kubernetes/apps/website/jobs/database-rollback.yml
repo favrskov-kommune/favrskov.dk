@@ -12,18 +12,40 @@ spec:
       restartPolicy: Never
 
       volumes:
-        - name: backup-azf
+        - name: files-public-azfp
           persistentVolumeClaim:
-            claimName: backup-azf-pvc
+            claimName: files-public-azfp-pvc
+
+        - name: log-azfp
+          persistentVolumeClaim:
+            claimName: log-azfp-pvc
+
+        - name: files-private-azf
+          persistentVolumeClaim:
+            claimName: files-private-azf-pvc
+
+        - name: files-cache
+          persistentVolumeClaim:
+            claimName: files-cache-longhorn-pvc
 
       containers:
         - name: php
           image: acrfavrskov.azurecr.io/favrskovdk-php:kubernetes-1.0.12
 
           volumeMounts:
-            - name: backup-azf
-              mountPath: /mnt/backup/database
-              subPath: database
+            - name: files-public-azfp
+              mountPath: /app/webroot/sites/favrskov.dk/files
+
+            - name: log-azfp
+              mountPath: /mnt/logs
+              subPath: website # Store under website subdir on mounted storage
+
+            - name: files-private-azf
+              mountPath: /app/private-files
+
+            - name: files-cache
+              mountPath: /mnt/cache
+              subPath: cache # Store under cache subdir on mounted storage
 
           envFrom:
             - configMapRef:

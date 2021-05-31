@@ -71,7 +71,7 @@ spec:
 
       containers:
         - name: php
-          image: acrfavrskov.azurecr.io/favrskovdk-php:1.0.0-develop.14
+          image: acrfavrskov.azurecr.io/favrskovdk-php:1.0.13
           ports:
             - containerPort: 9000
           securityContext:
@@ -97,8 +97,8 @@ spec:
 
           resources:
             requests:
-              cpu: 250m
-              memory: 1024Mi
+              cpu: 100m
+              memory: 512Mi
 
           volumeMounts:
             - name: files-public-azfp
