@@ -15,7 +15,7 @@ entity_type: paragraph
 bundle: basic_hero
 label: 'Farve tema'
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
