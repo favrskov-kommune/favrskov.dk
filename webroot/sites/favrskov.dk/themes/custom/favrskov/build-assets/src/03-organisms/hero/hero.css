@@ -146,6 +146,14 @@
     left: 0;
     fill: var(--color-gray);
     opacity: .5;
+
+    .theme-douce & {
+      fill: var(--color-gray-hover);
+    }
+
+    .theme-gray_blue & {
+      fill: var(--color-secondary);
+    }
   }
 }
 
