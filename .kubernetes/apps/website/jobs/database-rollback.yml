@@ -28,6 +28,10 @@ spec:
           persistentVolumeClaim:
             claimName: files-cache-longhorn-pvc
 
+        - name: backup-azf
+          persistentVolumeClaim:
+            claimName: backup-azf-pvc
+
       containers:
         - name: php
           image: acrfavrskov.azurecr.io/favrskovdk-php:kubernetes-1.0.12
@@ -46,6 +50,10 @@ spec:
             - name: files-cache
               mountPath: /mnt/cache
               subPath: cache # Store under cache subdir on mounted storage
+
+            - name: backup-azf
+              mountPath: /mnt/backup/database
+              subPath: database
 
           envFrom:
             - configMapRef:
