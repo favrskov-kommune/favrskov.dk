@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.removeEventListener('keydown', this.handleEsc);
         this.isOpen = false;
         document.body.classList.remove('no-scroll');
+        document.querySelector('.js-search-toggle').focus();
       },
       handleEsc(e) {
         if (e.keyCode === 27) {

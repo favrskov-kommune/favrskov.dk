@@ -11,6 +11,30 @@ Drupal.behaviors.burgerMenu = {
     }
     burgerMenu.classList.add('loaded');
 
+    function addTabindex(selector) {
+      const addTabIndex = document.querySelectorAll(selector);
+      for (let i = 0; i < addTabIndex.length; i += 1) {
+        addTabIndex[i].setAttribute('tabindex', 0);
+      }
+    }
+
+    function removeTabindex(selector) {
+      const removeTabIndex = document.querySelectorAll(selector);
+      for (let i = 0; i < removeTabIndex.length; i += 1) {
+        removeTabIndex[i].removeAttribute('tabindex');
+      }
+    }
+
+    function negativeTabindex(selector) {
+      const removeTabIndex = document.querySelectorAll(selector);
+      for (let i = 0; i < removeTabIndex.length; i += 1) {
+        removeTabIndex[i].setAttribute('tabindex', -1);
+      }
+    }
+
+    negativeTabindex('.burger-menu-list-item__link');
+    negativeTabindex('.burger-menu-list-item__expand-trigger');
+
     const vm = new Vue({
       delimiters: ['${', '}'],
       el: burgerMenu,
@@ -39,12 +63,23 @@ Drupal.behaviors.burgerMenu = {
           document.body.classList.add('no-scroll');
           document.addEventListener('keydown', this.handleEsc);
           document.addEventListener('click', this.handleClickOutside);
+          // Alter tabindex on elements to improve user accessibility
+          negativeTabindex('a');
+          negativeTabindex('input');
+          addTabindex('.burger-menu-list-item__link');
+          addTabindex('.burger-menu-list-item__expand-trigger');
         },
         closeBurgerMenu() {
           this.isOpen = false;
           document.removeEventListener('keydown', this.handleEsc);
           document.removeEventListener('click', this.handleClickOutside);
           document.body.classList.remove('no-scroll');
+          // Alter tabindex on elements to improve user accessibility
+          removeTabindex('a');
+          removeTabindex('input');
+          negativeTabindex('.burger-menu-list-item__link');
+          negativeTabindex('.burger-menu-list-item__expand-trigger');
+          document.getElementById('js-burger').focus();
         },
         hideSubNavigations(parent) {
           const items = document.querySelectorAll('.js-burger-menu-list-item--expandable');
