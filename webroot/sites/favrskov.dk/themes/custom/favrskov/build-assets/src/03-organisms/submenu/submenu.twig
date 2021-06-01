@@ -1,0 +1,17 @@
+{{ attach_library('favrskov/submenu') }}
+
+<div{{ attributes.addClass('submenu') }}>
+  <nav class="submenu__navigation js-submenu">
+    {% block block_content %}{% endblock %}
+    {% block block_links %}
+      {% for link in links %}
+        <a href="{{ link.url }}">
+          {{ link.title }}
+        </a>
+      {% endfor %}
+    {% endblock %}
+    <div class="js-submenu-shadow-left submenu__shadow-left"></div>
+    <div class="js-submenu-shadow-right submenu__shadow-right"></div>
+  </nav>
+</div>
+
