@@ -7,7 +7,7 @@
 # Configure NewRelic
 /release/config.newrelic.sh
 
-# Configure NewRelic
+# Configure SMTP
 /release/config.smtp.sh
 
 
