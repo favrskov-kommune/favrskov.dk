@@ -17,6 +17,7 @@
 
   @media (--viewport-sm-max) {
     background-color: var(--color-gray);
+    order: 0;
   }
 
   &__inner {

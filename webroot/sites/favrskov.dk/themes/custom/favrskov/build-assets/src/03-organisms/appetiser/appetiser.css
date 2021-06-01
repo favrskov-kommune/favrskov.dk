@@ -61,7 +61,7 @@
   &__description {
     font-size: var(--base-font-size-large);
     line-height: 1.3;
-    font-family: var(--heading-font-family);
+    font-family: var(--header-font-family);
   }
 
   &__image {

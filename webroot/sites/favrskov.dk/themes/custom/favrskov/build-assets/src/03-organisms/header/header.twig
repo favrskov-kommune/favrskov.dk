@@ -13,6 +13,13 @@
         {% include '@molecules/logo/logo.twig' with logo %}
       {% endblock %}
     </div>
+    <div class="header__inner header__navigation col-xs-12 col-md-6 pl-xs-0 pr-xs-0">
+      {% block navigation %}
+        {% include '@molecules/navigation/navigation.twig' with {
+          'items': navigation.items
+        } %}
+      {% endblock %}
+    </div>
     <div class="header__inner header__search-burger col-xs-6 col-xs-offset-0 col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-0 pl-xs-0 pr-xs-0 pr-md-0">
       {% if display_search_toggle %}
         {% include '@molecules/search-toggle/search-toggle.twig' %}
@@ -20,13 +27,6 @@
       {% if display_burger_toggle %}
         {% include '@molecules/burger/burger.twig' %}
       {% endif %}
-    </div>
-    <div class="header__inner header__navigation col-xs-12 col-md-6 pl-xs-0 pr-xs-0">
-      {% block navigation %}
-        {% include '@molecules/navigation/navigation.twig' with {
-          'items': navigation.items
-        } %}
-      {% endblock %}
     </div>
   </div>
 </header>

@@ -47,8 +47,8 @@
 
   &__feedback_label {
     font-size: var(--base-font-size-xlarge);
-    font-family: var(--heading-font-family);
-    font-weight: var(--heading-font-weight);
+    font-family: var(--header-font-family);
+    font-weight: var(--header-font-weight);
     margin: 0 30px 0 5px;
 
     @media (--viewport-ms-max) {
@@ -133,8 +133,8 @@
   }
 
   &__headline {
-    font-family: var(--heading-font-family);
-    font-weight: var(--heading-font-weight);
+    font-family: var(--header-font-family);
+    font-weight: var(--header-font-weight);
     font-size: var(--base-font-size-xlarge);
     margin-bottom: 30px;
 
@@ -145,8 +145,8 @@
 
   &__content {
     line-height: var(--base-font-size-xlarge);
-    font-family: var(--medium-font-family);
-    font-weight: var(--medium-font-weight);
+    font-family: var(--base-font-family);
+    font-weight: var(--base-font-weight);
 
     & p {
       margin-bottom: 30px;
@@ -219,8 +219,8 @@
       form {
         .label {
           color: var(--color-primary);
-          font-weight: var(--medium-font-weight);
-          font-family: var(--medium-font-family);
+          font-weight: var(--base-font-weight);
+          font-family: var(--base-font-family);
 
           @media (--viewport-ms-max) {
             font-size: var(--base-font-size-small);
