@@ -1,0 +1,23 @@
+{{ attach_library('favrskov/document-list') }}
+
+<div{{ attributes.addClass('document-list') }}>
+  {% block block_content %}{% endblock %}
+  {% if links %}
+    <ul class="link-list">
+      {% for link in links %}
+        <li class="link-list__item">
+          <a{{ (not link.attributes ? create_attribute() : link.attributes).setAttribute('href', link.url).addClass('link-list__link').setAttribute('target', (not target ? '_blank' : target)) }}>
+            {% if link.icon %}
+              {% include '@particles/svg-icon/svg-icon.twig' with {
+                'attributes': '',
+                'svgIconName': link.icon
+              } %}
+            {% endif %}
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+

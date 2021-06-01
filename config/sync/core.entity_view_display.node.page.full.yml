@@ -50,6 +50,7 @@ third_party_settings:
           - button
           - code
           - divider
+          - document_list
           - gis_minimap
           - hero
           - image
@@ -68,6 +69,7 @@ third_party_settings:
           - 'inline_block:image'
           - 'inline_block:quote'
           - 'inline_block:divider'
+          - 'inline_block:document_list'
           - 'inline_block:gis_minimap'
           - 'inline_block:hero'
           - 'inline_block:inline_navigation'
