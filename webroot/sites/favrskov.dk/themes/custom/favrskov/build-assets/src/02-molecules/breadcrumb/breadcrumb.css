@@ -2,6 +2,9 @@
  * Type: Molecules.
  * Breadcrumb.
  */
+#block-breadcrumbs {
+  background-color: var(--color-gray);
+}
 
 .breadcrumb {
   position: relative;
@@ -18,24 +21,29 @@
   &__item {
     display: inline-block;
     list-style: none;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    font-size: var(--base-font-size-medium);
+    color: var(--color-primary);
 
     & + &::before {
       content: '/';
       padding: 5px 3px;
-      color: var(--color-gray);
     }
   }
 
   &__link {
-    color: var(--color-gray);
+    color: var(--color-primary);
     text-decoration: none;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    font-size: var(--base-font-size-medium);
     display: inline-block;
     position: relative;
     transition: color .2s;
 
     &--active {
-      color: var(--color-black);
-      font-weight: 600;
+      color: var(--color-gray-medium);
     }
   }
 }
