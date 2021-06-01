@@ -57,8 +57,8 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
     right: 40px;
     font-size: var(--base-font-size);
     color: var(--color-gray-dark);
-    font-family: var(--medium-font-family);
-    font-weight: var(--medium-font-weight);
+    font-family: var(--base-font-family);
+    font-weight: var(--base-font-weight);
     display: inline-flex;
     align-items: center;
     justify-content: space-between;

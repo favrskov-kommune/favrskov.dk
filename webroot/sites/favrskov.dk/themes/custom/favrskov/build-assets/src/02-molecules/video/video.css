@@ -7,7 +7,7 @@
   position: relative;
   box-shadow: 0 27px 50px 0 rgba(35, 35, 35, .15);
   color: black;
-  font-family: var(--heading-font-family);
+  font-family: var(--header-font-family);
   display: flex;
   width: 100%;
   flex-grow: 1;

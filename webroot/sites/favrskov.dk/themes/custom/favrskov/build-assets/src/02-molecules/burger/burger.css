@@ -40,8 +40,8 @@
 
   &__label {
     font-size: var(--base-font-size-medium);
-    font-family: var(--medium-font-family);
-    font-weight: var(--medium-font-weight);
+    font-family: var(--base-font-family);
+    font-weight: var(--base-font-weight);
     color: var(--color-gray-medium);
     text-transform: uppercase;
     margin-left: 15px;

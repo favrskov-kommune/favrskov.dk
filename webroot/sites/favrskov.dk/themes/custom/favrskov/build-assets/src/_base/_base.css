@@ -49,9 +49,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--heading-font-family);
+  font-family: var(--header-font-family);
   margin-top: 0;
-  font-weight: var(--heading-font-weight);
+  font-weight: var(--header-font-weight);
   margin-bottom: 10px;
 }
 

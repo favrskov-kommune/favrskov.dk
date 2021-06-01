@@ -21,8 +21,8 @@
   &__item {
     display: inline-block;
     list-style: none;
-    font-family: var(--heading-font-family);
-    font-weight: var(--heading-font-weight);
+    font-family: var(--header-font-family);
+    font-weight: var(--header-font-weight);
     font-size: var(--base-font-size-medium);
     color: var(--color-primary);
 
@@ -35,8 +35,8 @@
   &__link {
     color: var(--color-primary);
     text-decoration: none;
-    font-family: var(--heading-font-family);
-    font-weight: var(--heading-font-weight);
+    font-family: var(--header-font-family);
+    font-weight: var(--header-font-weight);
     font-size: var(--base-font-size-medium);
     display: inline-block;
     position: relative;

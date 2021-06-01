@@ -354,7 +354,7 @@
         opacity: 0;
         max-width: 0;
         font-size: var(--base-font-size-medium);
-        font-family: var(--heading-font-family);
+        font-family: var(--header-font-family);
         font-weight: var(--header-font-weight);
         color: var(--color-cta);
         transition: all .3s ease;

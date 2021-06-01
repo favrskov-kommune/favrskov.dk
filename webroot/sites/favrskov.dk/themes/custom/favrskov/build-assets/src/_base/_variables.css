@@ -12,7 +12,7 @@
   --color-white: #fff;
   --color-gray: #e7ebe3;
   --color-gray-hover: #ced3c8;
-  --color-gray-medium: #474747;
+  --color-gray-medium: #666666;
   --color-gray-dark: #282828;
   --color-error: #f00;
   --color-cta: #d8204c;
@@ -44,7 +44,7 @@
 
   /* Typography
   ********************/
-  --base-font-family: "FoundrySterlingBook", "sans-serif";
+  --base-font-family: "Arial", "Helvetica", "sans-serif";
   --base-font-size-xxxxlarge: 60px;
   --base-font-size-xxxlarge: 50px;
   --base-font-size-xxlarge: 40px;
@@ -55,8 +55,6 @@
   --base-font-size-small: 14px;
   --base-font-size-extra-small: 12px;
   --base-font-weight: normal;
-  --medium-font-family: "FoundrySterlingMedium", "sans-serif";
-  --medium-font-weight: normal;
 
   /* Layout
   ********************/
@@ -76,8 +74,8 @@
   /* Header */
   --header-height: 76px;
   --header-height-mobile: 60px;
-  --heading-font-family: "FoundrySterlingBold", "sans-serif";
-  --heading-font-weight: normal;
+  --header-font-family: "Arial", "Helvetica", "sans-serif";
+  --header-font-weight: bold;
   --header-text-color: #232323;
   --header-selected-text-color: var(--color-primary);
   --header-border-color: #ced3c8;
@@ -96,6 +94,6 @@
   --button-height: 60px;
   --button-padding: 0 60px;
   --button-font-weight: 500;
-  --button-font-family: var(--heading-font-family);
+  --button-font-family: var(--header-font-family);
   --button-font-size: var(--base-font-size);
 }
