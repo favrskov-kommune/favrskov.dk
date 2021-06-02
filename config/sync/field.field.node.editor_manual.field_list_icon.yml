@@ -1,0 +1,29 @@
+uuid: b0fd41ed-cb97-4521-9cef-f0cfeafaa4e2
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_list_icon
+    - media.type.icon
+    - node.type.editor_manual
+id: node.editor_manual.field_list_icon
+field_name: field_list_icon
+entity_type: node
+bundle: editor_manual
+label: 'List ikon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      icon: icon
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

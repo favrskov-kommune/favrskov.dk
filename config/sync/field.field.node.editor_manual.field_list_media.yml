@@ -1,0 +1,31 @@
+uuid: da59a190-de3a-41b9-ba95-81ed1e309609
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_list_media
+    - media.type.image
+    - node.type.editor_manual
+_core:
+  default_config_hash: ryN45WPoOAy060FQvZz-cqIoLnrRvVpDsAC9bxnslsI
+id: node.editor_manual.field_list_media
+field_name: field_list_media
+entity_type: node
+bundle: editor_manual
+label: 'List media'
+description: 'Image used for meta tags and inline navigation'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

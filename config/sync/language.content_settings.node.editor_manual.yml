@@ -1,0 +1,11 @@
+uuid: e4998074-be55-4f96-ab0a-d1660769669b
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.editor_manual
+id: node.editor_manual
+target_entity_type_id: node
+target_bundle: editor_manual
+default_langcode: site_default
+language_alterable: false

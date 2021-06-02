@@ -1,0 +1,22 @@
+uuid: f0cb087c-2671-45d0-ad22-318df50051e3
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.news
+id: node.news.promote
+field_name: promote
+entity_type: node
+bundle: news
+label: 'Forfremmet til forside'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean
