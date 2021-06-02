@@ -1,0 +1,8 @@
+uuid: e23014c0-826f-4bf3-9d59-646a68bc0784
+langcode: da
+status: true
+dependencies: {  }
+id: news_list
+label: Nyhedsliste
+revision: 0
+description: ''

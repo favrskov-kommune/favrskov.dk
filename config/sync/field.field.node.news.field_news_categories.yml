@@ -1,0 +1,74 @@
+uuid: be6d60a3-2abe-472a-bcf2-8926e69f310f
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_news_categories
+    - node.type.news
+    - taxonomy.vocabulary.news_categories
+  module:
+    - dynamic_entity_reference
+id: node.news.field_news_categories
+field_name: field_news_categories
+entity_type: node
+bundle: news
+label: Nyhedskategorier
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  taxonomy_term:
+    handler: 'default:taxonomy_term'
+    handler_settings:
+      target_bundles:
+        news_categories: news_categories
+      sort:
+        field: name
+        direction: asc
+      auto_create: true
+      auto_create_bundle: ''
+  path_alias:
+    handler: 'default:path_alias'
+    handler_settings: {  }
+  crop:
+    handler: 'default:crop'
+    handler_settings: {  }
+  user:
+    handler: 'default:user'
+    handler_settings: {  }
+  block_content:
+    handler: 'default:block_content'
+    handler_settings: {  }
+  menu_link_content:
+    handler: 'default:menu_link_content'
+    handler_settings: {  }
+  content_moderation_state:
+    handler: 'default:content_moderation_state'
+    handler_settings: {  }
+  file:
+    handler: 'default:file'
+    handler_settings: {  }
+  shortcut:
+    handler: 'default:shortcut'
+    handler_settings: {  }
+  node:
+    handler: 'default:node'
+    handler_settings: {  }
+  media:
+    handler: 'default:media'
+    handler_settings: {  }
+  paragraph:
+    handler: 'default:paragraph'
+    handler_settings: {  }
+  redirect:
+    handler: 'default:redirect'
+    handler_settings: {  }
+  webform_submission:
+    handler: 'default:webform_submission'
+    handler_settings: {  }
+  scheduled_transition:
+    handler: 'default:scheduled_transition'
+    handler_settings: {  }
+field_type: dynamic_entity_reference

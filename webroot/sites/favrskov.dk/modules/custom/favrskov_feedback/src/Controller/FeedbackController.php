@@ -1,12 +1,9 @@
 <?php
 namespace Drupal\favrskov_feedback\Controller;
 
-use Drupal;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Serialization\Yaml;
-use Drupal\webform\Entity\Webform;
 
 class FeedbackController extends ControllerBase {
 
@@ -28,7 +25,7 @@ class FeedbackController extends ControllerBase {
       return $response->setStatusCode(204);
     } else {
       $webform = $webform[array_key_first($webform)];
-      $build = Drupal::entityTypeManager()
+      $build = $this->entityTypeManager
         ->getViewBuilder('webform')
         ->view($webform);
       $response->addCommand(new ReplaceCommand('.js-footer__feedback-form form', $build));

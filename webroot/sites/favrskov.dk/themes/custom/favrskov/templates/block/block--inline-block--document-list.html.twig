@@ -1,0 +1,14 @@
+{% set classes = [
+  'layout-block',
+  view_mode ? 'layout-block--view-mode-' ~ view_mode|clean_class,
+] %}
+
+{% embed '@organisms/document-list/document-list.twig' with {
+  'attributes': attributes.addClass(classes),
+  'links': links
+} %}
+  {% block block_content %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+  {% endblock %}
+{% endembed %}

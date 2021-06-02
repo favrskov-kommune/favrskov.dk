@@ -1,0 +1,24 @@
+{
+  "title": "Document list",
+  "context": {
+    "links": {
+      "links": [
+        {
+          "title": "Link 1",
+          "url": "#",
+          "icon": "document"
+        },
+        {
+          "title": "Link 2",
+          "url": "#",
+          "icon": "document"
+        },
+        {
+          "title": "Link 3",
+          "url": "#",
+          "icon": "document"
+        }
+      ]
+    }
+  }
+}

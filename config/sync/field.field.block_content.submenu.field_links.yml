@@ -1,0 +1,23 @@
+uuid: 35185177-5cdd-4bcb-bd4e-6f10e6289fc3
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.submenu
+    - field.storage.block_content.field_links
+  module:
+    - link
+id: block_content.submenu.field_links
+field_name: field_links
+entity_type: block_content
+bundle: submenu
+label: Links
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

@@ -1,0 +1,21 @@
+{
+  "title": "Submenu",
+  "context": {
+    "links": {
+      "links": [
+        {
+          "title": "Link 1",
+          "url": "http://localhost:3000/components/detail/article#test"
+        },
+        {
+          "title": "Link 2",
+          "url": "http://localhost:3000/components/detail/article#test1"
+        },
+        {
+          "title": "Link 3",
+          "url": "http://localhost:3000/components/detail/article#test2"
+        }
+      ]
+    }
+  }
+}

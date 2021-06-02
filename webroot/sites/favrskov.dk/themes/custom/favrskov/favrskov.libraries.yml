@@ -200,6 +200,14 @@ burger-menu:
   dependencies:
     - core/drupal
 
+document-list:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/document-list/document-list.css: {}
+  dependencies:
+    - core/drupal
+
 footer:
   version: VERSION
   css:
@@ -268,6 +276,14 @@ status-message:
   css:
     theme:
       build-assets/dist/css/03-organisms/status-message/status-message.css: {}
+
+submenu:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/submenu/submenu.css: {}
+  js:
+    build-assets/dist/js/03-organisms/submenu/submenu.js: { preprocess: false }
 
 maintenance-page:
   version: VERSION

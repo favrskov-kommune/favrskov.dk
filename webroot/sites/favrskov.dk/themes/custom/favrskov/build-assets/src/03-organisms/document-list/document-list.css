@@ -1,0 +1,25 @@
+.document-list {
+  .link-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &__item {
+      margin-bottom: 18px;
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      color: var(--color-gray-medium-secondary);
+
+      .icon {
+        width: 30px;
+        height: 40px;
+        margin-right: 20px;
+        fill: var(--color-primary);
+        flex-shrink: 0;
+      }
+    }
+  }
+}
