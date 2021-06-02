@@ -29,6 +29,8 @@ third_party_settings:
       - 'Chaos Tools'
       - 'Content fields'
       - 'Custom block types'
+      - 'Custom blocks'
+      - Devel
       - Forms
       - Help
       - 'Inline blocks'
@@ -55,12 +57,15 @@ third_party_settings:
           - hero
           - image
           - inline_navigation
+          - news_list
           - quote
           - rte
           - slideshow
           - spacer
           - submenu
           - video
+        'Custom blocks': {  }
+        Devel: {  }
         Forms: {  }
         Help: {  }
         'Inline blocks':
@@ -75,6 +80,7 @@ third_party_settings:
           - 'inline_block:inline_navigation'
           - 'inline_block:button'
           - 'inline_block:code'
+          - 'inline_block:news_list'
           - 'inline_block:slideshow'
           - 'inline_block:spacer'
           - 'inline_block:submenu'

@@ -1,0 +1,23 @@
+uuid: 9379575a-8704-4244-b6e2-4473bcfead6a
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.news_list
+    - field.storage.block_content.field_paginating
+id: block_content.news_list.field_paginating
+field_name: field_paginating
+entity_type: block_content
+bundle: news_list
+label: Paginering
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean

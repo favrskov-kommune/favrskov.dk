@@ -1,0 +1,17 @@
+uuid: 474129b6-fd59-43ce-8e55-4fece30b93cd
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.news_list
+    - field.field.block_content.news_list.field_news_category
+    - field.field.block_content.news_list.field_paginating
+id: block_content.news_list.default
+targetEntityType: block_content
+bundle: news_list
+mode: default
+content: {  }
+hidden:
+  field_news_category: true
+  field_paginating: true
+  langcode: true

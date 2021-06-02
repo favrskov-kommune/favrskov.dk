@@ -1,0 +1,29 @@
+uuid: c4f605c4-71a6-4a26-8995-8a5dcd729e3b
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.news_list
+    - field.storage.block_content.field_news_category
+    - taxonomy.vocabulary.news_categories
+id: block_content.news_list.field_news_category
+field_name: field_news_category
+entity_type: block_content
+bundle: news_list
+label: Nyhedskategori
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      news_categories: news_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
