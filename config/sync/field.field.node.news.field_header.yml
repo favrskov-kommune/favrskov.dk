@@ -1,0 +1,39 @@
+uuid: 35448cfa-c757-4a8a-b4d4-8725462f5cd4
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_header
+    - node.type.news
+    - paragraphs.paragraphs_type.basic_hero
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: wlNNVr9v6EFQvDEShRvvdzpaj1ls2PfdJs9lRnIkSsA
+id: node.news.field_header
+field_name: field_header
+entity_type: node
+bundle: news
+label: Sidehoved
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      basic_hero: basic_hero
+    target_bundles_drag_drop:
+      accordion_item:
+        weight: 4
+        enabled: false
+      basic_hero:
+        enabled: true
+        weight: 5
+      inline_hero:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

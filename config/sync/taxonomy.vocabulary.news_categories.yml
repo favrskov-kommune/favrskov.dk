@@ -1,0 +1,8 @@
+uuid: 5443a159-5b9c-4bf5-b7b9-303317073092
+langcode: da
+status: true
+dependencies: {  }
+name: Nyhedskategorier
+vid: news_categories
+description: 'Brugt til at organisere nyheder i sektioner'
+weight: 0

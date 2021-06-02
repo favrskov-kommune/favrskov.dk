@@ -6,6 +6,7 @@ module:
   atoms: 0
   automated_cron: 0
   autosave_form: 0
+  backup_migrate: 0
   basic_auth: 0
   big_pipe: 0
   block: 0
@@ -22,6 +23,7 @@ module:
   config_translation: 0
   content_hierarchy: 0
   content_hierarchy_breadcrumb: 0
+  content_hierarchy_path: 0
   content_moderation: 0
   contextual: 0
   crop: 0
@@ -39,6 +41,7 @@ module:
   entity_usage: 0
   favrskov_feedback: 0
   favrskov_maps: 0
+  favrskov_search: 0
   field: 0
   field_group: 0
   field_ui: 0
@@ -74,7 +77,6 @@ module:
   path: 0
   path_alias: 0
   premium_cdn_video: 0
-  premium_search: 0
   premium_theme_helper: 0
   premium_tools: 0
   quickedit: 0
@@ -84,10 +86,6 @@ module:
   responsive_image: 0
   role_delegation: 0
   scheduled_transitions: 0
-  search_api: 0
-  search_api_db: 0
-  search_api_exclude_entity: 0
-  search_api_page: 0
   shortcut: 0
   simple_sitemap: 0
   status_feed: 0

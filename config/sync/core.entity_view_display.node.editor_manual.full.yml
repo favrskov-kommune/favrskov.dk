@@ -1,0 +1,112 @@
+uuid: 801bb509-42af-4a76-8abf-38e72ac06cc8
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.editor_manual.body
+    - field.field.node.editor_manual.field_description
+    - field.field.node.editor_manual.field_header
+    - field.field.node.editor_manual.field_hide_breadcrumb
+    - field.field.node.editor_manual.field_list_icon
+    - field.field.node.editor_manual.field_list_media
+    - field.field.node.editor_manual.field_meta_tags
+    - field.field.node.editor_manual.layout_builder__layout
+    - node.type.editor_manual
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: true
+    enabled: true
+  layout_builder_restrictions:
+    allowed_block_categories:
+      - Block
+      - Bruger
+      - 'Chaos Tools'
+      - 'Content fields'
+      - 'Custom block types'
+      - Forms
+      - Help
+      - 'Inline blocks'
+      - 'Lists (Views)'
+      - Menus
+      - Premium
+      - System
+      - Webform
+      - core
+    entity_view_mode_restriction:
+      whitelisted_blocks:
+        Block: {  }
+        Bruger: {  }
+        'Chaos Tools': {  }
+        'Content fields': {  }
+        'Custom block types':
+          - accordion
+          - appetizer
+          - button
+          - code
+          - divider
+          - document_list
+          - gis_minimap
+          - hero
+          - image
+          - inline_navigation
+          - quote
+          - rte
+          - slideshow
+          - spacer
+          - submenu
+          - video
+        Forms: {  }
+        Help: {  }
+        'Inline blocks':
+          - 'inline_block:accordion'
+          - 'inline_block:appetizer'
+          - 'inline_block:image'
+          - 'inline_block:quote'
+          - 'inline_block:divider'
+          - 'inline_block:document_list'
+          - 'inline_block:gis_minimap'
+          - 'inline_block:hero'
+          - 'inline_block:inline_navigation'
+          - 'inline_block:button'
+          - 'inline_block:code'
+          - 'inline_block:slideshow'
+          - 'inline_block:spacer'
+          - 'inline_block:submenu'
+          - 'inline_block:rte'
+          - 'inline_block:video'
+        'Lists (Views)': {  }
+        Menus: {  }
+        Premium: {  }
+        System: {  }
+        Webform: {  }
+        core: {  }
+      blacklisted_blocks: {  }
+      allowed_layouts:
+        - layout_onecol
+        - layout_twocol_section
+        - layout_threecol_section
+_core:
+  default_config_hash: QOEUrU1PQHcUILRpatr3BYjGBzLVTKdoaAa6LACdkhU
+id: node.editor_manual.full
+targetEntityType: node
+bundle: editor_manual
+mode: full
+content: {  }
+hidden:
+  body: true
+  content_moderation_control: true
+  field_description: true
+  field_header: true
+  field_hide_breadcrumb: true
+  field_list_icon: true
+  field_list_media: true
+  field_meta_tags: true
+  langcode: true
+  layout_builder__layout: true
+  links: true
+  search_api_excerpt: true

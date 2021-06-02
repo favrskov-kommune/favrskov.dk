@@ -1,0 +1,11 @@
+uuid: 091cac50-3ecc-465e-87d3-99566e74d8dd
+langcode: da
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.media_categories
+id: taxonomy_term.media_categories
+target_entity_type_id: taxonomy_term
+target_bundle: media_categories
+default_langcode: site_default
+language_alterable: false

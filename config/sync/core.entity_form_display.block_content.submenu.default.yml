@@ -1,0 +1,32 @@
+uuid: 4e253cfc-de48-4e8a-afb4-bfecea469dc1
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.submenu
+    - field.field.block_content.submenu.field_links
+  module:
+    - link
+id: block_content.submenu.default
+targetEntityType: block_content
+bundle: submenu
+mode: default
+content:
+  field_links:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  info:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
