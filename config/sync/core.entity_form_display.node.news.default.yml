@@ -11,11 +11,13 @@ dependencies:
     - field.field.node.news.field_list_icon
     - field.field.node.news.field_list_media
     - field.field.node.news.field_meta_tags
+    - field.field.node.news.field_news_categories
     - field.field.node.news.layout_builder__layout
     - node.type.news
   module:
     - content_moderation
     - datetime
+    - dynamic_entity_reference
     - field_group
     - media_library
     - metatag
@@ -119,6 +121,16 @@ content:
       sidebar: true
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
+  field_news_categories:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 40
+      placeholder: ''
+    third_party_settings: {  }
+    type: dynamic_entity_reference_default
     region: content
   langcode:
     type: language_select
