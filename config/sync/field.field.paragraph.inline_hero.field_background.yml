@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_background
+    - media.type.cdn_video
     - media.type.image
     - media.type.remote_video
     - paragraphs.paragraphs_type.inline_hero
@@ -24,6 +25,7 @@ settings:
   handler_settings:
     target_bundles:
       image: image
+      cdn_video: cdn_video
       remote_video: remote_video
     sort:
       field: _none
