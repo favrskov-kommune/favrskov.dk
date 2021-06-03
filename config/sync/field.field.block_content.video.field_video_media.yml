@@ -5,6 +5,7 @@ dependencies:
   config:
     - block_content.type.video
     - field.storage.block_content.field_video_media
+    - media.type.cdn_video
     - media.type.remote_video
 _core:
   default_config_hash: Ws4Wla5G1UQoD-tFeguWYkYgB-VEZAHvwIZ69QRaAiQ
@@ -22,9 +23,11 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
+      cdn_video: cdn_video
       remote_video: remote_video
     sort:
       field: _none
+      direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: cdn_video
 field_type: entity_reference
