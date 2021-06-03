@@ -179,6 +179,7 @@
       visibility: visible;
       margin-bottom: 20px;
       background-color: var(--color-gray);
+      z-index: 100;
 
       form {
         padding-top: 20px;
