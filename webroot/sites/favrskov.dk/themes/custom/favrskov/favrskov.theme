@@ -2,6 +2,7 @@
 
 use Drupal\Core\Url;
 use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
 
 function favrskov_preprocess_block__inline_block__inline_navigation(array &$variables) {
 
@@ -57,4 +58,31 @@ function favrskov_preprocess_block__inline_block__document_list(array &$variable
       ];
     }
   }
+}
+
+function favrskov_preprocess_block__inline_block__news_list(array &$variables) {
+  $variables['#cache']['tags'][] = 'node_list';
+
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables['elements']['content']['#block_content'];
+
+  $categories = [];
+  if ($block->hasField('field_news_category') && !$block->get('field_news_category')->isEmpty()) {
+    foreach($block->get('field_news_category')->getValue() as $item) {
+      $categories[] = $item['target_id'];
+    }
+  }
+
+  $query = Drupal::entityQuery('node')
+    ->condition('type', 'news')
+    ->condition('status', 1)
+    ->sort('sticky' , 'desc')
+    ->sort('created', 'desc');
+  if (!empty($categories)) {
+    $query->condition('field_news_categories', $categories, 'IN');
+  }
+  $nids = $query->execute();
+  $nodes = Node::loadMultiple($nids);
+
+  $variables['items'] = Drupal::entityTypeManager()->getViewBuilder('node')->viewMultiple($nodes, 'teaser');
 }

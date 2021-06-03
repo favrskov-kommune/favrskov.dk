@@ -6,7 +6,11 @@ dependencies:
     module:
       - premium_cdn_video
   module:
+    - crop
     - premium_cdn_video
+third_party_settings:
+  crop:
+    image_field: _none
 _core:
   default_config_hash: 56uutwVLPh-ugkGsIUGNbbXQx-JjhAE9qbodFzvmIwI
 id: cdn_video
@@ -17,4 +21,5 @@ queue_thumbnail_downloads: false
 new_revision: false
 source_configuration:
   source_field: field_media_cdn_video
+  preview_field: field_media_image
 field_map: {  }

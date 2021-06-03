@@ -5951,10 +5951,10 @@
         },
         {
             "name": "novicell/premium_tools",
-            "version": "0.3.1",
+            "version": "0.3.2",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1TFutA/novicellpremium_tools-0-3-1.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_pkPkm/novicellpremium_tools-0-3-2.zip"
             },
             "type": "drupal-module",
             "license": [
