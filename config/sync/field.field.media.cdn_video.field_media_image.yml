@@ -6,7 +6,14 @@ dependencies:
     - field.storage.media.field_media_image
     - media.type.cdn_video
   module:
+    - content_translation
     - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
 _core:
   default_config_hash: uplXL5p2kkIESdiPA1jlThyuH2JHn16ed5a_luIAVg8
 id: media.cdn_video.field_media_image
@@ -15,7 +22,7 @@ entity_type: media
 bundle: cdn_video
 label: 'Video preview image'
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
