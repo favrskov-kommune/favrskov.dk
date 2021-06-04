@@ -22,7 +22,7 @@ entity_type: media
 bundle: cdn_video
 label: 'Video preview image'
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''

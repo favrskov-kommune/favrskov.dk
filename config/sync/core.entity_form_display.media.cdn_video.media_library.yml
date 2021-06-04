@@ -7,7 +7,10 @@ dependencies:
     - field.field.media.cdn_video.field_media_category
     - field.field.media.cdn_video.field_media_cdn_video
     - field.field.media.cdn_video.field_media_image
+    - image.style.thumbnail
     - media.type.cdn_video
+  module:
+    - image
 _core:
   default_config_hash: u4ksYd1xaXikeOIOkQMAGiW0m4C24HoJvcljsYdEWdg
 id: media.cdn_video.media_library
@@ -16,7 +19,7 @@ bundle: cdn_video
 mode: media_library
 content:
   field_media_category:
-    weight: 1
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
@@ -33,9 +36,16 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_media_image:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
 hidden:
   created: true
-  field_media_image: true
   langcode: true
   name: true
   path: true
