@@ -44,6 +44,7 @@ third_party_settings:
       label: 'Page header'
     group_page_settings:
       children:
+        - field_chatbot_muni
         - field_hide_breadcrumb
       parent_name: ''
       weight: 6
@@ -97,7 +98,7 @@ content:
     third_party_settings: {  }
     region: content
   field_hide_breadcrumb:
-    weight: 15
+    weight: 28
     settings:
       display_label: true
     third_party_settings: {  }
