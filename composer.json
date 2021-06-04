@@ -75,6 +75,7 @@
         "novicell/content_hierarchy": "^1.0",
         "novicell/drupal-premium-theme": "^0.2",
         "novicell/dynamic_key_value": "^0.1",
+        "novicell/ie_warning": "^0.1.1",
         "novicell/media_icons": "^0.1",
         "novicell/premium_search": "^0.2",
         "novicell/premium_tools": "^0.3",

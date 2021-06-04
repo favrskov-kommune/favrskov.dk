@@ -51,6 +51,7 @@ module:
   history: 0
   honeypot: 0
   hreflang: 0
+  ie_warning: 0
   image: 0
   inline_block_title_automatic: 0
   language: 0

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f52defd52123725e560b59c1b8126df",
+    "content-hash": "9d9547669fccde20db362e2cf68bb649",
     "packages": [
         {
             "name": "algolia/places",
@@ -5906,6 +5906,23 @@
                 "GPL-2.0+"
             ],
             "description": "Dynamic Key Value",
+            "homepage": "https://www.novicell.dk",
+            "keywords": [
+                "Novicell"
+            ]
+        },
+        {
+            "name": "novicell/ie_warning",
+            "version": "0.1.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://packages.drupal.dk/php/~/up/ver_tuAyr/novicellie_warning-0-1-2.zip"
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Display popup with disclaimer about using IE11 and below",
             "homepage": "https://www.novicell.dk",
             "keywords": [
                 "Novicell"
