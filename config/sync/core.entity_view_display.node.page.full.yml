@@ -65,6 +65,7 @@ third_party_settings:
           - slideshow
           - spacer
           - submenu
+          - table_spot
           - video
         'Custom blocks': {  }
         Devel: {  }
@@ -86,6 +87,7 @@ third_party_settings:
           - 'inline_block:slideshow'
           - 'inline_block:spacer'
           - 'inline_block:submenu'
+          - 'inline_block:table_spot'
           - 'inline_block:rte'
           - 'inline_block:video'
         'Lists (Views)': {  }
