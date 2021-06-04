@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // }
 
   document.querySelectorAll('.js-submenu a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function foobar(e) {
       e.preventDefault();
       document.querySelector(this.getAttribute('href')).scrollIntoView({
         alignToTop: true,

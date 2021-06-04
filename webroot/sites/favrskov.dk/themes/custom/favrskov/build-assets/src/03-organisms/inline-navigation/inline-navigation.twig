@@ -1,6 +1,11 @@
 {{ attach_library('favrskov/inline-navigation') }}
-
-<div{{ (not attributes ? create_attribute() : attributes).addClass('inline-navigation') }}>
+{%
+  set classes = [
+    'inline-navigation',
+    is_slider ? 'inline-navigation-campaign'
+  ]
+%}
+<div{{ (not attributes ? create_attribute() : attributes).addClass(classes) }}>
   {% block block_content %}{% endblock %}
   <ul class="inline-navigation__list {{ is_slider ? 'js-inline-navigation-slider' }}">
     {% block content %}

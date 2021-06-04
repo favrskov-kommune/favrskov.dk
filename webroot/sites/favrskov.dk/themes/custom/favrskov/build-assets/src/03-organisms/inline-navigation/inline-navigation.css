@@ -10,6 +10,18 @@
   align-items: center;
   position: relative;
 
+  @media (--viewport-sm-max) {
+    &-campaign {
+      margin-left: calc(-1 * var(--container-spacing--mobile));
+      margin-right: calc(-1 * var(--container-spacing--mobile));
+
+      .inline-navigation__list {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
   &__list {
     width: 100%;
     outline: none;
