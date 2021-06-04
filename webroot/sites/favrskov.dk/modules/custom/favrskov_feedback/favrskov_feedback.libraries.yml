@@ -1,0 +1,13 @@
+muni:
+  version: 1.1
+  js:
+    js/EmbedMuni.js: {}
+  dependencies:
+    - core/drupalSettings
+
+muni.test:
+  version: 1.1
+  js:
+    js/EmbedMuniTest.js: {}
+  dependencies:
+    - core/drupalSettings

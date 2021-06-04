@@ -11,7 +11,7 @@ id: node.page.field_hide_breadcrumb
 field_name: field_hide_breadcrumb
 entity_type: node
 bundle: page
-label: 'Hide breadcrumb'
+label: 'Skjul brødkrumme'
 description: ''
 required: false
 translatable: true

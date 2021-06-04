@@ -1,0 +1,21 @@
+uuid: 3f439953-ddbd-4e00-90fa-4b382fa84f9d
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_chatbot_muni
+    - node.type.page
+  module:
+    - dynamic_key_value
+id: node.page.field_chatbot_muni
+field_name: field_chatbot_muni
+entity_type: node
+bundle: page
+label: 'Chatbot Muni'
+description: 'Vælg en kategori for at vise Muni chatbotten på siden'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: dynamic_key_value

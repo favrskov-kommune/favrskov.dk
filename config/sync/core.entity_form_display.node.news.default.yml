@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
+    - field.field.node.news.field_chatbot_muni
     - field.field.node.news.field_description
     - field.field.node.news.field_header
     - field.field.node.news.field_hide_breadcrumb
@@ -18,6 +19,7 @@ dependencies:
     - content_moderation
     - datetime
     - dynamic_entity_reference
+    - dynamic_key_value
     - field_group
     - media_library
     - metatag
@@ -42,6 +44,7 @@ third_party_settings:
       label: 'Page header'
     group_page_settings:
       children:
+        - field_chatbot_muni
         - field_hide_breadcrumb
       parent_name: ''
       weight: 6
@@ -68,6 +71,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_chatbot_muni:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: dynamic_key_value_widget
+    region: content
   field_description:
     weight: 2
     settings:
@@ -89,7 +98,7 @@ content:
     third_party_settings: {  }
     region: content
   field_hide_breadcrumb:
-    weight: 15
+    weight: 28
     settings:
       display_label: true
     third_party_settings: {  }

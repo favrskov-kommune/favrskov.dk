@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.news.body
+    - field.field.node.news.field_chatbot_muni
     - field.field.node.news.field_description
     - field.field.node.news.field_header
     - field.field.node.news.field_hide_breadcrumb
@@ -102,6 +103,7 @@ content: {  }
 hidden:
   body: true
   content_moderation_control: true
+  field_chatbot_muni: true
   field_description: true
   field_header: true
   field_hide_breadcrumb: true

@@ -1,0 +1,22 @@
+uuid: dc8e03ee-44e5-488d-b418-26d1ddac90b1
+langcode: da
+status: true
+dependencies:
+  module:
+    - dynamic_key_value
+    - node
+id: node.field_chatbot_muni
+field_name: field_chatbot_muni
+entity_type: node
+type: dynamic_key_value
+settings:
+  collection: muni_categories
+  allowed_values: {  }
+  allowed_values_function: ''
+module: dynamic_key_value
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,8 +1,9 @@
-uuid: 64289634-61a7-4396-8318-5c22a48a995b
+uuid: 395740e5-552f-4b2b-a5ea-fd3cfea77010
 langcode: da
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.media.media_library
     - field.field.media.cdn_video.field_media_category
     - field.field.media.cdn_video.field_media_cdn_video
     - field.field.media.cdn_video.field_media_image
@@ -12,13 +13,13 @@ dependencies:
     - image
 _core:
   default_config_hash: u4ksYd1xaXikeOIOkQMAGiW0m4C24HoJvcljsYdEWdg
-id: media.cdn_video.default
+id: media.cdn_video.media_library
 targetEntityType: media
 bundle: cdn_video
-mode: default
+mode: media_library
 content:
   field_media_category:
-    weight: 3
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
@@ -28,7 +29,7 @@ content:
     type: entity_reference_autocomplete_tags
     region: content
   field_media_cdn_video:
-    weight: 1
+    weight: 0
     settings:
       size: 60
       placeholder: ''
@@ -36,24 +37,17 @@ content:
     type: string_textfield
     region: content
   field_media_image:
-    weight: 2
+    type: image_image
+    weight: 1
+    region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    type: image_image
-    region: content
-  name:
-    type: string_textfield
-    weight: 0
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
 hidden:
   created: true
   langcode: true
+  name: true
   path: true
   status: true
   uid: true

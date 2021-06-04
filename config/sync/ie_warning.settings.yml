@@ -1,0 +1,11 @@
+title: 'Forældet Browser'
+body:
+  format: full_html
+  value: '<p>Du bruger en forældet browser. Vi anbefaler at du opdaterer til en nyere og mere sikker browser. Vores website er ikke udviklet til at understøtte denne og det kan opføre sig uforudsigeligt.</p><p>Vi anbefaler at du henter <a href="https://www.google.com/intl/da/chrome/" target="_blank">Google&apos;s Chrome browser her</a> eller <a href="https://www.mozilla.org/da/firefox/new/" target="_blank">Mozilla&apos;s Firefox browser her</a>.</p>'
+open: 'Forældet Browser'
+close: 'Luk beskeden'
+allow_javascript: '1'
+show_once: '0'
+_core:
+  default_config_hash: LjuWR9udML6eKJcCU2TbamCywTqJFLw26V_YnUj8Yqg
+langcode: da

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.page.body
     - field.field.node.page.content_hierarchy
+    - field.field.node.page.field_chatbot_muni
     - field.field.node.page.field_description
     - field.field.node.page.field_header
     - field.field.node.page.field_hide_breadcrumb
@@ -14,6 +15,7 @@ dependencies:
     - field.field.node.page.layout_builder__layout
     - node.type.page
   module:
+    - dynamic_key_value
     - layout_builder
     - layout_builder_restrictions
     - metatag
@@ -35,6 +37,16 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
+  field_chatbot_muni:
+    weight: 3
+    label: above
+    settings:
+      key_label: Nøgle
+      value_label: Værdi
+      display_labels: true
+    third_party_settings: {  }
+    type: dynamic_key_value_table_formatter
+    region: content
   field_list_icon:
     type: entity_reference_entity_view
     weight: 2

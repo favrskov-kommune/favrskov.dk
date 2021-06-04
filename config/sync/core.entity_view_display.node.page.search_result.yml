@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.search_result
     - field.field.node.page.body
     - field.field.node.page.content_hierarchy
+    - field.field.node.page.field_chatbot_muni
     - field.field.node.page.field_description
     - field.field.node.page.field_header
     - field.field.node.page.field_hide_breadcrumb
@@ -51,6 +52,7 @@ hidden:
   body: true
   content_hierarchy: true
   content_moderation_control: true
+  field_chatbot_muni: true
   field_header: true
   field_hide_breadcrumb: true
   field_list_icon: true
