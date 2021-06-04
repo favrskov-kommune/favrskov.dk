@@ -95,6 +95,7 @@ module:
   token: 0
   toolbar: 0
   user: 0
+  view_unpublished: 0
   views_ui: 0
   webform: 0
   webp: 0
@@ -102,7 +103,6 @@ module:
   pathauto: 1
   content_translation: 10
   views: 10
-  view_unpublished: 0
   paragraphs: 11
   premium_profile: 1000
 theme:
