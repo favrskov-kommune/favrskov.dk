@@ -1,0 +1,49 @@
+muni_categories:
+  pas:
+    name: Pas
+  lægeskift:
+    name: Lægeskift
+  flytning:
+    name: Flytning
+  kørekort:
+    name: Kørekort
+  nemid:
+    name: NemID
+  sundhedskort:
+    name: Sundhedskort
+  gult_sundhedskort:
+    name: Det gule sundhedskort
+  blåt_sundhedskort:
+    name: Det blå sundhedskort
+  særligt_sundhedskort:
+    name: Det særlige sundhedskort
+  sygedagpenge:
+    name: Sygedagpenge
+  sygedagpenge_ledig:
+    name: Sygedagpenge til ledige
+  sygedagpenge_lønmodtager:
+    name: Sygedagpenge til lønmodtagere
+  sygedagpenge_selvstændig:
+    name: Sygedagpenge til selvstændige
+  digital_post:
+    name: Digital post
+  adresseforespørgsel:
+    name: Adresseforespørgsel
+  bbr:
+    name: BBR
+  beboerindskudslån:
+    name: Beboerindskudslån
+  byg_og_miljø:
+    name: Byg og miljø
+  jobnet.dk:
+    name: Jobnet.dk
+  børnepasning_og_digital_pladsanvisning:
+    name: Børnepasning og digital pladsanvisning
+  boligstøtte:
+    name: Boligstøtte
+  helbredstillæg:
+    name: Helbredstillæg
+  hjælpemidler:
+    name: Hjælpemidler
+  enkeltydelser:
+    name: Enkeltydelser

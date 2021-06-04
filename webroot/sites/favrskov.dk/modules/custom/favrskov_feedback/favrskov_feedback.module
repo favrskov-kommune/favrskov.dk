@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\node\Entity\Node;
+
 /**
  * Alter the list of projects to be updated by locale's interface translation.
  *
@@ -31,4 +33,22 @@ function favrskov_feedback_locale_translation_projects_alter(array &$projects) {
   $module_handler = \Drupal::service('module_handler');
   $path = $module_handler->getModule('favrskov_feedback')->getPath();
   $projects['favrskov_feedback']['info']['interface translation server pattern'] = $path . '/translations/%language.po';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function favrskov_feedback_preprocess_node(&$variables) {
+  /** @var Node $node */
+  $node = $variables['node'];
+  if ($node->hasField('field_chatbot_muni') && !$node->get('field_chatbot_muni')->isEmpty()) {
+    if (getenv('APP_ENV') == 'prod') {
+      $variables['#attached']['library'][] = 'favrskov_feedback/muni';
+    } else {
+      $variables['#attached']['library'][] = 'favrskov_feedback/muni.test';
+    }
+    $variables['#attached']['drupalSettings']['muni']['municipalityCode'] = 710;
+    $variables['#attached']['drupalSettings']['muni']['chatbotName'] = 'Muni';
+    $variables['#attached']['drupalSettings']['muni']['category'] = $node->get('field_chatbot_muni')->first()->getValue()['value'];
+  }
 }

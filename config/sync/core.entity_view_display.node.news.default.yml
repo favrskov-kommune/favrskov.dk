@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
+    - field.field.node.news.field_chatbot_muni
     - field.field.node.news.field_description
     - field.field.node.news.field_header
     - field.field.node.news.field_hide_breadcrumb
@@ -17,6 +18,7 @@ dependencies:
   module:
     - datetime
     - dynamic_entity_reference
+    - dynamic_key_value
     - layout_builder
     - layout_builder_restrictions
     - metatag
@@ -38,6 +40,16 @@ targetEntityType: node
 bundle: news
 mode: default
 content:
+  field_chatbot_muni:
+    weight: 5
+    label: above
+    settings:
+      key_label: Nøgle
+      value_label: Værdi
+      display_labels: true
+    third_party_settings: {  }
+    type: dynamic_key_value_table_formatter
+    region: content
   field_list_date:
     weight: 3
     label: above
