@@ -1,0 +1,22 @@
+uuid: 082740db-b928-4954-9e84-b0d194a1e478
+langcode: da
+status: true
+dependencies:
+  module:
+    - dynamic_key_value
+    - node
+id: node.field_color_theme
+field_name: field_color_theme
+entity_type: node
+type: dynamic_key_value
+settings:
+  collection: color_themes
+  allowed_values: {  }
+  allowed_values_function: ''
+module: dynamic_key_value
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

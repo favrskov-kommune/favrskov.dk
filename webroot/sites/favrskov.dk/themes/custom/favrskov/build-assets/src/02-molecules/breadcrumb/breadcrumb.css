@@ -3,7 +3,19 @@
  * Breadcrumb.
  */
 #block-breadcrumbs {
-  background-color: var(--color-gray);
+  background-color: var(--color-white);
+
+  &.theme-douce {
+    background-color: var(--color-gray);
+  }
+
+  &.theme-mint {
+    background-color: var(--color-light-mint);
+  }
+
+  &.theme-gray_blue {
+    background-color: var(--color-secondary-light);
+  }
 }
 
 .breadcrumb {
