@@ -34,6 +34,7 @@ permissions:
   - 'configure any layout'
   - 'configure editable page node layout overrides'
   - 'create and edit custom blocks'
+  - 'view any unpublished page content'
   - 'create audio media'
   - 'create document media'
   - 'create image media'

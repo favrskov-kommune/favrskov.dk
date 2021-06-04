@@ -102,6 +102,7 @@ module:
   pathauto: 1
   content_translation: 10
   views: 10
+  view_unpublished: 0
   paragraphs: 11
   premium_profile: 1000
 theme:

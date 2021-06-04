@@ -68,6 +68,7 @@
         "drupal/search_api_exclude_entity": "^1.0",
         "drupal/search_api_page": "^1.0@beta",
         "drupal/simple_sitemap": "^3.0",
+        "drupal/view_unpublished": "^1.0",
         "drupal/webform": "^6.0",
         "drupal/webp": "^1.0.0-beta5",
         "drush/drush": "^10.0",

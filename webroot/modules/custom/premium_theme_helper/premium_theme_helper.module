@@ -71,7 +71,10 @@ function premium_theme_helper_field_widget_multivalue_form_alter(array &$element
     case 'field_inline_navigation_pages':
       $parents = $elements[0]['target_id']['#field_parents'];
       $parents_input_name = array_shift($parents);
-      $parents_input_name .= '[' . implode('][', $parents) . ']';
+      if (!empty($parents)) {
+        $parents_input_name .= '[' . implode('][', $parents) . ']';
+      }
+
       $elements['#states'] = [
         'visible' => [
           ':input[name="' . $parents_input_name . '[field_inline_navigation_mode]"]' => ["value" => "pages"],
@@ -90,7 +93,10 @@ function premium_theme_helper_field_widget_multivalue_form_alter(array &$element
       if (Drupal::moduleHandler()->moduleExists('content_hierarchy')) {
         $parents = $elements[0]['target_id']['#field_parents'];
         $parents_input_name = array_shift($parents);
-        $parents_input_name .= '[' . implode('][', $parents) . ']';
+        if (!empty($parents)) {
+          $parents_input_name .= '[' . implode('][', $parents) . ']';
+        }
+
         $elements[0]['target_id']['#states'] = [
           'visible' => [
             ':input[name="' . $parents_input_name . '[field_inline_navigation_mode]"]' => ["value" => "parent"],
@@ -107,15 +113,12 @@ function premium_theme_helper_field_widget_multivalue_form_alter(array &$element
   }
 }
 
-/*
- * Below are fixes suggested to fix core issue here: https://www.drupal.org/project/drupal/issues/3106315
- */
-
 /**
- * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ * Alter open button, to open media.
+ *
+ * @see https://www.drupal.org/project/drupal/issues/3106315
  */
 function premium_theme_helper_field_widget_media_library_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
-  /** @var \Drupal\Core\Routing\RouteMatchInterface $route_match */
   $route_match = \Drupal::routeMatch();
 
   if ($route_match->getRouteName() === 'layout_builder.add_block') {
@@ -129,23 +132,21 @@ function premium_theme_helper_field_widget_media_library_widget_form_alter(&$ele
 }
 
 /**
- * Implements hook_ENTITY_TYPE_create_access().
+ * Check access for media library ui.
+ *
+ * @see https://www.drupal.org/project/drupal/issues/3106315
  */
 function premium_theme_helper_block_content_create_access(AccountInterface $account, array $context, $entity_bundle) {
   $route_name = \Drupal::routeMatch()->getRouteName();
 
   if ($route_name === 'media_library.ui') {
-    /** @var \Drupal\media_library\MediaLibraryState $state */
     $state = MediaLibraryState::fromRequest(\Drupal::request());
     $openerParameters = $state->getOpenerParameters();
 
     // If the plugin ID exists within the opener parameters, we know
     // the media library is being used on the layout builder form.
-    if (isset($openerParameters['plugin_id']) && substr($openerParameters['plugin_id'], 0, 12 ) === 'inline_block') {
-
-      if ($account->hasPermission('create and edit custom blocks')) {
-        return AccessResult::allowed();
-      }
+    if (isset($openerParameters['plugin_id']) && strpos($openerParameters['plugin_id'], 'inline_block') === 0 && $account->hasPermission('create and edit custom blocks')) {
+      return AccessResult::allowed();
     }
   }
 

@@ -34,6 +34,7 @@ permissions:
   - 'assign editor role'
   - 'assign webmaster role'
   - 'clone node entity'
+  - 'view any unpublished page content'
   - 'configure all page node layout overrides'
   - 'configure any layout'
   - 'configure editable page node layout overrides'
