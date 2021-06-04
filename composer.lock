@@ -5937,10 +5937,10 @@
         },
         {
             "name": "novicell/drupal-premium-theme",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_WsbkO/novicelldrupalpremiumtheme-1-0-2.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_qbMOb/novicelldrupalpremiumtheme-1-0-3.zip"
             },
             "type": "drupal-theme",
             "license": [
