@@ -1,21 +1,19 @@
-uuid: 0aafc115-cf43-462a-92f4-81436ff29352
+uuid: 50c2847c-d226-4407-ba32-be10ff958c6e
 langcode: da
 status: true
 dependencies:
   config:
-    - filter.format.basic_html
+    - filter.format.table
   module:
     - ckeditor
-_core:
-  default_config_hash: ij0z3ENEfT1TQGhX6QNmDviEAVywLPk4Is6pAL17Jug
-format: basic_html
+format: table
 editor: ckeditor
 settings:
   toolbar:
     rows:
       -
         -
-          name: Formatting
+          name: Formatering
           items:
             - Bold
             - Italic
@@ -23,12 +21,12 @@ settings:
             - JustifyCenter
             - JustifyRight
         -
-          name: Linking
+          name: Links
           items:
             - DrupalLink
             - DrupalUnlink
         -
-          name: Lists
+          name: Lister
           items:
             - BulletedList
             - NumberedList
@@ -41,9 +39,10 @@ settings:
           items:
             - Format
         -
-          name: Tools
+          name: Værktøjer
           items:
             - Source
+            - Table
   plugins:
     drupallink:
       linkit_enabled: true

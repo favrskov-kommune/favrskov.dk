@@ -1,0 +1,23 @@
+uuid: c4e9a569-39a7-45ca-84f8-8cbde2216666
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.table_spot
+    - field.field.block_content.table_spot.field_table
+  module:
+    - text
+id: block_content.table_spot.default
+targetEntityType: block_content
+bundle: table_spot
+mode: default
+content:
+  field_table:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  langcode: true

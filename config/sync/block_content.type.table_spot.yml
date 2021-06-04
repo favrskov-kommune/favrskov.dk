@@ -1,0 +1,8 @@
+uuid: 78d3eec7-6fd2-4d68-849c-8cfa7cf4f8f2
+langcode: da
+status: true
+dependencies: {  }
+id: table_spot
+label: 'Tabel spot'
+revision: 0
+description: ''
