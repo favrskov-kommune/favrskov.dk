@@ -286,16 +286,11 @@
     display: block;
 
     &--fallback {
-      height: 0;
-      padding-bottom: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
 
       svg {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
         width: 20%;
         height: 20%;
         opacity: .5;
