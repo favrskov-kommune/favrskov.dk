@@ -1,0 +1,7 @@
+{{ attach_library('favrskov/table-spot') }}
+
+<div {{ (not attributes ? create_attribute() : attributes).addClass('table-spot') }}>
+  <div class="table-responsive">
+    {% block block_content %}{% endblock %}
+  </div>
+</div>

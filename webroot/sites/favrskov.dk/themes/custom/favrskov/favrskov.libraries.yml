@@ -163,6 +163,12 @@ sub-navigation:
     theme:
       build-assets/dist/css/02-molecules/sub-navigation/sub-navigation.css: {}
 
+table-spot:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/02-molecules/table-spot/table-spot.css: {}
+
 video:
   version: VERSION
   css:
