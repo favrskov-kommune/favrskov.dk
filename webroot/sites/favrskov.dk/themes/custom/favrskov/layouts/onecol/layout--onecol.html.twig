@@ -24,7 +24,7 @@
   {{ attach_library('favrskov/theme-' ~ settings.color_theme) }}
 {% endif %}
 
-<section {{ attributes.addClass(classes) }}>
+<section {{ attributes.addClass(classes).setAttribute('id', settings.section_id|clean_id) }}>
   {% if settings.column_width == 'fullwidth' %}
     {% if header and header is not empty %}
     <div class="layout-builder__section--header">
