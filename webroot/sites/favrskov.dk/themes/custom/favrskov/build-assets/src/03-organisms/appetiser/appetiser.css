@@ -53,8 +53,8 @@
   }
 
   &__title {
-    font-size: var(--base-font-size-xxxlarge);
-    font-weight: 900;
+    font-size: var(--base-font-size-xxlarge);
+    font-weight: 700;
     line-height: 1.3;
   }
 
