@@ -2,36 +2,43 @@
  * Type: Molecules.
  * Quote.
  */
+.quote-wrapper {
+  display: flex;
+  height: 100%;
+  padding-bottom: var(--half-gutter-width);
 
-.quote {
-  font-weight: 300;
-  font-size: var(--base-font-size-large);
-  position: relative;
+  .quote {
+    font-weight: 300;
+    font-size: var(--base-font-size-large);
+    position: relative;
+    text-align: center;
+    align-self: center;
 
-  & > p {
-    display: inline;
-  }
-
-  @media (--viewport-md-min) {
-    font-size: var(--base-font-size-xxlarge);
-  }
-
-  .icon--quote {
-    fill: currentColor;
-    opacity: .3;
-    width: 14px;
-    height: 18px;
-    transform: translateY(-50%);
+    & > p {
+      display: inline;
+    }
 
     @media (--viewport-md-min) {
-      width: 20px;
-      height: 24px;
+      font-size: var(--base-font-size-xxlarge);
     }
-  }
 
-  &__author {
-    padding-left: 40px;
-    font-size: var(--base-font-size-large);
-    font-style: italic;
+    .icon--quote {
+      fill: currentColor;
+      opacity: .3;
+      width: 14px;
+      height: 18px;
+      transform: translateY(-50%);
+
+      @media (--viewport-md-min) {
+        width: 20px;
+        height: 24px;
+      }
+    }
+
+    &__author {
+      padding-left: 40px;
+      font-size: var(--base-font-size-large);
+      font-style: italic;
+    }
   }
 }
