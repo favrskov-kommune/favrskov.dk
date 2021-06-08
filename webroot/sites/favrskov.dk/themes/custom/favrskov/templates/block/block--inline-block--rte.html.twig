@@ -25,8 +25,12 @@
  * @see template_preprocess_block()
  */
 #}
-<div {{ attributes }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
-  {{ content.field_text }}
-</div>
+{% embed '@molecules/rte/rte.twig' with {
+  'attributes': attributes
+} %}
+  {% block block_content %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+    {{ content }}
+  {% endblock %}
+{% endembed %}

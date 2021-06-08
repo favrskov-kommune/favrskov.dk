@@ -1,0 +1,5 @@
+{{ attach_library('favrskov/rte') }}
+
+<div {{ (not attributes ? create_attribute() : attributes).addClass('rte-block') }}>
+  {% block block_content %}{% endblock %}
+</div>

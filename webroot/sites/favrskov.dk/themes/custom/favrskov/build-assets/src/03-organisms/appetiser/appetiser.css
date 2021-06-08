@@ -74,6 +74,10 @@
       float: left;
     }
 
+    div {
+      height: 100%;
+    }
+
     @media (--viewport-md-min) {
       width: 50%;
       position: absolute;
