@@ -309,6 +309,7 @@
     margin-bottom: 30px;
     font-size: var(--base-font-size-xlarge);
     font-weight: 900;
+    hyphens: auto;
 
     @media (--viewport-md-min) {
       font-size: var(--base-font-size-xxlarge);
