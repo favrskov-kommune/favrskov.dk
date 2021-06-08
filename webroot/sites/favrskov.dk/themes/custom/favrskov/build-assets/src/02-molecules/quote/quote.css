@@ -23,8 +23,7 @@
     }
 
     .icon--quote {
-      fill: currentColor;
-      opacity: .3;
+      fill: var(--color-primary);
       width: 14px;
       height: 18px;
       transform: translateY(-50%);
@@ -36,9 +35,10 @@
     }
 
     &__author {
-      padding-left: 40px;
+      padding-top: 30px;
       font-size: var(--base-font-size-large);
       font-style: italic;
+      color: var(--color-gray-medium);
     }
   }
 }
