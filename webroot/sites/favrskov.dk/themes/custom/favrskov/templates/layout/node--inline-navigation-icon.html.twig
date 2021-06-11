@@ -70,7 +70,10 @@
  *   in different view modes.
  */
 #}
+{% set media = content.field_list_icon %}
 {% include '@molecules/inline-navigation-item/inline-navigation-item--icon.twig' with {
   'url': url,
-  'label': label
+  'media': media[0] is defined ? media,
+  'label': label,
+  'teaser': content.field_description
 } %}
