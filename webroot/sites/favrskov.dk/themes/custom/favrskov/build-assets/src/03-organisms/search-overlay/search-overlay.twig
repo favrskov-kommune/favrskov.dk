@@ -10,18 +10,18 @@
   </div>
   <div class="search-overlay__content">
     <div class="container">
-      <form action="/search" method="get">
+      <form id="overlay-cludo-search-form" action="/soegning" method="get">
         <div class="search-overlay__input-field">
           <label class="sr-only" for="js-search-overlay-input">{{ 'Search'|t }}</label>
           {% include '@particles/forms/input/input.twig' with {
-            'attributes': '',
+            'attributes': create_attribute().addClass('search-input'),
             'type': 'search',
             'id': 'js-search-overlay-input',
             'placeholder': 'Search'|t,
             'name': 'keys'
           } %}
           {% embed '@particles/button/button.twig' with {
-            'attributes': create_attribute().addClass('search-overlay__submit'),
+            'attributes': create_attribute().addClass('search-overlay__submit').addClass('search-button'),
             'type': 'submit',
             'skip_button_class': true
           } %}

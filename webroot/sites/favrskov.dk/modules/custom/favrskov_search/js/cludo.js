@@ -4,7 +4,7 @@ var CludoSearch;
     customerId: 2736,
     engineId: 11966,
     searchUrl: '/soegning',
-    language: 'en',
+    language: 'da',
     searchInputs: ['cludo-search-form', 'overlay-cludo-search-form'],
     template: 'InlineBasic',
     hideSearchFilters: true,
