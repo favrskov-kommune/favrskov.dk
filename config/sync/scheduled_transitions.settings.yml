@@ -14,3 +14,4 @@ bundles:
 _core:
   default_config_hash: 9XmNsHUyn3MxXpOTRxmABgl-6M8NtdISZshHuxhA_rw
 langcode: da
+message_override: false
