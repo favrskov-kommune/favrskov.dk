@@ -22,10 +22,7 @@ label: Tabel
 description: ''
 required: true
 translatable: false
-default_value:
-  -
-    value: "<table>\r\n\t<caption>Test</caption>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Test</th>\r\n\t\t\t<th>Test</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>Test</td>\r\n\t\t\t<td>Test</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>Test</td>\r\n\t\t\t<td>Test</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n"
-    format: table
+default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: text_long
