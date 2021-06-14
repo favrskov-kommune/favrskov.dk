@@ -1,0 +1,6 @@
+dialog:
+  version: VERSION
+  js:
+    js/dialog.js: {}
+  dependencies:
+    - core/jquery.ui.dialog
