@@ -2,6 +2,7 @@
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Serialization\Json;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\premium_theme_helper\Element\LayoutBuilder;
 use Drupal\premium_theme_helper\Plugin\Layout\ThreeColumnLayout;
 use Drupal\premium_theme_helper\Plugin\Layout\TwoColumnLayout;
@@ -133,5 +134,24 @@ function premium_theme_helper_views_pre_render(ViewExecutable $view) {
     if ($activeTheme !== $systemTheme) {
       $view->element['#attached']['library'][] = 'premium_theme/layout-builder-media';
     }
+  }
+}
+
+/**
+ * Form alter - Adding libraries.
+ *
+ * @param array $form
+ *   Form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   Form state.
+ * @param string $form_id
+ *   Form id.
+ */
+function premium_theme_helper_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  if (in_array($form_id, [
+    'layout_builder_add_block',
+    'layout_builder_update_block',
+  ])) {
+    $form['#attached']['library'][] = 'premium_theme_helper/dialog';
   }
 }
