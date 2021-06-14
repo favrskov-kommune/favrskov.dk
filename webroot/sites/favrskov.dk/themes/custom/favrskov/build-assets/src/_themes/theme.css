@@ -7,18 +7,6 @@
   background-color: var(--theme-background-color);
   color: var(--theme-color);
 
-  &-gray_blue {
-    background-color: var(--color-secondary-light);
-  }
-
-  &-mint {
-    background-color: var(--color-light-mint);
-  }
-
-  &-douce {
-    background-color: var(--color-gray);
-  }
-
   a:not(.button--red):not(.button--green):not(.button--gray):not(.button--white) {
     color: var(--theme-link-color);
   }
@@ -114,5 +102,9 @@
     a {
       color: var(--theme-link-color);
     }
+  }
+
+  .hero .icon--tree {
+    fill: var(--theme-hero-icon-color);
   }
 }

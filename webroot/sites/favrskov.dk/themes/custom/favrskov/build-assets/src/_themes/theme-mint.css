@@ -1,0 +1,8 @@
+/**
+ * Type: Theme.
+ * Mint theme.
+ */
+
+.theme-mint {
+  --theme-background-color: var(--color-light-mint);
+}
