@@ -1,0 +1,23 @@
+uuid: 9d6fa43a-8ac6-4273-b3e5-507b01ff76df
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_keep_published
+    - node.type.news
+id: node.news.field_keep_published
+field_name: field_keep_published
+entity_type: node
+bundle: news
+label: 'Hold udgivet'
+description: 'Normalt bliver nyheder afpubliceret efter 3 måneder. Sæt flueben her for at undgå dette for denne nyhed.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean

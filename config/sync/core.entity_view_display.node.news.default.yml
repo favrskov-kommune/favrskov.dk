@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.news.field_description
     - field.field.node.news.field_header
     - field.field.node.news.field_hide_breadcrumb
+    - field.field.node.news.field_keep_published
     - field.field.node.news.field_list_date
     - field.field.node.news.field_list_icon
     - field.field.node.news.field_list_media
@@ -49,6 +50,16 @@ content:
       display_labels: true
     third_party_settings: {  }
     type: dynamic_key_value_table_formatter
+    region: content
+  field_keep_published:
+    weight: 6
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_list_date:
     weight: 3

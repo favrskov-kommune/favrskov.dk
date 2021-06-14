@@ -771,7 +771,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'No moderated content available. Only pending versions of content, such as drafts, are listed here.'
+          content: 'Der er ikke noget modereret indhold tilgængeligt. Her vises kun ikke-udgivet indhold som f.eks. kladder.'
           plugin_id: text_custom
       relationships:
         nid:

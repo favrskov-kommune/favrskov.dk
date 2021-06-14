@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.news.field_description
     - field.field.node.news.field_header
     - field.field.node.news.field_hide_breadcrumb
+    - field.field.node.news.field_keep_published
     - field.field.node.news.field_list_date
     - field.field.node.news.field_list_icon
     - field.field.node.news.field_list_media
@@ -53,6 +54,7 @@ hidden:
   field_description: true
   field_header: true
   field_hide_breadcrumb: true
+  field_keep_published: true
   field_list_date: true
   field_list_media: true
   field_meta_tags: true

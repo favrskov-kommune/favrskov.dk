@@ -75,6 +75,7 @@ webroot/themes/README.txt
 */node_modules
 .idea/
 logs/*
+private-files/*
 /sql
 .composer
 !*/.keep

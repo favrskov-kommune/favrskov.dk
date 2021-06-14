@@ -40,6 +40,7 @@ module:
   entity_usage: 0
   favrskov_feedback: 0
   favrskov_maps: 0
+  favrskov_news: 0
   favrskov_search: 0
   field: 0
   field_group: 0

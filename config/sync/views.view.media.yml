@@ -15,7 +15,7 @@ _core:
 id: media
 label: Media
 module: views
-description: 'Find and manage media.'
+description: 'Find og håndtér mediefiler.'
 tag: ''
 base_table: media_field_data
 base_field: mid
@@ -921,7 +921,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'Ingen tilgængelige media'
+          content: 'Ingen tilgængelige media.'
           plugin_id: text_custom
       relationships: {  }
       arguments: {  }

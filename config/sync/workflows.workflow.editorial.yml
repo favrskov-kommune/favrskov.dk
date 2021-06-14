@@ -3,6 +3,8 @@ langcode: da
 status: true
 dependencies:
   config:
+    - node.type.editor_manual
+    - node.type.news
     - node.type.page
   module:
     - content_moderation
@@ -63,5 +65,7 @@ type_settings:
         - published
   entity_types:
     node:
+      - editor_manual
+      - news
       - page
   default_moderation_state: draft

@@ -1109,7 +1109,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Completed
+          label: Gennemført
           exclude: false
           alter:
             alter_text: false
@@ -1920,7 +1920,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Completed
+          label: Gennemført
           exclude: false
           alter:
             alter_text: false
@@ -2754,7 +2754,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Completed
+          label: Gennemført
           exclude: false
           alter:
             alter_text: false

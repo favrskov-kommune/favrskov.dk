@@ -1,0 +1,8 @@
+name: Favrskov nyheder
+description: Favrskov nyhedsfunktioner
+package: Favrskov
+type: module
+core_version_requirement: ^8 || ^9
+
+interface translation project: favrskov_news
+interface translation server pattern: modules/custom/favrskov_news/translations/%language.po

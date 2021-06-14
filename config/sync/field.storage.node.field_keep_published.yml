@@ -1,0 +1,18 @@
+uuid: 43c93f53-be09-494a-a5e4-ff62f3226ad5
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_keep_published
+field_name: field_keep_published
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
