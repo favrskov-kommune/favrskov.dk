@@ -3,6 +3,7 @@
 namespace Drupal\premium_theme_helper\Plugin\Block;
 
 use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -66,6 +67,7 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
    */
   public function build(): array {
     $build = $this->breadcrumbManager->build($this->routeMatch)->toRenderable();
+    $cacheMetadata = CacheableMetadata::createFromRenderArray($build);
 
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
     $route_entity = $this->getEntityFromRouteMatch($this->routeMatch);
@@ -73,25 +75,14 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
       try {
         $data = $route_entity->get('field_hide_breadcrumb')->first();
         if (!is_null($data) && (int) $data->getValue()['value'] === 1) {
-          $build = [
-            '#cache' => [
-              'contexts' => ['url'],
-              'tags' => [],
-            ],
-          ];
+          $cacheMetadata->setCacheContexts(['route'])->setCacheTags([]);
+          $build = [];
         }
       }
       catch (MissingDataException $e) {
         $this->logger->error($e->getMessage());
       }
-      $build['#cache']['tags'] += $route_entity->getCacheTagsToInvalidate();
-    }
-
-    if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_color_theme')) {
-      $color_theme = $route_entity->get('field_color_theme')->value;
-      if ($color_theme !== NULL) {
-        $build['#attributes']['class'] = ['theme-' . $color_theme];
-      }
+      $cacheMetadata->addCacheableDependency($route_entity);
     }
 
     $breadcrumb_json_data = [
@@ -121,9 +112,11 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
       '#value' => json_encode($breadcrumb_json_data),
     ];
     $status = \Drupal::requestStack()->getCurrentRequest()->attributes->get('exception');
-    if ($status && $status->getStatusCode() != 200){
-      $build['#cache']['max-age'] = 0;
+    if ($status && $status->getStatusCode() != 200) {
+      $cacheMetadata->setCacheMaxAge(0);
     }
+
+    $cacheMetadata->applyTo($build);
 
     return $build;
   }
