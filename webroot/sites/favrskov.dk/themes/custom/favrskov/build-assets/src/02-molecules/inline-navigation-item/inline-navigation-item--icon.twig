@@ -3,10 +3,14 @@
 <li {{ (not attributes ? create_attribute() : attributes ).addClass('inline-navigation-item','inline-navigation-item-icon') }}>
   <a href="{{ url }}" class="inline-navigation-item__link">
     <div class="inline-navigation-item__icon">
-      {% include '@particles/svg-icon/svg-icon.twig' with {
-        'attributes': '',
-        'svgIconName': 'no-image'
-      } %}
+      {% if media is not empty %}
+        {{ media }}
+      {% else %}
+        {% include '@particles/svg-icon/svg-icon.twig' with {
+          'attributes': '',
+          'svgIconName': 'no-image'
+        } %}
+      {% endif %}
     </div>
     <h3 class="inline-navigation-item__text">{{ label }}</h3>
   </a>

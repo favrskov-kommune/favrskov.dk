@@ -99,7 +99,7 @@
 
   &__icon {
     position: absolute;
-    top: 30%;
+    top: 15%;
     left: 50%;
     transform: translateX(-50%);
     width: 90px;
@@ -107,7 +107,6 @@
 
     svg {
       max-width: 100%;
-      max-height: 100%;
       height: auto;
 
       &.icon--no-image {
@@ -116,13 +115,12 @@
     }
 
     @media (--viewport-sm-max) {
-      top: 25%;
+      top: 20%;
     }
 
     @media (--viewport-ms-max) {
-      top: 50%;
       left: 40px;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -100%);
       width: 50px;
       height: 35px;
     }
@@ -286,16 +284,11 @@
     display: block;
 
     &--fallback {
-      height: 0;
-      padding-bottom: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
 
       svg {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
         width: 20%;
         height: 20%;
         opacity: .5;
@@ -314,6 +307,7 @@
     margin-bottom: 30px;
     font-size: var(--base-font-size-xlarge);
     font-weight: 900;
+    hyphens: auto;
 
     @media (--viewport-md-min) {
       font-size: var(--base-font-size-xxlarge);

@@ -1,0 +1,31 @@
+uuid: fa23c5a8-2b6f-48e9-ba05-79c0deba5b2a
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.table_spot
+    - field.storage.block_content.field_table
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    table: table
+    basic_html: '0'
+    full_html: '0'
+    plain_text: '0'
+id: block_content.table_spot.field_table
+field_name: field_table
+entity_type: block_content
+bundle: table_spot
+label: Tabel
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: "<table>\r\n\t<caption>Test</caption>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Test</th>\r\n\t\t\t<th>Test</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>Test</td>\r\n\t\t\t<td>Test</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>Test</td>\r\n\t\t\t<td>Test</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n"
+    format: table
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -2,6 +2,8 @@
 
 namespace Drupal\premium_theme_helper\Plugin\Block;
 
+use Doctrine\Common\Cache\Cache;
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
@@ -93,18 +95,15 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
    * {@inheritDoc}
    */
   public function build(): array {
-    $build = [
-      '#cache' => [
-        'contexts' => ['url'],
-        'tags' => ['languages'],
-      ],
-    ];
+    $cacheMetadata = new CacheableMetadata();
+    $cacheMetadata->addCacheContexts(['route'])->addCacheTags(['languages']);
+    $build = [];
 
     $request = $this->requestStack->getCurrentRequest();
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
     $route_entity = $this->getEntityFromRouteMatch($this->routeMatch);
     if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_header')) {
-      $build['#cache']['tags'] += $route_entity->getCacheTagsToInvalidate();
+      $cacheMetadata->addCacheableDependency($route_entity);
 
       if (!$route_entity->get('field_header')->isEmpty()) {
         try {
@@ -115,7 +114,7 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
             if (!is_null($paragraph)) {
               $build['header'] = $this->entityTypeManager->getViewBuilder('paragraph')->view($paragraph);
               $build['header']['#title'] = $route_entity->label();
-              $build['#cache']['tags'] += $paragraph->getCacheTagsToInvalidate();
+              $cacheMetadata->addCacheableDependency($paragraph);
             }
           }
         }
@@ -136,8 +135,10 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
 
     $status = $request->attributes->get('exception');
     if ($status && $status->getStatusCode() !== 200) {
-      $build['#cache']['max-age'] = 0;
+      $cacheMetadata->setCacheMaxAge(0);
     }
+
+    $cacheMetadata->applyTo($build);
 
     return $build;
   }

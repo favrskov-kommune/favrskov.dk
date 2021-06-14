@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.content_hierarchy
     - field.field.node.page.field_chatbot_muni
+    - field.field.node.page.field_color_theme
     - field.field.node.page.field_description
     - field.field.node.page.field_header
     - field.field.node.page.field_hide_breadcrumb
@@ -64,6 +65,7 @@ third_party_settings:
           - slideshow
           - spacer
           - submenu
+          - table_spot
           - video
         'Custom blocks': {  }
         Devel: {  }
@@ -85,6 +87,7 @@ third_party_settings:
           - 'inline_block:slideshow'
           - 'inline_block:spacer'
           - 'inline_block:submenu'
+          - 'inline_block:table_spot'
           - 'inline_block:rte'
           - 'inline_block:video'
         'Lists (Views)': {  }
@@ -110,6 +113,7 @@ hidden:
   content_hierarchy: true
   content_moderation_control: true
   field_chatbot_muni: true
+  field_color_theme: true
   field_description: true
   field_header: true
   field_hide_breadcrumb: true

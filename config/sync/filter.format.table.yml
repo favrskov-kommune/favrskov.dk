@@ -1,4 +1,4 @@
-uuid: fb5898f1-a117-4dde-945a-45f510cc2af9
+uuid: 96ca0fb1-4896-4cba-a5dd-b4c3af9de363
 langcode: da
 status: true
 dependencies:
@@ -8,8 +8,8 @@ dependencies:
     - media
 _core:
   default_config_hash: FuwDvANbfUl18YJDEXEK5E0VGC-XzlhxbCh6y26gO6g
-name: 'Simpel HTML'
-format: basic_html
+name: Tabel
+format: table
 weight: 0
 filters:
   filter_html:
@@ -18,7 +18,7 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h1 id> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <p> <br> <span> <a href hreflang target data-entity-substitution data-entity-type data-entity-uuid title>'
+      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h1 id> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <p> <br> <span> <a href hreflang target data-entity-substitution data-entity-type data-entity-uuid title> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr>'
       filter_html_help: false
       filter_html_nofollow: false
   filter_align:

@@ -153,3 +153,26 @@ function premium_theme_helper_block_content_create_access(AccountInterface $acco
   // No opinion.
   return AccessResult::neutral();
 }
+
+/**
+ * Implements hook_form_alter().
+ *
+ * We need to alter a block creation/update form inside a layout builder component, and that's not simple.
+ *
+ * @see https://www.drupal.org/project/drupal/issues/3028391.
+ */
+function premium_theme_helper_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, ['layout_builder_update_block', 'layout_builder_add_block'])) {
+    $form['settings']['block_form']['#process'][] = 'premium_theme_helper_process_inline_block';
+  }
+}
+
+/**
+ * Custom process callback for inline block creation form.
+ *
+ * @see https://www.drupal.org/project/drupal/issues/3028391.
+ */
+function premium_theme_helper_process_inline_block(array $element, FormStateInterface $form_state) {
+  unset($element["field_inline_navigation_parent"]["widget"][0]["target_id"]["#default_value"]);
+  return $element;
+}

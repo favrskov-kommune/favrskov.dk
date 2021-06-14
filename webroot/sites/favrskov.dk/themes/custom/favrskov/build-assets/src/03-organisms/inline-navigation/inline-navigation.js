@@ -11,7 +11,7 @@ function addSlider() {
 
   for (let i = 0; i < inlineNavigations.length; i += 1) {
     const current = inlineNavigations[i];
-    current.classList.add('loaded');
+    // current.classList.add('loaded');
     setTimeout(() => {
       const currentFlkty = new Flickity(current, {
         contain: true,
@@ -38,10 +38,21 @@ function checkMediaQuery(x) {
   }
 }
 
+function debounce(func, timeout) {
+  let timer;
+  return function foobar(event) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(func, timeout, event);
+  };
+}
+
 Drupal.behaviors.inlineNavigation = {
   attach(context) {
     const mediaQuery = window.matchMedia('(min-width: 992px)');
     checkMediaQuery(mediaQuery); // Call listener function at run time
     mediaQuery.addListener(checkMediaQuery); // Attach listener function on state changes
+    window.addEventListener('resize', debounce((e) => {
+      checkMediaQuery(mediaQuery); // Call listener function at run time
+    }, 150));
   },
 };

@@ -1,0 +1,11 @@
+uuid: af37e537-b832-4233-85bb-72a2fd6b3d2e
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.table_spot
+id: block_content.table_spot
+target_entity_type_id: block_content
+target_bundle: table_spot
+default_langcode: site_default
+language_alterable: false

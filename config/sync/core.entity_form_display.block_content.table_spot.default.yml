@@ -1,0 +1,25 @@
+uuid: bb801270-fb5a-4081-9928-3e730df62453
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.table_spot
+    - field.field.block_content.table_spot.field_table
+  module:
+    - text
+id: block_content.table_spot.default
+targetEntityType: block_content
+bundle: table_spot
+mode: default
+content:
+  field_table:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  info: true
+  langcode: true
