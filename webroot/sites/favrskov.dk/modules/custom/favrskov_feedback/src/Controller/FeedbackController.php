@@ -4,8 +4,33 @@ namespace Drupal\favrskov_feedback\Controller;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Entity\EntityTypeManager;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class FeedbackController extends ControllerBase {
+
+  /**
+   * FeedbackController constructor.
+   *
+   * @param EntityTypeManager $entityTypeManager
+   */
+  public function __construct(EntityTypeManager $entityTypeManager) {
+    $this->entityTypeManager = $entityTypeManager;
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @param ContainerInterface $container
+   *   The Drupal service container.
+   *
+   * @return static
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('entity_type.manager')
+    );
+  }
 
   public function test() {
     $build['form'] = [
