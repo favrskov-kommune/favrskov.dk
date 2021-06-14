@@ -5953,10 +5953,10 @@
         },
         {
             "name": "novicell/dynamic_key_value",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1z1WKM/novicelldynamic_key_value-1-0-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_JouEe/novicelldynamic_key_value-1-0-2.zip"
             },
             "require": {
                 "drupal/color_field": "^2.0"
@@ -10870,5 +10870,5 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }
