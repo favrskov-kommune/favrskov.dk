@@ -19,19 +19,19 @@ theme:
     theme:
       build-assets/dist/css/_themes/theme.css: {}
 
-theme-primary:
+theme-douce:
   version: VERSION
   css:
     theme:
-      build-assets/dist/css/_themes/theme-primary.css: {}
+      build-assets/dist/css/_themes/theme-douce.css: {}
   dependencies:
     - favrskov/theme
 
-theme-secondary:
+theme-grayblue:
   version: VERSION
   css:
     theme:
-      build-assets/dist/css/_themes/theme-secondary.css: {}
+      build-assets/dist/css/_themes/theme-grayblue.css: {}
   dependencies:
     - favrskov/theme
 
@@ -43,27 +43,19 @@ theme-green:
   dependencies:
     - favrskov/theme
 
+theme-mint:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/_themes/theme-mint.css: {}
+  dependencies:
+    - favrskov/theme
+
 theme-red:
   version: VERSION
   css:
     theme:
       build-assets/dist/css/_themes/theme-red.css: {}
-  dependencies:
-    - favrskov/theme
-
-theme-seashell:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/_themes/theme-seashell.css: {}
-  dependencies:
-    - favrskov/theme
-
-theme-yellow:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/_themes/theme-yellow.css: {}
   dependencies:
     - favrskov/theme
 

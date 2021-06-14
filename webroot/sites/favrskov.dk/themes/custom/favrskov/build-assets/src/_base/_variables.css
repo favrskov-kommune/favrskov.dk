@@ -11,7 +11,7 @@
   --color-black: #000;
   --color-white: #fff;
   --color-gray: #e7ebe3;
-  --color-gray-secondary: #F2F4F0;
+  --color-gray-secondary: #f2f4f0;
   --color-gray-hover: #ced3c8;
   --color-gray-medium: #666;
   --color-gray-medium-secondary: #474747;
@@ -43,6 +43,7 @@
   --theme-status-message-color-warning: #8a6d3b;
   --theme-status-message-background-color-error: #fce3e3;
   --theme-status-message-color-error: #763c3c;
+  --theme-hero-icon-color: var(--color-gray);
 
   /* Typography
   ********************/

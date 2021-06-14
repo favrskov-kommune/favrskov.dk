@@ -85,6 +85,16 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
       $cacheMetadata->addCacheableDependency($route_entity);
     }
 
+    $build['#attributes']['class'] = ['section', 'theme', 'section--no-spacing'];
+
+    if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_color_theme')) {
+      $color_theme = $route_entity->get('field_color_theme')->value;
+      if ($color_theme !== NULL) {
+        $build['#attributes']['class'][] = 'theme-' . $color_theme;
+        $build['#attached']['library'][] = 'favrskov/theme-' . $color_theme;
+      }
+    }
+
     $breadcrumb_json_data = [
       '@context' => 'http://schema.org',
       '@type' => 'BreadcrumbList',

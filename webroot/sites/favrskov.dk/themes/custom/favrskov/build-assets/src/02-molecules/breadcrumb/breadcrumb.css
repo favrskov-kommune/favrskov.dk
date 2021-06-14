@@ -2,22 +2,6 @@
  * Type: Molecules.
  * Breadcrumb.
  */
-#block-breadcrumbs {
-  background-color: var(--color-white);
-
-  &.theme-douce {
-    background-color: var(--color-gray);
-  }
-
-  &.theme-mint {
-    background-color: var(--color-light-mint);
-  }
-
-  &.theme-gray_blue {
-    background-color: var(--color-secondary-light);
-  }
-}
-
 .breadcrumb {
   position: relative;
   padding: 30px 0;

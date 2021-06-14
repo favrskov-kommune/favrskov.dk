@@ -1,0 +1,9 @@
+/**
+ * Type: Theme.
+ * Gray blue theme.
+ */
+
+.theme-grayblue {
+  --theme-background-color: var(--color-secondary-light);
+  --theme-hero-icon-color: var(--color-secondary);
+}

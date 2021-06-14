@@ -1,0 +1,9 @@
+/**
+ * Type: Theme.
+ * Douce theme.
+ */
+
+.theme-douce {
+  --theme-background-color: var(--color-gray);
+  --theme-hero-icon-color: var(--color-gray-hover);
+}
