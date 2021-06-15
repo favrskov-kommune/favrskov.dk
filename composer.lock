@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d771516f98bfe68d2ff70572f6f4f97c",
+    "content-hash": "f3f2b37cacfc867c7dceb7689be766a9",
     "packages": [
         {
             "name": "algolia/places",
@@ -3822,6 +3822,54 @@
                 "source": "https://cgit.drupalcode.org/pathauto",
                 "issues": "https://www.drupal.org/project/issues/pathauto",
                 "documentation": "https://www.drupal.org/docs/8/modules/pathauto"
+            }
+        },
+        {
+            "name": "drupal/promote_disable",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/promote_disable.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/promote_disable-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "a11b569897302eb15d37b99b4c188d28b49206e0"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1622502514",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "jamiehollern",
+                    "homepage": "https://www.drupal.org/user/884154"
+                },
+                {
+                    "name": "nehajyoti",
+                    "homepage": "https://www.drupal.org/user/2804915"
+                }
+            ],
+            "description": "Allows a user to disable the 'Promote to front page' option when creating nodes.",
+            "homepage": "https://www.drupal.org/project/promote_disable",
+            "support": {
+                "source": "https://git.drupalcode.org/project/promote_disable"
             }
         },
         {
@@ -10923,5 +10971,5 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

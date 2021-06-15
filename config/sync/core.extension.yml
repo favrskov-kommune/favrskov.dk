@@ -81,6 +81,7 @@ module:
   premium_cdn_video: 0
   premium_theme_helper: 0
   premium_tools: 0
+  promote_disable: 0
   quickedit: 0
   rdf: 0
   redirect: 0
