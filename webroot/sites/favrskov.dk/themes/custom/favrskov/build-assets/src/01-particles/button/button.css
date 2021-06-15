@@ -21,6 +21,7 @@ a.button {
   font-family: var(--button-font-family);
   font-size: var(--button-font-size);
   border: var(--button-border-width) solid var(--button-border-color);
+  margin-bottom: 15px;
 
   &[disabled],
   [disabled] & {

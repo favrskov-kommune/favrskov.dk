@@ -4,8 +4,11 @@
  */
 
 .section.theme {
-  background-color: var(--theme-background-color);
   color: var(--theme-color);
+
+  &:not(.section--spacing-top-negative) {
+    background-color: var(--theme-background-color);
+  }
 
   a:not(.button--red):not(.button--green):not(.button--gray):not(.button--white) {
     color: var(--theme-link-color);
