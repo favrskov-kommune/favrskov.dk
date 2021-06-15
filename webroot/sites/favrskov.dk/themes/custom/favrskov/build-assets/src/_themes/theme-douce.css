@@ -6,4 +6,10 @@
 .theme-douce {
   --theme-background-color: var(--color-gray);
   --theme-hero-icon-color: var(--color-gray-hover);
+  --theme-button-background-color: var(--color-white);
+  --theme-button-color: var(--color-text);
+  --theme-button-background-image-path: none;
+  --theme-button-padding: var(--button-padding);
+  --theme-button-background-color-hover: var(--color-primary);
+  --theme-button-color-hover: var(--color-white);
 }

@@ -34,10 +34,10 @@
     </div>
     {% endif %}
     <div class="row">
-      <div {{ region_attributes.first.addClass(['col-xs-12', 'col-md-4', 'layout__region', 'layout__region--first']).addClass(content.second or content.third ? ['pb-xs', 'pb-0-md']) }}>
+      <div {{ region_attributes.first.addClass(['col-xs-12', 'col-md-4', 'layout__region', 'layout__region--first']).addClass(content.second or content.third ? ['pb-xs', 'pb-md-0']) }}>
         {{ content.first }}
       </div>
-      <div {{ region_attributes.second.addClass(['col-xs-12', 'col-md-4', 'layout__region', 'layout__region--second']).addClass(content.third ? ['pb-xs', 'pb-0-md']) }}>
+      <div {{ region_attributes.second.addClass(['col-xs-12', 'col-md-4', 'layout__region', 'layout__region--second']).addClass(content.third ? ['pb-xs', 'pb-md-0']) }}>
         {{ content.second }}
       </div>
       <div {{ region_attributes.third.addClass(['col-xs-12', 'col-md-4', 'layout__region', 'layout__region--third']) }}>

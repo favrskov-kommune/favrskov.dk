@@ -1,11 +1,11 @@
 /**
  * Nested imports.
- *
- * @see https://github.com/eriklharper/postcss-nested-import
- * Changed to support postcss 8.
  */
 
 const fs = require('fs');
+const postcss = require("postcss");
+const postcssPresetEnv = require('postcss-preset-env');
+const cssnano = require('cssnano');
 
 function parseImportPath(path) {
   const matches = path.trim().match(/^['"](.+?)['"](.*)/);
@@ -26,18 +26,47 @@ function readFile(file) {
 /**
  * PostCSS Nested Import Plugin
  */
-module.exports = (opts = {}) => ({
-  postcssPlugin: 'postcss-nested-import',
-  async AtRule(atRule) {
-    if (atRule.params && atRule.name === 'nestedimport') {
-      const path = parseImportPath(atRule.params);
-      if (path == null) {
-        return;
+module.exports = (opts = {}) => {
+  let postcssPresetEnvOpts = {};
+  let cssnanoOpts = {};
+
+  if ('cssnanoOptions' in opts) {
+    cssnanoOpts = opts.cssnanoOptions;
+  }
+
+  if ('postcssPresetEnv' in opts) {
+    postcssPresetEnvOpts = opts.postcssPresetEnv;
+  }
+
+  return {
+    postcssPlugin: 'postcss-nested-import',
+    async AtRule(atRule) {
+      if (atRule.params && atRule.name === 'nestedimport') {
+        const path = parseImportPath(atRule.params);
+        if (path == null) {
+          return;
+        }
+
+        // Handles plugins.
+        const plugins = [];
+
+        if (Object.keys(postcssPresetEnvOpts).length) {
+          plugins.push(postcssPresetEnv(postcssPresetEnvOpts));
+        }
+        if (Object.keys(cssnanoOpts).length) {
+          plugins.push(cssnano(cssnanoOpts));
+        }
+
+        // Load and read file, and replace atRule with fileContents.
+        const fileContents = await readFile(path);
+        if (fileContents.length === 0) {
+          return;
+        }
+
+        const parsedCustomProperties = await postcss(plugins).process(fileContents);
+        atRule.replaceWith(parsedCustomProperties.css)
       }
-      const fileContents = await readFile(path);
-      atRule.replaceWith(fileContents)
     }
   }
-});
+}
 module.exports.postcss = true;
-

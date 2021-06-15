@@ -29,6 +29,10 @@
   --theme-color: var(--color-black);
   --theme-button-background-color: var(--color-cta);
   --theme-button-color: var(--color-white);
+  --theme-button-color-hover: var(--color-white);
+  --theme-button-background-image-path: url('/sites/favrskov.dk/themes/custom/favrskov/build-assets/dist/images/white-arrow-right.svg');
+  --theme-button-padding: 0 45px 0 30px;
+  --theme-button-background-color-hover: var(--color-cta-hover);
   --theme-link-color: var(--color-black);
   --theme-divider-background-color: var(--color-black);
   --theme-accordion-border-color: #d4d4d4;
@@ -95,8 +99,7 @@
   --button-border-width: 1px;
   --button-border-color: transparent;
   --button-height: 60px;
-  --button-padding: 0 60px;
-  --button-font-weight: 500;
+  --button-padding: 0 30px;
+  --button-font-weight: 700;
   --button-font-family: var(--header-font-family);
-  --button-font-size: var(--base-font-size);
 }

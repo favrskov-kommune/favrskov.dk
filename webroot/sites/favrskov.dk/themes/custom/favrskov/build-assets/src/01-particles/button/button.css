@@ -14,14 +14,22 @@ a.button {
   overflow: hidden;
   border-radius: var(--button-border-radius);
   min-height: var(--button-height);
-  padding: var(--button-padding);
+  padding: var(--theme-button-padding);
   background-color: var(--theme-button-background-color);
   color: var(--theme-button-color);
   font-weight: var(--button-font-weight);
   font-family: var(--button-font-family);
-  font-size: var(--button-font-size);
+  font-size: var(--base-font-size);
   border: var(--button-border-width) solid var(--button-border-color);
-  margin-bottom: 15px;
+  background-image: var(--theme-button-background-image-path);
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 8px;
+  transition: background-position .2s;
+
+  @media (--viewport-md-min) {
+    font-size: var(--base-font-size-medium);
+  }
 
   &[disabled],
   [disabled] & {
@@ -31,12 +39,9 @@ a.button {
 
   &:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
-  }
-
-  &--ghost {
-    border: var(--button-border-width) solid var(--theme-button-background-color);
-    background-color: transparent;
-    color: currentColor;
+    background-color: var(--theme-button-background-color-hover);
+    color: var(--theme-button-color-hover);
+    background-position: right 18px center;
   }
 
   &--center {
@@ -70,6 +75,8 @@ a.button {
   &--gray {
     background-color: var(--color-gray);
     color: var(--color-text);
+    background-image: none;
+    padding: var(--button-padding);
 
     &:hover {
       background-color: var(--color-gray-hover);
@@ -79,6 +86,8 @@ a.button {
   &--white {
     background-color: var(--color-white);
     color: var(--color-text);
+    background-image: none;
+    padding: var(--button-padding);
 
     &:hover {
       background-color: var(--color-primary);

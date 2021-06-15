@@ -17,11 +17,12 @@
   .button:not(.button--red):not(.button--green):not(.button--gray):not(.button--white) {
     background-color: var(--theme-button-background-color);
     color: var(--theme-button-color);
+    background-image: var(--theme-button-background-image-path);
+    padding: var(--theme-button-padding);
 
-    &--ghost {
-      background-color: transparent;
-      border-color: var(--theme-button-background-color);
-      color: var(--theme-color);
+    &:hover {
+      background-color: var(--theme-button-background-color-hover);
+      color: var(--theme-button-color-hover);
     }
   }
 

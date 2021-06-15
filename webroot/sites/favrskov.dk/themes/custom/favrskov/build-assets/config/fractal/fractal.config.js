@@ -20,6 +20,9 @@ const twigAdapter = require('@frctl/twig')({
     attach_library(library) {
       return '';
     },
+    atom(string) {
+      return string;
+    },
   },
   filters: {
     without(without) {

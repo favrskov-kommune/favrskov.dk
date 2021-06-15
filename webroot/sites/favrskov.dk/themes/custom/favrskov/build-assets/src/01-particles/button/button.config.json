@@ -3,6 +3,6 @@
   "status": "ready",
   "context": {
     "text": "Click me",
-    "btn_color": "button-red"
+    "btn_color": "red"
   }
 }

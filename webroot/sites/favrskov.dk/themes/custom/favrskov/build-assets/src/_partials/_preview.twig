@@ -7,12 +7,9 @@
     {# Load CSS #}
     <link media="all" rel="stylesheet" href="/dist/css/_base/_variables.css"/>
     <link media="all" rel="stylesheet" href="/dist/css/_themes/theme.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-primary.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-secondary.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-green.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-red.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-seashell.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-yellow.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-grayblue.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-mint.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_themes/theme-douce.css"/>
     <link media="all" rel="stylesheet" href="/dist/css/_base/_normalize.css"/>
     <link media="all" rel="stylesheet" href="/dist/css/_base/_base.css"/>
     <link media="all" rel="stylesheet" href="/dist/css/_base/_fonts.css"/>
@@ -60,6 +57,12 @@
         }
       </style>
     {% endif %}
+    <style>
+      .premium-layout-wrapper .button,
+      .premium-layout-wrapper a.button {
+        background-image: url('/dist/images/white-arrow-right.svg');
+      }
+    </style>
     <title>{{ _target.title }}</title>
   </head>
   <body id="site" class="premium-layout-wrapper" {{ _target.alias not in ['frontpage', 'search', 'article'] ? 'style="padding-top: 0;"' }}>
