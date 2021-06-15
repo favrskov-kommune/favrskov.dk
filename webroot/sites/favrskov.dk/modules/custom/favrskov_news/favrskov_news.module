@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Pager\PagerManagerInterface;
 use Drupal\node\Entity\Node;
 
 /**
@@ -58,4 +59,55 @@ function favrskov_news_cron() {
   }
 
   \Drupal::state()->set('favrskov_news_next_run', strtotime('+1 day'));
+}
+
+function favrskov_preprocess_block__inline_block__news_list(array &$variables) {
+  $variables['#cache']['tags'][] = 'node_list';
+
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables['elements']['content']['#block_content'];
+
+  $categories = [];
+  if ($block->hasField('field_news_category') && !$block->get('field_news_category')->isEmpty()) {
+    foreach($block->get('field_news_category')->getValue() as $item) {
+      $categories[] = $item['target_id'];
+    }
+  }
+
+  $query = Drupal::entityQuery('node')
+    ->condition('type', 'news')
+    ->condition('status', 1)
+    ->sort('sticky' , 'desc')
+    ->sort('field_list_date', 'desc');
+  if (!empty($categories)) {
+    $query->condition('field_news_categories', $categories, 'IN');
+  }
+
+  if ($block->hasField('field_paginating') && $block->get('field_paginating')->first()->getValue()['value'] == 1) {
+    /** @var PagerManagerInterface $pagerManager */
+    $pagerManager = \Drupal::service('pager.manager');
+
+    $countQuery = Drupal::entityQuery('node')
+      ->condition('type', 'news')
+      ->condition('status', 1);
+    if (!empty($categories)) {
+      $countQuery->condition('field_news_categories', $categories, 'IN');
+    }
+    $total = $countQuery->count()->execute();
+
+    $num_per_page = 10;
+    $pager = $pagerManager->createPager($total, $num_per_page);
+    $page = $pager->getCurrentPage();
+    $offset = $num_per_page * $page;
+
+    $query->range($offset, $num_per_page);
+
+    // Finally, add the pager to the render array, and return.
+    $variables['pager'] = ['#type' => 'pager'];
+  }
+
+  $nids = $query->execute();
+  $nodes = Node::loadMultiple($nids);
+
+  $variables['items'] = Drupal::entityTypeManager()->getViewBuilder('node')->viewMultiple($nodes, 'teaser');
 }
