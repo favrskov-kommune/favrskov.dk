@@ -1,0 +1,15 @@
+uuid: cde245ac-1d1c-467b-8a3d-066fc1c60997
+langcode: da
+status: true
+dependencies:
+  module:
+    - webp
+name: optimize
+label: Optimize
+processors:
+  6047fbb9-9d9a-4cb9-b674-e630c1f1a1a9:
+    uuid: 6047fbb9-9d9a-4cb9-b674-e630c1f1a1a9
+    id: webp_webp
+    weight: 1
+    data:
+      quality: '100'
