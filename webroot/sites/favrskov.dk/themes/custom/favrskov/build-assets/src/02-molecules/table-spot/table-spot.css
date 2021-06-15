@@ -11,6 +11,7 @@
     width: 100%;
     border: none;
     border-spacing: 0;
+    font-size: var(--base-font-size-large);
 
     & caption {
       text-align: left;
