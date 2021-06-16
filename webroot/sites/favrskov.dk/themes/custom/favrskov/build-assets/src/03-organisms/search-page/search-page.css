@@ -7,18 +7,33 @@
   &__keys-submit {
     display: flex;
     margin-bottom: 30px;
+    position: relative;
 
     .form-item {
       margin-bottom: 0;
-      margin-right: 20px;
       width: 100%;
 
       input[type="search"] {
-        height: 100%;
+        height: 80px;
+        padding-left: 45px;
+        padding-right: 105px;
+        border-radius: var(--button-border-radius);
       }
+    }
 
-      .button {
-        margin-top: 0;
+    .button {
+      margin-top: 0;
+      padding: 0;
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        fill: var(--color-white);
       }
     }
   }
@@ -30,6 +45,32 @@
 
   &__results {
     margin-top: 60px;
+
+    .search-results-item {
+      padding-top: 30px;
+      border-top: 1px solid var(--header-border-color);
+
+      a {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+
+        & h2 {
+          font-size: var(--base-font-size-large);
+        }
+
+        .path {
+          color: var(--color-primary);
+          transition: color .3s ease;
+        }
+
+        &:hover {
+          .path {
+            color: var(--color-cta);
+          }
+        }
+      }
+    }
   }
 
   &__pager {
