@@ -1,3 +1,5 @@
 label: Yes/No
 category: General
-options: "Yes: Yes\nNo: No\n"
+options: |
+  Yes: Yes
+  No: No

@@ -1,3 +1,5 @@
 label: Sex
 category: Demographic
-options: "Male: Male\nFemale: Female\n"
+options: |
+  Male: Male
+  Female: Female
