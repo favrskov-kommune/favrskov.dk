@@ -12,7 +12,25 @@ id: feedback_yes
 title: 'Feedback - Yes'
 description: ''
 category: ''
-elements: "name:\n  '#title': 'Your Name'\n  '#type': textfield\n  '#required': true\n  '#default_value': ''\nemail:\n  '#title': 'Your Email'\n  '#type': email\n  '#required': true\n  '#default_value': ''\nmessage:\n  '#title': Message\n  '#type': textarea\n  '#required': true\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': 'Send feedback'"
+elements: |-
+  name:
+    '#title': 'Your Name'
+    '#type': textfield
+    '#required': true
+    '#default_value': ''
+  email:
+    '#title': 'Your Email'
+    '#type': email
+    '#required': true
+    '#default_value': ''
+  message:
+    '#title': Message
+    '#type': textarea
+    '#required': true
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': 'Send feedback'
 css: ''
 javascript: ''
 settings:

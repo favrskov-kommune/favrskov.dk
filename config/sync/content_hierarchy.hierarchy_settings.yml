@@ -1,3 +1,5 @@
 entity_bundles:
   node:
     - page
+multilingual: false
+overview_type: foldable

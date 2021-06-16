@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3f2b37cacfc867c7dceb7689be766a9",
+    "content-hash": "47bb481315c8caf2e6a6d6ca4d949a2f",
     "packages": [
         {
             "name": "algolia/places",
@@ -1763,72 +1763,6 @@
             }
         },
         {
-            "name": "drupal/backup_migrate",
-            "version": "5.0.0-rc2",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/backup_migrate.git",
-                "reference": "5.0.0-rc2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/backup_migrate-5.0.0-rc2.zip",
-                "reference": "5.0.0-rc2",
-                "shasum": "b8c4f5117d9455f4ca652e70135ddc2964fdceef"
-            },
-            "require": {
-                "drupal/core": "^8.7.7 || ^9"
-            },
-            "suggest": {
-                "defuse/php-encryption": "Optional encryption of saved backups."
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "5.0.0-rc2",
-                    "datestamp": "1601316516",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "See contributors",
-                    "homepage": "https://www.drupal.org/node/189065/committers",
-                    "role": "Developer"
-                },
-                {
-                    "name": "DamienMcKenna",
-                    "homepage": "https://www.drupal.org/user/108450"
-                },
-                {
-                    "name": "dgorton",
-                    "homepage": "https://www.drupal.org/user/19044"
-                },
-                {
-                    "name": "ikit-claw",
-                    "homepage": "https://www.drupal.org/user/3285813"
-                },
-                {
-                    "name": "ronan",
-                    "homepage": "https://www.drupal.org/user/72815"
-                }
-            ],
-            "description": "Backup and Migrate Drupal Module",
-            "homepage": "https://www.drupal.org/project/backup_migrate",
-            "support": {
-                "source": "https://git.drupalcode.org/project/backup_migrate",
-                "issues": "https://www.drupal.org/project/issues/backup_migrate",
-                "slack": "https://drupal.slack.com/messages/C7C4M4QJV/details/"
-            }
-        },
-        {
             "name": "drupal/color_field",
             "version": "2.4.0",
             "source": {
@@ -2138,22 +2072,22 @@
         },
         {
             "name": "drupal/core",
-            "version": "9.1.10",
+            "version": "9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "7fa70eb78addcef8ad704edad9fa73337b8cdab5"
+                "reference": "0231ec3b5a195d39ab02680672736de781a59599"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/7fa70eb78addcef8ad704edad9fa73337b8cdab5",
-                "reference": "7fa70eb78addcef8ad704edad9fa73337b8cdab5",
+                "url": "https://api.github.com/repos/drupal/core/zipball/0231ec3b5a195d39ab02680672736de781a59599",
+                "reference": "0231ec3b5a195d39ab02680672736de781a59599",
                 "shasum": ""
             },
             "require": {
                 "asm89/stack-cors": "^1.1",
                 "composer/semver": "^3.0",
-                "doctrine/annotations": "^1.4",
+                "doctrine/annotations": "^1.12",
                 "doctrine/reflection": "^1.1",
                 "egulias/email-validator": "^2.0",
                 "ext-date": "*",
@@ -2183,6 +2117,7 @@
                 "symfony/event-dispatcher": "^4.4",
                 "symfony/http-foundation": "^4.4.7",
                 "symfony/http-kernel": "^4.4",
+                "symfony/mime": "^5.3.0",
                 "symfony/polyfill-iconv": "^1.0",
                 "symfony/process": "^4.4",
                 "symfony/psr-http-message-bridge": "^2.0",
@@ -2190,7 +2125,7 @@
                 "symfony/serializer": "^4.4",
                 "symfony/translation": "^4.4",
                 "symfony/validator": "^4.4",
-                "symfony/yaml": "^4.4",
+                "symfony/yaml": "^4.4.19",
                 "twig/twig": "^2.12.0",
                 "typo3/phar-stream-wrapper": "^3.1.3"
             },
@@ -2325,7 +2260,7 @@
                         "[web-root]/example.gitignore": "assets/scaffold/files/example.gitignore",
                         "[web-root]/index.php": "assets/scaffold/files/index.php",
                         "[web-root]/INSTALL.txt": "assets/scaffold/files/drupal.INSTALL.txt",
-                        "[web-root]/README.txt": "assets/scaffold/files/drupal.README.txt",
+                        "[web-root]/README.md": "assets/scaffold/files/drupal.README.md",
                         "[web-root]/robots.txt": "assets/scaffold/files/robots.txt",
                         "[web-root]/update.php": "assets/scaffold/files/update.php",
                         "[web-root]/web.config": "assets/scaffold/files/web.config",
@@ -2371,6 +2306,7 @@
                     "lib/Drupal/Core/DependencyInjection/Container.php",
                     "lib/Drupal/Core/DrupalKernel.php",
                     "lib/Drupal/Core/DrupalKernelInterface.php",
+                    "lib/Drupal/Core/Http/InputBag.php",
                     "lib/Drupal/Core/Installer/InstallerRedirectTrait.php",
                     "lib/Drupal/Core/Site/Settings.php"
                 ],
@@ -2384,13 +2320,13 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/9.1.10"
+                "source": "https://github.com/drupal/core/tree/9.2.0"
             },
-            "time": "2021-06-04T17:28:30+00:00"
+            "time": "2021-06-16T12:31:16+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "9.1.10",
+            "version": "9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -2434,13 +2370,13 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.2.0-beta3"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.2.0"
             },
             "time": "2020-08-07T22:30:13+00:00"
         },
         {
             "name": "drupal/core-project-message",
-            "version": "9.1.10",
+            "version": "9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-project-message.git",
@@ -2475,22 +2411,22 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-project-message/tree/9.2.0-beta3"
+                "source": "https://github.com/drupal/core-project-message/tree/9.2.0"
             },
             "time": "2020-09-14T13:40:36+00:00"
         },
         {
             "name": "drupal/core-vendor-hardening",
-            "version": "9.1.10",
+            "version": "9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-vendor-hardening.git",
-                "reference": "71df53f24d54c464ac18762a530fc7c3bf131a7f"
+                "reference": "f9eaafd58792fef38037979c2344a9216a93cc7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-vendor-hardening/zipball/71df53f24d54c464ac18762a530fc7c3bf131a7f",
-                "reference": "71df53f24d54c464ac18762a530fc7c3bf131a7f",
+                "url": "https://api.github.com/repos/drupal/core-vendor-hardening/zipball/f9eaafd58792fef38037979c2344a9216a93cc7e",
+                "reference": "f9eaafd58792fef38037979c2344a9216a93cc7e",
                 "shasum": ""
             },
             "require": {
@@ -2516,9 +2452,9 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-vendor-hardening/tree/9.1.10"
+                "source": "https://github.com/drupal/core-vendor-hardening/tree/9.2.0"
             },
-            "time": "2020-09-14T13:40:36+00:00"
+            "time": "2021-04-22T15:46:23+00:00"
         },
         {
             "name": "drupal/crop",
@@ -6019,10 +5955,10 @@
         },
         {
             "name": "novicell/content_hierarchy",
-            "version": "1.0.8",
+            "version": "1.1.1",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_YlkHd/novicellcontent_hierarchy-1-0-8.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_njQrJ/novicellcontent_hierarchy-1-1-1.zip"
             },
             "require": {
                 "drupal/pathauto": "~1.0",
@@ -6040,10 +5976,10 @@
         },
         {
             "name": "novicell/drupal-premium-theme",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_qbMOb/novicelldrupalpremiumtheme-1-0-3.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_12mA2w/novicelldrupalpremiumtheme-1-0-4.zip"
             },
             "type": "drupal-theme",
             "license": [
@@ -6107,10 +6043,10 @@
         },
         {
             "name": "novicell/premium_search",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_fEbGB/novicellpremium_search-1-0-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_29XFox/novicellpremium_search-1-1-0.zip"
             },
             "require": {
                 "drupal/search_api": "^1.0",
