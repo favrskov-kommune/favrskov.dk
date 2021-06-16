@@ -19,6 +19,23 @@
         padding-right: 105px;
         border-radius: var(--button-border-radius);
       }
+
+      .search_autocomplete {
+        border-radius: var(--button-border-radius);
+        background: none;
+        padding: 20px 45px !important;
+        margin-top: -1px !important;
+
+        li {
+          padding: 10px 0 !important;
+          border: none;
+          border-bottom: 1px solid var(--theme-input-border);
+
+          &:last-of-type {
+            border-bottom: none;
+          }
+        }
+      }
     }
 
     .button {
@@ -44,7 +61,6 @@
   }
 
   &__results {
-    margin-top: 60px;
 
     .search-results-item {
       padding-top: 30px;
@@ -75,5 +91,70 @@
 
   &__pager {
     margin-bottom: 40px;
+  }
+}
+
+#cludo-search-results ul.search_page_list li,
+.cludo-search-results ul.search_page_list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0 2px;
+  width: 31px;
+  text-align: center;
+}
+
+#cludo-search-results ul.search_page_list,
+.cludo-search-results ul.search_page_list {
+  text-align: center;
+
+  li {
+    a,
+    &.active {
+      height: 31px;
+      line-height: 31px;
+      padding: 0;
+      text-align: center;
+      border-radius: 50%;
+      transition: all .3s ease;
+    }
+
+    &.active {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      background-color: var(--color-gray);
+
+      &:hover {
+        background-color: var(--color-cta);
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+#cludo-search-results .cludo-page-navigation,
+.cludo-page-navigation,
+.cludo-search-results .cludo-page-navigation {
+  border-top: 1px solid var(--header-border-color);
+  padding-top: 30px;
+  padding-left: 175px;
+  padding-right: 175px;
+
+  @media (--viewport-sm-max) {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+
+    .powered-by-cludo {
+      display: inline-block;
+      position: relative;
+      top: auto;
+      right: auto;
+      margin-top: 20px;
+    }
   }
 }

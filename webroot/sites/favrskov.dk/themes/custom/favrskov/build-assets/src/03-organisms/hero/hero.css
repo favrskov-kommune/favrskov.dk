@@ -11,7 +11,6 @@
 .hero {
   position: relative;
   color: black;
-  overflow: hidden;
   max-height: var(--hero-max-height);
 
   &--narrow-height {
@@ -197,5 +196,26 @@
     height: 30px;
     fill: var(--color-white);
     pointer-events: none;
+  }
+
+  .search_autocomplete {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    border-radius: var(--button-border-radius);
+    background: var(--color-white);
+    padding: 20px 45px !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .1);
+
+    li {
+      padding: 10px 0 !important;
+      border: none;
+      border-bottom: 1px solid var(--theme-input-border);
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
   }
 }
