@@ -1,3 +1,7 @@
 .rte-block {
   font-size: var(--base-font-size-large);
+
+  @media (--viewport-ms-max) {
+    font-size: var(--base-font-size-medium);
+  }
 }
