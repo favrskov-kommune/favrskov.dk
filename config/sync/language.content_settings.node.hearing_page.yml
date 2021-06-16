@@ -1,0 +1,11 @@
+uuid: 01f996e9-d00d-4457-8db7-8acb65ccc6ae
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.hearing_page
+id: node.hearing_page
+target_entity_type_id: node
+target_bundle: hearing_page
+default_langcode: site_default
+language_alterable: false

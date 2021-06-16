@@ -1,0 +1,29 @@
+uuid: 7e2e7df4-5f9f-4a2f-b486-4cd0ba6bcfc8
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place
+    - node.type.hearing_page
+    - taxonomy.vocabulary.hearing_places
+id: node.hearing_page.field_place
+field_name: field_place
+entity_type: node
+bundle: hearing_page
+label: Sted
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      hearing_places: hearing_places
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
