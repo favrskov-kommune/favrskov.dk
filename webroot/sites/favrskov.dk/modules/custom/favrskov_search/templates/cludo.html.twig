@@ -1,13 +1,30 @@
-<form id="cludo-search-form" role="search">
-  <input type="search" class="search-input" aria-label="Search" aria-describedby="autocomplete_hint">
-  <button type="submit" class="search-button" id="search-button">Search</button>
-</form>
-<div id="cludo-search-results">
-  <div class="cludo-r">
-    <div class="cludo-c-12" role="main">
-      <div class="search-result-count"></div>
-      <div class="search-did-you-mean"></div>
-      <div class="search-results"></div>
+{{ attach_library('favrskov/search-page') }}
+
+<div class="layout layout--onecol theme section section--spacing-top-medium section--spacing-bottom-medium">
+  <div class="container layout__region">
+    <div class="search-page">
+      <form id="cludo-search-form" class="search-page__keys-submit" role="search">
+        <div class="form-item">
+          <input type="search" class="search-input input" aria-label="Search" aria-describedby="autocomplete_hint">
+        </div>
+        <button type="submit" class="search-button button" id="search-button">
+          {% block content %}
+            {% include '@particles/svg-icon/svg-icon.twig' with {
+              'attributes': '',
+              'svgIconName': 'search'
+            } %}
+          {% endblock %}
+        </button>
+      </form>
+      <div id="cludo-search-results" class="search-page__results">
+        <div class="cludo-r">
+          <div class="cludo-c-12" role="main">
+            <div class="search-result-count"></div>
+            <div class="search-did-you-mean"></div>
+            <div class="search-results"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

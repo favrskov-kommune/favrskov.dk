@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         this.isOpen = true;
         document.body.classList.add('no-scroll');
         document.addEventListener('keydown', this.handleEsc);
+        CludoSearch.registerSearchFormElement('#overlay-cludo-search-form');
       },
       closeSearchOverlay() {
         document.removeEventListener('keydown', this.handleEsc);
