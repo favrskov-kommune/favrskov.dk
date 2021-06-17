@@ -26,7 +26,7 @@
   <div{{ (not attributes ? create_attribute() : attributes).addClass(['footer__inner', 'section', 'theme', 'theme-primary']) }}>
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-ms-4 col-sm-4">
+        <div class="col-xs-12 col-ms-10 col-ms-offset-1 col-sm-4 col-sm-offset-0">
           <div class="footer__logo">
             <a title="Hjem" rel="home" href="/">
               <img class="logo__image" src="/{{ directory }}/build-assets/dist/images/logo-neg.svg" alt="Favrskov" />
@@ -35,7 +35,7 @@
         </div>
         {% if cols|length > 0 %}
           {% for col in cols %}
-            <div class="col-xs-12 col-ms-8 col-sm-4{{ loop.index == 2 ? ' col-ms-offset-4 col-sm-offset-0' }}">
+            <div class="col-xs-12 col-ms-5 col-sm-4{{ loop.index == 1 ? ' col-ms-offset-1 col-sm-offset-0' }}">
               {% if col.headline %}
                 <div class="footer__headline">{{ col.headline }}</div>
               {% endif %}

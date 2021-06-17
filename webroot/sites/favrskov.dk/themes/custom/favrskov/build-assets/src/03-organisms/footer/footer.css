@@ -121,11 +121,28 @@
     }
   }
 
-  @media (--viewport-xs-max) {
+  &__inner {
+    &.theme-primary {
+      background-color: var(--color-primary);
+
+      .footer__headline,
+      .footer__content {
+        color: var(--color-white);
+      }
+
+      a {
+        color: var(--color-white);
+      }
+    }
+  }
+
+  @media (--viewport-ms-max) {
     &__logo {
       margin-bottom: 40px;
     }
+  }
 
+  @media (--viewport-xs-max) {
     &__inner {
       padding-left: 15px;
       padding-right: 15px;
