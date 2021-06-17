@@ -15,10 +15,10 @@ settings:
   allowed_values:
     -
       value: parent
-      label: 'Choose parent page'
+      label: 'Vælg forældreside'
     -
       value: pages
-      label: 'Choose specific pages'
+      label: 'Vælg specifikke sider'
   allowed_values_function: ''
 module: options
 locked: false

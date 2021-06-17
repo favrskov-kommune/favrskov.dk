@@ -13,7 +13,7 @@ id: block_content.inline_navigation.field_inline_navigation_mode
 field_name: field_inline_navigation_mode
 entity_type: block_content
 bundle: inline_navigation
-label: 'Selection mode'
+label: Valgtilstand
 description: ''
 required: false
 translatable: false

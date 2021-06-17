@@ -13,16 +13,16 @@ settings:
   allowed_values:
     -
       value: inline_navigation
-      label: Image
+      label: Billeder
     -
       value: inline_navigation_icon
-      label: Icon
+      label: Ikoner
     -
       value: inline_navigation_arrow
-      label: Arrow
+      label: Pile
     -
       value: inline_navigation_campaign
-      label: Campaign
+      label: Kampagne
   allowed_values_function: ''
 module: options
 locked: false
