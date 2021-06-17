@@ -24,13 +24,13 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 0
     settings: {  }
     third_party_settings: {  }
     region: content
   field_cta:
-    weight: 105
-    label: above
+    weight: 4
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -41,51 +41,47 @@ content:
     type: link
     region: content
   field_deadline:
-    weight: 104
-    label: above
+    weight: 3
+    label: hidden
     settings:
-      format_type: medium
       timezone_override: ''
+      date_format: 'd. M. Y'
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_custom
     region: content
   field_place:
-    weight: 107
-    label: above
+    weight: 6
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_publishing_date:
-    weight: 103
-    label: above
+    weight: 2
+    label: hidden
     settings:
-      format_type: medium
       timezone_override: ''
+      date_format: 'd. M. Y'
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_custom
     region: content
   field_topic:
-    weight: 106
-    label: above
+    weight: 5
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_type:
-    weight: 102
-    label: above
+    weight: 1
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  links:
-    weight: 100
-    settings: {  }
-    third_party_settings: {  }
-    region: content
 hidden:
   langcode: true
+  links: true

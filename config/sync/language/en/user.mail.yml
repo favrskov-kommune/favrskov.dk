@@ -1,6 +1,6 @@
 cancel_confirm:
   body: |-
-    [user:display-name],
+    [user:display-name]
 
     A request to cancel your account has been made at [site:name].
 
