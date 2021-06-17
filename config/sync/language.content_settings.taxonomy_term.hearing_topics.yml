@@ -1,0 +1,11 @@
+uuid: b6ed3864-0c18-411e-8818-e5626b8ecf9a
+langcode: da
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.hearing_topics
+id: taxonomy_term.hearing_topics
+target_entity_type_id: taxonomy_term
+target_bundle: hearing_topics
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,91 @@
+uuid: d663bce4-e4c8-4c89-86a1-d610abc3a22d
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.node.hearing_page.body
+    - field.field.node.hearing_page.field_cta
+    - field.field.node.hearing_page.field_deadline
+    - field.field.node.hearing_page.field_place
+    - field.field.node.hearing_page.field_publishing_date
+    - field.field.node.hearing_page.field_topic
+    - field.field.node.hearing_page.field_type
+    - node.type.hearing_page
+  module:
+    - datetime
+    - link
+    - text
+    - user
+id: node.hearing_page.default
+targetEntityType: node
+bundle: hearing_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_cta:
+    weight: 105
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_deadline:
+    weight: 104
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_place:
+    weight: 107
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_publishing_date:
+    weight: 103
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_topic:
+    weight: 106
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_type:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

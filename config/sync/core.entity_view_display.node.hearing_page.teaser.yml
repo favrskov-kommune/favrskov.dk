@@ -1,0 +1,43 @@
+uuid: 11b9f20c-e48e-42c7-8cbe-76f0a2d6edd5
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.hearing_page.body
+    - field.field.node.hearing_page.field_cta
+    - field.field.node.hearing_page.field_deadline
+    - field.field.node.hearing_page.field_place
+    - field.field.node.hearing_page.field_publishing_date
+    - field.field.node.hearing_page.field_topic
+    - field.field.node.hearing_page.field_type
+    - node.type.hearing_page
+  module:
+    - text
+    - user
+id: node.hearing_page.teaser
+targetEntityType: node
+bundle: hearing_page
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_cta: true
+  field_deadline: true
+  field_place: true
+  field_publishing_date: true
+  field_topic: true
+  field_type: true
+  langcode: true
