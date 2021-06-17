@@ -1,0 +1,30 @@
+uuid: fdc81d6d-e4f7-4059-9d25-a47f2a2b3f68
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.hearing_page
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    table: '0'
+    full_html: '0'
+    plain_text: '0'
+id: node.hearing_page.body
+field_name: body
+entity_type: node
+bundle: hearing_page
+label: Brødtekst
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

@@ -1,0 +1,11 @@
+uuid: 032ed696-4bc3-4f07-8cf0-2aa82c6f8596
+langcode: da
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.hearing_page_types
+id: taxonomy_term.hearing_page_types
+target_entity_type_id: taxonomy_term
+target_bundle: hearing_page_types
+default_langcode: site_default
+language_alterable: false

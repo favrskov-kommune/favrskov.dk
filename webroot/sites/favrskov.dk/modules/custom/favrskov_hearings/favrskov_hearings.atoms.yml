@@ -1,0 +1,20 @@
+atoms:
+  hearings-cta:
+    type: textfield
+    title: CTA text
+    description: The text for the Call to Action button.
+    category: Sections
+    group: Hearings
+    default:
+      da: 'Afgiv høringssvar'
+
+  hearings-back-link:
+    type: link
+    title: Back link
+    description: The link back to the overview.
+    category: Sections
+    group: Hearings
+    default:
+      da:
+        title: 'Tilbage til oversigt'
+        url: ''

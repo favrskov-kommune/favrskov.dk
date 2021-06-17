@@ -1,0 +1,8 @@
+uuid: caee4de9-63dc-4dec-a706-c330446c18a2
+langcode: da
+status: true
+dependencies: {  }
+name: Høringsemner
+vid: hearing_topics
+description: ''
+weight: 0
