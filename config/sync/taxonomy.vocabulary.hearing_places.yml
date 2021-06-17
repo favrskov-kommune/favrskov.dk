@@ -1,0 +1,8 @@
+uuid: e942e624-74db-4dc4-8c19-2a342bf441e4
+langcode: da
+status: true
+dependencies: {  }
+name: Høringssteder
+vid: hearing_places
+description: ''
+weight: 0

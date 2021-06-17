@@ -1,0 +1,8 @@
+uuid: 41e310c8-1065-408c-9b3e-e77774c7fa2b
+langcode: da
+status: true
+dependencies: {  }
+name: Høringssidetyper
+vid: hearing_page_types
+description: 'Typer af høringssider'
+weight: 0

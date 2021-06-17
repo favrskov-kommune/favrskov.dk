@@ -1,0 +1,29 @@
+uuid: 2eef2bd9-f7da-4f12-bea8-c627b2bce26c
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_topic
+    - node.type.hearing_page
+    - taxonomy.vocabulary.hearing_topics
+id: node.hearing_page.field_topic
+field_name: field_topic
+entity_type: node
+bundle: hearing_page
+label: Emne
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      hearing_topics: hearing_topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
