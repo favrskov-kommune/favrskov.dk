@@ -5,7 +5,8 @@
   ],
   "globals": {
     "Drupal": true,
-    "drupalSettings": true
+    "drupalSettings": true,
+    "CludoSearch": true
   },
   "parserOptions": {
     "ecmaVersion": 6,
