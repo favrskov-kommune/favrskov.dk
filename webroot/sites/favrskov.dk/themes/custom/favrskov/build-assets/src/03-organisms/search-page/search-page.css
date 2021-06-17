@@ -144,6 +144,10 @@
   padding-left: 175px;
   padding-right: 175px;
 
+  .powered-by-cludo {
+    top: 10px;
+  }
+
   @media (--viewport-sm-max) {
     padding-left: 0;
     padding-right: 0;
