@@ -60,3 +60,15 @@ function favrskov_hearings_cron() {
 
   \Drupal::state()->set('favrskov_hearings_next_run', strtotime('+1 day'));
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function favrskov_hearings_preprocess_node__hearing_page(&$variables) {
+  if (isset($variables['content']['field_cta']) && isset($variables['content']['field_cta'][0])) {
+    $variables['content']['field_cta'][0]['#attributes']['class'][] = 'button';
+    $variables['content']['field_cta'][0]['#title'] = atom_str('hearings-cta');
+    atom_cache($variables['content']['field_cta'][0], ['hearings-cta']);
+  }
+  $variables['content']['back_link'] = atom('hearings-back-link');
+}
