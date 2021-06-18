@@ -32,7 +32,6 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
-      - Devel
       - Forms
       - Help
       - 'Inline blocks'
@@ -67,8 +66,6 @@ third_party_settings:
           - submenu
           - table_spot
           - video
-        'Custom blocks': {  }
-        Devel: {  }
         Forms: {  }
         Help: {  }
         'Inline blocks':

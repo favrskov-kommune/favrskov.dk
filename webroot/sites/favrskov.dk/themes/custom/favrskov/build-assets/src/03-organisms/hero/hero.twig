@@ -6,12 +6,14 @@
 
 {{ attach_library('favrskov/hero') }}
 
-<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media_image ? 'hero--image-added' : 'hero--narrow-height') }}>
+<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media_image ? 'hero--image-added' : 'hero--narrow-height').addClass(show_search == 1 ? 'hero--search') }}>
   {% if show_search == 1 %}
-    {% include '@particles/svg-icon/svg-icon.twig' with {
-      'attributes': '',
-      'svgIconName': 'tree'
-    } %}
+    <div class="hero__tree-search">
+      {% include '@particles/svg-icon/svg-icon.twig' with {
+        'attributes': '',
+        'svgIconName': 'tree'
+      } %}
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-xs-10 col-md-8 col-lg-6 col-xs-offset-1 col-md-offset-2 col-lg-offset-3">

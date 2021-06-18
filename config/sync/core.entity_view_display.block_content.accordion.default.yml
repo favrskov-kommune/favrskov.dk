@@ -6,7 +6,6 @@ dependencies:
     - block_content.type.accordion
     - field.field.block_content.accordion.field_accordion_headline
     - field.field.block_content.accordion.field_accordion_items
-    - field.field.block_content.accordion.field_accordion_show_more
   module:
     - premium_theme_helper
 _core:
@@ -32,14 +31,6 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    region: content
-  field_accordion_show_more:
-    weight: 2
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
     region: content
 hidden:
   langcode: true

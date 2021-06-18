@@ -22,7 +22,7 @@ Drupal.behaviors.accordion = {
         },
       },
       template: `
-        <div class="accordion-item" v-show="!hidden">
+        <div class="accordion-item" v-show="!hidden" ref="accordionItemRef">
         <div :aria-expanded="isOpen ? 'true' : 'false'" :aria-controls="'accordion-content-' + id" :class="{'active': isOpen}" class="accordion-item__headline" @click="toggleAccordionItem">
           <h3 class="accordion-item__title">{{ title }}</h3>
           <div class="accordion-item__icon"></div>
@@ -42,14 +42,18 @@ Drupal.behaviors.accordion = {
         delimiters: ['${', '}'],
         el: accordions[i],
         data: {
-          showAllHiddenItems: false,
+          openAllItems: false,
         },
         components: {
           accordionItem,
         },
         methods: {
-          displayHiddenItems() {
-            this.showAllHiddenItems = true;
+          toggleAllItems(e) {
+            this.openAllItems = !this.openAllItems;
+            // Tell children to change isOpen
+            for (let x = 0; x < this.$children.length; x += 1) {
+              this.$children[x].isOpen = this.openAllItems;
+            }
           },
         },
       });

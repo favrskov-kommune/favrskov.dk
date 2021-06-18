@@ -1,0 +1,21 @@
+uuid: e2192ab5-4878-4b61-b7d5-f66a7ea22d14
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_deadline
+    - node.type.hearing_page
+  module:
+    - datetime
+id: node.hearing_page.field_deadline
+field_name: field_deadline
+entity_type: node
+bundle: hearing_page
+label: Høringsfrist
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

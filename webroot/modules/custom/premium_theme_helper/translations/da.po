@@ -24,6 +24,12 @@ msgstr "Sideindstillinger"
 msgid "One column"
 msgstr "En kolonne"
 
+msgid "+ Fold all out"
+msgstr "+ Fold alle ud"
+
+msgid "- Fold all in"
+msgstr "- Fold alle ind"
+
 msgid "Two column"
 msgstr "To kolonne"
 

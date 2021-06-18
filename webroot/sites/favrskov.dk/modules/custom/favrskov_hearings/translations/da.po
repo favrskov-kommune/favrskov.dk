@@ -1,0 +1,31 @@
+# Danish translation of Favrskov Hearings (all releases)
+# Copyright (c) 2021 Novicell
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Favrskov Hearings (all releases)\n"
+"POT-Creation-Date: 2019-01-25 11:59+0000\n"
+"PO-Revision-Date: 2019-01-25 13:08+0100\n"
+"Language-Team: Danish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Last-Translator: \n"
+"Language: da\n"
+"X-Generator: Poedit 1.8.11\n"
+
+msgid "Hearings"
+msgstr "Høringer"
+
+msgid "Back link"
+msgstr "Tilbage link"
+
+msgid "The link back to the overview."
+msgstr "Linket tilbage til oversigten."
+
+msgid "CTA text"
+msgstr "CTA tekst"
+
+msgid "The text for the Call to Action button."
+msgstr "Teksten til Call to Action knappen."

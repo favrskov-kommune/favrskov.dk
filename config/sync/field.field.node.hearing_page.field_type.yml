@@ -1,0 +1,29 @@
+uuid: a472482d-1ea8-4cce-9a2a-a734fd2e9a9f
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type
+    - node.type.hearing_page
+    - taxonomy.vocabulary.hearing_page_types
+id: node.hearing_page.field_type
+field_name: field_type
+entity_type: node
+bundle: hearing_page
+label: Type
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      hearing_page_types: hearing_page_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
