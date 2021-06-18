@@ -12,6 +12,21 @@ function favrskov_preprocess_block__inline_block__inline_navigation(array &$vari
   $block_view_mode = $block->get('field_variant')->value;
   $rendered_content = [];
 
+  $links = [];
+  if ($block->hasField('field_link_list') && !$block->get('field_link_list')->isEmpty()) {
+    $block_link_list = $block->get('field_link_list')->entity->get('field_links');
+//    dump($block_link_list);
+    foreach ($block_link_list as $item) {
+      $data = $item->getValue();
+      $links[] = [
+        'title' => $data['title'],
+        'url' => Url::fromUri($data['uri'])->toString(),
+        'target' => $data['target_blank']
+      ];
+    }
+    $variables['link_list'] = $links;
+  }
+
   foreach ($variables['content'] as $value) {
     $rendered_content[] = $view_builder->view($value['#node'], $block_view_mode);
   }
