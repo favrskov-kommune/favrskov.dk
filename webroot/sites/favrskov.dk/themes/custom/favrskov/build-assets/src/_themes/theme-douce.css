@@ -12,4 +12,5 @@
   --theme-button-padding: var(--button-padding);
   --theme-button-background-color-hover: var(--color-primary);
   --theme-button-color-hover: var(--color-white);
+  --theme-accordion-background-color: var(--color-white);
 }
