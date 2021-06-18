@@ -1,0 +1,24 @@
+uuid: 1fcc37a5-907f-407e-819f-5ff8ba1fb43b
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.link_lists.field_links
+    - taxonomy.vocabulary.link_lists
+  module:
+    - premium_tools
+id: taxonomy_term.link_lists.default
+targetEntityType: taxonomy_term
+bundle: link_lists
+mode: default
+content:
+  field_links:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: link_with_target
+    region: content
+hidden:
+  description: true
+  langcode: true
