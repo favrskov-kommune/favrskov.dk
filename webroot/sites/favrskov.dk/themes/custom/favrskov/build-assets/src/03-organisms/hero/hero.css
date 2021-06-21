@@ -11,8 +11,19 @@
 .hero {
   position: relative;
   color: black;
-  overflow: hidden;
   max-height: var(--hero-max-height);
+
+  &:not(&--search) {
+    overflow: hidden;
+  }
+
+  /* When we are using this, it will add overflow to the tree */
+  &__tree-search {
+    overflow: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
 
   &--narrow-height {
     max-height: var(--hero-narrow-max-height);
@@ -52,8 +63,9 @@
     justify-content: center;
     align-items: flex-start;
     position: relative;
-    z-index: 2;
+    z-index: 4;
     height: 100vh;
+    hyphens: auto;
     max-height: var(--hero-max-height);
 
     @media (--viewport-md-min) {
@@ -139,13 +151,18 @@
   }
 
   & .icon--tree {
-    width: 1273px;
-    height: 1584px;
     position: absolute;
     top: -60px;
     left: 0;
     fill: var(--theme-hero-icon-color);
     opacity: .5;
+    height: 650px;
+    width: 500px;
+
+    @media (--viewport-ms-min) {
+      width: 1273px;
+      height: 1584px;
+    }
   }
 }
 
@@ -198,4 +215,30 @@
     fill: var(--color-white);
     pointer-events: none;
   }
+
+  /* stylelint-disable */
+  .search_autocomplete {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    border-radius: var(--button-border-radius);
+    background: var(--color-white);
+    padding: 20px 45px !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .1);
+
+    li {
+      padding: 10px 0 !important;
+      border: none;
+      border-bottom: 1px solid var(--theme-input-border);
+      color: var(--color-black);
+      text-align: left;
+      cursor: pointer;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+  }
+  /* stylelint-enable */
 }

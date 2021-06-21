@@ -1,0 +1,8 @@
+name: Favrskov høringer
+description: Favrskov høringsfunktioner
+package: Favrskov
+type: module
+core_version_requirement: ^8 || ^9
+
+interface translation project: favrskov_hearings
+interface translation server pattern: modules/custom/favrskov_hearings/translations/%language.po

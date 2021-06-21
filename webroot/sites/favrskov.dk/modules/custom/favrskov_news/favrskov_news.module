@@ -46,7 +46,8 @@ function favrskov_news_cron() {
   }
 
   $node_ids = \Drupal::entityQuery('node')
-    ->condition('created' , strtotime('-3 months'), '<')
+    ->condition('type', 'news')
+    ->condition('field_list_date' , strtotime('-3 months'), '<')
     ->condition('field_keep_published', 0)
     ->condition('status', 1)
     ->range(NULL, 100)

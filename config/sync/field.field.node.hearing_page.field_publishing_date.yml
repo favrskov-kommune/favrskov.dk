@@ -1,0 +1,21 @@
+uuid: 3e1eab6d-5861-4df8-9cef-f5a2e417fd7f
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publishing_date
+    - node.type.hearing_page
+  module:
+    - datetime
+id: node.hearing_page.field_publishing_date
+field_name: field_publishing_date
+entity_type: node
+bundle: hearing_page
+label: Offentliggjort
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

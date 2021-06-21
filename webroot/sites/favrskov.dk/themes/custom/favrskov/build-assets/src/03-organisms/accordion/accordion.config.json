@@ -4,6 +4,8 @@
   "context": {
     "headline": "See all FAQ items",
     "show_more_text": "See all FAQ items",
+    "fold_out_text": "+ Fold alle ud",
+    "fold_in_text": "- Fold alle ind",
     "items": [
       {
         "id": 1,

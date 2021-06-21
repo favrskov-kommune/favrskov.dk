@@ -28,8 +28,9 @@
 {% embed '@organisms/accordion/accordion.twig' with {
   'attributes': attributes,
   'headline': content.field_accordion_headline,
-  'show_more_text': content['#block_content'].field_accordion_show_more.value,
-  'items_count': content['#block_content'].field_accordion_items|length
+  'items_count': content['#block_content'].field_accordion_items|length,
+  'fold_out_text': '+ Fold all out'|t,
+  'fold_in_text': '- Fold all in'|t,
 } %}
   {% block block_content %}
     {{ title_prefix }}

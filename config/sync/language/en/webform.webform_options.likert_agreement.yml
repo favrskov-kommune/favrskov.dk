@@ -1,3 +1,8 @@
 label: 'Likert: Agreement'
 category: Likert
-options: "1: 'Much Worse'\n2: 'Somewhat Worse'\n3: 'About the Same'\n4: 'Somewhat Better'\n5: 'Much Better'\n"
+options: |
+  1: 'Much Worse'
+  2: 'Somewhat Worse'
+  3: 'About the Same'
+  4: 'Somewhat Better'
+  5: 'Much Better'

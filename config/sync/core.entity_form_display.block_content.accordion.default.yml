@@ -6,7 +6,6 @@ dependencies:
     - block_content.type.accordion
     - field.field.block_content.accordion.field_accordion_headline
     - field.field.block_content.accordion.field_accordion_items
-    - field.field.block_content.accordion.field_accordion_show_more
   module:
     - paragraphs
 _core:
@@ -35,14 +34,6 @@ content:
       form_display_mode: default
       default_paragraph_type: accordion_item
     third_party_settings: {  }
-    region: content
-  field_accordion_show_more:
-    weight: 2
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
     region: content
   translation:
     weight: 10

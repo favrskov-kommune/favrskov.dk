@@ -1,0 +1,11 @@
+uuid: fa27a663-d0d4-4b08-90f4-d2d98ca19535
+langcode: da
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.hearing_places
+id: taxonomy_term.hearing_places
+target_entity_type_id: taxonomy_term
+target_bundle: hearing_places
+default_langcode: site_default
+language_alterable: false

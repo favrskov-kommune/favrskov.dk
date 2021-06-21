@@ -25,21 +25,6 @@ const spriter = new SVGSpriter({
         return path.basename(name, '.svg');
       },
     },
-    // Convert style to attributes
-    transform: [{
-      svgo: {
-        plugins: [
-          {
-            removeAttrs: {
-              attrs: '(fill.*|stroke.*|transform.*)',
-            },
-          },
-          {
-            inlineStyles: true,
-          },
-        ],
-      },
-    }],
   },
   mode: {
     symbol: true,

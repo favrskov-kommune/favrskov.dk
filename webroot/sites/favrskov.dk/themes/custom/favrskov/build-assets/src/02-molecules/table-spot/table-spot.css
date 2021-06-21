@@ -13,6 +13,10 @@
     border-spacing: 0;
     font-size: var(--base-font-size-large);
 
+    @media (--viewport-ms-max) {
+      font-size: var(--base-font-size-medium);
+    }
+
     & caption {
       text-align: left;
       margin-bottom: 40px;
