@@ -2,7 +2,7 @@
 
 <div{{ (not attributes ? create_attribute() : attributes).addClass('video').addClass('js-video').addClass(inverted ? 'video--inverted') }}>
   {% block block_content %}{% endblock %}
-  <div class="video__iframe-wrapper js-video-iframe-wrapper">{{ media }}</div>
+  <div class="video__iframe-wrapper js-video-iframe-wrapper"></div>
   {{ media_image }}
   <div class="video__play-icon js-video-play-icon">
     {% include '@particles/svg-icon/svg-icon.twig' with {
