@@ -98,6 +98,7 @@
   &--small {
     flex-direction: column;
     background: var(--color-white);
+    height: 100%;
 
     .appetiser__image {
       width: 100%;
