@@ -262,6 +262,7 @@
 .col-lg-offset-12 {
   padding-left: var(--half-gutter-width-mobile);
   padding-right: var(--half-gutter-width-mobile);
+  display: flex;
 
   @media (--viewport-md-min) {
     padding-right: var(--half-gutter-width);

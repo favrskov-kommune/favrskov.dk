@@ -10,7 +10,7 @@
     background-color: var(--theme-background-color);
   }
 
-  a:not(.button--red):not(.button--green):not(.button--gray):not(.button--white) {
+  a:not(.button--red):not(.button--green):not(.button--gray):not(.button--white):not(.appetiser--small a) {
     color: var(--theme-link-color);
   }
 
