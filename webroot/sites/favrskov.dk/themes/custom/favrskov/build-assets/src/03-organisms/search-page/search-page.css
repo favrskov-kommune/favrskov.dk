@@ -48,6 +48,7 @@
       position: absolute;
       top: 0;
       right: 0;
+      background-image: none;
 
       .icon {
         width: 40px;
