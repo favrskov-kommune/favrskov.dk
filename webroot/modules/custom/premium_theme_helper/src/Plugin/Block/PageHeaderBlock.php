@@ -123,6 +123,10 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
         }
       }
     }
+    if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_hide_title') && $route_entity->get('field_hide_title')->first()->getValue()['value'] == 1) {
+      $cacheMetadata->addCacheableDependency($route_entity);
+      $build['header'] = [];
+    }
     if (!isset($build['header'])) {
       if (!is_null($request)) {
         $title = $this->titleResolver->getTitle($request, $this->routeMatch->getRouteObject());
