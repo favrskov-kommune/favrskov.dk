@@ -15,10 +15,11 @@ function favrskov_preprocess_block__inline_block__inline_navigation(array &$vari
   $links = [];
   if ($block->hasField('field_link_list') && !$block->get('field_link_list')->isEmpty()) {
     $block_link_list = $block->get('field_link_list')->entity->get('field_links');
-//    dump($block_link_list);
+    $block_link_list_name = $block->get('field_link_list')->entity->get('name')->value;
+    $links['name'] = $block_link_list_name;
     foreach ($block_link_list as $item) {
       $data = $item->getValue();
-      $links[] = [
+      $links['items'][] = [
         'title' => $data['title'],
         'url' => Url::fromUri($data['uri'])->toString(),
         'target' => $data['target_blank']
