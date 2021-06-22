@@ -1,6 +1,6 @@
 {{ attach_library('favrskov/appetiser') }}
 
-<div {{ (not attributes ? create_attribute() : attributes).addClass('appetiser').addClass(text_alignment ? 'appetiser--content-' ~ text_alignment).addClass(orientation and not is_small_version ? 'appetiser--image-' ~ orientation).addClass(is_small_version ? 'appetiser--small') }}>
+<div {{ (not attributes ? create_attribute() : attributes).addClass('appetiser').addClass(text_alignment ? 'appetiser--content-' ~ text_alignment).addClass(orientation and not is_small_version ? 'appetiser--image-' ~ orientation).addClass(is_small_version ? 'appetiser--small js-appetiser--small') }}>
   {% block block_content %}{% endblock %}
   <div class="appetiser__content-wrapper">
     {% if display_as_fullwidth %}
@@ -25,7 +25,8 @@
       <div class="appetiser__arrow">
         <span></span>
       </div>
-      <div class="appetiser__label">{{ 'Read more'|t }}</div>
+      <div class="appetiser__label--expanded">{{ 'Read less'|t }}</div>
+      <div class="appetiser__label--collapsed">{{ 'Read more'|t }}</div>
     </a>
   </div>
   {% if media %}

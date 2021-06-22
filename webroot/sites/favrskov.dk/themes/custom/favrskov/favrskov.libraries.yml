@@ -193,6 +193,8 @@ appetiser:
   css:
     theme:
       build-assets/dist/css/03-organisms/appetiser/appetiser.css: {}
+  js:
+    build-assets/dist/js/03-organisms/appetiser/appetiser.js: { preprocess: false }
 
 burger-menu:
   version: VERSION
