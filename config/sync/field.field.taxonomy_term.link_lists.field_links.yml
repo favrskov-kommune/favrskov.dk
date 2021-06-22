@@ -1,0 +1,23 @@
+uuid: 7da44045-ea6e-4f2f-8429-b036457bd86c
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_links
+    - taxonomy.vocabulary.link_lists
+  module:
+    - premium_tools
+id: taxonomy_term.link_lists.field_links
+field_name: field_links
+entity_type: taxonomy_term
+bundle: link_lists
+label: Links
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: '17'
+  title: '1'
+field_type: link_with_target

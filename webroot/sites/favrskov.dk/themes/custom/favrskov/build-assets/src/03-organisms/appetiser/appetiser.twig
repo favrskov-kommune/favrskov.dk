@@ -21,6 +21,12 @@
       {% if display_as_fullwidth %}
     </div>
     {% endif %}
+    <a href="#" class="appetiser__read-more">
+      <div class="appetiser__arrow">
+        <span></span>
+      </div>
+      <div class="appetiser__label">{{ 'Read more'|t }}</div>
+    </a>
   </div>
   {% if media %}
     <figure{{ create_attribute().addClass('appetiser__image') }}>

@@ -1,0 +1,29 @@
+uuid: 391ab1e5-8274-4265-80d8-9e3d4af615f3
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.inline_navigation
+    - field.storage.block_content.field_link_list
+    - taxonomy.vocabulary.link_lists
+id: block_content.inline_navigation.field_link_list
+field_name: field_link_list
+entity_type: block_content
+bundle: inline_navigation
+label: 'Link liste'
+description: 'Vælg en link liste for at vise som boks til højre.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      link_lists: link_lists
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

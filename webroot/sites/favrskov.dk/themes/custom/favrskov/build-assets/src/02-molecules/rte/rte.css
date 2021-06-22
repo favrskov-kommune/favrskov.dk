@@ -1,5 +1,6 @@
 .rte-block {
   font-size: var(--base-font-size-large);
+  display: flex;
 
   @media (--viewport-ms-max) {
     font-size: var(--base-font-size-medium);
