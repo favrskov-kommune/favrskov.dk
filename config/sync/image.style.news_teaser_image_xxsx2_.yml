@@ -1,0 +1,18 @@
+uuid: aafefd3d-fa06-4b42-86d5-1b925512cfb6
+langcode: da
+status: true
+dependencies:
+  module:
+    - focal_point
+name: news_teaser_image_xxsx2_
+label: 'News teaser image (XXSx2)'
+effects:
+  2b6f9476-ea16-4adc-aaff-f67e41a75ec4:
+    uuid: 2b6f9476-ea16-4adc-aaff-f67e41a75ec4
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 688
+      height: 388
+      crop_type: focal_point
+pipeline: __default__

@@ -98,7 +98,6 @@
   &--small {
     flex-direction: column;
     background: var(--color-white);
-    height: 100%;
 
     .appetiser__image {
       width: 100%;
@@ -130,6 +129,7 @@
       overflow: hidden;
       position: relative;
       height: 100%;
+      align-items: flex-start;
 
       &::after {
         display: none;
@@ -148,6 +148,7 @@
       justify-content: normal;
       width: 100%;
       padding: 0 40px 40px;
+      height: auto;
 
       @media (--viewport-md-max) {
         padding: 0 25px 25px;

@@ -34,6 +34,10 @@ function favrskov_preprocess_block__inline_block__inline_navigation(array &$vari
 
   $variables['is_slider'] = $block_view_mode === 'inline_navigation_campaign';
   $variables['content'] = $rendered_content;
+
+  if ($block_view_mode === 'inline_navigation_campaign') {
+    $variables['attributes']['class'][] = 'inline-navigation-campaign';
+  }
 }
 
 function favrskov_preprocess_block__inline_block__document_list(array &$variables) {

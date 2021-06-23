@@ -1,0 +1,18 @@
+uuid: 9b23b133-0570-42ef-8666-0e0422488288
+langcode: da
+status: true
+dependencies:
+  module:
+    - focal_point
+name: news_teaser_image_sm_
+label: 'News teaser image (SM)'
+effects:
+  31467038-455f-4312-aa96-926352e33c17:
+    uuid: 31467038-455f-4312-aa96-926352e33c17
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 357
+      height: 201
+      crop_type: focal_point
+pipeline: __default__

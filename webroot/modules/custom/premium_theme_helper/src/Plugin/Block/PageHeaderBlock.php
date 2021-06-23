@@ -102,7 +102,7 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
     $request = $this->requestStack->getCurrentRequest();
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
     $route_entity = $this->getEntityFromRouteMatch($this->routeMatch);
-    if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_header')) {
+    if ($route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_header')) {
       $cacheMetadata->addCacheableDependency($route_entity);
 
       if (!$route_entity->get('field_header')->isEmpty()) {
@@ -123,10 +123,20 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
         }
       }
     }
-    if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_hide_title') && $route_entity->get('field_hide_title')->first()->getValue()['value'] == 1) {
-      $cacheMetadata->addCacheableDependency($route_entity);
-      $build['header'] = [];
+
+    try {
+      if ($route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_hide_title')) {
+        $hide_title = $route_entity->get('field_hide_title')->first();
+        if (!is_null($hide_title) && (int) $hide_title->getValue()['value'] === 1) {
+          $cacheMetadata->addCacheableDependency($route_entity);
+          $build['header'] = [];
+        }
+      }
     }
+    catch (MissingDataException $e) {
+      $this->logger->error($e->getMessage());
+    }
+
     if (!isset($build['header'])) {
       if (!is_null($request)) {
         $title = $this->titleResolver->getTitle($request, $this->routeMatch->getRouteObject());

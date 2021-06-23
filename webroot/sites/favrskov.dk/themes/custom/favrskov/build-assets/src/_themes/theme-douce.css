@@ -7,10 +7,19 @@
   --theme-background-color: var(--color-gray);
   --theme-hero-icon-color: var(--color-gray-hover);
   --theme-button-background-color: var(--color-white);
-  --theme-button-color: var(--color-text);
+  --theme-button-color: var(--color-black);
   --theme-button-background-image-path: none;
   --theme-button-padding: var(--button-padding);
   --theme-button-background-color-hover: var(--color-primary);
   --theme-button-color-hover: var(--color-white);
   --theme-accordion-background-color: var(--color-white);
+  --theme-pager-previous-background-color: var(--color-white);
+  --theme-pager-previous-link-color: var(--color-primary);
+  --theme-pager-next-background-color: var(--color-primary);
+  --theme-pager-next-link-color: var(--color-white);
+  --theme-pager-active-link-color: var(--color-white);
+  --theme-pager-active-background-color: var(--color-cta);
+  --theme-pager-link-color: var(--color-black);
+  --theme-pager-previous-arrow-color: var(--color-primary);
+  --theme-pager-next-arrow-color: var(--color-white);
 }

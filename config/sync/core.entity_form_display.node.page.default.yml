@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.page.field_description
     - field.field.node.page.field_header
     - field.field.node.page.field_hide_breadcrumb
+    - field.field.node.page.field_hide_title
     - field.field.node.page.field_list_icon
     - field.field.node.page.field_list_media
     - field.field.node.page.field_meta_tags
@@ -31,7 +32,7 @@ third_party_settings:
       children:
         - field_header
       parent_name: ''
-      weight: 6
+      weight: 7
       format_type: fieldset
       region: content
       format_settings:
@@ -46,9 +47,10 @@ third_party_settings:
       children:
         - field_chatbot_muni
         - field_hide_breadcrumb
+        - field_hide_title
         - field_color_theme
       parent_name: ''
-      weight: 5
+      weight: 6
       format_type: details_sidebar
       region: content
       format_settings:
@@ -68,13 +70,13 @@ mode: default
 content:
   content_hierarchy:
     type: content_hierarchy_select
-    weight: 15
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     region: content
   created:
     type: datetime_timestamp
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -85,13 +87,13 @@ content:
     type: dynamic_key_value_widget
     region: content
   field_color_theme:
-    weight: 18
+    weight: 19
     settings: {  }
     third_party_settings: {  }
     type: dynamic_key_value_widget
     region: content
   field_description:
-    weight: 2
+    weight: 3
     settings:
       rows: 3
       placeholder: ''
@@ -117,22 +119,29 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_hide_title:
+    type: boolean_checkbox
+    weight: 18
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_list_icon:
     type: media_library_widget
-    weight: 4
+    weight: 5
     settings:
       media_types: {  }
     third_party_settings: {  }
     region: content
   field_list_media:
     type: media_library_widget
-    weight: 3
+    weight: 4
     settings:
       media_types: {  }
     third_party_settings: {  }
     region: content
   field_meta_tags:
-    weight: 13
+    weight: 14
     settings:
       sidebar: true
     third_party_settings: {  }
@@ -147,13 +156,13 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 14
+    weight: 15
     settings: {  }
     region: content
     third_party_settings: {  }
   path:
     type: path
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -161,7 +170,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 13
     region: content
     third_party_settings: {  }
   title:
@@ -173,13 +182,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 7
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
@@ -188,7 +197,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 11
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }

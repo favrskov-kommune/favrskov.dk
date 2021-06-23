@@ -74,7 +74,7 @@ a.button {
 
   &--gray {
     background-color: var(--color-gray);
-    color: var(--color-text);
+    color: var(--color-black);
     background-image: none;
     padding: var(--button-padding);
 
@@ -85,7 +85,7 @@ a.button {
 
   &--white {
     background-color: var(--color-white);
-    color: var(--color-text);
+    color: var(--color-black);
     background-image: none;
     padding: var(--button-padding);
 

@@ -1,28 +1,26 @@
-function appetizerLoop() {
-  const appetizers = document.querySelectorAll('.js-appetiser--small:not(.show-more)');
-  if (appetizers.length === 0) {
+function appLoop() {
+  const apps = document.querySelectorAll('.js-appetiser--small:not(.show-more)');
+  if (apps.length === 0) {
     return;
   }
 
-  for (let i = 0; i < appetizers.length; i += 1) {
-    const appetizerContentWrapper = appetizers[i].querySelector('.appetiser__content-wrapper');
-    const appetizerTitle = appetizers[i].querySelector('.appetiser__title');
-    const appetizerDescription = appetizers[i].querySelector('.appetiser__description');
-    const appetizerContentHeight = appetizerDescription.offsetHeight + appetizerTitle.offsetHeight;
-    const appetizerExpandedHeight = appetizerContentHeight + 50;
-    const appetizerReadMore = appetizers[i].querySelector('.appetiser__read-more');
+  for (let i = 0; i < apps.length; i += 1) {
+    const appContWrap = apps[i].querySelector('.appetiser__content-wrapper');
+    const appContent = apps[i].querySelector('.appetiser__content');
+    const appExpHeight = appContent.offsetHeight + 30;
+    const appReadMore = apps[i].querySelector('.appetiser__read-more');
 
-    if (appetizerContentHeight > appetizerContentWrapper.offsetHeight) {
-      appetizers[i].classList.add('show-more');
+    if (appContent.offsetHeight > appContWrap.offsetHeight) {
+      apps[i].classList.add('show-more');
 
-      appetizerReadMore.addEventListener('click', (event) => {
+      appReadMore.addEventListener('click', (event) => {
         event.preventDefault();
-        if (appetizerContentWrapper.classList.contains('expanded')) {
-          appetizerContentWrapper.classList.remove('expanded');
-          appetizerContentWrapper.removeAttribute('style');
+        if (appContWrap.classList.contains('expanded')) {
+          appContWrap.classList.remove('expanded');
+          appContWrap.removeAttribute('style');
         } else {
-          appetizerContentWrapper.classList.add('expanded');
-          appetizerContentWrapper.setAttribute('style', `max-height:${appetizerExpandedHeight}px`);
+          appContWrap.classList.add('expanded');
+          appContWrap.setAttribute('style', `max-height:${appExpHeight}px; height:${appExpHeight}px`);
         }
       }, false);
     }
@@ -31,6 +29,6 @@ function appetizerLoop() {
 
 Drupal.behaviors.appetiser = {
   attach(context) {
-    appetizerLoop();
+    appLoop();
   },
 };

@@ -2,7 +2,6 @@
 {%
   set classes = [
     'inline-navigation',
-    is_slider ? 'inline-navigation-campaign',
     link_list ? 'inline-navigation-link-list col-xs-12 col-sm-6 col-md-8 col-lg-9 pr-sm-0'
   ]
 %}
@@ -23,6 +22,11 @@
       {% endfor %}
     {% endblock %}
   </ul>
+  {% block pager %}
+    {% include '@organisms/pager/pager.twig' with {
+      'items': pager_items
+    } %}
+  {% endblock %}
 </div>
 {% if link_list.items %}
     <div class="inline-navigation col-xs-12 col-sm-6 col-md-4 col-lg-3 pl-sm-0">

@@ -10,7 +10,7 @@
     background-color: var(--theme-background-color);
   }
 
-  a:not(.button--red):not(.button--green):not(.button--gray):not(.button--white):not(.appetiser--small a):not(.inline-navigation__link-list-item) {
+  a:not(.button):not(.pager__link):not(.appetiser--small a):not(.inline-navigation__link-list-item) {
     color: var(--theme-link-color);
   }
 
@@ -34,6 +34,10 @@
     border-color: var(--theme-accordion-border-color);
     background-color: var(--theme-accordion-background-color);
     color: var(--theme-accordion-text-color);
+  }
+
+  .accordion__toggle {
+    color: var(--theme-accordion-toggle-text-color);
   }
 
   .checkbox,
@@ -97,14 +101,43 @@
     }
   }
 
-  .pager {
-    &__item {
-      background-color: var(--theme-color);
-      box-shadow: 0 2px 0 0 var(--theme-color);
+  .pager__item {
+    a {
+      color: var(--theme-pager-link-color);
     }
 
-    a {
-      color: var(--theme-link-color);
+    &--previous {
+      background-color: var(--theme-pager-previous-background-color);
+
+      &::after,
+      &::before {
+        background-color: var(--theme-pager-previous-arrow-color);
+      }
+
+      a {
+        color: var(--theme-pager-previous-link-color);
+      }
+    }
+
+    &--next {
+      background-color: var(--theme-pager-next-background-color);
+
+      &::after,
+      &::before {
+        background-color: var(--theme-pager-next-arrow-color);
+      }
+
+      a {
+        color: var(--theme-pager-next-link-color);
+      }
+    }
+
+    &.is-active {
+      background-color: var(--theme-pager-active-background-color);
+
+      a {
+        color: var(--theme-pager-active-link-color);
+      }
     }
   }
 

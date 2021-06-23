@@ -1,0 +1,59 @@
+uuid: f546fe22-2211-43c0-9854-015f4cf2aaa4
+langcode: da
+status: true
+dependencies:
+  config:
+    - image.style.news_teaser_image_lg_
+    - image.style.news_teaser_image_md_
+    - image.style.news_teaser_image_sm_
+    - image.style.news_teaser_image_xs_
+    - image.style.news_teaser_image_xsx2_
+    - image.style.news_teaser_image_xxs_
+    - image.style.news_teaser_image_xxsx2_
+  theme:
+    - favrskov
+id: news_teaser
+label: 'News teaser'
+image_style_mappings:
+  -
+    breakpoint_id: favrskov.xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: news_teaser_image_lg_
+  -
+    breakpoint_id: favrskov.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: news_teaser_image_lg_
+  -
+    breakpoint_id: favrskov.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: news_teaser_image_md_
+  -
+    breakpoint_id: favrskov.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: news_teaser_image_sm_
+  -
+    breakpoint_id: favrskov.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: news_teaser_image_xs_
+  -
+    breakpoint_id: favrskov.xs
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: news_teaser_image_xsx2_
+  -
+    breakpoint_id: favrskov.xxs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: news_teaser_image_xxs_
+  -
+    breakpoint_id: favrskov.xxs
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: news_teaser_image_xxsx2_
+breakpoint_group: favrskov
+fallback_image_style: news_teaser_image_xxs_

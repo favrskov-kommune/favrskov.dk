@@ -1,0 +1,18 @@
+uuid: a3a2bdb2-13a1-43c6-808c-b3c689c97539
+langcode: da
+status: true
+dependencies:
+  module:
+    - focal_point
+name: news_teaser_image_lg_
+label: 'News teaser image (LG)'
+effects:
+  26c3dc2d-1ebb-44b0-bd45-3ab2c8181f2f:
+    uuid: 26c3dc2d-1ebb-44b0-bd45-3ab2c8181f2f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 340
+      height: 192
+      crop_type: focal_point
+pipeline: __default__

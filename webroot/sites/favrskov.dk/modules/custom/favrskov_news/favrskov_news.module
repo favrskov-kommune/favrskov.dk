@@ -110,5 +110,6 @@ function favrskov_preprocess_block__inline_block__news_list(array &$variables) {
   $nids = $query->execute();
   $nodes = Node::loadMultiple($nids);
 
-  $variables['items'] = Drupal::entityTypeManager()->getViewBuilder('node')->viewMultiple($nodes, 'teaser');
+  $variables['attributes']['class'][] = 'inline-navigation-news';
+  $variables['items'] = Drupal::entityTypeManager()->getViewBuilder('node')->viewMultiple($nodes, 'news_teaser');
 }
