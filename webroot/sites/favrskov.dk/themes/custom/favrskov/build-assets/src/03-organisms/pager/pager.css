@@ -4,31 +4,121 @@
  */
 
 .pager {
-  padding-left: 0;
-  margin-top: 50px;
-
   &__items {
-    padding-left: 0;
-    list-style: none;
     text-align: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   &__item {
-    background-color: var(--color-gray);
     display: inline-block;
-    padding: 11px 9px 11px;
-    min-width: 35px;
-    text-align: center;
-    font-size: var(--base-font-size-small);
-    box-shadow: 0 2px 0 0 var(--color-gray);
+    font-weight: 700;
+    margin-top: 10px;
+
+    a {
+      text-decoration: none;
+      color: var(--theme-pager-link-color);
+    }
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    &--previous::after,
+    &--previous::before,
+    &--next::before,
+    &--next::after {
+      content: '';
+      height: 2px;
+      width: 11px;
+      display: block;
+      border-radius: 2px;
+      position: absolute;
+      top: 50%;
+      transition: left .2s, right .2s;
+    }
+
+    &--previous {
+      background-color: var(--theme-pager-previous-background-color);
+      border-radius: 30px;
+      position: relative;
+
+      &::before {
+        transform: rotate(-45deg);
+        margin-top: -4px;
+      }
+
+      &::after {
+        transform: rotate(45deg);
+        margin-top: 3px;
+      }
+
+      &::after,
+      &::before {
+        background-color: var(--theme-pager-previous-arrow-color);
+        left: 20px;
+      }
+
+      &:hover {
+        &::after,
+        &::before {
+          left: 18px;
+        }
+      }
+
+      a {
+        padding: 10px 30px 10px 45px;
+        display: block;
+        color: var(--theme-pager-previous-link-color);
+      }
+    }
+
+    &--next {
+      background-color: var(--theme-pager-next-background-color);
+      border-radius: 30px;
+      position: relative;
+
+      &::before {
+        transform: rotate(45deg);
+        margin-top: -4px;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+        margin-top: 3px;
+      }
+
+      &::after,
+      &::before {
+        background-color: var(--theme-pager-next-arrow-color);
+        right: 20px;
+      }
+
+      &:hover {
+        &::after,
+        &::before {
+          right: 18px;
+        }
+      }
+
+      a {
+        padding: 10px 45px 10px 30px;
+        display: block;
+        color: var(--theme-pager-next-link-color);
+      }
+    }
 
     &.is-active {
-      font-weight: bold;
-    }
-  }
+      border-radius: 50%;
+      background-color: var(--theme-pager-active-background-color);
+      padding: 10px;
+      width: 44px;
+      height: 44px;
 
-  a {
-    text-decoration: none;
-    color: var(--theme-link-color);
+      a {
+        color: var(--theme-pager-active-link-color);
+      }
+    }
   }
 }

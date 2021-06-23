@@ -2,7 +2,6 @@
 {%
   set classes = [
     'inline-navigation',
-    is_slider ? 'inline-navigation-campaign'
   ]
 %}
 <div{{ (not attributes ? create_attribute() : attributes).addClass(classes) }}>
@@ -19,4 +18,9 @@
       {% endfor %}
     {% endblock %}
   </ul>
+  {% block pager %}
+    {% include '@organisms/pager/pager.twig' with {
+      'items': pager_items
+    } %}
+  {% endblock %}
 </div>

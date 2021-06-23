@@ -1,0 +1,10 @@
+uuid: f53eb8ab-f1fb-4124-a153-675247c7d992
+langcode: da
+status: true
+dependencies:
+  module:
+    - media
+id: media.news
+label: 'News teaser'
+targetEntityType: media
+cache: true

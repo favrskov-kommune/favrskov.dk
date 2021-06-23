@@ -1,0 +1,10 @@
+uuid: 2fc8b11f-c8f6-41f3-ae74-9a91bb7e847b
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: node.news_teaser
+label: 'News teaser'
+targetEntityType: node
+cache: true

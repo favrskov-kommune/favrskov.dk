@@ -25,9 +25,18 @@
  * @see template_preprocess_block()
  */
 #}
-<div {{ attributes }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
-  {{ items }}
-  {{ pager }}
-</div>
+{% embed '@organisms/inline-navigation/inline-navigation.twig' with {
+  'attributes': attributes,
+  'is_slider': true
+} %}
+  {% block block_content %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+  {% endblock %}
+  {% block content %}
+    {{ items }}
+  {% endblock %}
+  {% block pager %}
+    {{ pager }}
+  {% endblock %}
+{% endembed %}

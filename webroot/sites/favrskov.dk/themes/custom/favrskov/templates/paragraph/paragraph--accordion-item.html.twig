@@ -47,11 +47,6 @@
 ]
 %}
 {% block paragraph %}
-  {% set index = paragraph.itemIndex + 1 %}
-  {% if index > 5 %}
-    {% set attributes = attributes.setAttribute(':hidden', '!showAllHiddenItems') %}
-  {% endif %}
-
   <accordion-item {{ attributes.addClass(classes).setAttribute('title', paragraph.field_accordion_item_headline.value).setAttribute('id', paragraph.id()) }}>
     {{ content.field_accordion_item_text }}
   </accordion-item>

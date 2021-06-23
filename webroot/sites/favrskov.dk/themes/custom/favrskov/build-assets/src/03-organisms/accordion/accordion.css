@@ -20,7 +20,7 @@
     font-weight: 700;
     font-size: 18px;
     cursor: pointer;
-    color: var(--color-primary);
+    color: var(--theme-accordion-toggle-text-color);
   }
 
   &__header {

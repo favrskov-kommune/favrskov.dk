@@ -1,0 +1,8 @@
+uuid: f3ecd354-a0f7-4a0f-81e3-3ede99d83392
+langcode: da
+status: true
+dependencies: {  }
+id: news_date
+label: 'Nyheds dato'
+locked: false
+pattern: d.m.Y
