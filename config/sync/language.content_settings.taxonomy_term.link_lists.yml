@@ -1,0 +1,11 @@
+uuid: fe6e243a-ecb7-43f8-93db-f1f0c7a502e1
+langcode: da
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.link_lists
+id: taxonomy_term.link_lists
+target_entity_type_id: taxonomy_term
+target_bundle: link_lists
+default_langcode: site_default
+language_alterable: false

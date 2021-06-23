@@ -19,7 +19,7 @@
         <div class="col-xs-10 col-md-8 col-lg-6 col-xs-offset-1 col-md-offset-2 col-lg-offset-3">
           <div{{ (not content_attributes ? create_attribute() : content_attributes).addClass('hero__content') }}>
             <form id="cludo-search-form" role="search" class="hero__search">
-              <input type="search" class="hero__search--text" id="js-search-overlay-input" placeholder="Hvad kan vi hjælpe med?" aria-label="Search" aria-describedby="autocomplete_hint">
+              <input type="search" class="hero__search--text" id="js-search-input" placeholder="Hvad kan vi hjælpe med?" aria-label="Search" aria-describedby="autocomplete_hint">
               <button type="submit" class="hero__search--submit" id="search-button">
                 {% block content %}
                   {% include '@particles/svg-icon/svg-icon.twig' with {

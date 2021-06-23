@@ -304,3 +304,6 @@ msgstr "Luk (Esc)"
 
 msgid "Call to action color"
 msgstr "Knap farve"
+
+msgid "Read less"
+msgstr "Læs mindre"

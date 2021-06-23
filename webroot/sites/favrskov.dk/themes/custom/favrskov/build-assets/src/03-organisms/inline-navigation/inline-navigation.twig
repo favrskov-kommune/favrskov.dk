@@ -2,8 +2,12 @@
 {%
   set classes = [
     'inline-navigation',
+    link_list ? 'inline-navigation-link-list col-xs-12 col-sm-6 col-md-8 col-lg-9 pr-sm-0'
   ]
 %}
+{% if link_list.items %}
+  <div class="row">
+{% endif %}
 <div{{ (not attributes ? create_attribute() : attributes).addClass(classes) }}>
   {% block block_content %}{% endblock %}
   <ul class="inline-navigation__list {{ is_slider ? 'js-inline-navigation-slider' }}">
@@ -24,3 +28,24 @@
     } %}
   {% endblock %}
 </div>
+{% if link_list.items %}
+    <div class="inline-navigation col-xs-12 col-sm-6 col-md-4 col-lg-3 pl-sm-0">
+      <div class="inline-navigation__list inline-navigation__link-list">
+        <div class="inline-navigation__link-list-content">
+          {% if link_list.name %}
+            <h3 class="inline-navigation__link-list-title">{{ link_list.name }}</h3>
+          {% endif %}
+          {% for link_item in link_list.items %}
+            <a href="{{ link_item.url }}" {{ link_item.target ? 'target="_blank" ' }}class="inline-navigation__link-list-item">
+              <div class="inline-navigation-item__arrow">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="inline-navigation-item__label">{{ link_item.title }}</div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

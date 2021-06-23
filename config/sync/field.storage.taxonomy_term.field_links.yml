@@ -1,0 +1,19 @@
+uuid: fef8331f-0733-4432-9005-e97c73e40aa9
+langcode: da
+status: true
+dependencies:
+  module:
+    - premium_tools
+    - taxonomy
+id: taxonomy_term.field_links
+field_name: field_links
+entity_type: taxonomy_term
+type: link_with_target
+settings: {  }
+module: premium_tools
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

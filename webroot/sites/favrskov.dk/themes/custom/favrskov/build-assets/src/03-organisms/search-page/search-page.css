@@ -48,6 +48,7 @@
       position: absolute;
       top: 0;
       right: 0;
+      background-image: none;
 
       .icon {
         width: 40px;
@@ -161,6 +162,45 @@
       top: auto;
       right: auto;
       margin-top: 20px;
+    }
+  }
+}
+#cludo-search-results .cludo-c-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+#cludo-search-results .search-filters {
+  margin-bottom: 30px;
+
+  ul {
+    width: 100%;
+
+    li {
+      display: inline-block;
+      padding: 4px 2px;
+
+      a {
+        display: block;
+        padding: 6px 16px;
+        border-radius: 18px;
+        background-color: var(--color-gray);
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: var(--base-font-size-small);
+
+        &:hover {
+          background-color: var(--color-cta);
+          color: var(--color-white);
+        }
+      }
+
+      &.active {
+        a {
+          background-color: var(--color-primary);
+          color: var(--color-white);
+        }
+      }
     }
   }
 }

@@ -1,0 +1,20 @@
+uuid: 2f448185-9c34-4923-b47b-a00c73885576
+langcode: da
+status: true
+dependencies:
+  module:
+    - block_content
+    - taxonomy
+id: block_content.field_link_list
+field_name: field_link_list
+entity_type: block_content
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

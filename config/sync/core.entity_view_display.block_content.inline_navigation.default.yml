@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.inline_navigation.field_inline_navigation_mode
     - field.field.block_content.inline_navigation.field_inline_navigation_pages
     - field.field.block_content.inline_navigation.field_inline_navigation_parent
+    - field.field.block_content.inline_navigation.field_link_list
     - field.field.block_content.inline_navigation.field_variant
   module:
     - options
@@ -40,9 +41,18 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_link_list:
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
   field_variant:
     weight: 3
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default

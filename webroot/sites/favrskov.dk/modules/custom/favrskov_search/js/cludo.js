@@ -7,7 +7,6 @@ var CludoSearch;
     language: 'da',
     searchInputs: ['cludo-search-form', 'overlay-cludo-search-form'],
     template: 'InlineBasic',
-    hideSearchFilters: true,
     focusOnResultsAfterSearch: true,
     type: 'inline'
   };
