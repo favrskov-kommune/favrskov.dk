@@ -79,3 +79,13 @@ function favrskov_preprocess_block__inline_block__document_list(array &$variable
     }
   }
 }
+
+/**
+ * Change hero paragraph, add media and page title.
+ *
+ * @param array $variables
+ *   Theme variables.
+ */
+function favrskov_preprocess_paragraph__basic_hero(array &$variables) {
+  $variables['is_front_page_header'] = \Drupal::service('path.matcher')->isFrontPage();
+}

@@ -6,7 +6,7 @@
 
 {{ attach_library('favrskov/hero') }}
 
-<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media_image ? 'hero--image-added' : 'hero--narrow-height').addClass(show_search == 1 ? 'hero--search') }}>
+<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media_image ? 'hero--image-added').addClass(not media_image and not is_front_page_header ? 'hero--narrow-height').addClass(is_front_page_header ? 'hero--is-front-pageheader').addClass(show_search == 1 ? 'hero--search') }}>
   {% if show_search == 1 %}
     <div class="hero__tree-search">
       {% include '@particles/svg-icon/svg-icon.twig' with {

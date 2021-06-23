@@ -21,13 +21,15 @@
       {% if display_as_fullwidth %}
     </div>
     {% endif %}
-    <a href="#" class="appetiser__read-more">
-      <div class="appetiser__arrow">
-        <span></span>
-      </div>
-      <div class="appetiser__label--expanded">{{ 'Read less'|t }}</div>
-      <div class="appetiser__label--collapsed">{{ 'Read more'|t }}</div>
-    </a>
+    {% if is_small_version %}
+      <a href="#" class="appetiser__read-more">
+        <div class="appetiser__arrow">
+          <span></span>
+        </div>
+        <div class="appetiser__label--expanded">{{ 'Read less'|t }}</div>
+        <div class="appetiser__label--collapsed">{{ 'Read more'|t }}</div>
+      </a>
+    {% endif %}
   </div>
   {% if media %}
     <figure{{ create_attribute().addClass('appetiser__image') }}>
