@@ -5,8 +5,7 @@
 
 :root {
   --hero-max-height: 500px;
-  --hero-max-front-pageheader-height: 780px;
-  --hero-narrow-max-height: 380px;
+  --hero-max-front-pageheader-height: 600px;
 }
 
 .hero {
@@ -33,14 +32,6 @@
       .hero__content {
         max-height: var(--hero-max-front-pageheader-height);
       }
-    }
-  }
-
-  &--narrow-height {
-    max-height: var(--hero-narrow-max-height);
-
-    .hero__content {
-      max-height: var(--hero-narrow-max-height);
     }
   }
 
