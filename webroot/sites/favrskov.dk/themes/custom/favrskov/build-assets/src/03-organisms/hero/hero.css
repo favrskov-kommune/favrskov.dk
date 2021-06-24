@@ -5,7 +5,7 @@
 
 :root {
   --hero-max-height: 500px;
-  --hero-narrow-max-height: 350px;
+  --hero-max-front-pageheader-height: 600px;
 }
 
 .hero {
@@ -25,11 +25,13 @@
     width: 100%;
   }
 
-  &--narrow-height {
-    max-height: var(--hero-narrow-max-height);
+  &--is-front-pageheader {
+    @media (--viewport-md-min) {
+      max-height: var(--hero-max-front-pageheader-height);
 
-    .hero__content {
-      max-height: var(--hero-narrow-max-height);
+      .hero__content {
+        max-height: var(--hero-max-front-pageheader-height);
+      }
     }
   }
 
