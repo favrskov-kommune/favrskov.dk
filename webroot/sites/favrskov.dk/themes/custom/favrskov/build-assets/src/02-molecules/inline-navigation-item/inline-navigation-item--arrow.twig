@@ -2,9 +2,11 @@
 
 <li {{ (not attributes ? create_attribute() : attributes ).addClass('inline-navigation-item','inline-navigation-item-arrow') }}>
   <a href="{{ url }}" class="inline-navigation-item__link">
-    <div class="inline-navigation-item__arrow">
-      <span></span>
-      <span></span>
+    <div class="inline-navigation-item__arrow-wrapper">
+      <div class="inline-navigation-item__arrow">
+        <span></span>
+        <span></span>
+      </div>
     </div>
     <h3 class="inline-navigation-item__text">{{ label }}</h3>
   </a>
