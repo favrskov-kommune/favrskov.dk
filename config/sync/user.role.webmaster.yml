@@ -23,6 +23,7 @@ permissions:
   - 'access webform overview'
   - 'access webform submission user'
   - 'administer atoms'
+  - 'administer blocks'
   - 'administer menu'
   - 'administer nodes'
   - 'administer redirect settings'
