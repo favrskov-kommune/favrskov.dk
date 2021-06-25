@@ -65,6 +65,7 @@ hidden:
   field_color_theme: true
   field_header: true
   field_hide_breadcrumb: true
+  field_hide_title: true
   field_list_icon: true
   field_list_media: true
   langcode: true
