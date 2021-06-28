@@ -18,7 +18,7 @@
   }
 
   /* When we are using this, it will add overflow to the tree */
-  &__tree-search {
+  &__tree {
     overflow: hidden;
     position: absolute;
     height: 100%;
@@ -92,6 +92,14 @@
     .contextual-region {
       position: initial;
     }
+  }
+  &__iframe-outer-wrapper {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   &--center {
