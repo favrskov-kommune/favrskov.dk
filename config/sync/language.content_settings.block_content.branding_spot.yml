@@ -1,0 +1,11 @@
+uuid: c92ad9bc-6142-4e9f-9680-be46aca2e3fd
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.branding_spot
+id: block_content.branding_spot
+target_entity_type_id: block_content
+target_bundle: branding_spot
+default_langcode: site_default
+language_alterable: false

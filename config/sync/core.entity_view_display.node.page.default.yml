@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.page.field_description
     - field.field.node.page.field_header
     - field.field.node.page.field_hide_breadcrumb
+    - field.field.node.page.field_hide_title
     - field.field.node.page.field_list_icon
     - field.field.node.page.field_list_media
     - field.field.node.page.field_meta_tags

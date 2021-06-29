@@ -196,6 +196,14 @@ appetiser:
   js:
     build-assets/dist/js/03-organisms/appetiser/appetiser.js: { preprocess: false }
 
+branding-spot:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/branding-spot/branding-spot.css: {}
+  js:
+    build-assets/dist/js/03-organisms/branding-spot/branding-spot.js: { preprocess: false }
+
 burger-menu:
   version: VERSION
   css:
@@ -229,6 +237,12 @@ header:
   css:
     theme:
       build-assets/dist/css/03-organisms/header/header.css: {}
+
+hearing-page:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/hearing-page/hearing-page.css: {}
 
 hero:
   version: VERSION
@@ -276,12 +290,6 @@ search-page:
   css:
     theme:
       build-assets/dist/css/03-organisms/search-page/search-page.css: {}
-
-hearing-page:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/03-organisms/hearing-page/hearing-page.css: {}
 
 status-message:
   version: VERSION

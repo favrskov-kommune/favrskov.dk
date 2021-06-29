@@ -1,0 +1,13 @@
+uuid: 0a37462d-aa55-4c48-9cc0-54b5de087936
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.branding_spot
+id: block_content.branding_spot.default
+targetEntityType: block_content
+bundle: branding_spot
+mode: default
+content: {  }
+hidden:
+  langcode: true

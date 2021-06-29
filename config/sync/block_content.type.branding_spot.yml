@@ -1,0 +1,8 @@
+uuid: 45d34f7b-86cc-4a85-93fa-9ed5da4057b5
+langcode: da
+status: true
+dependencies: {  }
+id: branding_spot
+label: 'Branding spot'
+revision: 0
+description: ''
