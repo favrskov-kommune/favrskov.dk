@@ -26,7 +26,10 @@
  */
 #}
 {% embed '@organisms/branding-spot/branding-spot.twig' with {
-  'attributes': attributes
+  'attributes': attributes,
+  'headline': branding_spot_title,
+  'subline': branding_spot_subline,
+  'links': branding_spot_links
 } %}
   {% block block_content %}
     {{ title_prefix }}
