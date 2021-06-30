@@ -1,0 +1,21 @@
+uuid: 8a24ad71-852a-454a-8511-f9d4d4ee3721
+langcode: da
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.field_branding_spot_subline
+field_name: field_branding_spot_subline
+entity_type: block_content
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
