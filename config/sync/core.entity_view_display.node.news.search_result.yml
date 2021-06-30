@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.news.body
     - field.field.node.news.field_chatbot_muni
     - field.field.node.news.field_description
-    - field.field.node.news.field_header
     - field.field.node.news.field_hide_breadcrumb
     - field.field.node.news.field_keep_published
     - field.field.node.news.field_list_date
@@ -54,7 +53,6 @@ hidden:
   body: true
   content_moderation_control: true
   field_chatbot_muni: true
-  field_header: true
   field_hide_breadcrumb: true
   field_keep_published: true
   field_list_date: true
