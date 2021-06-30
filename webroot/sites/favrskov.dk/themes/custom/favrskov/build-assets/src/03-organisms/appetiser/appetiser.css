@@ -131,6 +131,11 @@
       height: 100%;
       align-items: flex-start;
 
+      &.expanded {
+        max-height: 5000px;
+        height: auto;
+      }
+
       &::after {
         display: none;
         content: "";
@@ -140,18 +145,17 @@
         bottom: 0;
         height: 100px;
         background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, .8) 70%, rgba(255, 255, 255, 0) 100%);
-        transition: opacity .3s ease;
       }
     }
 
     .appetiser__content {
       justify-content: normal;
       width: 100%;
-      padding: 0 40px 40px;
+      padding: 0 40px 70px;
       height: auto;
 
       @media (--viewport-md-max) {
-        padding: 0 25px 25px;
+        padding: 0 25px 70px;
       }
     }
 
@@ -186,7 +190,6 @@
       left: 0;
       width: 24px;
       height: 24px;
-      transition: all .3s ease;
       transform-origin: center;
     }
 

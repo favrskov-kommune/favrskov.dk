@@ -80,6 +80,40 @@ function favrskov_preprocess_block__inline_block__document_list(array &$variable
   }
 }
 
+function favrskov_preprocess_block__inline_block__branding_spot(array &$variables) {
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables['elements']['content']['#block_content'];
+  $links = [];
+  if ($block->hasField('field_branding_spot_title') && !$block->get('field_branding_spot_title')->isEmpty()) {
+    $variables['branding_spot_title'] = $block->get('field_branding_spot_title')->value;
+  }
+  if ($block->hasField('field_branding_spot_subline') && !$block->get('field_branding_spot_subline')->isEmpty()) {
+    $variables['branding_spot_subline'] = $block->get('field_branding_spot_subline')->value;
+  }
+  if ($block->hasField('field_links') && !$block->get('field_links')->isEmpty()) {
+    /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $item */
+    foreach ($block->get('field_links') as $item) {
+      $data = $item->getValue();
+      if (!empty($data)) {
+        $links[] = [
+          'title' => $data['title'],
+          'url' => $data['uri']
+        ];
+      }
+    }
+  }
+
+  if (!empty($links)) {
+    foreach ($links as $link) {
+      $variables['branding_spot_links'][] = [
+        'title' => $link['title'],
+        'url' => Url::fromUri($link['url'])->toString(),
+        'icon' => 'document',
+      ];
+    }
+  }
+}
+
 /**
  * Change hero paragraph, add media and page title.
  *

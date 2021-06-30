@@ -137,6 +137,11 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
       $this->logger->error($e->getMessage());
     }
 
+    if ($route_entity instanceof ContentEntityInterface && $route_entity->bundle() === 'hearing_page') {
+      $cacheMetadata->addCacheableDependency($route_entity);
+      $build['header'] = [];
+    }
+
     if (!isset($build['header'])) {
       if (!is_null($request)) {
         $title = $this->titleResolver->getTitle($request, $this->routeMatch->getRouteObject());

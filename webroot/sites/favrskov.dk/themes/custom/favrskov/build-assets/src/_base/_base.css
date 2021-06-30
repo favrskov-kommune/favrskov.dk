@@ -52,7 +52,7 @@ h6 {
   font-family: var(--header-font-family);
   margin-top: 0;
   font-weight: var(--header-font-weight);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 h1 {
@@ -81,6 +81,7 @@ h5 {
 
 p {
   margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .large-text {

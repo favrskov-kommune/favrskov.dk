@@ -1,0 +1,49 @@
+{{ attach_library('favrskov/hearing-page') }}
+
+<div{{ (not attributes ? create_attribute() : attributes).addClass('hearing-page') }}>
+  <section class="section section--spacing-top-small section--spacing-bottom-medium">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-5 col-md-offset-2">
+          {% if title %}
+            <div class="hearing-page__title">
+              <h1>{{ title }}</h1>
+            </div>
+          {% endif %}
+          <div class="hearing-page__content">
+            {{ body }}
+          </div>
+          {% if cta %}
+            <div class="hearing-page__cta">
+              {{ cta }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-offset-1">
+          <div class="hearing-page__type">
+            {{ type }}
+          </div>
+          <div class="hearing-page__dates">
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <label>{{ 'Publishing date'|t }}:</label>
+                {{ pubdate }}
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <label>{{ 'Hearing deadline'|t }}:</label>
+                {{ deadline }}
+              </div>
+            </div>
+          </div>
+          <div class="hearing-page__info">
+            <div class="hearing-page__info--item"><label>{{ 'Place'|t }}:</label>{{ place }}</div>
+            <div class="hearing-page__info--item"><label>{{ 'Topic'|t }}:</label>{{ topic }}</div>
+          </div>
+          <div class="hearing-page__extra">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

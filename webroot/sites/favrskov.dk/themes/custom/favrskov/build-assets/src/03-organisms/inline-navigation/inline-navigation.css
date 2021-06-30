@@ -51,6 +51,10 @@
       margin: -50px;
       padding: 0;
 
+      .inline-navigation-link-list & {
+        margin: 0;
+      }
+
       .section--spacing-top-negative & {
         margin: 0;
       }

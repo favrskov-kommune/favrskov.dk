@@ -1,14 +1,15 @@
 {{ attach_library('favrskov/inline-navigation') }}
 {%
   set classes = [
-    'inline-navigation',
-    link_list ? 'inline-navigation-link-list col-xs-12 col-sm-6 col-md-8 col-lg-9 pr-sm-0'
+    'inline-navigation'
   ]
 %}
 {% if link_list.items %}
-  <div class="row">
+  <div{{ (not attributes ? create_attribute() : attributes).addClass('inline-navigation-link-list row') }}>
+    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9 pr-sm-0">
+{% else %}
+  <div{{ (not attributes ? create_attribute() : attributes).addClass(classes) }}>
 {% endif %}
-<div{{ (not attributes ? create_attribute() : attributes).addClass(classes) }}>
   {% block block_content %}{% endblock %}
   <ul class="inline-navigation__list {{ is_slider ? 'js-inline-navigation-slider' }}">
     {% block content %}
@@ -48,4 +49,5 @@
       </div>
     </div>
   </div>
+</div>
 {% endif %}

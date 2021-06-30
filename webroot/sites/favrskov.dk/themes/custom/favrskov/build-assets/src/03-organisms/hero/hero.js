@@ -86,9 +86,11 @@ Drupal.behaviors.hero = {
           iframeWrapper.classList.add('active');
         } else if (iframeWrapper.querySelector('video')) {
           const video = iframeWrapper.querySelector('video');
-          video.setAttribute('autoplay', 'true');
-          video.setAttribute('loop', 'true');
-          video.setAttribute('muted', 'true');
+          video.autoplay = true;
+          video.loop = true;
+          video.muted = true;
+          video.playsInline = true;
+          video.controls = false;
           iframeWrapper.classList.add('active');
         }
         if (isYoutube) {

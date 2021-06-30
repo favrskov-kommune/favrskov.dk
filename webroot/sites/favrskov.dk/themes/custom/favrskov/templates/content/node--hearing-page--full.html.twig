@@ -1,0 +1,11 @@
+{% include '@organisms/hearing-page/hearing-page.twig' with {
+  'url': url,
+  'title': label,
+  'body': content.body,
+  'cta': content.field_cta,
+  'type': content.field_type,
+  'place': content.field_place,
+  'topic': content.field_topic,
+  'deadline': content.field_deadline,
+  'pubdate': content.field_publishing_date
+} %}
