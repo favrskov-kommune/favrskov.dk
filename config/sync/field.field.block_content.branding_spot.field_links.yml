@@ -1,0 +1,23 @@
+uuid: 5cc18257-44c8-472f-a6ce-038ecd7e9ba8
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.branding_spot
+    - field.storage.block_content.field_links
+  module:
+    - link
+id: block_content.branding_spot.field_links
+field_name: field_links
+entity_type: block_content
+bundle: branding_spot
+label: Links
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

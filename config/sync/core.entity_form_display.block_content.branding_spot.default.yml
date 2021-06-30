@@ -4,24 +4,40 @@ status: true
 dependencies:
   config:
     - block_content.type.branding_spot
+    - field.field.block_content.branding_spot.field_branding_spot_subline
+    - field.field.block_content.branding_spot.field_branding_spot_title
+    - field.field.block_content.branding_spot.field_links
+  module:
+    - link
 id: block_content.branding_spot.default
 targetEntityType: block_content
 bundle: branding_spot
 mode: default
 content:
-  info:
-    type: string_textfield
-    weight: -5
-    region: content
+  field_branding_spot_subline:
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  langcode:
-    type: language_select
-    weight: 2
+    type: string_textfield
     region: content
+  field_branding_spot_title:
+    weight: 0
     settings:
-      include_locked: true
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+    type: string_textfield
+    region: content
+  field_links:
+    weight: 2
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+hidden:
+  info: true
+  langcode: true
