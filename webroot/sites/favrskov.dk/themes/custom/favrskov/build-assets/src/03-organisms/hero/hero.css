@@ -69,6 +69,13 @@
     height: 100vh;
     hyphens: auto;
     max-height: var(--hero-max-height);
+    font-size: var(--base-font-size-xlarge);
+
+    & h1,
+    & h2 {
+      font-size: var(--base-font-size-xxxxlarge);
+      font-weight: normal;
+    }
 
     @media (--viewport-md-min) {
       height: calc(90vh - var(--header-height));
@@ -93,6 +100,7 @@
       position: initial;
     }
   }
+
   &__iframe-outer-wrapper {
     overflow: hidden;
     position: absolute;
