@@ -11,11 +11,6 @@
     <div class="hero__image-wrapper">
       {{ media_image }}
     </div>
-  {% else %}
-    {% include '@particles/svg-icon/svg-icon.twig' with {
-      'attributes': '',
-      'svgIconName': 'tree'
-    } %}
   {% endif %}
   {% if media %}
     <div class="hero__iframe-outer-wrapper">
