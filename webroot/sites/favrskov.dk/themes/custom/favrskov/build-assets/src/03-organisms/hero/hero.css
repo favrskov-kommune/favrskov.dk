@@ -68,6 +68,7 @@
     z-index: 4;
     height: 100vh;
     hyphens: auto;
+    word-break: break-word;
     max-height: var(--hero-max-height);
     font-size: var(--base-font-size-xlarge);
 
