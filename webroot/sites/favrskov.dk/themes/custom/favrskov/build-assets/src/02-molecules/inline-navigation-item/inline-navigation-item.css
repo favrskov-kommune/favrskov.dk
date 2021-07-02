@@ -362,6 +362,7 @@
     font-size: var(--base-font-size-xlarge);
     font-weight: 900;
     hyphens: auto;
+    word-break: break-word;
 
     @media (--viewport-md-min) {
       font-size: var(--base-font-size-xxlarge);
@@ -375,6 +376,7 @@
     font-weight: 300;
     line-height: 1.1;
     hyphens: auto;
+    word-break: break-word;
 
     @media (--viewport-md-min) {
       font-size: var(--base-font-size-medium);
