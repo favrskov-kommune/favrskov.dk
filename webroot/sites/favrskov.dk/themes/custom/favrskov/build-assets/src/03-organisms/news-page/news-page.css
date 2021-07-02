@@ -1,0 +1,72 @@
+/**
+ * Type: Organisms.
+ * Hearing page.
+ */
+
+.news-page {
+  &__title h1 {
+    font-weight: var(--base-font-weight);
+    font-size: var(--base-font-size-xxxlarge);
+    margin-bottom: 30px;
+  }
+
+  &__content {
+    h2 {
+      font-size: var(--base-font-size-xlarge);
+    }
+
+    h3 {
+      font-size: var(--base-font-size-large);
+    }
+  }
+
+  &__cta {
+    padding-top: 30px;
+  }
+
+  & label {
+    font-weight: var(--header-font-weight);
+  }
+
+  &__type {
+    padding: 20px 30px;
+    background: var(--color-secondary-light);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: var(--base-font-size-large);
+    font-weight: var(--header-font-weight);
+  }
+
+  &__dates {
+    padding: 20px 30px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--base-font-size-medium);
+  }
+
+  &__info {
+    border-bottom: 1px solid var(--color-gray-hover);
+    font-size: var(--base-font-size-medium);
+
+    &--item {
+      display: flex;
+      flex-direction: row;
+
+      & div,
+      & label {
+        display: inline-flex;
+      }
+
+      & label {
+        min-width: 60px;
+        padding-right: 10px;
+      }
+    }
+  }
+
+  &__info,
+  &__extra {
+    padding: 20px 30px;
+    background-color: var(--color-gray);
+  }
+}
