@@ -1,0 +1,22 @@
+uuid: 7be3b6f3-7c67-4116-9fbd-e2909d182a61
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: hoeringer
+label: Høringer
+type: 'canonical_entities:node'
+pattern: 'demokrati/hoeringer/[node:nid]'
+selection_criteria:
+  dc446af5-c9e6-4387-ad6c-3983a0aa129f:
+    id: node_type
+    bundles:
+      hearing_page: hearing_page
+    negate: false
+    context_mapping:
+      node: node
+    uuid: dc446af5-c9e6-4387-ad6c-3983a0aa129f
+selection_logic: and
+weight: -5
+relationships: {  }
