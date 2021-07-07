@@ -34,7 +34,7 @@
           <div{{ (not content_attributes ? create_attribute() : content_attributes).addClass('hero__content') }}>
             <form id="cludo-search-form" role="search" class="hero__search">
               <input type="search" class="hero__search--text" id="js-search-input" placeholder="Hvad kan vi hjælpe med?" aria-label="Search" aria-describedby="autocomplete_hint">
-              <button type="submit" class="hero__search--submit" id="search-button">
+              <button type="submit" class="hero__search--submit" id="search-button" aria-label="Submit search">
                 {% block content %}
                   {% include '@particles/svg-icon/svg-icon.twig' with {
                     'attributes': '',
