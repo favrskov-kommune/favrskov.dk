@@ -1,0 +1,46 @@
+uuid: 0a37462d-aa55-4c48-9cc0-54b5de087936
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.branding_spot
+    - field.field.block_content.branding_spot.field_branding_spot_subline
+    - field.field.block_content.branding_spot.field_branding_spot_title
+    - field.field.block_content.branding_spot.field_links
+  module:
+    - link
+id: block_content.branding_spot.default
+targetEntityType: block_content
+bundle: branding_spot
+mode: default
+content:
+  field_branding_spot_subline:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_branding_spot_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_links:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden:
+  langcode: true

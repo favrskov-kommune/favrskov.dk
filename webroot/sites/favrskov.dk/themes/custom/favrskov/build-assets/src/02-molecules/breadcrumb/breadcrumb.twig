@@ -3,10 +3,20 @@
 {% if breadcrumb and disable == FALSE %}
   <div{{ (not attributes ? create_attribute() : attributes).addClass('breadcrumb') }}>
     <ol{{ (not items_attributes ? create_attribute() : items_attributes).addClass('breadcrumb__items') }}>
-      {% for item in breadcrumb %}
+      {% for key,item in breadcrumb %}
         <li class="breadcrumb__item">
           {% if item.url %}
-            <a class="breadcrumb__link" href="{{ item.url }}">{{ item.text }}</a>
+            <a class="breadcrumb__link{{ key == 0 ? ' breadcrumb__link-first' }}" href="{{ item.url }}">
+              <span>{{ item.text }}</span>
+              {% if key == 0 %}
+                <div class="breadcrumb__link-icon">
+                  {% include '@particles/svg-icon/svg-icon.twig' with {
+                    'attributes': '',
+                    'svgIconName': 'flyt-byg-bolig'
+                  } %}
+                </div>
+              {% endif %}
+            </a>
           {% else %}
             <span class="breadcrumb__link breadcrumb__link--active">{{ item.text }}</span>
           {% endif %}

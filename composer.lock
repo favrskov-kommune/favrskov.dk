@@ -82,7 +82,7 @@
             "version": "3.6.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "e786e3d9707ffd9b0dd330ca135b66344dcef85a"
             },
             "dist": {
@@ -200,10 +200,10 @@
         },
         {
             "name": "ckeditor/autogrow",
-            "version": "4.14.1",
+            "version": "4.16.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/autogrow/releases/autogrow_4.14.1.zip"
+                "url": "https://download.ckeditor.com/autogrow/releases/autogrow_4.16.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -230,10 +230,10 @@
         },
         {
             "name": "ckeditor/fakeobjects",
-            "version": "4.14.1",
+            "version": "4.16.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.14.1.zip"
+                "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.16.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -245,10 +245,10 @@
         },
         {
             "name": "ckeditor/image",
-            "version": "4.14.1",
+            "version": "4.16.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/image/releases/image_4.14.1.zip"
+                "url": "https://download.ckeditor.com/image/releases/image_4.16.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -260,10 +260,10 @@
         },
         {
             "name": "ckeditor/link",
-            "version": "4.14.1",
+            "version": "4.16.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/link/releases/link_4.14.1.zip"
+                "url": "https://download.ckeditor.com/link/releases/link_4.16.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -275,10 +275,10 @@
         },
         {
             "name": "codemirror/codemirror",
-            "version": "5.53.2",
+            "version": "5.61.1",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/components/codemirror/archive/5.53.2.zip"
+                "url": "https://github.com/components/codemirror/archive/5.61.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -4379,17 +4379,17 @@
         },
         {
             "name": "drupal/webform",
-            "version": "6.0.3",
+            "version": "6.0.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform.git",
-                "reference": "6.0.3"
+                "reference": "6.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-6.0.3.zip",
-                "reference": "6.0.3",
-                "shasum": "b75f79e26b5d58f4a9e047131f63c482bdaa5593"
+                "url": "https://ftp.drupal.org/files/projects/webform-6.0.4.zip",
+                "reference": "6.0.4",
+                "shasum": "8b87ffb19f980e9d77957dfb2d784a1a68619d57"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9"
@@ -4437,8 +4437,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.0.3",
-                    "datestamp": "1620250254",
+                    "version": "6.0.4",
+                    "datestamp": "1624461046",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4446,7 +4446,7 @@
                 },
                 "drush": {
                     "services": {
-                        "drush.services.yml": "^9"
+                        "drush.services.yml": "^9 || ^10"
                     }
                 }
             },
@@ -5269,10 +5269,10 @@
         },
         {
             "name": "jquery/inputmask",
-            "version": "5.0.5",
+            "version": "5.0.6",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/RobinHerbots/jquery.inputmask/archive/5.0.5.zip"
+                "url": "https://github.com/RobinHerbots/jquery.inputmask/archive/5.0.6.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -5344,10 +5344,10 @@
         },
         {
             "name": "jquery/timepicker",
-            "version": "1.13.14",
+            "version": "1.13.18",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jonthornton/jquery-timepicker/archive/1.13.14.zip"
+                "url": "https://github.com/jonthornton/jquery-timepicker/archive/1.13.18.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -5476,16 +5476,16 @@
         },
         {
             "name": "laminas/laminas-escaper",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-escaper.git",
-                "reference": "5e04bc5ae5990b17159d79d331055e2c645e5cc5"
+                "reference": "2d6dce99668b413610e9544183fa10392437f542"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-escaper/zipball/5e04bc5ae5990b17159d79d331055e2c645e5cc5",
-                "reference": "5e04bc5ae5990b17159d79d331055e2c645e5cc5",
+                "url": "https://api.github.com/repos/laminas/laminas-escaper/zipball/2d6dce99668b413610e9544183fa10392437f542",
+                "reference": "2d6dce99668b413610e9544183fa10392437f542",
                 "shasum": ""
             },
             "require": {
@@ -5496,7 +5496,7 @@
                 "zendframework/zend-escaper": "^2.6.1"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-coding-standard": "~2.3.0",
                 "phpunit/phpunit": "^9.3",
                 "psalm/plugin-phpunit": "^0.12.2",
                 "vimeo/psalm": "^3.16"
@@ -5535,7 +5535,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2020-11-17T21:26:43+00:00"
+            "time": "2021-06-26T14:26:08+00:00"
         },
         {
             "name": "laminas/laminas-feed",
@@ -5677,16 +5677,16 @@
         },
         {
             "name": "laminas/laminas-zendframework-bridge",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-zendframework-bridge.git",
-                "reference": "6cccbddfcfc742eb02158d6137ca5687d92cee32"
+                "reference": "13af2502d9bb6f7d33be2de4b51fb68c6cdb476e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/6cccbddfcfc742eb02158d6137ca5687d92cee32",
-                "reference": "6cccbddfcfc742eb02158d6137ca5687d92cee32",
+                "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/13af2502d9bb6f7d33be2de4b51fb68c6cdb476e",
+                "reference": "13af2502d9bb6f7d33be2de4b51fb68c6cdb476e",
                 "shasum": ""
             },
             "require": {
@@ -5735,7 +5735,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-02-25T21:54:58+00:00"
+            "time": "2021-06-24T12:49:22+00:00"
         },
         {
             "name": "league/container",
@@ -5955,10 +5955,10 @@
         },
         {
             "name": "novicell/content_hierarchy",
-            "version": "1.1.2",
+            "version": "1.2.4",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1AITIh/novicellcontent_hierarchy-1-1-2.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_2811YA/novicellcontent_hierarchy-1-2-4.zip"
             },
             "require": {
                 "drupal/pathauto": "~1.0",
@@ -5976,10 +5976,10 @@
         },
         {
             "name": "novicell/drupal-premium-theme",
-            "version": "1.0.4",
+            "version": "1.0.6",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_12mA2w/novicelldrupalpremiumtheme-1-0-4.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_TZyJr/novicelldrupalpremiumtheme-1-0-6.zip"
             },
             "type": "drupal-theme",
             "license": [
@@ -6064,10 +6064,10 @@
         },
         {
             "name": "novicell/premium_tools",
-            "version": "1.0.2",
+            "version": "1.0.5",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1Rgk9p/novicellpremium_tools-1-0-2.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_1bO6ZC/novicellpremium_tools-1-0-5.zip"
             },
             "type": "drupal-module",
             "license": [
@@ -10907,5 +10907,5 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

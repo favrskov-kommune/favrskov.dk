@@ -1,0 +1,19 @@
+uuid: f7835484-2167-45c4-a945-0834714c7af5
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.branding_spot
+    - field.storage.block_content.field_branding_spot_title
+id: block_content.branding_spot.field_branding_spot_title
+field_name: field_branding_spot_title
+entity_type: block_content
+bundle: branding_spot
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

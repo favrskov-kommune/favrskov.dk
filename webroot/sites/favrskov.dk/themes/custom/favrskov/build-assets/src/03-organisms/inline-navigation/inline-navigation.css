@@ -51,6 +51,10 @@
       margin: -50px;
       padding: 0;
 
+      .inline-navigation-link-list & {
+        margin: 0;
+      }
+
       .section--spacing-top-negative & {
         margin: 0;
       }
@@ -78,6 +82,7 @@
       font-size: 30px;
       width: 100%;
       hyphens: auto;
+      word-break: break-word;
 
       @media (--viewport-ms-max) {
         padding-top: 40px;
@@ -97,6 +102,7 @@
       text-decoration: none;
       width: 100%;
       hyphens: auto;
+      word-break: break-word;
 
       & .inline-navigation-item__arrow {
         top: 22px;

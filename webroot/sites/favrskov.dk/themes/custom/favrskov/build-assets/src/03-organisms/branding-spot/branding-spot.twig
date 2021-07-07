@@ -1,0 +1,36 @@
+{{ attach_library('favrskov/branding-spot') }}
+
+<div{{ attributes }}>
+  {% block block_content %}{% endblock %}
+  <div class="branding-spot js-branding-spot">
+    <div class="branding-spot__bg">
+      <img src="/{{ directory }}/build-assets/dist/images/favrskov-danmarkskort.png" alt="Favrskov Kommune" class="branding-spot__bg--map" />
+      <img src="/{{ directory }}/build-assets/dist/images/favrskov-danmarkskort-overlay.png" alt="Favrskov Kommune" class="branding-spot__bg--map-overlay" />
+    </div>
+    <div class="branding-spot__overlay">
+      {% if headline %}
+        <div class="branding-spot__overlay--title">
+          {{ headline }}
+        </div>
+      {% endif %}
+      {% if subline %}
+        <div class="branding-spot__overlay--subline">
+          {{ subline }}
+        </div>
+      {% endif %}
+      {% if links %}
+        <div class="branding-spot__overlay--links">
+          {% for link in links %}
+            <div class="branding-spot__overlay--links-item"><a href="{{ link.url }}">
+              <div class="branding-spot__overlay--arrow">
+                <span></span>
+                <span></span>
+              </div>
+              {{ link.title }}
+            </a></div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

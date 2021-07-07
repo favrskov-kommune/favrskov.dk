@@ -95,6 +95,7 @@
     "flickity-as-nav-for": "^2.0.1",
     "flickity-fade": "^1.0.0",
     "get-video-id": "^3.2.0",
+    "gsap": "^3.7.0",
     "hoverintent": "^2.2.1",
     "lodash": "^4.17.21",
     "novicell-lazyload": "^2.2.0",

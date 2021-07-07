@@ -197,6 +197,7 @@
       margin-bottom: 20px;
       background-color: var(--color-gray);
       z-index: 100;
+      box-shadow: 0 -15px 50px 0 rgba(35, 35, 35, .15);
 
       form {
         padding-top: 20px;

@@ -1,0 +1,18 @@
+{{ attach_library('favrskov/news-page') }}
+
+<div{{ (not attributes ? create_attribute() : attributes).addClass('news-page') }}>
+  <section class="section section--spacing-top-small section--spacing-bottom-medium">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-5 col-md-offset-2">
+          {% if title %}
+            <div class="news-page__title">
+              <h1>{{ title }}</h1>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ content }}
+</div>
