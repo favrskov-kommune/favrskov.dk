@@ -10,6 +10,10 @@
     margin-bottom: 30px;
   }
 
+  &__summary {
+    display: none;
+  }
+
   &__content {
     h2 {
       font-size: var(--base-font-size-xlarge);

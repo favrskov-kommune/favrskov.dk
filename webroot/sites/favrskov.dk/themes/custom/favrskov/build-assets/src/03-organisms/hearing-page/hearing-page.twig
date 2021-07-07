@@ -6,38 +6,45 @@
       <div class="row">
         <div class="col-xs-12 col-md-5 col-md-offset-2">
           {% if title %}
-            <div class="hearing-page__title">
+            <div class="hearing-page__title cludo-info__title">
               <h1>{{ title }}</h1>
             </div>
           {% endif %}
-          <div class="hearing-page__content">
+          <div class="hearing-page__summary cludo-info__summary">
+            {{ summary }}
+          </div>
+          <div class="hearing-page__content cludo-info__body">
             {{ body }}
           </div>
           {% if cta %}
-            <div class="hearing-page__cta">
+            <div class="hearing-page__cta cludo-info__cta">
               {{ cta }}
             </div>
           {% endif %}
         </div>
         <div class="col-xs-12 col-md-4 col-md-offset-1">
-          <div class="hearing-page__type">
+          <div class="hearing-page__type cludo-info__type">
             {{ type }}
           </div>
           <div class="hearing-page__dates">
             <div class="row">
               <div class="col-xs-12 col-md-6">
                 <label>{{ 'Publishing date'|t }}:</label>
-                {{ pubdate }}
+                <span class="cludo-info__pubdate">
+                  {{ pubdate }}
+                </span>
               </div>
               <div class="col-xs-12 col-md-6">
                 <label>{{ 'Hearing deadline'|t }}:</label>
-                {{ deadline }}
+                <span class="cludo-info__deadline">
+                  {{ deadline }}
+                </span>
               </div>
             </div>
           </div>
           <div class="hearing-page__info">
-            <div class="hearing-page__info--item"><label>{{ 'Place'|t }}:</label>{{ place }}</div>
-            <div class="hearing-page__info--item"><label>{{ 'Topic'|t }}:</label>{{ topic }}</div>
+            <div class="hearing-page__info--item"><label>{{ 'Place'|t }}:</label><span class="cludo-info__place">{{ place }}</span></div>
+            <div class="hearing-page__info--item"><label>{{ 'Topic'|t }}:</label><span class="cludo-info__topic">{{ topic }}</span></div>
           </div>
           <div class="hearing-page__extra">
 
