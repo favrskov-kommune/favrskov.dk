@@ -19,7 +19,7 @@
       </div>
     </div>
   {% endif %}
-  {% if not media_image or not media %}
+  {% if not media_image and not media %}
     <div class="hero__tree">
       {% include '@particles/svg-icon/svg-icon.twig' with {
         'attributes': '',
