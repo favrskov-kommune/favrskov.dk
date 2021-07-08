@@ -91,7 +91,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
+    width: 250%;
     height: 100%;
     transform: translate(-50%, -50%);
     padding-top: 56.25%;
@@ -99,6 +99,14 @@
 
     .contextual-region {
       position: initial;
+    }
+
+    @media (--viewport-ms-min) {
+      width: 150%;
+    }
+
+    @media (--viewport-lg-min) {
+      width: 100%;
     }
   }
 
