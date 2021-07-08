@@ -29,3 +29,12 @@ msgstr "CTA tekst"
 
 msgid "The text for the Call to Action button."
 msgstr "Teksten til Call to Action knappen."
+
+msgid "Place"
+msgstr "Sted"
+
+msgid "Publishing date"
+msgstr "Offentliggjort"
+
+msgid "Hearing deadline"
+msgstr "Høringsfrist"
