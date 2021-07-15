@@ -38,9 +38,8 @@ function debounce(func, timeout) {
   };
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  appLoop();
-});
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', appLoop);
+else { appLoop(); }
 
 window.addEventListener('resize', () => {
   debounce(appLoop(), 150);
