@@ -5,7 +5,8 @@
 
 .hearing-page {
   &__title h1 {
-    font-weight: var(--base-font-weight);
+    font-family: "Helvetica Neue Light", Sans-Serif;
+    font-weight: lighter;
     font-size: var(--base-font-size-xxxlarge);
     margin-bottom: 30px;
   }
