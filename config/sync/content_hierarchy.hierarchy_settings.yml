@@ -1,5 +1,7 @@
 entity_bundles:
   node:
+    - hearing_page
     - page
 multilingual: false
 overview_type: foldable
+contents_per_page_admin: '50'
