@@ -29,6 +29,21 @@
     padding-top: 30px;
   }
 
+  &__back-link {
+    padding-top: 30px;
+    a {
+      font-size: var(--base-font-size-medium);
+      font-weight: var(--header-font-weight);
+      text-decoration: none;
+      color: var(--color-primary);
+      &::before {
+        content: '<';
+        margin-right: 5px;
+        font-weight: var(--header-font-weight);
+       }
+     }
+  }
+
   & label {
     font-weight: var(--header-font-weight);
   }
