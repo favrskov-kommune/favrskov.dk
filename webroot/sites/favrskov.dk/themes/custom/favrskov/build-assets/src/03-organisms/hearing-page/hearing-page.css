@@ -17,6 +17,8 @@
       margin-top: 0;
       order: 1;
       margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
     }
   }
 
@@ -81,12 +83,13 @@
     background-color: var(--color-primary);
     color: var(--color-white);
     font-size: var(--base-font-size-medium);
+    order: 3;
   }
 
   &__info {
     border-bottom: 1px solid var(--color-gray-hover);
     font-size: var(--base-font-size-medium);
-
+    order: 0;
     &--item {
       display: flex;
       flex-direction: row;
