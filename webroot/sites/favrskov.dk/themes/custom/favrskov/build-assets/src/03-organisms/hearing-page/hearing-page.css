@@ -4,11 +4,30 @@
  */
 
 .hearing-page {
+
+  &__content {
+    @media (--viewport-sm-max) {
+      order: 3;
+    }
+  }
+
+  &__box{
+    margin-top: -10%;
+    @media (--viewport-sm-max) {
+      margin-top: 0;
+      order: 1;
+      margin-bottom: 20px;
+    }
+  }
+
   &__title h1 {
     font-family: "Helvetica Neue Light", Sans-Serif;
     font-weight: lighter;
     font-size: var(--base-font-size-xxxlarge);
     margin-bottom: 30px;
+    @media (--viewport-sm-max) {
+      order: 0;
+    }
   }
 
   &__summary {
