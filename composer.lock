@@ -5943,10 +5943,10 @@
         },
         {
             "name": "novicell/atoms",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_rl2Ym/novicellatoms-1-0-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_DBljt/novicellatoms-1-0-1.zip"
             },
             "type": "drupal-module",
             "license": [
