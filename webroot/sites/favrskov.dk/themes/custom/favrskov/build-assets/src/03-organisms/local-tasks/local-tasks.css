@@ -11,7 +11,7 @@
   padding: 11px 0;
   background-color: var(--color-gray-dark);
   margin: 0;
-  z-index: 13;
+  z-index: 101;
   width: 100%;
 
   li {
@@ -37,5 +37,17 @@
   a:focus {
     color: var(--color-white);
     text-decoration: underline;
+  }
+}
+
+.local-tasks-wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
+
+  &.sticky {
+    .local-tasks {
+      position: fixed;
+    }
   }
 }

@@ -14,12 +14,16 @@
 {% embed '@organisms/local-tasks/local-tasks.twig' %}
   {% block primary_content %}
     {% if primary %}
-      <ul class="local-tasks">{{ primary }}</ul>
+      <div class="local-tasks-wrapper js-local-tasks-wrapper">
+        <ul class="local-tasks js-local-tasks">{{ primary }}</ul>
+      </div>
     {% endif %}
   {% endblock %}
   {% block secondary_content %}
     {% if secondary %}
-      <ul class="local-tasks">{{ secondary }}</ul>
+      <div class="local-tasks-wrapper js-local-tasks-wrapper">
+        <ul class="local-tasks js-local-tasks">{{ secondary }}</ul>
+      </div>
     {% endif %}
   {% endblock %}
 {% endembed %}
