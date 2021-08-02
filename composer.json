@@ -73,7 +73,7 @@
         "drupal/webform": "^6.0",
         "drupal/webp": "^1.0.0-beta5",
         "drush/drush": "^10.0",
-        "novicell/atoms": "^1.0",
+        "novicell/atoms": "^1.0.1",
         "novicell/content_hierarchy": "^1.0",
         "novicell/drupal-premium-theme": "^1.0",
         "novicell/dynamic_key_value": "^1.0",
