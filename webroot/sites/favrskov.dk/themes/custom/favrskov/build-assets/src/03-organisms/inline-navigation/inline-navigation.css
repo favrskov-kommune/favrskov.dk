@@ -42,6 +42,11 @@
     padding-right: 20px;
     margin-top: 0;
 
+    @media print {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     @media (--viewport-sm-min) {
       display: flex;
       flex-wrap: wrap;
