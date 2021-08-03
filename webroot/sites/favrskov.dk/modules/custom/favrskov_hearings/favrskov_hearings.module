@@ -72,6 +72,12 @@ function favrskov_hearings_preprocess_node__hearing_page(&$variables) {
     $variables['content']['field_cta'][0]['#title'] = atom_str('hearings-cta');
     atom_cache($variables['content']['field_cta'][0], ['hearings-cta']);
   }
+  // To satisfy Cludo
+  $components = explode(' ', $variables['content']['field_deadline'][0]['#markup']);
+  $variables['content']['field_deadline'][0]['#markup'] = '<div>' . implode('</div><div>', $components) . '</div>';
+  $components = explode(' ', $variables['content']['field_publishing_date'][0]['#markup']);
+  $variables['content']['field_publishing_date'][0]['#markup'] = '<div>' . implode('</div><div>', $components) . '</div>';
+
   $variables['content']['back_link'] = atom('hearings-back-link');
   $variables['content']['summary'] = ['#markup' => $node->get('body')->first()->getValue()['summary']];
 }

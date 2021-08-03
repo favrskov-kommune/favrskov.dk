@@ -84,6 +84,11 @@
     color: var(--color-white);
     font-size: var(--base-font-size-medium);
     order: 3;
+
+    .cludo-info__deadline div, .cludo-info__pubdate div {
+      display: inline;
+      margin-right: 5px;
+    }
   }
 
   &__info {
