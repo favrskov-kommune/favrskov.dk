@@ -8,4 +8,5 @@ set -euo pipefail
 /release/mount.log_folder.sh
 
 cd /app && \
+    vendor/drush/drush/drush cr && \
     vendor/drush/drush/drush cim -y
