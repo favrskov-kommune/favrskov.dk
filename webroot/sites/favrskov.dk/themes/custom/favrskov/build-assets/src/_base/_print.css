@@ -1,0 +1,18 @@
+/**
+ * Type: Base.
+ * Print.
+ */
+
+.header,
+.footer,
+.breadcrumb {
+  display: none;
+}
+
+body {
+  padding-top: 0;
+}
+
+.section--spacing-top-negative {
+  margin-top: auto;
+}

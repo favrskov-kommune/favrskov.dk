@@ -13,6 +13,10 @@
   width: 100%;
   padding: 20px 5px;
 
+  @media print {
+    width: 50%;
+  }
+
   &.inline-navigation-item-news {
     .inline-navigation-item__link {
       background-color: var(--color-white);
