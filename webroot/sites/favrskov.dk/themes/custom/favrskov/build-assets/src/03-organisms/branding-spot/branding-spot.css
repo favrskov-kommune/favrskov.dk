@@ -181,15 +181,13 @@
       opacity: 1;
     }
 
-    @media (--viewport-sm-min) {
-      .branding-spot__overlay,
-      .branding-spot__overlay--links {
-        opacity: 1;
-      }
+    .branding-spot__overlay,
+    .branding-spot__overlay--links {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-      .branding-spot__overlay--links {
-        transform: translateY(0);
-      }
+    @media (--viewport-sm-min) {
 
       .branding-spot__overlay {
         top: 50%;

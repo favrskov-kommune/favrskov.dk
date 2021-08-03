@@ -4,10 +4,32 @@
  */
 
 .hearing-page {
+
+  &__content {
+    @media (--viewport-sm-max) {
+      order: 3;
+    }
+  }
+
+  &__box{
+    margin-top: -10%;
+    @media (--viewport-sm-max) {
+      margin-top: 0;
+      order: 1;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   &__title h1 {
-    font-weight: var(--base-font-weight);
+    font-family: "Helvetica Neue Light", Sans-Serif;
+    font-weight: lighter;
     font-size: var(--base-font-size-xxxlarge);
     margin-bottom: 30px;
+    @media (--viewport-sm-max) {
+      order: 0;
+    }
   }
 
   &__summary {
@@ -28,6 +50,21 @@
     padding-top: 30px;
   }
 
+  &__back-link {
+    padding-top: 30px;
+    a {
+      font-size: var(--base-font-size-medium);
+      font-weight: var(--header-font-weight);
+      text-decoration: none;
+      color: var(--color-primary);
+      &::before {
+        content: '<';
+        margin-right: 5px;
+        font-weight: var(--header-font-weight);
+       }
+     }
+  }
+
   & label {
     font-weight: var(--header-font-weight);
   }
@@ -46,12 +83,13 @@
     background-color: var(--color-primary);
     color: var(--color-white);
     font-size: var(--base-font-size-medium);
+    order: 3;
   }
 
   &__info {
     border-bottom: 1px solid var(--color-gray-hover);
     font-size: var(--base-font-size-medium);
-
+    order: 0;
     &--item {
       display: flex;
       flex-direction: row;
