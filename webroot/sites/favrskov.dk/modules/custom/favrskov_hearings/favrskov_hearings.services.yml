@@ -1,0 +1,6 @@
+services:
+ favrskov_hearings.breadcrumb:
+    class: Drupal\favrskov_hearings\Breadcrumb\BreadcrumbBuilder
+    arguments: ['@router.admin_context']
+    tags:
+    - { name: breadcrumb_builder, priority: 1005 }

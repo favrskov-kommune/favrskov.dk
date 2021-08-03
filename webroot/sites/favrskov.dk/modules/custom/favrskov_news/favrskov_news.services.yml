@@ -1,0 +1,6 @@
+services:
+ favrskov_news.breadcrumb:
+    class: Drupal\favrskov_news\Breadcrumb\BreadcrumbBuilder
+    arguments: ['@router.admin_context']
+    tags:
+    - { name: breadcrumb_builder, priority: 1005 }

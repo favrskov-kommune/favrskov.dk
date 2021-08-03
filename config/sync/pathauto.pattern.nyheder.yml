@@ -1,22 +1,22 @@
-uuid: 7be3b6f3-7c67-4116-9fbd-e2909d182a61
+uuid: 89aa5e2b-054d-4056-8f9b-fcb74128c00f
 langcode: da
 status: true
 dependencies:
   module:
     - node
-id: hoeringer
-label: Høringer
+id: nyheder
+label: Nyheder
 type: 'canonical_entities:node'
-pattern: 'demokrati/hoeringer/[node:title]'
+pattern: 'nyheder/[node:title]'
 selection_criteria:
-  65bf3a09-87e9-4f64-b360-7f3847a1d869:
+  c1a722b4-0bcd-49d5-95ba-614cf6166c94:
     id: node_type
     bundles:
-      hearing_page: hearing_page
+      news: news
     negate: false
     context_mapping:
       node: node
-    uuid: 65bf3a09-87e9-4f64-b360-7f3847a1d869
+    uuid: c1a722b4-0bcd-49d5-95ba-614cf6166c94
 selection_logic: and
 weight: -5
 relationships: {  }
