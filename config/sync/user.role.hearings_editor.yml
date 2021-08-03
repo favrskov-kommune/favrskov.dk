@@ -1,0 +1,44 @@
+uuid: 3b14cdea-c39e-4d17-be0f-cd1248a9d869
+langcode: da
+status: true
+dependencies: {  }
+id: hearings_editor
+label: Høringsredaktør
+weight: 7
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'add scheduled transitions node hearing_page'
+  - 'administer redirect settings'
+  - 'administer redirects'
+  - 'administer url aliases'
+  - 'clone node entity'
+  - 'create hearing_page content'
+  - 'create terms in hearing_page_types'
+  - 'create terms in hearing_places'
+  - 'create terms in hearing_topics'
+  - 'create url aliases'
+  - 'delete any hearing_page content'
+  - 'delete hearing_page revisions'
+  - 'delete own hearing_page content'
+  - 'delete terms in hearing_page_types'
+  - 'delete terms in hearing_places'
+  - 'delete terms in hearing_topics'
+  - 'edit any hearing_page content'
+  - 'edit own hearing_page content'
+  - 'edit terms in hearing_page_types'
+  - 'edit terms in hearing_places'
+  - 'edit terms in hearing_topics'
+  - 'reschedule scheduled transitions node hearing_page'
+  - 'revert hearing_page revisions'
+  - 'take_ownership_on_clone node entity'
+  - 'use text format full_html'
+  - 'use text format table'
+  - 'view any unpublished hearing_page content'
+  - 'view hearing_page revisions'
+  - 'view own unpublished content'
+  - 'view scheduled transitions node hearing_page'
+  - 'view the administration theme'
+  - 'view unpublished paragraphs'

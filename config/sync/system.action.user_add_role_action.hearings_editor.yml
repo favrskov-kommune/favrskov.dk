@@ -1,0 +1,14 @@
+uuid: c8d6cc79-aa43-4870-9eef-7eed5ef7aa21
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.hearings_editor
+  module:
+    - user
+id: user_add_role_action.hearings_editor
+label: 'Add the Høringsredaktør role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: hearings_editor

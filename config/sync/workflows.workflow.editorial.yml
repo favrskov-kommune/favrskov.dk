@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - node.type.editor_manual
+    - node.type.hearing_page
     - node.type.news
     - node.type.page
   module:
@@ -66,6 +67,7 @@ type_settings:
   entity_types:
     node:
       - editor_manual
+      - hearing_page
       - news
       - page
   default_moderation_state: draft

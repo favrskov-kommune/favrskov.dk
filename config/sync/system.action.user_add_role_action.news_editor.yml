@@ -1,0 +1,14 @@
+uuid: 5ffd7d91-52cf-4a5d-93fa-19b789e80403
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.news_editor
+  module:
+    - user
+id: user_add_role_action.news_editor
+label: 'Add the Nyhedsredaktør role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: news_editor

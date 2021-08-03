@@ -1,0 +1,14 @@
+uuid: cb9bb9bd-efa4-4b26-8de8-77807ea4aef5
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.news_editor
+  module:
+    - user
+id: user_remove_role_action.news_editor
+label: 'Remove the Nyhedsredaktør role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: news_editor

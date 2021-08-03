@@ -1,0 +1,14 @@
+uuid: 025416cf-0a4c-4d04-8b79-facb32f81258
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.hearings_editor
+  module:
+    - user
+id: user_remove_role_action.hearings_editor
+label: 'Remove the Høringsredaktør role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: hearings_editor
