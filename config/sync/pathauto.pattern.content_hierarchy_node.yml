@@ -12,6 +12,7 @@ selection_criteria:
   3f413d48-dbcb-4a8b-963a-3f33b9dfc6dd:
     id: node_type
     bundles:
+      news: news
       page: page
     negate: false
     context_mapping:
