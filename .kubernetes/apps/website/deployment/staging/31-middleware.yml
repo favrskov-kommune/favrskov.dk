@@ -18,3 +18,14 @@ metadata:
   namespace: favrskovdk
 spec:
   compress: {}
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: secure-headers
+  namespace: favrskovdk
+spec:
+  headers:
+    frameDeny: true
+    sslRedirect: true
