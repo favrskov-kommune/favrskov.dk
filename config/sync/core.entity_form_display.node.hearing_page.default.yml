@@ -6,11 +6,13 @@ dependencies:
     - field.field.node.hearing_page.body
     - field.field.node.hearing_page.field_cta
     - field.field.node.hearing_page.field_deadline
+    - field.field.node.hearing_page.field_extra
     - field.field.node.hearing_page.field_place
     - field.field.node.hearing_page.field_publishing_date
     - field.field.node.hearing_page.field_topic
     - field.field.node.hearing_page.field_type
     - node.type.hearing_page
+    - workflows.workflow.editorial
   module:
     - content_moderation
     - datetime
@@ -51,6 +53,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
+  field_extra:
+    weight: 26
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   field_place:
     weight: 14
