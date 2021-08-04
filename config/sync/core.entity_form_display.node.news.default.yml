@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
+    - field.field.node.news.content_hierarchy
     - field.field.node.news.field_chatbot_muni
     - field.field.node.news.field_description
+    - field.field.node.news.field_display_publishing_date
     - field.field.node.news.field_hide_breadcrumb
     - field.field.node.news.field_keep_published
     - field.field.node.news.field_list_date
@@ -13,10 +15,11 @@ dependencies:
     - field.field.node.news.field_list_media
     - field.field.node.news.field_meta_tags
     - field.field.node.news.field_news_categories
-    - field.field.node.news.layout_builder__layout
+    - field.field.node.news.field_news_media
     - node.type.news
     - workflows.workflow.editorial
   module:
+    - content_hierarchy
     - content_moderation
     - datetime
     - dynamic_entity_reference
@@ -25,11 +28,11 @@ dependencies:
     - media_library
     - metatag
     - path
+    - text
 third_party_settings:
   field_group:
     group_page_header:
-      children:
-        - field_header
+      children: {  }
       parent_name: ''
       weight: 7
       format_type: fieldset
@@ -65,9 +68,25 @@ targetEntityType: node
 bundle: news
 mode: default
 content:
+  body:
+    type: text_textarea_with_summary
+    weight: 9
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  content_hierarchy:
+    type: content_hierarchy_select
+    weight: 29
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
-    weight: 9
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -85,6 +104,13 @@ content:
     third_party_settings: {  }
     type: string_textarea
     region: content
+  field_display_publishing_date:
+    weight: 18
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_hide_breadcrumb:
     weight: 28
     settings:
@@ -93,7 +119,7 @@ content:
     type: boolean_checkbox
     region: content
   field_keep_published:
-    weight: 29
+    weight: 19
     settings:
       display_label: true
     third_party_settings: {  }
@@ -120,14 +146,14 @@ content:
     third_party_settings: {  }
     region: content
   field_meta_tags:
-    weight: 13
+    weight: 15
     settings:
       sidebar: true
     third_party_settings: {  }
     type: metatag_firehose
     region: content
   field_news_categories:
-    weight: 26
+    weight: 17
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -135,6 +161,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: dynamic_entity_reference_default
+    region: content
+  field_news_media:
+    weight: 8
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
     region: content
   langcode:
     type: language_select
@@ -145,13 +178,13 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 14
+    weight: 16
     settings: {  }
     region: content
     third_party_settings: {  }
   path:
     type: path
-    weight: 10
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -159,7 +192,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 14
     region: content
     third_party_settings: {  }
   title:
@@ -177,7 +210,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 10
     region: content
     settings:
       match_operator: CONTAINS
@@ -186,12 +219,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 11
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  body: true
-  layout_builder__layout: true
   promote: true
   sticky: true

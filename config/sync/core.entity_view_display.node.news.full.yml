@@ -5,8 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.news.body
+    - field.field.node.news.content_hierarchy
     - field.field.node.news.field_chatbot_muni
     - field.field.node.news.field_description
+    - field.field.node.news.field_display_publishing_date
     - field.field.node.news.field_hide_breadcrumb
     - field.field.node.news.field_keep_published
     - field.field.node.news.field_list_date
@@ -14,16 +16,17 @@ dependencies:
     - field.field.node.news.field_list_media
     - field.field.node.news.field_meta_tags
     - field.field.node.news.field_news_categories
-    - field.field.node.news.layout_builder__layout
+    - field.field.node.news.field_news_media
     - node.type.news
   module:
     - layout_builder
     - layout_builder_restrictions
+    - text
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: true
-    enabled: true
+    allow_custom: false
+    enabled: false
   layout_builder_restrictions:
     allowed_block_categories:
       - Block
@@ -32,7 +35,6 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
-      - Devel
       - Forms
       - Help
       - 'Inline blocks'
@@ -48,48 +50,11 @@ third_party_settings:
         Bruger: {  }
         'Chaos Tools': {  }
         'Content fields': {  }
-        'Custom block types':
-          - accordion
-          - appetizer
-          - button
-          - code
-          - divider
-          - document_list
-          - gis_minimap
-          - hero
-          - image
-          - inline_navigation
-          - news_list
-          - quote
-          - rte
-          - slideshow
-          - spacer
-          - submenu
-          - table_spot
-          - video
+        'Custom block types': {  }
         'Custom blocks': {  }
-        Devel: {  }
         Forms: {  }
         Help: {  }
-        'Inline blocks':
-          - 'inline_block:accordion'
-          - 'inline_block:appetizer'
-          - 'inline_block:image'
-          - 'inline_block:quote'
-          - 'inline_block:divider'
-          - 'inline_block:document_list'
-          - 'inline_block:gis_minimap'
-          - 'inline_block:hero'
-          - 'inline_block:inline_navigation'
-          - 'inline_block:button'
-          - 'inline_block:code'
-          - 'inline_block:news_list'
-          - 'inline_block:slideshow'
-          - 'inline_block:spacer'
-          - 'inline_block:submenu'
-          - 'inline_block:table_spot'
-          - 'inline_block:rte'
-          - 'inline_block:video'
+        'Inline blocks': {  }
         'Lists (Views)': {  }
         Menus: {  }
         Premium: {  }
@@ -97,19 +62,43 @@ third_party_settings:
         Webform: {  }
         core: {  }
       blacklisted_blocks: {  }
-      allowed_layouts:
-        - layout_onecol
-        - layout_twocol_section
-        - layout_threecol_section
+      allowed_layouts: {  }
+      restricted_categories: {  }
 _core:
   default_config_hash: QOEUrU1PQHcUILRpatr3BYjGBzLVTKdoaAa6LACdkhU
 id: node.news.full
 targetEntityType: node
 bundle: news
 mode: full
-content: {  }
+content:
+  body:
+    type: text_default
+    weight: 0
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_display_publishing_date:
+    type: boolean
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+  field_news_media:
+    type: entity_reference_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: full_width_16_9
+      link: false
+    third_party_settings: {  }
 hidden:
-  body: true
+  content_hierarchy: true
   content_moderation_control: true
   field_chatbot_muni: true
   field_description: true

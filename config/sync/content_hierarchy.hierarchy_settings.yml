@@ -1,6 +1,7 @@
 entity_bundles:
   node:
     - hearing_page
+    - news
     - page
 multilingual: false
 overview_type: foldable

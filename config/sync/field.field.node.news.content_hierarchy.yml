@@ -1,0 +1,21 @@
+uuid: bb797b9a-25f7-415d-9560-e3b6336487b6
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.content_hierarchy
+    - node.type.news
+  module:
+    - content_hierarchy
+id: node.news.content_hierarchy
+field_name: content_hierarchy
+entity_type: node
+bundle: news
+label: Indholdshierarki
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: content_hierarchy

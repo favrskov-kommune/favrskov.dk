@@ -4,7 +4,7 @@
   <div{{ (not attributes ? create_attribute() : attributes).addClass('breadcrumb') }}>
     <ol{{ (not items_attributes ? create_attribute() : items_attributes).addClass('breadcrumb__items') }}>
       {% for key,item in breadcrumb %}
-        <li class="breadcrumb__item">
+        <li class="breadcrumb__item{{ content.nodeType ? '__' ~ content.nodeType }}">
           {% if item.url %}
             <a class="breadcrumb__link{{ key == 0 ? ' breadcrumb__link-first' }}" href="{{ item.url }}">
               <span>{{ item.text }}</span>

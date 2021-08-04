@@ -5,12 +5,29 @@
 
 .news-page {
   &__title h1 {
-    font-weight: var(--base-font-weight);
     font-size: var(--base-font-size-xxxlarge);
-    margin-bottom: 30px;
+    font-family: "Helvetica Neue Light", Sans-Serif;
+    font-weight: lighter;
+    margin-bottom: 25px;
+  }
+
+  &__publishing-date {
+    color: grey;
+    font-size: var(--base-font-size-medium);
+    font-weight: var(--base-font-weight);
+    margin-bottom: 40px;
+  }
+
+  &__media {
+    margin-bottom: 15px;
+    img {
+      max-width: 90%;
+    }
   }
 
   &__content {
+    max-width: 90%;
+
     h2 {
       font-size: var(--base-font-size-xlarge);
     }
@@ -18,6 +35,23 @@
     h3 {
       font-size: var(--base-font-size-large);
     }
+  }
+
+  &__back-link {
+    display: inline-block;
+    padding-top: 25px;
+    color: var(--color-primary);
+    svg {
+      max-height: 12px;
+      max-width: 15px;
+      fill: var(--color-primary);
+    }
+    a {
+      font-size: var(--base-font-size-medium);
+      font-weight: var(--header-font-weight);
+      text-decoration: none;
+      color: var(--color-primary);
+     }
   }
 
   &__cta {

@@ -1,0 +1,23 @@
+uuid: 44c1064a-f9a2-44f4-8e64-4f2154837c8c
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_publishing_date
+    - node.type.news
+id: node.news.field_display_publishing_date
+field_name: field_display_publishing_date
+entity_type: node
+bundle: news
+label: 'Vis udgivelsesdato'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'on'
+  off_label: 'off'
+field_type: boolean
