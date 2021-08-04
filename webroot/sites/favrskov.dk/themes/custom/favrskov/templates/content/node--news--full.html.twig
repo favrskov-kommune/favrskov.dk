@@ -1,6 +1,10 @@
 {% include '@organisms/news-page/news-page.twig' with {
   'url': url,
   'title': label,
-  'pubdate': content.field_publishing_date,
-  'cotent': content,
+  'pubdate': node.field_list_date.value|date('U')|format_date('news_date'),
+  'content': content,
+  'body': content.body,
+  'media': content.field_news_media,
+  'display_publishing_date': node.field_display_publishing_date.value,
+  'back_link': content.back_link
 } %}
