@@ -53,9 +53,11 @@
             <div class="hearing-page__info--item"><label>{{ 'Place'|t }}:</label><span class="cludo-info__place">{{ place }}</span></div>
             <div class="hearing-page__info--item"><label>{{ 'Topic'|t }}:</label><span class="cludo-info__topic">{{ topic }}</span></div>
           </div>
-          <div class="hearing-page__extra">
-
-          </div>
+          {% if extra|render %}
+            <div class="hearing-page__extra">
+              {{ extra }}
+            </div>
+          {% endif %}
         </div>
       </div>
     </div>
