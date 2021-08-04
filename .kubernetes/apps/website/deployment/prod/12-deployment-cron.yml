@@ -7,10 +7,17 @@ metadata:
   namespace: favrskovdk
 spec:
   schedule: "*/1 * * * *"
+
+  concurrencyPolicy: Forbid # Choose Forbid if you don't want concurrent executions of your Job
+  startingDeadlineSeconds: 300 # if a job hasn't started in this many seconds, skip
+
   jobTemplate:
     spec:
       template:
         spec:
+#          parallelism: 1 # How many pods will be instantiated at once.
+#          completions: 1 # How many containers of the job are instantiated one after the other (sequentially) inside the pod.
+
           nodeSelector:
             "kubernetes.io/os": linux
 
@@ -71,4 +78,4 @@ spec:
 
             command: ["/release/entrypoint.cron.sh"]
 
-          restartPolicy: OnFailure
+          restartPolicy: Never
