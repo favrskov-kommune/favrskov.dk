@@ -1,0 +1,28 @@
+uuid: 302f87a9-fda2-4a29-9e8b-5070db78381d
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_extra
+    - node.type.hearing_page
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    full_html: full_html
+    basic_html: '0'
+    table: '0'
+    plain_text: '0'
+id: node.hearing_page.field_extra
+field_name: field_extra
+entity_type: node
+bundle: hearing_page
+label: 'Extra infomation'
+description: 'Hvis der er ekstra information der skal gives så kan det tilføjes her.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

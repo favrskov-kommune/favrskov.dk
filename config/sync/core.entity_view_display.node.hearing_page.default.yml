@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.hearing_page.body
     - field.field.node.hearing_page.field_cta
     - field.field.node.hearing_page.field_deadline
+    - field.field.node.hearing_page.field_extra
     - field.field.node.hearing_page.field_place
     - field.field.node.hearing_page.field_publishing_date
     - field.field.node.hearing_page.field_topic
@@ -28,6 +29,11 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  content_moderation_control:
+    weight: -20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_cta:
     weight: 4
     label: hidden
@@ -48,6 +54,13 @@ content:
       date_format: 'd. M. Y'
     third_party_settings: {  }
     type: datetime_custom
+    region: content
+  field_extra:
+    weight: 7
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
   field_place:
     weight: 6
