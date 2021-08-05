@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.image
+    - field.field.block_content.image.field_dynamic_height
     - field.field.block_content.image.field_image_caption
     - field.field.block_content.image.field_image_link
     - field.field.block_content.image.field_image_media
@@ -17,6 +18,13 @@ targetEntityType: block_content
 bundle: image
 mode: default
 content:
+  field_dynamic_height:
+    weight: 31
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_image_caption:
     weight: 1
     settings:

@@ -1,18 +1,17 @@
-uuid: e881a078-296c-474b-aeb7-3f3f03221e79
+uuid: 0a03db77-d4f9-483f-b351-b8a6a8d1a7cc
 langcode: da
 status: true
 dependencies:
   module:
     - block_content
-    - link
-id: block_content.field_links
-field_name: field_links
+id: block_content.field_dynamic_height
+field_name: field_dynamic_height
 entity_type: block_content
-type: link
+type: boolean
 settings: {  }
-module: link
+module: core
 locked: false
-cardinality: 5
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

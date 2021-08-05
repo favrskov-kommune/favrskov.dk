@@ -1,0 +1,10 @@
+uuid: e3f421d2-5b7e-46f9-87bd-a56ede25cc21
+langcode: da
+status: true
+dependencies:
+  module:
+    - media
+id: media.1_column_flex_height
+label: '1 column - dynamic height'
+targetEntityType: media
+cache: true

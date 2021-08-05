@@ -1,0 +1,16 @@
+uuid: f17e5400-154b-4251-8c96-d83c4b63d688
+langcode: da
+status: true
+dependencies: {  }
+name: 3_column_sm_flex_height
+label: '3 column (SM) - dynamic height'
+effects:
+  f6838dd1-6c20-4cf9-94cc-d81c1c849c10:
+    uuid: f6838dd1-6c20-4cf9-94cc-d81c1c849c10
+    id: image_scale
+    weight: 1
+    data:
+      width: 891
+      height: null
+      upscale: false
+pipeline: __default__

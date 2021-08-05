@@ -1,0 +1,16 @@
+uuid: 0435908c-e73f-4cbf-a1d6-f2e6c2e6e928
+langcode: da
+status: true
+dependencies: {  }
+name: full_size_xsx2_flex_height
+label: "Full size (XSx2) - dynamic height\t"
+effects:
+  6a81f4ec-be8c-4aae-b783-e3b0c634ce0f:
+    uuid: 6a81f4ec-be8c-4aae-b783-e3b0c634ce0f
+    id: image_scale
+    weight: 1
+    data:
+      width: 1536
+      height: null
+      upscale: false
+pipeline: __default__

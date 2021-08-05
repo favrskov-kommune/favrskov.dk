@@ -1,0 +1,23 @@
+uuid: 1f9ece85-dd86-4608-b53e-77cd9785ef14
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.image
+    - field.storage.block_content.field_dynamic_height
+id: block_content.image.field_dynamic_height
+field_name: field_dynamic_height
+entity_type: block_content
+bundle: image
+label: 'Dynamisk højde'
+description: 'Hvis sat, så skalere vi kun i bredden - ingen focal point og uden opskalering i bredden.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean

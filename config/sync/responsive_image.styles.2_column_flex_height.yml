@@ -1,0 +1,47 @@
+uuid: 43d12b3b-266d-4a3c-be19-dff2d7b45ed8
+langcode: da
+status: true
+dependencies:
+  config:
+    - image.style.2_column_lg_flex_height
+    - image.style.2_column_md_flex_height
+    - image.style.2_column_sm_flex_height
+    - image.style.2_column_xs_flex_height
+    - image.style.2_column_xxs_flex_height
+  theme:
+    - favrskov
+id: 2_column_flex_height
+label: '2 column - dynamic height'
+image_style_mappings:
+  -
+    breakpoint_id: favrskov.xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 2_column_lg_flex_height
+  -
+    breakpoint_id: favrskov.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 2_column_lg_flex_height
+  -
+    breakpoint_id: favrskov.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 2_column_md_flex_height
+  -
+    breakpoint_id: favrskov.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 2_column_sm_flex_height
+  -
+    breakpoint_id: favrskov.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 2_column_xs_flex_height
+  -
+    breakpoint_id: favrskov.xxs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 2_column_xxs_flex_height
+breakpoint_group: favrskov
+fallback_image_style: 2_column_xxs_flex_height

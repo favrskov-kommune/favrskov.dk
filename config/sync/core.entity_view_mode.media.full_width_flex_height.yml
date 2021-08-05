@@ -1,0 +1,10 @@
+uuid: 721f0b3c-b91b-4cd2-a951-82164a0d52d0
+langcode: da
+status: true
+dependencies:
+  module:
+    - media
+id: media.full_width_flex_height
+label: 'Full width - dynamic height'
+targetEntityType: media
+cache: true
