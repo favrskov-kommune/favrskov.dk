@@ -1,0 +1,16 @@
+uuid: 47e493ae-ef03-4e96-8128-b74136e84bd3
+langcode: da
+status: true
+dependencies: {  }
+name: full_size_md_flex_height
+label: "Full size (MD) - dynamic height\t"
+effects:
+  81477c07-8b8f-4b99-b1aa-e5d35f3e1ae0:
+    uuid: 81477c07-8b8f-4b99-b1aa-e5d35f3e1ae0
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false
+pipeline: __default__
