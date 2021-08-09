@@ -29,18 +29,13 @@
   }
 
   &__item__news {
-     display: inline-block;
-     list-style: none;
-     font-family: var(--header-font-family);
-     font-weight: var(--header-font-weight);
-     font-size: var(--base-font-size-medium);
-     color: var(--color-primary);
-     vertical-align: baseline;
-
-     & + &::before {
-       content: '/ /';
-       padding: 5px 3px;
-     }
+    display: inline-block;
+    list-style: none;
+    font-family: var(--header-font-family);
+    font-weight: var(--header-font-weight);
+    font-size: var(--base-font-size-medium);
+    color: var(--color-primary);
+    vertical-align: baseline;
   }
 
   &__link {
