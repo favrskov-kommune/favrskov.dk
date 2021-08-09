@@ -26,17 +26,13 @@
               {{ body }}
             </div>
           {% endif %}
-          {% if back_link %}
-            <div class="news-page__back-link">
+            <div class="news-page__back-link js-hidden">
               {% include '@particles/svg-icon/svg-icon.twig' with {
                 'attributes': '',
                 'svgIconName': 'arrow-left'
               } %}
-              <div class="news-page__back-link">
-                {{ back_link }}
-              </div>
+              <a href="#">{{ 'Back to list'|t }}</a>
             </div>
-          {% endif %}
         </div>
       </div>
     </div>
