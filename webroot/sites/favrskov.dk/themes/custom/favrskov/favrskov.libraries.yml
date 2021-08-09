@@ -280,7 +280,8 @@ news-page:
   css:
     theme:
       build-assets/dist/css/03-organisms/news-page/news-page.css: {}
-
+  js:
+    build-assets/dist/js/03-organisms/news-page/news-page.js: { preprocess: false }
 
 pager:
   version: VERSION
