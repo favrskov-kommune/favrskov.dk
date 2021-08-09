@@ -12,7 +12,7 @@
           {% endif %}
           {% if display_publishing_date == 1 %}
             <div class="news-page__publishing-date">
-              {{ pubdate }}
+              {{ pubdate|date('U')|format_date('news_date') }}
             </div>
           {% endif %}
           {% if media %}
