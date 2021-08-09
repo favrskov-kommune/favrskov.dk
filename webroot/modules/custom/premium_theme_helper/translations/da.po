@@ -307,3 +307,6 @@ msgstr "Knap farve"
 
 msgid "Read less"
 msgstr "Læs mindre"
+
+msgid "Back to list"
+msgstr "Tilbage til oversigten"
