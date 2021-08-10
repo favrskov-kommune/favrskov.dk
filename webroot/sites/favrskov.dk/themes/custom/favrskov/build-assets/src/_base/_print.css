@@ -16,3 +16,9 @@ body {
 .section--spacing-top-negative {
   margin-top: auto;
 }
+
+section,
+.container,
+.row {
+  break-inside: avoid;
+}
