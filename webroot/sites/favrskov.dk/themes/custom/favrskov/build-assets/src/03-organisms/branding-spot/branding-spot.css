@@ -7,15 +7,15 @@
   background-color: var(--color-primary);
 
   @media (--viewport-ms-min) {
-    padding-bottom: 80%;
+    padding-bottom: 650px;
   }
 
   @media (--viewport-sm-min) {
-    padding-bottom: 56%;
+    padding-bottom: 650px;
   }
 
   @media (--viewport-lg-min) {
-    padding-bottom: 48%;
+    padding-bottom: 650px;
   }
 
   &__bg {
