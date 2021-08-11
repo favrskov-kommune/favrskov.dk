@@ -69,6 +69,7 @@ module:
   media: 0
   media_icons: 0
   media_library: 0
+  media_library_bulk_upload: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
