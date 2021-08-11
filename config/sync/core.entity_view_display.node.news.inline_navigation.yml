@@ -63,13 +63,16 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  content_hierarchy: true
   content_moderation_control: true
   field_chatbot_muni: true
+  field_display_publishing_date: true
   field_hide_breadcrumb: true
   field_keep_published: true
   field_list_date: true
   field_meta_tags: true
   field_news_categories: true
+  field_news_media: true
   langcode: true
   layout_builder__layout: true
   links: true

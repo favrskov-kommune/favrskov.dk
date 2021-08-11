@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "157896a4ba65b288bf1266a97858a93e",
+    "content-hash": "88486ad9e23a8871312790f9aeedbd00",
     "packages": [
         {
             "name": "algolia/places",
@@ -3440,6 +3440,54 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/linkit",
                 "issues": "http://drupal.org/project/linkit"
+            }
+        },
+        {
+            "name": "drupal/media_library_bulk_upload",
+            "version": "1.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_library_bulk_upload.git",
+                "reference": "1.0.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_library_bulk_upload-1.0.0-alpha1.zip",
+                "reference": "1.0.0-alpha1",
+                "shasum": "50c7aabd91d8c02183f985431d8502e2877ff51f"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-alpha1",
+                    "datestamp": "1619187912",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Unsupported Projects",
+                    "homepage": "https://www.drupal.org/user/291168"
+                },
+                {
+                    "name": "hchonov",
+                    "homepage": "https://www.drupal.org/user/2901211"
+                }
+            ],
+            "description": "Allows uploading files in bulk and converting them to media entities using the media library.",
+            "homepage": "https://www.drupal.org/project/media_library_bulk_upload",
+            "support": {
+                "source": "https://git.drupalcode.org/project/media_library_bulk_upload"
             }
         },
         {
@@ -10898,6 +10946,7 @@
     "stability-flags": {
         "drupal/components": 10,
         "drupal/imageapi_optimize": 10,
+        "drupal/media_library_bulk_upload": 15,
         "drupal/paragraphs_asymmetric_translation_widgets": 10,
         "drupal/search_api_page": 10
     },
