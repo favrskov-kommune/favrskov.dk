@@ -53,6 +53,7 @@ h6 {
   margin-top: 0;
   font-weight: var(--header-font-weight);
   margin-bottom: 20px;
+  hyphens: auto;
 }
 
 h1 {
