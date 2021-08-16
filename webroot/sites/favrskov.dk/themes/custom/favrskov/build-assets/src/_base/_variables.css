@@ -58,6 +58,9 @@
   --theme-status-message-background-color-error: #fce3e3;
   --theme-status-message-color-error: #763c3c;
   --theme-hero-icon-color: var(--color-gray);
+  --theme-contact-block-item-background: var(--color-secondary-light);
+  --theme-contact-block-item-box-shadow: 0 4px 44px rgba(0, 0, 0, .1);
+
 
   /* Typography
   ********************/

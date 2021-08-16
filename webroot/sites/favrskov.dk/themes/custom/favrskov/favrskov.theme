@@ -123,3 +123,36 @@ function favrskov_preprocess_block__inline_block__branding_spot(array &$variable
 function favrskov_preprocess_paragraph__basic_hero(array &$variables) {
   $variables['is_front_page_header'] = \Drupal::service('path.matcher')->isFrontPage();
 }
+
+/**
+ * Contact layout block preprocess.
+ *
+ * @param array $variables
+ *   Template variables.
+ */
+function premium_theme_preprocess_block__inline_block__contact(array &$variables) {
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables['elements']['content']['#block_content'];
+
+  if ($block->hasField('field_cta') && !$block->get('field_cta')->isEmpty()) {
+    try {
+      $button = $block->get('field_cta')->first();
+
+      if (!is_null($button)) {
+        $button = $button->getValue();
+
+        if (isset($button['uri'], $button['title'])) {
+          $variables['link']['title'] = $button['title'];
+          $variables['link']['url'] = Url::fromUri($button['uri'])->toString();
+
+          if (isset($button['target_blank']) && (int) $button['target_blank'] === 1) {
+            $variables['link']['target'] = '_blank';
+          }
+        }
+      }
+    }
+    catch (MissingDataException $e) {
+      Drupal::logger('premium_theme')->error($e->getMessage());
+    }
+  }
+}

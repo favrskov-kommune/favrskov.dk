@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{% embed '@organisms/contact/contact.twig' with {
+  'attributes': attributes,
+  'title': content.field_headline,
+  'text_1': content.field_text_block_1,
+  'text_2': content.field_text_block_2,
+  'text_3': content.field_text_block_3,
+  'extra_info': content.field_text,
+  'cta': link,
+  'btn_color': content['#block_content'].field_call_to_action_color.value
+} %}
+  {% block block_content %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+  {% endblock %}
+{% endembed %}
