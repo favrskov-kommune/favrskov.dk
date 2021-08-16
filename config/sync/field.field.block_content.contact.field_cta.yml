@@ -11,7 +11,7 @@ id: block_content.contact.field_cta
 field_name: field_cta
 entity_type: block_content
 bundle: contact
-label: CTA
+label: 'Call to action'
 description: ''
 required: false
 translatable: false

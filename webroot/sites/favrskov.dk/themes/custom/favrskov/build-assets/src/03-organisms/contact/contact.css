@@ -63,6 +63,10 @@
         }
       }
     }
+
+    &--item-multicol {
+      margin-bottom: 30px;
+    }
   }
 
   &__content-cta {

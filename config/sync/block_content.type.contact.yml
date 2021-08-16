@@ -3,6 +3,6 @@ langcode: da
 status: true
 dependencies: {  }
 id: contact
-label: Contact
+label: Kontakt
 revision: 0
 description: ''
