@@ -9,7 +9,7 @@ id: block_content.contact.field_headline
 field_name: field_headline
 entity_type: block_content
 bundle: contact
-label: Headline
+label: Overskrift
 description: ''
 required: false
 translatable: false
