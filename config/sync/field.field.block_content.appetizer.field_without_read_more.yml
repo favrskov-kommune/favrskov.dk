@@ -1,0 +1,23 @@
+uuid: c799ddee-2aec-47d1-b3fa-7c5567eeba8d
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.appetizer
+    - field.storage.block_content.field_without_read_more
+id: block_content.appetizer.field_without_read_more
+field_name: field_without_read_more
+entity_type: block_content
+bundle: appetizer
+label: 'Vis uden læs mere'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean

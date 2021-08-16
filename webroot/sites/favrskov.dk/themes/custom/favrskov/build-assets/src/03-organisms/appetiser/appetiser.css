@@ -124,17 +124,11 @@
     }
 
     .appetiser__content-wrapper {
-      max-height: 300px;
       justify-content: normal;
       overflow: hidden;
       position: relative;
       height: 100%;
       align-items: flex-start;
-
-      &.expanded {
-        max-height: 5000px;
-        height: auto;
-      }
 
       &::after {
         display: none;
@@ -151,11 +145,11 @@
     .appetiser__content {
       justify-content: normal;
       width: 100%;
-      padding: 0 40px 70px;
+      padding: 0 40px 40px;
       height: auto;
 
       @media (--viewport-md-max) {
-        padding: 0 25px 70px;
+        padding: 0 25px 30px;
       }
     }
 
@@ -202,6 +196,25 @@
       height: 11px;
       border-right: 2px solid var(--color-cta);
       border-bottom: 2px solid var(--color-cta);
+    }
+  }
+
+  &.js-appetiser--small {
+    .appetiser__content-wrapper {
+      max-height: 300px;
+
+      &.expanded {
+        max-height: 5000px;
+        height: auto;
+      }
+    }
+
+    .appetiser__content {
+      padding: 0 40px 70px;
+
+      @media (--viewport-md-max) {
+        padding: 0 25px 70px;
+      }
     }
   }
 
