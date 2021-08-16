@@ -1,8 +1,10 @@
 {{ attach_library('favrskov/contact') }}
-{% if text_3|render|striptags|trim %}
-  {% set contact_item_class = 'col-md-4' %}
-{% elseif text_2|render|striptags|trim %}
-  {% set contact_item_class = 'col-md-6' %}
+{% if not is_onecol %}
+  {% set contact_item_class = ' contact__content-items--item-multicol' %}
+{% elseif text_3|render|striptags|trim and is_onecol %}
+  {% set contact_item_class = ' col-md-4' %}
+{% elseif text_2|render|striptags|trim and is_onecol %}
+  {% set contact_item_class = ' col-md-6' %}
 {% else %}
   {% set contact_item_class = '' %}
 {% endif %}
@@ -15,21 +17,21 @@
       </div>
       <div class="row contact__content-items">
         {% if text_1|render|striptags|trim %}
-          <div class="col-xs-12 {{ contact_item_class }} contact__content-items--item{{ (contact_item_class ? ' first') }}">
+          <div class="col-xs-12{{ contact_item_class }} contact__content-items--item{{ (contact_item_class ? ' first') }}">
             <div class="contact__content-items--item-content">
               {{ text_1 }}
             </div>
           </div>
         {% endif %}
         {% if text_2|render|striptags|trim %}
-          <div class="col-xs-12 {{ contact_item_class }} contact__content-items--item{{ (contact_item_class == 'col-md-6' ? ' last') }}">
+          <div class="col-xs-12{{ contact_item_class }} contact__content-items--item{{ (contact_item_class == 'col-md-6' ? ' last') }}">
             <div class="contact__content-items--item-content">
               {{ text_2 }}
             </div>
           </div>
         {% endif %}
         {% if text_3|render|striptags|trim %}
-          <div class="col-xs-12 {{ contact_item_class }} contact__content-items--item last">
+          <div class="col-xs-12{{ contact_item_class }} contact__content-items--item last">
             <div class="contact__content-items--item-content">
               {{ text_3 }}
             </div>
