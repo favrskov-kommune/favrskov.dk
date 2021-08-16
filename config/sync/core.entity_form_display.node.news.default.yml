@@ -15,7 +15,7 @@ dependencies:
     - field.field.node.news.field_list_media
     - field.field.node.news.field_meta_tags
     - field.field.node.news.field_news_categories
-    - field.field.node.news.field_news_media
+    - field.field.node.news.layout_builder__layout
     - node.type.news
     - workflows.workflow.editorial
   module:
@@ -162,13 +162,6 @@ content:
     third_party_settings: {  }
     type: dynamic_entity_reference_default
     region: content
-  field_news_media:
-    weight: 8
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-    type: media_library_widget
-    region: content
   langcode:
     type: language_select
     weight: 0
@@ -224,5 +217,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  layout_builder__layout: true
   promote: true
   sticky: true
