@@ -17,4 +17,6 @@
   --theme-pager-link-color: var(--color-black);
   --theme-pager-previous-arrow-color: var(--color-primary);
   --theme-pager-next-arrow-color: var(--color-white);
+  --theme-contact-block-item-background: var(--color-white);
+  --theme-contact-block-item-box-shadow: 0 4px 44px rgba(0, 0, 0, .1);
 }

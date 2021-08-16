@@ -1,0 +1,56 @@
+{{ attach_library('favrskov/contact') }}
+{% if text_3|render|striptags|trim %}
+  {% set contact_item_class = 'col-md-4' %}
+{% elseif text_2|render|striptags|trim %}
+  {% set contact_item_class = 'col-md-6' %}
+{% else %}
+  {% set contact_item_class = '' %}
+{% endif %}
+<div {{ (not attributes ? create_attribute() : attributes).addClass('contact') }}>
+  {% block block_content %}{% endblock %}
+  <div class="contact__content-wrapper">
+    <div class="container">
+      <div class="row">
+        <h2 class="contact__title">{{ title }}</h2>
+      </div>
+      <div class="row contact__content-items">
+        {% if text_1|render|striptags|trim %}
+          <div class="col-xs-12 {{ contact_item_class }} contact__content-items--item{{ (contact_item_class ? ' first') }}">
+            <div class="contact__content-items--item-content">
+              {{ text_1 }}
+            </div>
+          </div>
+        {% endif %}
+        {% if text_2|render|striptags|trim %}
+          <div class="col-xs-12 {{ contact_item_class }} contact__content-items--item{{ (contact_item_class == 'col-md-6' ? ' last') }}">
+            <div class="contact__content-items--item-content">
+              {{ text_2 }}
+            </div>
+          </div>
+        {% endif %}
+        {% if text_3|render|striptags|trim %}
+          <div class="col-xs-12 {{ contact_item_class }} contact__content-items--item last">
+            <div class="contact__content-items--item-content">
+              {{ text_3 }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      {% if cta.url and cta.title %}
+        <div class="row contact__content-cta">
+          {% include '@particles/button/button--link.twig' with {
+            'url': cta.url,
+            'text': cta.title,
+            'cta_color': cta_color,
+            'attributes': create_attribute().setAttribute('target', cta.target)
+          } %}
+        </div>
+      {% endif %}
+      {% if extra_info|render|striptags|trim %}
+        <div class="contact__content-extra_info">
+          {{ extra_info }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

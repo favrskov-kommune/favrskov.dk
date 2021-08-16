@@ -11,6 +11,7 @@ dependencies:
     - field.field.block_content.appetizer.field_appetizer_text
     - field.field.block_content.appetizer.field_appetizer_text_alignment
     - field.field.block_content.appetizer.field_call_to_action_color
+    - field.field.block_content.appetizer.field_without_read_more
   module:
     - options
     - premium_tools
@@ -73,6 +74,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
+  field_without_read_more:
+    weight: 8
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
 hidden:
   langcode: true

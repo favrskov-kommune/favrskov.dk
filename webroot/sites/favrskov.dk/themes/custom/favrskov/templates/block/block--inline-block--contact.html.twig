@@ -25,16 +25,15 @@
  * @see template_preprocess_block()
  */
 #}
-{% embed '@organisms/appetiser/appetiser.twig' with {
+{% embed '@organisms/contact/contact.twig' with {
   'attributes': attributes,
-  'title': content.field_appetizer_headline,
-  'text': content.field_appetizer_text,
-  'media': media,
-  'orientation': content['#block_content'].field_appetizer_orientation.value,
-  'text_alignment': content['#block_content'].field_appetizer_text_alignment.value,
+  'title': content.field_headline,
+  'text_1': content.field_text_block_1,
+  'text_2': content.field_text_block_2,
+  'text_3': content.field_text_block_3,
+  'extra_info': content.field_text,
   'cta': link,
-  'btn_color': content['#block_content'].field_call_to_action_color.value,
-  'no_read_more': content['#block_content'].field_without_read_more.value
+  'btn_color': content['#block_content'].field_call_to_action_color.value
 } %}
   {% block block_content %}
     {{ title_prefix }}

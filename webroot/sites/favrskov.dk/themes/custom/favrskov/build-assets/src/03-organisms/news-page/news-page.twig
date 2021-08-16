@@ -1,7 +1,7 @@
 {{ attach_library('favrskov/news-page') }}
 
 <div{{ (not attributes ? create_attribute() : attributes).addClass('news-page') }}>
-  <section class="section section--spacing-top-small section--spacing-bottom-medium">
+  <div class="section section--spacing-top-small section--spacing-bottom-none">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-8 col-md-offset-2">
@@ -15,26 +15,28 @@
               {{ pubdate|date('U')|format_date('news_date') }}
             </div>
           {% endif %}
-          {% if media %}
-            <div class="news-page__media">
-              {{ media }}
-            </div>
-          {% endif %}
-
-          {% if body %}
-            <div class="news-page__content">
-              {{ body }}
-            </div>
-          {% endif %}
-            <div class="news-page__back-link js-hidden">
-              {% include '@particles/svg-icon/svg-icon.twig' with {
-                'attributes': '',
-                'svgIconName': 'arrow-left'
-              } %}
-              <a href="#">{{ 'Back to list'|t }}</a>
-            </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+  {% if content %}
+    <div class="news-page__content">
+      {{ content }}
+    </div>
+  {% endif %}
+  <div class="section section--spacing-top-small section--spacing-bottom-medium">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+          <div class="news-page__back-link js-hidden">
+            {% include '@particles/svg-icon/svg-icon.twig' with {
+              'attributes': '',
+              'svgIconName': 'arrow-left'
+            } %}
+            <a href="#">{{ 'Back to list'|t }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

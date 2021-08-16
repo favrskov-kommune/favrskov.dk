@@ -1,0 +1,19 @@
+uuid: ed8e24cf-2828-4aed-aa30-c1b7794410b1
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.contact
+    - field.storage.block_content.field_headline
+id: block_content.contact.field_headline
+field_name: field_headline
+entity_type: block_content
+bundle: contact
+label: Headline
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

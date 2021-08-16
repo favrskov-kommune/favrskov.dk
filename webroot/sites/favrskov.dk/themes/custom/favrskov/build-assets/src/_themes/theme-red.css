@@ -5,4 +5,6 @@
 
 .theme-red {
   --theme-background-color: var(--color-cta);
+  --theme-contact-block-item-background: var(--color-white);
+  --theme-contact-block-item-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }

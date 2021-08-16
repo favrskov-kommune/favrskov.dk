@@ -1,0 +1,8 @@
+uuid: 13dde2e2-c634-486d-a835-38414ea21e1d
+langcode: da
+status: true
+dependencies: {  }
+id: contact
+label: Contact
+revision: 0
+description: ''

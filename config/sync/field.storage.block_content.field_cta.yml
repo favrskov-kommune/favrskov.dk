@@ -1,0 +1,19 @@
+uuid: 2b82dc15-2c40-4d0f-89c3-5e5abf8df446
+langcode: da
+status: true
+dependencies:
+  module:
+    - block_content
+    - premium_tools
+id: block_content.field_cta
+field_name: field_cta
+entity_type: block_content
+type: link_with_target
+settings: {  }
+module: premium_tools
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

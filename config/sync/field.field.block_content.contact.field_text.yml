@@ -1,0 +1,28 @@
+uuid: d03ffae4-1e2b-4f5c-b942-39d161d706eb
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.contact
+    - field.storage.block_content.field_text
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    table: '0'
+    full_html: '0'
+    plain_text: '0'
+id: block_content.contact.field_text
+field_name: field_text
+entity_type: block_content
+bundle: contact
+label: 'Extra info'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

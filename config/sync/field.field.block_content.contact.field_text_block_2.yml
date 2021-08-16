@@ -1,0 +1,28 @@
+uuid: b977e49e-d4fc-4ab8-b971-4f2112197236
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.contact
+    - field.storage.block_content.field_text_block_2
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    table: '0'
+    full_html: '0'
+    plain_text: '0'
+id: block_content.contact.field_text_block_2
+field_name: field_text_block_2
+entity_type: block_content
+bundle: contact
+label: 'Text block 2'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

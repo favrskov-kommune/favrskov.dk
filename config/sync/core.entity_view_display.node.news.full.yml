@@ -16,17 +16,16 @@ dependencies:
     - field.field.node.news.field_list_media
     - field.field.node.news.field_meta_tags
     - field.field.node.news.field_news_categories
-    - field.field.node.news.field_news_media
+    - field.field.node.news.layout_builder__layout
     - node.type.news
   module:
     - layout_builder
     - layout_builder_restrictions
-    - text
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
-    enabled: false
+    allow_custom: true
+    enabled: true
   layout_builder_restrictions:
     allowed_block_categories:
       - Block
@@ -50,11 +49,48 @@ third_party_settings:
         Bruger: {  }
         'Chaos Tools': {  }
         'Content fields': {  }
-        'Custom block types': {  }
-        'Custom blocks': {  }
+        'Custom block types':
+          - accordion
+          - appetizer
+          - branding_spot
+          - button
+          - code
+          - divider
+          - document_list
+          - gis_minimap
+          - hero
+          - image
+          - inline_navigation
+          - news_list
+          - quote
+          - rte
+          - slideshow
+          - spacer
+          - submenu
+          - table_spot
+          - video
         Forms: {  }
         Help: {  }
-        'Inline blocks': {  }
+        'Inline blocks':
+          - 'inline_block:accordion'
+          - 'inline_block:appetizer'
+          - 'inline_block:image'
+          - 'inline_block:branding_spot'
+          - 'inline_block:quote'
+          - 'inline_block:divider'
+          - 'inline_block:document_list'
+          - 'inline_block:gis_minimap'
+          - 'inline_block:hero'
+          - 'inline_block:inline_navigation'
+          - 'inline_block:button'
+          - 'inline_block:code'
+          - 'inline_block:news_list'
+          - 'inline_block:slideshow'
+          - 'inline_block:spacer'
+          - 'inline_block:submenu'
+          - 'inline_block:table_spot'
+          - 'inline_block:rte'
+          - 'inline_block:video'
         'Lists (Views)': {  }
         Menus: {  }
         Premium: {  }
@@ -62,7 +98,10 @@ third_party_settings:
         Webform: {  }
         core: {  }
       blacklisted_blocks: {  }
-      allowed_layouts: {  }
+      allowed_layouts:
+        - layout_onecol
+        - layout_twocol_section
+        - layout_threecol_section
       restricted_categories: {  }
 _core:
   default_config_hash: QOEUrU1PQHcUILRpatr3BYjGBzLVTKdoaAa6LACdkhU
@@ -70,38 +109,14 @@ id: node.news.full
 targetEntityType: node
 bundle: news
 mode: full
-content:
-  body:
-    type: text_default
-    weight: 0
-    region: content
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-  field_display_publishing_date:
-    type: boolean
-    weight: 2
-    region: content
-    label: hidden
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-  field_news_media:
-    type: entity_reference_entity_view
-    weight: 1
-    region: content
-    label: hidden
-    settings:
-      view_mode: full_width_16_9
-      link: false
-    third_party_settings: {  }
+content: {  }
 hidden:
+  body: true
   content_hierarchy: true
   content_moderation_control: true
   field_chatbot_muni: true
   field_description: true
+  field_display_publishing_date: true
   field_hide_breadcrumb: true
   field_keep_published: true
   field_list_date: true
