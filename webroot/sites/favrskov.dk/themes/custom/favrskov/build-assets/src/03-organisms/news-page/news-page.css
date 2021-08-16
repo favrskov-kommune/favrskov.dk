@@ -18,17 +18,7 @@
     margin-bottom: 40px;
   }
 
-  &__media {
-    margin-bottom: 15px;
-
-    img {
-      max-width: 90%;
-    }
-  }
-
   &__content {
-    max-width: 90%;
-
     & h2 {
       font-size: var(--base-font-size-xlarge);
     }
