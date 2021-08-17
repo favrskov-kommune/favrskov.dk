@@ -1,0 +1,16 @@
+Index: src/Webp.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Webp.php b/src/Webp.php
+--- a/src/Webp.php	(revision 61a101530d43d3911b0ae3f9bed694360ff17128)
++++ b/src/Webp.php	(date 1629212239963)
+@@ -131,6 +131,7 @@
+           if (filesize($destination) % 2 == 1) {
+             file_put_contents($destination, "\0", FILE_APPEND);
+           }
++          $this->fileSystem->chmod($destination);
+ 
+           @imagedestroy($sourceImage);
+           $webp = $destination;
