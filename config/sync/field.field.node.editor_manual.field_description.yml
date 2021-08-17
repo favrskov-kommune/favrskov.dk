@@ -13,7 +13,7 @@ entity_type: node
 bundle: editor_manual
 label: Beskrivelse
 description: 'Beskrivelsen er brugt til meta tags, søgeresultater og inline navigation'
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
