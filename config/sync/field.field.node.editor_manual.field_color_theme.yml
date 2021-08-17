@@ -1,0 +1,21 @@
+uuid: 4723c752-3861-4c29-9151-e51230df0e85
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_color_theme
+    - node.type.editor_manual
+  module:
+    - dynamic_key_value
+id: node.editor_manual.field_color_theme
+field_name: field_color_theme
+entity_type: node
+bundle: editor_manual
+label: 'Breadcrumbs background color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: dynamic_key_value

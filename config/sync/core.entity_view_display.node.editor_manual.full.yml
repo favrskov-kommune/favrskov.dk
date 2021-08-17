@@ -5,9 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.editor_manual.body
+    - field.field.node.editor_manual.field_chatbot_muni
+    - field.field.node.editor_manual.field_color_theme
     - field.field.node.editor_manual.field_description
     - field.field.node.editor_manual.field_header
     - field.field.node.editor_manual.field_hide_breadcrumb
+    - field.field.node.editor_manual.field_hide_title
     - field.field.node.editor_manual.field_list_icon
     - field.field.node.editor_manual.field_list_media
     - field.field.node.editor_manual.field_meta_tags
@@ -29,7 +32,6 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
-      - Devel
       - Forms
       - Help
       - 'Inline blocks'
@@ -48,8 +50,10 @@ third_party_settings:
         'Custom block types':
           - accordion
           - appetizer
+          - branding_spot
           - button
           - code
+          - contact
           - divider
           - document_list
           - gis_minimap
@@ -64,14 +68,13 @@ third_party_settings:
           - submenu
           - table_spot
           - video
-        'Custom blocks': {  }
-        Devel: {  }
         Forms: {  }
         Help: {  }
         'Inline blocks':
           - 'inline_block:accordion'
           - 'inline_block:appetizer'
           - 'inline_block:image'
+          - 'inline_block:branding_spot'
           - 'inline_block:quote'
           - 'inline_block:divider'
           - 'inline_block:document_list'
@@ -80,6 +83,7 @@ third_party_settings:
           - 'inline_block:inline_navigation'
           - 'inline_block:button'
           - 'inline_block:code'
+          - 'inline_block:contact'
           - 'inline_block:news_list'
           - 'inline_block:slideshow'
           - 'inline_block:spacer'
@@ -98,6 +102,7 @@ third_party_settings:
         - layout_onecol
         - layout_twocol_section
         - layout_threecol_section
+      restricted_categories: {  }
 _core:
   default_config_hash: QOEUrU1PQHcUILRpatr3BYjGBzLVTKdoaAa6LACdkhU
 id: node.editor_manual.full
@@ -108,9 +113,12 @@ content: {  }
 hidden:
   body: true
   content_moderation_control: true
+  field_chatbot_muni: true
+  field_color_theme: true
   field_description: true
   field_header: true
   field_hide_breadcrumb: true
+  field_hide_title: true
   field_list_icon: true
   field_list_media: true
   field_meta_tags: true

@@ -75,5 +75,5 @@
   'url': url,
   'media': media[0] is defined ? media,
   'label': label,
-  'teaser': content.field_description
+  'teaser': not node.field_description.isEmpty ? content.field_description
 } %}

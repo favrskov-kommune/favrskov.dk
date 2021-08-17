@@ -73,5 +73,5 @@
 {% include '@molecules/inline-navigation-item/inline-navigation-item--campaign.twig' with {
   'url': url,
   'label': label,
-  'teaser': content.field_description
+  'teaser': not node.field_description.isEmpty ? content.field_description
 } %}

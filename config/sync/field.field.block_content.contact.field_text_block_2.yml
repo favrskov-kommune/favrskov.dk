@@ -18,7 +18,7 @@ id: block_content.contact.field_text_block_2
 field_name: field_text_block_2
 entity_type: block_content
 bundle: contact
-label: 'Text block 2'
+label: 'Tekst blok 2'
 description: ''
 required: false
 translatable: false
