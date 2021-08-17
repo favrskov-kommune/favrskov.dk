@@ -1,17 +1,15 @@
-uuid: 1fe42789-3032-4354-ba2d-bd3130d74124
+uuid: a0141f5e-a6af-4bad-84c6-c11782c3532c
 langcode: da
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hide_breadcrumb
+    - field.storage.node.field_hide_title
     - node.type.editor_manual
-_core:
-  default_config_hash: Vc2rDPs207jTX3TTgReBgmX_zI1qzeXwlhPnU346qWU
-id: node.editor_manual.field_hide_breadcrumb
-field_name: field_hide_breadcrumb
+id: node.editor_manual.field_hide_title
+field_name: field_hide_title
 entity_type: node
 bundle: editor_manual
-label: 'Skjul brødkrumme'
+label: 'Skjul titel'
 description: ''
 required: false
 translatable: true
