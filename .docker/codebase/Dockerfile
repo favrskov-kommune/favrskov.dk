@@ -34,6 +34,7 @@ WORKDIR /app
 ADD composer.json \
   composer.lock \
   /app/
+COPY patches /app/patches
 COPY scripts/composer /app/scripts/composer
 COPY assets /app/assets
 RUN composer install --ignore-platform-reqs --optimize-autoloader --no-dev --no-interaction --no-progress --prefer-dist
