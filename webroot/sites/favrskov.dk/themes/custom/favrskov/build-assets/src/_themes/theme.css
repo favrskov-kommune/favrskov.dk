@@ -10,7 +10,7 @@
     background-color: var(--theme-background-color);
   }
 
-  a:not(.button):not(.pager__link):not(.appetiser--small a):not(.inline-navigation__link-list-item):not(.breadcrumb__link) {
+  a:not(.button):not(.pager__link):not(.appetiser--small a):not(.inline-navigation__link-list-item):not(.breadcrumb__link):not(.branding-spot__overlay--links a) {
     color: var(--theme-link-color);
   }
 
