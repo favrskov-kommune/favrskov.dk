@@ -174,7 +174,8 @@
                 "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2020-06-25/paragraphs-2901390-51.patch"
             },
             "drupal/webp": {
-                "(#3153137) Using Image Widget Crop in responsive images does not refresh webp image": "https://www.drupal.org/files/issues/2021-05-04/webp-support-image-crop-3153137-11.patch"
+                "(#3153137) Using Image Widget Crop in responsive images does not refresh webp image": "https://www.drupal.org/files/issues/2021-05-04/webp-support-image-crop-3153137-11.patch",
+                "(#3153137) chmod": "patches/webp-chmod.patch"
             }
         }
     }
