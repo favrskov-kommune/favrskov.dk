@@ -176,7 +176,7 @@
             "drupal/webp": {
                 "(#3153137) Using Image Widget Crop in responsive images does not refresh webp image": "https://www.drupal.org/files/issues/2021-05-04/webp-support-image-crop-3153137-11.patch",
                 "(#3161795) Upper/lowercase checking on file extension causes image generation to fail due to token mismatch": "https://www.drupal.org/files/issues/2021-05-07/webp-replace-file-exists-call-with-entity-load-to-fix-image-generation-3161795-16.patch",
-                "Add chmod to WebP": "patches/webp-chmod.patch"
+                "(#3228872) WebP does not set correct file permissions": "https://www.drupal.org/files/issues/2021-08-19/add-chmod-to-webp-3228872.patch"
             }
         }
     }
