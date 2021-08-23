@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
-    - field.field.node.news.content_hierarchy
     - field.field.node.news.field_chatbot_muni
     - field.field.node.news.field_description
     - field.field.node.news.field_display_publishing_date
@@ -119,7 +118,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  content_hierarchy: true
   content_moderation_control: true
   field_description: true
   field_hide_breadcrumb: true

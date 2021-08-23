@@ -1,6 +1,5 @@
 entity_bundles:
   node:
-    - news
     - page
 multilingual: false
 overview_type: foldable

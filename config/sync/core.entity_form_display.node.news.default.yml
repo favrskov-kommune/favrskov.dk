@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
-    - field.field.node.news.content_hierarchy
     - field.field.node.news.field_chatbot_muni
     - field.field.node.news.field_description
     - field.field.node.news.field_display_publishing_date
@@ -19,7 +18,6 @@ dependencies:
     - node.type.news
     - workflows.workflow.editorial
   module:
-    - content_hierarchy
     - content_moderation
     - datetime
     - dynamic_entity_reference
@@ -78,12 +76,6 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-  content_hierarchy:
-    type: content_hierarchy_select
-    weight: 29
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 11
