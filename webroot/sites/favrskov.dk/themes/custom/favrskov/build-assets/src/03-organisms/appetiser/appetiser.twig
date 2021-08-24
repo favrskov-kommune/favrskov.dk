@@ -7,7 +7,7 @@
       {{ media }}
     </figure>
   {% endif %}
-  <div class="appetiser__content-wrapper">
+  <div class="appetiser__content-wrapper {{ display_as_fullwidth ? 'appetiser__content-wrapper--full-width' }}">
     {% if display_as_fullwidth %}
     <div class="container">
       {% endif %}
