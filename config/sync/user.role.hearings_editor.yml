@@ -8,6 +8,7 @@ weight: 7
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access contextual links'
   - 'access files overview'
   - 'access taxonomy overview'
   - 'access toolbar'
