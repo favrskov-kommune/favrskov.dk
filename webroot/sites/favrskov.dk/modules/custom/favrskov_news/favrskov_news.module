@@ -96,7 +96,7 @@ function favrskov_preprocess_block__inline_block__news_list(array &$variables) {
     }
     $total = $countQuery->count()->execute();
 
-    $num_per_page = 10;
+    $num_per_page = 4;
     $pager = $pagerManager->createPager($total, $num_per_page);
     $page = $pager->getCurrentPage();
     $offset = $num_per_page * $page;
