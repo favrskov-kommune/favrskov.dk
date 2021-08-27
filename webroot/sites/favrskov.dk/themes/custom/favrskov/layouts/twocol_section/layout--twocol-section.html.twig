@@ -30,7 +30,12 @@
   {{ attach_library('favrskov/theme-' ~ settings.color_theme) }}
 {% endif %}
 
-<section {{ attributes.addClass(classes).setAttribute('id', settings.section_id|clean_id) }}>
+{% set clean_id = settings.section_id|clean_id %}
+{% if clean_id %}
+  <a id="{{ clean_id }}" class="anchor-tag">&nbsp;</a>
+{% endif %}
+
+<section {{ attributes.addClass(classes) }}>
   <div class="container">
     {% if header and header is not empty %}
     <div class="row">

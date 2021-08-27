@@ -45,11 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.js-submenu a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function foobar(e) {
       e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        alignToTop: true,
-        block: 'center',
-        behavior: 'smooth',
-      });
+      const element = document.querySelector(this.getAttribute('href'));
+
+      if (element) {
+        element.scroll({
+          alignToTop: true,
+          block: 'start',
+          behavior: 'smooth',
+        });
+      }
     });
   });
 });
