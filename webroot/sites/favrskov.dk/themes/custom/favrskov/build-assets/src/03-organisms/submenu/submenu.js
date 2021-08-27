@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const element = document.querySelector(this.getAttribute('href'));
 
       if (element) {
-        element.scroll({
+        element.scrollIntoView({
           alignToTop: true,
           block: 'start',
           behavior: 'smooth',
