@@ -39,6 +39,9 @@ msgstr "Tre kolonne"
 msgid "Section @section"
 msgstr "Sektion @section"
 
+msgid "Scheduled transitions"
+msgstr "Planlægning"
+
 msgid "Section (@type): @label"
 msgstr "Sektion (@type): @label"
 

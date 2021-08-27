@@ -12,8 +12,8 @@ id: node.news.field_list_media
 field_name: field_list_media
 entity_type: node
 bundle: news
-label: 'List media'
-description: 'Image used for meta tags and inline navigation'
+label: 'Billede til nyhedsliste'
+description: ''
 required: false
 translatable: true
 default_value: {  }

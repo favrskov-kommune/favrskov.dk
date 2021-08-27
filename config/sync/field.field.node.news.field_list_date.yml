@@ -11,7 +11,7 @@ id: node.news.field_list_date
 field_name: field_list_date
 entity_type: node
 bundle: news
-label: 'List dato'
+label: Udgivelsesdato
 description: ''
 required: false
 translatable: false
