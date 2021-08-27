@@ -13,7 +13,6 @@ permissions:
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'add scheduled transitions node hearing_page'
-  - 'administer taxonomy'
   - 'create hearing_page content'
   - 'create terms in hearing_page_types'
   - 'create terms in hearing_places'

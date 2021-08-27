@@ -15,7 +15,6 @@ permissions:
   - 'access toolbar'
   - 'add scheduled transitions node news'
   - 'administer blocks'
-  - 'administer taxonomy'
   - 'configure all news node layout overrides'
   - 'configure editable news node layout overrides'
   - 'create and edit custom blocks'

@@ -68,10 +68,11 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
   public function build(): array {
     $build = $this->breadcrumbManager->build($this->routeMatch)->toRenderable();
     $cacheMetadata = CacheableMetadata::createFromRenderArray($build);
+    $build['#narrow'] = FALSE;
 
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
     $route_entity = $this->getEntityFromRouteMatch($this->routeMatch);
-    if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_hide_breadcrumb')) {
+    if ($route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_hide_breadcrumb')) {
       try {
         $data = $route_entity->get('field_hide_breadcrumb')->first();
         if (!is_null($data) && (int) $data->getValue()['value'] === 1) {
@@ -87,11 +88,15 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
 
     $build['#attributes']['class'] = ['section', 'theme', 'section--no-spacing'];
 
-    if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_color_theme')) {
-      $color_theme = $route_entity->get('field_color_theme')->value;
-      if ($color_theme !== NULL) {
-        $build['#attributes']['class'][] = 'theme-' . $color_theme;
-        $build['#attached']['library'][] = 'favrskov/theme-' . $color_theme;
+    if ($route_entity instanceof ContentEntityInterface) {
+      $build['#narrow'] = $route_entity->bundle() === 'news' || $route_entity->bundle() === 'hearing_page';
+
+      if ($route_entity->hasField('field_color_theme')) {
+        $color_theme = $route_entity->get('field_color_theme')->value;
+        if ($color_theme !== NULL) {
+          $build['#attributes']['class'][] = 'theme-' . $color_theme;
+          $build['#attached']['library'][] = 'favrskov/theme-' . $color_theme;
+        }
       }
     }
 
@@ -113,7 +118,7 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
         ];
       }
     }
-    $build['breadcrumb_json_data'] = [
+    $build['#breadcrumb_json_data'] = [
       '#type' => 'html_tag',
       '#tag' => 'script',
       '#attributes' => [

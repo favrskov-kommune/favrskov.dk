@@ -8,11 +8,25 @@
  */
 #}
 <div class="container">
-  {% include '@molecules/breadcrumb/breadcrumb.twig' with {
-    'breadcrumb_json_data': breadcrumb_json_data,
-    'attributes': attributes,
-    'items_attributes': items_attributes,
-    'breadcrumb': breadcrumb,
-    'disable': disable
-  } %}
+  {% if narrow %}
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        {% include '@molecules/breadcrumb/breadcrumb.twig' with {
+          'breadcrumb_json_data': breadcrumb_json_data,
+          'attributes': attributes,
+          'items_attributes': items_attributes,
+          'breadcrumb': breadcrumb,
+          'disable': disable
+        } %}
+      </div>
+    </div>
+  {% else %}
+    {% include '@molecules/breadcrumb/breadcrumb.twig' with {
+      'breadcrumb_json_data': breadcrumb_json_data,
+      'attributes': attributes,
+      'items_attributes': items_attributes,
+      'breadcrumb': breadcrumb,
+      'disable': disable
+    } %}
+  {% endif %}
 </div>
