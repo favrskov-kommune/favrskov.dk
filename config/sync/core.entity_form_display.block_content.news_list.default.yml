@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.news_list
+    - field.field.block_content.news_list.field_limit
     - field.field.block_content.news_list.field_news_category
     - field.field.block_content.news_list.field_paginating
 id: block_content.news_list.default
@@ -11,6 +12,13 @@ targetEntityType: block_content
 bundle: news_list
 mode: default
 content:
+  field_limit:
+    weight: 28
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_news_category:
     weight: 26
     settings: {  }

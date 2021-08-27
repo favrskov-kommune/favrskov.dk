@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.news_list
+    - field.field.block_content.news_list.field_limit
     - field.field.block_content.news_list.field_news_category
     - field.field.block_content.news_list.field_paginating
 id: block_content.news_list.default
@@ -12,6 +13,7 @@ bundle: news_list
 mode: default
 content: {  }
 hidden:
+  field_limit: true
   field_news_category: true
   field_paginating: true
   langcode: true

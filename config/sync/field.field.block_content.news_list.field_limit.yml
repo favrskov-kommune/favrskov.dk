@@ -1,0 +1,23 @@
+uuid: 1b3f7183-d017-400c-86d7-b12f5bca418c
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.news_list
+    - field.storage.block_content.field_limit
+id: block_content.news_list.field_limit
+field_name: field_limit
+entity_type: block_content
+bundle: news_list
+label: 'Vis kun 4 nyheder'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean

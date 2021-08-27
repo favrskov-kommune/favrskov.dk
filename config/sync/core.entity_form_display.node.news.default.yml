@@ -26,7 +26,6 @@ dependencies:
     - media_library
     - metatag
     - path
-    - text
 third_party_settings:
   field_group:
     group_page_header:
@@ -66,19 +65,9 @@ targetEntityType: node
 bundle: news
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 9
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 11
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -97,7 +86,7 @@ content:
     type: string_textarea
     region: content
   field_display_publishing_date:
-    weight: 18
+    weight: 16
     settings:
       display_label: true
     third_party_settings: {  }
@@ -111,7 +100,7 @@ content:
     type: boolean_checkbox
     region: content
   field_keep_published:
-    weight: 19
+    weight: 17
     settings:
       display_label: true
     third_party_settings: {  }
@@ -138,14 +127,14 @@ content:
     third_party_settings: {  }
     region: content
   field_meta_tags:
-    weight: 15
+    weight: 13
     settings:
       sidebar: true
     third_party_settings: {  }
     type: metatag_firehose
     region: content
   field_news_categories:
-    weight: 17
+    weight: 15
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -163,13 +152,13 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 16
+    weight: 14
     settings: {  }
     region: content
     third_party_settings: {  }
   path:
     type: path
-    weight: 12
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -177,7 +166,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 14
+    weight: 12
     region: content
     third_party_settings: {  }
   title:
@@ -195,7 +184,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 10
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
@@ -204,11 +193,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 13
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  body: true
   layout_builder__layout: true
   promote: true
   sticky: true

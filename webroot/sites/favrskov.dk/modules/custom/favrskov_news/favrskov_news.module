@@ -67,6 +67,8 @@ function favrskov_preprocess_block__inline_block__news_list(array &$variables) {
 
   /** @var \Drupal\block_content\Entity\BlockContent $block */
   $block = $variables['elements']['content']['#block_content'];
+  $limit_activated = $block->hasField('field_limit') && (int) $block->get('field_limit')->value === 1;
+  $limit_to = 4;
 
   $categories = [];
   if ($block->hasField('field_news_category') && !$block->get('field_news_category')->isEmpty()) {
@@ -84,7 +86,10 @@ function favrskov_preprocess_block__inline_block__news_list(array &$variables) {
     $query->condition('field_news_categories', $categories, 'IN');
   }
 
-  if ($block->hasField('field_paginating') && $block->get('field_paginating')->first()->getValue()['value'] == 1) {
+  if ($limit_activated) {
+    $query->range(0, $limit_to);
+  }
+  elseif ($block->hasField('field_paginating') && $block->get('field_paginating')->first()->getValue()['value'] == 1) {
     /** @var PagerManagerInterface $pagerManager */
     $pagerManager = \Drupal::service('pager.manager');
 
@@ -96,7 +101,7 @@ function favrskov_preprocess_block__inline_block__news_list(array &$variables) {
     }
     $total = $countQuery->count()->execute();
 
-    $num_per_page = 4;
+    $num_per_page = 12;
     $pager = $pagerManager->createPager($total, $num_per_page);
     $page = $pager->getCurrentPage();
     $offset = $num_per_page * $page;
