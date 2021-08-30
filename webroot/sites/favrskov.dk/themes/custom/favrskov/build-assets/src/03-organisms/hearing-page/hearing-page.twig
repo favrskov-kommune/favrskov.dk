@@ -23,11 +23,13 @@
               {{ cta }}
             </div>
           {% endif %}
-          {% if back_link %}
-            <div class="hearing-page__back-link">
-              {{ back_link }}
-            </div>
-          {% endif %}
+          <div class="hearing-page__back-link js-hidden">
+            {% include '@particles/svg-icon/svg-icon.twig' with {
+              'attributes': '',
+              'svgIconName': 'arrow-left'
+            } %}
+            <a href="#">{{ 'Back to list'|t }}</a>
+          </div>
         </div>
         <div class="col-xs-12 col-md-4 col-md-offset-1 hearing-page__box">
           <div class="hearing-page__type cludo-info__type">

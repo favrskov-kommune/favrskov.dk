@@ -46,23 +46,31 @@
     }
   }
 
-  &__cta {
-    padding-top: 30px;
-  }
-
   &__back-link {
-    padding-top: 30px;
+    display: inline-block;
+    padding-top: 25px;
+    color: var(--color-primary);
+
+    svg {
+      max-height: 12px;
+      max-width: 15px;
+      fill: var(--color-primary);
+    }
+
     a {
       font-size: var(--base-font-size-medium);
       font-weight: var(--header-font-weight);
       text-decoration: none;
       color: var(--color-primary);
-      &::before {
-        content: '<';
-        margin-right: 5px;
-        font-weight: var(--header-font-weight);
-       }
-     }
+    }
+
+    &.js-hidden {
+      display: none;
+    }
+  }
+
+  &__cta {
+    padding-top: 30px;
   }
 
   & label {
