@@ -46,20 +46,24 @@ body {
 /*
   Add styling for section tag with a id, so it will be placed under header and not behind
 */
-.anchor-tag::before {
-  content: '';
-  display: block;
-  padding-top: calc(((var(--header-height-mobile) * 2) + var(--meta-menu-height-mobile)));
-  margin-top: calc(-1 * ((var(--header-height-mobile) * 2) + var(--meta-menu-height-mobile)));
+.anchor-tag {
+  text-decoration: none;
 
-  @media (--viewport-sm-min) {
-    padding-top: calc((var(--header-height) * 2) + var(--meta-menu-height-mobile));
-    margin-top: calc(-1 * ((var(--header-height) * 2) + var(--meta-menu-height-mobile)));
-  }
+  &::before {
+    content: '';
+    display: block;
+    padding-top: calc(((var(--header-height-mobile) * 2) + var(--meta-menu-height-mobile)));
+    margin-top: calc(-1 * ((var(--header-height-mobile) * 2) + var(--meta-menu-height-mobile)));
 
-  @media (--viewport-md-min) {
-    padding-top: calc(var(--header-height) + var(--meta-menu-height));
-    margin-top: calc(-1 * (var(--header-height) + var(--meta-menu-height)));
+    @media (--viewport-sm-min) {
+      padding-top: calc((var(--header-height) * 2) + var(--meta-menu-height-mobile));
+      margin-top: calc(-1 * ((var(--header-height) * 2) + var(--meta-menu-height-mobile)));
+    }
+
+    @media (--viewport-md-min) {
+      padding-top: calc(var(--header-height) + var(--meta-menu-height));
+      margin-top: calc(-1 * (var(--header-height) + var(--meta-menu-height)));
+    }
   }
 }
 
