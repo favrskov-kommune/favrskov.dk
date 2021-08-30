@@ -47,12 +47,9 @@
       flex-wrap: wrap;
     }
 
-    @media (--viewport-sm-min) {
+    @media (--viewport-md-min) {
       display: flex;
       flex-wrap: wrap;
-    }
-
-    @media (--viewport-md-min) {
       margin: -50px;
       padding: 0;
 
