@@ -788,11 +788,13 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 $config['image.settings']['allow_insecure_derivatives'] = TRUE;
 
 if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
-    $settings['redis.connection']['interface'] = 'PhpRedis';
-    $settings['redis.connection']['host'] = getenv('REDIS_HOST');
-    $settings['redis.connection']['port'] = '6379';
-    $settings['cache']['default'] = 'cache.backend.redis';
-    $settings['cache_prefix'] = 'favrskovdk_';
+  $settings['redis.connection']['interface'] = 'PhpRedis';
+  $settings['redis.connection']['host'] = getenv('REDIS_HOST');
+  $settings['redis.connection']['port'] = '6379';
+  $settings['cache']['default'] = 'cache.backend.redis';
+  $settings['cache_prefix'] = 'favrskovdk_';
+  $settings['container_yamls'][] = 'modules/contrib/redis/example.services.yml';
+  $settings['queue_default'] = 'queue.redis_reliable';
 }
 
 // Ensure https behind load balancer
