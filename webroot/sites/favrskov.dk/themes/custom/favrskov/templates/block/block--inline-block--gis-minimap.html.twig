@@ -37,8 +37,14 @@
  */
 #}
 
-<div {{ attributes }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
-  <div class="map-container" id="gis_minimap_{{ gis_block_id }}"></div>
-</div>
+
+
+{% embed '@organisms/gis-minimap/gis-minimap.twig' with {
+  'attributes': attributes,
+  'gis_block_id': gis_block_id
+} %}
+  {% block block_content %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+  {% endblock %}
+{% endembed %}

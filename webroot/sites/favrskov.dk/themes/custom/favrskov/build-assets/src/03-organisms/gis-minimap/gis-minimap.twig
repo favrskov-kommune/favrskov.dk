@@ -1,0 +1,5 @@
+{{ attach_library('favrskov/gis-minimap') }}
+
+<div {{ (not attributes ? create_attribute() : attributes).addClass('gis-minimap') }}>
+  <div class="map-container" id="gis_minimap_{{ gis_block_id }}"></div>
+</div>

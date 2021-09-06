@@ -240,6 +240,12 @@ footer:
   dependencies:
     - favrskov/theme-primary
 
+gis-minimap:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/gis-minimap/gis-minimap.css: {}
+
 header:
   version: VERSION
   css:

@@ -1,0 +1,15 @@
+.gis-minimap {
+  .map-container {
+    @media (--viewport-sm-max) {
+      height: 600px;
+    }
+
+    @media (--viewport-ms-max) {
+      height: 300px;
+    }
+
+    @media (--viewport-xs-max) {
+      height: 400px;
+    }
+  }
+}
