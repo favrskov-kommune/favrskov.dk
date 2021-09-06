@@ -155,6 +155,7 @@ h5 {
 }
 
 h6 {
+  font-weight: var(--base-font-weight);
   font-style: italic;
 }
 
