@@ -313,3 +313,6 @@ msgstr "Læs mindre"
 
 msgid "Back to list"
 msgstr "Tilbage til oversigten"
+
+msgid "Self-service"
+msgstr "Selvbetjening"
