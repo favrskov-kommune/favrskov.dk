@@ -188,7 +188,6 @@
     }
 
     @media (--viewport-sm-min) {
-
       .branding-spot__overlay {
         top: 50%;
         transform: translateY(-50%);

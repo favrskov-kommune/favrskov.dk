@@ -4,15 +4,9 @@
  */
 
 .hearing-page {
-
-  &__content {
-    @media (--viewport-sm-max) {
-      order: 3;
-    }
-  }
-
-  &__box{
+  &__box {
     margin-top: -10%;
+
     @media (--viewport-sm-max) {
       margin-top: 0;
       order: 1;
@@ -23,10 +17,11 @@
   }
 
   &__title h1 {
-    font-family: "Helvetica Neue Light", Sans-Serif;
+    font-family: "Helvetica Neue Light", sans-serif;
     font-weight: lighter;
     font-size: var(--base-font-size-xxxlarge);
     margin-bottom: 30px;
+
     @media (--viewport-sm-max) {
       order: 0;
     }
@@ -37,12 +32,16 @@
   }
 
   &__content {
-    h2 {
+    & h2 {
       font-size: var(--base-font-size-xlarge);
     }
 
-    h3 {
+    & h3 {
       font-size: var(--base-font-size-large);
+    }
+
+    @media (--viewport-sm-max) {
+      order: 3;
     }
   }
 
@@ -93,7 +92,8 @@
     font-size: var(--base-font-size-medium);
     order: 3;
 
-    .cludo-info__deadline div, .cludo-info__pubdate div {
+    .cludo-info__deadline div,
+    .cludo-info__pubdate div {
       display: inline;
       margin-right: 5px;
     }
@@ -103,6 +103,7 @@
     border-bottom: 1px solid var(--color-gray-hover);
     font-size: var(--base-font-size-medium);
     order: 0;
+
     &--item {
       display: flex;
       flex-direction: row;
