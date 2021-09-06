@@ -62,8 +62,12 @@
     font-weight: 700;
     padding-right: 20px;
 
-    @media (--viewport-md-min) {
+    @media (--viewport-sm-min) {
       font-size: var(--base-font-size-large);
+    }
+
+    @media (--viewport-md-min) {
+      font-size: var(--base-font-size-xlarge);
     }
   }
 

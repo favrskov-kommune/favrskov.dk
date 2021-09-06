@@ -75,6 +75,10 @@
 
         & h2 {
           font-size: var(--base-font-size-large);
+
+          @media (--viewport-sm-min) {
+            font-size: var(--base-font-size-xlarge);
+          }
         }
 
         .path {

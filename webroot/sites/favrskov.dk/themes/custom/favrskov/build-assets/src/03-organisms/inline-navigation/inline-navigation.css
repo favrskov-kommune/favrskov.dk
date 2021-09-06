@@ -81,7 +81,7 @@
       margin-bottom: 35px;
       text-align: center;
       font-weight: normal;
-      font-size: 30px;
+      font-size: var(--base-font-size-xlarge);
       width: 100%;
       hyphens: auto;
       word-break: break-word;
@@ -100,7 +100,7 @@
       padding-right: 35px;
       padding-bottom: 25px;
       color: var(--color-white);
-      font-size: 20px;
+      font-size: var(--base-font-size-medium);
       text-decoration: none;
       width: 100%;
       hyphens: auto;

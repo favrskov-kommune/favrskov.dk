@@ -27,10 +27,6 @@
       }
     }
 
-    .inline-navigation-item__title {
-      font-size: var(--base-font-size-xlarge);
-    }
-
     .inline-navigation-item__image {
       box-shadow: none;
       margin-bottom: 0;
@@ -298,18 +294,21 @@
       box-shadow: 0 4px 24px rgba(0, 0, 0, .1);
       transition: all .3s ease;
 
-      @media (--viewport-md-max) {
-        .inline-navigation-item__title {
+      .inline-navigation-item__title {
+        font-weight: bold;
+        font-size: var(--base-font-size-large);
+
+        @media (--viewport-md-min) {
           font-size: var(--base-font-size-xlarge);
+        }
+
+        @media (--viewport-lg-min) {
+          font-size: var(--base-font-size-xxlarge);
         }
       }
 
       @media (--viewport-sm-max) {
         padding: 40px 30px 75px;
-
-        .inline-navigation-item__title {
-          font-size: var(--base-font-size-large);
-        }
       }
 
       @media (--viewport-ms-max) {
@@ -363,35 +362,18 @@
 
   &__title {
     margin-bottom: 30px;
-    font-size: var(--base-font-size-xlarge);
-    font-weight: 900;
+    font-size: var(--base-font-size-large);
+    font-family: var(--base-font-family);
+    font-weight: var(--base-font-weight);
     hyphens: auto;
     word-break: break-word;
 
     @media (--viewport-md-min) {
-      font-size: var(--base-font-size-xxlarge);
-      font-weight: 900;
-    }
-  }
-
-  &__text {
-    margin-bottom: 30px;
-    font-size: var(--base-font-size);
-    font-weight: 300;
-    line-height: 1.1;
-    hyphens: auto;
-    word-break: break-word;
-
-    @media (--viewport-md-min) {
-      font-size: var(--base-font-size-medium);
-      font-weight: 300;
+      font-size: var(--base-font-size-xlarge);
     }
 
     .inline-navigation-item-arrow &,
     .inline-navigation-item-icon & {
-      font-family: var(--base-font-family);
-      font-size: var(--base-font-size-xlarge);
-      font-weight: var(--base-font-weight);
       margin-bottom: 0;
       width: 100%;
       padding: 30px 25px;
@@ -402,10 +384,22 @@
       align-items: center;
 
       @media (--viewport-ms-max) {
-        font-size: var(--base-font-size-large);
         justify-content: left;
         border-left: 1px solid rgba(0, 0, 0, .1);
       }
+    }
+  }
+
+  &__text {
+    margin-bottom: 30px;
+    font-size: var(--base-font-size);
+    line-height: 1.2;
+    hyphens: auto;
+    word-break: break-word;
+
+    @media (--viewport-md-min) {
+      font-size: var(--base-font-size-medium);
+      line-height: 1.3;
     }
   }
 

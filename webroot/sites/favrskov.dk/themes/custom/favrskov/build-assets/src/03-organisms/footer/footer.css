@@ -161,6 +161,7 @@
   }
 
   &__content {
+    font-size: var(--base-font-size);
     line-height: var(--base-font-size-xlarge);
     font-family: var(--base-font-family);
     font-weight: var(--base-font-weight);
@@ -190,6 +191,7 @@
     transform: translateX(-50%);
     opacity: 0;
     visibility: hidden;
+    font-size: var(--base-font-size);
 
     &.active {
       opacity: 1;

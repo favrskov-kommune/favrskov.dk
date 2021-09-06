@@ -31,10 +31,12 @@ body {
 
   @media (--viewport-sm-min) {
     padding-top: calc((var(--header-height) * 2) + var(--meta-menu-height-mobile));
+    font-size: var(--base-font-size-medium);
   }
 
   @media (--viewport-md-min) {
     padding-top: calc(var(--header-height) + var(--meta-menu-height));
+    font-size: var(--base-font-size-large);
   }
 
   &.no-scroll {
@@ -81,27 +83,68 @@ h6 {
 }
 
 h1 {
-  font-size: var(--base-font-size-xxxlarge);
+  font-size: var(--base-font-size-xxlarge);
   line-height: 1.2;
+
+  @media (--viewport-sm-min) {
+    font-size: var(--base-font-size-xxxlarge);
+  }
+
+  @media (--viewport-md-min) {
+    font-size: var(--base-font-size-xxxxlarge);
+  }
 }
 
 h2 {
-  font-size: var(--base-font-size-xxlarge);
+  font-size: 35px;
   line-height: 1.2;
+
+  @media (--viewport-sm-min) {
+    font-size: 43px;
+  }
+
+  @media (--viewport-md-min) {
+    font-size: var(--base-font-size-xxxlarge);
+  }
 }
 
 h3 {
-  font-size: var(--base-font-size-xlarge);
+  font-size: 25px;
   line-height: 1.2;
+
+  @media (--viewport-sm-min) {
+    font-size: 31px;
+  }
+
+  @media (--viewport-md-min) {
+    font-size: 38px;
+  }
 }
 
 h4 {
-  font-size: var(--base-font-size-xlarge);
+  font-size: 21px;
   line-height: 1.2;
+
+  @media (--viewport-sm-min) {
+    font-size: 24px;
+  }
+
+  @media (--viewport-md-min) {
+    font-size: var(--base-font-size-xlarge);
+  }
 }
 
-h5 {
+h5,
+h6 {
   font-size: var(--base-font-size);
+
+  @media (--viewport-sm-min) {
+    font-size: var(--base-font-size-medium);
+  }
+
+  @media (--viewport-md-min) {
+    font-size: var(--base-font-size-large);
+  }
 }
 
 p {
