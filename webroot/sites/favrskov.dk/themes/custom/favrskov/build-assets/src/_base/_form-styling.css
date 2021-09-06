@@ -23,6 +23,7 @@
 
   .form-actions {
     margin-top: 15px;
+    font-size: .7em !important;
 
     .button + .button {
       margin-left: 5px;

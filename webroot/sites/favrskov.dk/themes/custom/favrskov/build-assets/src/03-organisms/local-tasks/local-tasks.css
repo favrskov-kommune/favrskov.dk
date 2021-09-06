@@ -15,7 +15,7 @@
   width: 100%;
 
   li {
-    font-size: var(--base-font-size);
+    font-size: 16px;
 
     &:last-child::after {
       content: "";

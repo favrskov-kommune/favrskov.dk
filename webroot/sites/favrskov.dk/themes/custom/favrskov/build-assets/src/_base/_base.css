@@ -77,13 +77,13 @@ h5,
 h6 {
   font-family: var(--header-font-family);
   margin-top: 0;
-  font-weight: var(--header-font-weight);
   margin-bottom: 20px;
   hyphens: auto;
 }
 
 h1 {
   font-size: var(--base-font-size-xxlarge);
+  font-weight: var(--header-font-weight);
   line-height: 1.2;
 
   @media (--viewport-sm-min) {
@@ -98,6 +98,7 @@ h1 {
 h2 {
   font-size: 35px;
   line-height: 1.2;
+  font-weight: var(--base-font-weight);
 
   @media (--viewport-sm-min) {
     font-size: 43px;
@@ -111,6 +112,7 @@ h2 {
 h3 {
   font-size: 25px;
   line-height: 1.2;
+  font-weight: var(--header-font-weight);
 
   @media (--viewport-sm-min) {
     font-size: 31px;
@@ -124,6 +126,7 @@ h3 {
 h4 {
   font-size: 21px;
   line-height: 1.2;
+  font-weight: var(--header-font-weight);
 
   @media (--viewport-sm-min) {
     font-size: 24px;
@@ -145,6 +148,14 @@ h6 {
   @media (--viewport-md-min) {
     font-size: var(--base-font-size-large);
   }
+}
+
+h5 {
+  font-weight: var(--header-font-weight);
+}
+
+h6 {
+  font-style: italic;
 }
 
 p {

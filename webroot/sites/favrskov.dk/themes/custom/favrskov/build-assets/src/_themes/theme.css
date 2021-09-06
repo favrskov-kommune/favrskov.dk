@@ -145,3 +145,15 @@
     fill: var(--theme-hero-icon-color);
   }
 }
+
+.ui-widget {
+  font-size: .8em;
+}
+
+#autosave-notification {
+  font-size: .8em;
+}
+
+.layout-builder .layout-builder__section .layout-builder__section--header .layout-builder__section-label {
+  font-size: .7em;
+}
