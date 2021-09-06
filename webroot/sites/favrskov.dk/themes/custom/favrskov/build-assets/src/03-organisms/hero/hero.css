@@ -75,7 +75,6 @@
     & h1,
     & h2 {
       font-size: var(--base-font-size-xxxxlarge);
-      font-weight: normal;
 
       @media (--viewport-sm-max) {
         font-size: var(--base-font-size-xxxlarge);
