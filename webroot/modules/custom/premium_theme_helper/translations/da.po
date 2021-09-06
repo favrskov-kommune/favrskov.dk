@@ -316,3 +316,12 @@ msgstr "Tilbage til oversigten"
 
 msgid "Self-service"
 msgstr "Selvbetjening"
+
+msgid "Your Name"
+msgstr "Dit navn"
+
+msgid "Your Email"
+msgstr "Din e-mail adresse"
+
+msgid "Message"
+msgstr "Besked"
