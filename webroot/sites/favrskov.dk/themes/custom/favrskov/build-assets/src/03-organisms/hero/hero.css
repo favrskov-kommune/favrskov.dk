@@ -83,10 +83,10 @@
 
     & h1,
     & h2 {
-      font-size: 35px;
+      font-size: var(--base-font-size-xxlarge);
 
       @media (--viewport-sm-min) {
-        font-size: 43px;
+        font-size: var(--base-font-size-xxxlarge);
       }
 
       @media (--viewport-md-min) {

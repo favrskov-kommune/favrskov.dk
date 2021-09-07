@@ -9,6 +9,7 @@
 
   & table {
     width: 100%;
+    min-width: 728px;
     border: none;
     border-spacing: 0;
 
