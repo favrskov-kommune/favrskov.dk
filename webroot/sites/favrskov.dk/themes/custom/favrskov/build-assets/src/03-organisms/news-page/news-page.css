@@ -18,16 +18,6 @@
     margin-bottom: 40px;
   }
 
-  &__content {
-    & h2 {
-      font-size: var(--base-font-size-xlarge);
-    }
-
-    & h3 {
-      font-size: var(--base-font-size-large);
-    }
-  }
-
   &__back-link {
     display: inline-block;
     padding-top: 25px;

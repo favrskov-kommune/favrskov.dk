@@ -397,9 +397,13 @@
     hyphens: auto;
     word-break: break-word;
 
-    @media (--viewport-md-min) {
+    @media (--viewport-sm-min) {
       font-size: var(--base-font-size-medium);
       line-height: 1.3;
+    }
+
+    @media (--viewport-md-min) {
+      font-size: var(--base-font-size-large);
     }
   }
 

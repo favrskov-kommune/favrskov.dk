@@ -95,13 +95,17 @@
     padding: 0 30px 20px;
 
     .accordion-item__text {
-      font-size: var(--base-font-size);
       visibility: visible;
       opacity: 1;
       height: auto;
+      font-size: var(--base-font-size);
+
+      @media (--viewport-sm-min) {
+        font-size: var(--base-font-size-medium);
+      }
 
       @media (--viewport-md-min) {
-        font-size: var(--base-font-size-medium);
+        font-size: var(--base-font-size-large);
       }
     }
   }

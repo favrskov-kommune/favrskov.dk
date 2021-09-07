@@ -70,23 +70,28 @@
     hyphens: auto;
     word-break: break-word;
     max-height: var(--hero-max-height);
-    font-size: var(--base-font-size-xlarge);
+    font-size: var(--base-font-size);
 
-    & h1,
-    & h2 {
-      font-size: var(--base-font-size-xxxxlarge);
-
-      @media (--viewport-sm-max) {
-        font-size: var(--base-font-size-xxxlarge);
-      }
-
-      @media (--viewport-xs-max) {
-        font-size: var(--base-font-size-xxlarge);
-      }
+    @media (--viewport-sm-min) {
+      font-size: var(--base-font-size-medium);
     }
 
     @media (--viewport-md-min) {
+      font-size: var(--base-font-size-large);
       height: calc(90vh - var(--header-height));
+    }
+
+    & h1,
+    & h2 {
+      font-size: 35px;
+
+      @media (--viewport-sm-min) {
+        font-size: 43px;
+      }
+
+      @media (--viewport-md-min) {
+        font-size: var(--base-font-size-xxxxlarge);
+      }
     }
   }
 
