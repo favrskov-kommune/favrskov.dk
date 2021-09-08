@@ -91,7 +91,7 @@
     line-height: var(--header-height-mobile);
     transition: background-color .3s;
 
-    @media (--viewport-sm-min) {
+    @media (--viewport-lg-min) {
       line-height: var(--header-height);
       font-size: var(--base-font-size-large);
     }

@@ -6,7 +6,7 @@
 %}
 {% if link_list.items %}
   <div{{ (not attributes ? create_attribute() : attributes).addClass('inline-navigation-link-list row') }}>
-    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9 pr-sm-0">
+    <div class="col-xs-12 col-lg-9 pr-0">
 {% else %}
   <div{{ (not attributes ? create_attribute() : attributes).addClass(classes) }}>
 {% endif %}
@@ -30,7 +30,7 @@
   {% endblock %}
 </div>
 {% if link_list.items %}
-    <div class="inline-navigation col-xs-12 col-sm-6 col-md-4 col-lg-3 pl-sm-0">
+    <div class="inline-navigation col-xs-12 col-lg-3 pl-0">
       <div class="inline-navigation__list inline-navigation__link-list">
         <div class="inline-navigation__link-list-content">
           <h3 class="inline-navigation__link-list-title">{{ 'Self-service'|t }}</h3>

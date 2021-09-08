@@ -21,8 +21,9 @@
     .inline-navigation-item__link {
       background-color: var(--color-white);
       flex-grow: 1;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
 
-      @media (--viewport-md-min) {
+      @media (--viewport-lg-min) {
         box-shadow: 0 4px 44px rgba(0, 0, 0, .1);
       }
     }
@@ -64,7 +65,7 @@
   }
 
   .js-inline-navigation-slider & {
-    @media (--viewport-sm-max) {
+    @media (--viewport-md-max) {
       width: 40%;
       min-height: 100%;
       padding: 20px;
@@ -91,12 +92,13 @@
   }
 
   @media (--viewport-sm-min) {
-    width: 50%;
-    padding: 25px;
+    width: 100%;
+    padding: 5px;
   }
 
-  @media (--viewport-md-min) {
+  @media (--viewport-lg-min) {
     width: calc(100% / 3);
+    padding: 25px;
 
     .section--spacing-top-negative & {
       padding-top: 0;
@@ -125,17 +127,15 @@
 
   @media (--viewport-md-max) {
     .inline-navigation-link-list & {
-      width: calc(100% / 2);
-    }
-  }
-
-  @media (--viewport-sm-max) {
-    .inline-navigation-link-list & {
-      width: 100%;
+      width: 40%;
     }
   }
 
   @media (--viewport-ms-max) {
+    .inline-navigation-link-list & {
+      width: 80%;
+    }
+
     &.inline-navigation-item-arrow,
     &.inline-navigation-item-icon {
       padding: 5px;
@@ -162,7 +162,7 @@
       }
     }
 
-    @media (--viewport-ms-max) {
+    @media (--viewport-md-max) {
       position: absolute;
       top: 50%;
       left: 40px;
@@ -180,7 +180,7 @@
     align-content: center;
     justify-content: center;
 
-    @media (--viewport-ms-max) {
+    @media (--viewport-md-max) {
       padding-top: 0;
     }
   }
@@ -212,7 +212,7 @@
       }
     }
 
-    @media (--viewport-ms-max) {
+    @media (--viewport-md-max) {
       top: 50%;
       left: 42px;
       transform: translate(-50%, -50%);
@@ -246,7 +246,7 @@
       box-shadow: 0 4px 24px rgba(0, 0, 0, .1);
       transition: all .3s ease;
 
-      @media (--viewport-ms-max) {
+      @media (--viewport-md-max) {
         height: auto;
         padding-bottom: 0;
         padding-left: 80px;
@@ -357,6 +357,10 @@
       display: block;
       float: left;
       padding-top: 100%;
+
+      @media (--viewport-ms-max) {
+        padding-top: 75%;
+      }
     }
   }
 
@@ -383,7 +387,7 @@
       justify-content: center;
       align-items: center;
 
-      @media (--viewport-ms-max) {
+      @media (--viewport-md-max) {
         justify-content: left;
         border-left: 1px solid rgba(0, 0, 0, .1);
       }

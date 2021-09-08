@@ -59,4 +59,4 @@ image_style_mappings:
     image_mapping_type: image_style
     image_mapping: appetiser_wide_xxsx2_
 breakpoint_group: favrskov
-fallback_image_style: appetiser_wide_xxs_
+fallback_image_style: appetiser_wide_xxsx2_

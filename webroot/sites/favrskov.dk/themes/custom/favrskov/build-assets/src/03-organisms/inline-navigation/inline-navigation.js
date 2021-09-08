@@ -48,7 +48,7 @@ function debounce(func, timeout) {
 
 Drupal.behaviors.inlineNavigation = {
   attach(context) {
-    const mediaQuery = window.matchMedia('(min-width: 992px)');
+    const mediaQuery = window.matchMedia('(min-width: 1200px)');
     checkMediaQuery(mediaQuery); // Call listener function at run time
     mediaQuery.addListener(checkMediaQuery); // Attach listener function on state changes
     window.addEventListener('resize', debounce((e) => {

@@ -15,12 +15,12 @@
   text-decoration: none;
   border-right: solid 1px var(--header-border-color);
 
-  @media (--viewport-md-min) {
+  @media (--viewport-lg-min) {
     height: 100%;
     font-size: var(--base-font-size);
   }
 
-  @media (--viewport-sm-max) {
+  @media (--viewport-md-max) {
     border-left: 1px solid var(--header-border-color);
   }
 
@@ -30,7 +30,7 @@
     fill: var(--color-cta);
     margin-right: 10px;
 
-    @media (--viewport-ms-max) {
+    @media (--viewport-md-max) {
       width: 22px;
       height: 22px;
     }
@@ -43,7 +43,7 @@
     text-transform: uppercase;
     color: var(--color-gray-medium);
 
-    @media (--viewport-ms-max) {
+    @media (--viewport-md-max) {
       font-size: var(--base-font-size-small);
     }
 
