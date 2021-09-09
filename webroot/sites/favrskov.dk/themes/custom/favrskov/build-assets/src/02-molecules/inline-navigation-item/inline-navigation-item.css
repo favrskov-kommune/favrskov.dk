@@ -125,17 +125,7 @@
     }
   }
 
-  @media (--viewport-md-max) {
-    .inline-navigation-link-list & {
-      width: 40%;
-    }
-  }
-
   @media (--viewport-ms-max) {
-    .inline-navigation-link-list & {
-      width: 80%;
-    }
-
     &.inline-navigation-item-arrow,
     &.inline-navigation-item-icon {
       padding: 5px;
