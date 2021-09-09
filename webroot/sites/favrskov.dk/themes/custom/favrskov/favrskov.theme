@@ -35,8 +35,12 @@ function favrskov_preprocess_block__inline_block__inline_navigation(array &$vari
   $variables['is_slider'] = in_array($block_view_mode, array('inline_navigation_campaign', 'inline_navigation'));
   $variables['content'] = $rendered_content;
 
-  if ($block_view_mode === 'inline_navigation_campaign') {
+  if ($block_view_mode === 'inline_navigation') {
+    $variables['attributes']['class'][] = 'inline-navigation-image';
+  } elseif ($block_view_mode === 'inline_navigation_campaign') {
     $variables['attributes']['class'][] = 'inline-navigation-campaign';
+  } else {
+    $variables['attributes']['class'][] = $block_view_mode;
   }
 }
 

@@ -34,6 +34,9 @@
     justify-content: flex-start;
 
     &--full-width {
+      padding-left: var(--container-spacing--mobile);
+      padding-right: var(--container-spacing--mobile);
+
       @media (--viewport-md-min) {
         .container {
           padding: 0;
@@ -95,7 +98,6 @@
         display: none;
       }
     }
-
   }
 
   &--small {

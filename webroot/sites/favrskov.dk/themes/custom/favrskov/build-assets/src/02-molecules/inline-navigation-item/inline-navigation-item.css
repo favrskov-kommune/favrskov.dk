@@ -330,6 +330,10 @@
     margin-bottom: 20px;
     display: block;
 
+    @media (--viewport-sm-max) {
+      box-shadow: 0 4px 10px rgba(35, 35, 35, .15);
+    }
+
     &--fallback {
       display: flex;
       align-items: center;

@@ -18,35 +18,9 @@
 
     &-campaign,
     &-news,
-    &-link-list {
+    &-image {
       margin-left: calc(-1 * var(--container-spacing));
       margin-right: calc(-1 * var(--container-spacing));
-
-      .inline-navigation__list {
-        padding-left: 0;
-        padding-right: 0;
-      }
-    }
-
-    &-link-list {
-      .col-xs-12 {
-        padding-left: 0;
-        padding-right: 0;
-      }
-    }
-  }
-
-  @media (--viewport-sm-max) {
-    .layout--twocol-section & {
-      margin-left: calc(-1 * var(--container-spacing--mobile));
-      margin-right: calc(-1 * var(--container-spacing--mobile));
-    }
-
-    &-campaign,
-    &-news,
-    &-link-list {
-      margin-left: calc(-1 * var(--container-spacing--mobile));
-      margin-right: calc(-1 * var(--container-spacing--mobile));
 
       .inline-navigation__list {
         padding-left: 0;
@@ -57,9 +31,6 @@
 
   &-news {
     @media (--viewport-md-min) {
-      margin-left: -25px;
-      margin-right: -25px;
-
       .pager {
         margin-top: 60px;
       }
@@ -71,8 +42,8 @@
     outline: none;
     list-style: none;
     margin-top: 0;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 0;
+    padding-right: 0;
 
     @media print {
       display: flex;
@@ -80,6 +51,9 @@
     }
 
     @media (--viewport-lg-min) {
+      padding-left: 20px;
+      padding-right: 20px;
+
       &:not(.js-inline-navigation-slider) {
         display: flex;
         flex-wrap: wrap;
@@ -93,6 +67,10 @@
         .section--spacing-top-negative & {
           margin: 0;
         }
+      }
+
+      &.inline-navigation__link-list-wrapper {
+        padding: 25px;
       }
 
       &.js-inline-navigation-slider {
@@ -113,8 +91,6 @@
   }
 
   &__link-list {
-    padding: 25px;
-
     &-content {
       background-color: var(--color-primary);
       color: var(--color-white);
