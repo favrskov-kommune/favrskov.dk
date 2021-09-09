@@ -94,6 +94,11 @@
   @media (--viewport-sm-min) {
     width: 100%;
     padding: 5px;
+
+    &.inline-navigation-item-image {
+      width: 50%;
+      padding: 25px;
+    }
   }
 
   @media (--viewport-lg-min) {
@@ -112,8 +117,15 @@
       width: calc(100% / 3);
     }
 
-    &.inline-navigation-item-campaign {
+    &.inline-navigation-item-campaign,
+    &.inline-navigation-item-image {
       width: calc(100% / 3);
+    }
+  }
+
+  @media (--viewport-xl-min) {
+    &.inline-navigation-item-image {
+      width: calc(100% / 4);
     }
   }
 

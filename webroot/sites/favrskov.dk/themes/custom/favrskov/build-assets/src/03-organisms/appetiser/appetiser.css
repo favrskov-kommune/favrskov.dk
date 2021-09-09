@@ -125,10 +125,6 @@
     .appetiser__title {
       margin-bottom: 15px;
       text-align: left;
-
-      @media (--viewport-md-min) {
-        font-size: var(--base-font-size-xlarge);
-      }
     }
 
     .appetiser__content-wrapper {

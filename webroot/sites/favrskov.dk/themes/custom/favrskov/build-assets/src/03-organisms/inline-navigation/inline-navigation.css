@@ -17,8 +17,7 @@
     }
 
     &-campaign,
-    &-news,
-    &-image {
+    &-news {
       margin-left: calc(-1 * var(--container-spacing));
       margin-right: calc(-1 * var(--container-spacing));
 
@@ -86,6 +85,15 @@
         .section--spacing-top-negative & {
           margin: 0;
         }
+      }
+    }
+
+    @media (--viewport-md-max) {
+      .inline-navigation-image & {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -50px;
+        padding: 0;
       }
     }
   }
