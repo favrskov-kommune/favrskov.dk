@@ -15,5 +15,6 @@ effects:
     weight: 1
     data:
       width: 3840
-      height: 570
+      height: 2160
       crop_type: focal_point
+pipeline: __default__
