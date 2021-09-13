@@ -60,6 +60,7 @@
         "drupal/noreferrer": "^1.0",
         "drupal/paragraphs": "^1.0",
         "drupal/paragraphs_asymmetric_translation_widgets": "^1.0@beta",
+        "drupal/path_redirect_import": "^1.0@beta",
         "drupal/pathauto": "^1.0",
         "drupal/promote_disable": "^2.0",
         "drupal/redirect": "^1.0",
