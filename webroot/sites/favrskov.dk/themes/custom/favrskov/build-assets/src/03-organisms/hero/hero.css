@@ -23,6 +23,10 @@
     position: absolute;
     height: 100%;
     width: 100%;
+
+    @media print {
+      display: none;
+    }
   }
 
   &--is-front-pageheader {
@@ -58,6 +62,13 @@
     left: 0;
   }
 
+  @media print {
+    .hero__image-wrapper {
+      display: none;
+    }
+  }
+
+
   &__content {
     width: 100%;
     display: flex;
@@ -79,6 +90,12 @@
     @media (--viewport-md-min) {
       font-size: var(--base-font-size-large);
       height: calc(90vh - var(--header-height));
+    }
+
+    @media print {
+      height: auto;
+      padding-top: 15px;
+      padding-bottom: 15px;
     }
 
     & h1,
@@ -129,6 +146,10 @@
     left: 0;
     width: 100%;
     height: 100%;
+
+    @media print {
+      display: none;
+    }
   }
 
   &--center {
@@ -157,6 +178,10 @@
 
   &--inverted {
     color: white;
+
+    @media print {
+      color: var(--color-black);
+    }
   }
 
   &--image-added {
@@ -164,6 +189,10 @@
 
     @media (--viewport-md-min) {
       height: calc(90vh - var(--header-height));
+    }
+
+    @media print {
+      height: auto;
     }
 
     picture,
@@ -179,6 +208,10 @@
     img {
       object-fit: cover;
       width: 100%;
+
+      @media print {
+        display: none;
+      }
     }
 
     .container {
@@ -186,6 +219,13 @@
       top: 0;
       left: 0;
       right: 0;
+
+      @media print {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+      }
     }
   }
 
