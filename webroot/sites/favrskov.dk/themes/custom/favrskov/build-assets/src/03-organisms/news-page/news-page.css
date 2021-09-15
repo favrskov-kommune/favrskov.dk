@@ -5,9 +5,6 @@
 
 .news-page {
   &__title h1 {
-    font-size: var(--base-font-size-xxxlarge);
-    font-family: "Helvetica Neue Light", sans-serif;
-    font-weight: lighter;
     margin-bottom: 25px;
   }
 

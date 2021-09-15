@@ -17,9 +17,6 @@
   }
 
   &__title h1 {
-    font-family: "Helvetica Neue Light", sans-serif;
-    font-weight: lighter;
-    font-size: var(--base-font-size-xxxlarge);
     margin-bottom: 30px;
 
     @media (--viewport-sm-max) {
@@ -32,14 +29,6 @@
   }
 
   &__content {
-    & h2 {
-      font-size: var(--base-font-size-xlarge);
-    }
-
-    & h3 {
-      font-size: var(--base-font-size-large);
-    }
-
     @media (--viewport-sm-max) {
       order: 3;
     }
