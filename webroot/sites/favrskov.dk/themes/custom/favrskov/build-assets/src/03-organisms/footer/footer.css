@@ -171,6 +171,21 @@
     }
   }
 
+  &__print-link {
+    padding-left: 40px;
+    line-height: 33px;
+    display: inline-block;
+    position: relative;
+
+    .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: 33px;
+    }
+  }
+
   &__feedback-form--arrow {
     content: "";
     position: absolute;

@@ -39,7 +39,18 @@
               {% if col.headline %}
                 <div class="footer__headline">{{ col.headline }}</div>
               {% endif %}
-              <div class="footer__content">{{ col.content }}</div>
+              <div class="footer__content">
+                {{ col.content }}
+                {% if loop.length == loop.index %}
+                  <p><a href="#" class="footer__print-link" onClick="window.print()">
+                      {% include '@particles/svg-icon/svg-icon.twig' with {
+                        'attributes': '',
+                        'svgIconName': 'print-neg'
+                      } %}
+                      <span>Udskriv side</span>
+                    </a></p>
+                {% endif %}
+              </div>
             </div>
           {% endfor %}
         {% endif %}
