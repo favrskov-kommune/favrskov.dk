@@ -33,6 +33,10 @@
     align-items: center;
     justify-content: flex-start;
 
+    @media print {
+      order: 2;
+    }
+
     &--full-width {
       padding-left: var(--container-spacing--mobile);
       padding-right: var(--container-spacing--mobile);
@@ -115,7 +119,7 @@
       right: 0;
       max-height: 570px;
       height: 100%;
-      order: unset;
+      order: 1;
     }
   }
 
@@ -135,7 +139,7 @@
       }
 
       @media print {
-        order: unset;
+        order: 1;
       }
 
       &::before {
@@ -166,6 +170,10 @@
         bottom: 0;
         height: 100px;
         background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, .8) 70%, rgba(255, 255, 255, 0) 100%);
+      }
+
+      @media print {
+        order: 2;
       }
     }
 
