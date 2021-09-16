@@ -325,3 +325,6 @@ msgstr "Din e-mail adresse"
 
 msgid "Message"
 msgstr "Besked"
+
+msgid "Print page"
+msgstr "Udskriv side"
