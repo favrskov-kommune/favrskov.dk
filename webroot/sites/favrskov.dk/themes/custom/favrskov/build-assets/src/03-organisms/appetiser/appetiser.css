@@ -115,6 +115,7 @@
       right: 0;
       max-height: 570px;
       height: 100%;
+      order: unset;
     }
   }
 
@@ -131,6 +132,10 @@
 
       @media (--viewport-md-max) {
         margin-bottom: 25px;
+      }
+
+      @media print {
+        order: unset;
       }
 
       &::before {
