@@ -50,7 +50,6 @@ module:
   filter: 0
   focal_point: 0
   help: 0
-  history: 0
   honeypot: 0
   hreflang: 0
   ie_warning: 0
@@ -85,7 +84,6 @@ module:
   premium_theme_helper: 0
   premium_tools: 0
   promote_disable: 0
-  quickedit: 0
   rdf: 0
   redirect: 0
   redirect_404: 0
