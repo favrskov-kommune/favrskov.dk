@@ -1,6 +1,6 @@
 {{ attach_library('favrskov/inline-navigation-item') }}
 
-<li {{ (not attributes ? create_attribute() : attributes ).addClass('inline-navigation-item','inline-navigation-item-arrow') }}>
+<li {{ (not attributes ? create_attribute() : attributes|without('role')).addClass('inline-navigation-item','inline-navigation-item-arrow') }}>
   <a href="{{ url }}" class="inline-navigation-item__link">
     <div class="inline-navigation-item__arrow-wrapper">
       <div class="inline-navigation-item__arrow">

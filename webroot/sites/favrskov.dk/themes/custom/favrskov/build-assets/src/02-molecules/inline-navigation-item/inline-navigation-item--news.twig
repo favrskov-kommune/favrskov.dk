@@ -1,6 +1,6 @@
 {{ attach_library('favrskov/inline-navigation-item') }}
 
-<li {{ (not attributes ? create_attribute() : attributes ).addClass('inline-navigation-item').addClass('inline-navigation-item-news') }}>
+<li {{ (not attributes ? create_attribute() : attributes|without('role')).addClass('inline-navigation-item').addClass('inline-navigation-item-news') }}>
   <a href="{{ url }}" class="inline-navigation-item__link">
     <figure{{ create_attribute().addClass('inline-navigation-item__image').addClass(media is empty ? 'inline-navigation-item__image--fallback') }}>
       {% if media is not empty %}
