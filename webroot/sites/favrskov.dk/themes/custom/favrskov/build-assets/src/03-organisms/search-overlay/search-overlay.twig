@@ -14,7 +14,7 @@
         <div class="search-overlay__input-field">
           <label class="sr-only" for="js-search-overlay-input">{{ 'Search'|t }}</label>
           <input type="search" class="search-input input" id="js-search-overlay-input" aria-label="Search" aria-describedby="autocomplete_hint">
-          <button type="submit" class="search-overlay__submit search-button">
+          <button type="submit" class="search-overlay__submit search-button" aria-label="Submit">
             {% block content %}
               {% include '@particles/svg-icon/svg-icon.twig' with {
                 'attributes': '',
