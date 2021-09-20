@@ -180,15 +180,6 @@
       width: 50px;
       height: 35px;
     }
-
-    @media (--viewport-md-max) {
-      position: relative;
-      top: auto;
-      left: auto;
-      transform: translate(0, 0);
-      width: 100%;
-      height: auto;
-    }
   }
 
   &__arrow-wrapper {
