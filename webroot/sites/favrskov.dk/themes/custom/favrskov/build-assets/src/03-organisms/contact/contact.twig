@@ -12,9 +12,11 @@
   {% block block_content %}{% endblock %}
   <div class="contact__content-wrapper">
     <div class="container">
-      <div class="row">
-        <h2 class="contact__title">{{ title }}</h2>
-      </div>
+      {% if title %}
+        <div class="row">
+          <h2 class="contact__title">{{ title }}</h2>
+        </div>
+      {% endif %}
       <div class="row contact__content-items">
         {% if text_1|render|striptags|trim %}
           <div class="col-xs-12{{ contact_item_class }} contact__content-items--item{{ (contact_item_class ? ' first') }}">

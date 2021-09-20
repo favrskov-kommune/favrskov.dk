@@ -3,7 +3,9 @@
 <div{{ (not attributes ? create_attribute() : attributes).addClass(['accordion', 'js-accordion']) }}>
   {% block block_content %}{% endblock %}
   <div class="accordion__header">
-    <h2 class="accordion__headline">{{ headline }}</h2>
+    {% if headline %}
+      <h2 class="accordion__headline">{{ headline }}</h2>
+    {% endif %}
     <div class="accordion__toggle" @click="toggleAllItems" v-show="!openAllItems">{{ fold_out_text }}</div>
     <div class="accordion__toggle" @click="toggleAllItems" v-show="openAllItems">{{ fold_in_text }}</div>
   </div>

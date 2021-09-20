@@ -12,7 +12,9 @@
     <div class="container">
       {% endif %}
       <div class="appetiser__content">
-        <h2 class="appetiser__title">{{ title }}</h2>
+        {% if title %}
+          <h2 class="appetiser__title">{{ title }}</h2>
+        {% endif %}
         <div class="appetiser__description">{{ text }}</div>
         {% if cta.url and cta.title %}
           {% include '@particles/button/button--link.twig' with {
