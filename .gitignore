@@ -20,6 +20,9 @@ webroot/themes/contrib
 webroot/profiles/contrib
 webroot/libraries
 
+# Ignore specific configs, which are already in config ignore:
+config/sync/webform.webform.*
+
 # Ignore configuration files that may contain sensitive information.
 webroot/sites/*/settings.*.php
 webroot/sites/*/services.*.yml
