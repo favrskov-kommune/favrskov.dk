@@ -45,7 +45,6 @@ body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
 
   &__inner {
     padding: 100px 0;
-    overflow: hidden;
 
     @media (--viewport-xs-max) {
       padding: 50px 0 0;
