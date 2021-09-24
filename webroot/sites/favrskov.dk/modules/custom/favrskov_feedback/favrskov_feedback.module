@@ -41,7 +41,7 @@ function favrskov_feedback_locale_translation_projects_alter(array &$projects) {
 function favrskov_feedback_preprocess_node(&$variables) {
   /** @var Node $node */
   $node = $variables['node'];
-  if ($node->hasField('field_chatbot_muni') && !$node->get('field_chatbot_muni')->isEmpty()) {
+  if ($node->hasField('field_chatbot_muni') && !$node->get('field_chatbot_muni')->isEmpty() && $variables['view_mode'] == 'full') {
     if (getenv('APP_ENV') == 'prod') {
       $variables['#attached']['library'][] = 'favrskov_feedback/muni';
     } else {
