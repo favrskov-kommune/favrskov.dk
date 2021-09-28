@@ -93,7 +93,7 @@ image-slideshow:
       build-assets/dist/css/02-molecules/image-slideshow/image-slideshow.css: {}
       build-assets/dist/js/02-molecules/image-slideshow/image-slideshow.css: {}
   js:
-    build-assets/dist/js/02-molecules/image-slideshow/image-slideshow.js: { preprocess: false }
+    build-assets/dist/js/02-molecules/image-slideshow/image-slideshow.js: {}
   dependencies:
     - core/drupal
 
@@ -109,7 +109,7 @@ language-menu:
     theme:
       build-assets/dist/css/02-molecules/language-menu/language-menu.css: {}
   js:
-    build-assets/dist/js/02-molecules/language-menu/language-menu.js: { preprocess: false }
+    build-assets/dist/js/02-molecules/language-menu/language-menu.js: {}
 
 logo:
   version: VERSION
@@ -129,7 +129,7 @@ navigation:
     theme:
       build-assets/dist/css/02-molecules/navigation/navigation.css: {}
   js:
-    build-assets/dist/js/02-molecules/navigation/navigation.js: { preprocess: false }
+    build-assets/dist/js/02-molecules/navigation/navigation.js: {}
 
 quote:
   version: VERSION
@@ -149,7 +149,7 @@ search-toggle:
     theme:
       build-assets/dist/css/02-molecules/search-toggle/search-toggle.css: {}
   js:
-    build-assets/dist/js/02-molecules/search-toggle/search-toggle.js: { preprocess: false }
+    build-assets/dist/js/02-molecules/search-toggle/search-toggle.js: {}
 
 spacer:
   version: VERSION
@@ -175,7 +175,7 @@ video:
     theme:
       build-assets/dist/css/02-molecules/video/video.css: {}
   js:
-    build-assets/dist/js/02-molecules/video/video.js: { preprocess: false }
+    build-assets/dist/js/02-molecules/video/video.js: {}
   dependencies:
     - core/drupal
 
@@ -186,7 +186,7 @@ accordion:
     theme:
       build-assets/dist/css/03-organisms/accordion/accordion.css: {}
   js:
-    build-assets/dist/js/03-organisms/accordion/accordion.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/accordion/accordion.js: {}
   dependencies:
     - core/drupal
 
@@ -196,7 +196,7 @@ appetiser:
     theme:
       build-assets/dist/css/03-organisms/appetiser/appetiser.css: {}
   js:
-    build-assets/dist/js/03-organisms/appetiser/appetiser.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/appetiser/appetiser.js: {}
 
 branding-spot:
   version: VERSION
@@ -204,7 +204,7 @@ branding-spot:
     theme:
       build-assets/dist/css/03-organisms/branding-spot/branding-spot.css: {}
   js:
-    build-assets/dist/js/03-organisms/branding-spot/branding-spot.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/branding-spot/branding-spot.js: {}
 
 burger-menu:
   version: VERSION
@@ -212,7 +212,7 @@ burger-menu:
     theme:
       build-assets/dist/css/03-organisms/burger-menu/burger-menu.css: {}
   js:
-    build-assets/dist/js/03-organisms/burger-menu/burger-menu.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/burger-menu/burger-menu.js: {}
   dependencies:
     - core/drupal
 
@@ -236,7 +236,7 @@ footer:
     theme:
       build-assets/dist/css/03-organisms/footer/footer.css: {}
   js:
-    build-assets/dist/js/03-organisms/footer/footer.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/footer/footer.js: {}
   dependencies:
     - favrskov/theme-primary
 
@@ -258,7 +258,7 @@ hearing-page:
     theme:
       build-assets/dist/css/03-organisms/hearing-page/hearing-page.css: {}
   js:
-    build-assets/dist/js/03-organisms/hearing-page/hearing-page.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/hearing-page/hearing-page.js: {}
 
 hero:
   version: VERSION
@@ -266,7 +266,7 @@ hero:
     theme:
       build-assets/dist/css/03-organisms/hero/hero.css: {}
   js:
-    build-assets/dist/js/03-organisms/hero/hero.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/hero/hero.js: {}
   dependencies:
     - core/drupal
 
@@ -277,7 +277,7 @@ inline-navigation:
       build-assets/dist/css/03-organisms/inline-navigation/inline-navigation.css: {}
       build-assets/dist/js/03-organisms/inline-navigation/inline-navigation.css: {}
   js:
-    build-assets/dist/js/03-organisms/inline-navigation/inline-navigation.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/inline-navigation/inline-navigation.js: {}
   dependencies:
     - core/drupal
 
@@ -287,7 +287,7 @@ local-tasks:
     theme:
       build-assets/dist/css/03-organisms/local-tasks/local-tasks.css: {}
   js:
-    build-assets/dist/js/03-organisms/local-tasks/local-tasks.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/local-tasks/local-tasks.js: {}
 
 news-page:
   version: VERSION
@@ -295,7 +295,7 @@ news-page:
     theme:
       build-assets/dist/css/03-organisms/news-page/news-page.css: {}
   js:
-    build-assets/dist/js/03-organisms/news-page/news-page.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/news-page/news-page.js: {}
 
 pager:
   version: VERSION
@@ -309,7 +309,7 @@ search-overlay:
     theme:
       build-assets/dist/css/03-organisms/search-overlay/search-overlay.css: {}
   js:
-    build-assets/dist/js/03-organisms/search-overlay/search-overlay.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/search-overlay/search-overlay.js: {}
 
 search-page:
   version: VERSION
@@ -329,7 +329,7 @@ submenu:
     theme:
       build-assets/dist/css/03-organisms/submenu/submenu.css: {}
   js:
-    build-assets/dist/js/03-organisms/submenu/submenu.js: { preprocess: false }
+    build-assets/dist/js/03-organisms/submenu/submenu.js: {}
 
 maintenance-page:
   version: VERSION
