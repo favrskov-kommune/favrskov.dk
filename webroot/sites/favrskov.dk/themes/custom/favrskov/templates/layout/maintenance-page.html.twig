@@ -13,6 +13,7 @@
 
 {% block page_top %}
   {% embed '@organisms/header/header.twig' %}
+    {% block topbar %}{% endblock %}
     {% block site_branding %}
       {{ site_branding }}
     {% endblock %}
@@ -31,3 +32,9 @@
     </div>
   </main>
 {% endblock %}
+{% block page_footer %}
+  {% embed '@organisms/footer/footer.twig' %}
+    {% block footer_top %}{% endblock %}
+  {% endembed %}
+{% endblock %}
+
