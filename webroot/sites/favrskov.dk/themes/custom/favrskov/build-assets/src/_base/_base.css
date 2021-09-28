@@ -77,6 +77,7 @@ h6 {
   font-family: var(--header-font-family);
   margin-top: 0;
   margin-bottom: 20px;
+  word-break: break-word;
   hyphens: auto;
 }
 
