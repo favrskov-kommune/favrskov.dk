@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\media_library\MediaLibraryState;
@@ -158,5 +159,40 @@ function premium_theme_helper_block_content_create_access(AccountInterface $acco
   }
 
   // No opinion.
+  return AccessResult::neutral();
+}
+
+
+/**
+ * Entity access, will only prevent access for the term page.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   Entity.
+ * @param string $operation
+ *   Operation.
+ * @param \Drupal\Core\Session\AccountInterface $account
+ *   Account.
+ *
+ * @return \Drupal\Core\Access\AccessResultForbidden|\Drupal\Core\Access\AccessResultNeutral
+ *   Access result.
+ */
+function premium_theme_helper_entity_access(EntityInterface $entity, string $operation, AccountInterface $account) {
+  $bundles = [
+    'hearing_topics',
+    'hearing_page_types',
+    'hearing_places',
+    'link_lists',
+    'media_categories',
+    'news_categories',
+  ];
+  if ($operation === 'view' && $entity->getEntityTypeId() === 'taxonomy_term' && in_array($entity->bundle(), $bundles)) {
+    /** @var \Drupal\Core\Routing\AdminContext $admin_context */
+    $admin_context = \Drupal::service('router.admin_context');
+    $route_match = \Drupal::routeMatch();
+    // Only forbidden on a non-admin route.
+    if (!$admin_context->isAdminRoute($route_match->getRouteObject())) {
+      return AccessResult::forbidden();
+    }
+  }
   return AccessResult::neutral();
 }
