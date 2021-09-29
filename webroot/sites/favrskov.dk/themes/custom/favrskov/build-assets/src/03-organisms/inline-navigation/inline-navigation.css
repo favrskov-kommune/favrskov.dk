@@ -28,6 +28,24 @@
     }
   }
 
+  @media (--viewport-sm-max) {
+    .layout--twocol-section & {
+      margin-left: calc(-1 * var(--container-spacing--mobile));
+      margin-right: calc(-1 * var(--container-spacing--mobile));
+    }
+
+    &-campaign,
+    &-news {
+      margin-left: calc(-1 * var(--container-spacing--mobile));
+      margin-right: calc(-1 * var(--container-spacing--mobile));
+
+      .inline-navigation__list {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
   &-news {
     @media (--viewport-md-min) {
       .pager {
