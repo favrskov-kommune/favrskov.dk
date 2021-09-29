@@ -275,6 +275,7 @@
     width: 100%;
     border: 0;
     font-size: var(--base-font-size-large);
+    background-color: var(--color-white);
 
     @media (--viewport-xs-max) {
       font-size: var(--base-font-size-medium);
