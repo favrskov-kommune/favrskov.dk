@@ -178,9 +178,6 @@ function premium_theme_helper_block_content_create_access(AccountInterface $acco
  */
 function premium_theme_helper_entity_access(EntityInterface $entity, string $operation, AccountInterface $account) {
   $bundles = [
-    'hearing_topics',
-    'hearing_page_types',
-    'hearing_places',
     'link_lists',
     'media_categories',
     'news_categories',
