@@ -9,7 +9,7 @@ FROM centos/httpd:latest
 WORKDIR /var/www/html
 
 # Install system dependencies
-RUN apt install -y \
+RUN yum install -y \
   mod_ssl \
   openssl \
   && yum clean all \
