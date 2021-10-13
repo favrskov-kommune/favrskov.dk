@@ -31,7 +31,7 @@ RUN sed -i \
 #COPY .docker/apache/etc/httpd/conf.d/*.conf /etc/httpd/conf.d/
 RUN mkdir -p /usr/local/apache2/conf/custom
 COPY .docker/apache/usr/local/apache2/conf/custom/*.conf /usr/local/apache2/conf/custom/
-RUN echo 'IncludeOptional /usr/local/apache2/conf/custom/*.conf' | sudo tee -a /usr/local/apache2/conf/httpd.conf
+RUN echo 'IncludeOptional /usr/local/apache2/conf/custom/*.conf' | tee -a /usr/local/apache2/conf/httpd.conf
 
 # Copy entrypoints and make them executable
 RUN mkdir -p /release
