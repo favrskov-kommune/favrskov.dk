@@ -69,8 +69,8 @@ pool:
   name: $(agentPool)
 
 jobs:
-  - job: codebase
-    displayName: Codebase
+  - job: artifacts
+    displayName: Artifacts
 #    variables:
 #      - group: codebase-variables
     steps:
@@ -93,7 +93,7 @@ jobs:
           artifactName: kubernetes-deployment
   - job: apache
     displayName: Apache
-    dependsOn: codebase
+    dependsOn: artifacts
     steps:
       - task: Docker@2
         displayName: Build codebase
@@ -128,7 +128,7 @@ jobs:
 
   - job: php
     displayName: PHP
-    dependsOn: codebase
+    dependsOn: artifacts
     steps:
       - task: Docker@2
         displayName: Login
