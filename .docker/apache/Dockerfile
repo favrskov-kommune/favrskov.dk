@@ -3,38 +3,21 @@ ARG CODEBASE_IMAGE
 FROM ${CODEBASE_IMAGE} AS codebase
 
 # Build runtime
-#FROM centos/httpd:latest
-FROM httpd:2.4
+FROM centos/httpd:latest
 
 # Set workdir
-RUN mkdir -p /var/www/html
 WORKDIR /var/www/html
 
 # Install system dependencies
-#RUN apt install -y \
-#  mod_ssl \
-#  openssl \
-#  && yum clean all \
-
-RUN apt update
 RUN apt install -y \
-    openssl
-
-# Load SSL into conf
-RUN sed -i \
-        -e 's/^#\(Include .*httpd-ssl.conf\)/\1/' \
-        -e 's/^#\(LoadModule .*mod_ssl.so\)/\1/' \
-        -e 's/^#\(LoadModule .*mod_socache_shmcb.so\)/\1/' \
-        /usr/local/apache2/conf/httpd.conf
+  mod_ssl \
+  openssl \
+  && yum clean all \
 
 # Load custom conf
-#COPY .docker/apache/etc/httpd/conf.d/*.conf /etc/httpd/conf.d/
-RUN mkdir -p /usr/local/apache2/conf/custom
-COPY .docker/apache/usr/local/apache2/conf/custom/*.conf /usr/local/apache2/conf/custom/
-RUN echo 'IncludeOptional /usr/local/apache2/conf/custom/*.conf' | tee -a /usr/local/apache2/conf/httpd.conf
+COPY .docker/apache/etc/httpd/conf.d/*.conf /etc/httpd/conf.d/
 
 # Copy entrypoints and make them executable
-RUN mkdir -p /release
 COPY .docker/apache/release/*.sh /release/
 RUN chmod -R +x /release/*.sh
 
@@ -42,4 +25,4 @@ RUN chmod -R +x /release/*.sh
 COPY --from=codebase /app /var/www/html
 
 ENTRYPOINT ["/release/entrypoint.sh"]
-#CMD ["/run-httpd.sh"]
+CMD ["/run-httpd.sh"]
