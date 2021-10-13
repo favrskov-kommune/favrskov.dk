@@ -12,7 +12,7 @@ WORKDIR /var/www/html
 RUN yum install -y \
   mod_ssl \
   openssl \
-  && yum clean all \
+  && yum clean all
 
 # Load custom conf
 COPY .docker/apache/etc/httpd/conf.d/*.conf /etc/httpd/conf.d/
