@@ -81,6 +81,7 @@ module:
   path_alias: 0
   path_redirect_import: 0
   premium_cdn_video: 0
+  premium_core: 0
   premium_theme_helper: 0
   premium_tools: 0
   promote_disable: 0

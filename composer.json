@@ -81,6 +81,8 @@
         "novicell/dynamic_key_value": "^1.0",
         "novicell/ie_warning": "^1.0",
         "novicell/media_icons": "^1.0",
+        "novicell/premium_core": "^1.0",
+        "novicell/premium_profile": "^1.0",
         "novicell/premium_search": "^1.0",
         "novicell/premium_tools": "^1.0",
         "novicell/status_feed": "^1.0",

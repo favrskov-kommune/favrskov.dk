@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies:
-  module:
-    - node
-id: node.inline_navigation
-label: 'Inline navigation'
-targetEntityType: node
-cache: true
