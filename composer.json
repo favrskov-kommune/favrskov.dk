@@ -86,6 +86,7 @@
         "novicell/premium_search": "^1.0",
         "novicell/premium_tools": "^1.0",
         "novicell/status_feed": "^1.0",
+        "novicell/styles": "^1.0",
         "oomphinc/composer-installers-extender": "^2.0",
         "vlucas/phpdotenv": "^5.3",
         "wikimedia/composer-merge-plugin": "^2.0"
