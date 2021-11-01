@@ -38,3 +38,6 @@ msgstr "Offentliggjort"
 
 msgid "Hearing deadline"
 msgstr "Høringsfrist"
+
+msgid "Deadline for complaints"
+msgstr "Klagefrist"
