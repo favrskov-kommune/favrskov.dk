@@ -25,24 +25,12 @@ class BaseLayout extends MultiWidthLayoutBase {
   public function buildConfigurationForm(array $form, FormStateInterface $form_state): array {
     $form = parent::buildConfigurationForm($form, $form_state);
 
-    if (\Drupal::moduleHandler()->moduleExists('dynamic_key_value')) {
-      $color_themes = \Drupal::service('dynamic_key_value.storage')->getOptions('color_themes');
-    }
-
-    if (empty($color_themes)) {
-      $color_themes = [
-        'primary' => 'Primary',
-        'secondary' => 'Secondary',
-      ];
-    }
-
     $form['color_theme'] = [
-      '#type' => 'select',
+      '#type' => 'styles',
+      '#collection' => 'color_theme',
       '#multiple' => FALSE,
       '#title' => $this->t('Color theme'),
-      '#options' => [
-        'none' => 'None',
-      ] + $color_themes,
+      '#required' => FALSE,
       '#default_value' => $this->configuration['color_theme'] ?? 'none',
       '#description' => $this->t('Choose color theme this layout.'),
     ];
@@ -52,7 +40,6 @@ class BaseLayout extends MultiWidthLayoutBase {
       '#multiple' => FALSE,
       '#title' => $this->t('Column spacing top'),
       '#options' => [
-        'negative' => $this->t('Negative'),
         'none' => $this->t('None'),
         'small' => $this->t('Small'),
         'medium' => $this->t('Medium'),

@@ -442,7 +442,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Handlinger
+          label: Operations
           exclude: false
           alter:
             alter_text: false
@@ -1241,7 +1241,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Handlinger
+          label: Operations
           exclude: false
           alter:
             alter_text: false
@@ -2052,7 +2052,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Handlinger
+          label: Operations
           exclude: false
           alter:
             alter_text: false
@@ -2105,7 +2105,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Handlinger
+          label: Operations
           exclude: false
           alter:
             alter_text: false
@@ -2886,7 +2886,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Handlinger
+          label: Operations
           exclude: false
           alter:
             alter_text: false

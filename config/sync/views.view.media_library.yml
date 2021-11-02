@@ -18,9 +18,9 @@ dependencies:
 _core:
   default_config_hash: kAEcEzOi5j3yZ6GM0MpcduQHiP1Zo6s_eoHrz4yRyrA
 id: media_library
-label: 'Media library'
+label: 'Medie bibliotek'
 module: views
-description: 'Find and manage media.'
+description: 'Find og håndtér mediefiler.'
 tag: ''
 base_table: media_field_data
 base_field: mid
@@ -272,7 +272,7 @@ display:
             reduce: false
           is_grouped: false
           group_info:
-            label: 'Medie type'
+            label: Type
             description: null
             identifier: bundle
             optional: true
@@ -315,7 +315,7 @@ display:
               authenticated: authenticated
           is_grouped: true
           group_info:
-            label: Status
+            label: Udgivet
             description: ''
             identifier: status
             optional: true
@@ -388,7 +388,7 @@ display:
           exposed: true
           expose:
             operator_id: langcode_op
-            label: Sprog
+            label: Language
             description: ''
             use_operator: false
             operator: langcode_op
@@ -525,7 +525,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'Ingen tilgængelige media'
+          content: 'Ingen tilgængelige media.'
           plugin_id: text_custom
       relationships: {  }
       display_extenders: {  }
