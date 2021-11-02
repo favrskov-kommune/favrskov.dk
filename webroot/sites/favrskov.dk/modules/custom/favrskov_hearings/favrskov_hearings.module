@@ -47,7 +47,7 @@ function favrskov_hearings_cron() {
 
   $node_ids = \Drupal::entityQuery('node')
     ->condition('type', 'hearing_page')
-    ->condition('field_deadline' , strtotime('-6 months'), '<')
+    ->condition('field_deadline' , strtotime('-8 months'), '<')
     ->condition('status', 1)
     ->range(NULL, 100)
     ->execute();
