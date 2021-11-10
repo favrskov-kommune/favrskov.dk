@@ -1,10 +1,4 @@
 promote_disable_node_types:
-  news: news
-  editor_manual: editor_manual
   page: page
 promote_disable_sticky_node_types:
-  editor_manual: editor_manual
   page: page
-_core:
-  default_config_hash: sssLNRxRTk1CrIHzMgMCGq0WNBNn9k6p1L3_N-cp0Zg
-langcode: da
