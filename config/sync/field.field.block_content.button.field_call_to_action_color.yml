@@ -11,7 +11,7 @@ id: block_content.button.field_call_to_action_color
 field_name: field_call_to_action_color
 entity_type: block_content
 bundle: button
-label: 'Call to action color'
+label: 'Call to action farve'
 description: ''
 required: false
 translatable: true

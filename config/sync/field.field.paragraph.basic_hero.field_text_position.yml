@@ -13,7 +13,7 @@ id: paragraph.basic_hero.field_text_position
 field_name: field_text_position
 entity_type: paragraph
 bundle: basic_hero
-label: 'Text Position'
+label: 'Tekst position'
 description: ''
 required: true
 translatable: true
