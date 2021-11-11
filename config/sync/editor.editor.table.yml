@@ -20,6 +20,7 @@ settings:
             - JustifyLeft
             - JustifyCenter
             - JustifyRight
+            - Superscript
         -
           name: Links
           items:

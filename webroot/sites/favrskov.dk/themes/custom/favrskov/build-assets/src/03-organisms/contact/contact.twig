@@ -12,7 +12,7 @@
   {% block block_content %}{% endblock %}
   <div class="contact__content-wrapper">
     <div class="container">
-      {% if title %}
+      {% if title[0] is not empty %}
         <div class="row">
           <h2 class="contact__title">{{ title }}</h2>
         </div>

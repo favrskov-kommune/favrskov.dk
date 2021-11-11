@@ -9,6 +9,7 @@ $INPUT_OPTION_VALUE_IS_ARRAY = 8;
 
 // Options
 option('no-cim', null, $INPUT_OPTION_VALUE_NONE, 'Prevent config import at the end of deployment');
+option('no-deploy-hook', null, $INPUT_OPTION_VALUE_NONE, 'Prevent deploy hook at the end of deployment');
 option('no-updb', null, $INPUT_OPTION_VALUE_NONE, 'Prevent database update at the end of deployment');
 option('no-locale-update', null, $INPUT_OPTION_VALUE_NONE, 'Prevent locale update at the end of deployment');
 
@@ -30,6 +31,15 @@ task('deploy:drupal:post_deploy_updates', function () {
     set('rollback_db', 'true');
     writeln('Running config import');
     run("cd {{drush_exec_path_absolute}} && drush cim -y");
+    $run_cache_rebuild = TRUE;
+  } else {
+    writeln('Skipping config import');
+  }
+
+  if (get('drupal_core_version') > 8 && input()->hasOption('no-deploy-hook') && empty(input()->getOption('no-deploy-hook'))) {
+    set('rollback_db', 'true');
+    writeln('Running deploy hook');
+    run("cd {{drush_exec_path_absolute}} && drush deploy:hook -y");
     $run_cache_rebuild = TRUE;
   } else {
     writeln('Skipping config import');

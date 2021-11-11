@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies:
-  module:
-    - media
-id: media.full_width_16_9
-label: 'Full width 16:9'
-targetEntityType: media
-cache: true
