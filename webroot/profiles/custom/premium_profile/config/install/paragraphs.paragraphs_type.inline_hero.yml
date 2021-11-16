@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: inline_hero
-label: Hero
-icon_uuid: null
-icon_default: null
-description: 'Use in layout builder blocks.'
-behavior_plugins: {  }

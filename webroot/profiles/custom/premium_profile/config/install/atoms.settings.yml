@@ -1,6 +1,0 @@
-tokens: 1
-datetime_format: long
-link_button_class:
-  - button
-text_format_default: full_html
-text_format_allowed: {  }

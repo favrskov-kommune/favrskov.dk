@@ -51,7 +51,7 @@ display:
       filters:
         name:
           expose:
-            label: 'Media name'
+            label: Name
         bundle:
           expose:
             label: Type
@@ -59,7 +59,7 @@ display:
           expose:
             label: 'True'
           group_info:
-            label: 'Published status'
+            label: Published
             group_items:
               1:
                 title: Published
@@ -68,6 +68,9 @@ display:
         langcode:
           expose:
             label: Language
+        field_media_category_target_id:
+          expose:
+            label: 'Media category'
       title: Media
       empty:
         area_text_custom:

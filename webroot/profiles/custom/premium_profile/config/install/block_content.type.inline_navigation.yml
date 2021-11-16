@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: inline_navigation
-label: 'Inline Navigation'
-revision: 0
-description: 'A block containing a inline navigation.'

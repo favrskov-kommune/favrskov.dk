@@ -1,8 +1,0 @@
-settings:
-  allowed_values:
-    -
-      label: Lille
-    -
-      label: Medium
-    -
-      label: Stor

@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies:
-  module:
-    - media
-id: media.3_column
-label: '3 column'
-targetEntityType: media
-cache: true

@@ -11,7 +11,7 @@ id: paragraph.basic_hero.field_call_to_action_color
 field_name: field_call_to_action_color
 entity_type: paragraph
 bundle: basic_hero
-label: 'Call to action color'
+label: 'Call to action farve'
 description: ''
 required: true
 translatable: false

@@ -1,0 +1,20 @@
+button_style:
+  label: Button styles
+  preview_libraries: favrskov/button-preview
+  preview_style: button
+  base_styles:
+    - button
+  styles:
+    button--normal: Normal
+    button--ghost: Ghost
+
+color_theme:
+  label: Color themes
+  libraries: favrskov/theme-preview
+  preview_style: color_theme
+  base_styles:
+    - theme
+  styles:
+    theme-grayblue: Gray Blue
+    theme-mint: Mint
+    theme-douce: Douce

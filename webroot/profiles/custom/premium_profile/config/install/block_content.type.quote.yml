@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: quote
-label: Quote
-revision: 0
-description: 'A block contains a quote.'
