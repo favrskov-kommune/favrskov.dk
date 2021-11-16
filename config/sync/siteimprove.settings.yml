@@ -1,0 +1,17 @@
+token: 18683b8979df44fda4399951981d3308
+domain_plugin_id: siteimprovedomain_simple
+prepublish_enabled: false
+api_username: ''
+api_key: ''
+enabled_content_types:
+  editor_manual: '0'
+  hearing_page: '0'
+  news: '0'
+  page: '0'
+enabled_taxonomies:
+  hearing_page_types: '0'
+  hearing_places: '0'
+  hearing_topics: '0'
+  link_lists: '0'
+  media_categories: '0'
+  news_categories: '0'
