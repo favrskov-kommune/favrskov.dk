@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
       feedback.addEventListener('click', (event) => {
         event.preventDefault();
         const feedbackType = event.target.dataset.feedback;
+        const feedbackNodeId = event.target.dataset.nodeid;
         const feedbackActiveClass = `active-${feedbackType}`;
         feedbackFormWrapper.classList.remove('active', 'active-yes', 'active-no');
         if (feedback.classList.contains('active')) {
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
           feedbackFormWrapper.classList.add('active', feedbackActiveClass);
         }
         const ajaxObject = Drupal.ajax({
-          url: `/ajax/feedback/${feedbackType}`,
+          url: `/ajax/feedback/${feedbackType}?node_id=${feedbackNodeId}`,
         });
         ajaxObject.execute();
       });

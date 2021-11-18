@@ -27,6 +27,10 @@ elements: |-
     '#title': Kommentar
     '#type': textarea
     '#required': true
+  node_id:
+    '#type': hidden
+    '#title': 'Node id'
+    '#prepopulate': true
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'

@@ -9,7 +9,7 @@ id: block_content.image.field_dynamic_height
 field_name: field_dynamic_height
 entity_type: block_content
 bundle: image
-label: 'Dynamisk højde'
+label: 'Bevar billede i originalt format'
 description: 'Hvis sat, så skalere vi kun i bredden - ingen focal point og uden opskalering i bredden.'
 required: false
 translatable: false
