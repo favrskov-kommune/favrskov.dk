@@ -1,0 +1,13 @@
+uuid: c46c1196-279c-49ad-9ca4-3a5c32d2b797
+langcode: da
+status: true
+dependencies:
+  module:
+    - moderated_content_bulk_publish
+_core:
+  default_config_hash: jA-dWW4lwPrb-wRuulMa_ieNqemnCucxQuyYjezpHno
+id: archive_current
+label: 'Arkiver nuværende revision'
+type: node
+plugin: archive_current_revision_action
+configuration: {  }
