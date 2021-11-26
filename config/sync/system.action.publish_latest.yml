@@ -1,0 +1,13 @@
+uuid: cb3f09c2-ceb6-427a-91d3-b4f4a46ced95
+langcode: da
+status: true
+dependencies:
+  module:
+    - moderated_content_bulk_publish
+_core:
+  default_config_hash: LG5X_3pItrdFCa4jIcrtrGgKrMV643Yi7Yo0ItIsbqQ
+id: publish_latest
+label: 'Udgiv seneste version'
+type: node
+plugin: publish_latest_revision_action
+configuration: {  }
