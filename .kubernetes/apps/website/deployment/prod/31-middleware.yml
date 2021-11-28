@@ -7,8 +7,8 @@ metadata:
 spec:
   redirectRegex:
     regex: "^https?://(?:www\\.)?(?:favrskov.dk|prod.favrskov.drupal.dk)(.*)"
-    replacement: "https://prod.favrskov.drupal.dk$1"
-#    permanent: true
+    replacement: "https://favrskov.dk$1"
+    permanent: true
 
 ---
 apiVersion: traefik.containo.us/v1alpha1

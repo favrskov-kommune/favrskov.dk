@@ -9,3 +9,5 @@ data:
   master.conf: |+
     protected-mode no
     save ""
+    maxmemory 1gb
+    maxmemory-policy allkeys-lru
