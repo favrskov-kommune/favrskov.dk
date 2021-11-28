@@ -1,0 +1,106 @@
+/**
+ * Type: Theme.
+ * Global theme styling.
+ */
+
+.styles--preview.theme {
+  background-color: var(--theme-background-color);
+  color: var(--theme-color);
+
+  a {
+    color: var(--theme-link-color);
+  }
+
+  .button {
+    background-color: var(--theme-button-background-color);
+    color: var(--theme-button-color);
+
+    &--ghost {
+      background-color: transparent;
+      border-color: var(--theme-button-background-color);
+      color: var(--theme-color);
+    }
+  }
+
+  .divider::before {
+    background-color: var(--theme-divider-background-color);
+  }
+
+  .accordion-item {
+    border-color: var(--theme-accordion-border-color);
+    background-color: var(--theme-accordion-background-color);
+    color: var(--theme-accordion-text-color);
+  }
+
+  .checkbox,
+  .radio {
+    &:checked + label::before,
+    &:not(:checked) + label::before {
+      border-color: var(--theme-input-border);
+    }
+
+    &:checked + label::after,
+    &:not(:checked) + label::after {
+      border-bottom-color: var(--theme-input-color-marked);
+      border-right-color: var(--theme-input-color-marked);
+    }
+  }
+
+  .radio {
+    &:checked + label::after,
+    &:not(:checked) + label::after {
+      background: var(--theme-input-color-marked);
+    }
+  }
+
+  .input,
+  .textarea,
+  .select {
+    color: var(--theme-color);
+    background-color: var(--theme-background-color);
+    border-color: var(--theme-input-border);
+
+    &:focus {
+      border-color: var(--theme-color);
+    }
+
+    &__description {
+      color: var(--theme-color);
+    }
+
+    &__icon {
+      fill: var(--theme-color);
+    }
+  }
+
+  .status-message {
+    background-color: var(--theme-status-message-background-color);
+    color: var(--theme-color);
+
+    &--status {
+      background-color: var(--theme-status-message-background-color-status);
+      color: var(--theme-status-message-color-status);
+    }
+
+    &--warning {
+      background-color: var(--theme-status-message-background-color-warning);
+      color: var(--theme-status-message-color-warning);
+    }
+
+    &--error {
+      background-color: var(--theme-status-message-background-color-error);
+      color: var(--theme-status-message-color-error);
+    }
+  }
+
+  .pager {
+    &__item {
+      background-color: var(--theme-color);
+      box-shadow: 0 2px 0 0 var(--theme-color);
+    }
+
+    a {
+      color: var(--theme-link-color);
+    }
+  }
+}

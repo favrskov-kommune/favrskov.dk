@@ -1,5 +1,4 @@
-function appLoop() {
-  // const apps = document.querySelectorAll('.js-appetiser--small:not(.show-more)');
+function appLoop(resize) {
   const apps = document.querySelectorAll('.js-appetiser--small');
   if (apps.length === 0) {
     return;
@@ -8,7 +7,6 @@ function appLoop() {
   for (let i = 0; i < apps.length; i += 1) {
     const appContWrap = apps[i].querySelector('.appetiser__content-wrapper');
     const appContent = apps[i].querySelector('.appetiser__content');
-    const appReadMore = apps[i].querySelector('.appetiser__read-more');
 
     if (!appContWrap.classList.contains('expanded')) {
       if (appContent.offsetHeight > appContWrap.offsetHeight) {
@@ -19,14 +17,17 @@ function appLoop() {
       }
     }
 
-    appReadMore.addEventListener('click', (event) => {
-      event.preventDefault();
-      if (appContWrap.classList.contains('expanded')) {
-        appContWrap.classList.remove('expanded');
-      } else {
-        appContWrap.classList.add('expanded');
-      }
-    });
+    if (!resize) {
+      const appReadMore = apps[i].querySelector('.appetiser__read-more');
+      appReadMore.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (appContWrap.classList.contains('expanded')) {
+          appContWrap.classList.remove('expanded');
+        } else {
+          appContWrap.classList.add('expanded');
+        }
+      });
+    }
   }
 }
 
@@ -38,9 +39,8 @@ function debounce(func, timeout) {
   };
 }
 
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', appLoop);
-else { appLoop(); }
+document.addEventListener('DOMContentLoaded', () => appLoop(false));
 
-window.addEventListener('resize', () => {
-  debounce(appLoop(), 150);
-});
+window.addEventListener('resize', debounce(() => {
+  appLoop(true);
+}, 150));

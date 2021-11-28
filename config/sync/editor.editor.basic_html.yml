@@ -22,6 +22,7 @@ settings:
             - JustifyLeft
             - JustifyCenter
             - JustifyRight
+            - Superscript
         -
           name: Linking
           items:

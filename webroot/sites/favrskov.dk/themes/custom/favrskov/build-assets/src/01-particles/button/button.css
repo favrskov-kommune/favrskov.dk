@@ -3,6 +3,7 @@
  * Button.
  */
 
+.styles--preview--button,
 .button,
 a.button {
   position: relative;

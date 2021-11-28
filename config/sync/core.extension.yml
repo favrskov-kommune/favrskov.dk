@@ -72,6 +72,7 @@ module:
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
+  moderated_content_bulk_publish: 0
   node: 0
   noreferrer: 0
   options: 0
@@ -81,6 +82,7 @@ module:
   path_alias: 0
   path_redirect_import: 0
   premium_cdn_video: 0
+  premium_core: 0
   premium_theme_helper: 0
   premium_tools: 0
   promote_disable: 0
@@ -93,7 +95,9 @@ module:
   scheduled_transitions: 0
   shortcut: 0
   simple_sitemap: 0
+  siteimprove: 0
   status_feed: 0
+  styles: 0
   system: 0
   taxonomy: 0
   text: 0

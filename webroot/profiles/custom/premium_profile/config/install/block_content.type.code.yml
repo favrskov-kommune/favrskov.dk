@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: code
-label: Code
-revision: 0
-description: 'A block where editors can add scripts.'

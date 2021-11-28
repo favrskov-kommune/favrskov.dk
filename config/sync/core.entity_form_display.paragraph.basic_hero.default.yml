@@ -40,7 +40,7 @@ content:
     type: options_select
     region: content
   field_color_theme:
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: dynamic_key_value_color_widget
@@ -54,6 +54,13 @@ content:
     third_party_settings: {  }
     type: link_with_target
     region: content
+  field_overlay:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_show_search:
     weight: 5
     settings:
@@ -71,7 +78,7 @@ content:
     region: content
   field_text_color:
     type: options_select
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -82,12 +89,11 @@ content:
     type: options_select
     region: content
   translation:
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
   field_link: true
-  field_overlay: true
   status: true

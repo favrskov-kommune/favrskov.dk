@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\Core\Pager\PagerManagerInterface;
+use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 
 /**
@@ -80,4 +81,46 @@ function favrskov_hearings_preprocess_node__hearing_page(&$variables) {
 
   $variables['content']['back_link'] = atom('hearings-back-link');
   $variables['content']['summary'] = ['#markup' => $node->get('body')->first()->getValue()['summary']];
+
+  $variables['content']['deadline_label'] = t('Hearing deadline');
+  $hearing_type = $node->get('field_type')->first()->target_id;
+  $decision_category_id = \Drupal::entityQuery('taxonomy_term')
+    ->condition('name','Afgørelser')
+    ->execute();
+
+  if ($hearing_type === reset($decision_category_id)) {
+    $variables['content']['deadline_label'] = t('Deadline for complaints');
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function favrskov_hearings_node_insert(\Drupal\Core\Entity\EntityInterface $entity) {
+  if ($entity->bundle() == 'hearing_page') {
+    /** @var \Drupal\pathauto\PathautoGeneratorInterface $pathauto */
+    $pathauto = \Drupal::service('pathauto.generator');
+    $pathauto->updateEntityAlias($entity, 'update');
+    _favrskov_hearings_push_to_cludo($entity->toUrl()->setAbsolute()->toString());
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function favrskov_hearings_node_update(\Drupal\Core\Entity\EntityInterface $entity) {
+  if ($entity->bundle() == 'hearing_page') {
+    _favrskov_hearings_push_to_cludo($entity->toUrl()->setAbsolute()->toString());
+  }
+}
+
+function _favrskov_hearings_push_to_cludo($page_url) {
+  if (empty(getenv('CLUDO_API_KEY'))) {
+    return;
+  }
+  $url = "https://api.cludo.com/api/v3/" . getenv('CLUDO_CUSTOMER_ID') . "/content/" . getenv('CLUDO_HEARINGS_CRAWLER_ID') . "/pushurls";
+  \Drupal::httpClient()->post($url, [
+    'json' => [$page_url],
+    'auth' => [getenv('CLUDO_CUSTOMER_ID'), getenv('CLUDO_API_KEY')]
+  ]);
 }

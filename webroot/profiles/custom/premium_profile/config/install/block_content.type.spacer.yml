@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: spacer
-label: Spacer
-revision: 0
-description: "A block that contains a spacer.\t"

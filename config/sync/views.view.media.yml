@@ -575,7 +575,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Handlinger
+          label: Operations
           exclude: false
           alter:
             alter_text: false
@@ -739,7 +739,7 @@ display:
               authenticated: authenticated
           is_grouped: true
           group_info:
-            label: Status
+            label: Udgivet
             description: ''
             identifier: status
             optional: true
@@ -812,7 +812,7 @@ display:
           exposed: true
           expose:
             operator_id: langcode_op
-            label: Sprog
+            label: Language
             description: ''
             use_operator: false
             operator: langcode_op

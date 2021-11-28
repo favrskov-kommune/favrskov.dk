@@ -47,3 +47,45 @@ muni_categories:
     name: Hjælpemidler
   enkeltydelser:
     name: Enkeltydelser
+  familieydelser:
+    name: Familieydelser
+  børneydelse_og_ungeydelse:
+    name: Børne- og ungeydelse
+  midlertidig_børnetilskud:
+    name: Midlertidig børnetilskud
+  børnetilskud:
+    name: Børnetilskud
+  børnebidrag:
+    name: Børnebidrag
+  bidrag_fødsel_og_navngivning:
+    name: Bidrag fødsel og navngivning
+  konfirmationsbidrag_og_beklædningsbidrag:
+    name: Konfirmationsbidrag og beklædningsbidrag
+  uddannelsesbidrag:
+    name: Uddannelsesbidrag
+  Ægtefællebidrag:
+    name: Ægtefællebidrag
+  førtidspension:
+    name: Førtidspension
+  kommunalvalg:
+    name: Kommunalvalg
+  kontanthjælp:
+    name: Kontanthjælp
+  kontanthjælp_selvforsørgelsesydelse:
+    name: Selvforsørgelses- og hjemrejseydelse eller overgangsydelse
+  kontanthjælp_over_30:
+    name: Kontanthjælp over 30
+  kontanthjælp_ungesats:
+    name: Kontanthjælpsydelsen ungesats
+  folkepension:
+    name: Folkepension
+  tidlig_pension:
+    name: Tidlig pension
+  plejevederlag:
+    name: Plejevederlag
+  pasningsorlov:
+    name: Pasningsorlov
+  mitid:
+    name: MitID
+  nemid_og_mitid:
+    name: NemID og MitID

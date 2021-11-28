@@ -14,19 +14,23 @@ description: ''
 category: ''
 elements: |-
   name:
-    '#title': 'Your Name'
+    '#title': 'Dit navn'
     '#type': textfield
     '#required': true
     '#default_value': ''
   email:
-    '#title': 'Your Email'
+    '#title': 'Din Email'
     '#type': email
     '#required': true
     '#default_value': ''
   message:
-    '#title': Message
+    '#title': Kommentar
     '#type': textarea
     '#required': true
+  node_id:
+    '#type': hidden
+    '#title': 'Node id'
+    '#prepopulate': true
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
@@ -72,6 +76,9 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_method: ''
+  form_action: ''
+  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
@@ -132,10 +139,10 @@ settings:
   draft_pending_multiple_message: ''
   confirmation_type: page
   confirmation_title: ''
-  confirmation_message: ''
+  confirmation_message: '<h2>Vi har modtaget din feedback - tak for dit input.</h2>'
   confirmation_url: ''
   confirmation_attributes: {  }
-  confirmation_back: true
+  confirmation_back: false
   confirmation_back_label: ''
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
@@ -155,7 +162,7 @@ settings:
   entity_limit_user_interval: null
   purge: none
   purge_days: null
-  results_disabled: false
+  results_disabled: true
   results_disabled_ignore: false
   results_customize: false
   token_view: false
@@ -209,5 +216,42 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  feedback_fra_favrskov_dk:
+    id: email
+    label: 'Feedback fra favrskov.dk'
+    notes: ''
+    handler_id: feedback_fra_favrskov_dk
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: tilgaengelig@favrskov.dk
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
 variants: {  }
