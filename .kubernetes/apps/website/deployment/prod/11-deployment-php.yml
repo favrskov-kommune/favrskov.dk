@@ -6,7 +6,7 @@ metadata:
   name: website-php
   namespace: favrskovdk
 spec:
-  replicas: 4
+  replicas: 2
 
   # Define deployment strategy to allow unavailable
   strategy:
