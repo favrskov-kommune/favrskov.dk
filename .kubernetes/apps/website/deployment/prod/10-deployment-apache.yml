@@ -6,7 +6,7 @@ metadata:
   name: website-apache
   namespace: favrskovdk
 spec:
-  replicas: 3
+  replicas: 2
 
   # Define deployment strategy to allow unavailable
   strategy:
