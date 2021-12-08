@@ -10,3 +10,6 @@ set -euo pipefail
 cd /app && \
     vendor/drush/drush/drush cr && \
     vendor/drush/drush/drush cim -y
+
+cd /app && \
+    vendor/drush/drush/drush deploy:hook -y
