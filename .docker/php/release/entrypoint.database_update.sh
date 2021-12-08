@@ -9,6 +9,3 @@ set -euo pipefail
 
 cd /app && \
     vendor/drush/drush/drush updatedb -y
-
-cd /app && \
-    vendor/drush/drush/drush deploy:hook -y
