@@ -35,7 +35,7 @@ spec:
   entryPoints:
     - websecure
   tls:
-    secretName: website-favrskovdk-cert
+    secretName: website-cert
   routes:
     - match: Host(`prod.favrskov.drupal.dk`, `www.favrskov.dk`, `favrskov.dk`) && PathPrefix(`/`)
       kind: Rule

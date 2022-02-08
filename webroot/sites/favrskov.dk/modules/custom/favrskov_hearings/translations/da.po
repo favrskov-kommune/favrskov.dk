@@ -41,3 +41,21 @@ msgstr "Høringsfrist"
 
 msgid "Deadline for complaints"
 msgstr "Klagefrist"
+
+msgid "Are you sure you want to publish this?"
+msgstr "Er du sikker på at du gerne vil udgive dette?"
+
+msgid "Are you sure you want to publish this item?"
+msgstr "Er du sikker på at du vil udgive dette element?"
+
+msgid "Archive current revision"
+msgstr "Arkiver nuværende revision"
+
+msgid "Archive latest revision"
+msgstr "Arkiver seneste revision"
+
+msgid "Publish latest revision"
+msgstr "Udgiv seneste version"
+
+msgid "Unpublish current revision"
+msgstr "Afpublicér nuværende version"

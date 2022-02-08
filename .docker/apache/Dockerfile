@@ -14,7 +14,7 @@ RUN yum install -y \
   openssl \
   && yum clean all
 
-# Copy conf
+# Load custom conf
 COPY .docker/apache/etc/httpd/conf.d/*.conf /etc/httpd/conf.d/
 
 # Copy entrypoints and make them executable

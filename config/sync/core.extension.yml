@@ -72,6 +72,7 @@ module:
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
+  moderated_content_bulk_publish: 0
   node: 0
   noreferrer: 0
   options: 0
