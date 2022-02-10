@@ -65,6 +65,7 @@ module:
   link: 0
   linkit: 0
   locale: 0
+  mailsystem: 0
   media: 0
   media_icons: 0
   media_library: 0
@@ -98,6 +99,7 @@ module:
   siteimprove: 0
   status_feed: 0
   styles: 0
+  swiftmailer: 0
   system: 0
   taxonomy: 0
   text: 0
