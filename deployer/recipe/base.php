@@ -56,13 +56,13 @@ task('deploy', [
   'deploy:npm:install',
   'deploy:shared',
   'deploy:writable',
-//  'deploy:maintenance_mode:enable',
-//  'deploy:db:dump',
+  'deploy:maintenance_mode:enable',
+  'deploy:db:dump',
   'deploy:symlink',
-//  'deploy:drupal:post_deploy_updates',
-//  'deploy:maintenance_mode:disable',
+  'deploy:drupal:post_deploy_updates',
+  'deploy:maintenance_mode:disable',
   'deploy:unlock',
-//  'deploy:db:cleanup',
+  'deploy:db:cleanup',
   'deploy:file_permissions',
   'cleanup',
   'slack:notify:success',
@@ -92,9 +92,9 @@ task('deploy:first', [
 
 // Perform rollback tasks on failed deploys
 task('deploy:failed', [
-//  'deploy:db:rollback',
+  'deploy:db:rollback',
   'rollback',
-//  'deploy:maintenance_mode:disable',
+  'deploy:maintenance_mode:disable',
   'deploy:unlock',
   'slack:notify:failed'
 ]);

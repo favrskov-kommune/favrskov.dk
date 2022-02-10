@@ -21,7 +21,7 @@ task('deploy:db:dump', function () {
   } else {
     $command_cache_clear = 'cr';
   }
-  run('cd {{drush_exec_path_absolute}} && drush '.$command_cache_clear.' && drush sql-dump --extra-dump=\'--column-statistics=0\' --structure-tables-list=cache,cache_* > ' . $current_sql_backup);
+  run('cd {{drush_exec_path_absolute}} && drush '.$command_cache_clear.' && drush sql-dump --structure-tables-list=cache,cache_* > ' . $current_sql_backup);
 })
   ->setPrivate();
 

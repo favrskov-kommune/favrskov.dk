@@ -15,3 +15,4 @@ enabled_taxonomies:
   link_lists: '0'
   media_categories: '0'
   news_categories: '0'
+langcode: da
