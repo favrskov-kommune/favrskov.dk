@@ -32,7 +32,7 @@
 
 {% set clean_id = settings.section_id|clean_id %}
 {% if clean_id %}
-  <a id="{{ clean_id }}" class="anchor-tag">&nbsp;</a>
+  <a id="{{ clean_id }}" class="anchor-tag"></a>
 {% endif %}
 
 <section {{ attributes.addClass(classes) }}>
