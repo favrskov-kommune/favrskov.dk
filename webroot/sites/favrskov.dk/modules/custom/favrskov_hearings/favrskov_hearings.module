@@ -85,7 +85,7 @@ function favrskov_hearings_preprocess_node__hearing_page(&$variables) {
   $variables['content']['deadline_label'] = t('Hearing deadline');
   $hearing_type = $node->get('field_type')->first()->target_id;
   $decision_category_id = \Drupal::entityQuery('taxonomy_term')
-    ->condition('name','Afgørelser')
+    ->condition('name','Afgørelse')
     ->execute();
 
   if ($hearing_type === reset($decision_category_id)) {
