@@ -1,4 +1,4 @@
-uuid: db44e780-1b25-42ef-b829-d2a5c908d710
+uuid: c2ce3d06-5eb5-405c-8481-434a5a72e3ed
 langcode: da
 status: true
 dependencies:
@@ -6,9 +6,7 @@ dependencies:
     - field.storage.paragraph.field_color_theme
     - paragraphs.paragraphs_type.basic_hero
   module:
-    - dynamic_key_value
-_core:
-  default_config_hash: xG7Kof7lYzofOBRM_nhc6zUgUMM1FP-5wB1EKl8m1P4
+    - styles
 id: paragraph.basic_hero.field_color_theme
 field_name: field_color_theme
 entity_type: paragraph
@@ -20,4 +18,4 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: dynamic_key_value
+field_type: styles

@@ -15,7 +15,6 @@ dependencies:
     - field.field.paragraph.basic_hero.field_text_position
     - paragraphs.paragraphs_type.basic_hero
   module:
-    - dynamic_key_value
     - options
     - premium_tools
     - text
@@ -42,16 +41,6 @@ content:
     third_party_settings: {  }
     type: list_default
     region: content
-  field_color_theme:
-    type: dynamic_key_value_table_formatter
-    weight: 5
-    region: content
-    label: hidden
-    settings:
-      key_label: Key
-      value_label: Value
-      display_labels: true
-    third_party_settings: {  }
   field_cta:
     weight: 4
     label: hidden
@@ -83,14 +72,9 @@ content:
     third_party_settings: {  }
     type: list_default
     region: content
-  field_text_position:
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
 hidden:
+  field_color_theme: true
   field_link: true
   field_overlay: true
+  field_text_position: true
   search_api_excerpt: true
