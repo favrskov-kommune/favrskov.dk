@@ -54,6 +54,7 @@ third_party_settings:
           - branding_spot
           - button
           - code
+          - contact
           - divider
           - document_list
           - gis_minimap
@@ -83,6 +84,7 @@ third_party_settings:
           - 'inline_block:inline_navigation'
           - 'inline_block:button'
           - 'inline_block:code'
+          - 'inline_block:contact'
           - 'inline_block:news_list'
           - 'inline_block:slideshow'
           - 'inline_block:spacer'
