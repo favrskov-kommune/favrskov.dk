@@ -38,6 +38,20 @@
     }
   }
 
+  &__content h2 {
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: var(--header-font-weight);
+
+    @media (--viewport-sm-min) {
+      font-size: 24px;
+    }
+
+    @media (--viewport-md-min) {
+      font-size: 25px;
+    }
+  }
+
   &__cta {
     padding-top: 30px;
   }

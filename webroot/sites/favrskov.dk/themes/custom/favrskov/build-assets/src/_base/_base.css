@@ -105,21 +105,21 @@ h2 {
   }
 
   @media (--viewport-md-min) {
-    font-size: var(--base-font-size-xxxlarge);
+    font-size: 45px;
   }
 }
 
 h3 {
   font-size: 25px;
   line-height: 1.2;
-  font-weight: var(--header-font-weight);
+  font-weight: var(--base-font-weight);
 
   @media (--viewport-sm-min) {
     font-size: 31px;
   }
 
   @media (--viewport-md-min) {
-    font-size: 38px;
+    font-size: 33px;
   }
 }
 
@@ -133,7 +133,7 @@ h4 {
   }
 
   @media (--viewport-md-min) {
-    font-size: var(--base-font-size-xlarge);
+    font-size: 25px;
   }
 }
 

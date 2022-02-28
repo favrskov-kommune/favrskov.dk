@@ -19,6 +19,10 @@
   &__title h1 {
     margin-bottom: 30px;
 
+    @media (--viewport-sm-min) {
+      font-size: 38px;
+    }
+
     @media (--viewport-sm-max) {
       order: 0;
     }
