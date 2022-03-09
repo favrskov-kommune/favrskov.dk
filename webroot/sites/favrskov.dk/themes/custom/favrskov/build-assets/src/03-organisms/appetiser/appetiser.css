@@ -89,6 +89,14 @@
     @media (--viewport-ms-max) {
       font-size: var(--base-font-size);
     }
+
+    h3 {
+      font-weight: var(--base-font-family);
+
+      @media (--viewport-sm-min) {
+        font-size: 32px;
+      }
+    }
   }
 
   &__image {
