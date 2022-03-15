@@ -68,6 +68,11 @@
     margin-bottom: 0;
     padding-right: 20px;
     font-weight: var(--base-font-weight);
+    font-size: var(--base-font-size-large);
+
+    @media (--viewport-sm-min) {
+      font-size: var(--base-font-size-xlarge)
+    }
   }
 
   &__icon {

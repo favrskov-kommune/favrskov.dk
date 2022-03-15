@@ -97,7 +97,7 @@ h2 {
   font-weight: var(--base-font-weight);
 
   @media (--viewport-sm-min) {
-    font-size: 42px;
+    font-size: var(--base-font-size-xxlarge);
   }
 }
 
