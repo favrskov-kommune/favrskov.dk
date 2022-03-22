@@ -1,7 +1,9 @@
 <?php
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Pager\PagerManagerInterface;
 use Drupal\Core\Url;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\Entity\Node;
 
 /**
@@ -46,9 +48,10 @@ function favrskov_hearings_cron() {
     return;
   }
 
+  $date = new DrupalDateTime('-6 months', DateTimeItemInterface::STORAGE_TIMEZONE);
   $node_ids = \Drupal::entityQuery('node')
     ->condition('type', 'hearing_page')
-    ->condition('field_deadline' , strtotime('-6 months'), '<')
+    ->condition('field_deadline' , $date->format(DateTimeItemInterface::DATE_STORAGE_FORMAT), '<')
     ->condition('status', 1)
     ->range(NULL, 100)
     ->execute();
@@ -85,7 +88,7 @@ function favrskov_hearings_preprocess_node__hearing_page(&$variables) {
   $variables['content']['deadline_label'] = t('Hearing deadline');
   $hearing_type = $node->get('field_type')->first()->target_id;
   $decision_category_id = \Drupal::entityQuery('taxonomy_term')
-    ->condition('name','Afgørelser')
+    ->condition('name','Afgørelse')
     ->execute();
 
   if ($hearing_type === reset($decision_category_id)) {

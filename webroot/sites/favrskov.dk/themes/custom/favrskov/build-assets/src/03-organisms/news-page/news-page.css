@@ -5,14 +5,14 @@
 
 .news-page {
   &__title h1 {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
 
   &__publishing-date {
     color: var(--color-gray-darker);
     font-size: var(--base-font-size-medium);
     font-weight: var(--base-font-weight);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   &__back-link {
@@ -35,6 +35,24 @@
 
     &.js-hidden {
       display: none;
+    }
+  }
+
+  &__content {
+    h2 {
+      font-weight: var(--header-font-weight);
+
+      @media (--viewport-sm-min) {
+        font-size: 32px;
+      }
+    }
+
+    h3 {
+      font-weight: var(--header-font-weight);
+
+      @media (--viewport-sm-min) {
+        font-size: 25px;
+      }
     }
   }
 

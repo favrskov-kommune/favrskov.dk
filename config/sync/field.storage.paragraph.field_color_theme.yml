@@ -1,21 +1,17 @@
-uuid: 618847c3-1da0-42ad-af39-3af9baeedcda
+uuid: 86c903bd-ab22-476f-95f3-739326c553a9
 langcode: da
 status: true
 dependencies:
   module:
-    - dynamic_key_value
     - paragraphs
-_core:
-  default_config_hash: XggWsNIxoGldQZ1Zco242n9ybY4GyiSX8Kc0BFo53Lk
+    - styles
 id: paragraph.field_color_theme
 field_name: field_color_theme
 entity_type: paragraph
-type: dynamic_key_value
+type: styles
 settings:
-  collection: color_themes
-  allowed_values: {  }
-  allowed_values_function: ''
-module: dynamic_key_value
+  collection: color_theme
+module: styles
 locked: false
 cardinality: 1
 translatable: true

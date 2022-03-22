@@ -62,13 +62,7 @@ content:
     third_party_settings: {  }
     type: list_default
     region: content
-  field_text_position:
-    weight: 5
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
 hidden:
+  field_text_position: true
   field_title: true
   search_api_excerpt: true
