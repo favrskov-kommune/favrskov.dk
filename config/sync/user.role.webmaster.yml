@@ -132,6 +132,7 @@ permissions:
   - 'edit terms in media_categories'
   - 'edit terms in news_categories'
   - 'edit webform assets'
+  - 'moderated content bulk publish'
   - 'reschedule scheduled transitions node hearing_page'
   - 'reschedule scheduled transitions node news'
   - 'reschedule scheduled transitions node page'
