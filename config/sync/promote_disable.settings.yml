@@ -2,3 +2,4 @@ promote_disable_node_types:
   page: page
 promote_disable_sticky_node_types:
   page: page
+langcode: da

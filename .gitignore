@@ -83,3 +83,4 @@ private-files/*
 .composer
 !*/.keep
 composer-src/
+/deployer/config.yml
