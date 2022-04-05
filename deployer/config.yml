@@ -5,10 +5,11 @@
   slack_webhook: ""
   drupal_site: "favrskov.dk"
   docroot: 'webroot'
-  repository: "git@bitbucket.org:novicell/favrskov.git"
+  repository: "git@github.com:favrskov-kommune/favrskov.dk.git"
   git_tty: true
   shared_dirs:
     - 'webroot/sites/favrskov.dk/files'
+    - 'private-files'
   shared_files:
     - 'webroot/sites/favrskov.dk/settings.local.php'
     - 'webroot/sites/favrskov.dk/services.local.yml'
@@ -26,8 +27,8 @@
 prod:
   <<: *base
   branch: master
-  deploy_path: /data/www/vhost/favrskov.dk
-  hostname: '81.95.247.112'
+  deploy_path: /var/www/favrskov.dk
+  hostname: '81.95.247.233'
   user: favrskov
   disable_slack: true
 staging:
