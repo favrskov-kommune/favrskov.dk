@@ -6363,10 +6363,10 @@
         },
         {
             "name": "novicell/premium_profile",
-            "version": "1.1.10",
+            "version": "1.2.2",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1Lqaq/novicellpremium_profile-1-1-10.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_1M1WEq/novicellpremium_profile-1-2-2.zip"
             },
             "type": "drupal-profile",
             "license": [
@@ -6432,10 +6432,10 @@
         },
         {
             "name": "novicell/styles",
-            "version": "1.0.15",
+            "version": "1.0.17",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1IwV4c/novicellstyles-1-0-15.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_vro9f/novicellstyles-1-0-17.zip"
             },
             "type": "drupal-module",
             "license": [
