@@ -89,10 +89,6 @@ h1 {
   @media (--viewport-sm-min) {
     font-size: var(--base-font-size-xxxlarge);
   }
-
-  @media (--viewport-md-min) {
-    font-size: var(--base-font-size-xxxxlarge);
-  }
 }
 
 h2 {
@@ -101,25 +97,17 @@ h2 {
   font-weight: var(--base-font-weight);
 
   @media (--viewport-sm-min) {
-    font-size: 43px;
-  }
-
-  @media (--viewport-md-min) {
-    font-size: 45px;
+    font-size: var(--base-font-size-xxlarge);
   }
 }
 
 h3 {
   font-size: 25px;
   line-height: 1.2;
-  font-weight: var(--base-font-weight);
+  font-weight: var(--header-font-weight);
 
   @media (--viewport-sm-min) {
-    font-size: 31px;
-  }
-
-  @media (--viewport-md-min) {
-    font-size: 33px;
+    font-size: 32px;
   }
 }
 
@@ -129,10 +117,6 @@ h4 {
   font-weight: var(--header-font-weight);
 
   @media (--viewport-sm-min) {
-    font-size: 24px;
-  }
-
-  @media (--viewport-md-min) {
     font-size: 25px;
   }
 }
