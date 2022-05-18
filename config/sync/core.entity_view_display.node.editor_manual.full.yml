@@ -22,8 +22,8 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: true
     enabled: true
+    allow_custom: true
   layout_builder_restrictions:
     allowed_block_categories:
       - Block
@@ -42,6 +42,11 @@ third_party_settings:
       - Webform
       - core
     entity_view_mode_restriction:
+      allowed_layouts:
+        - layout_onecol
+        - layout_twocol_section
+        - layout_threecol_section
+      blacklisted_blocks: {  }
       whitelisted_blocks:
         Block: {  }
         Bruger: {  }
@@ -97,11 +102,6 @@ third_party_settings:
         System: {  }
         Webform: {  }
         core: {  }
-      blacklisted_blocks: {  }
-      allowed_layouts:
-        - layout_onecol
-        - layout_twocol_section
-        - layout_threecol_section
       restricted_categories: {  }
 _core:
   default_config_hash: QOEUrU1PQHcUILRpatr3BYjGBzLVTKdoaAa6LACdkhU

@@ -13,8 +13,8 @@ dependencies:
     - responsive_image
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: media.remote_video.full_width_16_9
 targetEntityType: media
 bundle: remote_video
@@ -22,13 +22,13 @@ mode: full_width_16_9
 content:
   thumbnail:
     type: responsive_image
-    weight: 0
-    region: content
     label: hidden
     settings:
       responsive_image_style: full_width_16_9
       image_link: ''
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   created: true
   field_media_category: true

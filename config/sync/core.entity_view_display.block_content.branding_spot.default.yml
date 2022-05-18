@@ -15,23 +15,23 @@ bundle: branding_spot
 mode: default
 content:
   field_branding_spot_subline:
-    weight: 1
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 1
     region: content
   field_branding_spot_title:
-    weight: 0
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 0
     region: content
   field_links:
-    weight: 2
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -40,7 +40,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 2
     region: content
 hidden:
   langcode: true

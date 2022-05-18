@@ -33,6 +33,7 @@
         "drupal/adminimal_admin_toolbar": "^1.11",
         "drupal/adminimal_theme": "^1.6",
         "drupal/allowed_formats": "^1.0",
+        "drupal/auditfiles": "^2.11",
         "drupal/autosave_form": "^1.0",
         "drupal/color_field": "^2.0",
         "drupal/components": "^2.0@beta",

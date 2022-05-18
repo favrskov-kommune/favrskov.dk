@@ -19,44 +19,44 @@ id: wide
 label: Bred
 image_style_mappings:
   -
-    breakpoint_id: favrskov.xl
-    multiplier: 1x
     image_mapping_type: image_style
     image_mapping: wide_xl_
-  -
-    breakpoint_id: favrskov.lg
+    breakpoint_id: favrskov.xl
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: wide_lg_
-  -
-    breakpoint_id: favrskov.md
+    breakpoint_id: favrskov.lg
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: wide_md_
-  -
-    breakpoint_id: favrskov.sm
+    breakpoint_id: favrskov.md
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: wide_sm_
-  -
-    breakpoint_id: favrskov.xs
+    breakpoint_id: favrskov.sm
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: wide_xs_
-  -
     breakpoint_id: favrskov.xs
-    multiplier: 2x
+    multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: wide_xs_x2_
+    breakpoint_id: favrskov.xs
+    multiplier: 2x
   -
-    breakpoint_id: favrskov.xxs
-    multiplier: 1x
     image_mapping_type: image_style
     image_mapping: wide_xxs_
-  -
     breakpoint_id: favrskov.xxs
-    multiplier: 2x
+    multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: wide_xxsx2_
+    breakpoint_id: favrskov.xxs
+    multiplier: 2x
 breakpoint_group: favrskov
 fallback_image_style: wide_xxs_

@@ -14,23 +14,23 @@ bundle: slideshow
 mode: default
 content:
   field_slideshow_autoplay:
-    weight: 1
+    type: boolean
     label: hidden
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 1
     region: content
   field_slideshow_images:
     type: entity_reference_entity_view
-    weight: 2
     label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 2
     region: content
 hidden:
   langcode: true

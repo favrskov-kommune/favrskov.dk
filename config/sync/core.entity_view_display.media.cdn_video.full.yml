@@ -13,8 +13,8 @@ dependencies:
     - premium_cdn_video
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 _core:
   default_config_hash: RhEXIenClzTeWXv3B8Hh3YUvMJ2kLuXCSTlRVviw9SE
 id: media.cdn_video.full
@@ -24,11 +24,11 @@ mode: full
 content:
   field_media_cdn_video:
     type: cdn_video_formatter
-    weight: 0
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   created: true
   field_media_category: true

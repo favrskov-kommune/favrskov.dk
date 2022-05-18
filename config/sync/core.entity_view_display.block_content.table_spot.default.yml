@@ -13,11 +13,11 @@ bundle: table_spot
 mode: default
 content:
   field_table:
-    weight: 2
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 2
     region: content
 hidden:
   langcode: true

@@ -11,12 +11,12 @@ pattern: 'demokrati/hoeringer/[node:title]'
 selection_criteria:
   65bf3a09-87e9-4f64-b360-7f3847a1d869:
     id: node_type
-    bundles:
-      hearing_page: hearing_page
     negate: false
+    uuid: 65bf3a09-87e9-4f64-b360-7f3847a1d869
     context_mapping:
       node: node
-    uuid: 65bf3a09-87e9-4f64-b360-7f3847a1d869
+    bundles:
+      hearing_page: hearing_page
 selection_logic: and
 weight: -5
 relationships: {  }

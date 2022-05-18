@@ -2,11 +2,11 @@ uuid: c93281ae-d268-458a-8d07-ff691b0109d6
 langcode: da
 status: true
 dependencies:
+  module:
+    - pathauto
   enforced:
     module:
       - user
-  module:
-    - pathauto
 _core:
   default_config_hash: x_ok_ZsfA4Xk4B_hVW3O4-3PcNoK57nXLz_Dlletidg
 id: pathauto_update_alias_user

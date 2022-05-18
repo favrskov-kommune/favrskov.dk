@@ -17,6 +17,6 @@ plugin: 'improved_language_block:language_interface'
 settings:
   id: 'improved_language_block:language_interface'
   label: Sprogvælger
-  provider: premium_tools
   label_display: '0'
+  provider: premium_tools
 visibility: {  }

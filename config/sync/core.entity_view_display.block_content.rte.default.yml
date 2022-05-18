@@ -15,11 +15,11 @@ bundle: rte
 mode: default
 content:
   field_text:
-    weight: 1
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 1
     region: content
 hidden:
   langcode: true

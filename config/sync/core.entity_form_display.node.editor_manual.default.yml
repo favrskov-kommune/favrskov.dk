@@ -29,36 +29,36 @@ third_party_settings:
     group_page_header:
       children:
         - field_header
+      label: 'Page header'
+      region: content
       parent_name: ''
       weight: 6
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
-        open: false
         required_fields: true
+        open: false
         weight: 0
-      label: 'Page header'
     group_page_settings:
       children:
         - field_chatbot_muni
         - field_hide_breadcrumb
         - field_hide_title
         - field_color_theme
+      label: Sideindstillinger
+      region: content
       parent_name: ''
       weight: 5
       format_type: details_sidebar
-      region: content
       format_settings:
-        description: ''
-        weight: 0
-        required_fields: true
-        id: ''
         classes: ''
+        id: ''
         open: false
-      label: Sideindstillinger
+        description: ''
+        required_fields: true
+        weight: 0
 _core:
   default_config_hash: 8qoThoT9dIgAFqMfyO97hGdGkkQ4szjextdW-XS784Q
 id: node.editor_manual.default
@@ -73,28 +73,29 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_chatbot_muni:
+    type: dynamic_key_value_widget
     weight: 26
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: dynamic_key_value_widget
-    region: content
   field_color_theme:
+    type: dynamic_key_value_widget
     weight: 29
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: dynamic_key_value_widget
-    region: content
   field_description:
+    type: string_textarea
     weight: 2
+    region: content
     settings:
       rows: 3
       placeholder: ''
     third_party_settings: {  }
-    type: string_textarea
-    region: content
   field_header:
     type: paragraphs_classic_asymmetric
     weight: 17
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -103,42 +104,41 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
-    region: content
   field_hide_breadcrumb:
+    type: boolean_checkbox
     weight: 27
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_hide_title:
+    type: boolean_checkbox
     weight: 28
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_list_icon:
     type: media_library_widget
     weight: 4
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   field_list_media:
     type: media_library_widget
     weight: 3
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   field_meta_tags:
+    type: metatag_firehose
     weight: 13
+    region: content
     settings:
       sidebar: true
     third_party_settings: {  }
-    type: metatag_firehose
-    region: content
   langcode:
     type: language_select
     weight: 0
@@ -149,8 +149,8 @@ content:
   moderation_state:
     type: moderation_state_default
     weight: 14
-    settings: {  }
     region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path
@@ -160,10 +160,10 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 12
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield

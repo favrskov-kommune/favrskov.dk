@@ -23,16 +23,16 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       basic_hero: basic_hero
+    negate: 0
     target_bundles_drag_drop:
       accordion_item:
         weight: 4
         enabled: false
       basic_hero:
-        enabled: true
         weight: 5
+        enabled: true
       inline_hero:
         weight: 6
         enabled: false

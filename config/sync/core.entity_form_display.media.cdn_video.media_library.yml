@@ -19,23 +19,23 @@ bundle: cdn_video
 mode: media_library
 content:
   field_media_category:
+    type: entity_reference_autocomplete_tags
     weight: 2
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
     third_party_settings: {  }
-    type: entity_reference_autocomplete_tags
-    region: content
   field_media_cdn_video:
+    type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_media_image:
     type: image_image
     weight: 1

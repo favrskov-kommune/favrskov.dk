@@ -2,6 +2,8 @@ uuid: 7effe38b-aa63-41e9-bd75-53850c57fffc
 langcode: da
 status: true
 dependencies:
+  module:
+    - status_feed
   enforced:
     module:
       - status_feed

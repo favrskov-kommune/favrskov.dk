@@ -12,7 +12,7 @@ id: media.cdn_video.field_media_category
 field_name: field_media_category
 entity_type: media
 bundle: cdn_video
-label: 'Media category'
+label: 'Medie kategori'
 description: ''
 required: false
 translatable: true
