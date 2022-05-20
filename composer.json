@@ -75,6 +75,7 @@
         "drupal/simple_sitemap": "^3.0",
         "drupal/siteimprove": "^1.11",
         "drupal/swiftmailer": "^2.2",
+        "drupal/unmanaged_files": "^1.0",
         "drupal/view_unpublished": "^1.0",
         "drupal/webform": "^6.0",
         "drupal/webp": "^1.0.0-beta5",
