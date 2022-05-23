@@ -47,6 +47,7 @@
         "drupal/entity_clone": "^1.0-beta4",
         "drupal/entity_usage": "^2.0-beta3",
         "drupal/field_group": "^3.0",
+        "drupal/file_delete_ui": "^1.0@alpha",
         "drupal/focal_point": "^1.0",
         "drupal/honeypot": "^2.0",
         "drupal/hreflang": "^1.0",

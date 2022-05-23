@@ -1,6 +1,0 @@
-_core:
-  default_config_hash: G7DyetBJj83MI5lAI7Z1kCGLhAUncA6QPslqoBYy-Ec
-exclude_directory:
-  - 'public://favicons'
-files_per_page: 1000
-langcode: da

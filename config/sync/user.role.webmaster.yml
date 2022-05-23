@@ -27,12 +27,12 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - atoms
-    - auditfiles
     - block
     - content_moderation
     - contextual
     - entity_clone
     - file
+    - file_delete_ui
     - filter
     - layout_builder
     - media
@@ -60,7 +60,6 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access any webform configuration'
-  - 'access audit files reports'
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
@@ -122,6 +121,7 @@ permissions:
   - 'delete any audio media'
   - 'delete any cdn_video media'
   - 'delete any document media'
+  - 'delete any file'
   - 'delete any hearing_page content'
   - 'delete any image media'
   - 'delete any media'
