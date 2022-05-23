@@ -5,4 +5,4 @@ noopener: true
 noreferrer: true
 publish: false
 subscribe_url: ''
-whitelisted_domains: ''
+allowed_domains: ''

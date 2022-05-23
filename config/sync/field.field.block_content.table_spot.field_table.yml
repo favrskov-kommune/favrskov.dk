@@ -10,10 +10,8 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    table: table
-    basic_html: '0'
-    full_html: '0'
-    plain_text: '0'
+    allowed_formats:
+      - table
 id: block_content.table_spot.field_table
 field_name: field_table
 entity_type: block_content
