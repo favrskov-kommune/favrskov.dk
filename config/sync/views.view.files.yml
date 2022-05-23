@@ -448,6 +448,11 @@ display:
           format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
           prefix: ''
           suffix: ''
+        operations:
+          id: operations
+          table: file_managed
+          field: operations
+          label: Operations
       pager:
         type: mini
         options:
