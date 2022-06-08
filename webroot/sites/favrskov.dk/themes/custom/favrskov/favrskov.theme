@@ -166,3 +166,27 @@ function favrskov_preprocess_block__inline_block__contact(array &$variables) {
   }
 
 }
+
+
+/**
+ * Slideshow layout block preprocess.
+ *
+ * @param array $variables
+ *   Template variables.
+ */
+function favrskov_preprocess_block__inline_block__slideshow(array &$variables) {
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables['elements']['content']['#block_content'];
+  $variables['items'] = [];
+
+  if ($block->hasField('field_slideshow_images') && !$block->get('field_slideshow_images')->isEmpty()) {
+    $medias = $block->get('field_slideshow_images')->referencedEntities();
+    $media_view_builder = \Drupal::entityTypeManager()->getViewBuilder('media');
+
+    if (!empty($medias)) {
+      foreach ($medias as $media) {
+        $variables['items'][] = ['image' => $media_view_builder->view($media, 'slideshow')];
+      }
+    }
+  }
+}
