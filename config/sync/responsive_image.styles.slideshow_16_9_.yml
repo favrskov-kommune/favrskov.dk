@@ -1,0 +1,36 @@
+uuid: ad57862f-c1a4-4222-bd46-ece53d4bc9ec
+langcode: da
+status: true
+dependencies:
+  config:
+    - image.style.full_size_16_9_xs_
+    - image.style.full_size_16_9_xsx2_
+    - image.style.full_size_16_9_xxs_
+    - image.style.full_size_16_9_xxsx2_
+  theme:
+    - favrskov
+id: slideshow_16_9_
+label: 'Slideshow (16:9)'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_xs_
+    breakpoint_id: favrskov.xs
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_xsx2_
+    breakpoint_id: favrskov.xs
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_xxs_
+    breakpoint_id: favrskov.xxs
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: full_size_16_9_xxsx2_
+    breakpoint_id: favrskov.xxs
+    multiplier: 2x
+breakpoint_group: favrskov
+fallback_image_style: full_size_16_9_xs_
