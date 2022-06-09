@@ -14,4 +14,3 @@ ddev drush deploy:hook -y
 ddev drush cr
 ddev drush locale-check && ddev drush locale-update
 ddev drush cr
-
