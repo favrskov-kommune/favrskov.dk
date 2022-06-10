@@ -22,6 +22,10 @@
     justify-content: center;
     flex-wrap: wrap;
 
+    @media print {
+      display: none;
+    }
+
     .dot {
       position: relative;
       width: 12px;
