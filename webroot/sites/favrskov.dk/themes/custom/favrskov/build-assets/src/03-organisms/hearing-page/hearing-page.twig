@@ -43,12 +43,14 @@
                   {{ pubdate }}
                 </span>
               </div>
+              {% if hide_deadline == false %}
               <div class="col-xs-12 col-md-6">
                 <label>{{ deadline_label }}:</label>
                 <span class="cludo-info__deadline">
                   {{ deadline }}
                 </span>
               </div>
+              {% endif %}
             </div>
           </div>
           <div class="hearing-page__info">

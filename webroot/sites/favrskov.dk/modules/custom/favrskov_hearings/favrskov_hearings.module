@@ -90,6 +90,7 @@ function favrskov_hearings_preprocess_node__hearing_page(&$variables) {
   $variables['content']['deadline_label'] = (in_array($hearing_name, ['Afgørelse', 'Annoncering']))
     ? t('Deadline for complaints')
     : t('Hearing deadline');
+  $variables['content']['hide_deadline'] = (bool) $node->get('field_hide_deadline')->value;
 }
 
 /**

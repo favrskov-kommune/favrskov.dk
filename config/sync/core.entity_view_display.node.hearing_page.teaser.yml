@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.hearing_page.field_cta
     - field.field.node.hearing_page.field_deadline
     - field.field.node.hearing_page.field_extra
+    - field.field.node.hearing_page.field_hide_deadline
     - field.field.node.hearing_page.field_place
     - field.field.node.hearing_page.field_publishing_date
     - field.field.node.hearing_page.field_topic
@@ -43,6 +44,7 @@ hidden:
   field_cta: true
   field_deadline: true
   field_extra: true
+  field_hide_deadline: true
   field_place: true
   field_publishing_date: true
   field_topic: true
