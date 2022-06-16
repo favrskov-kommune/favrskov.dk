@@ -3,7 +3,7 @@
  * Print.
  */
 @page {
-  size: a3;
+  size: A4;
 }
 
 .header,
@@ -39,6 +39,7 @@ section > div,
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.local-tasks-wrapper {
+.local-tasks-wrapper,
+.si-toggle-container {
   display: none !important;
 }
