@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.hearing_page.field_cta
     - field.field.node.hearing_page.field_deadline
     - field.field.node.hearing_page.field_extra
+    - field.field.node.hearing_page.field_hide_deadline
     - field.field.node.hearing_page.field_place
     - field.field.node.hearing_page.field_publishing_date
     - field.field.node.hearing_page.field_topic
@@ -23,19 +24,19 @@ bundle: hearing_page
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 0
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: content
   content_moderation_control:
-    weight: -20
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_cta:
-    weight: 4
+    type: link
     label: hidden
     settings:
       trim_length: 80
@@ -44,56 +45,66 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 6
     region: content
   field_deadline:
-    weight: 3
+    type: datetime_custom
     label: hidden
     settings:
       timezone_override: ''
       date_format: 'd. M. Y'
     third_party_settings: {  }
-    type: datetime_custom
+    weight: 4
     region: content
   field_extra:
-    weight: 7
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 9
+    region: content
+  field_hide_deadline:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_place:
-    weight: 6
+    type: entity_reference_label
     label: hidden
     settings:
       link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 8
     region: content
   field_publishing_date:
-    weight: 2
+    type: datetime_custom
     label: hidden
     settings:
       timezone_override: ''
       date_format: 'd. M. Y'
     third_party_settings: {  }
-    type: datetime_custom
+    weight: 3
     region: content
   field_topic:
-    weight: 5
+    type: entity_reference_label
     label: hidden
     settings:
       link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 7
     region: content
   field_type:
-    weight: 1
+    type: entity_reference_label
     label: hidden
     settings:
       link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 2
     region: content
 hidden:
   langcode: true

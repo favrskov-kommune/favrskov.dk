@@ -10,7 +10,8 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    basic_html: basic_html
+    allowed_formats:
+      - basic_html
 _core:
   default_config_hash: 0FXc2LcmVEkIjf2Li2d_MHdZbCSExq_df37zq6j-Fj8
 id: block_content.appetizer.field_appetizer_text

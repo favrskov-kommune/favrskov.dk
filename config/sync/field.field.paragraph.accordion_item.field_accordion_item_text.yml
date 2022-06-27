@@ -10,7 +10,8 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    basic_html: basic_html
+    allowed_formats:
+      - basic_html
 _core:
   default_config_hash: bS0vrNMBQAmdz3hxPIYq5Xo68VsEO5Ac_RzgWOx31r4
 id: paragraph.accordion_item.field_accordion_item_text

@@ -1,3 +1,4 @@
+langcode: da
 token: 18683b8979df44fda4399951981d3308
 domain_plugin_id: siteimprovedomain_simple
 prepublish_enabled: false
@@ -15,4 +16,3 @@ enabled_taxonomies:
   link_lists: '0'
   media_categories: '0'
   news_categories: '0'
-langcode: da

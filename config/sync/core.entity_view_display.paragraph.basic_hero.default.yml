@@ -15,7 +15,6 @@ dependencies:
     - field.field.paragraph.basic_hero.field_text_position
     - paragraphs.paragraphs_type.basic_hero
   module:
-    - dynamic_key_value
     - options
     - premium_tools
     - text
@@ -28,69 +27,54 @@ mode: default
 content:
   field_background:
     type: entity_reference_entity_view
-    weight: 0
     label: hidden
     settings:
       view_mode: hero
       link: false
     third_party_settings: {  }
+    weight: 0
     region: content
   field_call_to_action_color:
-    weight: 7
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 7
     region: content
-  field_color_theme:
-    type: dynamic_key_value_table_formatter
-    weight: 5
-    region: content
-    label: hidden
-    settings:
-      key_label: Key
-      value_label: Value
-      display_labels: true
-    third_party_settings: {  }
   field_cta:
-    weight: 4
+    type: link_with_target
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: link_with_target
+    weight: 4
     region: content
   field_show_search:
-    weight: 6
+    type: boolean
     label: hidden
     settings:
       format: boolean
-      format_custom_true: ''
       format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 6
     region: content
   field_text:
-    weight: 2
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 2
     region: content
   field_text_color:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
     weight: 3
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_text_position:
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
     region: content
 hidden:
+  field_color_theme: true
   field_link: true
   field_overlay: true
+  field_text_position: true
   search_api_excerpt: true

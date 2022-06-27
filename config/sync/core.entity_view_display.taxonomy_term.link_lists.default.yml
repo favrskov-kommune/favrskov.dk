@@ -13,11 +13,11 @@ bundle: link_lists
 mode: default
 content:
   field_links:
-    weight: 0
+    type: link_with_target
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: link_with_target
+    weight: 0
     region: content
 hidden:
   description: true

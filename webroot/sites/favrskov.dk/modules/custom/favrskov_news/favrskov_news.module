@@ -1,6 +1,8 @@
 <?php
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Pager\PagerManagerInterface;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\Entity\Node;
 
 /**
@@ -45,9 +47,10 @@ function favrskov_news_cron() {
     return;
   }
 
+  $date = new DrupalDateTime('-3 months', DateTimeItemInterface::STORAGE_TIMEZONE);
   $node_ids = \Drupal::entityQuery('node')
     ->condition('type', 'news')
-    ->condition('field_list_date' , strtotime('-3 months'), '<')
+    ->condition('field_list_date' , $date->format(DateTimeItemInterface::DATE_STORAGE_FORMAT), '<')
     ->condition('field_keep_published', 0)
     ->condition('status', 1)
     ->range(NULL, 100)

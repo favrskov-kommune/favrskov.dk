@@ -23,52 +23,46 @@ bundle: inline_hero
 mode: default
 content:
   field_background:
-    weight: 0
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
       view_mode: default
+      link: true
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    weight: 0
     region: content
   field_cta:
-    weight: 1
+    type: link_with_target
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: link_with_target
+    weight: 1
     region: content
   field_overlay:
-    weight: 2
+    type: boolean
     label: hidden
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 2
     region: content
   field_text:
-    weight: 3
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 3
     region: content
   field_text_color:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
     weight: 4
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_text_position:
-    weight: 5
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
     region: content
 hidden:
+  field_text_position: true
   field_title: true
   search_api_excerpt: true

@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
+langcode: da
 module:
   admin_toolbar: 0
   admin_toolbar_tools: 0
@@ -47,6 +50,7 @@ module:
   field_group: 0
   field_ui: 0
   file: 0
+  file_delete_ui: 0
   filter: 0
   focal_point: 0
   help: 0
@@ -73,6 +77,7 @@ module:
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
+  metatag_open_graph: 0
   moderated_content_bulk_publish: 0
   node: 0
   noreferrer: 0
@@ -123,6 +128,3 @@ theme:
   premium_theme: 0
   favrskov: 0
 profile: premium_profile
-_core:
-  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
-langcode: da

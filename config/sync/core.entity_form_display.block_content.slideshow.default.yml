@@ -16,19 +16,19 @@ bundle: slideshow
 mode: default
 content:
   field_slideshow_autoplay:
+    type: boolean_checkbox
     weight: 1
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_slideshow_images:
     type: media_library_widget
     weight: 0
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   info: true
   langcode: true

@@ -10,13 +10,13 @@ type: 'canonical_entities:node'
 pattern: 'nyheder/[node:title]'
 selection_criteria:
   c1a722b4-0bcd-49d5-95ba-614cf6166c94:
-    id: node_type
-    bundles:
-      news: news
+    id: 'entity_bundle:node'
     negate: false
+    uuid: c1a722b4-0bcd-49d5-95ba-614cf6166c94
     context_mapping:
       node: node
-    uuid: c1a722b4-0bcd-49d5-95ba-614cf6166c94
+    bundles:
+      news: news
 selection_logic: and
 weight: -5
 relationships: {  }

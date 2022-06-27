@@ -36,8 +36,14 @@ display:
           label: Roles
         created:
           label: 'Member for'
+          settings:
+            future_format: '@interval'
+            past_format: '@interval'
         access:
           label: 'Last access'
+          settings:
+            future_format: '@interval hence'
+            past_format: '@interval ago'
         operations:
           label: Operations
         mail:

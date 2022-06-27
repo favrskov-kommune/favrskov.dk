@@ -2,12 +2,12 @@ uuid: cbac164e-8940-4365-8e1d-501fe64e9269
 langcode: da
 status: true
 dependencies:
-  enforced:
-    module:
-      - premium_cdn_video
   module:
     - crop
     - premium_cdn_video
+  enforced:
+    module:
+      - premium_cdn_video
 third_party_settings:
   crop:
     image_field: _none

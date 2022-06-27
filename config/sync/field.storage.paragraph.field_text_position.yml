@@ -1,29 +1,17 @@
-uuid: 0c07aac7-d326-45eb-9875-d7c6c3dc11e4
+uuid: 9a2d7da9-4a90-4555-b33c-c6f14c52948c
 langcode: da
 status: true
 dependencies:
   module:
-    - options
     - paragraphs
-_core:
-  default_config_hash: oHtZhc2kkTEJ0Nx7_M3IrqgKdACYvytRZBfJYFVHi7I
+    - styles
 id: paragraph.field_text_position
 field_name: field_text_position
 entity_type: paragraph
-type: list_string
+type: styles
 settings:
-  allowed_values:
-    -
-      value: left
-      label: Venstre
-    -
-      value: center
-      label: Centreret
-    -
-      value: right
-      label: Højre
-  allowed_values_function: ''
-module: options
+  collection: hero_text_align
+module: styles
 locked: false
 cardinality: 1
 translatable: true

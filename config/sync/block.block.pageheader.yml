@@ -18,13 +18,13 @@ plugin: premium_hero_block
 settings:
   id: premium_hero_block
   label: Pageheader
-  provider: premium_theme_helper
   label_display: '0'
+  provider: premium_theme_helper
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
-    bundles:
-      news: news
     negate: true
     context_mapping:
       node: '@node.node_route_context:node'
+    bundles:
+      news: news

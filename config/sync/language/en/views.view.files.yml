@@ -41,6 +41,8 @@ display:
           label: 'Changed date'
         count:
           label: 'Used in'
+          alter:
+            path: 'admin/content/files/usage/{{ fid }}'
           format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
       filters:
         filename:

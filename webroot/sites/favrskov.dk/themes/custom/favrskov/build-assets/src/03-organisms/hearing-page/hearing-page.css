@@ -16,8 +16,30 @@
     }
   }
 
+  h1 {
+    @media (--viewport-sm-min) {
+      font-size: 38px;
+    }
+  }
+
+  h2 {
+    font-weight: var(--header-font-weight);
+
+    @media (--viewport-sm-min) {
+      font-size: 30px;
+    }
+  }
+
+  h3 {
+    font-weight: var(--header-font-weight);
+
+    @media (--viewport-sm-min) {
+      font-size: 25px;
+    }
+  }
+
   &__title h1 {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 
     @media (--viewport-sm-max) {
       order: 0;

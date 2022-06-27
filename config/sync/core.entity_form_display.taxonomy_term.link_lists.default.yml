@@ -13,14 +13,14 @@ bundle: link_lists
 mode: default
 content:
   field_links:
+    type: link_with_target
     weight: 1
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
       target_blank: 0
     third_party_settings: {  }
-    type: link_with_target
-    region: content
   name:
     type: string_textfield
     weight: 0

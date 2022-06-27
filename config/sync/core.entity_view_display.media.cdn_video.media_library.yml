@@ -14,8 +14,8 @@ dependencies:
     - layout_builder
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 _core:
   default_config_hash: sFHIr9OoIqEkpu0JgyrqeopM4iUpM1o2p9lqtu-fXd0
 id: media.cdn_video.media_library
@@ -25,13 +25,13 @@ mode: media_library
 content:
   thumbnail:
     type: image
-    weight: 0
     label: hidden
     settings:
-      image_style: media_library
       image_link: ''
-    region: content
+      image_style: media_library
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   created: true
   field_media_category: true

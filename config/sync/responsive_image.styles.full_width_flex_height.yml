@@ -15,34 +15,34 @@ id: full_width_flex_height
 label: 'Full width - dynamic height'
 image_style_mappings:
   -
-    breakpoint_id: favrskov.xl
-    multiplier: 1x
     image_mapping_type: image_style
     image_mapping: full_size_xl_flex_height
-  -
-    breakpoint_id: favrskov.lg
+    breakpoint_id: favrskov.xl
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: full_size_lg_flex_height
-  -
-    breakpoint_id: favrskov.md
+    breakpoint_id: favrskov.lg
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: full_size_md_flex_height
-  -
-    breakpoint_id: favrskov.sm
+    breakpoint_id: favrskov.md
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: full_size_sm_flex_height
-  -
-    breakpoint_id: favrskov.xs
+    breakpoint_id: favrskov.sm
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: full_size_xs_flex_height
-  -
-    breakpoint_id: favrskov.xxs
+    breakpoint_id: favrskov.xs
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: full_size_xxs_flex_height
+    breakpoint_id: favrskov.xxs
+    multiplier: 1x
 breakpoint_group: favrskov
 fallback_image_style: full_size_xxs_flex_height

@@ -14,13 +14,13 @@ bundle: icon
 mode: default
 content:
   field_media_icons:
-    weight: 0
+    type: icon_formatter
     label: hidden
     settings:
       height: 100%
       width: 100%
     third_party_settings: {  }
-    type: icon_formatter
+    weight: 0
     region: content
 hidden:
   created: true

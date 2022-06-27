@@ -10,7 +10,8 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    basic_html: basic_html
+    allowed_formats:
+      - basic_html
 _core:
   default_config_hash: OyOHzdwHZK6T_RxpDWzZC_uGFrodSR6GDrPr3U2fI8I
 id: block_content.rte.field_text

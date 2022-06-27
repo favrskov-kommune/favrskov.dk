@@ -786,6 +786,7 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  */
 
 $config['image.settings']['allow_insecure_derivatives'] = TRUE;
+$config['file.settings']['make_unused_managed_files_temporary'] = TRUE;
 
 if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
   $settings['redis.connection']['interface'] = 'PhpRedis';

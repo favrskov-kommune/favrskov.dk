@@ -1,0 +1,23 @@
+uuid: 2476711c-dc30-4781-9369-e800efb57431
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_deadline
+    - node.type.hearing_page
+id: node.hearing_page.field_hide_deadline
+field_name: field_hide_deadline
+entity_type: node
+bundle: hearing_page
+label: 'Skjul høringsfrist i frontend'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Skjul
+  off_label: Vis
+field_type: boolean

@@ -1,7 +1,56 @@
 uuid: 100f1e4c-edb7-4631-9cad-72d4c1a5ff3c
 langcode: da
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - core.entity_view_display.node.editor_manual.full
+    - core.entity_view_display.node.news.full
+    - core.entity_view_display.node.page.full
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.table
+    - media.type.audio
+    - media.type.cdn_video
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
+    - node.type.hearing_page
+    - node.type.news
+    - node.type.page
+    - taxonomy.vocabulary.hearing_page_types
+    - taxonomy.vocabulary.hearing_places
+    - taxonomy.vocabulary.hearing_topics
+    - taxonomy.vocabulary.link_lists
+    - taxonomy.vocabulary.media_categories
+    - taxonomy.vocabulary.news_categories
+    - workflows.workflow.editorial
+  module:
+    - atoms
+    - block
+    - content_moderation
+    - contextual
+    - entity_clone
+    - file
+    - file_delete_ui
+    - filter
+    - layout_builder
+    - media
+    - media_icons
+    - media_library_bulk_upload
+    - moderated_content_bulk_publish
+    - node
+    - paragraphs
+    - path
+    - redirect
+    - role_delegation
+    - scheduled_transitions
+    - siteimprove
+    - system
+    - taxonomy
+    - toolbar
+    - view_unpublished
+    - webform
 _core:
   default_config_hash: 0Krxm9j6cDHCYgkWRlkg2GljfOvrjiGEl9xXWL3y3qU
 id: webmaster
@@ -31,6 +80,7 @@ permissions:
   - 'administer nodes'
   - 'administer redirect settings'
   - 'administer redirects'
+  - 'administer siteimprove'
   - 'administer url aliases'
   - 'administer users'
   - 'administer webform'
@@ -71,6 +121,7 @@ permissions:
   - 'delete any audio media'
   - 'delete any cdn_video media'
   - 'delete any document media'
+  - 'delete any file'
   - 'delete any hearing_page content'
   - 'delete any image media'
   - 'delete any media'
@@ -131,11 +182,7 @@ permissions:
   - 'edit terms in media_categories'
   - 'edit terms in news_categories'
   - 'edit webform assets'
-  - 'moderated content bulk archive'
-  - 'moderated content bulk pin content'
   - 'moderated content bulk publish'
-  - 'moderated content bulk unpin content'
-  - 'moderated content bulk unpublish'
   - 'reschedule scheduled transitions node hearing_page'
   - 'reschedule scheduled transitions node news'
   - 'reschedule scheduled transitions node page'
@@ -161,6 +208,8 @@ permissions:
   - 'use media image bulk upload form'
   - 'use media remote_video bulk upload form'
   - 'use media video bulk upload form'
+  - 'use siteimprove'
+  - 'use siteimprove prepublish'
   - 'use text format basic_html'
   - 'use text format full_html'
   - 'use text format table'

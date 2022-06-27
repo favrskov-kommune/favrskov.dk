@@ -17,26 +17,26 @@ bundle: button
 mode: default
 content:
   field_button:
+    type: link_with_target
     weight: 0
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
       target_blank: 0
     third_party_settings: {  }
-    type: link_with_target
-    region: content
   field_button_alignment:
+    type: options_select
     weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_call_to_action_color:
+    type: options_select
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
   info: true
   langcode: true

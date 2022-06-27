@@ -18,25 +18,25 @@ bundle: button
 mode: default
 content:
   field_button:
-    weight: 2
+    type: link_with_target
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: link_with_target
+    weight: 2
     region: content
   field_button_alignment:
-    weight: 1
+    type: list_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 1
     region: content
   field_call_to_action_color:
-    weight: 3
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 3
     region: content
 hidden:
   langcode: true

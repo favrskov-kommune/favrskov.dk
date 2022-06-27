@@ -23,14 +23,14 @@ type_settings:
       default_revision: true
     draft:
       label: Kladde
+      weight: -5
       published: false
       default_revision: false
-      weight: -5
     published:
       label: Udgivet
+      weight: 0
       published: true
       default_revision: true
-      weight: 0
   transitions:
     archive:
       label: Arkiver
@@ -52,18 +52,18 @@ type_settings:
       weight: 4
     create_new_draft:
       label: 'Opret Ny Kladde'
+      from:
+        - draft
+        - published
       to: draft
       weight: 0
-      from:
-        - draft
-        - published
     publish:
       label: Udgiv
-      to: published
-      weight: 1
       from:
         - draft
         - published
+      to: published
+      weight: 1
   entity_types:
     node:
       - editor_manual

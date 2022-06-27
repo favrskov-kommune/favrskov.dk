@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: VCYGRjvSPbvTIEwWc0wPz0fx1VcQEoLcHNmBQkmolYI
+langcode: da
 enabled_entity_types:
   - user
 punctuation:
@@ -19,6 +22,3 @@ safe_tokens:
   - login-url
   - url
   - url-brief
-_core:
-  default_config_hash: VCYGRjvSPbvTIEwWc0wPz0fx1VcQEoLcHNmBQkmolYI
-langcode: da

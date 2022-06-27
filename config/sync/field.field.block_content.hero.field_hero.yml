@@ -23,9 +23,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       inline_hero: inline_hero
+    negate: 0
     target_bundles_drag_drop:
       accordion_item:
         weight: 3
@@ -34,6 +34,6 @@ settings:
         weight: 4
         enabled: false
       inline_hero:
-        enabled: true
         weight: 4
+        enabled: true
 field_type: entity_reference_revisions

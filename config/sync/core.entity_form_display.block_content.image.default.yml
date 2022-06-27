@@ -19,36 +19,36 @@ bundle: image
 mode: default
 content:
   field_dynamic_height:
+    type: boolean_checkbox
     weight: 31
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_image_caption:
+    type: string_textfield
     weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_image_link:
+    type: link_with_target
     weight: 30
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
       target_blank: 0
     third_party_settings: {  }
-    type: link_with_target
-    region: content
   field_image_media:
     type: media_library_widget
     weight: 0
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   info: true
   langcode: true
