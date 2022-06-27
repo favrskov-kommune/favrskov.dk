@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.hearing_page.field_cta
     - field.field.node.hearing_page.field_deadline
     - field.field.node.hearing_page.field_extra
+    - field.field.node.hearing_page.field_hide_deadline
     - field.field.node.hearing_page.field_place
     - field.field.node.hearing_page.field_publishing_date
     - field.field.node.hearing_page.field_topic
@@ -27,12 +28,12 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: -20
+    weight: 0
     region: content
   field_cta:
     type: link
@@ -44,7 +45,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 6
     region: content
   field_deadline:
     type: datetime_custom
@@ -53,14 +54,24 @@ content:
       timezone_override: ''
       date_format: 'd. M. Y'
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: content
   field_extra:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 7
+    weight: 9
+    region: content
+  field_hide_deadline:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_place:
     type: entity_reference_label
@@ -68,7 +79,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 6
+    weight: 8
     region: content
   field_publishing_date:
     type: datetime_custom
@@ -77,7 +88,7 @@ content:
       timezone_override: ''
       date_format: 'd. M. Y'
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   field_topic:
     type: entity_reference_label
@@ -85,7 +96,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 5
+    weight: 7
     region: content
   field_type:
     type: entity_reference_label
@@ -93,7 +104,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
 hidden:
   langcode: true

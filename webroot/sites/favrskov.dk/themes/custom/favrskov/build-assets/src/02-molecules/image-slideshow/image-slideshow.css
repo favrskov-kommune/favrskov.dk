@@ -8,6 +8,8 @@
   position: relative;
   cursor: grab;
   width: 100%;
+  max-width: 730px;
+  margin: 0 auto;
 
   .flickity-viewport {
     overflow: hidden;
@@ -19,6 +21,10 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+
+    @media print {
+      display: none;
+    }
 
     .dot {
       position: relative;
@@ -65,13 +71,7 @@
 
 .image-slideshow-slide {
   width: 100%;
-  height: 100vh;
   position: relative;
-  max-height: 500px;
-
-  @media (--viewport-md-min) {
-    max-height: 600px;
-  }
 
   div:not(.contextual),
   picture,
@@ -82,7 +82,6 @@
   }
 
   img {
-    object-fit: cover;
     width: 100%;
   }
 

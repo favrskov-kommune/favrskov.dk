@@ -28,3 +28,18 @@ section > div,
 .row {
   break-inside: avoid;
 }
+
+.layout--twocol-section .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.layout--threecol-section .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.local-tasks-wrapper,
+.si-toggle-container {
+  display: none !important;
+}

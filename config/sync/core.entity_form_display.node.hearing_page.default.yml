@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.hearing_page.field_cta
     - field.field.node.hearing_page.field_deadline
     - field.field.node.hearing_page.field_extra
+    - field.field.node.hearing_page.field_hide_deadline
     - field.field.node.hearing_page.field_place
     - field.field.node.hearing_page.field_publishing_date
     - field.field.node.hearing_page.field_topic
@@ -26,7 +27,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 15
+    weight: 16
     region: content
     settings:
       rows: 9
@@ -42,7 +43,7 @@ content:
     third_party_settings: {  }
   field_cta:
     type: link_default
-    weight: 16
+    weight: 17
     region: content
     settings:
       placeholder_url: ''
@@ -56,15 +57,22 @@ content:
     third_party_settings: {  }
   field_extra:
     type: text_textarea
-    weight: 26
+    weight: 18
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_hide_deadline:
+    type: boolean_checkbox
+    weight: 13
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_place:
     type: options_select
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -76,7 +84,7 @@ content:
     third_party_settings: {  }
   field_topic:
     type: options_select
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
