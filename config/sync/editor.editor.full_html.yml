@@ -54,13 +54,9 @@ settings:
             - ShowBlocks
             - Source
   plugins:
-    stylescombo:
-      styles: ''
     drupallink:
       linkit_enabled: false
       linkit_profile: ''
-    language:
-      language_list: un
 image_upload:
   status: true
   scheme: public
