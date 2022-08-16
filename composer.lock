@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bce2af085f09b9ad1cc89178d7e92ab2",
+    "content-hash": "a91db43591c4bb35845b0309952e86c5",
     "packages": [
         {
             "name": "algolia/places",
@@ -6390,10 +6390,10 @@
         },
         {
             "name": "novicell/content_hierarchy",
-            "version": "1.5.0",
+            "version": "1.5.2",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_MEDBl/novicellcontent_hierarchy-1-5-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_28ydfF/novicellcontent_hierarchy-1-5-2.zip"
             },
             "require": {
                 "drupal/pathauto": "~1.0",
@@ -11650,5 +11650,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
