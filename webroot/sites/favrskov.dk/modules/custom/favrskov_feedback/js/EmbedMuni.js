@@ -30,9 +30,9 @@
 */
 
 /* ## Municipality specific variables ## */
-var municipalityCode = 706; // The municipality code that your site uses
-var category = ""; // The category which you want the chatbot to start on. Leave empty if not in category.
-var chatbotName = "Muni"; // The name/header text of your chatbot (max chars is 22). In order to change chatbot name in the dialog also a context variable must be updated through the administration module.
+var municipalityCode = drupalSettings.muni.municipalityCode; // The municipality code that your site uses
+var category = drupalSettings.muni.category; // The category which you want the chatbot to start on. Leave empty if not in category.
+var chatbotName = drupalSettings.muni.chatbotName; // The name/header text of your chatbot (max chars is 22). In order to change chatbot name in the dialog also a context variable must be updated through the administration module.
 var chatBubbleBackgroundColor = undefined; // Override chat bubble background color example "#f1f0f0" <- default
 var chatBubbleTextColor = undefined; //  Override chat bubble text color example "#202020" <- default
 var chatbotTabIndex = "0"; // The default tab index is 0 and the chatbot is placed at bottom of <body>. This can be changed by website integrator - replace lines "document.body.appendChild" with other hierarchy location.
