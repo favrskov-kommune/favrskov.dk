@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a91db43591c4bb35845b0309952e86c5",
+    "content-hash": "a7f228dc7618da895c4037252b0032a9",
     "packages": [
         {
             "name": "algolia/places",
@@ -194,10 +194,10 @@
         },
         {
             "name": "ckeditor/autogrow",
-            "version": "4.16.2",
+            "version": "4.17.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/autogrow/releases/autogrow_4.16.2.zip"
+                "url": "https://download.ckeditor.com/autogrow/releases/autogrow_4.17.1.zip"
             },
             "type": "drupal-library",
             "extra": {
@@ -218,10 +218,10 @@
         },
         {
             "name": "ckeditor/fakeobjects",
-            "version": "4.16.2",
+            "version": "4.17.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.16.2.zip"
+                "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.17.1.zip"
             },
             "type": "drupal-library",
             "extra": {
@@ -230,10 +230,10 @@
         },
         {
             "name": "ckeditor/image",
-            "version": "4.16.2",
+            "version": "4.17.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/image/releases/image_4.16.2.zip"
+                "url": "https://download.ckeditor.com/image/releases/image_4.17.1.zip"
             },
             "type": "drupal-library",
             "extra": {
@@ -242,10 +242,10 @@
         },
         {
             "name": "ckeditor/link",
-            "version": "4.16.2",
+            "version": "4.17.1",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/link/releases/link_4.16.2.zip"
+                "url": "https://download.ckeditor.com/link/releases/link_4.17.1.zip"
             },
             "type": "drupal-library",
             "extra": {
@@ -5676,7 +5676,7 @@
             "version": "1.0.2 ",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fronteed/icheck/archive/1.0.2.zip"
+                "url": "https://github.com/dargullin/icheck/archive/refs/tags/1.0.2.zip"
             },
             "type": "drupal-library",
             "extra": {
@@ -6947,10 +6947,10 @@
         },
         {
             "name": "progress-tracker/progress-tracker",
-            "version": "2.0.6",
+            "version": "2.0.7",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/NigelOToole/progress-tracker/archive/2.0.6.zip"
+                "url": "https://github.com/NigelOToole/progress-tracker/archive/2.0.7.zip"
             },
             "type": "drupal-library",
             "extra": {
@@ -11650,5 +11650,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

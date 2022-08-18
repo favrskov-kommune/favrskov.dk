@@ -1,0 +1,13 @@
+diff --git a/composer.libraries.json b/composer.libraries.json
+index 857738666..b2eea41a9 100644
+--- a/composer.libraries.json
++++ b/composer.libraries.json
+@@ -236,7 +236,7 @@
+                     "installer-name": "jquery.icheck"
+                 },
+                 "dist": {
+-                    "url": "https://github.com/dargullin/icheck/archive/refs/tags/1.0.2.zip",
++                    "url": "https://github.com/dargullin/icheck/zipball/refs/heads/1.0.2",
+                     "type": "zip"
+                 }
+             }
