@@ -1,6 +1,8 @@
 muni_categories:
   pas:
     name: Pas
+  pas_og_kørekort:
+    name: Pas og kørekort
   lægeskift:
     name: Lægeskift
   flytning:
@@ -17,6 +19,8 @@ muni_categories:
     name: Det blå sundhedskort
   særligt_sundhedskort:
     name: Det særlige sundhedskort
+  sundhedskort_lægevalg:
+    name: Sundhedskort lægevalg
   sygedagpenge:
     name: Sygedagpenge
   sygedagpenge_ledig:
@@ -35,6 +39,8 @@ muni_categories:
     name: Beboerindskudslån
   byg_og_miljø:
     name: Byg og miljø
+  jobcenter:
+    name: Jobcenter
   jobnet.dk:
     name: Jobnet.dk
   børnepasning_og_digital_pladsanvisning:
@@ -81,6 +87,8 @@ muni_categories:
     name: Folkepension
   tidlig_pension:
     name: Tidlig pension
+  pension_og_ydelser:
+    name: Pension og ydelser
   plejevederlag:
     name: Plejevederlag
   pasningsorlov:
