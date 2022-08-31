@@ -1,6 +1,6 @@
 {{ attach_library('favrskov/appetiser') }}
 {% if media_image %}
-  {{ attach_library('favrskov/appetiser') }}
+  {{ attach_library('favrskov/video') }}
 {% endif %}
 
 <div {{ (not attributes ? create_attribute() : attributes).addClass('appetiser').addClass(text_alignment ? 'appetiser--content-' ~ text_alignment).addClass(orientation and not is_small_version ? 'appetiser--image-' ~ orientation).addClass(is_small_version ? 'appetiser--small').addClass(is_small_version and not no_read_more ? 'js-appetiser--small') }}>
