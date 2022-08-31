@@ -190,3 +190,38 @@ function favrskov_preprocess_block__inline_block__slideshow(array &$variables) {
     }
   }
 }
+
+/**
+ * Appetizer layout block preprocess.
+ *
+ * @param array $variables
+ *   Template variables.
+ */
+function favrskov_preprocess_block__inline_block__appetizer(array &$variables) {
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables['elements']['content']['#block_content'];
+
+  if ($block->hasField('field_appetizer_image') && !$block->get('field_appetizer_image')->isEmpty()) {
+    $media = $block->get('field_appetizer_image')->entity;
+
+    if (!is_null($media)) {
+      $layout = $variables['elements']['content']['#layout'] ?? [];
+      $image_style = '1_column';
+      $layout_id = $layout['layout_id'] ?? '';
+
+      if ($layout_id === 'layout_onecol' && isset($layout['settings']['column_width']) && $layout['settings']['column_width'] === 'fullwidth') {
+        $image_style = 'full_width_16_9';
+      }
+      elseif ($layout_id === 'layout_twocol_section') {
+        $image_style = '2_column';
+      }
+      elseif ($layout_id === 'layout_threecol_section') {
+        $image_style = '3_column';
+      }
+
+      if (in_array($media->bundle(), ['remote_video', 'cdn_video'])) {
+        $variables['media_image'] = \Drupal::entityTypeManager()->getViewBuilder('media')->view($media, $image_style);
+      }
+    }
+  }
+}
