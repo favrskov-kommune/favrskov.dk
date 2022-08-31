@@ -1,11 +1,27 @@
 {{ attach_library('favrskov/appetiser') }}
+{% if media_image %}
+  {{ attach_library('favrskov/appetiser') }}
+{% endif %}
 
 <div {{ (not attributes ? create_attribute() : attributes).addClass('appetiser').addClass(text_alignment ? 'appetiser--content-' ~ text_alignment).addClass(orientation and not is_small_version ? 'appetiser--image-' ~ orientation).addClass(is_small_version ? 'appetiser--small').addClass(is_small_version and not no_read_more ? 'js-appetiser--small') }}>
   {% block block_content %}{% endblock %}
   {% if media %}
-    <figure{{ create_attribute().addClass('appetiser__image') }}>
-      {{ media }}
-    </figure>
+    <div class="appetiser__image">
+      {% if media_image %}
+        <div class="video js-video video--inverted">
+          <div class="video__iframe-wrapper js-video-iframe-wrapper">{{ media }}</div>
+          {{ media_image }}
+          <div class="video__play-icon js-video-play-icon">
+            {% include '@particles/svg-icon/svg-icon.twig' with {
+              'attributes': '',
+              'svgIconName': 'play'
+            } %}
+          </div>
+        </div>
+      {% else %}
+        {{ media }}
+      {% endif %}
+    </div>
   {% endif %}
   <div class="appetiser__content-wrapper {{ display_as_fullwidth ? 'appetiser__content-wrapper--full-width' }}">
     {% if display_as_fullwidth %}

@@ -15,6 +15,11 @@
     display: block;
   }
 
+  .video--hide-content picture,
+  .video--hide-content img {
+    display: none;
+  }
+
   img {
     object-fit: cover;
     width: 100%;
@@ -103,7 +108,7 @@
     width: 100%;
     height: auto;
 
-    div {
+    div:not(.video__play-icon) {
       height: 100%;
     }
 
