@@ -20,7 +20,7 @@ Drupal.behaviors.imageSlideshow = {
           cellAlign: 'left',
           contain: true,
           pageDots: true,
-          prevNextButtons: false,
+          prevNextButtons: true,
           fade: true,
           wrapAround: true,
           autoPlay: current.dataset.autoplay === 'true' ? 3000 : '',
