@@ -84,6 +84,10 @@
     height: 32px;
     margin-top: -15px;
 
+    @media print {
+      display: none;
+    }
+
     .flickity-button-icon {
       top: 25%;
       left: 25%;
