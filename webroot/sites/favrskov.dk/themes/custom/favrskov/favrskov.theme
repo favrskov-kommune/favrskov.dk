@@ -202,15 +202,19 @@ function favrskov_preprocess_block__inline_block__appetizer(array &$variables) {
   $block = $variables['elements']['content']['#block_content'];
   $layout = $variables['elements']['content']['#layout'] ?? [];
   $layout_id = $layout['layout_id'] ?? '';
+  $image_style = 'appetiser';
 
   if ($block->hasField('field_appetizer_image') && !$block->get('field_appetizer_image')->isEmpty()) {
     $media = $block->get('field_appetizer_image')->entity;
 
     if (!is_null($media)) {
-      if (in_array($media->bundle(), ['remote_video', 'cdn_video'])) {
-        $image_style = '1_column';
 
+      if ($block->hasField('field_appetizer_image') && !$block->get('field_appetizer_image')->isEmpty() && !is_null($block->get('field_appetizer_image')->entity)) {
         if ($layout_id === 'layout_onecol' && isset($layout['settings']['column_width']) && $layout['settings']['column_width'] === 'fullwidth') {
+          $image_style = 'appetiser_wide';
+          $variables['display_as_fullwidth'] = TRUE;
+        }
+        elseif ($layout_id === 'layout_onecol') {
           $image_style = 'full_width_16_9';
         }
         elseif ($layout_id === 'layout_twocol_section') {
@@ -219,10 +223,14 @@ function favrskov_preprocess_block__inline_block__appetizer(array &$variables) {
         elseif ($layout_id === 'layout_threecol_section') {
           $image_style = '3_column';
         }
-        if ($block->hasField('field_appetizer_image') && !$block->get('field_appetizer_image')->isEmpty() && !is_null($block->get('field_appetizer_image')->entity)) {
-          $variables['media_image'] = \Drupal::entityTypeManager()
+        $variables['media_image'] = \Drupal::entityTypeManager()
+          ->getViewBuilder('media')
+          ->view($block->get('field_appetizer_image')->entity, $image_style);
+        if (in_array($media->bundle(), ['remote_video', 'cdn_video'])) {
+          $variables['media'] = \Drupal::entityTypeManager()
             ->getViewBuilder('media')
             ->view($block->get('field_appetizer_image')->entity, $image_style);
+          $variables['is_video'] = TRUE;
         }
       }
     }

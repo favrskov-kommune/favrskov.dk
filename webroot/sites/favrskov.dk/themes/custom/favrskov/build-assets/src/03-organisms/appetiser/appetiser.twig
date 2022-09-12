@@ -7,7 +7,7 @@
   {% block block_content %}{% endblock %}
   {% if media %}
     <div class="appetiser__image">
-      {% if media_image %}
+      {% if is_video %}
         <div class="video js-video video--inverted">
           <div class="video__iframe-wrapper js-video-iframe-wrapper">{{ media }}</div>
           {{ media_image }}
@@ -19,7 +19,7 @@
           </div>
         </div>
       {% else %}
-        {{ media }}
+        {{ media_image }}
       {% endif %}
     </div>
   {% endif %}
