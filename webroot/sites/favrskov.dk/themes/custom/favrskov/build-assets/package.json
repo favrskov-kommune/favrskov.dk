@@ -39,7 +39,7 @@
     "main": "config/fractal/fractal.config.js"
   },
   "optionalDependencies": {
-    "fsevents": "*"
+    "fsevents": "^2.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",
