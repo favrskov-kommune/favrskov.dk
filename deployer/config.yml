@@ -34,8 +34,8 @@ prod:
 staging:
   <<: *base
   branch: develop
-  deploy_path: /data/www/vhost/staging.favrskov.drupal.dk
-  hostname: '81.95.247.111'
+  deploy_path: /data/www/staging.favrskov.drupal.dk
+  hostname: '81.95.247.117'
   user: favrskov
   disable_slack: true
   keep_releases: 2
