@@ -4,7 +4,7 @@
  */
 
 .theme-grayblue {
-  --theme-background-color: var(--color-secondary-light);
+  --theme-background-color: var(--color-white);
   --theme-hero-icon-color: var(--color-secondary);
   --theme-accordion-border-color: var(--color-secondary);
   --theme-accordion-background-color: var(--color-white);

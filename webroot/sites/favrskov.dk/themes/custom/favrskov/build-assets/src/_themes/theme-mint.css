@@ -4,7 +4,7 @@
  */
 
 .theme-mint {
-  --theme-background-color: var(--color-light-mint);
+  --theme-background-color: var(--color-white);
   --theme-accordion-border-color: var(--color-primary);
   --theme-accordion-background-color: var(--color-white);
   --theme-accordion-toggle-text-color: var(--color-black);
