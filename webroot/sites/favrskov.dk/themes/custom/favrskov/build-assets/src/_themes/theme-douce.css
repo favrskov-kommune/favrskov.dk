@@ -4,7 +4,7 @@
  */
 
 .theme-douce {
-  --theme-background-color: var(--color-white);
+  --theme-background-color: var(--color-gray);
   --theme-hero-icon-color: var(--color-gray-hover);
   --theme-button-background-color: var(--color-white);
   --theme-button-color: var(--color-black);
