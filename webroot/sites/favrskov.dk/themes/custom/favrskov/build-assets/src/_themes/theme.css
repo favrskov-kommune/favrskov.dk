@@ -159,17 +159,17 @@
 }
 
 .background-douce {
-  background-color: var(--color-gray);
+  background-color: var(--color-gray) !important;
 }
 
 .background-mint {
-  background-color: var(--color-light-mint);
+  background-color: var(--color-light-mint) !important;
 }
 
 .background-white {
-  background-color: var(--color-white);
+  background-color: var(--color-white) !important;
 }
 
 .background-grayblue {
-  background-color: var(--color-secondary-light);
+  background-color: var(--color-secondary-light) !important;
 }
