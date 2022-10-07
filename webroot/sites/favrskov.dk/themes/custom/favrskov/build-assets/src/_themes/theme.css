@@ -157,3 +157,19 @@
 .layout-builder .layout-builder__section .layout-builder__section--header .layout-builder__section-label {
   font-size: .7em;
 }
+
+.background-douce {
+  background-color: var(--color-gray);
+}
+
+.background-mint {
+  background-color: var(--color-light-mint);
+}
+
+.background-white {
+  background-color: var(--color-white);
+}
+
+.background-grayblue {
+  background-color: var(--color-secondary-light);
+}

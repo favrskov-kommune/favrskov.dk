@@ -1,0 +1,21 @@
+uuid: af428238-ca07-4f03-ac76-6ae20ac5b3bc
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.contact
+    - field.storage.block_content.field_background_color
+  module:
+    - options
+id: block_content.contact.field_background_color
+field_name: field_background_color
+entity_type: block_content
+bundle: contact
+label: 'Overskriv baggrundsfarve for tekstblokke'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
