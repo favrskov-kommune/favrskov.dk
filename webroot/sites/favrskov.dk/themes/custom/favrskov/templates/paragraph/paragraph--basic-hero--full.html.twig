@@ -54,7 +54,7 @@
   {% set overlay = paragraph.field_overlay.value %}
   {% set show_search = paragraph.field_show_search.value %}
 
-  {% if color_theme != '' and color_theme != 'none' %}
+  {% if color_theme and color_theme != 'none' %}
     {% set attributes = attributes.addClass('theme').addClass(color_theme) %}
     {{ attach_library('favrskov/' ~ color_theme) }}
   {% endif %}
