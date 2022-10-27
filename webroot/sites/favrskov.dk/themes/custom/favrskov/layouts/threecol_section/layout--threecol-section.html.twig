@@ -14,13 +14,13 @@
 {% set classes = [
   'layout',
   'layout--threecol',
-  settings.color_theme != '' ? 'theme ' ~ settings.color_theme,
+  settings.color_theme ? 'theme ' ~ settings.color_theme,
   'section',
   'section--spacing-top-' ~ settings.column_spacing_top,
   'section--spacing-bottom-' ~ settings.column_spacing_bottom
 ] %}
 
-{% if settings.color_theme != '' %}
+{% if settings.color_theme %}
   {{ attach_library('favrskov/' ~ settings.color_theme) }}
 {% endif %}
 
