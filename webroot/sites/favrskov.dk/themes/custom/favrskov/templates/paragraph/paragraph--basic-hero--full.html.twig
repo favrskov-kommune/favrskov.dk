@@ -47,7 +47,7 @@
 ]
 %}
 {% block paragraph %}
-  {% set position = paragraph.field_text_position.value %}
+  {% set position = paragraph.field_text_position.value ? paragraph.field_text_position.value : 'left' %}
   {% set text_color = paragraph.field_text_color.value %}
   {% set btn_color = paragraph.field_call_to_action_color.value %}
   {% set color_theme = paragraph.field_color_theme.value %}
