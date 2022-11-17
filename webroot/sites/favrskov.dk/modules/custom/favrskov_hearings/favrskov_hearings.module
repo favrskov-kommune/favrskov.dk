@@ -87,9 +87,13 @@ function favrskov_hearings_preprocess_node__hearing_page(&$variables) {
 
   $hearing_type_entities = $node->get('field_type')->referencedEntities();
   $hearing_name = reset($hearing_type_entities)->name->value;
-  $variables['content']['deadline_label'] = (in_array($hearing_name, ['Afgørelse', 'Annoncering']))
-    ? t('Deadline for complaints')
-    : t('Hearing deadline');
+  if ($hearing_name === 'For-offentliggørelse') {
+    $variables['content']['deadline_label'] = t('Deadline for comments');
+  } elseif (in_array($hearing_name, ['Afgørelse', 'Annoncering'])) {
+    $variables['content']['deadline_label'] = t('Deadline for complaints');
+  } else {
+    $variables['content']['deadline_label'] = t('Hearing deadline');
+  }
   $variables['content']['hide_deadline'] = (bool) $node->get('field_hide_deadline')->value;
 }
 

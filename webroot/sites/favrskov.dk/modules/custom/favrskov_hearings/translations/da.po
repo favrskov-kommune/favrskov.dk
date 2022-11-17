@@ -42,6 +42,9 @@ msgstr "Høringsfrist"
 msgid "Deadline for complaints"
 msgstr "Klagefrist"
 
+msgid "Deadline for comments"
+msgstr "Frist for kommentarer"
+
 msgid "Are you sure you want to publish this?"
 msgstr "Er du sikker på at du gerne vil udgive dette?"
 
