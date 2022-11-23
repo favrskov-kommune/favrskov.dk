@@ -186,6 +186,9 @@ figure {
   }
 
   figcaption {
-    margin-top: 8px;
+    & > div {
+      padding-top: 4px;
+      padding-bottom: 8px;
+    }
   }
 }
