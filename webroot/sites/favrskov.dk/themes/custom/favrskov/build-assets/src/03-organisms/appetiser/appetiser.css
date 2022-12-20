@@ -204,11 +204,6 @@
     .appetiser__description {
       font-size: var(--base-font-size-medium);
 
-      & b,
-      & strong {
-        color: var(--color-cta);
-      }
-
       a {
         color: var(--color-primary);
       }
