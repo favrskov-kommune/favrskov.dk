@@ -50,7 +50,7 @@
   {% else %}
     <div class="container">
       <div class="row">
-        <div class="{{ hero_position[position] }}">
+        <div class="{{ position ? hero_position[position] : 'col-xs-10 col-md-8' }}">
           <div{{ (not content_attributes ? create_attribute() : content_attributes).addClass('hero__content') }}>
             {% if text %}
               {{ text }}
