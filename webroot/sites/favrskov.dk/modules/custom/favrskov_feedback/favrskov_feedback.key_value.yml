@@ -97,5 +97,5 @@ muni_categories:
     name: MitID
   nemid_og_mitid:
     name: NemID og MitID
-  tidsbestilling_kommune:
+  tidsbestilling_kommune.dk:
     name: Tidsbestilling i kommunen
