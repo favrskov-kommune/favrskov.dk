@@ -25,8 +25,8 @@
 
   NOTE: All comments should be deleted when embedding the script
 
-  @version 1.1 - bumped after a change
-  @lastUpdated 2021-01-18
+  @version 2.0 - bumped after a change
+  @lastUpdated 2023-03-02
 */
 
 /* ## Municipality specific variables ## */
@@ -39,14 +39,14 @@ var chatbotTabIndex = "0"; // The default tab index is 0 and the chatbot is plac
 
 
 /* ## Implementation ## */
-var chatbotUrl = "https://ddh-frontend-test.eu-de.mybluemix.net";
+var chatbotUrl = "https://frontend-test.chatbot.dendigitalehotline.dk";
 var xhr = new XMLHttpRequest();
 var failoverTried = false;
 var chatbotLoaded = false;
 var currentHost = Math.round(Math.random());
 var backendHosts = [
-  "https://ddh-backend-test.eu-de.mybluemix.net",
-  "https://ddh-backend-test.eu-de.mybluemix.net"
+  "https://backend-test.chatbot.dendigitalehotline.dk",
+  "https://backend-test.chatbot.dendigitalehotline.dk",
 ];
 
 xhr.onreadystatechange = function () {
