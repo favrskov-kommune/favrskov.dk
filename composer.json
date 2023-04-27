@@ -44,7 +44,7 @@
         "drupal/core-project-message": "^9.4",
         "drupal/core-vendor-hardening": "^9.4",
         "drupal/editor_advanced_link": "^1.8",
-        "drupal/entity_clone": "^1.0-beta4",
+        "drupal/entity_clone": "^2.0@beta",
         "drupal/entity_usage": "^2.0-beta3",
         "drupal/field_group": "^3.0",
         "drupal/file_delete_ui": "^1.0@alpha",
@@ -69,7 +69,7 @@
         "drupal/redirect": "^1.0",
         "drupal/redis": "^1.5",
         "drupal/role_delegation": "^1.1",
-        "drupal/scheduled_transitions": "^2.0",
+        "drupal/scheduled_transitions": "^2.3",
         "drupal/search_api": "^1.0",
         "drupal/search_api_exclude_entity": "^1.0",
         "drupal/search_api_page": "^1.0@beta",
@@ -188,8 +188,7 @@
             "drupal/core": {
                 "(#2999491) Allow creation of reuseable inline blocks": "https://www.drupal.org/files/issues/2020-05-21/2999491--reusable-title-display--49.patch",
                 "(#3080606) Reorder Layout Builder sections": "https://www.drupal.org/files/issues/2020-06-18/3080606-reorder-layout-sections-43.patch",
-                "(#2985882) Call to a member function getLabel() after enabling layout_builder": "https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch",
-                "(#2395065) Certain URL fragments cause javascript error": "https://www.drupal.org/files/issues/2020-05-11/2395065-30.patch"
+                "(#2985882) Call to a member function getLabel() after enabling layout_builder": "https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch"
             },
             "drupal/paragraphs": {
                 "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2020-06-25/paragraphs-2901390-51.patch"
