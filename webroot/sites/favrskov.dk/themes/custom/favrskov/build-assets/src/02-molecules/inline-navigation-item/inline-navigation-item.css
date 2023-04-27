@@ -163,12 +163,16 @@
     svg {
       height: 60px;
       max-width: 100%;
-      width: auto;
+      width: 100px;
       display: flex;
       align-self: center;
 
       &.icon--no-image {
         fill: var(--color-cta);
+      }
+
+      @media (--viewport-md-max) {
+        width: 50px;
       }
     }
 
