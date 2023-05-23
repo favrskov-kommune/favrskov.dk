@@ -1,1 +1,5 @@
+Disallow: /node/*
+Disallow: /en
+Disallow: /en/*
+
 Sitemap: https://favrskov.dk/sitemap.xml
