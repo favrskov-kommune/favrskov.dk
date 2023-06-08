@@ -328,3 +328,6 @@ msgstr "Besked"
 
 msgid "Print page"
 msgstr "Udskriv side"
+
+msgid "Negative"
+msgstr "Negativ"
