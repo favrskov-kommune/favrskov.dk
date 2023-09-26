@@ -103,6 +103,7 @@ module:
   shortcut: 0
   simple_sitemap: 0
   siteimprove: 0
+  smtp: 0
   status_feed: 0
   styles: 0
   swiftmailer: 0
@@ -111,6 +112,8 @@ module:
   text: 0
   token: 0
   toolbar: 0
+  update: 0
+  upgrade_status: 0
   user: 0
   view_unpublished: 0
   views_ui: 0

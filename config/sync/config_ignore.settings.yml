@@ -4,3 +4,4 @@ langcode: da
 ignored_config_entities:
   - system.site
   - 'webform.webform.*'
+  - smtp.settings
