@@ -75,7 +75,6 @@
         "drupal/search_api_page": "^1.0@beta",
         "drupal/simple_sitemap": "^3.0",
         "drupal/siteimprove": "^1.11",
-        "drupal/smtp": "^1.2",
         "drupal/swiftmailer": "^2.2",
         "drupal/view_unpublished": "^1.0",
         "drupal/webform": "^6.0",

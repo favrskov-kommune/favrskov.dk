@@ -3,7 +3,7 @@ _core:
 langcode: da
 theme: favrskov
 defaults:
-  sender: SMTPMailSystem
+  sender: swiftmailer
   formatter: swiftmailer
 modules:
   swiftmailer: {  }
