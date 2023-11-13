@@ -15,7 +15,6 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor: 0
-  color: 0
   color_field: 0
   components: 0
   config: 0
@@ -93,7 +92,6 @@ module:
   premium_theme_helper: 0
   premium_tools: 0
   promote_disable: 0
-  rdf: 0
   redirect: 0
   redirect_404: 0
   redis: 0

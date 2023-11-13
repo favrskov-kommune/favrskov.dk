@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa06893184dad84802b9009ea65ad57e",
+    "content-hash": "8cad1c2d529b8c3c195c5f55f3a7f385",
     "packages": [
         {
             "name": "algolia/places",
@@ -16,7 +16,10 @@
             "type": "drupal-library",
             "extra": {
                 "installer-name": "algolia.places"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "asm89/stack-cors",
@@ -185,84 +188,105 @@
             "version": "9.0.1",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jshjohnson/Choices/archive/v9.0.1.zip"
+                "url": "https://github.com/Choices-js/Choices/archive/refs/tags/v9.0.1.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "choices"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "ckeditor/autogrow",
-            "version": "4.17.1",
+            "version": "4.18.0",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/autogrow/releases/autogrow_4.17.1.zip"
+                "url": "https://download.ckeditor.com/autogrow/releases/autogrow_4.18.0.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "ckeditor.autogrow"
-            }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ]
         },
         {
             "name": "ckeditor/codemirror",
-            "version": "v1.17.12",
+            "version": "v1.18.3",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/w8tcha/CKEditor-CodeMirror-Plugin/releases/download/v1.17.12/CKEditor-CodeMirror-Plugin.zip"
+                "url": "https://github.com/w8tcha/CKEditor-CodeMirror-Plugin/releases/download/v1.18.3/CKEditor-CodeMirror-Plugin.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "ckeditor.codemirror"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "ckeditor/fakeobjects",
-            "version": "4.17.1",
+            "version": "4.18.0",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.17.1.zip"
+                "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.18.0.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "ckeditor.fakeobjects"
-            }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ]
         },
         {
             "name": "ckeditor/image",
-            "version": "4.17.1",
+            "version": "4.18.0",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/image/releases/image_4.17.1.zip"
+                "url": "https://download.ckeditor.com/image/releases/image_4.18.0.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "ckeditor.image"
-            }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ]
         },
         {
             "name": "ckeditor/link",
-            "version": "4.17.1",
+            "version": "4.18.0",
             "dist": {
                 "type": "zip",
-                "url": "https://download.ckeditor.com/link/releases/link_4.17.1.zip"
+                "url": "https://download.ckeditor.com/link/releases/link_4.18.0.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "ckeditor.link"
-            }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ]
         },
         {
             "name": "codemirror/codemirror",
-            "version": "5.61.1",
+            "version": "5.65.3",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/components/codemirror/archive/5.61.1.zip"
+                "url": "https://github.com/components/codemirror/archive/refs/tags/5.65.3.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "codemirror"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "composer/installers",
@@ -1821,17 +1845,17 @@
         },
         {
             "name": "drupal/config_filter",
-            "version": "1.10.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/config_filter.git",
-                "reference": "8.x-1.10"
+                "reference": "8.x-1.12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/config_filter-8.x-1.10.zip",
-                "reference": "8.x-1.10",
-                "shasum": "c5002f2b9dece3c684db754123936d1388b80b8d"
+                "url": "https://ftp.drupal.org/files/projects/config_filter-8.x-1.12.zip",
+                "reference": "8.x-1.12",
+                "shasum": "364581700ca3a298f62950ff37dd309d0bfb8381"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9 || ^10"
@@ -1842,8 +1866,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.10",
-                    "datestamp": "1656936763",
+                    "version": "8.x-1.12",
+                    "datestamp": "1698308496",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2377,17 +2401,17 @@
         },
         {
             "name": "drupal/ctools",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ctools.git",
-                "reference": "4.0.3"
+                "reference": "4.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ctools-4.0.3.zip",
-                "reference": "4.0.3",
-                "shasum": "4f389b14bd2120069386c2f28f8c4cd49bd2ebfc"
+                "url": "https://ftp.drupal.org/files/projects/ctools-4.0.4.zip",
+                "reference": "4.0.4",
+                "shasum": "4a2474eb2fd525b2add2db0e855c135ba7f0fb70"
             },
             "require": {
                 "drupal/core": "^9.3 || ^10"
@@ -2395,8 +2419,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.0.3",
-                    "datestamp": "1668631947",
+                    "version": "4.0.4",
+                    "datestamp": "1684299878",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5801,31 +5825,40 @@
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.chosen"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/geocomplete",
             "version": "1.7.0",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/ubilabs/geocomplete/archive/1.7.0.zip"
+                "url": "https://github.com/ubilabs/geocomplete/archive/refs/tags/1.7.0.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.geocomplete"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/hotkeys",
             "version": "0.2.0",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jeresig/jquery.hotkeys/archive/0.2.0.zip"
+                "url": "https://github.com/jeresig/jquery.hotkeys/archive/refs/tags/0.2.0.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.hotkeys"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/icheck",
@@ -5837,103 +5870,130 @@
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.icheck"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/image-picker",
             "version": "0.3.1",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/rvera/image-picker/archive/0.3.1.zip"
+                "url": "https://github.com/rvera/image-picker/archive/refs/tags/0.3.1.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.image-picker"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/inputmask",
-            "version": "5.0.6",
+            "version": "5.0.7",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/RobinHerbots/jquery.inputmask/archive/5.0.6.zip"
+                "url": "https://github.com/RobinHerbots/jquery.inputmask/archive/refs/tags/5.0.7.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.inputmask"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/intl-tel-input",
-            "version": "16.1.0",
+            "version": "17.0.19",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jackocnr/intl-tel-input/archive/v16.1.0.zip"
+                "url": "https://github.com/jackocnr/intl-tel-input/archive/refs/tags/v17.0.19.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.intl-tel-input"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/rateit",
-            "version": "1.1.3",
+            "version": "1.1.5",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/gjunge/rateit.js/archive/1.1.3.zip"
+                "url": "https://github.com/gjunge/rateit.js/archive/refs/tags/1.1.5.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.rateit"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/select2",
             "version": "4.0.13",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/select2/select2/archive/4.0.13.zip"
+                "url": "https://github.com/select2/select2/archive/refs/tags/4.0.13.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.select2"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/textcounter",
             "version": "0.9.0",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/ractoon/jQuery-Text-Counter/archive/0.9.0.zip"
+                "url": "https://github.com/ractoon/jQuery-Text-Counter/archive/refs/tags/0.9.0.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.textcounter"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/timepicker",
-            "version": "1.13.18",
+            "version": "1.14.0",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jonthornton/jquery-timepicker/archive/1.13.18.zip"
+                "url": "https://github.com/jonthornton/jquery-timepicker/archive/refs/tags/1.14.0.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.timepicker"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "jquery/toggles",
             "version": "4.0.0",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/simontabor/jquery-toggles/archive/v4.0.0.zip"
+                "url": "https://github.com/simontabor/jquery-toggles/archive/refs/tags/v4.0.0.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "jquery.toggles"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "laminas/laminas-diactoros",
@@ -7121,12 +7181,15 @@
             "version": "2.0.7",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/NigelOToole/progress-tracker/archive/2.0.7.zip"
+                "url": "https://github.com/NigelOToole/progress-tracker/archive/refs/tags/2.0.7.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "progress-tracker"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "psr/cache",
@@ -7559,12 +7622,15 @@
             "version": "2.3.0",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/szimek/signature_pad/archive/v2.3.0.zip"
+                "url": "https://github.com/szimek/signature_pad/archive/refs/tags/v2.3.0.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "signature_pad"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "stack/builder",
@@ -7625,12 +7691,15 @@
             "version": "3.6.1",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/ariutta/svg-pan-zoom/archive/3.6.1.zip"
+                "url": "https://github.com/ariutta/svg-pan-zoom/archive/refs/tags/3.6.1.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "svg-pan-zoom"
-            }
+            },
+            "license": [
+                "BSD-2-Clause"
+            ]
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -10350,12 +10419,15 @@
             "version": "12.0.3",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/cferdinandi/tabby/archive/v12.0.3.zip"
+                "url": "https://github.com/cferdinandi/tabby/archive/refs/tags/v12.0.3.zip"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "tabby"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -10420,19 +10492,25 @@
             "type": "drupal-library",
             "extra": {
                 "installer-name": "tippyjs/5.x"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "tippyjs/6.x",
-            "version": "6.2.6",
+            "version": "6.3.7",
             "dist": {
                 "type": "file",
-                "url": "https://unpkg.com/tippy.js@6.2.6/dist/tippy-bundle.umd.min.js"
+                "url": "https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"
             },
             "type": "drupal-library",
             "extra": {
                 "installer-name": "tippyjs/6.x"
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "twig/twig",
@@ -11717,6 +11795,81 @@
             }
         },
         {
+            "name": "drupal/upgrade_status",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/upgrade_status.git",
+                "reference": "4.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/upgrade_status-4.0.0.zip",
+                "reference": "4.0.0",
+                "shasum": "013afdb46a03c9db0119cb1ce60ca49631d64368"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10",
+                "mathieuviossat/arraytotexttable": "~1.0.0",
+                "mglaman/phpstan-drupal": "^1.0.0",
+                "nikic/php-parser": "^4.0.0",
+                "phpstan/phpstan-deprecation-rules": "^1.0.0",
+                "symfony/process": "^3.4|^4.0|^5.0|^6.0",
+                "webflo/drupal-finder": "^1.2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.0",
+                    "datestamp": "1678815090",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "colan",
+                    "homepage": "https://www.drupal.org/user/58704"
+                },
+                {
+                    "name": "Gábor Hojtsy",
+                    "homepage": "https://www.drupal.org/user/4166"
+                },
+                {
+                    "name": "herczogzoltan",
+                    "homepage": "https://www.drupal.org/user/3528391"
+                },
+                {
+                    "name": "sun",
+                    "homepage": "https://www.drupal.org/user/54136"
+                },
+                {
+                    "name": "webchick",
+                    "homepage": "https://www.drupal.org/user/24967"
+                },
+                {
+                    "name": "xjm",
+                    "homepage": "https://www.drupal.org/user/65776"
+                }
+            ],
+            "description": "Review Drupal major upgrade readiness of the environment and components of the site.",
+            "homepage": "http://drupal.org/project/upgrade_status",
+            "support": {
+                "source": "https://git.drupalcode.org/project/upgrade_status"
+            }
+        },
+        {
             "name": "kint-php/kint",
             "version": "3.3",
             "source": {
@@ -11789,6 +11942,329 @@
                 "source": "https://github.com/kint-php/kint/tree/master"
             },
             "time": "2019-10-17T18:05:24+00:00"
+        },
+        {
+            "name": "laminas/laminas-text",
+            "version": "2.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-text.git",
+                "reference": "8879e75d03e09b0d6787e6680cfa255afd4645a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-text/zipball/8879e75d03e09b0d6787e6680cfa255afd4645a7",
+                "reference": "8879e75d03e09b0d6787e6680cfa255afd4645a7",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-servicemanager": "^3.4",
+                "laminas/laminas-stdlib": "^3.6",
+                "php": "^7.3 || ~8.0.0 || ~8.1.0"
+            },
+            "conflict": {
+                "zendframework/zend-text": "*"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\Text\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Create FIGlets and text-based tables",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "laminas",
+                "text"
+            ],
+            "support": {
+                "chat": "https://laminas.dev/chat",
+                "docs": "https://docs.laminas.dev/laminas-text/",
+                "forum": "https://discourse.laminas.dev",
+                "issues": "https://github.com/laminas/laminas-text/issues",
+                "rss": "https://github.com/laminas/laminas-text/releases.atom",
+                "source": "https://github.com/laminas/laminas-text"
+            },
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
+            "time": "2021-09-02T16:50:53+00:00"
+        },
+        {
+            "name": "mathieuviossat/arraytotexttable",
+            "version": "v1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/viossat/arraytotexttable.git",
+                "reference": "518ec338fe62e92c064a9d3d3bc8c64fb6e77d1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/viossat/arraytotexttable/zipball/518ec338fe62e92c064a9d3d3bc8c64fb6e77d1c",
+                "reference": "518ec338fe62e92c064a9d3d3bc8c64fb6e77d1c",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-text": "^2.9",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MathieuViossat\\Util\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathieu Viossat",
+                    "email": "mathieu@viossat.fr",
+                    "homepage": "https://viossat.fr"
+                }
+            ],
+            "description": "Display arrays in terminal",
+            "homepage": "https://github.com/viossat/arraytotexttable",
+            "keywords": [
+                "array",
+                "ascii",
+                "table",
+                "terminal",
+                "text",
+                "unicode"
+            ],
+            "support": {
+                "issues": "https://github.com/viossat/arraytotexttable/issues",
+                "source": "https://github.com/viossat/arraytotexttable/tree/v1.0.9"
+            },
+            "time": "2022-08-30T15:33:10+00:00"
+        },
+        {
+            "name": "mglaman/phpstan-drupal",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mglaman/phpstan-drupal.git",
+                "reference": "bde6445d8102954d94e88492c60206a499c21889"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/bde6445d8102954d94e88492c60206a499c21889",
+                "reference": "bde6445d8102954d94e88492c60206a499c21889",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0",
+                "phpstan/phpstan": "^1.10.1",
+                "phpstan/phpstan-deprecation-rules": "^1.1.4",
+                "symfony/finder": "^4.2 || ^5.0 || ^6.0",
+                "symfony/yaml": "^4.2|| ^5.0 || ^6.0",
+                "webflo/drupal-finder": "^1.2"
+            },
+            "require-dev": {
+                "behat/mink": "^1.8",
+                "composer/installers": "^1.9",
+                "drupal/core-recommended": "^9.0",
+                "drush/drush": "^10.0 || ^11 || ^12",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-strict-rules": "^1.0",
+                "phpunit/phpunit": "^8.5 || ^9",
+                "slevomat/coding-standard": "^7.1",
+                "squizlabs/php_codesniffer": "^3.3",
+                "symfony/phpunit-bridge": "^4.4 || ^5.4 || ^6.0"
+            },
+            "suggest": {
+                "jangregor/phpstan-prophecy": "Provides a prophecy/prophecy extension for phpstan/phpstan.",
+                "phpstan/phpstan-deprecation-rules": "For catching deprecations, especially in Drupal core.",
+                "phpstan/phpstan-phpunit": "PHPUnit extensions and rules for PHPStan."
+            },
+            "type": "phpstan-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.0-dev"
+                },
+                "installer-paths": {
+                    "tests/fixtures/drupal/core": [
+                        "type:drupal-core"
+                    ],
+                    "tests/fixtures/drupal/libraries/{$name}": [
+                        "type:drupal-library"
+                    ],
+                    "tests/fixtures/drupal/modules/contrib/{$name}": [
+                        "type:drupal-module"
+                    ],
+                    "tests/fixtures/drupal/profiles/contrib/{$name}": [
+                        "type:drupal-profile"
+                    ],
+                    "tests/fixtures/drupal/themes/contrib/{$name}": [
+                        "type:drupal-theme"
+                    ]
+                },
+                "phpstan": {
+                    "includes": [
+                        "extension.neon",
+                        "rules.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "mglaman\\PHPStanDrupal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Glaman",
+                    "email": "nmd.matt@gmail.com"
+                }
+            ],
+            "description": "Drupal extension and rules for PHPStan",
+            "support": {
+                "issues": "https://github.com/mglaman/phpstan-drupal/issues",
+                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.2.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mglaman",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/phpstan-drupal",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/mglaman/phpstan-drupal",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-11-09T23:13:46+00:00"
+        },
+        {
+            "name": "phpstan/phpstan",
+            "version": "1.10.41",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "c6174523c2a69231df55bdc65b61655e72876d76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c6174523c2a69231df55bdc65b61655e72876d76",
+                "reference": "c6174523c2a69231df55bdc65b61655e72876d76",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0"
+            },
+            "conflict": {
+                "phpstan/phpstan-shim": "*"
+            },
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "keywords": [
+                "dev",
+                "static analysis"
+            ],
+            "support": {
+                "docs": "https://phpstan.org/user-guide/getting-started",
+                "forum": "https://github.com/phpstan/phpstan/discussions",
+                "issues": "https://github.com/phpstan/phpstan/issues",
+                "security": "https://github.com/phpstan/phpstan/security/policy",
+                "source": "https://github.com/phpstan/phpstan-src"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ondrejmirtes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/phpstan",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-11-05T12:57:57+00:00"
+        },
+        {
+            "name": "phpstan/phpstan-deprecation-rules",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan-deprecation-rules.git",
+                "reference": "089d8a8258ed0aeefdc7b68b6c3d25572ebfdbaa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan-deprecation-rules/zipball/089d8a8258ed0aeefdc7b68b6c3d25572ebfdbaa",
+                "reference": "089d8a8258ed0aeefdc7b68b6c3d25572ebfdbaa",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0",
+                "phpstan/phpstan": "^1.10.3"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpstan/phpstan-php-parser": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "phpstan-extension",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "rules.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan rules for detecting usage of deprecated classes, methods, properties, constants and traits.",
+            "support": {
+                "issues": "https://github.com/phpstan/phpstan-deprecation-rules/issues",
+                "source": "https://github.com/phpstan/phpstan-deprecation-rules/tree/1.1.4"
+            },
+            "time": "2023-08-05T09:02:04+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -11868,5 +12344,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.2.0"
 }

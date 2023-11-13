@@ -814,6 +814,10 @@ if (file_exists($app_root . '/sites/default/settings.ddev.php') && getenv('IS_DD
   include $app_root . '/sites/default/settings.ddev.php';
 }
 
+if (file_exists($app_root . '/' . $site_path . '/settings.devspace.php')) {
+  include $app_root . '/' . $site_path . '/settings.devspace.php';
+}
+
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }

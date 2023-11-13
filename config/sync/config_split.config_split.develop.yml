@@ -10,6 +10,8 @@ description: ''
 weight: 0
 folder: ../config/develop
 module:
+  update: 0
+  upgrade_status: 0
   devel: 0
   devel_generate: 0
   webform_devel: 0

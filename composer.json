@@ -97,10 +97,11 @@
         "wikimedia/composer-merge-plugin": "^2.0"
     },
     "require-dev": {
-        "drupal/devel": "~4.0",
-        "kint-php/kint": "^3.3",
         "deployer/deployer": "^6.8",
-        "deployer/recipes": "^6.2"
+        "deployer/recipes": "^6.2",
+        "drupal/devel": "~4.0",
+        "drupal/upgrade_status": "^4.0",
+        "kint-php/kint": "^3.3"
     },
     "conflict": {
         "drupal/drupal": "*"

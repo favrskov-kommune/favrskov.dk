@@ -74,7 +74,7 @@ webroot/sites/README.txt
 webroot/sites/default*
 webroot/themes/README.txt
 
-.env
+*.env
 */node_modules
 .idea/
 logs/*
@@ -84,3 +84,8 @@ private-files/*
 !*/.keep
 composer-src/
 /deployer/config.yml
+
+# Devspace
+.devspace/
+.novi/dbdumps
+.novi/state/*
