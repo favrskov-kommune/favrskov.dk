@@ -4,7 +4,6 @@ langcode: da
 module:
   admin_toolbar: 0
   admin_toolbar_tools: 0
-  adminimal_admin_toolbar: 0
   allowed_formats: 0
   atoms: 0
   automated_cron: 0
@@ -52,6 +51,7 @@ module:
   file_delete_ui: 0
   filter: 0
   focal_point: 0
+  gin_toolbar: 0
   help: 0
   honeypot: 0
   hreflang: 0
@@ -123,7 +123,8 @@ module:
 theme:
   seven: 0
   stable: 0
-  adminimal_theme: 0
   premium_theme: 0
   favrskov: 0
+  claro: 0
+  gin: 0
 profile: premium_profile

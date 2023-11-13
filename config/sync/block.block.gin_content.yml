@@ -1,22 +1,22 @@
-uuid: 917c2cfe-1264-437d-bb56-3d62ae909f23
+uuid: 045f38f2-8c19-413e-bf14-48ca86ff3719
 langcode: da
 status: true
 dependencies:
   module:
     - system
   theme:
-    - adminimal_theme
+    - gin
 _core:
-  default_config_hash: 80N66GdzEvwqi1m-_GZ-ulkk8AJG9beoXcZ4-pMVKjI
-id: adminimal_theme_content
-theme: adminimal_theme
+  default_config_hash: hBHXB7hC05XU7pDYzETt-GUcpFlogK1gkjyAsg0Ym58
+id: gin_content
+theme: gin
 region: content
 weight: 0
 provider: null
 plugin: system_main_block
 settings:
   id: system_main_block
-  label: 'Primært sideindhold'
+  label: 'Main page content'
   label_display: '0'
   provider: system
 visibility: {  }

@@ -1,20 +1,20 @@
-uuid: 20f6f015-6dc8-4e9a-88f8-87b8611c993a
+uuid: 3a699f2d-b70c-4464-a231-4c66a9e41a0e
 langcode: da
 status: true
 dependencies:
   theme:
-    - adminimal_theme
+    - gin
 _core:
-  default_config_hash: CyX_aDKAka2_eihevNLscCHDYrzDgIqwWzFVEFRKIww
-id: adminimal_theme_primary_local_tasks
-theme: adminimal_theme
+  default_config_hash: Hh01DLj9k7UnNdPpOQXHZHW7GHf2OPNDQyCJF7_R9ac
+id: gin_primary_local_tasks
+theme: gin
 region: header
 weight: 0
 provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
-  label: 'Primære faneblade'
+  label: 'Primary tabs'
   label_display: '0'
   provider: core
   primary: true

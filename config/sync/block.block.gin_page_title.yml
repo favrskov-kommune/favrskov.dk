@@ -1,20 +1,20 @@
-uuid: 9fad358f-1d64-4f93-9c02-8e462ba049c2
+uuid: e47e257e-c124-4b3e-abe1-aa69ce81220c
 langcode: da
 status: true
 dependencies:
   theme:
-    - adminimal_theme
+    - gin
 _core:
-  default_config_hash: Z3nlZUh2mSJP3apMrJWt-duS-aLyP79rcfu_0wpPmDs
-id: adminimal_theme_page_title
-theme: adminimal_theme
+  default_config_hash: HLQY2xgby8K3vN_98hiOSasOhm9pdCsH234-s0duJ8Q
+id: gin_page_title
+theme: gin
 region: header
 weight: -30
 provider: null
 plugin: page_title_block
 settings:
   id: page_title_block
-  label: Sidetitel
+  label: 'Page title'
   label_display: '0'
   provider: core
 visibility: {  }

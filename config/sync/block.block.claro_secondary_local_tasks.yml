@@ -1,20 +1,20 @@
-uuid: c7c206ea-9dc3-4ab5-afe4-01a753972af1
+uuid: 86c70cb4-3201-443b-852f-f79599f33e7f
 langcode: da
 status: true
 dependencies:
   theme:
-    - adminimal_theme
+    - claro
 _core:
-  default_config_hash: DJ7Om1C2xWr2GI8CjZaZtyWpP-0S3hRR3oROZl1oesc
-id: adminimal_theme_secondary_local_tasks
-theme: adminimal_theme
+  default_config_hash: 2L0geP-ixCbCkEpW6BVF6H7vDUZN4ea07_Y9CociQm4
+id: claro_secondary_local_tasks
+theme: claro
 region: pre_content
 weight: 0
 provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
-  label: 'Sekundære faneblade'
+  label: 'Secondary tabs'
   label_display: '0'
   provider: core
   primary: false
