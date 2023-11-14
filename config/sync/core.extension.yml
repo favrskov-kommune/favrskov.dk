@@ -77,6 +77,9 @@ module:
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
+  migrate: 0
+  migrate_source_csv: 0
+  migrate_tools: 0
   moderated_content_bulk_publish: 0
   mysql: 0
   node: 0
@@ -121,7 +124,6 @@ module:
   paragraphs: 11
   premium_profile: 1000
 theme:
-  seven: 0
   stable: 0
   premium_theme: 0
   favrskov: 0

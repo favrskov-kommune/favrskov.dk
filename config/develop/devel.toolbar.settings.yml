@@ -1,3 +1,4 @@
+langcode: da
 toolbar_items:
   - devel.admin_settings_link
   - devel.cache_clear
@@ -6,4 +7,3 @@ toolbar_items:
   - devel.reinstall
   - devel.route_info
   - devel.run_cron
-langcode: da
