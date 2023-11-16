@@ -3,14 +3,14 @@
 namespace Drupal\premium_theme_helper\Plugin\Layout;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\layout_builder\Plugin\Layout\MultiWidthLayoutBase;
+use Drupal\premium_core\Plugin\Layout\BaseLayout as PremiumBaseLayout;
 
 /**
  * Handle global settings for all layouts.
  *
  * @package Drupal\premium_theme_helper\Plugin\Layout
  */
-class BaseLayout extends MultiWidthLayoutBase {
+class BaseLayout extends PremiumBaseLayout {
 
   /**
    * {@inheritDoc}

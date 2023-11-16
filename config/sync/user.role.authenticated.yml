@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - filter.format.webform_default
   module:
     - filter
     - media
@@ -16,13 +17,8 @@ label: 'Godkendt bruger'
 weight: 1
 is_admin: false
 permissions:
-  - 'access comments'
   - 'access content'
   - 'access shortcuts'
-  - 'access site-wide contact form'
-  - 'post comments'
-  - 'search content'
-  - 'skip comment approval'
   - 'use text format basic_html'
+  - 'use text format webform_default'
   - 'view media'
-  - 'view search api pages'

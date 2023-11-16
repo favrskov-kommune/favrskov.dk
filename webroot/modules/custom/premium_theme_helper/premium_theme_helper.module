@@ -4,54 +4,13 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\media_library\MediaLibraryState;
 use Drupal\views\ViewExecutable;
-
-require_once __DIR__ . '/includes/layout-builder.inc';
-
-/**
- * Alter the list of projects to be updated by locale's interface translation.
- *
- * Locale module attempts to update the translation of those modules returned
- * by \Drupal\update\UpdateManager::getProjects(). Using this hook, the data
- * returned by \Drupal\update\UpdateManager::getProjects() can be altered or
- * extended.
- *
- * Modules or distributions that use a dedicated translation server should use
- * this hook to specify the interface translation server pattern, or to add
- * additional custom/non-Drupal.org modules to the list of modules known to
- * locale.
- * - "interface translation server pattern": URL of the .po translation files
- *   used to download the files from. The URL contains tokens which will be
- *   replaced by appropriate values.
- * The following tokens are available for the server pattern:
- * - "%core": Core version. Value example: "8.x".
- * - "%project": Project name. Value examples: "drupal", "media_gallery".
- * - "%version": Project version release. Value examples: "8.1", "8.x-1.0".
- * - "%language": Language code. Value examples: "fr", "pt-pt".
- *
- * @param array $projects
- *   Project data as returned by \Drupal\update\UpdateManager::getProjects().
- *
- * @see locale_translation_project_list()
- * @ingroup interface_translation_properties
- */
-function premium_theme_helper_locale_translation_projects_alter(array &$projects) {
-  $module_handler = \Drupal::service('module_handler');
-  $path = $module_handler->getModule('premium_theme_helper')->getPath();
-  $projects['premium_theme_helper']['info']['interface translation server pattern'] = $path . '/translations/%language.po';
-}
 
 /**
  * Theme hook.
  */
 function premium_theme_helper_theme(): array {
   return [
-    'page_title' => [
-      'variables' => [
-        'title' => '',
-      ],
-    ],
     'breadcrumb' => [
       'variables' => [
         'links' => [],
@@ -61,107 +20,6 @@ function premium_theme_helper_theme(): array {
     ],
   ];
 }
-
-/**
- * Add states for inline navigation.
- *
- * @param array $elements
- *   The field widget form elements as constructed by
- *   \Drupal\Core\Field\WidgetBase::formMultipleElements().
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- *   The current state of the form.
- * @param array $context
- *   An associative array. See hook_field_widget_multivalue_form_alter() for
- *   the structure and content of the array.
- */
-function premium_theme_helper_field_widget_multivalue_form_alter(array &$elements, FormStateInterface $form_state, array $context) {
-  switch ($context['items']->getName()) {
-    case 'field_inline_navigation_pages':
-      $parents = $elements[0]['target_id']['#field_parents'];
-      $parents_input_name = array_shift($parents);
-      if (!empty($parents)) {
-        $parents_input_name .= '[' . implode('][', $parents) . ']';
-      }
-
-      $elements['#states'] = [
-        'visible' => [
-          ':input[name="' . $parents_input_name . '[field_inline_navigation_mode]"]' => ["value" => "pages"],
-        ],
-      ];
-      $elements['#type'] = 'prevent_php_error';
-      break;
-
-    case 'field_inline_navigation_mode':
-      if (!Drupal::moduleHandler()->moduleExists('content_hierarchy')) {
-        $elements['#access'] = FALSE;
-      }
-      break;
-
-    case 'field_inline_navigation_parent':
-      if (Drupal::moduleHandler()->moduleExists('content_hierarchy')) {
-        $parents = $elements[0]['target_id']['#field_parents'];
-        $parents_input_name = array_shift($parents);
-        if (!empty($parents)) {
-          $parents_input_name .= '[' . implode('][', $parents) . ']';
-        }
-
-        $elements[0]['target_id']['#states'] = [
-          'visible' => [
-            ':input[name="' . $parents_input_name . '[field_inline_navigation_mode]"]' => ["value" => "parent"],
-          ],
-        ];
-        if (is_null($elements[0]['target_id']['#default_value']) && $section_storage = \Drupal::request()->get('section_storage')) {
-          $elements[0]['target_id']['#default_value'] = $section_storage->getContextValue('entity');
-        }
-      }
-      else {
-        $elements[0]['#access'] = FALSE;
-      }
-      break;
-  }
-}
-
-/**
- * Alter open button, to open media.
- *
- * @see https://www.drupal.org/project/drupal/issues/3106315
- */
-function premium_theme_helper_field_widget_media_library_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
-  $route_match = \Drupal::routeMatch();
-
-  if ($route_match->getRouteName() === 'layout_builder.add_block') {
-    /** @var \Drupal\media_library\MediaLibraryState $state */
-    $state = $element['open_button']['#media_library_state'];
-    $openerParameters = $state->getOpenerParameters();
-    $openerParameters['plugin_id'] = $route_match->getParameters()->get('plugin_id');
-    $new_state = MediaLibraryState::create($state->getOpenerId(), $state->getAllowedTypeIds(), $state->getSelectedTypeId(), $state->getAvailableSlots(), $openerParameters);
-    $element['open_button']['#media_library_state'] = $new_state;
-  }
-}
-
-/**
- * Check access for media library ui.
- *
- * @see https://www.drupal.org/project/drupal/issues/3106315
- */
-function premium_theme_helper_block_content_create_access(AccountInterface $account, array $context, $entity_bundle) {
-  $route_name = \Drupal::routeMatch()->getRouteName();
-
-  if ($route_name === 'media_library.ui') {
-    $state = MediaLibraryState::fromRequest(\Drupal::request());
-    $openerParameters = $state->getOpenerParameters();
-
-    // If the plugin ID exists within the opener parameters, we know
-    // the media library is being used on the layout builder form.
-    if (isset($openerParameters['plugin_id']) && strpos($openerParameters['plugin_id'], 'inline_block') === 0 && $account->hasPermission('create and edit custom blocks')) {
-      return AccessResult::allowed();
-    }
-  }
-
-  // No opinion.
-  return AccessResult::neutral();
-}
-
 
 /**
  * Entity access, will only prevent access for the term page.
@@ -192,4 +50,92 @@ function premium_theme_helper_entity_access(EntityInterface $entity, string $ope
     }
   }
   return AccessResult::neutral();
+}
+
+/**
+ * Layout alter - Change and remove definitions.
+ *
+ * @param array $definitions
+ *   The discovered plugin definitions.
+ */
+function premium_theme_helper_layout_alter(array &$definitions) {
+  _premium_theme_helper_layout_alter($definitions);
+}
+
+/**
+ * Add libraries to specific elements.
+ *
+ * @param array $types
+ *   An associative array with structure identical to that of the return value
+ *   of \Drupal\Core\Render\ElementInfoManagerInterface::getInfo().
+ */
+function premium_theme_helper_element_info_alter(array &$types) {
+  _premium_theme_helper_element_info_alter($types);
+}
+
+/**
+ * Change layout builder class, so we can change structure in layout builder.
+ *
+ * @param array $definitions
+ *   The discovered plugin definitions.
+ */
+function premium_theme_helper_element_plugin_alter(array &$definitions) {
+  _premium_theme_helper_element_plugin_alter($definitions);
+}
+
+/**
+ * Add header.
+ *
+ * @param array $variables
+ *   Theme variables.
+ */
+function premium_theme_helper_preprocess_layout(array &$variables) {
+  _premium_theme_helper_preprocess_layout($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function premium_theme_helper_preprocess_block__inline_block(&$variables) {
+  _premium_theme_helper_preprocess_block__inline_block($variables);
+}
+
+/**
+ * Theme suggestion for block contents.
+ *
+ * Change reusable blocks to have a theme suggestion to inline block,
+ * so we don't get different templates.
+ *
+ * @param array $suggestions
+ *   An array of theme suggestions.
+ * @param array $variables
+ *   An array of variables passed to the theme hook. Note that this hook is
+ *   invoked before any preprocessing.
+ */
+function premium_theme_helper_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  _premium_theme_helper_theme_suggestions_block_alter($suggestions, $variables);
+}
+
+/**
+ * Adding libraries to a view as pre render.
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ *   View.
+ */
+function premium_theme_helper_views_pre_render(ViewExecutable $view) {
+  _premium_theme_helper_views_pre_render($view);
+}
+
+/**
+ * Form alter - Adding libraries.
+ *
+ * @param array $form
+ *   Form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   Form state.
+ * @param string $form_id
+ *   Form id.
+ */
+function premium_theme_helper_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  _premium_theme_helper_form_alter($form, $form_state, $form_id);
 }

@@ -13,7 +13,7 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
-  ckeditor: 0
+  ckeditor5: 0
   color_field: 0
   components: 0
   config: 0
@@ -59,6 +59,13 @@ module:
   image: 0
   imageapi_optimize: 0
   inline_block_title_automatic: 0
+  jquery_ui: 0
+  jquery_ui_button: 0
+  jquery_ui_checkboxradio: 0
+  jquery_ui_controlgroup: 0
+  jquery_ui_dialog: 0
+  jquery_ui_draggable: 0
+  jquery_ui_resizable: 0
   language: 0
   layout_builder: 0
   layout_builder_at: 0
@@ -124,7 +131,6 @@ module:
   paragraphs: 11
   premium_profile: 1000
 theme:
-  stable: 0
   premium_theme: 0
   favrskov: 0
   claro: 0

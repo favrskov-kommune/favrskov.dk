@@ -2,10 +2,8 @@
 
 namespace Drupal\favrskov_hearings\Breadcrumb;
 
-use Drupal\content_hierarchy\ContentHierarchyStorage;
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Routing\AdminContext;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -43,7 +41,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
    *   TRUE if this builder should be used or FALSE to let other builders
    *   decide.
    */
-  public function applies(\Drupal\Core\Routing\RouteMatchInterface $route_match) {
+  public function applies(RouteMatchInterface $route_match) {
     if ($this->adminContext->isAdminRoute($route_match->getRouteObject())) {
       return FALSE;
     }

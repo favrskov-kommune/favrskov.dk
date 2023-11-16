@@ -4,22 +4,22 @@
  */
 
 /* When user is logged in, we remove fixed from burger-menu */
-body.adminimal-admin-toolbar .burger-menu--open {
+body.toolbar-fixed .burger-menu--open {
   position: absolute;
   top: 39px;
 }
 
-body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu {
+body.toolbar-fixed.toolbar-tray-open .burger-menu {
   position: absolute;
   top: 79px;
 }
 
 /* When user is logged in, we change height for burger menu inner element */
-body.adminimal-admin-toolbar .burger-menu__inner {
+body.toolbar-fixed .burger-menu__inner {
   height: calc(100vh - 39px);
 }
 
-body.adminimal-admin-toolbar.toolbar-tray-open .burger-menu__inner {
+body.toolbar-fixed.toolbar-tray-open .burger-menu__inner {
   height: calc(100vh - 79px);
 }
 
