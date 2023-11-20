@@ -22,7 +22,7 @@ task('slack:notify', function () {
   Httpie::post(get('slack_webhook'))->body(['attachments' => [$attachment]])->send();
 })
   ->shallow()
-  ->setPrivate();
+  ->hidden();
 
 desc('Send slack notification about initiating deployment');
 task('slack:notify:start', function () {
@@ -43,7 +43,7 @@ task('slack:notify:start', function () {
 
 })
   ->once()
-  ->setPrivate()
+  ->hidden()
 ;
 
 
@@ -58,7 +58,7 @@ task('slack:notify:success', function () {
 
 })
   ->once()
-  ->setPrivate();
+  ->hidden();
 
 desc('Send slack notification about failed deployment');
 task('slack:notify:failed', function () {
@@ -71,7 +71,7 @@ task('slack:notify:failed', function () {
 
 })
   ->once()
-  ->setPrivate();
+  ->hidden();
 
 task('slack:check', function () {
   if (!get('disable_slack') && !get('slack_webhook', false)) {
@@ -83,7 +83,7 @@ task('slack:check', function () {
   }
 })
   ->once()
-  ->setPrivate();
+  ->hidden();
 
 
 after('slack:notify:start', 'slack:notify');

@@ -9,7 +9,7 @@ task('deploy:db:set_backup_file', function () {
 })
   ->once()
   ->shallow()
-  ->setPrivate();
+  ->hidden();
 
 desc('Dump current database');
 task('deploy:db:dump', function () {
@@ -23,7 +23,7 @@ task('deploy:db:dump', function () {
   }
   run('cd {{drush_exec_path_absolute}} && drush '.$command_cache_clear.' && drush sql-dump --structure-tables-list=cache,cache_* > ' . $current_sql_backup);
 })
-  ->setPrivate();
+  ->hidden();
 
 desc('Rollback database');
 task('deploy:db:rollback', function () {
@@ -53,7 +53,7 @@ task('deploy:db:rollback', function () {
   }
 
 })
-  ->setPrivate();
+  ->hidden();
 
 desc('Cleanup old database backups');
 task('deploy:db:cleanup', function () {
@@ -76,7 +76,7 @@ task('deploy:db:cleanup', function () {
     run('if [ -f ' . $sql_backup . ' ]; then '.$sudo.' rm -rf '.$sql_backup.'; fi');
   }
 })
-  ->setPrivate();
+  ->hidden();
 
 before('deploy:db:dump','deploy:db:set_backup_file');
 before('deploy:db:rollback','deploy:db:set_backup_file');

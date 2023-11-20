@@ -34,7 +34,7 @@ task('success', function(){
 })
   ->once()
   ->shallow()
-  ->setPrivate();
+  ->hidden();
 
 // Output variables for debugging configuration
 task('debug', function() {
@@ -64,9 +64,9 @@ task('deploy', [
   'deploy:unlock',
   'deploy:db:cleanup',
   'deploy:file_permissions',
-  'cleanup',
+  'deploy:cleanup',
   'slack:notify:success',
-  'success'
+  'deploy:success'
 ]);
 
 //----- First deployment -----//
@@ -85,9 +85,9 @@ task('deploy:first', [
   'deploy:symlink',
   'deploy:unlock',
   'deploy:file_permissions',
-  'cleanup',
+  'deploy:cleanup',
   'slack:notify:success',
-  'success'
+  'deploy:success'
 ]);
 
 // Perform rollback tasks on failed deploys

@@ -71,6 +71,6 @@ task('deploy:drupal:post_deploy_updates', function () {
     writeln('Skipping cache rebuild');
   }
 })
-  ->setPrivate();
+  ->hidden();
 
 

@@ -12,7 +12,7 @@ task('deploy:maintenance_mode:enable', function () {
     run("cd {{drush_exec_path_absolute}} && drush cr");
   }
 })
-  ->setPrivate();
+  ->hidden();
 
 
 desc('Disable maintenance mode');
@@ -25,6 +25,6 @@ task('deploy:maintenance_mode:disable', function () {
     run("cd {{drush_exec_path_absolute}} && drush cr");
   }
 })
-  ->setPrivate();
+  ->hidden();
 
 
