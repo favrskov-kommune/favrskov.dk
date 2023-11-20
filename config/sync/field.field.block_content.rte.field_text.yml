@@ -5,13 +5,9 @@ dependencies:
   config:
     - block_content.type.rte
     - field.storage.block_content.field_text
+    - filter.format.basic_html
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - basic_html
 _core:
   default_config_hash: OyOHzdwHZK6T_RxpDWzZC_uGFrodSR6GDrPr3U2fI8I
 id: block_content.rte.field_text
@@ -24,5 +20,7 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - basic_html
 field_type: text_long

@@ -8,7 +8,6 @@ id: '404'
 label: '404 page not found'
 tags:
   shortlink: '[site:url]'
-  content_language: '[node:langcode]'
   canonical_url: '[site:url]'
   description: '[node:field_description:value]'
   image_src: '[node:field_list_media:entity:field_media_image]'

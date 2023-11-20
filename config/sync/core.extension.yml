@@ -97,6 +97,7 @@ module:
   path: 0
   path_alias: 0
   path_redirect_import: 0
+  phpass: 0
   premium_cdn_video: 0
   premium_core: 0
   premium_theme_helper: 0
@@ -114,6 +115,7 @@ module:
   status_feed: 0
   styles: 0
   swiftmailer: 0
+  symfony_mailer: 0
   system: 0
   taxonomy: 0
   text: 0

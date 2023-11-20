@@ -41,6 +41,7 @@ permissions:
   - 'create url aliases'
   - 'delete any hearing_page content'
   - 'delete hearing_page revisions'
+  - 'delete own files'
   - 'delete own hearing_page content'
   - 'delete terms in hearing_page_types'
   - 'delete terms in hearing_places'

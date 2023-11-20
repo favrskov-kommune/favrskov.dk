@@ -5,13 +5,9 @@ dependencies:
   config:
     - block_content.type.table_spot
     - field.storage.block_content.field_table
+    - filter.format.table
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - table
 id: block_content.table_spot.field_table
 field_name: field_table
 entity_type: block_content
@@ -22,5 +18,7 @@ required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - table
 field_type: text_long

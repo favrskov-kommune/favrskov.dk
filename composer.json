@@ -10,7 +10,11 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://packages.drupal.org/8"
+            "url": "https://packages.drupal.org/8",
+            "exclude": [
+                "drupal/promote_disable",
+                "drupal/swiftmailer"
+            ]
         },
         {
             "type": "composer",
@@ -19,10 +23,18 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "git",
+            "url": "https://git.drupalcode.org/issue/promote_disable-3289171.git"
+        },
+        {
+            "type": "git",
+            "url": "https://git.drupalcode.org/issue/swiftmailer-3359916.git"
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": "^8.1",
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-simplexml": "*",
@@ -31,24 +43,24 @@
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
         "drupal/admin_toolbar": "^3.0",
-        "drupal/allowed_formats": "^2.0",
+        "drupal/allowed_formats": "^3.0",
         "drupal/autosave_form": "^1.0",
         "drupal/color_field": "^3.0",
-        "drupal/components": "^3.0@beta",
-        "drupal/config_ignore": "^2.3",
-        "drupal/config_split": "^1.7.0",
-        "drupal/core": "^9.4",
+        "drupal/components": "^3.0",
+        "drupal/config_filter": "^2.6",
+        "drupal/config_ignore": "^3.1",
+        "drupal/config_split": "^2.0",
         "drupal/core-composer-scaffold": "^10.0",
         "drupal/core-project-message": "^10.0",
-        "drupal/core-recommended": "^9.5.11",
+        "drupal/core-recommended": "^10.1",
         "drupal/core-vendor-hardening": "^10.0",
         "drupal/editor_advanced_link": "^2.2",
-        "drupal/entity_clone": "^2.0@beta",
+        "drupal/entity_clone": "^2.0",
         "drupal/entity_usage": "^2.0-beta3",
         "drupal/field_group": "^3.0",
-        "drupal/file_delete_ui": "^1.0@alpha",
+        "drupal/file_delete_ui": "^1.0",
         "drupal/focal_point": "^2.0",
-        "drupal/gin": "^3.0@RC",
+        "drupal/gin": "^3.0",
         "drupal/honeypot": "^2.0",
         "drupal/hreflang": "^1.0",
         "drupal/imageapi_optimize": "^4.0",
@@ -58,9 +70,9 @@
         "drupal/layout_builder_at": "^2.0",
         "drupal/layout_builder_modal": "^1.0",
         "drupal/layout_builder_restrictions": "^2.0",
-        "drupal/linkit": "^6.0.0-beta2",
+        "drupal/linkit": "^6.1",
         "drupal/media_library_bulk_upload": "^1.0",
-        "drupal/metatag": "^1.26",
+        "drupal/metatag": "^2.0",
         "drupal/moderated_content_bulk_publish": "^2.0",
         "drupal/noreferrer": "^1.0",
         "drupal/paragraphs": "^1.0",
@@ -77,12 +89,13 @@
         "drupal/search_api_page": "^1.0",
         "drupal/simple_sitemap": "^4.1",
         "drupal/siteimprove": "^2.0",
-        "drupal/swiftmailer": "^2.2",
+        "drupal/swiftmailer": "dev-3359916-d10.1.1",
+        "drupal/symfony_mailer": "^1.4",
         "drupal/token": "^1.13",
         "drupal/view_unpublished": "^1.0",
         "drupal/webform": "^6.2",
         "drupal/webp": "^1.0.0-beta5",
-        "drush/drush": "^10.0",
+        "drush/drush": "^12.4",
         "novicell/atoms": "^1.0.1",
         "novicell/content_hierarchy": "^1.0",
         "novicell/drupal-premium-theme": "^1.0",
@@ -100,7 +113,7 @@
         "wikimedia/composer-merge-plugin": "^2.0"
     },
     "require-dev": {
-        "deployer/deployer": "^6.8",
+        "deployer/deployer": "^7.3",
         "drupal/ckeditor_plugin_report": "^1.0",
         "drupal/devel": "^5.1",
         "drupal/upgrade_status": "^4.0",
@@ -191,7 +204,7 @@
         "patches": {
             "drupal/core": {
                 "(#2999491) Allow creation of reuseable inline blocks": "https://www.drupal.org/files/issues/2020-05-21/2999491--reusable-title-display--49.patch",
-                "(#3080606) Reorder Layout Builder sections": "https://www.drupal.org/files/issues/2020-06-18/3080606-reorder-layout-sections-43.patch"
+                "(#3080606) Reorder Layout Builder sections": "https://www.drupal.org/files/issues/2023-05-30/3080606-100.patch"
             },
             "drupal/paragraphs": {
                 "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2020-06-25/paragraphs-2901390-51.patch"

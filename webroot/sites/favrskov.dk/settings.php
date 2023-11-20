@@ -801,7 +801,8 @@ if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
 // Ensure https behind load balancer
 $settings['reverse_proxy'] = TRUE;
 $settings['reverse_proxy_addresses'] = [$_SERVER['REMOTE_ADDR']];
-$settings['reverse_proxy_trusted_headers'] = Request::HEADER_X_FORWARDED_ALL;
+$settings['reverse_proxy_trusted_headers'] = Request::HEADER_X_FORWARDED_FOR | Request::HEADER_X_FORWARDED_HOST | Request::HEADER_X_FORWARDED_PORT | Request::HEADER_X_FORWARDED_PROTO;
+
 
 $config['config_split.config_split.develop']['status'] = strtolower(getenv('CONFIG_SPLIT_DEVELOPMENT')) === 'true';
 
