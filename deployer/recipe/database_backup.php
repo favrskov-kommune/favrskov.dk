@@ -8,7 +8,6 @@ task('deploy:db:set_backup_file', function () {
   set('current_sql_backup', get('sql_backup_folder_path').'/backup_'.$release.'.sql');
 })
   ->once()
-  ->shallow()
   ->hidden();
 
 desc('Dump current database');
@@ -21,7 +20,7 @@ task('deploy:db:dump', function () {
   } else {
     $command_cache_clear = 'cr';
   }
-  run('cd {{drush_exec_path_absolute}} && drush '.$command_cache_clear.' && drush sql-dump --structure-tables-list=cache,cache_* > ' . $current_sql_backup);
+  run('cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush '.$command_cache_clear.' && vendor/drush/drush/drush sql-dump --structure-tables-list=cache,cache_* > ' . $current_sql_backup);
 })
   ->hidden();
 
@@ -35,7 +34,7 @@ task('deploy:db:rollback', function () {
   if($rollback_db == 'true') {
 
     if(!empty($current_sql_backup)){
-      run('if [ -f ' . $current_sql_backup . ' ]; then cd {{drush_exec_path_absolute}} && drush sql-drop -y && drush sql-cli < '.$current_sql_backup.' && mv '.$current_sql_backup.' '.$new_sql_backup.'; fi');
+      run('if [ -f ' . $current_sql_backup . ' ]; then cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush sql-drop -y && vendor/drush/drush/drush sql-cli < '.$current_sql_backup.' && mv '.$current_sql_backup.' '.$new_sql_backup.'; fi');
       writeln('Database rolled back to: '.$current_sql_backup);
       writeln('Backup file was renamed: '.$new_sql_backup);
     } else {

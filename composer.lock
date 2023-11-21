@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81a064782200eda368afd21465632514",
+    "content-hash": "9255fc6cda1c6332162fa22ac1d2f695",
     "packages": [
         {
             "name": "algolia/places",
@@ -133,48 +133,49 @@
         },
         {
             "name": "chi-teck/drupal-code-generator",
-            "version": "3.3.0",
+            "version": "2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Chi-teck/drupal-code-generator.git",
-                "reference": "56da9209b24a5a5b5d27bec9e523f02bdd101770"
+                "reference": "22ed1cc02dc47814e8239de577da541e9b9bd980"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/56da9209b24a5a5b5d27bec9e523f02bdd101770",
-                "reference": "56da9209b24a5a5b5d27bec9e523f02bdd101770",
+                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/22ed1cc02dc47814e8239de577da541e9b9bd980",
+                "reference": "22ed1cc02dc47814e8239de577da541e9b9bd980",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=8.1.0",
-                "psr/event-dispatcher": "^1.0",
-                "psr/log": "^3.0",
-                "symfony/console": "^6.3",
-                "symfony/dependency-injection": "^6.3.2",
-                "symfony/filesystem": "^6.3",
-                "symfony/string": "^6.3",
-                "twig/twig": "^3.4"
+                "php": ">=7.4",
+                "psr/log": "^1.1 || ^2.0 || ^3.0",
+                "symfony/console": "^4.4.15 || ^5.1 || ^6.0",
+                "symfony/filesystem": "^4.4 || ^5.1 || ^6",
+                "symfony/polyfill-php80": "^1.23",
+                "symfony/string": "^5.1 || ^6",
+                "twig/twig": "^2.14.11 || ^3.1"
             },
             "conflict": {
                 "squizlabs/php_codesniffer": "<3.6"
             },
             "require-dev": {
-                "chi-teck/drupal-coder-extension": "^2.0.0-alpha4",
-                "drupal/coder": "8.3.22",
-                "drupal/core": "10.1.x-dev",
-                "ext-simplexml": "*",
+                "chi-teck/drupal-coder-extension": "^1.2",
+                "drupal/coder": "^8.3.14",
                 "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5",
-                "squizlabs/php_codesniffer": "^3.7",
-                "symfony/var-dumper": "^6.3",
-                "symfony/yaml": "^6.3",
-                "vimeo/psalm": "^5.14.0"
+                "phpunit/phpunit": "^9.4",
+                "squizlabs/php_codesniffer": "^3.5",
+                "symfony/var-dumper": "^5.2 || ^6.0",
+                "symfony/yaml": "^5.2 || ^6.0"
             },
             "bin": [
                 "bin/dcg"
             ],
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "DrupalCodeGenerator\\": "src"
@@ -187,9 +188,9 @@
             "description": "Drupal code generator",
             "support": {
                 "issues": "https://github.com/Chi-teck/drupal-code-generator/issues",
-                "source": "https://github.com/Chi-teck/drupal-code-generator/tree/3.3.0"
+                "source": "https://github.com/Chi-teck/drupal-code-generator/tree/2.6.2"
             },
-            "time": "2023-10-21T12:57:05+00:00"
+            "time": "2022-11-11T15:34:04+00:00"
         },
         {
             "name": "choices/choices",
@@ -4518,32 +4519,6 @@
             }
         },
         {
-            "name": "drupal/promote_disable",
-            "version": "2.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/issue/promote_disable-3289171.git",
-                "reference": "9cf697c731d4bad7ce146ba393639fc3a49e774c"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9 || ^10"
-            },
-            "type": "drupal-module",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "This simple module allows a user to select content types on which they would like to disable the 'promote to front page' option.",
-            "homepage": "https://www.drupal.org/project/promote_disable",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "issues": "https://www.drupal.org/project/issues/promote_disable",
-                "source": "https://git.drupalcode.org/project/promote_disable"
-            },
-            "time": "2023-10-09T18:43:59+00:00"
-        },
-        {
             "name": "drupal/redirect",
             "version": "1.9.0",
             "source": {
@@ -5541,55 +5516,57 @@
         },
         {
             "name": "drush/drush",
-            "version": "12.4.2",
+            "version": "11.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drush-ops/drush.git",
-                "reference": "dbc97d7073fc08d06b2fc1208ac9d5e3d037875b"
+                "reference": "f301df5dec8d2aacb03d3e01e0ffc6d98e10ae78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/drush/zipball/dbc97d7073fc08d06b2fc1208ac9d5e3d037875b",
-                "reference": "dbc97d7073fc08d06b2fc1208ac9d5e3d037875b",
+                "url": "https://api.github.com/repos/drush-ops/drush/zipball/f301df5dec8d2aacb03d3e01e0ffc6d98e10ae78",
+                "reference": "f301df5dec8d2aacb03d3e01e0ffc6d98e10ae78",
                 "shasum": ""
             },
             "require": {
-                "chi-teck/drupal-code-generator": "^3.0",
-                "composer-runtime-api": "^2.2",
+                "chi-teck/drupal-code-generator": "^2.4",
                 "composer/semver": "^1.4 || ^3",
-                "consolidation/annotated-command": "^4.9.1",
-                "consolidation/config": "^2.1.2",
-                "consolidation/filter-via-dot-access-data": "^2.0.2",
-                "consolidation/output-formatters": "^4.3.2",
-                "consolidation/robo": "^4.0.6",
-                "consolidation/site-alias": "^4",
-                "consolidation/site-process": "^5.2.0",
+                "consolidation/annotated-command": "^4.8.2",
+                "consolidation/config": "^2",
+                "consolidation/filter-via-dot-access-data": "^2",
+                "consolidation/robo": "^3.0.9 || ^4.0.1",
+                "consolidation/site-alias": "^3.1.6 || ^4",
+                "consolidation/site-process": "^4.1.3 || ^5",
+                "enlightn/security-checker": "^1",
                 "ext-dom": "*",
-                "grasmash/yaml-cli": "^3.1",
-                "guzzlehttp/guzzle": "^7.0",
-                "league/container": "^4",
-                "php": ">=8.1",
+                "guzzlehttp/guzzle": "^6.5 || ^7.0",
+                "league/container": "^3.4 || ^4",
+                "php": ">=7.4",
                 "psy/psysh": "~0.11",
-                "symfony/event-dispatcher": "^6",
-                "symfony/filesystem": "^6.1",
-                "symfony/finder": "^6",
-                "symfony/var-dumper": "^6.0",
-                "symfony/yaml": "^6.0",
+                "symfony/event-dispatcher": "^4.0 || ^5.0 || ^6.0",
+                "symfony/filesystem": "^4.4 || ^5.4 || ^6.1",
+                "symfony/finder": "^4.0 || ^5 || ^6",
+                "symfony/polyfill-php80": "^1.23",
+                "symfony/var-dumper": "^4.0 || ^5.0 || ^6.0",
+                "symfony/yaml": "^4.0 || ^5.0 || ^6.0",
                 "webflo/drupal-finder": "^1.2"
             },
             "conflict": {
-                "drupal/core": "< 10.0",
+                "drupal/core": "< 9.2",
                 "drupal/migrate_run": "*",
                 "drupal/migrate_tools": "<= 5"
             },
             "require-dev": {
-                "composer/installers": "^2",
+                "composer/installers": "^1.7",
                 "cweagans/composer-patches": "~1.0",
-                "drupal/core-recommended": "^10",
+                "david-garcia/phpwhois": "4.3.0",
+                "drupal/core-recommended": "^9 || ^10",
                 "drupal/semver_example": "2.3.0",
-                "phpunit/phpunit": "^9",
+                "phpunit/phpunit": ">=7.5.20",
                 "rector/rector": "^0.12",
-                "squizlabs/php_codesniffer": "^3.7"
+                "squizlabs/php_codesniffer": "^3.6",
+                "vlucas/phpdotenv": "^2.4",
+                "yoast/phpunit-polyfills": "^0.2.0"
             },
             "bin": [
                 "drush"
@@ -5671,9 +5648,8 @@
             "support": {
                 "forum": "http://drupal.stackexchange.com/questions/tagged/drush",
                 "issues": "https://github.com/drush-ops/drush/issues",
-                "security": "https://github.com/drush-ops/drush/security/advisories",
                 "slack": "https://drupal.slack.com/messages/C62H9CWQM",
-                "source": "https://github.com/drush-ops/drush/tree/12.4.2"
+                "source": "https://github.com/drush-ops/drush/tree/11.6.0"
             },
             "funding": [
                 {
@@ -5681,7 +5657,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-10-31T14:18:28+00:00"
+            "time": "2023-06-06T18:46:18+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -5749,6 +5725,72 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "enlightn/security-checker",
+            "version": "v1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/enlightn/security-checker.git",
+                "reference": "68df5c7256c84b428bf8fcff0d249de06ce362d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/enlightn/security-checker/zipball/68df5c7256c84b428bf8fcff0d249de06ce362d2",
+                "reference": "68df5c7256c84b428bf8fcff0d249de06ce362d2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.3|^7.0",
+                "php": ">=5.6",
+                "symfony/console": "^3.4|^4|^5|^6|^7",
+                "symfony/finder": "^3|^4|^5|^6|^7",
+                "symfony/process": "^3.4|^4|^5|^6|^7",
+                "symfony/yaml": "^3.4|^4|^5|^6|^7"
+            },
+            "require-dev": {
+                "ext-zip": "*",
+                "friendsofphp/php-cs-fixer": "^2.18|^3.0",
+                "phpunit/phpunit": "^5.5|^6|^7|^8|^9"
+            },
+            "bin": [
+                "security-checker"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Enlightn\\SecurityChecker\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paras Malhotra",
+                    "email": "paras@laravel-enlightn.com"
+                },
+                {
+                    "name": "Miguel Piedrafita",
+                    "email": "soy@miguelpiedrafita.com"
+                }
+            ],
+            "description": "A PHP dependency vulnerabilities scanner based on the Security Advisories Database.",
+            "keywords": [
+                "package",
+                "php",
+                "scanner",
+                "security",
+                "security advisories",
+                "vulnerability scanner"
+            ],
+            "support": {
+                "issues": "https://github.com/enlightn/security-checker/issues",
+                "source": "https://github.com/enlightn/security-checker/tree/v1.11.0"
+            },
+            "time": "2023-11-17T07:53:29+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -5863,62 +5905,6 @@
                 "source": "https://github.com/grasmash/expander/tree/3.0.0"
             },
             "time": "2022-05-10T13:14:49+00:00"
-        },
-        {
-            "name": "grasmash/yaml-cli",
-            "version": "3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/grasmash/yaml-cli.git",
-                "reference": "00f3fd775f6abbfacd44432f1999c3c3b02791f0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/grasmash/yaml-cli/zipball/00f3fd775f6abbfacd44432f1999c3c3b02791f0",
-                "reference": "00f3fd775f6abbfacd44432f1999c3c3b02791f0",
-                "shasum": ""
-            },
-            "require": {
-                "dflydev/dot-access-data": "^3",
-                "php": ">=8.0",
-                "symfony/console": "^6",
-                "symfony/filesystem": "^6",
-                "symfony/yaml": "^6"
-            },
-            "require-dev": {
-                "php-coveralls/php-coveralls": "^2",
-                "phpunit/phpunit": "^9",
-                "squizlabs/php_codesniffer": "^3.0"
-            },
-            "bin": [
-                "bin/yaml-cli"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Grasmash\\YamlCli\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matthew Grasmick"
-                }
-            ],
-            "description": "A command line tool for reading and manipulating yaml files.",
-            "support": {
-                "issues": "https://github.com/grasmash/yaml-cli/issues",
-                "source": "https://github.com/grasmash/yaml-cli/tree/3.1.0"
-            },
-            "time": "2022-05-09T20:22:34+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -11553,50 +11539,6 @@
             "time": "2023-05-17T18:32:04+00:00"
         },
         {
-            "name": "drupal/ckeditor_plugin_report",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/ckeditor_plugin_report.git",
-                "reference": "1.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ckeditor_plugin_report-1.0.0.zip",
-                "reference": "1.0.0",
-                "shasum": "4445aa321aee3e11930324d5b682a69d5e0688f0"
-            },
-            "require": {
-                "drupal/core": "^9 || ^10"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "1.0.0",
-                    "datestamp": "1681480076",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Burge",
-                    "homepage": "https://www.drupal.org/user/1826152"
-                }
-            ],
-            "description": "Provides a report listing CKEditor plugins",
-            "homepage": "https://www.drupal.org/project/ckeditor_plugin_report",
-            "support": {
-                "source": "https://git.drupalcode.org/project/ckeditor_plugin_report"
-            }
-        },
-        {
             "name": "drupal/devel",
             "version": "5.1.2",
             "source": {
@@ -11664,113 +11606,33 @@
             }
         },
         {
-            "name": "drupal/upgrade_status",
-            "version": "4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/upgrade_status.git",
-                "reference": "4.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/upgrade_status-4.0.0.zip",
-                "reference": "4.0.0",
-                "shasum": "013afdb46a03c9db0119cb1ce60ca49631d64368"
-            },
-            "require": {
-                "drupal/core": "^9 || ^10",
-                "mathieuviossat/arraytotexttable": "~1.0.0",
-                "mglaman/phpstan-drupal": "^1.0.0",
-                "nikic/php-parser": "^4.0.0",
-                "phpstan/phpstan-deprecation-rules": "^1.0.0",
-                "symfony/process": "^3.4|^4.0|^5.0|^6.0",
-                "webflo/drupal-finder": "^1.2"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "4.0.0",
-                    "datestamp": "1678815090",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                },
-                "drush": {
-                    "services": {
-                        "drush.services.yml": "^9 || ^10"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "colan",
-                    "homepage": "https://www.drupal.org/user/58704"
-                },
-                {
-                    "name": "Gábor Hojtsy",
-                    "homepage": "https://www.drupal.org/user/4166"
-                },
-                {
-                    "name": "herczogzoltan",
-                    "homepage": "https://www.drupal.org/user/3528391"
-                },
-                {
-                    "name": "sun",
-                    "homepage": "https://www.drupal.org/user/54136"
-                },
-                {
-                    "name": "webchick",
-                    "homepage": "https://www.drupal.org/user/24967"
-                },
-                {
-                    "name": "xjm",
-                    "homepage": "https://www.drupal.org/user/65776"
-                }
-            ],
-            "description": "Review Drupal major upgrade readiness of the environment and components of the site.",
-            "homepage": "http://drupal.org/project/upgrade_status",
-            "support": {
-                "source": "https://git.drupalcode.org/project/upgrade_status"
-            }
-        },
-        {
             "name": "kint-php/kint",
-            "version": "3.3",
+            "version": "5.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "335ac1bcaf04d87df70d8aa51e8887ba2c6d203b"
+                "reference": "a700653a77250b122920799b10c94e904c9b78c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/335ac1bcaf04d87df70d8aa51e8887ba2c6d203b",
-                "reference": "335ac1bcaf04d87df70d8aa51e8887ba2c6d203b",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/a700653a77250b122920799b10c94e904c9b78c7",
+                "reference": "a700653a77250b122920799b10c94e904c9b78c7",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.6"
+                "php": ">=7.1"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "phpunit/phpunit": "^4.0",
-                "seld/phar-utils": "^1.0",
-                "symfony/finder": "^2.0 || ^3.0 || ^4.0",
-                "vimeo/psalm": "^3.0"
+                "friendsofphp/php-cs-fixer": "^3",
+                "phpspec/prophecy-phpunit": "^2",
+                "phpunit/phpunit": "^9",
+                "seld/phar-utils": "^1",
+                "symfony/finder": "^4.0 || ^5.0 || ^6.0",
+                "vimeo/psalm": "^5@dev"
             },
             "suggest": {
-                "ext-ctype": "Simple data type tests",
-                "ext-iconv": "Provides fallback detection for ambiguous legacy string encodings such as the Windows and ISO 8859 code pages",
-                "ext-mbstring": "Provides string encoding detection",
-                "kint-php/kint-js": "Provides a simplified dump to console.log()",
-                "kint-php/kint-twig": "Provides d() and s() functions in twig templates",
-                "symfony/polyfill-ctype": "Replacement for ext-ctype if missing",
-                "symfony/polyfill-iconv": "Replacement for ext-iconv if missing",
-                "symfony/polyfill-mbstring": "Replacement for ext-mbstring if missing"
+                "kint-php/kint-helpers": "Provides extra helper functions",
+                "kint-php/kint-twig": "Provides d() and s() functions in twig templates"
             },
             "type": "library",
             "autoload": {
@@ -11791,10 +11653,6 @@
                     "homepage": "https://github.com/jnvsor"
                 },
                 {
-                    "name": "Rokas Šleinius",
-                    "homepage": "https://github.com/raveren"
-                },
-                {
                     "name": "Contributors",
                     "homepage": "https://github.com/kint-php/kint/graphs/contributors"
                 }
@@ -11808,481 +11666,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kint-php/kint/issues",
-                "source": "https://github.com/kint-php/kint/tree/master"
+                "source": "https://github.com/kint-php/kint/tree/5.0.7"
             },
-            "time": "2019-10-17T18:05:24+00:00"
-        },
-        {
-            "name": "laminas/laminas-servicemanager",
-            "version": "3.15.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laminas/laminas-servicemanager.git",
-                "reference": "65910ef6a8066b0369fab77fbec9e030be59c866"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-servicemanager/zipball/65910ef6a8066b0369fab77fbec9e030be59c866",
-                "reference": "65910ef6a8066b0369fab77fbec9e030be59c866",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^2.0",
-                "laminas/laminas-stdlib": "^3.2.1",
-                "php": "~7.4.0 || ~8.0.0 || ~8.1.0",
-                "psr/container": "^1.1 || ^2.0.2"
-            },
-            "conflict": {
-                "ext-psr": "*",
-                "laminas/laminas-code": "<3.3.1",
-                "zendframework/zend-code": "<3.3.1",
-                "zendframework/zend-servicemanager": "*"
-            },
-            "provide": {
-                "psr/container-implementation": "^1.1 || ^2.0"
-            },
-            "replace": {
-                "container-interop/container-interop": "^1.2.0"
-            },
-            "require-dev": {
-                "laminas/laminas-coding-standard": "~2.3.0",
-                "laminas/laminas-container-config-test": "^0.6",
-                "mikey179/vfsstream": "^1.6.10@alpha",
-                "ocramius/proxy-manager": "^2.11",
-                "phpbench/phpbench": "^1.1",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5.5",
-                "psalm/plugin-phpunit": "^0.17.0",
-                "vimeo/psalm": "^4.8"
-            },
-            "suggest": {
-                "ocramius/proxy-manager": "ProxyManager ^2.1.1 to handle lazy initialization of services"
-            },
-            "bin": [
-                "bin/generate-deps-for-config-factory",
-                "bin/generate-factory-for-class"
-            ],
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/autoload.php"
-                ],
-                "psr-4": {
-                    "Laminas\\ServiceManager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Factory-Driven Dependency Injection Container",
-            "homepage": "https://laminas.dev",
-            "keywords": [
-                "PSR-11",
-                "dependency-injection",
-                "di",
-                "dic",
-                "laminas",
-                "service-manager",
-                "servicemanager"
-            ],
-            "support": {
-                "chat": "https://laminas.dev/chat",
-                "docs": "https://docs.laminas.dev/laminas-servicemanager/",
-                "forum": "https://discourse.laminas.dev",
-                "issues": "https://github.com/laminas/laminas-servicemanager/issues",
-                "rss": "https://github.com/laminas/laminas-servicemanager/releases.atom",
-                "source": "https://github.com/laminas/laminas-servicemanager"
-            },
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2022-07-18T21:18:56+00:00"
-        },
-        {
-            "name": "laminas/laminas-stdlib",
-            "version": "3.18.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laminas/laminas-stdlib.git",
-                "reference": "e85b29076c6216e7fc98e72b42dbe1bbc3b95ecf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/e85b29076c6216e7fc98e72b42dbe1bbc3b95ecf",
-                "reference": "e85b29076c6216e7fc98e72b42dbe1bbc3b95ecf",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
-            },
-            "conflict": {
-                "zendframework/zend-stdlib": "*"
-            },
-            "require-dev": {
-                "laminas/laminas-coding-standard": "^2.5",
-                "phpbench/phpbench": "^1.2.14",
-                "phpunit/phpunit": "^10.3.3",
-                "psalm/plugin-phpunit": "^0.18.4",
-                "vimeo/psalm": "^5.15.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Laminas\\Stdlib\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "SPL extensions, array utilities, error handlers, and more",
-            "homepage": "https://laminas.dev",
-            "keywords": [
-                "laminas",
-                "stdlib"
-            ],
-            "support": {
-                "chat": "https://laminas.dev/chat",
-                "docs": "https://docs.laminas.dev/laminas-stdlib/",
-                "forum": "https://discourse.laminas.dev",
-                "issues": "https://github.com/laminas/laminas-stdlib/issues",
-                "rss": "https://github.com/laminas/laminas-stdlib/releases.atom",
-                "source": "https://github.com/laminas/laminas-stdlib"
-            },
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2023-09-19T10:15:21+00:00"
-        },
-        {
-            "name": "laminas/laminas-text",
-            "version": "2.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laminas/laminas-text.git",
-                "reference": "8879e75d03e09b0d6787e6680cfa255afd4645a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-text/zipball/8879e75d03e09b0d6787e6680cfa255afd4645a7",
-                "reference": "8879e75d03e09b0d6787e6680cfa255afd4645a7",
-                "shasum": ""
-            },
-            "require": {
-                "laminas/laminas-servicemanager": "^3.4",
-                "laminas/laminas-stdlib": "^3.6",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
-            },
-            "conflict": {
-                "zendframework/zend-text": "*"
-            },
-            "require-dev": {
-                "laminas/laminas-coding-standard": "~1.0.0",
-                "phpunit/phpunit": "^9.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Laminas\\Text\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Create FIGlets and text-based tables",
-            "homepage": "https://laminas.dev",
-            "keywords": [
-                "laminas",
-                "text"
-            ],
-            "support": {
-                "chat": "https://laminas.dev/chat",
-                "docs": "https://docs.laminas.dev/laminas-text/",
-                "forum": "https://discourse.laminas.dev",
-                "issues": "https://github.com/laminas/laminas-text/issues",
-                "rss": "https://github.com/laminas/laminas-text/releases.atom",
-                "source": "https://github.com/laminas/laminas-text"
-            },
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2021-09-02T16:50:53+00:00"
-        },
-        {
-            "name": "mathieuviossat/arraytotexttable",
-            "version": "v1.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/viossat/arraytotexttable.git",
-                "reference": "518ec338fe62e92c064a9d3d3bc8c64fb6e77d1c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/viossat/arraytotexttable/zipball/518ec338fe62e92c064a9d3d3bc8c64fb6e77d1c",
-                "reference": "518ec338fe62e92c064a9d3d3bc8c64fb6e77d1c",
-                "shasum": ""
-            },
-            "require": {
-                "laminas/laminas-text": "^2.9",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MathieuViossat\\Util\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mathieu Viossat",
-                    "email": "mathieu@viossat.fr",
-                    "homepage": "https://viossat.fr"
-                }
-            ],
-            "description": "Display arrays in terminal",
-            "homepage": "https://github.com/viossat/arraytotexttable",
-            "keywords": [
-                "array",
-                "ascii",
-                "table",
-                "terminal",
-                "text",
-                "unicode"
-            ],
-            "support": {
-                "issues": "https://github.com/viossat/arraytotexttable/issues",
-                "source": "https://github.com/viossat/arraytotexttable/tree/v1.0.9"
-            },
-            "time": "2022-08-30T15:33:10+00:00"
-        },
-        {
-            "name": "mglaman/phpstan-drupal",
-            "version": "1.2.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mglaman/phpstan-drupal.git",
-                "reference": "57b2cc67fb4416e8484db37a3d8502ac8fb3c0d6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/57b2cc67fb4416e8484db37a3d8502ac8fb3c0d6",
-                "reference": "57b2cc67fb4416e8484db37a3d8502ac8fb3c0d6",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4 || ^8.0",
-                "phpstan/phpstan": "^1.10.1",
-                "phpstan/phpstan-deprecation-rules": "^1.1.4",
-                "symfony/finder": "^4.2 || ^5.0 || ^6.0 || ^7.0",
-                "symfony/yaml": "^4.2|| ^5.0 || ^6.0 || ^7.0",
-                "webflo/drupal-finder": "^1.2"
-            },
-            "require-dev": {
-                "behat/mink": "^1.8",
-                "composer/installers": "^1.9",
-                "drupal/core-recommended": "^9.0",
-                "drush/drush": "^10.0 || ^11 || ^12",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan-strict-rules": "^1.0",
-                "phpunit/phpunit": "^8.5 || ^9",
-                "slevomat/coding-standard": "^7.1",
-                "squizlabs/php_codesniffer": "^3.3",
-                "symfony/phpunit-bridge": "^4.4 || ^5.4 || ^6.0 || ^7.0"
-            },
-            "suggest": {
-                "jangregor/phpstan-prophecy": "Provides a prophecy/prophecy extension for phpstan/phpstan.",
-                "phpstan/phpstan-deprecation-rules": "For catching deprecations, especially in Drupal core.",
-                "phpstan/phpstan-phpunit": "PHPUnit extensions and rules for PHPStan."
-            },
-            "type": "phpstan-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.0-dev"
-                },
-                "installer-paths": {
-                    "tests/fixtures/drupal/core": [
-                        "type:drupal-core"
-                    ],
-                    "tests/fixtures/drupal/libraries/{$name}": [
-                        "type:drupal-library"
-                    ],
-                    "tests/fixtures/drupal/modules/contrib/{$name}": [
-                        "type:drupal-module"
-                    ],
-                    "tests/fixtures/drupal/profiles/contrib/{$name}": [
-                        "type:drupal-profile"
-                    ],
-                    "tests/fixtures/drupal/themes/contrib/{$name}": [
-                        "type:drupal-theme"
-                    ]
-                },
-                "phpstan": {
-                    "includes": [
-                        "extension.neon",
-                        "rules.neon"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "mglaman\\PHPStanDrupal\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Glaman",
-                    "email": "nmd.matt@gmail.com"
-                }
-            ],
-            "description": "Drupal extension and rules for PHPStan",
-            "support": {
-                "issues": "https://github.com/mglaman/phpstan-drupal/issues",
-                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.2.4"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/mglaman",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/phpstan-drupal",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/mglaman/phpstan-drupal",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-11-14T22:47:32+00:00"
-        },
-        {
-            "name": "phpstan/phpstan",
-            "version": "1.10.41",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c6174523c2a69231df55bdc65b61655e72876d76"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c6174523c2a69231df55bdc65b61655e72876d76",
-                "reference": "c6174523c2a69231df55bdc65b61655e72876d76",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2|^8.0"
-            },
-            "conflict": {
-                "phpstan/phpstan-shim": "*"
-            },
-            "bin": [
-                "phpstan",
-                "phpstan.phar"
-            ],
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHPStan - PHP Static Analysis Tool",
-            "keywords": [
-                "dev",
-                "static analysis"
-            ],
-            "support": {
-                "docs": "https://phpstan.org/user-guide/getting-started",
-                "forum": "https://github.com/phpstan/phpstan/discussions",
-                "issues": "https://github.com/phpstan/phpstan/issues",
-                "security": "https://github.com/phpstan/phpstan/security/policy",
-                "source": "https://github.com/phpstan/phpstan-src"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/ondrejmirtes",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/phpstan",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-11-05T12:57:57+00:00"
-        },
-        {
-            "name": "phpstan/phpstan-deprecation-rules",
-            "version": "1.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpstan-deprecation-rules.git",
-                "reference": "089d8a8258ed0aeefdc7b68b6c3d25572ebfdbaa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-deprecation-rules/zipball/089d8a8258ed0aeefdc7b68b6c3d25572ebfdbaa",
-                "reference": "089d8a8258ed0aeefdc7b68b6c3d25572ebfdbaa",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2 || ^8.0",
-                "phpstan/phpstan": "^1.10.3"
-            },
-            "require-dev": {
-                "php-parallel-lint/php-parallel-lint": "^1.2",
-                "phpstan/phpstan-php-parser": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "phpstan-extension",
-            "extra": {
-                "phpstan": {
-                    "includes": [
-                        "rules.neon"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PHPStan\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHPStan rules for detecting usage of deprecated classes, methods, properties, constants and traits.",
-            "support": {
-                "issues": "https://github.com/phpstan/phpstan-deprecation-rules/issues",
-                "source": "https://github.com/phpstan/phpstan-deprecation-rules/tree/1.1.4"
-            },
-            "time": "2023-08-05T09:02:04+00:00"
+            "time": "2023-06-26T19:25:00+00:00"
         }
     ],
     "aliases": [],

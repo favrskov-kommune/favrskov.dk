@@ -12,7 +12,6 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8",
             "exclude": [
-                "drupal/promote_disable",
                 "drupal/swiftmailer"
             ]
         },
@@ -23,10 +22,6 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
-        },
-        {
-            "type": "git",
-            "url": "https://git.drupalcode.org/issue/promote_disable-3289171.git"
         },
         {
             "type": "git",
@@ -65,7 +60,7 @@
         "drupal/hreflang": "^1.0",
         "drupal/imageapi_optimize": "^4.0",
         "drupal/inline_block_title_automatic": "^1.0",
-        "drupal/jquery_ui": "^1.6",
+        "drupal/jquery_ui_button": "^2.0",
         "drupal/jquery_ui_dialog": "^2.0",
         "drupal/layout_builder_at": "^2.0",
         "drupal/layout_builder_modal": "^1.0",
@@ -79,7 +74,6 @@
         "drupal/paragraphs_asymmetric_translation_widgets": "^1.0",
         "drupal/path_redirect_import": "^2.0",
         "drupal/pathauto": "^1.0",
-        "drupal/promote_disable": "^2.0",
         "drupal/redirect": "^1.0",
         "drupal/redis": "^1.5",
         "drupal/role_delegation": "^1.1",
@@ -95,7 +89,7 @@
         "drupal/view_unpublished": "^1.0",
         "drupal/webform": "^6.2",
         "drupal/webp": "^1.0.0-beta5",
-        "drush/drush": "^12.4",
+        "drush/drush": "^11.0",
         "novicell/atoms": "^1.0.1",
         "novicell/content_hierarchy": "^1.0",
         "novicell/drupal-premium-theme": "^1.0",
@@ -114,10 +108,8 @@
     },
     "require-dev": {
         "deployer/deployer": "^7.3",
-        "drupal/ckeditor_plugin_report": "^1.0",
         "drupal/devel": "^5.1",
-        "drupal/upgrade_status": "^4.0",
-        "kint-php/kint": "^3.3"
+        "kint-php/kint": "^5.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -130,14 +122,15 @@
         },
         "optimize-autoloader": true,
         "sort-packages": true,
+        "platform-check": false,
         "allow-plugins": {
             "composer/installers": true,
             "cweagans/composer-patches": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
             "drupal/core-vendor-hardening": true,
-            "wikimedia/composer-merge-plugin": true,
-            "oomphinc/composer-installers-extender": true
+            "oomphinc/composer-installers-extender": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "autoload": {
@@ -209,11 +202,11 @@
             "drupal/paragraphs": {
                 "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2020-06-25/paragraphs-2901390-51.patch"
             },
-            "drupal/webp": {
-                "(#3161795) Upper/lowercase checking on file extension causes image generation to fail due to token mismatch": "https://www.drupal.org/files/issues/2021-05-07/webp-replace-file-exists-call-with-entity-load-to-fix-image-generation-3161795-16.patch"
-            },
             "drupal/path_redirect_import": {
-                "(#3313386) Drush updb fails when upgrading from 8.x-1.0 to 2.0.5": "https://www.drupal.org/files/issues/2023-07-11/3313386_11.patch"
+                "(#3373025) Update to support path redirect import migrate_tools 6.0.2": "https://www.drupal.org/files/issues/2023-07-06/path_redirect_import-3373025.patch"
+            },
+            "drupal/autosave_form": {
+                "(#3355495) PHP 8.2 deprecation issue with AutosaveFormBuilder": "https://www.drupal.org/files/issues/2023-04-20/autosave_form-dynamic-property-deprecation.patch"
             },
             "drupal/webform": {
 

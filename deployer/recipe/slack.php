@@ -21,7 +21,6 @@ task('slack:notify', function () {
 
   Httpie::post(get('slack_webhook'))->body(['attachments' => [$attachment]])->send();
 })
-  ->shallow()
   ->hidden();
 
 desc('Send slack notification about initiating deployment');

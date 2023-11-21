@@ -1,0 +1,5 @@
+promote_disable.form:
+  route_name: promote_disable.form
+  title: 'Promote disable'
+  description: 'Configuration for Promote disable module.'
+  parent: system.admin_config_content

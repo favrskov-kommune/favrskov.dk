@@ -28,7 +28,6 @@ task('deploy:file_permissions', function () {
   }
 
 })
-  ->shallow()
   ->hidden();
 
 

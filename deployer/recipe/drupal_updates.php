@@ -22,7 +22,7 @@ task('deploy:drupal:post_deploy_updates', function () {
   if (input()->hasOption('no-updb') && empty(input()->getOption('no-updb'))) {
     set('rollback_db', 'true');
     writeln('Running update database');
-    run("cd {{drush_exec_path_absolute}} && drush updatedb -y");
+    run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush updatedb -y");
   } else {
     writeln('Skipping database updates');
   }
@@ -30,7 +30,7 @@ task('deploy:drupal:post_deploy_updates', function () {
   if (get('drupal_core_version') > 7 && input()->hasOption('no-cim') && empty(input()->getOption('no-cim'))) {
     set('rollback_db', 'true');
     writeln('Running config import');
-    run("cd {{drush_exec_path_absolute}} && drush cim -y");
+    run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush cim -y");
     $run_cache_rebuild = TRUE;
   } else {
     writeln('Skipping config import');
@@ -39,7 +39,7 @@ task('deploy:drupal:post_deploy_updates', function () {
   if (get('drupal_core_version') > 8 && input()->hasOption('no-deploy-hook') && empty(input()->getOption('no-deploy-hook'))) {
     set('rollback_db', 'true');
     writeln('Running deploy hook');
-    run("cd {{drush_exec_path_absolute}} && drush deploy:hook -y");
+    run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush deploy:hook -y");
     $run_cache_rebuild = TRUE;
   } else {
     writeln('Skipping config import');
@@ -51,9 +51,9 @@ task('deploy:drupal:post_deploy_updates', function () {
     set('rollback_db', 'true');
     writeln('Running locale updates');
     if(get('drupal_core_version') == 7) {
-      run("cd {{drush_exec_path_absolute}} && drush l10n-update-refresh && drush l10n-update ");
+      run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush l10n-update-refresh && vendor/drush/drush/drush l10n-update ");
     } else {
-      run("cd {{drush_exec_path_absolute}} && drush locale-check && drush locale-update ");
+      run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush locale-check && vendor/drush/drush/drush locale-update ");
     }
     $run_cache_rebuild = TRUE;
   } else {
@@ -63,9 +63,9 @@ task('deploy:drupal:post_deploy_updates', function () {
   if($run_cache_rebuild){
     writeln('Rebuilding cache');
     if(get('drupal_core_version') == 7) {
-      run("cd {{drush_exec_path_absolute}} && drush cc all");
+      run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush cc all");
     } else {
-      run("cd {{drush_exec_path_absolute}} && drush cr");
+      run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush cr");
     }
   } else {
     writeln('Skipping cache rebuild');
