@@ -58,6 +58,7 @@
         "drupal/file_delete_ui": "^1.0",
         "drupal/focal_point": "^2.0",
         "drupal/gin": "^3.0",
+        "drupal/gin_lb": "^1.0@RC",
         "drupal/honeypot": "^2.0",
         "drupal/hreflang": "^1.0",
         "drupal/imageapi_optimize": "^4.0",

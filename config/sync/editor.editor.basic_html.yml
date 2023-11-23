@@ -31,8 +31,8 @@ settings:
   plugins:
     ckeditor5_alignment:
       enabled_alignments:
-        - left
         - center
+        - left
         - right
     ckeditor5_heading:
       enabled_headings:

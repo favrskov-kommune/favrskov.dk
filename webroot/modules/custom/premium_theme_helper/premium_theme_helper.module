@@ -70,7 +70,11 @@ function premium_theme_helper_layout_alter(array &$definitions) {
  *   of \Drupal\Core\Render\ElementInfoManagerInterface::getInfo().
  */
 function premium_theme_helper_element_info_alter(array &$types) {
-  _premium_theme_helper_element_info_alter($types);
+  if (isset($types['layout_builder'])) {
+    if (\Drupal::config('system.theme')->get('admin') !== 'gin') {
+      $types['layout_builder']['#attached']['library'][] = 'premium_theme/layout-builder';
+    }
+  }
 }
 
 /**

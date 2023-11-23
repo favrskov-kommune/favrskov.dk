@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "211b4ee1f30db48659c682b8d5704f3a",
+    "content-hash": "9dcc1a936e13cd20b82941e3740b25c1",
     "packages": [
         {
             "name": "algolia/places",
@@ -2974,6 +2974,63 @@
                     "url": "https://paypal.me/saschaeggi"
                 }
             ]
+        },
+        {
+            "name": "drupal/gin_lb",
+            "version": "1.0.0-rc5",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/gin_lb.git",
+                "reference": "1.0.0-rc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/gin_lb-1.0.0-rc5.zip",
+                "reference": "1.0.0-rc5",
+                "shasum": "e8ae8fbe0b7642645dd173b72cd19da86e6e7f15"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10",
+                "drupal/gin_toolbar": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-rc5",
+                    "datestamp": "1696943060",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Christian.wiedemann",
+                    "homepage": "https://www.drupal.org/user/861002"
+                },
+                {
+                    "name": "Duwid",
+                    "homepage": "https://www.drupal.org/user/2693877"
+                },
+                {
+                    "name": "Grimreaper",
+                    "homepage": "https://www.drupal.org/user/2388214"
+                },
+                {
+                    "name": "sch4lly",
+                    "homepage": "https://www.drupal.org/user/856550"
+                }
+            ],
+            "description": "Layout Builder in Gin style",
+            "homepage": "https://www.drupal.org/project/gin_lb",
+            "support": {
+                "source": "https://git.drupalcode.org/project/gin_lb"
+            }
         },
         {
             "name": "drupal/gin_toolbar",
@@ -11652,6 +11709,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "drupal/gin_lb": 5,
         "drupal/swiftmailer": 20
     },
     "prefer-stable": true,
