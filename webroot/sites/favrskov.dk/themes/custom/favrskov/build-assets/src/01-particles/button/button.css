@@ -3,6 +3,11 @@
  * Button.
  */
 
+.layout-builder-form .form-actions .button {
+  background-size: cover;
+  background-position-x: center;
+}
+
 .styles--preview--button,
 .button,
 a.button {

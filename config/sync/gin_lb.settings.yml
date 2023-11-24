@@ -1,8 +1,0 @@
-_core:
-  default_config_hash: Um_xSc6nOhSP5pfhCboUKWpzJ3S-t4ZdmTKOMnK_D1A
-langcode: da
-toastify_loading: custom
-enable_preview_regions: true
-hide_discard_button: false
-hide_revert_button: true
-save_behavior: default
