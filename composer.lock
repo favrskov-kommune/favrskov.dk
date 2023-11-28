@@ -7102,10 +7102,10 @@
         },
         {
             "name": "novicell/drupal-premium-theme",
-            "version": "1.1.8",
+            "version": "1.1.9",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1lekPd/novicelldrupalpremiumtheme-1-1-8.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_L3JL9/novicelldrupalpremiumtheme-1-1-9.zip"
             },
             "type": "drupal-theme",
             "license": [
@@ -7194,10 +7194,10 @@
         },
         {
             "name": "novicell/premium_profile",
-            "version": "1.3.4",
+            "version": "1.3.5",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_88zXU/novicellpremium_profile-1-3-4.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_1lUqKI/novicellpremium_profile-1-3-5.zip"
             },
             "type": "drupal-profile",
             "license": [
