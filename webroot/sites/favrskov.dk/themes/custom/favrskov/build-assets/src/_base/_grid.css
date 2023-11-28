@@ -31,6 +31,10 @@
     margin-top: calc(var(--grid-section-spacing) * -1);
     position: relative;
     z-index: 3;
+
+    .layout-builder & {
+      margin-top: 0;
+    }
   }
 
   &--spacing-top-none {
