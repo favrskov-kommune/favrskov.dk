@@ -1,14 +1,11 @@
 version: v2beta1
-name: mercantec
+name: favrskov
 
 vars:
   PROJECT_TYPE: drupal
   BITBUCKET_REPO_TAG: master
+  HELM_CHART_TAG: master
 
 imports:
   - git: git@bitbucket.org:novicell/devspace.git
     tag: ${BITBUCKET_REPO_TAG}
-    subPath: general
-  - git: git@bitbucket.org:novicell/devspace.git
-    tag: ${BITBUCKET_REPO_TAG}
-    subPath: ${PROJECT_TYPE}
