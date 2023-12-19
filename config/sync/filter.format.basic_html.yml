@@ -5,6 +5,7 @@ dependencies:
   module:
     - editor
     - linkit
+    - responsive_table_filter
 _core:
   default_config_hash: FuwDvANbfUl18YJDEXEK5E0VGC-XzlhxbCh6y26gO6g
 name: 'Simpel HTML'
@@ -51,3 +52,11 @@ filters:
     status: true
     weight: 12
     settings: {  }
+  filter_responsive_table:
+    id: filter_responsive_table
+    provider: responsive_table_filter
+    status: true
+    weight: 0
+    settings:
+      wrapper_element: figure
+      wrapper_classes: responsive-figure-table
