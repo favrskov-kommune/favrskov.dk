@@ -801,7 +801,8 @@ if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
 // Ensure https behind load balancer
 $settings['reverse_proxy'] = TRUE;
 $settings['reverse_proxy_addresses'] = [$_SERVER['REMOTE_ADDR']];
-$settings['reverse_proxy_trusted_headers'] = Request::HEADER_X_FORWARDED_ALL;
+$settings['reverse_proxy_trusted_headers'] = Request::HEADER_X_FORWARDED_FOR | Request::HEADER_X_FORWARDED_HOST | Request::HEADER_X_FORWARDED_PORT | Request::HEADER_X_FORWARDED_PROTO;
+
 
 $config['config_split.config_split.develop']['status'] = strtolower(getenv('CONFIG_SPLIT_DEVELOPMENT')) === 'true';
 
@@ -812,6 +813,10 @@ $settings['config_sync_directory'] = '../config/sync';
 
 if (file_exists($app_root . '/sites/default/settings.ddev.php') && getenv('IS_DDEV_PROJECT') == 'true') {
   include $app_root . '/sites/default/settings.ddev.php';
+}
+
+if (file_exists($app_root . '/' . $site_path . '/settings.devspace.php')) {
+  include $app_root . '/' . $site_path . '/settings.devspace.php';
 }
 
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {

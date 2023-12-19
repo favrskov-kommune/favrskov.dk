@@ -53,6 +53,7 @@ function favrskov_news_cron() {
     ->condition('field_list_date' , $date->format(DateTimeItemInterface::DATE_STORAGE_FORMAT), '<')
     ->condition('field_keep_published', 0)
     ->condition('status', 1)
+    ->accessCheck(TRUE)
     ->range(NULL, 100)
     ->execute();
 
@@ -83,6 +84,7 @@ function favrskov_preprocess_block__inline_block__news_list(array &$variables) {
   $query = Drupal::entityQuery('node')
     ->condition('type', 'news')
     ->condition('status', 1)
+    ->accessCheck(TRUE)
     ->sort('sticky' , 'desc')
     ->sort('field_list_date', 'desc');
   if (!empty($categories)) {
@@ -98,7 +100,8 @@ function favrskov_preprocess_block__inline_block__news_list(array &$variables) {
 
     $countQuery = Drupal::entityQuery('node')
       ->condition('type', 'news')
-      ->condition('status', 1);
+      ->condition('status', 1)
+      ->accessCheck(TRUE);
     if (!empty($categories)) {
       $countQuery->condition('field_news_categories', $categories, 'IN');
     }

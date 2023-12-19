@@ -23,10 +23,11 @@
 {% if settings.color_theme %}
   {{ attach_library('favrskov/' ~ settings.color_theme) }}
 {% endif %}
-
-{% set clean_id = settings.section_id|clean_id %}
-{% if clean_id %}
-  <a id="{{ clean_id }}" class="anchor-tag"></a>
+{% if settings.section_id is not empty %}
+  {% set clean_id = settings.section_id|clean_id %}
+  {% if clean_id %}
+    <a id="{{ clean_id }}" class="anchor-tag"></a>
+  {% endif %}
 {% endif %}
 
 <section {{ attributes.addClass(classes) }}>

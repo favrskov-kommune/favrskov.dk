@@ -11,3 +11,42 @@ msgstr ""
 "Language: da\n"
 "X-Generator: Poedit 2.0.5\n"
 
+msgid "+ Fold all out"
+msgstr "+ Fold alle ud"
+
+msgid "- Fold all in"
+msgstr "- Fold alle ind"
+
+
+msgid "Scheduled transitions"
+msgstr "Planlægning"
+
+msgid "Close (Esc)"
+msgstr "Luk (Esc)"
+
+msgid "Call to action color"
+msgstr "Knap farve"
+
+msgid "Read less"
+msgstr "Læs mindre"
+
+msgid "Back to list"
+msgstr "Tilbage til oversigten"
+
+msgid "Self-service"
+msgstr "Selvbetjening"
+
+msgid "Your Name"
+msgstr "Dit navn"
+
+msgid "Your Email"
+msgstr "Din e-mail adresse"
+
+msgid "Message"
+msgstr "Besked"
+
+msgid "Print page"
+msgstr "Udskriv side"
+
+msgid "Negative"
+msgstr "Negativ"

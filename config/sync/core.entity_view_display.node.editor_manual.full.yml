@@ -46,6 +46,7 @@ third_party_settings:
         - layout_onecol
         - layout_twocol_section
         - layout_threecol_section
+      restricted_categories: {  }
       blacklisted_blocks: {  }
       whitelisted_blocks:
         Block: {  }
@@ -102,7 +103,6 @@ third_party_settings:
         System: {  }
         Webform: {  }
         core: {  }
-      restricted_categories: {  }
 _core:
   default_config_hash: QOEUrU1PQHcUILRpatr3BYjGBzLVTKdoaAa6LACdkhU
 id: node.editor_manual.full

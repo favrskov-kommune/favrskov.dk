@@ -395,7 +395,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: dblog_operations
-          label: Operations
+          label: Handlinger
           exclude: false
           alter:
             alter_text: false

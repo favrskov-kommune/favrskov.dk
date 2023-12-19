@@ -285,7 +285,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: redirect_404_operations
-          label: Operations
+          label: Handlinger
           exclude: false
           alter:
             alter_text: false

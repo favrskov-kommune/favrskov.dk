@@ -1,0 +1,18 @@
+uuid: 379d8995-e4f8-42bb-af2f-01218eaecdd1
+langcode: da
+status: true
+dependencies: {  }
+id: swiftmailer
+label: 'Imported from swiftmailer'
+plugin: smtp
+configuration:
+  user: ''
+  pass: ''
+  host: smtp-api.ubivox.com
+  port: 587
+  query:
+    verify_peer: true
+    local_domain: ''
+    restart_threshold: null
+    restart_threshold_sleep: null
+    ping_threshold: null

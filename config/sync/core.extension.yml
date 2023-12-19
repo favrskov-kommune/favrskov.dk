@@ -4,7 +4,6 @@ langcode: da
 module:
   admin_toolbar: 0
   admin_toolbar_tools: 0
-  adminimal_admin_toolbar: 0
   allowed_formats: 0
   atoms: 0
   automated_cron: 0
@@ -14,12 +13,10 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
-  ckeditor: 0
-  color: 0
+  ckeditor5: 0
   color_field: 0
   components: 0
   config: 0
-  config_filter: 0
   config_ignore: 0
   config_split: 0
   config_translation: 0
@@ -53,6 +50,7 @@ module:
   file_delete_ui: 0
   filter: 0
   focal_point: 0
+  gin_toolbar: 0
   help: 0
   honeypot: 0
   hreflang: 0
@@ -78,6 +76,9 @@ module:
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
+  migrate: 0
+  migrate_source_csv: 0
+  migrate_tools: 0
   moderated_content_bulk_publish: 0
   mysql: 0
   node: 0
@@ -88,12 +89,12 @@ module:
   path: 0
   path_alias: 0
   path_redirect_import: 0
+  phpass: 0
   premium_cdn_video: 0
   premium_core: 0
   premium_theme_helper: 0
   premium_tools: 0
   promote_disable: 0
-  rdf: 0
   redirect: 0
   redirect_404: 0
   redis: 0
@@ -106,6 +107,7 @@ module:
   status_feed: 0
   styles: 0
   swiftmailer: 0
+  symfony_mailer: 0
   system: 0
   taxonomy: 0
   text: 0
@@ -123,9 +125,8 @@ module:
   paragraphs: 11
   premium_profile: 1000
 theme:
-  seven: 0
-  stable: 0
-  adminimal_theme: 0
   premium_theme: 0
   favrskov: 0
+  claro: 0
+  gin: 0
 profile: premium_profile

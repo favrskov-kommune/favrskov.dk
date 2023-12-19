@@ -1,8 +1,7 @@
 <?php
 
 use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\Core\Pager\PagerManagerInterface;
-use Drupal\Core\Url;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\Entity\Node;
 
@@ -53,6 +52,7 @@ function favrskov_hearings_cron() {
     ->condition('type', 'hearing_page')
     ->condition('field_deadline' , $date->format(DateTimeItemInterface::DATE_STORAGE_FORMAT), '<')
     ->condition('status', 1)
+    ->accessCheck(TRUE)
     ->range(NULL, 100)
     ->execute();
 
@@ -71,7 +71,7 @@ function favrskov_hearings_cron() {
 function favrskov_hearings_preprocess_node__hearing_page(&$variables) {
   /** @var Node $node */
   $node = $variables['node'];
-  if (isset($variables['content']['field_cta']) && isset($variables['content']['field_cta'][0])) {
+  if (isset($variables['content']['field_cta'][0])) {
     $variables['content']['field_cta'][0]['#attributes']['class'][] = 'button';
     $variables['content']['field_cta'][0]['#title'] = atom_str('hearings-cta');
     atom_cache($variables['content']['field_cta'][0], ['hearings-cta']);
@@ -100,7 +100,7 @@ function favrskov_hearings_preprocess_node__hearing_page(&$variables) {
 /**
  * Implements hook_ENTITY_TYPE_update().
  */
-function favrskov_hearings_node_insert(\Drupal\Core\Entity\EntityInterface $entity) {
+function favrskov_hearings_node_insert(EntityInterface $entity) {
   if ($entity->bundle() == 'hearing_page') {
     /** @var \Drupal\pathauto\PathautoGeneratorInterface $pathauto */
     $pathauto = \Drupal::service('pathauto.generator');
@@ -112,7 +112,7 @@ function favrskov_hearings_node_insert(\Drupal\Core\Entity\EntityInterface $enti
 /**
  * Implements hook_ENTITY_TYPE_update().
  */
-function favrskov_hearings_node_update(\Drupal\Core\Entity\EntityInterface $entity) {
+function favrskov_hearings_node_update(EntityInterface $entity) {
   if ($entity->bundle() == 'hearing_page') {
     _favrskov_hearings_push_to_cludo($entity->toUrl()->setAbsolute()->toString());
   }

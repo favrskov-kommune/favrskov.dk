@@ -28,6 +28,7 @@ dependencies:
   module:
     - atoms
     - block
+    - block_content
     - content_moderation
     - contextual
     - entity_clone
@@ -57,6 +58,7 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access any webform configuration'
+  - 'access block library'
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
@@ -72,6 +74,8 @@ permissions:
   - 'add scheduled transitions node news'
   - 'add scheduled transitions node page'
   - 'administer atoms'
+  - 'administer block content'
+  - 'administer block types'
   - 'administer blocks'
   - 'administer menu'
   - 'administer nodes'
@@ -127,6 +131,7 @@ permissions:
   - 'delete own audio media'
   - 'delete own cdn_video media'
   - 'delete own document media'
+  - 'delete own files'
   - 'delete own hearing_page content'
   - 'delete own image media'
   - 'delete own news content'

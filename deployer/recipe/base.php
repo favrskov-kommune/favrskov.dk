@@ -17,7 +17,7 @@ set('drupal_core_version', 8);
 // Can be overwritten in config.yml but defaults to {{deploy_path}}/current/{{docroot}}/sites/{{drupal_site}}/
 set('docroot', 'webroot');
 set('drush_exec_path', '/current/{{docroot}}/sites/{{drupal_site}}');
-set('drush_exec_path_absolute', '{{deploy_path}}{{drush_exec_path}}');
+set('drush_exec_path_absolute', '{{deploy_path}}/current');
 set('theme_exec_path', 'sites/{{drupal_site}}/themes/custom/PROJECT_NAME/build-assets');
 set('theme_exec_path_absolute', '{{release_path}}/{{docroot}}/{{theme_exec_path}}');
 
@@ -25,7 +25,7 @@ set('theme_exec_path_absolute', '{{release_path}}/{{docroot}}/{{theme_exec_path}
 // actually made to it. This flag is set to false, but changes to true when updates and config imports
 // are performed. See database_backup.php and updates.php
 set('rollback_db', 'false');
-
+Deployer::get()->tasks->remove('deploy:failed');
 
 //----- Tasks -----//
 task('success', function(){
@@ -33,8 +33,7 @@ task('success', function(){
   writeln("<fg=magenta>♥ You're awesome! ♥</fg=magenta>");
 })
   ->once()
-  ->shallow()
-  ->setPrivate();
+  ->hidden();
 
 // Output variables for debugging configuration
 task('debug', function() {
@@ -49,13 +48,13 @@ task('deploy', [
   'deploy:info',
   'slack:notify:start',
   'deploy:prepare',
-  'deploy:lock',
-  'deploy:release',
-  'deploy:update_code',
+//  'deploy:lock',
+//  'deploy:release',
+//  'deploy:update_code',
   'deploy:composer:install',
   'deploy:npm:install',
-  'deploy:shared',
-  'deploy:writable',
+//  'deploy:shared',
+//  'deploy:writable',
   'deploy:maintenance_mode:enable',
   'deploy:db:dump',
   'deploy:symlink',
@@ -64,7 +63,7 @@ task('deploy', [
   'deploy:unlock',
   'deploy:db:cleanup',
   'deploy:file_permissions',
-  'cleanup',
+  'deploy:cleanup',
   'slack:notify:success',
   'success'
 ]);
@@ -85,7 +84,7 @@ task('deploy:first', [
   'deploy:symlink',
   'deploy:unlock',
   'deploy:file_permissions',
-  'cleanup',
+  'deploy:cleanup',
   'slack:notify:success',
   'success'
 ]);

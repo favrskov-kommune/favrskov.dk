@@ -1,4 +1,0 @@
-services:
-  favrskov.feedback.builder:
-    class: Drupal\favrskov_feedback\FeedbackFormBuilder
-    arguments: {}

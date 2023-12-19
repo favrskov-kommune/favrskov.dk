@@ -16,7 +16,6 @@ archive: false
 id: contact
 title: Kontakt
 description: 'Basic email contact webform.'
-category: ''
 elements: |-
   name:
     '#title': 'Your Name'
@@ -297,3 +296,4 @@ handlers:
       parameters: {  }
       debug: false
 variants: {  }
+category: ''
