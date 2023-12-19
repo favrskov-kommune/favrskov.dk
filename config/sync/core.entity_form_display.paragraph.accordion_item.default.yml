@@ -5,8 +5,11 @@ dependencies:
   config:
     - field.field.paragraph.accordion_item.field_accordion_item_headline
     - field.field.paragraph.accordion_item.field_accordion_item_text
+    - field.field.paragraph.accordion_item.field_image
+    - field.field.paragraph.accordion_item.field_image_placement_top
     - paragraphs.paragraphs_type.accordion_item
   module:
+    - media_library
     - text
 _core:
   default_config_hash: num9uMJzl6VhH72hV_vJXiDsyE92NovEXmb9TsJXHWk
@@ -31,8 +34,22 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_image_placement_top:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }

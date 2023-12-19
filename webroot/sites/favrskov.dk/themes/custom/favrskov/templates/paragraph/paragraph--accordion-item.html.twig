@@ -48,7 +48,13 @@
 %}
 {% block paragraph %}
   <accordion-item {{ attributes.addClass(classes).setAttribute('title', paragraph.field_accordion_item_headline.value).setAttribute('id', paragraph.id()) }}>
-    {{ content.field_accordion_item_text }}
+    {% if (content.field_image_placement_top[0]['#markup']) %}
+      {{ content.field_image }}
+      {{ content.field_accordion_item_text }}
+    {% else %}
+      {{ content.field_accordion_item_text }}
+      {{ content.field_image }}
+    {% endif %}
   </accordion-item>
 {% endblock paragraph %}
 
