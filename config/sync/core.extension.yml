@@ -99,6 +99,7 @@ module:
   redirect_404: 0
   redis: 0
   responsive_image: 0
+  responsive_table_filter: 0
   role_delegation: 0
   scheduled_transitions: 0
   shortcut: 0
