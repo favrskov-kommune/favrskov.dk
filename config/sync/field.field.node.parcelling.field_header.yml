@@ -1,0 +1,40 @@
+uuid: 7c773da1-9a55-40bf-aa27-5171deae4f21
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_header
+    - node.type.parcelling
+    - paragraphs.paragraphs_type.basic_hero
+  module:
+    - entity_reference_revisions
+id: node.parcelling.field_header
+field_name: field_header
+entity_type: node
+bundle: parcelling
+label: Sidehoved
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      basic_hero: basic_hero
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_item:
+        weight: 4
+        enabled: false
+      basic_hero:
+        weight: 5
+        enabled: true
+      inline_hero:
+        weight: 6
+        enabled: false
+      parcel:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

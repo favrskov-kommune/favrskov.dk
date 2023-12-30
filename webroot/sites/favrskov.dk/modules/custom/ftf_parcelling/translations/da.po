@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FTF Parcelling (all releases)\n"
+"POT-Creation-Date: 2020-01-15 11:00+0000\n"
+"PO-Revision-Date: 2020-01-15 11:01+0100\n"
+"Language-Team: Danish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Last-Translator: \n"
+"Language: da\n"
+"X-Generator: Poedit 1.8.11\n"
+
+msgctxt "ftf_parcelling"
+msgid "Upcoming parcels"
+msgstr "Kommende grunde"
+
+msgctxt "ftf_parcelling"
+msgid "See more upcoming parcels"
+msgstr "Se flere kommende grunde"
+
+msgctxt "ftf_parcelling"
+msgid "See fewer upcoming parcels"
+msgstr "Se færre kommende grunde"
+
+msgctxt "ftf_parcelling"
+msgid "Available parcels"
+msgstr "Ledige grunde"
+
+msgctxt "ftf_parcelling"
+msgid "See more available parcels"
+msgstr "Se flere ledige grunde"
+
+msgctxt "ftf_parcelling"
+msgid "See fewer available parcels"
+msgstr "Se færre ledige grunde"
+
+msgctxt "ftf_parcelling"
+msgid "Reserved parcels"
+msgstr "Reserverede grunde"
+
+msgctxt "ftf_parcelling"
+msgid "See more reserved parcels"
+msgstr "Se flere reserverede grunde"
+
+msgctxt "ftf_parcelling"
+msgid "See fewer reserved parcels"
+msgstr "Se færre reserverede grunde"
+
+msgctxt "ftf_parcelling"
+msgid "Sold parcels"
+msgstr "Solgte grunde"
+
+msgctxt "ftf_parcelling"
+msgid "See more sold parcels"
+msgstr "Se flere solgte grunde"
+
+msgctxt "ftf_parcelling"
+msgid "See fewer sold parcels"
+msgstr "Se færre solgte grunde"
+
+msgctxt "ftf_parcelling"
+msgid "Minimum price"
+msgstr "Minimum pris"
+
+msgctxt "ftf_parcelling"
+msgid "Asking price"
+msgstr "Salgspris"
+
+msgctxt "ftf_parcelling"
+msgid "Square meter price"
+msgstr "Pris pr. m&sup2;"
+
+msgctxt "ftf_parcelling"
+msgid "Upcoming"
+msgstr "Kommende"
+
+msgctxt "ftf_parcelling"
+msgid "Available"
+msgstr "Ledig"
+
+msgctxt "ftf_parcelling"
+msgid "Reserved"
+msgstr "Reserveret"
+
+msgctxt "ftf_parcelling"
+msgid "Sold"
+msgstr "Solgt"
+
+msgctxt "ftf_parcelling"
+msgid "Size"
+msgstr "Areal"
+
+msgctxt "ftf_parcelling"
+msgid "incl. VAT"
+msgstr "inkl. moms"
+
+msgctxt "ftf_parcelling"
+msgid "excl. VAT"
+msgstr "ekskl. moms"

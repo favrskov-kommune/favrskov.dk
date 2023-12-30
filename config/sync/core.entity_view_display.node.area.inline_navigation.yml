@@ -1,0 +1,40 @@
+uuid: 32ca5092-9cb5-4086-814a-2e8393db6d96
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.inline_navigation
+    - field.field.node.area.field_area_identifier
+    - field.field.node.area.field_area_type_identifier
+    - field.field.node.area.field_header
+    - field.field.node.area.field_list_description
+    - field.field.node.area.field_parent
+    - field.field.node.area.field_teaser
+    - field.field.node.area.layout_builder__layout
+    - node.type.area
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.area.inline_navigation
+targetEntityType: node
+bundle: area
+mode: inline_navigation
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_area_identifier: true
+  field_area_type_identifier: true
+  field_header: true
+  field_list_description: true
+  field_parent: true
+  field_teaser: true
+  langcode: true
+  layout_builder__layout: true

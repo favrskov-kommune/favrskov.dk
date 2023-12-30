@@ -1,0 +1,23 @@
+uuid: 118c0783-ce97-4531-885f-b5f8c7e5e7e6
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_parcel_area
+    - paragraphs.paragraphs_type.parcel
+id: paragraph.parcel.field_parcel_area
+field_name: field_parcel_area
+entity_type: paragraph
+bundle: parcel
+label: Area
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

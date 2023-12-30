@@ -1,0 +1,40 @@
+{{ attach_library('favrskov/parcels') }}
+
+<div{{ attributes.addClass('parcels').addClass('js-parcels') }}>
+  {% if items.available %}
+    <parcel-group title="{{ 'Available parcels'|t({}, {'context': 'ftf_parcelling'}) }}" items-count="{{ items.available|length }}" show-text="{{ 'See more available parcels'|t({}, {'context': 'ftf_parcelling'}) }}" hide-text="{{ 'See fewer available parcels'|t({}, {'context': 'ftf_parcelling'}) }}">
+      {% for item in items.available %}
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          {{ item }}
+        </div>
+      {% endfor %}
+    </parcel-group>
+  {% endif %}
+  {% if items.reserved %}
+    <parcel-group title="{{ 'Reserved parcels'|t({}, {'context': 'ftf_parcelling'}) }}" items-count="{{ items.reserved|length }}" show-text="{{ 'See more reserved parcels'|t({}, {'context': 'ftf_parcelling'}) }}" hide-text="{{ 'See fewer reserved parcels'|t({}, {'context': 'ftf_parcelling'}) }}">
+      {% for item in items.reserved %}
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          {{ item }}
+        </div>
+      {% endfor %}
+    </parcel-group>
+  {% endif %}
+  {% if items.sold %}
+    <parcel-group title="{{ 'Sold parcels'|t({}, {'context': 'ftf_parcelling'}) }}" items-count="{{ items.sold|length }}" show-text="{{ 'See more sold parcels'|t({}, {'context': 'ftf_parcelling'}) }}" hide-text="{{ 'See fewer sold parcels'|t({}, {'context': 'ftf_parcelling'}) }}">
+      {% for item in items.sold %}
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          {{ item }}
+        </div>
+      {% endfor %}
+    </parcel-group>
+  {% endif %}
+  {% if items.upcoming %}
+    <parcel-group title="{{ 'Upcoming parcels'|t({}, {'context': 'ftf_parcelling'}) }}" items-count="{{ items.upcoming|length }}" show-text="{{ 'See more upcoming parcels'|t({}, {'context': 'ftf_parcelling'}) }}" hide-text="{{ 'See fewer upcoming parcels'|t({}, {'context': 'ftf_parcelling'}) }}">
+      {% for item in items.upcoming %}
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          {{ item }}
+        </div>
+      {% endfor %}
+    </parcel-group>
+  {% endif %}
+</div>
