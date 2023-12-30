@@ -1,0 +1,162 @@
+<?php
+
+use Drupal\Core\Entity\TranslatableInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_locale_translation_projects_alter().
+ */
+function ftf_parcelling_locale_translation_projects_alter(&$projects) {
+  $module_handler = \Drupal::service('module_handler');
+  $path = $module_handler->getModule('ftf_parcelling')->getPath();
+  $projects['ftf_parcelling']['info']['interface translation server pattern'] = $path . '/translations/%language.po';
+}
+
+/**
+ * Implements hook_cron().
+ */
+function ftf_parcelling_cron() {
+  /** @var \Drupal\ftf_parcelling\Service\ParcelImportService $parcel_import */
+  $parcel_import = \Drupal::service('ftf_parcelling.parcel_import');
+  $parcel_import->run();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ftf_parcelling_preprocess_block(&$variables) {
+  if($variables['plugin_id'] == 'field_block:node:parcelling:field_parcelling_parcels') {
+    $items = ['upcoming' => [], 'available' => [], 'reserved' => [], 'sold' => []];
+    $content = reset($variables['content']);
+    $i = 0;
+    while (array_key_exists($i, $content)) {
+      $paragraph = $content[$i]['#paragraph'];
+      $items[$paragraph->get('field_parcel_status')->value][] = $content[$i];
+      $i++;
+    }
+    foreach ($items as $key => $parcels) {
+      usort($parcels, function ($a, $b) {
+        return strnatcmp($a['#paragraph']->field_parcel_address->value, $b['#paragraph']->field_parcel_address->value);
+      });
+      $items[$key] = $parcels;
+    }
+    $variables['items'] = $items;
+  }
+
+  if($variables['plugin_id'] == 'field_block:node:parcelling:field_parcelling_identifier') {
+
+    if (isset(reset($variables['content'])['#object'])) {
+      $node = reset($variables['content'])['#object'];
+      $parcelling_id = $node->field_parcelling_identifier->value;
+      $parcelling_type = $node->field_parent->entity->field_area_type_identifier->value;
+      $parcelling_type = $parcelling_type == 'bolig' ? 'byggegrund' : $parcelling_type;
+      $variables['#attached']['library'][] = 'ftf_parcelling/ftf_parcelling.minimap';
+      $variables['#attached']['drupalSettings']['ftf_parcelling']['parcelling_type'] = $parcelling_type;
+      $variables['#attached']['drupalSettings']['ftf_parcelling']['parcelling_id'] = $parcelling_id;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ftf_parcelling_preprocess_layout_block__gis_minimap(&$variables) {
+  $block = $variables['entity'];
+  $map_id = $block->field_gis_minimap_id->value;
+  if($map_id) {
+    $variables['#attached']['library'][] = 'ftf_parcelling/ftf_parcelling.minimap';
+    $variables['#attached']['drupalSettings']['ftf_parcelling']['gis_minimap'][$block->id()] = $map_id;
+    $variables['gis_block_id'] = $block->id();
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ftf_parcelling_preprocess_paragraph__parcel(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $variables['parcel_group'] = $paragraph->field_parcel_group->value != '' ? $paragraph->field_parcel_group->value : null;
+  $variables['parcel_address'] = $paragraph->field_parcel_address->value;
+  $variables['parcel_status'] = $paragraph->field_parcel_status->value;
+  $variables['parcel_price'] = $paragraph->field_parcel_price->value > 0 ? $paragraph->field_parcel_price->value : null;
+  $variables['parcel_min_price'] = $paragraph->field_parcel_min_price->value > 0 ? $paragraph->field_parcel_min_price->value : null;
+  $variables['parcel_sqm_price'] = $paragraph->field_parcel_price_sqm->value != '' ? $paragraph->field_parcel_price_sqm->value : null;
+  $variables['parcel_area'] = $paragraph->field_parcel_area->value;
+  $variables['parcel_type'] = $paragraph->field_parcel_type->value;
+
+  if($paragraph->hasField('field_banner_text') && !$paragraph->get('field_banner_text')->isEmpty()) {
+    if($paragraph->field_banner_text->value != '') {
+      $variables['parcel_banner_text'] = $paragraph->field_banner_text->value;
+      $variables['parcel_banner_color'] = !$paragraph->get('field_banner_color')->isEmpty() ? $paragraph->field_banner_color->value : 'd1e0dc';
+      $variables['parcel_banner_text_color'] = !$paragraph->get('field_banner_text_color')->isEmpty() ? $paragraph->field_banner_text_color->value : '474747';
+    }
+  }
+
+  /** @var \Drupal\media\Entity\Media $media_file */
+  $media_file = $paragraph->field_parcel_specs->entity;
+
+  if($media_file) {
+    $variables['parcel_specs'] = [
+      'title' => $media_file->label(),
+      'url' => $media_file->field_media_document->entity->createFileUrl() ?? '',
+      'icon' => 'document',
+    ];
+  }
+}
+
+
+/**
+ * Implementation oh hook_preprocess_HOOK
+ *
+ * @param $variables
+ */
+function ftf_parcelling_preprocess_block__inline_block__inline_navigation(&$variables) {
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables['elements']['content']['#block_content'];
+
+  if (Drupal::moduleHandler()->moduleExists('content_hierarchy') && $block->hasField('field_inline_navigation_mode') && $block->get('field_inline_navigation_mode')->value === 'parent' && !empty($block->get('field_inline_navigation_parent')->target_id)) {
+    $parent_id = $block->get('field_inline_navigation_parent')->target_id;
+    /** @var Node $node */
+    $node = Node::load($parent_id);
+    $lang_id = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+    if ($node instanceof TranslatableInterface && !empty($node->getTranslationLanguages(FALSE)) && $node->hasTranslation($lang_id)) {
+      $node = $node->getTranslation($lang_id);
+    }
+
+    if (!empty($node) && $node->hasField('field_parent') && !empty($node->get('field_parent'))) {
+          $parent_id = $node->id();
+          $node_ids = \Drupal::database()
+            ->select('node__field_parent', 't')
+            ->fields('t', ['entity_id'])
+            ->condition('t.field_parent_target_id', $parent_id)
+            ->orderBy('t.field_parent_weight', 'ASC')
+            ->execute()
+            ->fetchCol();
+
+          // Set a cache tags, so it is possible to invalidate it, if a new node sets
+          // the selected parent as it´s parent.
+          $variables['#cache']['tags'][] = 'hierarchy:parent:' . $parent_id;
+    }
+  }
+
+  if (!empty($node_ids)) {
+    $hide_unpublished = \Drupal::currentUser()->isAnonymous();
+    $nodes = Node::loadMultiple($node_ids);
+
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+    $rendered_nodes = [];
+    foreach ($nodes as $node) {
+      if($hide_unpublished && !$node->isPublished()) {
+        continue;
+      }
+      $rendered_nodes[] = $view_builder->view($node, 'inline_navigation');
+    }
+    $variables['content'] = $rendered_nodes;
+  }
+}

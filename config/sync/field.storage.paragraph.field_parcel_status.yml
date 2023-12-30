@@ -1,0 +1,39 @@
+uuid: f259d6de-37e9-4a28-91a8-003a557d49ea
+langcode: da
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_parcel_status
+field_name: field_parcel_status
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: upcoming
+      label: Upcoming
+    -
+      value: available
+      label: Available
+    -
+      value: reserved
+      label: Reserved
+    -
+      value: sold
+      label: Sold
+    -
+      value: pending
+      label: Pending
+    -
+      value: unknown
+      label: Unknown
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

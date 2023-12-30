@@ -1,0 +1,27 @@
+atoms:
+  parcelling.bolig:
+    type: entity
+    title: Bolig
+    category: Site settings
+    group: Udstykning
+    weight: 1
+    options:
+      entity_type: node
+
+  parcelling.erhverv:
+    type: entity
+    title: Erhverv
+    category: Site settings
+    group: Udstykning
+    weight: 2
+    options:
+      entity_type: node
+
+  parcelling.storparcel:
+    type: entity
+    title: Storparcel
+    category: Site settings
+    group: Udstykning
+    weight: 3
+    options:
+      entity_type: node

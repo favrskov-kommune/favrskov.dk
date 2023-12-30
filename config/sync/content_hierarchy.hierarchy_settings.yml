@@ -1,6 +1,8 @@
 entity_bundles:
+  media: {  }
   node:
     - page
+  taxonomy_term: {  }
 multilingual: false
 overview_type: foldable
 contents_per_page_admin: '50'

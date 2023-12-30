@@ -1,0 +1,36 @@
+uuid: e2b5c828-c531-4cd2-88e8-c941c33d1e10
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.inline_navigation
+    - field.field.node.parcelling.field_header
+    - field.field.node.parcelling.field_parcelling_identifier
+    - field.field.node.parcelling.field_parcelling_parcels
+    - field.field.node.parcelling.field_parent
+    - field.field.node.parcelling.layout_builder__layout
+    - node.type.parcelling
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.parcelling.inline_navigation
+targetEntityType: node
+bundle: parcelling
+mode: inline_navigation
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_header: true
+  field_parcelling_identifier: true
+  field_parcelling_parcels: true
+  field_parent: true
+  langcode: true
+  layout_builder__layout: true

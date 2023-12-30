@@ -1,0 +1,12 @@
+<ul class="link-list">
+    {{#each links }}
+        <li class="link-list__item">
+            <a href="{{ url }}" class="link-list__link">
+                {{#if icon }}
+                    {{> '@svg-icon' svgIconName=icon }}
+                {{/if }}
+                {{ title }}
+            </a>
+        </li>
+    {{/each}}
+</ul>

@@ -89,3 +89,11 @@ composer-src/
 .devspace/
 .novi/dbdumps
 .novi/state/*
+
+
+# Ignore settings.devspace.php config file
+webroot/sites/favrskov.dk/settings.devspace.php
+
+
+# Ignore sites.devspace.php config file
+webroot/sites/sites.devspace.php

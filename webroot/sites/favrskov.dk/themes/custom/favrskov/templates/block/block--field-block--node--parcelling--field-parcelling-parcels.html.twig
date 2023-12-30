@@ -1,0 +1,9 @@
+{% set classes = [
+  'layout-block',
+  view_mode ? 'layout-block--view-mode-' ~ view_mode|clean_class,
+] %}
+
+{% include '@favrskov/components/organisms/o-parcels.html.twig' with {
+  'attributes': attributes.addClass(classes),
+  'items': items
+} %}

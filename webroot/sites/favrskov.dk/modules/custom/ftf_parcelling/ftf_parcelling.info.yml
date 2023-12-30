@@ -1,0 +1,10 @@
+name: 'Parcelling'
+type: module
+description: 'Provides functionality for handling parcels'
+core_version_requirement: ^9 || ^10
+version: 1.0.0
+package: 'Favrskov'
+dependencies: {  }
+
+interface translation project: ftf_parcelling
+interface translation server pattern: sites/favrskov.dk/modules/custom/ftf_parcelling/translations/%language.po

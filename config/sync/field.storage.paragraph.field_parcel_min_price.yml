@@ -1,0 +1,20 @@
+uuid: 69d9af11-9b04-4f2f-a830-275affe59e36
+langcode: da
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_parcel_min_price
+field_name: field_parcel_min_price
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

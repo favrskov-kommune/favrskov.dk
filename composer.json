@@ -55,6 +55,7 @@
         "drupal/core-vendor-hardening": "^10.0",
         "drupal/editor_advanced_link": "^2.2",
         "drupal/entity_clone": "^2.0",
+        "drupal/entity_hierarchy": "^3.3",
         "drupal/entity_usage": "^2.0-beta3",
         "drupal/field_group": "^3.0",
         "drupal/file_delete_ui": "^1.0",

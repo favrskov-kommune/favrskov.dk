@@ -1,0 +1,19 @@
+uuid: c6a8e3f7-063c-475f-b91a-ef5b7090279c
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_parcelling_identifier
+    - node.type.parcelling
+id: node.parcelling.field_parcelling_identifier
+field_name: field_parcelling_identifier
+entity_type: node
+bundle: parcelling
+label: 'GIS minimap'
+description: 'This identifier should correspond to a parcelling ID in GIS. It is needed for the system to correctly map imported parcels to the corresponding parcellings.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
