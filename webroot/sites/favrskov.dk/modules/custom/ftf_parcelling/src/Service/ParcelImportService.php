@@ -346,7 +346,9 @@ class ParcelImportService {
       $entity->set('field_parcel_area', (int) $parcel_data->grundareal);
       $entity->set('field_parcel_price', (int) $parcel_data->salgspris);
       $entity->set('field_parcel_min_price', (int) $parcel_data->mindste_pris);
-      $entity->set('field_parcel_price_sqm', (int) $parcel_data->kvm_pris);
+      if (isset($parcel_data->kvm_pris)) {
+        $entity->set('field_parcel_price_sqm', (int) $parcel_data->kvm_pris);
+      }
       $entity->set('field_parcel_status', $status);
       $entity->set('field_parcel_type', (substr($parcel_identifier, 0, strpos($parcel_identifier, '_'))));
       if($parcel_data->omraade != '') {
@@ -397,10 +399,12 @@ class ParcelImportService {
         $paragraph->set('field_parcel_min_price', $field_parcel_min_price);
         $update = true;
       }
-      $field_parcel_price_sqm = (string) $parcel_data->kvm_pris;
-      if($paragraph->field_parcel_price_sqm->value != $field_parcel_price_sqm) {
-        $paragraph->set('field_parcel_price_sqm', $field_parcel_price_sqm);
-        $update = true;
+      if (isset($parcel_data->kvm_pris)) {
+        $field_parcel_price_sqm = (string) $parcel_data->kvm_pris;
+        if ($paragraph->field_parcel_price_sqm->value != $field_parcel_price_sqm) {
+          $paragraph->set('field_parcel_price_sqm', $field_parcel_price_sqm);
+          $update = TRUE;
+        }
       }
       $field_parcel_status = isset($this->mapStatusValues[$parcel_data->salg_status]) ? $this->mapStatusValues[$parcel_data->salg_status] : $this->mapStatusValues['unknown'];
       if($paragraph->field_parcel_status->value != $field_parcel_status) {
