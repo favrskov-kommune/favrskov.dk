@@ -3,43 +3,30 @@ langcode: da
 status: true
 dependencies:
   config:
+    - field.field.node.area.content_hierarchy
     - field.field.node.area.field_area_identifier
     - field.field.node.area.field_area_type_identifier
     - field.field.node.area.field_header
     - field.field.node.area.field_list_description
-    - field.field.node.area.field_parent
     - field.field.node.area.field_teaser
     - field.field.node.area.layout_builder__layout
     - node.type.area
   module:
+    - content_hierarchy
     - content_moderation
-    - entity_hierarchy
-    - field_group
     - paragraphs_asymmetric_translation_widgets
     - path
-third_party_settings:
-  field_group:
-    group_hierarchy:
-      children:
-        - field_parent
-      label: Hierarchy
-      region: content
-      parent_name: ''
-      weight: 10
-      format_type: details_sidebar
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        open: true
-        description: ''
-        required_fields: false
-        weight: -1
 id: node.area.default
 targetEntityType: node
 bundle: area
 mode: default
 content:
+  content_hierarchy:
+    type: content_hierarchy_modal
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 3
@@ -60,18 +47,11 @@ content:
     third_party_settings: {  }
   field_list_description:
     type: string_textarea
-    weight: 12
+    weight: 11
     region: content
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
-  field_parent:
-    type: entity_reference_hierarchy_select
-    weight: 11
-    region: content
-    settings:
-      hide_weight: false
     third_party_settings: {  }
   langcode:
     type: language_select

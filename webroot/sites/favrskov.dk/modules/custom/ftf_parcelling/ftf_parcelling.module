@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\content_hierarchy\ContentHierarchyData;
 use Drupal\Core\Entity\TranslatableInterface;
 use Drupal\node\Entity\Node;
 
@@ -44,11 +45,20 @@ function ftf_parcelling_preprocess_block(&$variables) {
   }
 
   if($variables['plugin_id'] == 'field_block:node:parcelling:field_parcelling_identifier') {
-
+    /** @var ContentHierarchyData $ch_service */
+    $ch_service = Drupal::service('content_hierarchy.data');
     if (isset(reset($variables['content'])['#object'])) {
       $node = reset($variables['content'])['#object'];
+      $child_content_id = $ch_service->findEntity($node);
+      $child_placement = $ch_service->getContentAndPlacement($child_content_id);
+      $parent_id = $ch_service->getContent($child_placement['parent_id'])['entity_id'] ?? NULL;
+
+      $query = Drupal::database()->select('node__field_area_type_identifier', 'identifier');
+      $query->condition('identifier.entity_id', $parent_id);
+      $query->fields('identifier', ['field_area_type_identifier_value']);
+      $parcelling_type = $query->execute()->fetchField();
+
       $parcelling_id = $node->field_parcelling_identifier->value;
-      $parcelling_type = $node->field_parent->entity->field_area_type_identifier->value;
       $parcelling_type = $parcelling_type == 'bolig' ? 'byggegrund' : $parcelling_type;
       $variables['#attached']['library'][] = 'ftf_parcelling/ftf_parcelling.minimap';
       $variables['#attached']['drupalSettings']['ftf_parcelling']['parcelling_type'] = $parcelling_type;
@@ -104,57 +114,5 @@ function ftf_parcelling_preprocess_paragraph__parcel(&$variables) {
       'url' => $media_file->field_media_document->entity->createFileUrl() ?? '',
       'icon' => 'document',
     ];
-  }
-}
-
-
-/**
- * Implementation oh hook_preprocess_HOOK
- *
- * @param $variables
- */
-function ftf_parcelling_preprocess_block__inline_block__inline_navigation(&$variables) {
-  /** @var \Drupal\block_content\Entity\BlockContent $block */
-  $block = $variables['elements']['content']['#block_content'];
-
-  if (Drupal::moduleHandler()->moduleExists('content_hierarchy') && $block->hasField('field_inline_navigation_mode') && $block->get('field_inline_navigation_mode')->value === 'parent' && !empty($block->get('field_inline_navigation_parent')->target_id)) {
-    $parent_id = $block->get('field_inline_navigation_parent')->target_id;
-    /** @var Node $node */
-    $node = Node::load($parent_id);
-    $lang_id = \Drupal::languageManager()->getCurrentLanguage()->getId();
-
-    if ($node instanceof TranslatableInterface && !empty($node->getTranslationLanguages(FALSE)) && $node->hasTranslation($lang_id)) {
-      $node = $node->getTranslation($lang_id);
-    }
-
-    if (!empty($node) && $node->hasField('field_parent') && !empty($node->get('field_parent'))) {
-          $parent_id = $node->id();
-          $node_ids = \Drupal::database()
-            ->select('node__field_parent', 't')
-            ->fields('t', ['entity_id'])
-            ->condition('t.field_parent_target_id', $parent_id)
-            ->orderBy('t.field_parent_weight', 'ASC')
-            ->execute()
-            ->fetchCol();
-
-          // Set a cache tags, so it is possible to invalidate it, if a new node sets
-          // the selected parent as it´s parent.
-          $variables['#cache']['tags'][] = 'hierarchy:parent:' . $parent_id;
-    }
-  }
-
-  if (!empty($node_ids)) {
-    $hide_unpublished = \Drupal::currentUser()->isAnonymous();
-    $nodes = Node::loadMultiple($node_ids);
-
-    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
-    $rendered_nodes = [];
-    foreach ($nodes as $node) {
-      if($hide_unpublished && !$node->isPublished()) {
-        continue;
-      }
-      $rendered_nodes[] = $view_builder->view($node, 'inline_navigation');
-    }
-    $variables['content'] = $rendered_nodes;
   }
 }

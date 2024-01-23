@@ -1,0 +1,50 @@
+uuid: 124c0f88-dbca-4d4f-854e-d10d4b7b96ba
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.inline_teaser
+    - field.field.paragraph.basic_hero.field_background
+    - field.field.paragraph.basic_hero.field_call_to_action_color
+    - field.field.paragraph.basic_hero.field_color_theme
+    - field.field.paragraph.basic_hero.field_cta
+    - field.field.paragraph.basic_hero.field_link
+    - field.field.paragraph.basic_hero.field_overlay
+    - field.field.paragraph.basic_hero.field_show_search
+    - field.field.paragraph.basic_hero.field_text
+    - field.field.paragraph.basic_hero.field_text_color
+    - field.field.paragraph.basic_hero.field_text_position
+    - paragraphs.paragraphs_type.basic_hero
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+_core:
+  default_config_hash: W3hNisS4ZJaG4OgzZedTBzgvuyan1CgIed0mLA8Zl6g
+id: paragraph.basic_hero.inline_teaser
+targetEntityType: paragraph
+bundle: basic_hero
+mode: inline_teaser
+content:
+  field_background:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: inline_navigation
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_call_to_action_color: true
+  field_color_theme: true
+  field_cta: true
+  field_link: true
+  field_overlay: true
+  field_show_search: true
+  field_text: true
+  field_text_color: true
+  field_text_position: true
+  search_api_excerpt: true
