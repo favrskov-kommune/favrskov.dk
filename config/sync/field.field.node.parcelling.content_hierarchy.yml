@@ -1,0 +1,21 @@
+uuid: 194f849c-51e2-4e12-b14f-3945b1c55c0f
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.content_hierarchy
+    - node.type.parcelling
+  module:
+    - content_hierarchy
+id: node.parcelling.content_hierarchy
+field_name: content_hierarchy
+entity_type: node
+bundle: parcelling
+label: Indholdshierarki
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: content_hierarchy

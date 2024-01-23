@@ -2,6 +2,7 @@
 namespace Drupal\ftf_parcelling\Service;
 
 use Drupal\atoms\Atom;
+use Drupal\content_hierarchy\ContentHierarchyData;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityStorageException;
@@ -12,6 +13,9 @@ class ParcelImportService {
 
   /** @var \Drupal\Core\Database\Connection */
   private $database;
+
+  /** @var \Drupal\content_hierarchy\ContentHierarchyData */
+  private $content_hierarchy;
 
   /** @var \Psr\Log\LoggerInterface */
   private $logger;
@@ -45,9 +49,11 @@ class ParcelImportService {
    * ParcelImportService constructor.
    *
    * @param \Drupal\Core\Database\Connection $connection
+   * @param \Drupal\content_hierarchy\ContentHierarchyData $content_hierarchy
    */
-  public function __construct(Connection $connection) {
+  public function __construct(Connection $connection, ContentHierarchyData $content_hierarchy) {
     $this->database = $connection;
+    $this->content_hierarchy = $content_hierarchy;
     $this->logger = \Drupal::logger('ftf_parcel_import');
   }
 
@@ -151,6 +157,7 @@ class ParcelImportService {
    */
   private function createAreaNode($parent_id, $area) {
     if($parent_id > 0) {
+      $parent_hierarchy = $this->getContentHierarchy($parent_id);
       try {
         $node = Node::create([
           'uid' => 1,
@@ -160,9 +167,9 @@ class ParcelImportService {
         ]);
         $node->set('field_area_type_identifier', (string) $area->type);
         $node->set('field_area_identifier', (string) $area->bynavn_kode);
-        $node->set('field_parent', $parent_id);
 
         $node->save();
+        $this->content_hierarchy->setEntityPlacement($node, $parent_hierarchy);
         return $node;
       } catch (EntityStorageException $e) {
         $this->logger->error('Failed to create node', ['type' => $area->type, 'bynavn' => $area->bynavn]);
@@ -206,6 +213,8 @@ class ParcelImportService {
    */
   private function createParcellingNode($parent_id, $area) {
     if($parent_id > 0) {
+      $parent_hierarchy = $this->getContentHierarchy($parent_id);
+
       try {
         $node = Node::create([
           'uid' => 1,
@@ -214,9 +223,9 @@ class ParcelImportService {
         ]);
         $node->set('title', $area->udstyk_navn);
         $node->set('field_parcelling_identifier', $area->udstyk_navn_kode);
-        $node->set('field_parent', $parent_id);
 
         $node->save();
+        $this->content_hierarchy->setEntityPlacement($node, $parent_hierarchy);
         return $node;
       } catch (EntityStorageException $e) {
         $this->logger->error('Failed to create parcelling node');
@@ -506,11 +515,23 @@ class ParcelImportService {
       'storparcel' => ['nid' => reset($storparcelpage), 'areas' => [], 'feed' => 'https://webkort.favrskov.dk/spatialmap?page=grundsalg-get-storparcel'],
     ];
 
+    $ch_query = $this->database->select('content_hierarchy', 'ch');
+    $ch_query->condition('ch.entity_id', array_column($identifiers, 'nid'), 'IN');
+    $ch_query->fields('ch', ['entity_id', 'content_id']);
+    $content_ids = $ch_query->execute()->fetchAllKeyed();
+
+    $ch_query = $this->database->select('content_hierarchy', 'ch');
+    $ch_query->condition('ch.entity_id', array_column($identifiers, 'nid'), 'IN');
+    $ch_query->fields('ch', ['entity_id', 'content_id']);
+    $content_ids = $ch_query->execute()->fetchAllKeyed();
+
     $query = $this->database->select('node__field_area_identifier', 'n');
     $query->leftjoin('node__field_area_type_identifier', 't', 'n.entity_id = t.entity_id');
-    $query->leftjoin('node__field_parent', 'p', 'n.entity_id = p.field_parent_target_id');
+    $query->leftJoin('content_hierarchy', 'child_ch', 'n.entity_id = child_ch.entity_id');
+    $query->leftJoin('content_hierarchy_placement', 'parent_ch', 'parent_ch.parent_id = child_ch.content_id');
+    $query->leftJoin('content_hierarchy', 'p', 'p.content_id = parent_ch.content_id');
     $query->leftjoin('node__field_parcelling_identifier', 'pi', 'p.entity_id = pi.entity_id');
-    $query->leftjoin('node__field_parcelling_parcels', 'pp', 'p.entity_id = pp.entity_id');
+    $query->leftjoin('node__field_parcelling_parcels', 'pp', 'pi.entity_id = pp.entity_id');
     $query->leftjoin('paragraph__field_parcel_identifier', 'ppi', 'pp.field_parcelling_parcels_target_id = ppi.entity_id');
     $query->addField('n', 'entity_id', 'area_nid');
     $query->addField('n', 'field_area_identifier_value', 'area_id');
@@ -523,6 +544,8 @@ class ParcelImportService {
 
     foreach ($results as $result) {
       if(isset($identifiers[$result->area_type])) {
+        $identifiers[$result->area_type]['content_id'] = $content_ids[$identifiers[$result->area_type]['nid']];
+
         if($result->area_id != '' && !isset($identifiers[$result->area_type]['areas'][$result->area_id])) {
           $identifiers[$result->area_type]['areas'][$result->area_id] = ['nid' => $result->area_nid, 'parcellings' => []];
         }
@@ -588,6 +611,13 @@ class ParcelImportService {
       }
     } catch (EntityStorageException $e) {
     }
+  }
+
+  private function getContentHierarchy($parent_id) {
+    $query = \Drupal::database()->select('content_hierarchy', 'ch');
+    $query->fields('ch', ['content_id']);
+    $query->condition('ch.entity_id', $parent_id);
+    return $query->execute()->fetchField();
   }
 
 }

@@ -3,37 +3,21 @@ langcode: da
 status: true
 dependencies:
   config:
+    - field.field.node.parcelling.content_hierarchy
     - field.field.node.parcelling.field_header
     - field.field.node.parcelling.field_parcelling_identifier
     - field.field.node.parcelling.field_parcelling_parcels
-    - field.field.node.parcelling.field_parent
     - field.field.node.parcelling.layout_builder__layout
     - node.type.parcelling
   module:
+    - content_hierarchy
     - content_moderation
-    - entity_hierarchy
     - field_group
     - paragraphs
     - paragraphs_asymmetric_translation_widgets
     - path
 third_party_settings:
   field_group:
-    group_hierarchy:
-      children:
-        - field_parent
-      label: Hierarchy
-      region: content
-      parent_name: ''
-      weight: 5
-      format_type: details_sidebar
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        open: true
-        description: ''
-        required_fields: true
-        weight: -1
     group_pageheader:
       children:
         - field_header
@@ -54,6 +38,12 @@ targetEntityType: node
 bundle: parcelling
 mode: default
 content:
+  content_hierarchy:
+    type: content_hierarchy_modal
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 4
@@ -90,13 +80,6 @@ content:
         add_above: '0'
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
-    third_party_settings: {  }
-  field_parent:
-    type: entity_reference_hierarchy_select
-    weight: 5
-    region: content
-    settings:
-      hide_weight: false
     third_party_settings: {  }
   langcode:
     type: language_select

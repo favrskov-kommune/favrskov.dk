@@ -3,16 +3,15 @@ langcode: da
 status: true
 dependencies:
   config:
+    - field.field.node.area.content_hierarchy
     - field.field.node.area.field_area_identifier
     - field.field.node.area.field_area_type_identifier
     - field.field.node.area.field_header
     - field.field.node.area.field_list_description
-    - field.field.node.area.field_parent
     - field.field.node.area.field_teaser
     - field.field.node.area.layout_builder__layout
     - node.type.area
   module:
-    - entity_hierarchy
     - entity_reference_revisions
     - layout_builder
     - layout_builder_restrictions
@@ -72,15 +71,6 @@ content:
     third_party_settings: {  }
     weight: 105
     region: content
-  field_parent:
-    type: entity_reference_hierarchy_label
-    label: above
-    settings:
-      link: true
-      weight_output: attribute
-    third_party_settings: {  }
-    weight: 106
-    region: content
   field_teaser:
     type: basic_string
     label: above
@@ -94,5 +84,6 @@ content:
     weight: 100
     region: content
 hidden:
+  content_hierarchy: true
   langcode: true
   layout_builder__layout: true

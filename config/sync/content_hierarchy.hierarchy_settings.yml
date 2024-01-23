@@ -1,7 +1,9 @@
 entity_bundles:
   media: {  }
   node:
+    - area
     - page
+    - parcelling
   taxonomy_term: {  }
 multilingual: false
 overview_type: foldable
