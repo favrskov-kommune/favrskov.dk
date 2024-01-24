@@ -99,3 +99,23 @@ muni_categories:
     name: NemID og MitID
   tidsbestilling_kommune.dk:
     name: Tidsbestilling i kommunen
+  valg:
+    name: Valg
+  digital_fuldmagt:
+    name: Digital fuldmagt
+  grundlisten_og_lægdommere:
+    name: Grundlisten og lægdommere
+  vielse:
+    name: Vielse
+  skoleindskrivning:
+    name: Skoleindskrivning
+  rottebekaempelse:
+    name: Rottebekaempelse
+  navneaendring:
+    name: Navneændring
+  pensionistbevis:
+    name: Pensionistbevis
+  kontanthjælp_uddannelseshjælp:
+    name: Kontanthjælpsydelsen uddannelseshjælp
+  empty:
+    name: Tom kategori
