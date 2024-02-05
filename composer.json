@@ -81,6 +81,7 @@
         "drupal/rdf": "^2.1",
         "drupal/redirect": "^1.0",
         "drupal/redis": "^1.5",
+        "drupal/responsive_table_filter": "^2.0",
         "drupal/role_delegation": "^1.1",
         "drupal/scheduled_transitions": "^2.3",
         "drupal/search_api": "^1.0",

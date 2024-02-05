@@ -1,0 +1,21 @@
+uuid: 27acf91f-6ac3-4deb-8c47-55f041cf057a
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_placement_top
+    - paragraphs.paragraphs_type.accordion_item
+id: paragraph.accordion_item.field_image_placement_top
+field_name: field_image_placement_top
+entity_type: paragraph
+bundle: accordion_item
+label: 'Placér billede over tekst'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean
