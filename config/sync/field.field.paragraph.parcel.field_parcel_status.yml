@@ -1,0 +1,23 @@
+uuid: 311d7863-fd30-4e02-bd2b-4ba8b3b66eab
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_parcel_status
+    - paragraphs.paragraphs_type.parcel
+  module:
+    - options
+id: paragraph.parcel.field_parcel_status
+field_name: field_parcel_status
+entity_type: paragraph
+bundle: parcel
+label: Status
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: available
+default_value_callback: ''
+settings: {  }
+field_type: list_string

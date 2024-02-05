@@ -1,0 +1,19 @@
+uuid: 3e30ec5c-4740-4aef-8cab-240eb44274b7
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_parcel_type
+    - paragraphs.paragraphs_type.parcel
+id: paragraph.parcel.field_parcel_type
+field_name: field_parcel_type
+entity_type: paragraph
+bundle: parcel
+label: Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

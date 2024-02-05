@@ -1,0 +1,23 @@
+uuid: d6f97e66-de58-45c6-bd28-e826f676649e
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_parcel_price
+    - paragraphs.paragraphs_type.parcel
+id: paragraph.parcel.field_parcel_price
+field_name: field_parcel_price
+entity_type: paragraph
+bundle: parcel
+label: Price
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,10 @@
+uuid: 1ac61d28-ec8c-4829-ba6c-e76b300d71de
+langcode: da
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.inline_teaser
+label: 'Inline teaser'
+targetEntityType: paragraph
+cache: true

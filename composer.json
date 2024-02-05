@@ -55,6 +55,7 @@
         "drupal/core-vendor-hardening": "^10.0",
         "drupal/editor_advanced_link": "^2.2",
         "drupal/entity_clone": "^2.0",
+        "drupal/entity_hierarchy": "^3.3",
         "drupal/entity_usage": "^2.0-beta3",
         "drupal/field_group": "^3.0",
         "drupal/file_delete_ui": "^1.0",
@@ -80,6 +81,7 @@
         "drupal/rdf": "^2.1",
         "drupal/redirect": "^1.0",
         "drupal/redis": "^1.5",
+        "drupal/responsive_table_filter": "^2.0",
         "drupal/role_delegation": "^1.1",
         "drupal/scheduled_transitions": "^2.3",
         "drupal/search_api": "^1.0",
@@ -212,6 +214,9 @@
             },
             "drupal/autosave_form": {
                 "(#3355495) PHP 8.2 deprecation issue with AutosaveFormBuilder": "https://www.drupal.org/files/issues/2023-04-20/autosave_form-dynamic-property-deprecation.patch"
+            },
+            "drupal/entity_hierarchy": {
+                "(#2862044) Default weight value is not saved, unless default entity is not specified too": "https://www.drupal.org/files/issues/2023-10-10/entity_hierarchy_2862044_default-weight_22.patch"
             },
             "drupal/webform": {
 

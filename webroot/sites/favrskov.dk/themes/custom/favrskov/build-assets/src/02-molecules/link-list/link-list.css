@@ -1,0 +1,23 @@
+.link-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &__item {
+        margin-bottom: 18px;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        color: #474747;
+
+        .icon {
+            width: 30px;
+            height: 40px;
+            margin-right: 30px;
+            fill: var(--color-primary);
+            flex-shrink: 0;
+        }
+    }
+}

@@ -1,0 +1,168 @@
+<?php
+
+use Drupal\paragraphs\Entity\Paragraph;
+
+/**
+ * Hacky import of data lost in parcelling sync on March 16th 2020
+ */
+function ftf_parcelling_update_8001() {
+/*
+  $pids = \Drupal::entityQuery('paragraph')
+    ->condition('type', 'parcel')
+    ->execute();
+  $paragraphs = Paragraph::loadMultiple($pids);
+
+  $pmap = [];
+  foreach ($paragraphs as $paragraph) {
+    $pmap[$paragraph->field_parcel_identifier->value] = $paragraph;
+  }
+
+
+  $data = [
+    ['identifier' => 'bolig_101', 'file' => 426],
+    ['identifier' => 'bolig_101', 'file' => 234],
+    ['identifier' => 'bolig_102', 'file' => 443],
+    ['identifier' => 'bolig_103', 'file' => 279],
+    ['identifier' => 'bolig_104', 'file' => 228],
+    ['identifier' => 'bolig_109', 'file' => 511],
+    ['identifier' => 'bolig_112', 'file' => 247],
+    ['identifier' => 'bolig_120', 'file' => 230],
+    ['identifier' => 'bolig_13', 'file' => 287],
+    ['identifier' => 'bolig_130', 'file' => 453],
+    ['identifier' => 'bolig_132', 'file' => 436],
+    ['identifier' => 'bolig_137', 'file' => 288],
+    ['identifier' => 'bolig_138', 'file' => 277],
+    ['identifier' => 'bolig_144', 'file' => 235],
+    ['identifier' => 'bolig_144', 'file' => 426],
+    ['identifier' => 'bolig_146', 'file' => 285],
+    ['identifier' => 'bolig_148', 'file' => 467],
+    ['identifier' => 'bolig_15', 'file' => 510],
+    ['identifier' => 'bolig_153', 'file' => 275],
+    ['identifier' => 'bolig_156', 'file' => 512],
+    ['identifier' => 'bolig_160', 'file' => 250],
+    ['identifier' => 'bolig_163', 'file' => 463],
+    ['identifier' => 'bolig_164', 'file' => 440],
+    ['identifier' => 'bolig_166', 'file' => 513],
+    ['identifier' => 'bolig_169', 'file' => 244],
+    ['identifier' => 'bolig_17', 'file' => 519],
+    ['identifier' => 'bolig_170', 'file' => 514],
+    ['identifier' => 'bolig_172', 'file' => 212],
+    ['identifier' => 'bolig_177', 'file' => 451],
+    ['identifier' => 'bolig_182', 'file' => 284],
+    ['identifier' => 'bolig_183', 'file' => 264],
+    ['identifier' => 'bolig_195', 'file' => 282],
+    ['identifier' => 'bolig_197', 'file' => 274],
+    ['identifier' => 'bolig_199', 'file' => 430],
+    ['identifier' => 'bolig_207', 'file' => 289],
+    ['identifier' => 'bolig_209', 'file' => 281],
+    ['identifier' => 'bolig_211', 'file' => 432],
+    ['identifier' => 'bolig_217', 'file' => 442],
+    ['identifier' => 'bolig_218', 'file' => 226],
+    ['identifier' => 'bolig_22', 'file' => 445],
+    ['identifier' => 'bolig_221', 'file' => 215],
+    ['identifier' => 'bolig_231', 'file' => 426],
+    ['identifier' => 'bolig_231', 'file' => 425],
+    ['identifier' => 'bolig_235', 'file' => 276],
+    ['identifier' => 'bolig_236', 'file' => 433],
+    ['identifier' => 'bolig_243', 'file' => 262],
+    ['identifier' => 'bolig_25', 'file' => 221],
+    ['identifier' => 'bolig_251', 'file' => 515],
+    ['identifier' => 'bolig_253', 'file' => 426],
+    ['identifier' => 'bolig_253', 'file' => 238],
+    ['identifier' => 'bolig_255', 'file' => 272],
+    ['identifier' => 'bolig_263', 'file' => 246],
+    ['identifier' => 'bolig_264', 'file' => 214],
+    ['identifier' => 'bolig_268', 'file' => 225],
+    ['identifier' => 'bolig_269', 'file' => 516],
+    ['identifier' => 'bolig_272', 'file' => 448],
+    ['identifier' => 'bolig_274', 'file' => 517],
+    ['identifier' => 'bolig_275', 'file' => 435],
+    ['identifier' => 'bolig_279', 'file' => 465],
+    ['identifier' => 'bolig_282', 'file' => 431],
+    ['identifier' => 'bolig_284', 'file' => 217],
+    ['identifier' => 'bolig_285', 'file' => 251],
+    ['identifier' => 'bolig_286', 'file' => 248],
+    ['identifier' => 'bolig_290', 'file' => 227],
+    ['identifier' => 'bolig_298', 'file' => 278],
+    ['identifier' => 'bolig_299', 'file' => 449],
+    ['identifier' => 'bolig_303', 'file' => 266],
+    ['identifier' => 'bolig_304', 'file' => 290],
+    ['identifier' => 'bolig_307', 'file' => 224],
+    ['identifier' => 'bolig_312', 'file' => 452],
+    ['identifier' => 'bolig_313', 'file' => 456],
+    ['identifier' => 'bolig_315', 'file' => 444],
+    ['identifier' => 'bolig_318', 'file' => 454],
+    ['identifier' => 'bolig_320', 'file' => 518],
+    ['identifier' => 'bolig_328', 'file' => 441],
+    ['identifier' => 'bolig_33', 'file' => 464],
+    ['identifier' => 'bolig_339', 'file' => 421],
+    ['identifier' => 'bolig_34', 'file' => 438],
+    ['identifier' => 'bolig_340', 'file' => 420],
+    ['identifier' => 'bolig_341', 'file' => 419],
+    ['identifier' => 'bolig_342', 'file' => 418],
+    ['identifier' => 'bolig_343', 'file' => 417],
+    ['identifier' => 'bolig_344', 'file' => 416],
+    ['identifier' => 'bolig_345', 'file' => 415],
+    ['identifier' => 'bolig_346', 'file' => 414],
+    ['identifier' => 'bolig_347', 'file' => 413],
+    ['identifier' => 'bolig_348', 'file' => 412],
+    ['identifier' => 'bolig_349', 'file' => 411],
+    ['identifier' => 'bolig_350', 'file' => 410],
+    ['identifier' => 'bolig_351', 'file' => 409],
+    ['identifier' => 'bolig_352', 'file' => 408],
+    ['identifier' => 'bolig_353', 'file' => 407],
+    ['identifier' => 'bolig_354', 'file' => 406],
+    ['identifier' => 'bolig_355', 'file' => 405],
+    ['identifier' => 'bolig_356', 'file' => 404],
+    ['identifier' => 'bolig_357', 'file' => 403],
+    ['identifier' => 'bolig_358', 'file' => 402],
+    ['identifier' => 'bolig_359', 'file' => 401],
+    ['identifier' => 'bolig_360', 'file' => 400],
+    ['identifier' => 'bolig_361', 'file' => 399],
+    ['identifier' => 'bolig_362', 'file' => 398],
+    ['identifier' => 'bolig_363', 'file' => 397],
+    ['identifier' => 'bolig_364', 'file' => 396],
+    ['identifier' => 'bolig_365', 'file' => 395],
+    ['identifier' => 'bolig_366', 'file' => 394],
+    ['identifier' => 'bolig_37', 'file' => 229],
+    ['identifier' => 'bolig_38', 'file' => 446],
+    ['identifier' => 'bolig_39', 'file' => 434],
+    ['identifier' => 'bolig_4', 'file' => 508],
+    ['identifier' => 'bolig_41', 'file' => 213],
+    ['identifier' => 'bolig_43', 'file' => 447],
+    ['identifier' => 'bolig_44', 'file' => 233],
+    ['identifier' => 'bolig_48', 'file' => 455],
+    ['identifier' => 'bolig_54', 'file' => 268],
+    ['identifier' => 'bolig_6', 'file' => 260],
+    ['identifier' => 'bolig_61', 'file' => 270],
+    ['identifier' => 'bolig_65', 'file' => 286],
+    ['identifier' => 'bolig_66', 'file' => 439],
+    ['identifier' => 'bolig_7', 'file' => 467],
+    ['identifier' => 'bolig_7', 'file' => 450],
+    ['identifier' => 'bolig_87', 'file' => 239],
+    ['identifier' => 'bolig_9', 'file' => 509],
+    ['identifier' => 'bolig_90', 'file' => 437],
+    ['identifier' => 'bolig_95', 'file' => 280],
+    ['identifier' => 'bolig_98', 'file' => 283],
+    ['identifier' => 'storparcel_4', 'file' => 182],
+    ['identifier' => 'storparcel_5', 'file' => 183],
+    ['identifier' => 'storparcel_6', 'file' => 184],
+    ['identifier' => 'storparcel_7', 'file' => 181],
+    ['identifier' => 'storparcel_8', 'file' => 180],
+    ['identifier' => 'storparcel_9', 'file' => 179],
+  ];
+
+  foreach ($data as $row) {
+    if(isset($pmap[$row['identifier']])) {
+      $paragraph = $pmap[$row['identifier']];
+      $specs = $paragraph->get('field_parcel_specs')->getValue();
+      if(is_array($specs) && count($specs) > 0) {
+        //skip this
+      } else {
+        $paragraph->field_parcel_specs[] = ['target_id' => $row['file']];
+        $paragraph->save();
+      }
+    }
+  }
+*/
+}

@@ -1,0 +1,19 @@
+uuid: cd6c8048-6f38-4317-864c-87df4d114ae7
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_parcel_group
+    - paragraphs.paragraphs_type.parcel
+id: paragraph.parcel.field_parcel_group
+field_name: field_parcel_group
+entity_type: paragraph
+bundle: parcel
+label: Group
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

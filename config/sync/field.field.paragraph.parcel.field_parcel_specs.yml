@@ -1,0 +1,74 @@
+uuid: aa39257b-46f7-4cc0-97f9-590674f0c0e7
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_parcel_specs
+    - media.type.document
+    - paragraphs.paragraphs_type.parcel
+  module:
+    - dynamic_entity_reference
+id: paragraph.parcel.field_parcel_specs
+field_name: field_parcel_specs
+entity_type: paragraph
+bundle: parcel
+label: Specifications
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  media:
+    handler: 'default:media'
+    handler_settings:
+      target_bundles:
+        document: document
+      sort:
+        field: _none
+        direction: ASC
+      auto_create: false
+      auto_create_bundle: ''
+  path_alias:
+    handler: 'default:path_alias'
+    handler_settings: {  }
+  crop:
+    handler: 'default:crop'
+    handler_settings: {  }
+  user:
+    handler: 'default:user'
+    handler_settings: {  }
+  menu_link_content:
+    handler: 'default:menu_link_content'
+    handler_settings: {  }
+  block_content:
+    handler: 'default:block_content'
+    handler_settings: {  }
+  content_moderation_state:
+    handler: 'default:content_moderation_state'
+    handler_settings: {  }
+  file:
+    handler: 'default:file'
+    handler_settings: {  }
+  shortcut:
+    handler: 'default:shortcut'
+    handler_settings: {  }
+  node:
+    handler: 'default:node'
+    handler_settings: {  }
+  taxonomy_term:
+    handler: 'default:taxonomy_term'
+    handler_settings: {  }
+  paragraph:
+    handler: 'default:paragraph'
+    handler_settings: {  }
+  redirect:
+    handler: 'default:redirect'
+    handler_settings: {  }
+  webform_submission:
+    handler: 'default:webform_submission'
+    handler_settings: {  }
+  scheduled_transition:
+    handler: 'default:scheduled_transition'
+    handler_settings: {  }
+field_type: dynamic_entity_reference

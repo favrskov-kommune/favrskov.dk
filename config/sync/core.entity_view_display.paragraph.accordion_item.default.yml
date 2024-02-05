@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.accordion_item.field_accordion_item_headline
     - field.field.paragraph.accordion_item.field_accordion_item_text
+    - field.field.paragraph.accordion_item.field_image
+    - field.field.paragraph.accordion_item.field_image_placement_top
     - paragraphs.paragraphs_type.accordion_item
   module:
     - text
@@ -29,6 +31,25 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: 1_column_flex_height
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_image_placement_top:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 6
     region: content
   search_api_excerpt:
     settings: {  }

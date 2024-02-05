@@ -1,0 +1,23 @@
+uuid: 7f2a0cf9-6381-46c0-b43f-956e0e469666
+langcode: da
+status: true
+dependencies:
+  module:
+    - dynamic_entity_reference
+    - media
+    - paragraphs
+id: paragraph.field_parcel_specs
+field_name: field_parcel_specs
+entity_type: paragraph
+type: dynamic_entity_reference
+settings:
+  exclude_entity_types: false
+  entity_type_ids:
+    media: media
+module: dynamic_entity_reference
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

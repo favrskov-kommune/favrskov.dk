@@ -1,0 +1,23 @@
+uuid: 4fc40b65-0139-4c5f-aef3-54a27738f359
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_parcel_min_price
+    - paragraphs.paragraphs_type.parcel
+id: paragraph.parcel.field_parcel_min_price
+field_name: field_parcel_min_price
+entity_type: paragraph
+bundle: parcel
+label: 'Minimum price'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

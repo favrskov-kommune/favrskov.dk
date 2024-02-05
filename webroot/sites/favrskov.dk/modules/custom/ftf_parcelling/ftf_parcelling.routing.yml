@@ -1,0 +1,7 @@
+ftf_parcelling.parcel_import:
+  path: '/admin/config/parcelling/import'
+  defaults:
+    _title: 'Import Parcel Data'
+    _form: '\Drupal\ftf_parcelling\Form\ParcelImportForm'
+  requirements:
+    _permission: 'access administration pages'

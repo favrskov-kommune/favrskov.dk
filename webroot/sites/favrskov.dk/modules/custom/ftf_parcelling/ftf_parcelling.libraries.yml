@@ -1,0 +1,9 @@
+ftf_parcelling.minimap:
+  version: VERSION
+  js:
+    https://webkort.favrskov.dk/clientapi/minimap2/mmloader.js: {type: external, preprocess: false}
+    https://webkort.favrskov.dk/modules/fkgdata/js/grundsalg.js: {type: external, preprocess: false}
+    js/ftf_parcelling.js: {preprocess: false}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
