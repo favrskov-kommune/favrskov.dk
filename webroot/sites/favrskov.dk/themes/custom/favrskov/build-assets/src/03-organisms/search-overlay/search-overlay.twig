@@ -1,6 +1,6 @@
 {{ attach_library('favrskov/search-overlay') }}
 
-<div :class="{'search-overlay--open' : isOpen }" class="search-overlay" id="js-search-overlay">
+<div :class="{'search-overlay--open' : isOpen }" class="search-overlay" id="js-search-overlay" aria-hidden="true" tabindex="-1">
   <div @click="closeSearchOverlay()" class="search-overlay__close">
     {% include '@particles/svg-icon/svg-icon.twig' with {
       'attributes': '',
