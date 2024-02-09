@@ -31,16 +31,14 @@ Drupal.behaviors.burgerMenu = {
       }
     }
 
-    function addAriaHidden(selector) {
-      const addAriaHidden = document.querySelectorAll(selector)
-      for (let i = 0; i < addAriaHidden.length; i += 1)
-      addAriaHidden[i].setAttribute('aria-hidden', "true")
+    function addAriahidden(selector) {
+      const addAriaHidden = document.querySelectorAll(selector);
+      for (let i = 0; i < addAriaHidden.length; i += 1) addAriaHidden[i].setAttribute('aria-hidden', 'true');
     }
 
-    function removeAriaHidden(selector) {
-      const removeAriaHidden = document.querySelectorAll(selector)
-      for (let i = 0; i < removeAriaHidden.length; i += 1)
-      removeAriaHidden[i].setAttribute('aria-hidden', "false")
+    function removeAriahidden(selector) {
+      const removeAriaHidden = document.querySelectorAll(selector);
+      for (let i = 0; i < removeAriaHidden.length; i += 1) removeAriaHidden[i].setAttribute('aria-hidden', 'false');
     }
 
     negativeTabindex('.burger-menu-list-item__link');
@@ -64,54 +62,49 @@ Drupal.behaviors.burgerMenu = {
         triggerSubNavigation(e) {
           e.preventDefault();
           const trigger = e.currentTarget;
-          const parent = trigger.closest(
-            '.js-burger-menu-list-item--expandable',
-          );
+          const parent = trigger.closest('.js-burger-menu-list-item--expandable');
           // this.hideSubNavigations(parent);
 
           parent.classList.toggle(showSubNavigationClass);
         },
         openBurgerMenu() {
           this.isOpen = true;
-          document.querySelector('#js-burger-menu').removeAttribute("aria-hidden");
-          document.querySelector('#js-burger-menu').setAttribute("aria-hidden", "false")
+          document.querySelector('#js-burger-menu').removeAttribute('aria-hidden');
+          document.querySelector('#js-burger-menu').setAttribute('aria-hidden', 'false');
           document.body.classList.add('no-scroll');
           document.addEventListener('keydown', this.handleEsc);
           document.addEventListener('click', this.handleClickOutside);
-          addAriaHidden('#js-container');
-          addAriaHidden('#js-search-overlay')
-          addAriaHidden('#js-main-content-link')
+          addAriahidden('#js-container');
+          addAriahidden('#js-search-overlay');
+          addAriahidden('#js-main-content-link');
           negativeTabindex('#js-container');
           negativeTabindex('a');
           negativeTabindex('input');
           negativeTabindex('button');
           addTabindex('.burger-menu-list-item__link');
-          addTabindex('.burger-menu-list-item__expand-trigger');          
-          document.getElementById('js-burger').focus();
-          
+          addTabindex('.burger-menu-list-item__expand-trigger');
+          addTabindex('.burger-menu__close');
         },
         closeBurgerMenu() {
           this.isOpen = false;
           document.removeEventListener('keydown', this.handleEsc);
           document.removeEventListener('click', this.handleClickOutside);
-          document.querySelector('#js-burger-menu').removeAttribute("aria-hidden");
-          document.querySelector('#js-burger-menu').setAttribute("aria-hidden", "true")
+          document.querySelector('#js-burger-menu').removeAttribute('aria-hidden');
+          document.querySelector('#js-burger-menu').setAttribute('aria-hidden', 'true');
           document.body.classList.remove('no-scroll');
           // Alter tabindex on elements to improve user accessibility
-          removeTabindex('#js-container')
-          removeTabindex('a')
-          removeTabindex('input')
-          removeTabindex('button')
-          removeAriaHidden('#js-container')
-          negativeTabindex('#js-burger-menu')
+          removeTabindex('#js-container');
+          removeTabindex('a');
+          removeTabindex('input');
+          removeTabindex('button');
+          removeAriahidden('#js-container');
+          negativeTabindex('#js-burger-menu');
           negativeTabindex('.burger-menu-list-item__link');
           negativeTabindex('.burger-menu-list-item__expand-trigger');
           document.getElementById('js-burger').focus();
         },
         hideSubNavigations(parent) {
-          const items = document.querySelectorAll(
-            '.js-burger-menu-list-item--expandable',
-          );
+          const items = document.querySelectorAll('.js-burger-menu-list-item--expandable');
           for (let i = 0; i < items.length; i += 1) {
             if (parent !== items[i]) {
               items[i].classList.remove(showSubNavigationClass);
