@@ -3,9 +3,11 @@ langcode: da
 status: true
 dependencies:
   config:
+    - core.entity_view_display.node.area.default
     - core.entity_view_display.node.editor_manual.full
     - core.entity_view_display.node.news.full
     - core.entity_view_display.node.page.full
+    - core.entity_view_display.node.parcelling.default
     - filter.format.basic_html
     - filter.format.full_html
     - filter.format.table
@@ -15,9 +17,11 @@ dependencies:
     - media.type.image
     - media.type.remote_video
     - media.type.video
+    - node.type.area
     - node.type.hearing_page
     - node.type.news
     - node.type.page
+    - node.type.parcelling
     - taxonomy.vocabulary.hearing_page_types
     - taxonomy.vocabulary.hearing_places
     - taxonomy.vocabulary.hearing_topics
@@ -97,9 +101,11 @@ permissions:
   - 'configure all news node layout overrides'
   - 'configure all page node layout overrides'
   - 'configure any layout'
+  - 'configure editable area node layout overrides'
   - 'configure editable editor_manual node layout overrides'
   - 'configure editable news node layout overrides'
   - 'configure editable page node layout overrides'
+  - 'configure editable parcelling node layout overrides'
   - 'create and edit custom blocks'
   - 'create audio media'
   - 'create cdn_video media'
@@ -130,6 +136,7 @@ permissions:
   - 'delete any media'
   - 'delete any news content'
   - 'delete any page content'
+  - 'delete any parcelling content'
   - 'delete any remote_video media'
   - 'delete any video media'
   - 'delete any webform'
@@ -145,17 +152,20 @@ permissions:
   - 'delete own image media'
   - 'delete own news content'
   - 'delete own page content'
+  - 'delete own parcelling content'
   - 'delete own remote_video media'
   - 'delete own video media'
   - 'delete own webform'
   - 'delete own webform submission'
   - 'delete page revisions'
+  - 'delete parcelling revisions'
   - 'delete terms in hearing_page_types'
   - 'delete terms in hearing_places'
   - 'delete terms in hearing_topics'
   - 'delete terms in link_lists'
   - 'delete terms in media_categories'
   - 'delete terms in news_categories'
+  - 'edit any area content'
   - 'edit any audio media'
   - 'edit any cdn_video media'
   - 'edit any document media'
@@ -163,11 +173,13 @@ permissions:
   - 'edit any image media'
   - 'edit any news content'
   - 'edit any page content'
+  - 'edit any parcelling content'
   - 'edit any remote_video media'
   - 'edit any video media'
   - 'edit any webform'
   - 'edit any webform submission'
   - 'edit atom'
+  - 'edit own area content'
   - 'edit own audio media'
   - 'edit own cdn_video media'
   - 'edit own document media'
@@ -175,6 +187,7 @@ permissions:
   - 'edit own image media'
   - 'edit own news content'
   - 'edit own page content'
+  - 'edit own parcelling content'
   - 'edit own remote_video media'
   - 'edit own video media'
   - 'edit own webform'
@@ -193,9 +206,11 @@ permissions:
   - 'reschedule scheduled transitions node news'
   - 'reschedule scheduled transitions node page'
   - 'revert all revisions'
+  - 'revert area revisions'
   - 'revert hearing_page revisions'
   - 'revert news revisions'
   - 'revert page revisions'
+  - 'revert parcelling revisions'
   - 'select account cancellation method'
   - 'take_ownership_on_clone node entity'
   - 'translate atom'
@@ -222,12 +237,15 @@ permissions:
   - 'view all media revisions'
   - 'view all revisions'
   - 'view all scheduled transitions'
+  - 'view any unpublished area content'
   - 'view any unpublished content'
   - 'view any unpublished editor_manual content'
   - 'view any unpublished hearing_page content'
   - 'view any unpublished news content'
   - 'view any unpublished page content'
+  - 'view any unpublished parcelling content'
   - 'view any webform submission'
+  - 'view area revisions'
   - 'view hearing_page revisions'
   - 'view latest version'
   - 'view news revisions'
@@ -235,6 +253,7 @@ permissions:
   - 'view own unpublished media'
   - 'view own webform submission'
   - 'view page revisions'
+  - 'view parcelling revisions'
   - 'view scheduled transitions node hearing_page'
   - 'view scheduled transitions node news'
   - 'view scheduled transitions node page'

@@ -3,10 +3,12 @@ langcode: da
 status: true
 dependencies:
   config:
+    - node.type.area
     - node.type.editor_manual
     - node.type.hearing_page
     - node.type.news
     - node.type.page
+    - node.type.parcelling
   module:
     - content_moderation
 _core:
@@ -66,8 +68,10 @@ type_settings:
       weight: 1
   entity_types:
     node:
+      - area
       - editor_manual
       - hearing_page
       - news
       - page
+      - parcelling
   default_moderation_state: draft
