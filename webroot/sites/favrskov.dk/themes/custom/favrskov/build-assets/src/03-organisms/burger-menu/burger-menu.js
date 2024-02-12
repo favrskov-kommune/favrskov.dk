@@ -64,7 +64,12 @@ Drupal.behaviors.burgerMenu = {
           const trigger = e.currentTarget;
           const parent = trigger.closest('.js-burger-menu-list-item--expandable');
           // this.hideSubNavigations(parent);
-
+          const expandbutton = trigger.closest('.burger-menu-list-item__expand-trigger');
+          if (expandbutton.getAttribute('aria-expanded') === 'false') {
+            expandbutton.setAttribute('aria-expanded', 'true');
+          } else {
+            expandbutton.setAttribute('aria-expanded', 'false');
+          }
           parent.classList.toggle(showSubNavigationClass);
         },
         openBurgerMenu() {
