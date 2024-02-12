@@ -5,7 +5,7 @@
     {# Loading items from the menu out here #}
     {%- for item in items -%}
       <li{{ create_attribute().addClass(['navigation-item', 'js-navigation-item']).addClass(item.in_active_trail ? 'active').addClass(item.below ? 'navigation-item--has-children') }}>
-        {{ link(item.title, item.url, {'class': 'navigation-item__link'}) }}
+        {{ link(item.title, item.url, {'class': 'navigation-item__link'})  }} 
       </li>
     {%- endfor -%}
   </ul>
