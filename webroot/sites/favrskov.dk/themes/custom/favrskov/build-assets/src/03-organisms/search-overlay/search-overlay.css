@@ -112,10 +112,31 @@
       height: 40px;
       fill: white;
     }
+    @media (max-width: 400px) {
+      right: 0px;
+      top: 25px;
+      .icon--search {
+        width: 25px;
+        height: 25px;
+      }
+    }
   }
 
   &--open {
     opacity: 1;
     pointer-events: auto;
+  }
+  @media (max-width: 400px) {
+    &__close {
+      top: 10px;
+      right: 10px;
+
+      .icon--close {
+        width: 15px;
+        height: 15px;
+        box-sizing: content-box;
+        padding: 10px;
+      }
+    }
   }
 }
