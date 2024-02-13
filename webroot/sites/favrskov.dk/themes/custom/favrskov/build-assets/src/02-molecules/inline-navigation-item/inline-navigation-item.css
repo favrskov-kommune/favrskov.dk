@@ -53,7 +53,7 @@
 
     &:nth-child(3n) {
       .inline-navigation-item__link {
-        background-color: var(--color-light-mint);
+        background-color: var(--color-light-mint-wcag);
       }
     }
 
