@@ -31,7 +31,7 @@
     }
 
     &--map {
-      opacity: .5;
+      opacity: 0.5;
 
       @media (--viewport-lg-min) {
         opacity: 1;
@@ -43,7 +43,7 @@
       top: 0;
       left: 0;
       opacity: 0;
-      transition: opacity .3s ease;
+      transition: opacity 0.3s ease;
     }
   }
 
@@ -55,7 +55,7 @@
     padding: 20px;
     color: var(--color-white);
     opacity: 1;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
 
     @media (--viewport-sm-min) {
       top: 50%;
@@ -68,6 +68,11 @@
 
     @media (--viewport-md-min) {
       width: 40%;
+    }
+
+    @media (--viewport-md-max) {
+      background-color: var(--color-primary);
+      padding: 5px 10px;
     }
 
     @media (--viewport-lg-min) {
@@ -126,8 +131,8 @@
 
     &--links {
       opacity: 0;
-      transition: all .5s ease;
-      transition-delay: .3s;
+      transition: all 0.5s ease;
+      transition-delay: 0.3s;
       transform: translateY(20px);
 
       & a {
@@ -156,7 +161,7 @@
       height: 34px;
       border-radius: 50%;
       background-color: var(--color-cta);
-      transition: all .3s ease;
+      transition: all 0.3s ease;
       padding: 12px 0 0 13px;
 
       & span {
@@ -166,7 +171,7 @@
         border-radius: 2px;
         background-color: var(--color-white);
         transform: rotate(45deg);
-        transition: all .3s ease;
+        transition: all 0.3s ease;
 
         &:last-of-type {
           transform: rotate(-45deg);
@@ -186,7 +191,12 @@
       opacity: 1;
       transform: translateY(0);
     }
+    @media (--viewport-md-max) {
+      .branding-spot__overlay {
+        background-color: rgb(0, 110, 115, 0.7)
 
+      }
+    }
     @media (--viewport-sm-min) {
       .branding-spot__overlay {
         top: 50%;
@@ -200,4 +210,3 @@
     }
   }
 }
-
