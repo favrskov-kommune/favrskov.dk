@@ -311,6 +311,9 @@
     &:hover {
       background-color: var(--color-cta-hover);
     }
+    &:focus {
+      background-color: var(--color-cta-hover);
+    }
   }
 
   & .icon--search {
