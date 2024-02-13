@@ -292,6 +292,12 @@
         background-color: var(--color-cta);
         color: var(--color-white);
 
+        & h2 {
+          color: var(--color-white);
+          transition: all .3s ease;
+
+        }
+
         .inline-navigation-item__arrow {
           background-color: var(--color-white);
 
