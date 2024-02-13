@@ -56,12 +56,6 @@
         background-color: var(--color-light-mint-wcag);
       }
     }
-
-    @media (--viewport-ms-max) {
-      .inline-navigation-item__text {
-        display: none;
-      }
-    }
   }
 
   .js-inline-navigation-slider & {
