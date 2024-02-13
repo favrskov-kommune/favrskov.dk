@@ -363,6 +363,23 @@
           }
         }
       }
+
+      &:focus {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, .2);
+
+        @media (--viewport-ms-max) {
+          box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+        }
+
+        .inline-navigation-item__read-more {
+          & label {
+            visibility: visible;
+            opacity: 1;
+            max-width: 150px;
+            padding-left: 10px;
+          }
+        }
+      }
     }
   }
 
