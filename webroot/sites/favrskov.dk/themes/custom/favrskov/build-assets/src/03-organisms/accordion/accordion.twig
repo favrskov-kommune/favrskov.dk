@@ -1,6 +1,6 @@
 {{ attach_library('favrskov/accordion') }}
 
-<div{{ (not attributes ? create_attribute() : attributes).addClass(['accordion', 'js-accordion']) }}>
+<div{{ (not attributes ? create_attribute() : attributes).addClass(['accordion', 'js-accordion']) }} aria-expanded='false'>
   {% block block_content %}{% endblock %}
   <div class="accordion__header">
     {% if headline %}
@@ -12,7 +12,7 @@
   <div class="accordion__items">
     {% block content %}
       {% for item in items %}
-        <accordion-item title="{{ item.headline }}" id="{{ item.id }}">
+        <accordion-item title="{{ item.headline }}" id="{{ item.id }}" >
           {{ item.text }}
         </accordion-item>
       {% endfor %}
