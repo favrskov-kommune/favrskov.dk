@@ -22,10 +22,10 @@ Drupal.behaviors.accordion = {
       },
       template: `
         <div class="accordion-item" v-show="!hidden" ref="accordionItemRef">
-        <div :aria-expanded="isOpen ? 'true' : 'false'" :aria-controls="'accordion-content-' + id" :class="{'active': isOpen}" class="accordion-item__headline" @click="toggleAccordionItem">
+        <button type='button' :aria-expanded="isOpen ? 'true' : 'false'" :aria-controls="'accordion-content-' + id" :class="{'active': isOpen}" class="accordion-item__headline" @click="toggleAccordionItem">
           <h3 class="accordion-item__title" :aria-expanded="isOpen ? 'true' : 'false'">{{ title }}</h3>
           <div class="accordion-item__icon"></div>
-        </div>
+        </button>
         <div class="accordion-item__content" :aria-hidden="!isOpen ? 'true' : 'false'" :id="'accordion-content-' + id" :class="{'active': isOpen}">
           <div class="accordion-item__text">
             <slot/>

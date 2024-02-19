@@ -49,6 +49,12 @@ a.button {
     color: var(--theme-button-color-hover);
     background-position: right 18px center;
   }
+  &:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+    background-color: var(--theme-button-background-color-focus);
+    color: var(--theme-button-color-hover);
+    background-position: right 18px center;
+  }
 
   &--center {
     left: 50%;
@@ -67,6 +73,7 @@ a.button {
     &:hover {
       background-color: var(--color-cta-hover);
     }
+
   }
 
   &--green {

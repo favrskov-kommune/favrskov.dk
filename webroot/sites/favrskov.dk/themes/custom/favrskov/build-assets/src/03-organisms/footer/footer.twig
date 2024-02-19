@@ -5,9 +5,9 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12 footer__feedback-wrapper">
-            <div class="footer__feedback_label">
+            <h2 class="footer__feedback_label">
               {{ atom('feedback.text') }}
-            </div>
+            </h2>
             <div class="footer__feedback_actions">
               <a href="" class="footer__feedback--action_link js-footer__feedback--action_link footer__feedback--thumbs_up" data-feedback="yes" data-nodeid="{{node.id}}" aria-label="Syntes godt om knap">{% include '@particles/svg-icon/svg-icon.twig' with { 'attributes': '', 'svgIconName': 'thumbs-up' } %}</a>
               <a href="" class="footer__feedback--action_link js-footer__feedback--action_link footer__feedback--thumbs_down" data-feedback="no" data-nodeid="{{node.id}}"  aria-label="Syntes ikke godt om knap">{% include '@particles/svg-icon/svg-icon.twig' with { 'attributes': '', 'svgIconName': 'thumbs-up' } %}</a>
@@ -38,7 +38,7 @@
           {% for col in cols %}
             <div class="col-xs-12 col-ms-5 col-sm-4{{ loop.index == 1 ? ' col-ms-offset-1 col-sm-offset-0' }}">
               {% if col.headline %}
-                <div class="footer__headline">{{ col.headline }}</div>
+                <h3 class="footer__headline">{{ col.headline }}</h3>
               {% endif %}
               <div class="footer__content">
                 {{ col.content }}

@@ -312,7 +312,7 @@
       background-color: var(--color-cta-hover);
     }
     &:focus {
-      background-color: var(--color-cta-hover);
+      background-color: var(--color-cta-focus);
     }
   }
 

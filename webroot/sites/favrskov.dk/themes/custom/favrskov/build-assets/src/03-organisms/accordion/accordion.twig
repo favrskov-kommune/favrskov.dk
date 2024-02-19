@@ -1,13 +1,13 @@
 {{ attach_library('favrskov/accordion') }}
 
-<div{{ (not attributes ? create_attribute() : attributes).addClass(['accordion', 'js-accordion']) }} aria-expanded='false'>
+<div{{ (not attributes ? create_attribute() : attributes).addClass(['accordion', 'js-accordion']) }} aria-expanded='false' role="region">
   {% block block_content %}{% endblock %}
   <div class="accordion__header">
     {% if headline %}
       <h2 class="accordion__headline">{{ headline }}</h2>
     {% endif %}
-    <div class="accordion__toggle" @click="toggleAllItems" v-show="!openAllItems">{{ fold_out_text }}</div>
-    <div class="accordion__toggle" @click="toggleAllItems" v-show="openAllItems">{{ fold_in_text }}</div>
+    <button type='button' class="accordion__toggle" @click="toggleAllItems" v-show="!openAllItems">{{ fold_out_text }}</button>
+    <button type='button'  class="accordion__toggle" @click="toggleAllItems" v-show="openAllItems">{{ fold_in_text }}</button>
   </div>
   <div class="accordion__items">
     {% block content %}
