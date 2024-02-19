@@ -28,6 +28,10 @@
     @media (--viewport-lg-min) {
       height: calc(var(--meta-menu-height) - 1px);
     }
+
+    @media (max-height: 319px) {
+      height: auto;
+    }
   }
 }
 
@@ -43,10 +47,16 @@
     width: 100%;
     justify-content: center;
   }
+
+
 }
 
 .meta-menu-item {
   margin-right: 35px;
+
+  @media (max-width: 319px) {
+    margin-right: 8px;
+  }
 
   @media (--viewport-md-max) {
     display: flex;
