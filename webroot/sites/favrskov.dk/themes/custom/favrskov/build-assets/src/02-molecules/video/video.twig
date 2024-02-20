@@ -4,7 +4,7 @@
   {% block block_content %}{% endblock %}
   <div class="video__iframe-wrapper js-video-iframe-wrapper">{{ media }}</div>
   {{ media_image }}
-  <div class="video__play-icon js-video-play-icon">
+  <div role='button' aria-label='Afspil video' class="video__play-icon js-video-play-icon">
     {% include '@particles/svg-icon/svg-icon.twig' with {
       'attributes': '',
       'svgIconName': 'play'
