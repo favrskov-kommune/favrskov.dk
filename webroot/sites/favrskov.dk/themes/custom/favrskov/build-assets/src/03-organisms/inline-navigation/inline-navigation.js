@@ -56,3 +56,11 @@ Drupal.behaviors.inlineNavigation = {
     }, 150));
   },
 };
+
+const swiperLinks = document.querySelectorAll('.inline-navigation-item__link');
+for (let i = 0; i < swiperLinks.length; i += 1) {
+  swiperLinks[i].setAttribute('data-index', i);
+  swiperLinks[i].addEventListener('focus', (event) => {
+    flkty[0].selectCell(i, true, true);
+  });
+}
