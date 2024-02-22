@@ -2,5 +2,6 @@ cludo_search:
   path: /soegning
   defaults:
     _controller: \Drupal\favrskov_search\Controller\CludoController::search
+    _title: 'Søgning'
   requirements:
     _access: 'TRUE'
