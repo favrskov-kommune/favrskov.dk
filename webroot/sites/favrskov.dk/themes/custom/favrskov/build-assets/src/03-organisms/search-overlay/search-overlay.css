@@ -43,6 +43,7 @@
 
     @media (--viewport-md-min) {
       display: block;
+      color: white;
     }
   }
 
@@ -120,7 +121,14 @@
         height: 25px;
       }
     }
+
+    &:focus {
+      text-decoration: underline;
+      border-bottom: 2px solid white;
+    }
   }
+
+  
 
   &--open {
     opacity: 1;
