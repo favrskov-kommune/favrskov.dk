@@ -34,9 +34,13 @@ Drupal.behaviors.video = {
       const playIcon = currentVideo.querySelector('.js-video-play-icon');
       const iframeWrapper = currentVideo.querySelector('.js-video-iframe-wrapper');
       currentVideo.classList.add('loaded');
-
       playIcon.addEventListener('click', (e) => {
         playVideo(e.currentTarget.parentNode, iframeWrapper);
+      });
+      document.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+          playIcon.click();
+        }
       });
     }
   },
