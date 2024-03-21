@@ -5,6 +5,7 @@ use Drupal\Core\Pager\PagerManagerInterface;
 use Drupal\Core\Url;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Site\Settings;
 
 /**
 * Alter the list of projects to be updated by locale's interface translation.
@@ -115,12 +116,12 @@ function favrskov_hearings_node_update(\Drupal\Core\Entity\EntityInterface $enti
 }
 
 function _favrskov_hearings_push_to_cludo($page_url) {
-  if (empty(getenv('CLUDO_API_KEY'))) {
+  if (empty(Settings::get('hearings.cludo.apikey'))) {
     return;
   }
-  $url = "https://api.cludo.com/api/v3/" . getenv('CLUDO_CUSTOMER_ID') . "/content/" . getenv('CLUDO_HEARINGS_CRAWLER_ID') . "/pushurls";
+  $url = "https://api.cludo.com/api/v3/" . Settings::get('hearings.cludo.customerid') . "/content/" . Settings::get('hearings.cludo.crawlerid') . "/pushurls";
   \Drupal::httpClient()->post($url, [
     'json' => [$page_url],
-    'auth' => [getenv('CLUDO_CUSTOMER_ID'), getenv('CLUDO_API_KEY')]
+    'auth' => [Settings::get('hearings.cludo.customerid'), Settings::get('hearings.cludo.apikey')]
   ]);
 }
