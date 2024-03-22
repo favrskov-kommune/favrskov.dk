@@ -120,12 +120,12 @@ function favrskov_hearings_node_update(EntityInterface $entity) {
 }
 
 function _favrskov_hearings_push_to_cludo($page_url) {
-  if (empty(Settings::get('hearings.cludo.apikey'))) {
+  if (empty(getenv('CLUDO_API_KEY'))) {
     return;
   }
-  $url = "https://api.cludo.com/api/v3/" . Settings::get('hearings.cludo.customerid') . "/content/" . Settings::get('hearings.cludo.crawlerid') . "/pushurls";
+  $url = "https://api.cludo.com/api/v3/" . getenv('CLUDO_CUSTOMER_ID') . "/content/" . getenv('CLUDO_HEARINGS_CRAWLER_ID') . "/pushurls";
   \Drupal::httpClient()->post($url, [
     'json' => [$page_url],
-    'auth' => [Settings::get('hearings.cludo.customerid'), Settings::get('hearings.cludo.apikey')]
+    'auth' => [getenv('CLUDO_CUSTOMER_ID'), getenv('CLUDO_API_KEY')]
   ]);
 }
