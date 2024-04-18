@@ -1,61 +1,59 @@
-import Vue from "vue";
+import Vue from 'vue';
 
-require("../../../config/vue.config")(Vue);
+require('../../../config/vue.config')(Vue);
 
 Drupal.behaviors.burgerMenu = {
   attach(context) {
-    const burgerMenu = document.getElementById("js-burger-menu");
-    const showSubNavigationClass = "burger-menu-list--expanded";
-    if (!burgerMenu || burgerMenu.classList.contains("loaded")) {
+    const burgerMenu = document.getElementById('js-burger-menu');
+    const showSubNavigationClass = 'burger-menu-list--expanded';
+    if (!burgerMenu || burgerMenu.classList.contains('loaded')) {
       return;
     }
-    burgerMenu.classList.add("loaded");
+    burgerMenu.classList.add('loaded');
 
     function addTabindex(selector) {
       const addTabIndex = document.querySelectorAll(selector);
       for (let i = 0; i < addTabIndex.length; i += 1) {
-        addTabIndex[i].setAttribute("tabindex", 0);
+        addTabIndex[i].setAttribute('tabindex', 0);
       }
     }
     function removeTabindex(selector) {
       const removeTabIndex = document.querySelectorAll(selector);
       for (let i = 0; i < removeTabIndex.length; i += 1) {
-        removeTabIndex[i].removeAttribute("tabindex");
+        removeTabIndex[i].removeAttribute('tabindex');
       }
     }
 
     function negativeTabindex(selector) {
       const removeTabIndex = document.querySelectorAll(selector);
       for (let i = 0; i < removeTabIndex.length; i += 1) {
-        removeTabIndex[i].setAttribute("tabindex", -1);
+        removeTabIndex[i].setAttribute('tabindex', -1);
       }
     }
 
     function addAriahidden(selector) {
       const addAriaHidden = document.querySelectorAll(selector);
-      for (let i = 0; i < addAriaHidden.length; i += 1)
-        addAriaHidden[i].setAttribute("aria-hidden", "true");
+      for (let i = 0; i < addAriaHidden.length; i += 1) addAriaHidden[i].setAttribute('aria-hidden', 'true');
     }
 
     function removeAriahidden(selector) {
       const removeAriaHidden = document.querySelectorAll(selector);
-      for (let i = 0; i < removeAriaHidden.length; i += 1)
-        removeAriaHidden[i].setAttribute("aria-hidden", "false");
+      for (let i = 0; i < removeAriaHidden.length; i += 1) removeAriaHidden[i].setAttribute('aria-hidden', 'false');
     }
 
-    negativeTabindex(".burger-menu-list-item__link");
-    negativeTabindex(".burger-menu-list-item__expand-trigger");
+    negativeTabindex('.burger-menu-list-item__link');
+    negativeTabindex('.burger-menu-list-item__expand-trigger');
 
     const vm = new Vue({
-      delimiters: ["${", "}"],
+      delimiters: ['${', '}'],
       el: burgerMenu,
       data: {
-        isOpen: false
+        isOpen: false,
       },
       mounted() {
-        const burger = document.getElementById("js-burger");
+        const burger = document.getElementById('js-burger');
         if (burger) {
-          burger.addEventListener("click", () => {
+          burger.addEventListener('click', () => {
             this.openBurgerMenu();
           });
         }
@@ -65,67 +63,67 @@ Drupal.behaviors.burgerMenu = {
           e.preventDefault();
           const trigger = e.currentTarget;
           const parent = trigger.closest(
-            ".js-burger-menu-list-item--expandable"
+            '.js-burger-menu-list-item--expandable',
           );
           // this.hideSubNavigations(parent);
           const expandbutton = trigger.closest(
-            ".burger-menu-list-item__expand-trigger"
+            '.burger-menu-list-item__expand-trigger',
           );
-          if (expandbutton.getAttribute("aria-expanded") === "false") {
-            expandbutton.setAttribute("aria-expanded", "true");
+          if (expandbutton.getAttribute('aria-expanded') === 'false') {
+            expandbutton.setAttribute('aria-expanded', 'true');
           } else {
-            expandbutton.setAttribute("aria-expanded", "false");
+            expandbutton.setAttribute('aria-expanded', 'false');
           }
           parent.classList.toggle(showSubNavigationClass);
         },
         openBurgerMenu() {
           this.isOpen = true;
           document
-            .querySelector("#js-burger-menu")
-            .removeAttribute("aria-hidden");
+            .querySelector('#js-burger-menu')
+            .removeAttribute('aria-hidden');
           document
-            .querySelector("#js-burger-menu")
-            .setAttribute("aria-hidden", "false");
-          document.body.classList.add("no-scroll");
-          document.addEventListener("keydown", this.handleEsc);
-          document.addEventListener("click", this.handleClickOutside);
-          addAriahidden("#js-container");
-          addAriahidden("#js-search-overlay");
-          addAriahidden("#js-main-content-link");
-          negativeTabindex("#js-container");
-          negativeTabindex("a");
-          negativeTabindex("input");
-          negativeTabindex("button");
-          addTabindex(".burger-menu-list-item__link");
-          addTabindex(".burger-menu-list-item__expand-trigger");
-          addTabindex(".burger-menu__close");
+            .querySelector('#js-burger-menu')
+            .setAttribute('aria-hidden', 'false');
+          document.body.classList.add('no-scroll');
+          document.addEventListener('keydown', this.handleEsc);
+          document.addEventListener('click', this.handleClickOutside);
+          addAriahidden('#js-container');
+          addAriahidden('#js-search-overlay');
+          addAriahidden('#js-main-content-link');
+          negativeTabindex('#js-container');
+          negativeTabindex('a');
+          negativeTabindex('input');
+          negativeTabindex('button');
+          addTabindex('.burger-menu-list-item__link');
+          addTabindex('.burger-menu-list-item__expand-trigger');
+          addTabindex('.burger-menu__close');
         },
         closeBurgerMenu() {
           this.isOpen = false;
-          document.removeEventListener("keydown", this.handleEsc);
-          document.removeEventListener("click", this.handleClickOutside);
+          document.removeEventListener('keydown', this.handleEsc);
+          document.removeEventListener('click', this.handleClickOutside);
           document
-            .querySelector("#js-burger-menu")
-            .removeAttribute("aria-hidden");
+            .querySelector('#js-burger-menu')
+            .removeAttribute('aria-hidden');
           document
-            .querySelector("#js-burger-menu")
-            .setAttribute("aria-hidden", "true");
-          document.body.classList.remove("no-scroll");
+            .querySelector('#js-burger-menu')
+            .setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('no-scroll');
           // Alter tabindex on elements to improve user accessibility
-          removeTabindex("#js-container");
-          removeTabindex("a");
-          removeTabindex("input");
-          removeTabindex("button");
-          removeAriahidden("#js-container");
-          negativeTabindex("#js-burger-menu");
-          negativeTabindex(".burger-menu-list-item__link");
-          negativeTabindex(".burger-menu-list-item__expand-trigger");
-          negativeTabindex(".burger-menu__close");
-          document.getElementById("js-burger").focus();
+          removeTabindex('#js-container');
+          removeTabindex('a');
+          removeTabindex('input');
+          removeTabindex('button');
+          removeAriahidden('#js-container');
+          negativeTabindex('#js-burger-menu');
+          negativeTabindex('.burger-menu-list-item__link');
+          negativeTabindex('.burger-menu-list-item__expand-trigger');
+          negativeTabindex('.burger-menu__close');
+          document.getElementById('js-burger').focus();
         },
         hideSubNavigations(parent) {
           const items = document.querySelectorAll(
-            ".js-burger-menu-list-item--expandable"
+            '.js-burger-menu-list-item--expandable',
           );
           for (let i = 0; i < items.length; i += 1) {
             if (parent !== items[i]) {
@@ -139,16 +137,15 @@ Drupal.behaviors.burgerMenu = {
           }
         },
         handleClickOutside(e) {
-          const burgerMenuElem = document.getElementById("js-burger-menu");
-          const burgerElem = document.getElementById("js-burger");
-          const isClickInside =
-            burgerMenuElem.contains(e.target) || burgerElem.contains(e.target);
+          const burgerMenuElem = document.getElementById('js-burger-menu');
+          const burgerElem = document.getElementById('js-burger');
+          const isClickInside = burgerMenuElem.contains(e.target) || burgerElem.contains(e.target);
 
           if (!isClickInside) {
             this.closeBurgerMenu();
           }
-        }
-      }
+        },
+      },
     });
-  }
+  },
 };
