@@ -100,6 +100,11 @@
       font-size: var(--base-font-size-large);
     }
 
+    @media (max-width: 319px) {
+      line-height: 32px;
+      font-size: 14px
+    }
+
     &::after {
       content: '';
       position: absolute;
