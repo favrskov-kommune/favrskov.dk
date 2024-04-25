@@ -13,27 +13,27 @@ Drupal.behaviors.accordion = {
       props: ['title', 'id', 'hidden'],
       data() {
         return {
-          isOpen: false,
+          isOpen: false
         };
       },
       methods: {
         toggleAccordionItem() {
           this.isOpen = !this.isOpen;
-        },
+        }
       },
       template: `
         <div class="accordion-item" v-show="!hidden" ref="accordionItemRef">
         <div :aria-expanded="isOpen ? 'true' : 'false'" :aria-controls="'accordion-content-' + id" :class="{'active': isOpen}" class="accordion-item__headline" @click="toggleAccordionItem">
           <h3 class="accordion-item__title">{{ title }}</h3>
           <div class="accordion-item__icon"></div>
-        </button>
+        </div>
         <div class="accordion-item__content" :aria-hidden="!isOpen ? 'true' : 'false'" :id="'accordion-content-' + id" :class="{'active': isOpen}">
           <div class="accordion-item__text">
             <slot/>
           </div>
         </div>
         </div>
-      `,
+      `
     };
 
     for (let i = 0; i < accordions.length; i += 1) {
@@ -42,10 +42,10 @@ Drupal.behaviors.accordion = {
         delimiters: ['${', '}'],
         el: accordions[i],
         data: {
-          openAllItems: false,
+          openAllItems: false
         },
         components: {
-          accordionItem,
+          accordionItem
         },
         methods: {
           toggleAllItems(e) {
@@ -54,9 +54,9 @@ Drupal.behaviors.accordion = {
             for (let x = 0; x < this.$children.length; x += 1) {
               this.$children[x].isOpen = this.openAllItems;
             }
-          },
-        },
+          }
+        }
       });
     }
-  },
+  }
 };
