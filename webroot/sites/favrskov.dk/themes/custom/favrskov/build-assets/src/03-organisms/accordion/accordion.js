@@ -32,6 +32,7 @@ Drupal.behaviors.accordion = {
             <slot/>
           </div>
         </div>
+        </div>
       `
     };
 
