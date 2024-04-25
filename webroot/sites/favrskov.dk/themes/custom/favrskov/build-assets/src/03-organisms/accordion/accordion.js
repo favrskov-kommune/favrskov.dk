@@ -1,25 +1,25 @@
-import Vue from 'vue';
+import Vue from "vue";
 
-require('../../../config/vue.config')(Vue);
+require("../../../config/vue.config")(Vue);
 
 Drupal.behaviors.accordion = {
   attach(context) {
-    const accordions = document.querySelectorAll('.js-accordion:not(.loaded)');
+    const accordions = document.querySelectorAll(".js-accordion:not(.loaded)");
     if (accordions.length === 0) {
       return;
     }
 
     const accordionItem = {
-      props: ['title', 'id', 'hidden'],
+      props: ["title", "id", "hidden"],
       data() {
         return {
-          isOpen: false,
+          isOpen: false
         };
       },
       methods: {
         toggleAccordionItem() {
           this.isOpen = !this.isOpen;
-        },
+        }
       },
       template: `
         <div class="accordion-item" v-show="!hidden" ref="accordionItemRef">
@@ -32,19 +32,19 @@ Drupal.behaviors.accordion = {
             <slot/>
           </div>
         </div>
-      `,
+      `
     };
 
     for (let i = 0; i < accordions.length; i += 1) {
-      accordions[i].classList.add('loaded');
+      accordions[i].classList.add("loaded");
       const vm = new Vue({
-        delimiters: ['${', '}'],
+        delimiters: ["${", "}"],
         el: accordions[i],
         data: {
-          openAllItems: false,
+          openAllItems: false
         },
         components: {
-          accordionItem,
+          accordionItem
         },
         methods: {
           toggleAllItems(e) {
@@ -53,9 +53,9 @@ Drupal.behaviors.accordion = {
             for (let x = 0; x < this.$children.length; x += 1) {
               this.$children[x].isOpen = this.openAllItems;
             }
-          },
-        },
+          }
+        }
       });
     }
-  },
+  }
 };
