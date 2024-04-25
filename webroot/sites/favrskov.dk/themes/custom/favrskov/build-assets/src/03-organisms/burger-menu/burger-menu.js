@@ -62,13 +62,9 @@ Drupal.behaviors.burgerMenu = {
         triggerSubNavigation(e) {
           e.preventDefault();
           const trigger = e.currentTarget;
-          const parent = trigger.closest(
-            '.js-burger-menu-list-item--expandable',
-          );
+          const parent = trigger.closest('.js-burger-menu-list-item--expandable');
           // this.hideSubNavigations(parent);
-          const expandbutton = trigger.closest(
-            '.burger-menu-list-item__expand-trigger',
-          );
+          const expandbutton = trigger.closest('.burger-menu-list-item__expand-trigger');
           if (expandbutton.getAttribute('aria-expanded') === 'false') {
             expandbutton.setAttribute('aria-expanded', 'true');
           } else {
@@ -122,9 +118,7 @@ Drupal.behaviors.burgerMenu = {
           document.getElementById('js-burger').focus();
         },
         hideSubNavigations(parent) {
-          const items = document.querySelectorAll(
-            '.js-burger-menu-list-item--expandable',
-          );
+          const items = document.querySelectorAll('.js-burger-menu-list-item--expandable');
           for (let i = 0; i < items.length; i += 1) {
             if (parent !== items[i]) {
               items[i].classList.remove(showSubNavigationClass);
