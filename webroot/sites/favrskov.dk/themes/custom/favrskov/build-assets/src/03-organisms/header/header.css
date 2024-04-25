@@ -33,6 +33,11 @@ body.gin--horizontal-toolbar header.header {
     @media (--viewport-md-max) {
       order: 1;
     }
+    @media (max-width:319px) {
+      img {
+        height: 32px
+      }
+    }
   }
 
   @media (--viewport-md-max) {
@@ -61,6 +66,10 @@ body.gin--horizontal-toolbar header.header {
       height: var(--header-height);
       align-self: end;
       justify-content: center;
+    }
+  
+    @media (max-width:319px) {
+      height: 32px
     }
 
     .burger {
