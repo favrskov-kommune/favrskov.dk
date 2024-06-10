@@ -1,77 +1,124 @@
-import Vue from 'vue';
+import Vue from "vue";
 
-require('../../../config/vue.config')(Vue);
+require("../../../config/vue.config")(Vue);
 
-document.addEventListener('DOMContentLoaded', () => {
-  const searchOverlay = document.getElementById('js-search-overlay');
+document.addEventListener("DOMContentLoaded", () => {
+  const searchOverlay = document.getElementById("js-search-overlay");
   if (!searchOverlay) {
     return;
   }
 
-  function addTabindex(selector) {
-    const addTabIndex = document.querySelectorAll(selector);
-    for (let i = 0; i < addTabIndex.length; i += 1) {
-      addTabIndex[i].setAttribute('tabindex', 0);
-    }
+  const focuseAbleHtmlElements = "button, input, a";
+
+  function addTabindex(element) {
+    element.setAttribute("tabindex", 0);
+    const children = element.querySelectorAll(focuseAbleHtmlElements);
+    children.forEach(child => {
+      child.setAttribute("tabindex", 0);
+    });
   }
 
-  function removeTabindex(selector) {
-    const removeTabIndex = document.querySelectorAll(selector);
-    for (let i = 0; i < removeTabIndex.length; i += 1) {
-      removeTabIndex[i].removeAttribute('tabindex');
-    }
+  function negativeTabindex(element) {
+    element.setAttribute("tabindex", -1);
+    const children = element.querySelectorAll(focuseAbleHtmlElements);
+    children.forEach(child => {
+      child.setAttribute("tabindex", -1);
+    });
   }
 
-  function negativeTabindex(selector) {
-    const removeTabIndex = document.querySelectorAll(selector);
-    for (let i = 0; i < removeTabIndex.length; i += 1) {
-      removeTabIndex[i].setAttribute('tabindex', -1);
-    }
+  function addAriahidden(element) {
+    element.setAttribute("aria-hidden", "true");
+    const children = element.querySelectorAll(focuseAbleHtmlElements);
+    children.forEach(child => {
+      child.setAttribute("aria-hidden", "true");
+    });
   }
+
+  function removeAriahidden(element) {
+    element.setAttribute("aria-hidden", "false");
+    const children = element.querySelectorAll(focuseAbleHtmlElements);
+    children.forEach(child => {
+      child.setAttribute("aria-hidden", "false");
+    });
+  }
+
+  function addTabFocus(element) {
+    addTabindex(element);
+    removeAriahidden(element);
+    const focusableElements = element.querySelectorAll("button, input, a");
+    if (focusableElements.length === 0) {
+      return;
+    }
+    const firstFocusableElement = focusableElements[0];
+    const lastFocusableElement =
+      focusableElements[focusableElements.length - 1];
+    const KEYCODE_TAB = 9;
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Tab" || e.keyCode === KEYCODE_TAB) {
+        if (e.shiftKey) {
+          // If Shift + Tab
+          if (document.activeElement === firstFocusableElement) {
+            lastFocusableElement.focus();
+            e.preventDefault();
+          }
+        } else if (document.activeElement === lastFocusableElement) {
+          firstFocusableElement.focus();
+          e.preventDefault();
+        }
+      }
+    });
+  }
+
+  function removeTabFocus(element) {
+    negativeTabindex(element);
+    addAriahidden(element);
+    document.removeEventListener("keydown", this.handleEsc);
+  }
+
+  negativeTabindex(searchOverlay);
+  addAriahidden(searchOverlay);
 
   const vm = new Vue({
-    delimiters: ['${', '}'],
+    delimiters: ["${", "}"],
     el: searchOverlay,
     data: {
-      isOpen: false,
+      isOpen: false
     },
     mounted() {
       // Run function on `searchToggle` event
-      document.addEventListener('searchToggle', () => {
+      document.addEventListener("searchToggle", () => {
         this.openSearchOverlay();
       });
     },
     methods: {
       openSearchOverlay() {
-        const searchOverlayInput = document.getElementById('js-search-overlay-input');
+        const searchOverlayEl = document.getElementById("js-search-overlay");
+        const searchOverlayInput = document.getElementById(
+          "js-search-overlay-input"
+        );
         searchOverlayInput.focus();
         this.isOpen = true;
-        document.body.classList.add('no-scroll');
-        document.addEventListener('keydown', this.handleEsc);
-        CludoSearch.registerSearchFormElement('#overlay-cludo-search-form');
-        negativeTabindex('a');
-        negativeTabindex('input');
-        addTabindex('#overlay-cludo-search-form input');
-        addTabindex('#overlay-cludo-search-form button');
-        addTabindex('.search-overlay__close');
-        document.getElementById('js-search-overlay-input').focus();
+        document.body.classList.add("no-scroll");
+        document.addEventListener("keydown", this.handleEsc);
+        CludoSearch.registerSearchFormElement("#overlay-cludo-search-form");
+        searchOverlayInput.focus();
+        addTabFocus(searchOverlayEl);
       },
       closeSearchOverlay() {
-        document.removeEventListener('keydown', this.handleEsc);
         this.isOpen = false;
-        document.body.classList.remove('no-scroll');
-        document.querySelector('.js-search-toggle').focus();
-        removeTabindex('a');
-        removeTabindex('input');
-        negativeTabindex('#overlay-cludo-search-form input');
-        negativeTabindex('#overlay-cludo-search-form button');
-        document.getElementById('js-search-toggle').focus();
+        const searchOverlayEl = document.getElementById("js-search-overlay");
+        document.querySelector(".js-search-toggle").focus();
+        removeTabFocus(searchOverlayEl);
+        document.removeEventListener("keydown", this.handleEsc);
+        document.body.classList.remove("no-scroll");
+        document.getElementById("js-search-toggle").focus();
       },
       handleEsc(e) {
         if (e.keyCode === 27) {
           this.closeSearchOverlay();
         }
-      },
-    },
+      }
+    }
   });
 });
