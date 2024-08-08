@@ -220,6 +220,9 @@
             },
             "drupal/webform": {
                 "(#3458611) Removing the polyfill-fastly.io library of webform.libraries.yml": "https://www.drupal.org/files/issues/2024-07-02/3458611-removing-the-polyfill-io.patch"
+            },
+            "choices/choices": {
+                "(#3457416) choices/choices 9.0.1 is affected by polyfill.io": "https://www.drupal.org/files/issues/2024-06-27/3457416-choices-affected-by-polyfill-io.patch"
             }
         }
     }
