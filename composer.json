@@ -219,7 +219,7 @@
                 "(#2862044) Default weight value is not saved, unless default entity is not specified too": "https://www.drupal.org/files/issues/2023-10-10/entity_hierarchy_2862044_default-weight_22.patch"
             },
             "drupal/webform": {
-
+                "(#3458611) Removing the polyfill-fastly.io library of webform.libraries.yml": "https://www.drupal.org/files/issues/2024-07-02/3458611-removing-the-polyfill-io.patch"
             }
         }
     }
