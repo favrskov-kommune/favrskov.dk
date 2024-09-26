@@ -15,6 +15,7 @@ settings:
       - italic
       - alignment
       - superscript
+      - subscript
       - '|'
       - link
       - '|'
