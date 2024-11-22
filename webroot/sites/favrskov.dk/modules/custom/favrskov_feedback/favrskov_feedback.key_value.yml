@@ -117,5 +117,23 @@ muni_categories:
     name: Pensionistbevis
   kontanthjælp_uddannelseshjælp:
     name: Kontanthjælpsydelsen uddannelseshjælp
+  legitimationskort:
+    name: Legitimationskort
+  borgertip:
+    name: Borgertip
+  fleksjob:
+    name: Fleksjob
+  jobafklaringsforløb:
+    name: Jobafklaringsforløb
+  ressourceforløb:
+    name: Ressourceforløb
+  revalidering:
+    name: Revalidering
+  ferie_offentlige_ydelser:
+    name: Ferie og offentlige ydelser
+  ledighed:
+    name: Ledighed
+  aula:
+    name: Aula
   empty:
     name: Tom kategori
