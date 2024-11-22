@@ -59,4 +59,5 @@ form_settings:
     default_value: false
     disable: false
     hidden: false
-take_ownership: 0
+no_suffix: false
+take_ownership: true
