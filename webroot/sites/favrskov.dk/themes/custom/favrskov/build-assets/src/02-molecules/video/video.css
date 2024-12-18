@@ -21,6 +21,9 @@
   &--inverted {
     color: white;
   }
+  & .contextual-region {
+    width: 100%;
+  }
 
   &::before {
     content: '';

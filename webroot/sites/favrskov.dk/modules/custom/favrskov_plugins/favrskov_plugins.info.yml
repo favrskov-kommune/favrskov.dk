@@ -1,0 +1,5 @@
+name: Favrskov Plugins
+description: Provides custom plugins for Favrskov Kommune.
+type: module
+core_version_requirement: ^9 || ^10
+package: Favrskov

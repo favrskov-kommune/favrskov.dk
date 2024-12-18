@@ -43,6 +43,7 @@ module:
   favrskov_hearings: 0
   favrskov_maps: 0
   favrskov_news: 0
+  favrskov_plugins: 0
   favrskov_search: 0
   field: 0
   field_group: 0
