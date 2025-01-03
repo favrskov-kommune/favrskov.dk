@@ -1,0 +1,5 @@
+media_library_add_form_cdn_video:
+  version: VERSION
+  css:
+    theme:
+      css/media-library-add-form-cdn-video.css: {}
