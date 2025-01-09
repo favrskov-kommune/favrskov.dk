@@ -68,6 +68,7 @@
         "drupal/inline_block_title_automatic": "^1.0",
         "drupal/layout_builder_at": "^2.0",
         "drupal/layout_builder_modal": "^1.0",
+        "drupal/layout_builder_reorder": "^1.0",
         "drupal/layout_builder_restrictions": "^2.0",
         "drupal/linkit": "^6.1",
         "drupal/media_library_bulk_upload": "^1.0",
@@ -80,7 +81,7 @@
         "drupal/pathauto": "^1.0",
         "drupal/rdf": "^2.1",
         "drupal/redirect": "^1.0",
-        "drupal/redis": "^1.5",
+        "drupal/redis": "^1.8",
         "drupal/responsive_table_filter": "^2.0",
         "drupal/role_delegation": "^1.1",
         "drupal/scheduled_transitions": "^2.3",
@@ -204,7 +205,8 @@
         },
         "patches": {
             "drupal/core": {
-                "(#2999491) Allow creation of reuseable inline blocks": "https://www.drupal.org/files/issues/2020-05-21/2999491--reusable-title-display--49.patch"
+                "(#2999491) Allow creation of reuseable inline blocks": "https://www.drupal.org/files/issues/2020-05-21/2999491--reusable-title-display--49.patch",
+                "(#3080606) [PP-1] Reorder Layout Builder sections": "https://www.drupal.org/files/issues/2023-05-30/3080606-100.patch"
             },
             "drupal/paragraphs": {
                 "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2020-06-25/paragraphs-2901390-51.patch"
