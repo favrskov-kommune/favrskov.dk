@@ -1,1 +1,2 @@
-cloneable_entities: {  }
+cloneable_entities:
+  - node
