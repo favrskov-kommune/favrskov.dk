@@ -1,0 +1,10 @@
+ul.js-media-library-add-form-added-media {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+ul.js-media-library-add-form-added-media .form-wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}

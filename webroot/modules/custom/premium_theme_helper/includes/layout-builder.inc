@@ -156,4 +156,9 @@ function premium_theme_helper_form_alter(array &$form, FormStateInterface $form_
   ])) {
     $form['#attached']['library'][] = 'premium_core/dialog';
   }
+
+  // Add library to media library add form cdn video.
+  if ($form_id == 'media_library_add_form_cdn_video') {
+    $form['#attached']['library'][] = 'premium_theme_helper/media_library_add_form_cdn_video';
+  }
 }

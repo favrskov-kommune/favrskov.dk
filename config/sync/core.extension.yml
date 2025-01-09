@@ -43,6 +43,7 @@ module:
   favrskov_hearings: 0
   favrskov_maps: 0
   favrskov_news: 0
+  favrskov_plugins: 0
   favrskov_search: 0
   field: 0
   field_group: 0
@@ -99,7 +100,6 @@ module:
   promote_disable: 0
   redirect: 0
   redirect_404: 0
-  redis: 0
   responsive_image: 0
   responsive_table_filter: 0
   role_delegation: 0
