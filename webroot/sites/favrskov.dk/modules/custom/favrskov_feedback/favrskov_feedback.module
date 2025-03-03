@@ -47,12 +47,5 @@ function favrskov_feedback_preprocess_node(&$variables) {
     } else {
       $variables['#attached']['library'][] = 'favrskov_feedback/muni.test';
     }
-    $category = $node->get('field_chatbot_muni')->first()->getValue()['value'];
-    if ($category == 'empty') {
-      $category = '';
-    }
-    $variables['#attached']['drupalSettings']['muni']['municipalityCode'] = 710;
-    $variables['#attached']['drupalSettings']['muni']['chatbotName'] = 'Muni';
-    $variables['#attached']['drupalSettings']['muni']['category'] = $category;
   }
 }
