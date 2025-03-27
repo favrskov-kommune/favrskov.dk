@@ -1,0 +1,18 @@
+<?php
+
+use Drupal\node\Entity\Node;
+
+/**
+ * Muni for all
+ */
+function favrskov_feedback_update_10001() {
+  $nodes = Node::loadMultiple();
+  /** @var Node $node */
+  foreach ($nodes as $node) {
+    if (!$node->hasField('field_chatbot_muni')) {
+      continue;
+    }
+    $node->set('field_chatbot_muni', ['value' => 'pas']);
+    $node->save();
+  }
+}
