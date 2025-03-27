@@ -15,7 +15,9 @@ label: 'Chatbot Muni'
 description: 'Vælg en kategori for at vise Muni chatbotten på siden'
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: pas
 default_value_callback: ''
 settings: {  }
 field_type: dynamic_key_value
