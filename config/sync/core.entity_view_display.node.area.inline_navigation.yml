@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.area.content_hierarchy
     - field.field.node.area.field_area_identifier
     - field.field.node.area.field_area_type_identifier
+    - field.field.node.area.field_color_theme
     - field.field.node.area.field_header
     - field.field.node.area.field_list_description
     - field.field.node.area.field_teaser
@@ -25,6 +26,11 @@ targetEntityType: node
 bundle: area
 mode: inline_navigation
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_header:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -43,6 +49,7 @@ hidden:
   content_hierarchy: true
   field_area_identifier: true
   field_area_type_identifier: true
+  field_color_theme: true
   field_list_description: true
   field_teaser: true
   langcode: true

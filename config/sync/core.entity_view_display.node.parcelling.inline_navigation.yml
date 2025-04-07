@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.inline_navigation
     - field.field.node.parcelling.content_hierarchy
+    - field.field.node.parcelling.field_color_theme
     - field.field.node.parcelling.field_header
     - field.field.node.parcelling.field_parcelling_identifier
     - field.field.node.parcelling.field_parcelling_parcels
@@ -23,6 +24,11 @@ targetEntityType: node
 bundle: parcelling
 mode: inline_navigation
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_header:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -39,6 +45,7 @@ content:
     region: content
 hidden:
   content_hierarchy: true
+  field_color_theme: true
   field_parcelling_identifier: true
   field_parcelling_parcels: true
   langcode: true
