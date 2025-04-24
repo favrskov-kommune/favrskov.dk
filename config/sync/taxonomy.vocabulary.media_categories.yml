@@ -6,3 +6,4 @@ name: Mediekategorier
 vid: media_categories
 description: 'Brugt til at organisere medie'
 weight: 0
+new_revision: false

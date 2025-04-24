@@ -6,3 +6,4 @@ name: Nyhedskategorier
 vid: news_categories
 description: 'Brugt til at organisere nyheder i sektioner'
 weight: 0
+new_revision: false

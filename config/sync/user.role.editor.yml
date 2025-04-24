@@ -18,6 +18,7 @@ dependencies:
     - media.type.remote_video
     - media.type.video
     - node.type.area
+    - node.type.editor_manual
     - node.type.hearing_page
     - node.type.news
     - node.type.page
@@ -38,6 +39,7 @@ dependencies:
     - entity_clone
     - file
     - filter
+    - help
     - layout_builder
     - media
     - media_icons
@@ -66,6 +68,7 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
+  - 'access help pages'
   - 'access media overview'
   - 'access own webform configuration'
   - 'access site reports'

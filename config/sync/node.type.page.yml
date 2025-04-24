@@ -14,7 +14,7 @@ _core:
 name: 'Simpel side'
 type: page
 description: 'Brug <em>simple sider</em> til dit statiske indhold, som f.eks. en "om os"-side.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

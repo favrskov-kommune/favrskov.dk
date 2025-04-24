@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.inline_navigation_campaign
 label: 'Inline Navigation Campaign'
+description: ''
 targetEntityType: node
 cache: true

@@ -1,6 +1,5 @@
 _core:
   default_config_hash: VCYGRjvSPbvTIEwWc0wPz0fx1VcQEoLcHNmBQkmolYI
-langcode: da
 enabled_entity_types:
   - user
 punctuation:

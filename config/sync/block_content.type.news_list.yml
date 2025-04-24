@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: news_list
 label: Nyhedsliste
-revision: 0
+revision: false
 description: ''

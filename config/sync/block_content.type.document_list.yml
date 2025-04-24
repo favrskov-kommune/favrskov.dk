@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: document_list
 label: 'Document list'
-revision: 0
+revision: false
 description: ''

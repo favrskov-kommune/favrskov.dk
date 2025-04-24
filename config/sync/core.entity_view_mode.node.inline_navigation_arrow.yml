@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.inline_navigation_arrow
 label: 'Inline Navigation Arrow'
+description: ''
 targetEntityType: node
 cache: true
