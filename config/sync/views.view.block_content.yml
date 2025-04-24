@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: 2J0rd5cWfFsdSX-kAb0f9EzvC0_vn4NxGlUpOQAXeOU
 id: block_content
-label: Blocks
+label: 'Brugerdefineret blokbibliotek'
 module: views
 description: 'Find og håndtér brugerdefinerede blokke.'
 tag: default
@@ -21,7 +21,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Blocks
+      title: 'Brugerdefineret blokbibliotek'
       fields:
         info:
           id: info
@@ -273,6 +273,7 @@ display:
         type: mini
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 50
           total_pages: null
           id: 0
@@ -535,7 +536,7 @@ display:
       path: admin/content/block
       menu:
         type: tab
-        title: Blocks
+        title: 'Brugerdefineret blokbibliotek'
         description: 'Create and edit block content.'
         weight: 0
         expanded: false

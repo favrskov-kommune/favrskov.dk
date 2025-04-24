@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: contact
 label: Kontakt
-revision: 0
+revision: false
 description: ''

@@ -6,5 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.inline_teaser
 label: 'Inline teaser'
+description: ''
 targetEntityType: paragraph
 cache: true

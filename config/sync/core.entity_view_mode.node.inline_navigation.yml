@@ -8,5 +8,6 @@ _core:
   default_config_hash: 0h2uuJNaCDa2xDVxP37hvBdAbpls_RLu7quvkv1_QnE
 id: node.inline_navigation
 label: 'Inline navigation'
+description: ''
 targetEntityType: node
 cache: true

@@ -1,6 +1,5 @@
 _core:
   default_config_hash: 4qVz27mvzjCZOQkd03vi4Ipqcf8m53p6xPVW-G0tXIA
-langcode: da
 default_transport: swiftmailer
 override:
   user: 3

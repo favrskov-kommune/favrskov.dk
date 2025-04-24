@@ -5,6 +5,6 @@ dependencies: {  }
 _core:
   default_config_hash: rHj0msK71uw3IYZP3RjHcfUi6SxNzHyYZ3givdkhsn8
 id: divider
-label: Divider
-revision: 0
+label: Delelinje
+revision: false
 description: 'En blok der indeholder et divider.'
