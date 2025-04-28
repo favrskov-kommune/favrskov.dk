@@ -505,9 +505,9 @@ class ParcelImportService {
    * Get identifiers for all parcelling data currently known to the system
    */
   private function fetchCurrentDataIdentifiers() {
-    $boligpage = atom_view('parcelling.bolig')->getData();
-    $erhvervpage = atom_view('parcelling.erhverv')->getData();
-    $storparcelpage = atom_view('parcelling.storparcel')->getData();
+    $boligpage = Atom::getView('parcelling.bolig')->getData();
+    $erhvervpage = Atom::getView('parcelling.erhverv')->getData();
+    $storparcelpage = Atom::getView('parcelling.storparcel')->getData();
 
     $identifiers = [
       'bolig' => ['nid' => reset($boligpage), 'areas' => [], 'feed' => 'https://webkort.favrskov.dk/spatialmap?page=grundsalg-get-parcel'],
