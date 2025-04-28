@@ -25,7 +25,17 @@ third_party_settings:
         layout_id: layout_builder_blank
         layout_settings:
           label: ''
-        components: {  }
+        components:
+          88bb3bc3-e2bd-42eb-a2de-25a86a094502:
+            uuid: 88bb3bc3-e2bd-42eb-a2de-25a86a094502
+            region: null
+            configuration:
+              id: 'extra_field_block:node:area:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -39,6 +49,11 @@ targetEntityType: node
 bundle: area
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: null
   field_area_identifier:
     type: string
     label: above

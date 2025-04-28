@@ -3,5 +3,5 @@ _core:
 noopener: true
 noreferrer: true
 publish: false
-subscribe_url: ''
-allowed_domains: ''
+subscribe_url: null
+allowed_domains: {  }

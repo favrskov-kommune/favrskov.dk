@@ -25,6 +25,11 @@ targetEntityType: node
 bundle: area
 mode: inline_navigation
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_header:
     type: entity_reference_revisions_entity_view
     label: hidden
