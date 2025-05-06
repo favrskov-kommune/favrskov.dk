@@ -10,7 +10,19 @@ id: block_content.divider.default
 targetEntityType: block_content
 bundle: divider
 mode: default
-content: {  }
+content:
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
-  info: true
   langcode: true

@@ -17,18 +17,25 @@ mode: default
 content:
   field_slideshow_autoplay:
     type: boolean_checkbox
-    weight: 1
+    weight: 2
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_slideshow_images:
     type: media_library_widget
-    weight: 0
+    weight: 1
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
-  info: true
   langcode: true
