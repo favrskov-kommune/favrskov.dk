@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: branding_spot
 label: 'Branding spot'
-revision: 0
+revision: false
 description: ''

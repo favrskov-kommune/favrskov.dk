@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: submenu
 label: Submenu
-revision: 0
+revision: false
 description: ''

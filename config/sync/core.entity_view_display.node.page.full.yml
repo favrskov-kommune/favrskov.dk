@@ -33,6 +33,7 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
+      - Devel
       - Forms
       - Help
       - 'Inline blocks'
@@ -47,7 +48,21 @@ third_party_settings:
         - layout_onecol
         - layout_twocol_section
         - layout_threecol_section
-      restricted_categories: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories:
+        - Bruger
+        - 'Chaos Tools'
+        - 'Content fields'
+        - Devel
+        - Forms
+        - Help
+        - 'Lists (Views)'
+        - Menus
+        - Premium
+        - System
+        - Webform
+        - core
       blacklisted_blocks: {  }
       whitelisted_blocks:
         Block: {  }

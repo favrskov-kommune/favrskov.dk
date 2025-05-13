@@ -14,7 +14,7 @@ id: block_content.appetizer.field_appetizer_image
 field_name: field_appetizer_image
 entity_type: block_content
 bundle: appetizer
-label: Media
+label: Billede
 description: ''
 required: false
 translatable: false

@@ -1,6 +1,5 @@
 _core:
   default_config_hash: RSNbRD3ekSaZoE19f3eHhm93gKOcD2PtmaAVmV3XMes
-langcode: da
 transport: smtp
 smtp_host: smtp-api.ubivox.com
 smtp_port: 587

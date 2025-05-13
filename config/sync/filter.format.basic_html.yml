@@ -12,15 +12,12 @@ name: 'Simpel HTML'
 format: basic_html
 weight: 0
 filters:
-  filter_html:
-    id: filter_html
-    provider: filter
-    status: true
-    weight: -10
-    settings:
-      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right"> <h1 id class="text-align-left text-align-center text-align-right"> <h2 id class="text-align-left text-align-center text-align-right"> <h3 id class="text-align-left text-align-center text-align-right"> <h4 id class="text-align-left text-align-center text-align-right"> <h5 id class="text-align-left text-align-center text-align-right"> <h6 id class="text-align-left text-align-center text-align-right"> <cite> <dl> <dt> <dd> <span> <blockquote cite> <ul type> <ol type start> <a hreflang target href title data-entity-type data-entity-uuid data-entity-substitution> <strong> <em> <code> <sub> <sup> <li> <table> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption>'
-      filter_html_help: false
-      filter_html_nofollow: false
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: false
+    weight: 11
+    settings: {  }
   filter_align:
     id: filter_align
     provider: filter
@@ -33,19 +30,15 @@ filters:
     status: false
     weight: 8
     settings: {  }
-  editor_file_reference:
-    id: editor_file_reference
-    provider: editor
-    status: false
-    weight: 11
-    settings: {  }
-  linkit:
-    id: linkit
-    provider: linkit
+  filter_html:
+    id: filter_html
+    provider: filter
     status: true
-    weight: 0
+    weight: -10
     settings:
-      title: true
+      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right"> <h1 id class="text-align-left text-align-center text-align-right"> <h2 id class="text-align-left text-align-center text-align-right"> <h3 id class="text-align-left text-align-center text-align-right"> <h4 id class="text-align-left text-align-center text-align-right"> <h5 id class="text-align-left text-align-center text-align-right"> <h6 id class="text-align-left text-align-center text-align-right"> <cite> <dl> <dt> <dd> <span> <blockquote cite> <ul type> <ol type start> <a hreflang target href title data-entity-type data-entity-uuid data-entity-substitution> <strong> <em> <code> <sub> <sup> <li> <table> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption>'
+      filter_html_help: false
+      filter_html_nofollow: false
   filter_image_lazy_load:
     id: filter_image_lazy_load
     provider: filter
@@ -60,3 +53,10 @@ filters:
     settings:
       wrapper_element: figure
       wrapper_classes: responsive-figure-table
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: 0
+    settings:
+      title: true

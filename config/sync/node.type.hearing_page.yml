@@ -12,7 +12,7 @@ third_party_settings:
 name: Høringsside
 type: hearing_page
 description: 'Enten en "Høring", "Afgørelse" eller "Borgermøde".'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: true

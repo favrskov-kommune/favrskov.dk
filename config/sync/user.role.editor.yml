@@ -18,6 +18,7 @@ dependencies:
     - media.type.remote_video
     - media.type.video
     - node.type.area
+    - node.type.editor_manual
     - node.type.hearing_page
     - node.type.news
     - node.type.page
@@ -35,9 +36,9 @@ dependencies:
     - block_content
     - content_moderation
     - contextual
-    - entity_clone
     - file
     - filter
+    - help
     - layout_builder
     - media
     - media_icons
@@ -66,6 +67,7 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
+  - 'access help pages'
   - 'access media overview'
   - 'access own webform configuration'
   - 'access site reports'
@@ -88,7 +90,6 @@ permissions:
   - 'administer siteimprove'
   - 'administer url aliases'
   - 'administer webform submission'
-  - 'clone node entity'
   - 'configure all editor_manual node layout overrides'
   - 'configure all news node layout overrides'
   - 'configure all page node layout overrides'
@@ -108,7 +109,6 @@ permissions:
   - 'create news content'
   - 'create page content'
   - 'create remote_video media'
-  - 'create reusable blocks'
   - 'create terms in hearing_page_types'
   - 'create terms in hearing_places'
   - 'create terms in hearing_topics'
@@ -200,7 +200,6 @@ permissions:
   - 'revert page revisions'
   - 'revert parcelling revisions'
   - 'select account cancellation method'
-  - 'take_ownership_on_clone node entity'
   - 'translate atom'
   - 'update any media'
   - 'update media'

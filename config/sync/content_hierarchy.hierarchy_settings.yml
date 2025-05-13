@@ -8,3 +8,4 @@ entity_bundles:
 multilingual: false
 overview_type: foldable
 contents_per_page_admin: '50'
+override_content_menu_item: 1

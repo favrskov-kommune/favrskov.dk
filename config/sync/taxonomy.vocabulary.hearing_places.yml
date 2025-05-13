@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: Høringssteder
 vid: hearing_places
-description: ''
+description: null
 weight: 0
+new_revision: false
