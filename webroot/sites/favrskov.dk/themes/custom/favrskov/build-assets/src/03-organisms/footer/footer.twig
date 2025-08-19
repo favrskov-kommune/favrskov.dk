@@ -9,8 +9,8 @@
               {{ atom('feedback.text') }}
             </h2>
             <div class="footer__feedback_actions">
-              <a href="" class="footer__feedback--action_link js-footer__feedback--action_link footer__feedback--thumbs_up" data-feedback="yes" data-nodeid="{{node.id}}" aria-label="Syntes godt om knap">{% include '@particles/svg-icon/svg-icon.twig' with { 'attributes': '', 'svgIconName': 'thumbs-up' } %}</a>
-              <a href="" class="footer__feedback--action_link js-footer__feedback--action_link footer__feedback--thumbs_down" data-feedback="no" data-nodeid="{{node.id}}"  aria-label="Syntes ikke godt om knap">{% include '@particles/svg-icon/svg-icon.twig' with { 'attributes': '', 'svgIconName': 'thumbs-up' } %}</a>
+              <a href="{{ atomString('feedback.yes.url') }}" class="footer__feedback--action_link footer__feedback--thumbs_up" data-feedback="yes" data-nodeid="{{node.id}}" aria-label="Syntes godt om knap">{% include '@particles/svg-icon/svg-icon.twig' with { 'attributes': '', 'svgIconName': 'thumbs-up' } %}</a>
+              <a href="{{ atomString('feedback.no.url') }}" class="footer__feedback--action_link footer__feedback--thumbs_down" data-feedback="no" data-nodeid="{{node.id}}"  aria-label="Syntes ikke godt om knap">{% include '@particles/svg-icon/svg-icon.twig' with { 'attributes': '', 'svgIconName': 'thumbs-up' } %}</a>
               <div class="footer__feedback-form js-footer__feedback-form">
                 <form></form>
                 <div class="footer__feedback-form--arrow"></div>

@@ -28,14 +28,32 @@ third_party_settings:
         layout_settings:
           label: ''
         components:
-          88bb3bc3-e2bd-42eb-a2de-25a86a094502:
-            uuid: 88bb3bc3-e2bd-42eb-a2de-25a86a094502
+          de44ca2f-96c8-4738-b08b-8101606219a6:
+            uuid: de44ca2f-96c8-4738-b08b-8101606219a6
             region: null
             configuration:
               id: 'extra_field_block:node:area:content_moderation_control'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          840e0a4a-35bf-4acd-8272-e63fa0cd4cfe:
+            uuid: 840e0a4a-35bf-4acd-8272-e63fa0cd4cfe
+            region: content
+            configuration:
+              id: 'field_block:node:area:field_color_theme'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: dynamic_key_value_table_formatter
+                label: above
+                settings:
+                  key_label: Nøgle
+                  value_label: Værdi
+                  display_labels: true
+                third_party_settings: {  }
             weight: 0
             additional: {  }
         third_party_settings: {  }
