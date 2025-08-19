@@ -21,16 +21,16 @@ atoms:
     default:
       da: Ja
 
-  feedback.yes.form:
-    type: entity
-    title: Ja formular
+  feedback.yes.url:
+    type: url
+    title: Ja link
     description: Formularen vist hvis brugeren trykker "Ja"
     category: Page layout
     group: Footer
     subgroup: Feedback
     weight: 1
-    options:
-      entity_type: webform
+    default:
+      da: "https://selvbetjening.egki.dk/710/710-06062509281490"
 
   feedback.no.button:
     type: textfield
@@ -43,13 +43,13 @@ atoms:
     default:
       da: Nej
 
-  feedback.no.form:
-    type: entity
-    title: Nej formular
+  feedback.no.url:
+    type: url
+    title: Nej link
     description: Formularen vist hvis brugeren trykker "Nej"
     category: Page layout
     group: Footer
     subgroup: Feedback
     weight: 11
-    options:
-      entity_type: webform
+    default:
+      da: "https://selvbetjening.egki.dk/710/710-09072512292598"
