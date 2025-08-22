@@ -1,8 +1,8 @@
 {{ attach_library('favrskov/submenu') }}
 
 <div{{ attributes.addClass('submenu') }}>
+  {% block block_content %}{% endblock %}
   <nav class="submenu__navigation js-submenu">
-    {% block block_content %}{% endblock %}
     {% block block_links %}
       {% for link in links %}
         <a href="{{ link.url }}">
