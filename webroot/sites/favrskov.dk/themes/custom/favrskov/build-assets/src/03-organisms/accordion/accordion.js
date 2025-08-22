@@ -13,13 +13,13 @@ Drupal.behaviors.accordion = {
       props: ['title', 'id', 'hidden'],
       data() {
         return {
-          isOpen: false
+          isOpen: false,
         };
       },
       methods: {
         toggleAccordionItem() {
           this.isOpen = !this.isOpen;
-        }
+        },
       },
       template: `
         <div class="accordion-item" v-show="!hidden" ref="accordionItemRef">
@@ -33,19 +33,19 @@ Drupal.behaviors.accordion = {
           </div>
         </div>
         </div>
-      `
+      `,
     };
 
     for (let i = 0; i < accordions.length; i += 1) {
       accordions[i].classList.add('loaded');
       const vm = new Vue({
         delimiters: ['${', '}'],
-        el: accordions[i],
+        el: accordions[i].querySelector('.js-accordion__wrapper'),
         data: {
-          openAllItems: false
+          openAllItems: false,
         },
         components: {
-          accordionItem
+          accordionItem,
         },
         methods: {
           toggleAllItems(e) {
@@ -54,9 +54,9 @@ Drupal.behaviors.accordion = {
             for (let x = 0; x < this.$children.length; x += 1) {
               this.$children[x].isOpen = this.openAllItems;
             }
-          }
-        }
+          },
+        },
       });
     }
-  }
+  },
 };
