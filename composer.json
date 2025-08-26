@@ -62,7 +62,7 @@
         "drupal/focal_point": "^2.0",
         "drupal/gin": "^4.0",
         "drupal/gin_lb": "^2.0",
-        "drupal/honeypot": "^2.0",
+        "drupal/honeypot": "~2.1.0",
         "drupal/hreflang": "^1.0",
         "drupal/imageapi_optimize": "^4.0",
         "drupal/inline_block_title_automatic": "^2.0",
@@ -212,6 +212,10 @@
             },
             "drupal/entity_hierarchy": {
                 "(#2862044) Default weight value is not saved, unless default entity is not specified too": "https://www.drupal.org/files/issues/2023-10-10/entity_hierarchy_2862044_default-weight_22.patch"
+            },
+            "drupal/paragraphs": {
+                "(#3090200) Paragraph access check using incorrect revision of its parent, leading to issues editing and viewing paragraphs when content moderation is involved": "https://www.drupal.org/files/issues/2020-07-08/access-controll-issue-3090200-22.patch",
+                "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2023-07-20/2901390-9-109.patch"
             },
             "drupal/webform": {
                 "(#3458611) Removing the polyfill-fastly.io library of webform.libraries.yml": "https://www.drupal.org/files/issues/2024-07-02/3458611-removing-the-polyfill-io.patch"
