@@ -99,13 +99,9 @@ Drupal.behaviors.burgerMenu = {
         triggerSubNavigation(e) {
           e.preventDefault();
           const trigger = e.currentTarget;
-          const parent = trigger.closest(
-            '.js-burger-menu-list-item--expandable',
-          );
+          const parent = trigger.closest('.js-burger-menu-list-item--expandable');
           // this.hideSubNavigations(parent);
-          const expandbutton = trigger.closest(
-            '.burger-menu-list-item__expand-trigger',
-          );
+          const expandbutton = trigger.closest('.burger-menu-list-item__expand-trigger');
           if (expandbutton.getAttribute('aria-expanded') === 'false') {
             expandbutton.setAttribute('aria-expanded', 'true');
           } else {
@@ -114,7 +110,7 @@ Drupal.behaviors.burgerMenu = {
           parent.classList.toggle(showSubNavigationClass);
         },
         openBurgerMenu() {
-          const burgerMenu = document.getElementById('js-burger-menu');
+          const burgerMenu = document.getElementById('js-burger-menu'); /* eslint-disable-line */
           this.isOpen = true;
           document
             .querySelector('#js-burger-menu')
@@ -128,7 +124,7 @@ Drupal.behaviors.burgerMenu = {
           document.querySelector('.burger-menu__close').focus();
         },
         closeBurgerMenu() {
-          const burgerMenu = document.getElementById('js-burger-menu');
+          const burgerMenu = document.getElementById('js-burger-menu'); /* eslint-disable-line */
           this.isOpen = false;
           document.querySelector('#js-burger').focus();
           document.removeEventListener('keydown', this.handleEsc);
@@ -143,9 +139,7 @@ Drupal.behaviors.burgerMenu = {
           removeTabFocus(burgerMenu);
         },
         hideSubNavigations(parent) {
-          const items = document.querySelectorAll(
-            '.js-burger-menu-list-item--expandable',
-          );
+          const items = document.querySelectorAll('.js-burger-menu-list-item--expandable');
           for (let i = 0; i < items.length; i += 1) {
             if (parent !== items[i]) {
               items[i].classList.remove(showSubNavigationClass);
