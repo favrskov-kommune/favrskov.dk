@@ -7,6 +7,7 @@ dependencies:
     - field.storage.block_content.field_inline_navigation_pages
     - node.type.news
     - node.type.page
+    - node.type.parcelling
 _core:
   default_config_hash: 5XzjpQ2tLHWvde0WJrs6Q0wM-MKfhfT-se9GE6miMw8
 id: block_content.inline_navigation.field_inline_navigation_pages
@@ -24,10 +25,11 @@ settings:
   handler_settings:
     target_bundles:
       news: news
+      parcelling: parcelling
       page: page
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: basic_page
+    auto_create_bundle: news
 field_type: entity_reference
