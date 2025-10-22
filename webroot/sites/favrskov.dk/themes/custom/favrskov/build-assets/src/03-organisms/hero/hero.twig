@@ -15,6 +15,15 @@
       <div class="hero__iframe-wrapper js-hero-iframe-wrapper">
         {{ media }}
       </div>
+      <button class="hero__iframe-button js-hero__iframe-button" aria-label="Stop video">
+        <span class="hero__iframe-button--play">
+          {% include '@particles/svg-icon/svg-icon.twig' with {
+            'attributes': '',
+            'svgIconName': 'play'
+          } %}
+        </span>
+        <span class="hero__iframe-button--stop"></span>
+      </button>
     </div>
   {% endif %}
   {% if not media_image and not media %}
