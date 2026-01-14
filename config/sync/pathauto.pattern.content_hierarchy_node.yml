@@ -16,7 +16,9 @@ selection_criteria:
     context_mapping:
       node: node
     bundles:
+      area: area
       page: page
+      parcelling: parcelling
 selection_logic: and
 weight: 0
 relationships: {  }

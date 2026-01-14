@@ -21,6 +21,30 @@ function onPlayerStateChange(event) {
   }
 }
 
+const stopVideo = (element, oldSrc, newSrc) => {
+  const iframe = element.querySelector('iframe');
+  const video = element.querySelector('video');
+  if (iframe) {
+    const iframeSrc = iframe.src;
+    iframe.src = oldSrc;
+  }
+  if (video) {
+    video.pause();
+  }
+};
+
+const startVideo = (element, oldSrc, newSrc) => {
+  const iframe = element.querySelector('iframe');
+  const video = element.querySelector('video');
+  if (iframe) {
+    const iframeSrc = iframe.src;
+    iframe.src = newSrc;
+  }
+  if (video) {
+    video.play();
+  }
+};
+
 window.onYouTubePlayerAPIReady = function onYouTubePlayerAPIReady() {
   const heros = document.querySelectorAll('.js-hero');
   if (heros.length === 0) {
@@ -57,12 +81,16 @@ Drupal.behaviors.hero = {
       currentHero.classList.add('loaded');
       if (currentHero.querySelector('.js-hero-iframe-wrapper')) {
         const iframeWrapper = currentHero.querySelector('.js-hero-iframe-wrapper');
+        const iframeVideoButton = currentHero.querySelector('.js-hero__iframe-button');
 
         let isYoutube = false;
+        let oldSrc = '';
+        let newSrc = '';
+
         if (iframeWrapper.querySelector('iframe')) {
           const iframe = iframeWrapper.querySelector('iframe');
-          const oldSrc = iframe.getAttribute('src');
-          let newSrc = oldSrc;
+          oldSrc = iframe.getAttribute('src');
+          newSrc = oldSrc;
 
           // Drupal gives us eg:
           // media/oembed?url=https%3A//www.youtube.com/watch%3Fv%3DaE2vilQu7BQ&max_width=0&...
@@ -78,11 +106,14 @@ Drupal.behaviors.hero = {
           } else if (oldSrc.indexOf('vimeo') > -1) {
             const { id } = getVideoId(cleanUrl.replace(cleanUrl.substr(cleanUrl.indexOf('&'), cleanUrl.length), ''));
             newSrc = `https://player.vimeo.com/video/${id}?api=true&autoplay=1&mute=1&loop=1&autopause=0&controls=0&showinfo=0&autohide=1&background=1`;
+          } else if (oldSrc.indexOf('cloudflarestream') > -1) {
+            newSrc = `${oldSrc}?autoplay=true&muted=true&loop=true`;
           } else {
             newSrc = `${oldSrc}&api=true&autoplay=1&mute=1&loop=1&autopause=0&controls=0&showinfo=0&autohide=1&background=1`;
           }
           iframe.setAttribute('src', newSrc);
           iframe.setAttribute('allow', 'autoplay; fullscreen');
+          iframe.setAttribute('aria-hidden', 'true');
           iframeWrapper.classList.add('active');
         } else if (iframeWrapper.querySelector('video')) {
           const video = iframeWrapper.querySelector('video');
@@ -91,11 +122,24 @@ Drupal.behaviors.hero = {
           video.muted = true;
           video.playsInline = true;
           video.controls = false;
+          video.setAttribute('aria-hidden', 'true');
           iframeWrapper.classList.add('active');
         }
         if (isYoutube) {
           loadYoutubeIframeSrc();
         }
+
+        iframeVideoButton.addEventListener('click', () => {
+          if (iframeVideoButton.classList.contains('video-stopped')) {
+            iframeVideoButton.classList.remove('video-stopped');
+            iframeVideoButton.setAttribute('aria-label', 'Stop video');
+            startVideo(iframeWrapper, oldSrc, newSrc);
+          } else {
+            iframeVideoButton.classList.add('video-stopped');
+            iframeVideoButton.setAttribute('aria-label', 'Afspil video');
+            stopVideo(iframeWrapper, oldSrc, newSrc);
+          }
+        });
       }
     }
   },

@@ -24,18 +24,19 @@
   use_composer: true
   use_npm: true
   theme_exec_path: sites/favrskov.dk/themes/custom/favrskov/build-assets
-prod:
-  <<: *base
-  branch: master
-  deploy_path: /var/www/favrskov.dk
-  hostname: '81.95.247.233'
-  user: favrskov
-  disable_slack: true
-staging:
-  <<: *base
-  branch: develop
-  deploy_path: /data/www/staging.favrskov.drupal.dk
-  hostname: '81.95.247.117'
-  user: favrskov
-  disable_slack: true
-  keep_releases: 2
+hosts:
+  prod:
+    <<: *base
+    branch: master
+    deploy_path: /var/www/favrskov.dk
+    hostname: '81.95.247.233'
+    remote_user: favrskov
+    disable_slack: true
+  staging:
+    <<: *base
+    branch: develop
+    deploy_path: /data/www/staging.favrskov.drupal.dk
+    hostname: '81.95.247.117'
+    remote_user: favrskov
+    disable_slack: true
+    keep_releases: 2

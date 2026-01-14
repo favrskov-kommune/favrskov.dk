@@ -1,15 +1,15 @@
 {{ attach_library('favrskov/burger-menu') }}
 
-<nav :class="{ 'burger-menu--open': isOpen }" class="burger-menu" id="js-burger-menu">
-  <div @click="closeBurgerMenu()" class="burger-menu__close">
+<nav :class="{ 'burger-menu--open': isOpen }" class="burger-menu" id="js-burger-menu" aria-hidden="true" tabindex="-1">
+  <button @click="closeBurgerMenu()" class="burger-menu__close" type="button">
     <div class="burger-menu__close-label">{{ 'Close (Esc)'|t }}</div>
     {% include '@particles/svg-icon/svg-icon.twig' with {
       'attributes': '',
       'svgIconName': 'close'
     } %}
-  </div>
+  </button>
   <div class="container">
-    <div class="burger-menu__inner">
+    <div class="burger-menu__inner">  
       <div class="row">
         <div class="col-xs-12">
           {% block navigation %}

@@ -1,0 +1,12 @@
+/**
+ * Type: Organisms.
+ * Layout builder (Drupal).
+ */
+
+#drupal-off-canvas:not(.drupal-off-canvas-reset),
+#drupal-off-canvas-wrapper {
+  a.tabledrag-handle .handle {
+    width: 14px;
+    height: 14px;
+  }
+}

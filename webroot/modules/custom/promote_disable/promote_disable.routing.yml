@@ -1,0 +1,7 @@
+promote_disable.form:
+  path: /admin/config/content/promote_disable
+  defaults:
+    _title: 'Promote disable'
+    _form: \Drupal\promote_disable\Form\PromoteDisableForm
+  requirements:
+    _permission: 'administer content types'

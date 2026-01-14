@@ -33,6 +33,7 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
+      - Devel
       - Forms
       - Help
       - 'Inline blocks'
@@ -47,6 +48,21 @@ third_party_settings:
         - layout_onecol
         - layout_twocol_section
         - layout_threecol_section
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories:
+        - Bruger
+        - 'Chaos Tools'
+        - 'Content fields'
+        - Devel
+        - Forms
+        - Help
+        - 'Lists (Views)'
+        - Menus
+        - Premium
+        - System
+        - Webform
+        - core
       blacklisted_blocks: {  }
       whitelisted_blocks:
         Block: {  }
@@ -103,7 +119,6 @@ third_party_settings:
         System: {  }
         Webform: {  }
         core: {  }
-      restricted_categories: {  }
 _core:
   default_config_hash: QOEUrU1PQHcUILRpatr3BYjGBzLVTKdoaAa6LACdkhU
 id: node.page.full

@@ -8,5 +8,6 @@ _core:
   default_config_hash: o3Pbq6w0Xe5Nk8pXpWbqlScKHdvBu7yhs6zJLxD7pe8
 id: media.2_column
 label: '2 column'
+description: ''
 targetEntityType: media
 cache: true

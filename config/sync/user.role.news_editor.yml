@@ -19,6 +19,7 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - block
+    - block_content
     - content_moderation
     - contextual
     - file
@@ -40,6 +41,7 @@ label: Nyhedsredaktør
 weight: 6
 is_admin: null
 permissions:
+  - 'access block library'
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
@@ -47,6 +49,8 @@ permissions:
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'add scheduled transitions node news'
+  - 'administer block content'
+  - 'administer block types'
   - 'administer blocks'
   - 'configure all news node layout overrides'
   - 'configure editable news node layout overrides'
@@ -77,6 +81,7 @@ permissions:
   - 'delete own audio media'
   - 'delete own cdn_video media'
   - 'delete own document media'
+  - 'delete own files'
   - 'delete own image media'
   - 'delete own news content'
   - 'delete own remote_video media'

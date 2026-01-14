@@ -74,7 +74,7 @@ webroot/sites/README.txt
 webroot/sites/default*
 webroot/themes/README.txt
 
-.env
+*.env
 */node_modules
 .idea/
 logs/*
@@ -84,3 +84,16 @@ private-files/*
 !*/.keep
 composer-src/
 /deployer/config.yml
+
+# Devspace
+.devspace/
+.novi/dbdumps
+.novi/state/*
+
+
+# Ignore settings.devspace.php config file
+webroot/sites/favrskov.dk/settings.devspace.php
+
+
+# Ignore sites.devspace.php config file
+webroot/sites/sites.devspace.php

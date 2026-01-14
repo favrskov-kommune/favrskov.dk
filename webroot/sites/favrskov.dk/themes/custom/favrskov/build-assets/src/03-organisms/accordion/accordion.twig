@@ -2,20 +2,22 @@
 
 <div{{ (not attributes ? create_attribute() : attributes).addClass(['accordion', 'js-accordion']) }}>
   {% block block_content %}{% endblock %}
-  <div class="accordion__header">
-    {% if headline %}
-      <h2 class="accordion__headline">{{ headline }}</h2>
-    {% endif %}
-    <div class="accordion__toggle" @click="toggleAllItems" v-show="!openAllItems">{{ fold_out_text }}</div>
-    <div class="accordion__toggle" @click="toggleAllItems" v-show="openAllItems">{{ fold_in_text }}</div>
-  </div>
-  <div class="accordion__items">
-    {% block content %}
-      {% for item in items %}
-        <accordion-item title="{{ item.headline }}" id="{{ item.id }}">
-          {{ item.text }}
-        </accordion-item>
-      {% endfor %}
-    {% endblock %}
+  <div class="accordion__wrapper js-accordion__wrapper">
+    <div class="accordion__header">
+      {% if headline %}
+        <h2 class="accordion__headline">{{ headline }}</h2>
+      {% endif %}
+      <button type='button' class="accordion__toggle" @click="toggleAllItems" v-show="!openAllItems">{{ fold_out_text }}</button>
+      <button type='button'  class="accordion__toggle" @click="toggleAllItems" v-show="openAllItems">{{ fold_in_text }}</button>
+    </div>
+    <div class="accordion__items">
+      {% block content %}
+        {% for item in items %}
+          <accordion-item title="{{ item.headline }}" id="{{ item.id }}">
+            {{ item.text }}
+          </accordion-item>
+        {% endfor %}
+      {% endblock %}
+    </div>
   </div>
 </div>

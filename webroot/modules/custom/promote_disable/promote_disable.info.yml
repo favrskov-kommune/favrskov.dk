@@ -1,0 +1,12 @@
+name: 'Promote Disable'
+description: 'Allows a user to disable the ''Promote to front page'' option when creating nodes.'
+package: Other
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10
+type: module
+configure: promote_disable.form
+
+# Information added by Drupal.org packaging script on 2021-05-31
+version: '2.0.0'
+project: 'promote_disable'
+datestamp: 1622502516

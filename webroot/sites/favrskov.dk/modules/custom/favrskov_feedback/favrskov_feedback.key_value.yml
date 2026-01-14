@@ -97,3 +97,43 @@ muni_categories:
     name: MitID
   nemid_og_mitid:
     name: NemID og MitID
+  tidsbestilling_kommune.dk:
+    name: Tidsbestilling i kommunen
+  valg:
+    name: Valg
+  digital_fuldmagt:
+    name: Digital fuldmagt
+  grundlisten_og_lægdommere:
+    name: Grundlisten og lægdommere
+  vielse:
+    name: Vielse
+  skoleindskrivning:
+    name: Skoleindskrivning
+  rottebekaempelse:
+    name: Rottebekaempelse
+  navneaendring:
+    name: Navneændring
+  pensionistbevis:
+    name: Pensionistbevis
+  kontanthjælp_uddannelseshjælp:
+    name: Kontanthjælpsydelsen uddannelseshjælp
+  legitimationskort:
+    name: Legitimationskort
+  borgertip:
+    name: Borgertip
+  fleksjob:
+    name: Fleksjob
+  jobafklaringsforløb:
+    name: Jobafklaringsforløb
+  ressourceforløb:
+    name: Ressourceforløb
+  revalidering:
+    name: Revalidering
+  ferie_offentlige_ydelser:
+    name: Ferie og offentlige ydelser
+  ledighed:
+    name: Ledighed
+  aula:
+    name: Aula
+  empty:
+    name: Tom kategori

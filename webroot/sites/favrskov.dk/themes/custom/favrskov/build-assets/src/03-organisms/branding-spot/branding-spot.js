@@ -7,7 +7,7 @@ const brandingSpot = document.querySelector('.js-branding-spot');
 
 if (brandingSpot) {
   ScrollTrigger.matchMedia({
-    '(min-width: 1200px)': function () {
+    '(min-width: 1200px)': function () { /* eslint-disable-line */
       gsap.to('.js-branding-spot .branding-spot__bg', {
         ease: 'none',
         scale: 3.2,
@@ -27,7 +27,7 @@ if (brandingSpot) {
         },
       });
     },
-    '(max-width: 1199px)': function () {
+    '(max-width: 1199px)': function () { /* eslint-disable-line */
       gsap.to('.js-branding-spot .branding-spot__bg', {
         ease: 'none',
         scale: 4.5,
@@ -47,7 +47,7 @@ if (brandingSpot) {
         },
       });
     },
-    '(max-width: 991px)': function () {
+    '(max-width: 991px)': function () { /* eslint-disable-line */
       gsap.to('.js-branding-spot .branding-spot__bg', {
         ease: 'none',
         scale: 5,
@@ -67,7 +67,7 @@ if (brandingSpot) {
         },
       });
     },
-    '(max-width: 767px)': function () {
+    '(max-width: 767px)': function () { /* eslint-disable-line */
       gsap.to('.js-branding-spot .branding-spot__bg', {
         ease: 'none',
         scale: 9,
@@ -87,7 +87,7 @@ if (brandingSpot) {
         },
       });
     },
-    '(max-width: 575px)': function () {
+    '(max-width: 575px)': function () { /* eslint-disable-line */
       gsap.to('.js-branding-spot .branding-spot__bg', {
         ease: 'none',
         scale: 9,

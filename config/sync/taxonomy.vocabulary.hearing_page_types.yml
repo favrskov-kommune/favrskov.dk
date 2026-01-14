@@ -6,3 +6,4 @@ name: Høringssidetyper
 vid: hearing_page_types
 description: 'Typer af høringssider'
 weight: 0
+new_revision: false

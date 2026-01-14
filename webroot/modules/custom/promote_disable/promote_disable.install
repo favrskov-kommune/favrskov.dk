@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Contains an uninstall function for Promote Disable.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function promote_disable_uninstall() {
+  \Drupal::configFactory()->getEditable('promote_disable.settings')->delete();
+}

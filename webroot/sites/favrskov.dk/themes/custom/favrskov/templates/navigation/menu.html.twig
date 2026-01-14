@@ -62,9 +62,9 @@
         {% endif %}
         {% if item.below %}
           {% if menu_level == 1 and attributes.region == 'burgermenu' %}
-            <a href="#" class="burger-menu-list-item__expand-trigger" {{ create_attribute().setAttribute('@click', 'triggerSubNavigation($event)') }} aria-label="Expand">
+            <a href="#" class="burger-menu-list-item__expand-trigger" {{ create_attribute().setAttribute('@click', 'triggerSubNavigation($event)') }} aria-label="Udvid" aria-expanded="false" aria-controls="js-menu-list">
               <span class="burger-menu-list-item__expand-trigger-line1"></span>
-              <span class="burger-menu-list-item__expand-trigger-line2"></span>
+              <span class="burger-menu-list-item__expand-trigger-line2"></span> 
             </a>
           {% endif %}
           {{ menus.menu_links(item.below, attributes, next_level_attributes, menu_level + 1, directory) }}

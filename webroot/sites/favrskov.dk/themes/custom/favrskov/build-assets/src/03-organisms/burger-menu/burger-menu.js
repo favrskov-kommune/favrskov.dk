@@ -11,29 +11,75 @@ Drupal.behaviors.burgerMenu = {
     }
     burgerMenu.classList.add('loaded');
 
-    function addTabindex(selector) {
-      const addTabIndex = document.querySelectorAll(selector);
-      for (let i = 0; i < addTabIndex.length; i += 1) {
-        addTabIndex[i].setAttribute('tabindex', 0);
-      }
+    const focuseAbleHtmlElements = 'button, input, a';
+
+    function addTabindex(element) {
+      element.setAttribute('tabindex', 0);
+      const children = element.querySelectorAll(focuseAbleHtmlElements);
+      children.forEach((child) => {
+        child.setAttribute('tabindex', 0);
+      });
     }
 
-    function removeTabindex(selector) {
-      const removeTabIndex = document.querySelectorAll(selector);
-      for (let i = 0; i < removeTabIndex.length; i += 1) {
-        removeTabIndex[i].removeAttribute('tabindex');
-      }
+    function negativeTabindex(element) {
+      element.setAttribute('tabindex', -1);
+      const children = element.querySelectorAll(focuseAbleHtmlElements);
+      children.forEach((child) => {
+        child.setAttribute('tabindex', -1);
+      });
     }
 
-    function negativeTabindex(selector) {
-      const removeTabIndex = document.querySelectorAll(selector);
-      for (let i = 0; i < removeTabIndex.length; i += 1) {
-        removeTabIndex[i].setAttribute('tabindex', -1);
-      }
+    function addAriahidden(element) {
+      element.setAttribute('aria-hidden', 'true');
+      const children = element.querySelectorAll(focuseAbleHtmlElements);
+      children.forEach((child) => {
+        child.setAttribute('aria-hidden', 'true');
+      });
     }
 
-    negativeTabindex('.burger-menu-list-item__link');
-    negativeTabindex('.burger-menu-list-item__expand-trigger');
+    function removeAriahidden(element) {
+      element.setAttribute('aria-hidden', 'false');
+      const children = element.querySelectorAll(focuseAbleHtmlElements);
+      children.forEach((child) => {
+        child.setAttribute('aria-hidden', 'false');
+      });
+    }
+
+    function addTabFocus(element) {
+      addTabindex(element);
+      removeAriahidden(element);
+      const focusableElements = element.querySelectorAll('button, input, a');
+      if (focusableElements.length === 0) {
+        return;
+      }
+      const firstFocusableElement = focusableElements[0];
+      const lastFocusableElement = focusableElements[focusableElements.length - 1];
+      const KEYCODE_TAB = 9;
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+          if (e.shiftKey) {
+            // If Shift + Tab
+            if (document.activeElement === firstFocusableElement) {
+              lastFocusableElement.focus();
+              e.preventDefault();
+            }
+          } else if (document.activeElement === lastFocusableElement) {
+            firstFocusableElement.focus();
+            e.preventDefault();
+          }
+        }
+      });
+    }
+
+    function removeTabFocus(element) {
+      negativeTabindex(element);
+      addAriahidden(element);
+      document.removeEventListener('keydown', this.handleEsc);
+    }
+
+    negativeTabindex(burgerMenu);
+    addAriahidden(burgerMenu);
 
     const vm = new Vue({
       delimiters: ['${', '}'],
@@ -55,31 +101,42 @@ Drupal.behaviors.burgerMenu = {
           const trigger = e.currentTarget;
           const parent = trigger.closest('.js-burger-menu-list-item--expandable');
           // this.hideSubNavigations(parent);
-
+          const expandbutton = trigger.closest('.burger-menu-list-item__expand-trigger');
+          if (expandbutton.getAttribute('aria-expanded') === 'false') {
+            expandbutton.setAttribute('aria-expanded', 'true');
+          } else {
+            expandbutton.setAttribute('aria-expanded', 'false');
+          }
           parent.classList.toggle(showSubNavigationClass);
         },
         openBurgerMenu() {
+          const burgerMenu = document.getElementById('js-burger-menu'); /* eslint-disable-line */
           this.isOpen = true;
+          document
+            .querySelector('#js-burger-menu')
+            .removeAttribute('aria-hidden');
+          document
+            .querySelector('#js-burger-menu')
+            .setAttribute('aria-hidden', 'false');
           document.body.classList.add('no-scroll');
           document.addEventListener('keydown', this.handleEsc);
-          document.addEventListener('click', this.handleClickOutside);
-          // Alter tabindex on elements to improve user accessibility
-          negativeTabindex('a');
-          negativeTabindex('input');
-          addTabindex('.burger-menu-list-item__link');
-          addTabindex('.burger-menu-list-item__expand-trigger');
+          addTabFocus(burgerMenu);
+          document.querySelector('.burger-menu__close').focus();
         },
         closeBurgerMenu() {
+          const burgerMenu = document.getElementById('js-burger-menu'); /* eslint-disable-line */
           this.isOpen = false;
+          document.querySelector('#js-burger').focus();
           document.removeEventListener('keydown', this.handleEsc);
           document.removeEventListener('click', this.handleClickOutside);
+          document
+            .querySelector('#js-burger-menu')
+            .removeAttribute('aria-hidden');
+          document
+            .querySelector('#js-burger-menu')
+            .setAttribute('aria-hidden', 'true');
           document.body.classList.remove('no-scroll');
-          // Alter tabindex on elements to improve user accessibility
-          removeTabindex('a');
-          removeTabindex('input');
-          negativeTabindex('.burger-menu-list-item__link');
-          negativeTabindex('.burger-menu-list-item__expand-trigger');
-          document.getElementById('js-burger').focus();
+          removeTabFocus(burgerMenu);
         },
         hideSubNavigations(parent) {
           const items = document.querySelectorAll('.js-burger-menu-list-item--expandable');

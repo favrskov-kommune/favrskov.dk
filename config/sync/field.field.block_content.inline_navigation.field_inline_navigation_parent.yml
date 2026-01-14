@@ -5,7 +5,9 @@ dependencies:
   config:
     - block_content.type.inline_navigation
     - field.storage.block_content.field_inline_navigation_parent
+    - node.type.area
     - node.type.page
+    - node.type.parcelling
 _core:
   default_config_hash: 2HE9LgUsENbU2tAGgcAgc7k8bdcv9IcKQLbQlisycvk
 id: block_content.inline_navigation.field_inline_navigation_parent
@@ -22,6 +24,8 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
+      area: area
+      parcelling: parcelling
       page: page
     sort:
       field: _none

@@ -1,0 +1,23 @@
+uuid: 27e0f766-1cce-4b9f-b49e-c47235834dc6
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_color_theme
+    - node.type.parcelling
+  module:
+    - dynamic_key_value
+id: node.parcelling.field_color_theme
+field_name: field_color_theme
+entity_type: node
+bundle: parcelling
+label: 'Breadcrumbs background color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: douce
+default_value_callback: ''
+settings: {  }
+field_type: dynamic_key_value

@@ -13,6 +13,6 @@ task('deploy:npm:install', function () {
     run('cd {{theme_exec_path_absolute}} && npm ci && npm run build:prod');
   }
 })
-  ->setPrivate();
+  ->hidden();
 
 

@@ -13,6 +13,6 @@ task('deploy:composer:install', function () {
     run('cd {{release_path}} && COMPOSER_MEMORY_LIMIT=-1 composer install --no-dev --no-interaction');
   }
 })
-  ->setPrivate();
+  ->hidden();
 
 

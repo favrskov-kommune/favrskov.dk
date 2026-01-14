@@ -63,3 +63,8 @@ $sites['prod.favrskov.drupal.dk'] = 'favrskov.dk';
 if (file_exists(__DIR__ . '/sites.local.php')) {
   include __DIR__ . '/sites.local.php';
 };
+
+if (file_exists(__DIR__ . '/sites.devspace.php')) {
+  include __DIR__ . '/sites.devspace.php';
+}
+

@@ -10,5 +10,5 @@ footer:
   header: false
   js:
     "https://customer.cludo.com/scripts/bundles/search-script.min.js": { type: external, minified: true }
-    js/cludo.js: { preprocess: true } }
-    "https://api.cludo.com/scripts/xdomain.js": { type: external, browsers: { IE: 'lte IE 9', '!IE': false }, attributes: { slave: "https://api.cludo.com/proxy.html" } }
+    js/cludo.js: { preprocess: true }
+#    "https://api.cludo.com/scripts/xdomain.js": { type: external, browsers: { IE: 'lte IE 9', '!IE': false }, attributes: { slave: "https://api.cludo.com/proxy.html" }}

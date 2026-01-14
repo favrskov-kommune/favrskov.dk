@@ -8,6 +8,7 @@ master:
       build-assets/dist/css/_base/_fonts.css: {}
       build-assets/dist/css/_base/_grid.css: {}
       build-assets/dist/css/_base/_helpers.css: {}
+      build-assets/dist/css/_base/_layout-builder.css: {}
       build-assets/dist/css/_base/_form-styling.css: {}
       build-assets/dist/css/01-particles/forms/label/label.css: {}
       build-assets/dist/css/_base/_print.css: { media: print }
@@ -354,3 +355,14 @@ maintenance-page:
   css:
     theme:
       build-assets/dist/css/03-organisms/maintenance-page/maintenance-page.css: {}
+
+parcels:
+  version: VERSION
+  css:
+    theme:
+      build-assets/dist/css/03-organisms/map/map.css: {}
+      build-assets/dist/css/03-organisms/parcels/parcels.css: {}
+      build-assets/dist/css/02-molecules/parcel/parcel.css: {}
+      build-assets/dist/css/02-molecules/link-list/link-list.css: {}
+  js:
+    build-assets/dist/js/03-organisms/parcels/parcels.js: {}

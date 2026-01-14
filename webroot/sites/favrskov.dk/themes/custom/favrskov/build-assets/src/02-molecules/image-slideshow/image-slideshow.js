@@ -11,7 +11,6 @@ Drupal.behaviors.imageSlideshow = {
     for (let i = 0; i < imageSlideShowsWrappers.length; i += 1) {
       const current = imageSlideShowsWrappers[i];
       const slideshow = current.querySelector('.js-image-slideshow');
-      const navigation = current.querySelector('.js-image-slideshow-navigation');
       current.classList.add('loaded');
 
       setTimeout(() => {
@@ -19,8 +18,8 @@ Drupal.behaviors.imageSlideshow = {
           // options
           cellAlign: 'left',
           contain: true,
-          pageDots: true,
-          prevNextButtons: false,
+          pageDots: false,
+          prevNextButtons: true,
           fade: true,
           wrapAround: true,
           autoPlay: current.dataset.autoplay === 'true' ? 3000 : '',

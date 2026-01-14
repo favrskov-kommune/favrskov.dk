@@ -1,0 +1,11 @@
+uuid: 2a5ddb0c-af88-4370-b80d-1e592d36bba9
+langcode: da
+status: true
+dependencies:
+  config:
+    - simple_sitemap.type.default_hreflang
+id: default
+label: Default
+description: ''
+type: default_hreflang
+weight: 0

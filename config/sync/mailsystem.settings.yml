@@ -1,12 +1,8 @@
 _core:
   default_config_hash: IhwTepsVwtbtbcT5GzQKhCXDCRvbk3MNkWqPiuiZ10s
-langcode: da
-theme: current
+theme: favrskov
 defaults:
   sender: swiftmailer
   formatter: swiftmailer
 modules:
-  swiftmailer:
-    none:
-      sender: swiftmailer
-      formatter: swiftmailer
+  swiftmailer: {  }

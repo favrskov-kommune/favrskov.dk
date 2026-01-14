@@ -40,7 +40,7 @@ Drupal.behaviors.accordion = {
       accordions[i].classList.add('loaded');
       const vm = new Vue({
         delimiters: ['${', '}'],
-        el: accordions[i],
+        el: accordions[i].querySelector('.js-accordion__wrapper'),
         data: {
           openAllItems: false,
         },

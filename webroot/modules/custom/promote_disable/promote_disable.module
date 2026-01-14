@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @file
+ * Primarily Drupal hooks and helper functions.
+ *
+ * This is the main module file for Promote Disable.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function promote_disable_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
+  // Node type form.
+  if ($form_id == 'node_type_edit_form') {
+    // The current form's node type.
+    $node_type = $form['type']['#default_value'];
+    // Our saved front page node types.
+    $node_types = \Drupal::configFactory()->getEditable('promote_disable.settings')->get('promote_disable_node_types');
+    // Is this node type one we've set?
+    if (in_array($node_type, $node_types)) {
+      // Unset the form element.
+      unset($form['workflow']['options']['#options']['promote']);
+    }
+    // Our saved sticky page node types.
+    $node_types = \Drupal::configFactory()->getEditable('promote_disable.settings')->get('promote_disable_sticky_node_types');
+    // Is this node type one we've set?
+    if (in_array($node_type, $node_types)) {
+      // Unset the form element.
+      unset($form['workflow']['options']['#options']['sticky']);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function promote_disable_node_presave(NodeInterface $node) {
+  // Our saved node types.
+  $node_types = \Drupal::config('promote_disable.settings')->get('promote_disable_node_types');
+  // Is this node type one we've set?
+  if (in_array($node->getType(), $node_types)) {
+    $node->promote = 0;
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function promote_disable_form_node_form_alter(&$form, FormStateInterface $form_state) {
+  $node = $form_state->getFormObject()->getEntity();
+  $node_type = $node->getType();
+  $node_types = \Drupal::configFactory()->getEditable('promote_disable.settings')->get('promote_disable_node_types');
+  // Is this node type one we've set?
+  if (in_array($node_type, $node_types)) {
+    // Remove the option.
+    unset($form['promote']);
+  }
+  // Our saved sticky node types.
+  $node_types = \Drupal::configFactory()->getEditable('promote_disable.settings')->get('promote_disable_sticky_node_types');
+  // Is this node type one we've set?
+  if (in_array($node_type, $node_types)) {
+    // Remove the option.
+    unset($form['sticky']);
+  }
+
+}

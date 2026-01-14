@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: table_spot
 label: 'Tabel spot'
-revision: 0
+revision: false
 description: ''

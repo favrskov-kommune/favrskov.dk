@@ -5,6 +5,7 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\favrskov_feedback\FeedbackFormBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class FeedbackController extends ControllerBase {
@@ -35,7 +36,7 @@ class FeedbackController extends ControllerBase {
   public function test() {
     $build['form'] = [
       '#lazy_builder' => [
-        'favrskov.feedback.builder:getFeedbackForm', [],
+        FeedbackFormBuilder::class . '::getFeedbackForm', [],
       ],
       '#create_placeholder' => TRUE,
     ];

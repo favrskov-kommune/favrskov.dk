@@ -8,8 +8,7 @@ task('deploy:db:set_backup_file', function () {
   set('current_sql_backup', get('sql_backup_folder_path').'/backup_'.$release.'.sql');
 })
   ->once()
-  ->shallow()
-  ->setPrivate();
+  ->hidden();
 
 desc('Dump current database');
 task('deploy:db:dump', function () {
@@ -21,9 +20,9 @@ task('deploy:db:dump', function () {
   } else {
     $command_cache_clear = 'cr';
   }
-  run('cd {{drush_exec_path_absolute}} && drush '.$command_cache_clear.' && drush sql-dump --structure-tables-list=cache,cache_* > ' . $current_sql_backup);
+  run('cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush '.$command_cache_clear.' && vendor/drush/drush/drush sql-dump --structure-tables-list=cache,cache_* > ' . $current_sql_backup);
 })
-  ->setPrivate();
+  ->hidden();
 
 desc('Rollback database');
 task('deploy:db:rollback', function () {
@@ -35,7 +34,7 @@ task('deploy:db:rollback', function () {
   if($rollback_db == 'true') {
 
     if(!empty($current_sql_backup)){
-      run('if [ -f ' . $current_sql_backup . ' ]; then cd {{drush_exec_path_absolute}} && drush sql-drop -y && drush sql-cli < '.$current_sql_backup.' && mv '.$current_sql_backup.' '.$new_sql_backup.'; fi');
+      run('if [ -f ' . $current_sql_backup . ' ]; then cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush sql-drop -y && vendor/drush/drush/drush sql-cli < '.$current_sql_backup.' && mv '.$current_sql_backup.' '.$new_sql_backup.'; fi');
       writeln('Database rolled back to: '.$current_sql_backup);
       writeln('Backup file was renamed: '.$new_sql_backup);
     } else {
@@ -53,7 +52,7 @@ task('deploy:db:rollback', function () {
   }
 
 })
-  ->setPrivate();
+  ->hidden();
 
 desc('Cleanup old database backups');
 task('deploy:db:cleanup', function () {
@@ -76,7 +75,7 @@ task('deploy:db:cleanup', function () {
     run('if [ -f ' . $sql_backup . ' ]; then '.$sudo.' rm -rf '.$sql_backup.'; fi');
   }
 })
-  ->setPrivate();
+  ->hidden();
 
 before('deploy:db:dump','deploy:db:set_backup_file');
 before('deploy:db:rollback','deploy:db:set_backup_file');

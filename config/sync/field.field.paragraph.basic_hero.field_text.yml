@@ -4,14 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_text
+    - filter.format.basic_html
     - paragraphs.paragraphs_type.basic_hero
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - basic_html
 _core:
   default_config_hash: tmiQRISuTyWusxfNfKcz0xBZL4clAFkXyooD3CcgquY
 id: paragraph.basic_hero.field_text
@@ -24,5 +20,7 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - basic_html
 field_type: text_long

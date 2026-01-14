@@ -1,7 +1,6 @@
 _core:
   default_config_hash: Pr_b_MN9FKLAoSwY0vUUwgYUA7dtQ8p74IjgY91AAAU
-langcode: da
-modal_width: 768
+modal_width: '768'
 modal_height: auto
 modal_autoresize: true
 theme_display: seven

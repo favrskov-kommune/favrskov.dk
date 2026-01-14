@@ -1,4 +1,4 @@
-label: 'Who''s online block'
+label: "Who's online block"
 description: 'Shows the user names of the most recently active users, and the total number of active users.'
 display:
   default:
@@ -16,7 +16,7 @@ display:
           expose:
             label: 'Last access'
             description: 'A user is considered online for this long after they have last viewed a page.'
-      title: 'Who''s online'
+      title: "Who's online"
       header:
         result:
           content: 'There are currently @total users online.'
@@ -24,7 +24,7 @@ display:
         area_text_custom:
           content: 'There are currently 0 users online.'
   who_s_online_block:
-    display_title: 'Who''s online'
+    display_title: "Who's online"
     display_options:
-      block_description: 'Who''s online'
+      block_description: "Who's online"
       display_description: 'A list of users that are currently logged in.'

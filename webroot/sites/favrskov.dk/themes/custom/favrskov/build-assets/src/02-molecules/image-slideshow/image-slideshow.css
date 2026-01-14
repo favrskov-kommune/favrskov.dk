@@ -16,11 +16,19 @@
   }
 
   .flickity-page-dots {
-    bottom: 20px;
+    position: relative;
+    bottom: auto;
     display: flex;
+    padding-top: 10px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+
+    @media (--viewport-sm-min) {
+      position: absolute;
+      bottom: 20px;
+      padding-top: 0;
+    }
 
     @media print {
       display: none;
@@ -28,35 +36,78 @@
 
     .dot {
       position: relative;
-      width: 12px;
-      height: 12px;
-      background-color: rgba(255, 255, 255, .75);
+      width: 8px;
+      height: 8px;
+      background-color: rgba(0, 0, 0, .25);
       border-radius: 50%;
       cursor: pointer;
       opacity: 1;
-      margin: 20px 15px;
+      margin: 5px;
       transition: background-color .3s;
 
-      &:not(:last-child) {
-        margin-right: 20px;
+      @media (--viewport-sm-min) {
+        width: 12px;
+        height: 12px;
+        margin: 20px 15px;
+        background-color: rgba(255, 255, 255, .75);
+
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
       }
 
       &.is-selected {
-        width: 20px;
-        height: 20px;
-        background-color: var(--color-white);
+        width: 10px;
+        height: 10px;
+        background-color: var(--color-primary);
 
-        &::before {
-          content: '';
-          background-color: rgba(255, 255, 255, .3);
-          width: 46px;
-          height: 46px;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          border-radius: 50%;
+        @media (--viewport-sm-min) {
+          width: 20px;
+          height: 20px;
+          background-color: var(--color-white);
+
+          &::before {
+            content: '';
+            background-color: rgba(255, 255, 255, .3);
+            width: 46px;
+            height: 46px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+          }
         }
+      }
+    }
+  }
+
+  .flickity-prev-next-button {
+    display: block;
+    width: 32px;
+    height: 32px;
+
+    @media print {
+      display: none;
+    }
+
+    .flickity-button-icon {
+      top: 25%;
+      left: 25%;
+      width: 50%;
+      height: 50%;
+      fill: var(--color-primary);
+    }
+
+    @media (--viewport-ms-min) {
+      width: 44px;
+      height: 44px;
+
+      .flickity-button-icon {
+        top: 23%;
+        left: 23%;
+        width: 54%;
+        height: 54%;
       }
     }
   }

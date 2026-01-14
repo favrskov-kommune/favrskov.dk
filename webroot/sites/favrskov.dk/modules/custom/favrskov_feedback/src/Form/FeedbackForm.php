@@ -19,7 +19,7 @@ class FeedbackForm extends FormBase {
     $form['submit'] = [
       '#type' => 'submit'
     ];
-    honeypot_add_form_protection($form, $form_state, array('honeypot', 'time_restriction'));
+    \Drupal::service('honeypot')->addFormProtection($form, $form_state, array('honeypot', 'time_restriction'));
     return $form;
   }
 

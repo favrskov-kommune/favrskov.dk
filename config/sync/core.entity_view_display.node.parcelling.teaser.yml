@@ -1,0 +1,38 @@
+uuid: fd32e6f4-899d-42f4-b09e-8e5732aa2268
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.parcelling.content_hierarchy
+    - field.field.node.parcelling.field_color_theme
+    - field.field.node.parcelling.field_header
+    - field.field.node.parcelling.field_parcelling_identifier
+    - field.field.node.parcelling.field_parcelling_parcels
+    - field.field.node.parcelling.layout_builder__layout
+    - node.type.parcelling
+  module:
+    - user
+id: node.parcelling.teaser
+targetEntityType: node
+bundle: parcelling
+mode: teaser
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  content_hierarchy: true
+  field_color_theme: true
+  field_header: true
+  field_parcelling_identifier: true
+  field_parcelling_parcels: true
+  langcode: true
+  layout_builder__layout: true

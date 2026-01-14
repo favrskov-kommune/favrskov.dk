@@ -1,0 +1,4 @@
+services:
+  ftf_parcelling.parcel_import:
+    class: Drupal\ftf_parcelling\Service\ParcelImportService
+    arguments: ['@database', '@content_hierarchy.data']

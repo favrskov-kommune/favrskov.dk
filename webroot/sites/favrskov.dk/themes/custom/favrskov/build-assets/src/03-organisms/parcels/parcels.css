@@ -1,0 +1,129 @@
+.parcels {
+    &__headline {
+        margin-bottom: 50px;
+    }
+
+    &__group {
+        /* Add margin to all except the last group */
+        &:not(:last-child) {
+            margin-bottom: 80px;
+        }
+
+        /* Only for mobile if there are more than 3 elements */
+        &--hide-elements-mobile {
+            @media (--viewport-sm-max) {
+                .parcels__elements::after,
+                .parcels__toggle-text {
+                    display: block;
+                }
+
+                .parcels__elements::after {
+                    opacity: 1;
+                    transition: opacity 0.3s;
+                }
+
+                /* Display first 3 elements */
+                .row [class^="col-"]:nth-child(n+4) {
+                    display: none;
+                }
+            }
+        }
+
+        /* For both mobile and desktop, if there are more than 6 elements */
+        &--hide-elements {
+            .parcels__elements::after,
+            .parcels__toggle-text {
+                display: block;
+            }
+
+            .parcels__elements::after {
+                opacity: 1;
+                transition: opacity 0.3s;
+            }
+
+            @media (--viewport-sm-max) {
+                /* Display first 3 elements */
+                .row [class^="col-"]:nth-child(n+4) {
+                    display: none;
+                }
+            }
+
+            @media (--viewport-md-min) {
+                /* Display first 6 elements */
+                .row [class^="col-"]:nth-child(n+7) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &__elements {
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+            content: '';
+            background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7) 10%, var(--theme-background-color));
+            height: 70%;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .row {
+            margin-left: -25px;
+            margin-right: -25px;
+
+            & [class^="col-"] {
+                padding-right: 25px;
+                padding-left: 25px;
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    &__toggle-text {
+        color: var(--theme-link-color);
+        text-decoration: underline;
+        position: relative;
+        left: 0;
+        right: 0;
+        text-align: center;
+        cursor: pointer;
+        z-index: 1;
+        display: none;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            border: 2px solid var(--theme-link-color);
+            width: 20px;
+            height: 20px;
+            margin-left: 20px;
+            transform: rotate(-45deg);
+            border-top: 0;
+            border-right: 0;
+            margin-bottom: 4px;
+        }
+
+        &--active {
+            display: block;
+
+            &::after {
+                transform: rotate(135deg);
+                margin-bottom: -8px;
+            }
+        }
+
+        &--move-up {
+            bottom: 50px;
+
+            @media (--viewport-md-min) {
+                bottom: 30px;
+            }
+        }
+    }
+}

@@ -8,6 +8,7 @@
 {% else %}
   {% set contact_item_class = '' %}
 {% endif %}
+{% set background_class = background_color ? 'background-' ~ background_color %}
 <div {{ (not attributes ? create_attribute() : attributes).addClass('contact') }}>
   {% block block_content %}{% endblock %}
   <div class="contact__content-wrapper">
@@ -20,21 +21,21 @@
       <div class="row contact__content-items">
         {% if text_1|render|striptags|trim %}
           <div class="col-xs-12{{ contact_item_class }} contact__content-items--item{{ (contact_item_class ? ' first') }}">
-            <div class="contact__content-items--item-content">
+            <div class="contact__content-items--item-content {{ background_class}}">
               {{ text_1 }}
             </div>
           </div>
         {% endif %}
         {% if text_2|render|striptags|trim %}
           <div class="col-xs-12{{ contact_item_class }} contact__content-items--item{{ (contact_item_class == 'col-md-6' ? ' last') }}">
-            <div class="contact__content-items--item-content">
+            <div class="contact__content-items--item-content {{ background_class}}">
               {{ text_2 }}
             </div>
           </div>
         {% endif %}
         {% if text_3|render|striptags|trim %}
           <div class="col-xs-12{{ contact_item_class }} contact__content-items--item last">
-            <div class="contact__content-items--item-content">
+            <div class="contact__content-items--item-content {{ background_class}}">
               {{ text_3 }}
             </div>
           </div>

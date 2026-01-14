@@ -1,6 +1,5 @@
-dialog:
+media_library_add_form_cdn_video:
   version: VERSION
-  js:
-    js/dialog.js: {}
-  dependencies:
-    - core/jquery.ui.dialog
+  css:
+    theme:
+      css/media-library-add-form-cdn-video.css: {}

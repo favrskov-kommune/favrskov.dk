@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.news.body
     - field.field.node.news.field_chatbot_muni
     - field.field.node.news.field_description
+    - field.field.node.news.field_display_publishing_date
     - field.field.node.news.field_hide_breadcrumb
     - field.field.node.news.field_keep_published
     - field.field.node.news.field_list_date

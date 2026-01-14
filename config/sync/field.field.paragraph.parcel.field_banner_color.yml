@@ -1,0 +1,19 @@
+uuid: a91fe8dc-2834-4e45-b0dc-fbdeff9b8b49
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_banner_color
+    - paragraphs.paragraphs_type.parcel
+id: paragraph.parcel.field_banner_color
+field_name: field_banner_color
+entity_type: paragraph
+bundle: parcel
+label: 'Banner background color'
+description: 'Insert hex color-code without #'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

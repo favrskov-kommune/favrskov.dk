@@ -1,0 +1,21 @@
+uuid: c3879354-fc7e-47df-b127-b97ff3af37c8
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_area_identifier
+field_name: field_area_identifier
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

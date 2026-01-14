@@ -16,7 +16,6 @@ archive: false
 id: contact
 title: Kontakt
 description: 'Basic email contact webform.'
-category: ''
 elements: |-
   name:
     '#title': 'Your Name'
@@ -32,6 +31,10 @@ elements: |-
     '#title': Message
     '#type': textarea
     '#required': true
+  node_id:
+    '#type': hidden
+    '#title': 'Node id - Indtast favrskov.dk/node/ID for at navigere til siden som formularen blev afsendt fra'
+    '#prepopulate': true
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
@@ -293,3 +296,4 @@ handlers:
       parameters: {  }
       debug: false
 variants: {  }
+category: ''

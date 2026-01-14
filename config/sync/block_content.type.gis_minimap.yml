@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: gis_minimap
 label: 'GIS MiniMap'
-revision: 0
+revision: false
 description: ''

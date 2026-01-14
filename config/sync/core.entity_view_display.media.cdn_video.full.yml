@@ -9,8 +9,8 @@ dependencies:
     - field.field.media.cdn_video.field_media_image
     - media.type.cdn_video
   module:
+    - favrskov_plugins
     - layout_builder
-    - premium_cdn_video
 third_party_settings:
   layout_builder:
     enabled: false
@@ -23,7 +23,7 @@ bundle: cdn_video
 mode: full
 content:
   field_media_cdn_video:
-    type: cdn_video_formatter
+    type: favrskov_cdn_video_formatter
     label: hidden
     settings: {  }
     third_party_settings: {  }

@@ -1,13 +1,17 @@
 muni:
-  version: 1.1
+  version: 2.0
   js:
-    js/EmbedMuni.js: {}
-  dependencies:
-    - core/drupalSettings
+    "https://dev.prokomcdn.no/projects/deloitte/chatbot/prod/chatbot.js":
+      type: external
+      attributes:
+        data-municipality-code: 710
+        data-mode: popup
 
 muni.test:
-  version: 1.1
+  version: 2.0
   js:
-    js/EmbedMuniTest.js: {}
-  dependencies:
-    - core/drupalSettings
+    "https://dev.prokomcdn.no/projects/deloitte/chatbot/test/chatbot.js":
+      type: external
+      attributes:
+        data-municipality-code: 710
+        data-mode: popup

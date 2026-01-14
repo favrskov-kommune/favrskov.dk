@@ -18,4 +18,4 @@ if (!is_file($config_file) || !is_readable($config_file)) {
 require 'deployer/recipe/base.php';
 
 // Load config file
-inventory($config_file);
+import($config_file);

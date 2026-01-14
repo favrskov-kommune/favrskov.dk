@@ -1,0 +1,118 @@
+<?php
+
+use Drupal\content_hierarchy\ContentHierarchyData;
+use Drupal\Core\Entity\TranslatableInterface;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_locale_translation_projects_alter().
+ */
+function ftf_parcelling_locale_translation_projects_alter(&$projects) {
+  $module_handler = \Drupal::service('module_handler');
+  $path = $module_handler->getModule('ftf_parcelling')->getPath();
+  $projects['ftf_parcelling']['info']['interface translation server pattern'] = $path . '/translations/%language.po';
+}
+
+/**
+ * Implements hook_cron().
+ */
+function ftf_parcelling_cron() {
+  /** @var \Drupal\ftf_parcelling\Service\ParcelImportService $parcel_import */
+  $parcel_import = \Drupal::service('ftf_parcelling.parcel_import');
+  $parcel_import->run();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ftf_parcelling_preprocess_block(&$variables) {
+  if($variables['plugin_id'] == 'field_block:node:parcelling:field_parcelling_parcels') {
+    $items = ['upcoming' => [], 'available' => [], 'reserved' => [], 'sold' => []];
+    $content = reset($variables['content']);
+    $i = 0;
+    while (array_key_exists($i, $content)) {
+      $paragraph = $content[$i]['#paragraph'];
+      $items[$paragraph->get('field_parcel_status')->value][] = $content[$i];
+      $i++;
+    }
+    foreach ($items as $key => $parcels) {
+      usort($parcels, function ($a, $b) {
+        return strnatcmp($a['#paragraph']->field_parcel_address->value, $b['#paragraph']->field_parcel_address->value);
+      });
+      $items[$key] = $parcels;
+    }
+    $variables['items'] = $items;
+  }
+
+  if($variables['plugin_id'] == 'field_block:node:parcelling:field_parcelling_identifier') {
+    /** @var ContentHierarchyData $ch_service */
+    $ch_service = Drupal::service('content_hierarchy.data');
+    if (isset(reset($variables['content'])['#object'])) {
+      $node = reset($variables['content'])['#object'];
+      $child_content_id = $ch_service->findEntity($node);
+      $child_placement = $ch_service->getContentAndPlacement($child_content_id);
+      $parent_id = $ch_service->getContent($child_placement['parent_id'])['entity_id'] ?? NULL;
+
+      $query = Drupal::database()->select('node__field_area_type_identifier', 'identifier');
+      $query->condition('identifier.entity_id', $parent_id);
+      $query->fields('identifier', ['field_area_type_identifier_value']);
+      $parcelling_type = $query->execute()->fetchField();
+
+      $parcelling_id = $node->field_parcelling_identifier->value;
+      $parcelling_type = $parcelling_type == 'bolig' ? 'byggegrund' : $parcelling_type;
+      $variables['#attached']['library'][] = 'ftf_parcelling/ftf_parcelling.minimap';
+      $variables['#attached']['drupalSettings']['ftf_parcelling']['parcelling_type'] = $parcelling_type;
+      $variables['#attached']['drupalSettings']['ftf_parcelling']['parcelling_id'] = $parcelling_id;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ftf_parcelling_preprocess_layout_block__gis_minimap(&$variables) {
+  $block = $variables['entity'];
+  $map_id = $block->field_gis_minimap_id->value;
+  if($map_id) {
+    $variables['#attached']['library'][] = 'ftf_parcelling/ftf_parcelling.minimap';
+    $variables['#attached']['drupalSettings']['ftf_parcelling']['gis_minimap'][$block->id()] = $map_id;
+    $variables['gis_block_id'] = $block->id();
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ftf_parcelling_preprocess_paragraph__parcel(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $variables['parcel_group'] = $paragraph->field_parcel_group->value != '' ? $paragraph->field_parcel_group->value : null;
+  $variables['parcel_address'] = $paragraph->field_parcel_address->value;
+  $variables['parcel_status'] = $paragraph->field_parcel_status->value;
+  $variables['parcel_price'] = $paragraph->field_parcel_price->value > 0 ? $paragraph->field_parcel_price->value : null;
+  $variables['parcel_min_price'] = $paragraph->field_parcel_min_price->value > 0 ? $paragraph->field_parcel_min_price->value : null;
+  $variables['parcel_sqm_price'] = $paragraph->field_parcel_price_sqm->value != '' ? $paragraph->field_parcel_price_sqm->value : null;
+  $variables['parcel_area'] = $paragraph->field_parcel_area->value;
+  $variables['parcel_type'] = $paragraph->field_parcel_type->value;
+
+  if($paragraph->hasField('field_banner_text') && !$paragraph->get('field_banner_text')->isEmpty()) {
+    if($paragraph->field_banner_text->value != '') {
+      $variables['parcel_banner_text'] = $paragraph->field_banner_text->value;
+      $variables['parcel_banner_color'] = !$paragraph->get('field_banner_color')->isEmpty() ? $paragraph->field_banner_color->value : 'd1e0dc';
+      $variables['parcel_banner_text_color'] = !$paragraph->get('field_banner_text_color')->isEmpty() ? $paragraph->field_banner_text_color->value : '474747';
+    }
+  }
+
+  /** @var \Drupal\media\Entity\Media $media_file */
+  $media_file = $paragraph->field_parcel_specs->entity;
+
+  if($media_file) {
+    $variables['parcel_specs'] = [
+      'title' => $media_file->label(),
+      'url' => $media_file->field_media_document->entity->createFileUrl() ?? '',
+      'icon' => 'document',
+    ];
+  }
+}

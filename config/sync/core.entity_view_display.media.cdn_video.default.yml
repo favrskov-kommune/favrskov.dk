@@ -8,7 +8,7 @@ dependencies:
     - field.field.media.cdn_video.field_media_image
     - media.type.cdn_video
   module:
-    - premium_cdn_video
+    - favrskov_plugins
 _core:
   default_config_hash: RhEXIenClzTeWXv3B8Hh3YUvMJ2kLuXCSTlRVviw9SE
 id: media.cdn_video.default
@@ -17,7 +17,7 @@ bundle: cdn_video
 mode: default
 content:
   field_media_cdn_video:
-    type: cdn_video_formatter
+    type: favrskov_cdn_video_formatter
     label: hidden
     settings: {  }
     third_party_settings: {  }

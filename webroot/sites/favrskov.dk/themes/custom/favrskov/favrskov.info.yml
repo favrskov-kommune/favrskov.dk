@@ -3,7 +3,7 @@ type: theme
 description: 'Premium subtheme'
 package: Drupal Premium
 version: 2.0.0
-core_version_requirement: ^8.8 || ^9
+core_version_requirement: ^9 || ^10
 base theme: premium_theme
 libraries:
   - favrskov/master
@@ -16,16 +16,11 @@ regions:
   content: Content
   burgermenu: Burgermenu
 
-component-libraries:
-  particles:
-    paths:
-      - build-assets/src/01-particles
-  molecules:
-    paths:
-      - build-assets/src/02-molecules
-  organisms:
-    paths:
-      - build-assets/src/03-organisms
+components:
+  namespaces:
+    particles: build-assets/src/01-particles
+    molecules: build-assets/src/02-molecules
+    organisms: build-assets/src/03-organisms
 
 interface translation project: favrskov
 interface translation server pattern: favrskov/translations/%language.po

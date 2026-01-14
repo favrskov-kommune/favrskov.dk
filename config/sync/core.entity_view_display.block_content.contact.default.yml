@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.contact
+    - field.field.block_content.contact.field_background_color
     - field.field.block_content.contact.field_call_to_action_color
     - field.field.block_content.contact.field_cta
     - field.field.block_content.contact.field_headline
@@ -20,6 +21,13 @@ targetEntityType: block_content
 bundle: contact
 mode: default
 content:
+  field_background_color:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_call_to_action_color:
     type: list_default
     label: hidden
