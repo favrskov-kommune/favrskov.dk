@@ -1,28 +1,31 @@
-const fs = require('fs');
-const path = require('path');
-const SVGSpriter = require('svg-sprite');
-const glob = require('glob');
-const mkdirp = require('mkdirp');
-const File = require('vinyl');
-const chalk = require('chalk');
-const argv = require('minimist')(process.argv.slice(2));
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import SVGSpriter from 'svg-sprite';
+import { globSync } from 'glob';
+import Vinyl from 'vinyl';
+import chalk from 'chalk';
+import minimist from 'minimist';
 
-const fileMatchPath = argv.i || '';
-const destinationPath = argv.o || '';
+const argv = minimist(process.argv.slice(2));
+
+const fileMatchPath = argv.i;
+const destinationPath = argv.o;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const spriter = new SVGSpriter({
   shape: {
-    // Set maximum dimensions
     dimension: {
       maxWidth: 32,
       maxHeight: 32,
     },
-    // Exclude path from id
     id: {
-      generator(name) {
-        // eslint-disable-next-line no-console
-        console.log(chalk.yellow(`adding: ${name}`));
-        return path.basename(name, '.svg');
+      generator(name, file) {
+        const filePath = file?.path || '';
+        const id = path.basename(filePath, '.svg');
+        return id;
       },
     },
   },
@@ -31,36 +34,31 @@ const spriter = new SVGSpriter({
   },
 });
 
-// Compile the sprite
-/* eslint-disable */
-const dist = path.resolve(destinationPath);
-glob.glob(path.resolve(fileMatchPath), (error, files) => {
-  if (error) {
-    process.exitCode = 1;
-  }
-  files.forEach(function (file) {
-    // Create and add a vinyl file instance for each SVG
-    spriter.add(
-      new File({
-        path: file, // Absolute path to the SVG file
-        contents: fs.readFileSync(file) // SVG file contents
-      })
-    );
-  });
+const files = globSync(fileMatchPath);
 
-  // Compile the sprite
-  spriter.compile(function (error, result) {
-    if (error) {
-      process.exitCode = 1;
-    }
-    /* Write `result` files to disk (or do whatever with them ...) */
-    for (let mode in result) {
-      for (let resource in result[mode]) {
-        if (!fs.existsSync(dist)) {
-          mkdirp.sync(path.dirname(dist));
-        }
-        fs.writeFileSync(dist, result[mode][resource].contents);
-      }
-    }
-  });
+const dist = path.resolve(destinationPath);
+
+files.forEach((filePath) => {
+  console.log(`adding: ${path.basename(filePath, '.svg')}`);
+
+  spriter.add(
+    new Vinyl({
+      path: filePath,
+      contents: fs.readFileSync(filePath),
+    })
+  );
+});
+
+spriter.compile((error, result) => {
+  if (error) {
+    console.error(error);
+    process.exit(1);
+  }
+
+  const sprite = result.symbol.sprite;
+
+  fs.mkdirSync(path.dirname(dist), { recursive: true });
+  fs.writeFileSync(dist, sprite.contents);
+
+  console.log(chalk.green(`Sprite generated: ${dist}`));
 });

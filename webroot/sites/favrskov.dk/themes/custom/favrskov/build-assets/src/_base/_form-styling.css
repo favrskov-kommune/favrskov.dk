@@ -4,13 +4,13 @@
  */
 
 .premium-layout-wrapper {
-  @nestedimport "./src/01-particles/button/button.css";
-  @nestedimport "./src/01-particles/forms/checkbox/checkbox.css";
-  @nestedimport "./src/01-particles/forms/input/input.css";
-  @nestedimport "./src/01-particles/forms/label/label.css";
-  @nestedimport "./src/01-particles/forms/radio/radio.css";
-  @nestedimport "./src/01-particles/forms/select/select.css";
-  @nestedimport "./src/01-particles/forms/textarea/textarea.css";
+  @nested-import "../01-particles/button/button.css";
+  @nested-import "../01-particles/forms/checkbox/checkbox.css";
+  @nested-import "../01-particles/forms/input/input.css";
+  @nested-import "../01-particles/forms/label/label.css";
+  @nested-import "../01-particles/forms/radio/radio.css";
+  @nested-import "../01-particles/forms/select/select.css";
+  @nested-import "../01-particles/forms/textarea/textarea.css";
 
   .form-item {
     margin-bottom: 15px;

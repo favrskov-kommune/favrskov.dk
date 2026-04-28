@@ -1,5 +1,10 @@
-const argv = require('minimist')(process.argv.slice(2));
+import minimist from 'minimist';
+import { deleteAsync } from 'del';
 
-if (argv.i.length > 0) {
-  (async () => await require('del')([argv.i]))();
-}
+const argv = minimist(process.argv.slice(2));
+
+(async () => {
+  if (argv.i && argv.i.length > 0) {
+    await deleteAsync([argv.i]);
+  }
+})();
