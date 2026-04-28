@@ -1,5 +1,4 @@
 master:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/_base/_variables.css: {}
@@ -17,14 +16,12 @@ master:
     - core/drupal.ajax
 # Themes.
 theme:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/_themes/theme.css: {}
       build-assets/dist/css/_base/_variables.css: {}
 
 theme-douce:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/_themes/theme-douce.css: {}
@@ -32,7 +29,6 @@ theme-douce:
     - favrskov/theme
 
 theme-grayblue:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/_themes/theme-grayblue.css: {}
@@ -40,7 +36,6 @@ theme-grayblue:
     - favrskov/theme
 
 theme-green:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/_themes/theme-green.css: {}
@@ -48,7 +43,6 @@ theme-green:
     - favrskov/theme
 
 theme-mint:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/_themes/theme-mint.css: {}
@@ -56,7 +50,6 @@ theme-mint:
     - favrskov/theme
 
 theme-red:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/_themes/theme-red.css: {}
@@ -65,7 +58,6 @@ theme-red:
 
 # Previews.
 theme-preview:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/_preview/theme.css: {}
@@ -75,38 +67,32 @@ theme-preview:
     - favrskov/theme-douce
 
 button-preview:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/_preview/button.css: {}
 
 # Molecules.
 breadcrumb:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/breadcrumb/breadcrumb.css: {}
 
 burger:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/burger/burger.css: {}
 
 divider:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/divider/divider.css: {}
 
 image:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/image/image.css: {}
 
 image-slideshow:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/image-slideshow/image-slideshow.css: {}
@@ -117,79 +103,67 @@ image-slideshow:
     - core/drupal
 
 inline-navigation-item:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/inline-navigation-item/inline-navigation-item.css: {}
 
 language-menu:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/language-menu/language-menu.css: {}
   js:
-    build-assets/dist/js/02-molecules/language-menu/language-menu.js: {}
+    build-assets/dist/js/02-molecules/language-menu/language-menu.js: { preprocess: false }
 
 logo:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/logo/logo.css: {}
 
 meta-menu:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/meta-menu/meta-menu.css: {}
 
 navigation:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/navigation/navigation.css: {}
   js:
-    build-assets/dist/js/02-molecules/navigation/navigation.js: {}
+    build-assets/dist/js/02-molecules/navigation/navigation.js: { preprocess: false }
 
 quote:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/quote/quote.css: {}
 
 rte:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/rte/rte.css: {}
 
 search-toggle:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/search-toggle/search-toggle.css: {}
   js:
-    build-assets/dist/js/02-molecules/search-toggle/search-toggle.js: {}
+    build-assets/dist/js/02-molecules/search-toggle/search-toggle.js: { preprocess: false }
 
 spacer:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/spacer/spacer.css: {}
 
 sub-navigation:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/sub-navigation/sub-navigation.css: {}
 
 table-spot:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/table-spot/table-spot.css: {}
 
 video:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/02-molecules/video/video.css: {}
@@ -200,17 +174,15 @@ video:
 
 # Organisms
 accordion:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/accordion/accordion.css: {}
   js:
-    build-assets/dist/js/03-organisms/accordion/accordion.js: {}
+    build-assets/dist/js/03-organisms/accordion/accordion.js: { preprocess: false }
   dependencies:
     - core/drupal
 
 appetiser:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/appetiser/appetiser.css: {}
@@ -218,7 +190,6 @@ appetiser:
     build-assets/dist/js/03-organisms/appetiser/appetiser.js: {}
 
 branding-spot:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/branding-spot/branding-spot.css: {}
@@ -226,23 +197,20 @@ branding-spot:
     build-assets/dist/js/03-organisms/branding-spot/branding-spot.js: {}
 
 burger-menu:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/burger-menu/burger-menu.css: {}
   js:
-    build-assets/dist/js/03-organisms/burger-menu/burger-menu.js: {}
+    build-assets/dist/js/03-organisms/burger-menu/burger-menu.js: { preprocess: false }
   dependencies:
     - core/drupal
 
 contact:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/contact/contact.css: {}
 
 document-list:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/document-list/document-list.css: {}
@@ -250,7 +218,6 @@ document-list:
     - core/drupal
 
 footer:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/footer/footer.css: {}
@@ -260,19 +227,16 @@ footer:
     - favrskov/theme-primary
 
 gis-minimap:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/gis-minimap/gis-minimap.css: {}
 
 header:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/header/header.css: {}
 
 hearing-page:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/hearing-page/hearing-page.css: {}
@@ -280,7 +244,6 @@ hearing-page:
     build-assets/dist/js/03-organisms/hearing-page/hearing-page.js: {}
 
 hero:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/hero/hero.css: {}
@@ -290,7 +253,6 @@ hero:
     - core/drupal
 
 inline-navigation:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/inline-navigation/inline-navigation.css: {}
@@ -301,7 +263,6 @@ inline-navigation:
     - core/drupal
 
 local-tasks:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/local-tasks/local-tasks.css: {}
@@ -309,7 +270,6 @@ local-tasks:
     build-assets/dist/js/03-organisms/local-tasks/local-tasks.js: {}
 
 news-page:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/news-page/news-page.css: {}
@@ -317,33 +277,28 @@ news-page:
     build-assets/dist/js/03-organisms/news-page/news-page.js: {}
 
 pager:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/pager/pager.css: {}
 
 search-overlay:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/search-overlay/search-overlay.css: {}
   js:
-    build-assets/dist/js/03-organisms/search-overlay/search-overlay.js: {}
+    build-assets/dist/js/03-organisms/search-overlay/search-overlay.js: { preprocess: false }
 
 search-page:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/search-page/search-page.css: {}
 
 status-message:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/status-message/status-message.css: {}
 
 submenu:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/submenu/submenu.css: {}
@@ -351,13 +306,11 @@ submenu:
     build-assets/dist/js/03-organisms/submenu/submenu.js: {}
 
 maintenance-page:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/maintenance-page/maintenance-page.css: {}
 
 parcels:
-  version: VERSION
   css:
     theme:
       build-assets/dist/css/03-organisms/map/map.css: {}
@@ -365,4 +318,4 @@ parcels:
       build-assets/dist/css/02-molecules/parcel/parcel.css: {}
       build-assets/dist/css/02-molecules/link-list/link-list.css: {}
   js:
-    build-assets/dist/js/03-organisms/parcels/parcels.js: {}
+    build-assets/dist/js/03-organisms/parcels/parcels.js: { preprocess: false }

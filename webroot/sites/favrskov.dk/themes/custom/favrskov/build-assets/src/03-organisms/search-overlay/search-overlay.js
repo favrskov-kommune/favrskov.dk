@@ -2,43 +2,25 @@ import { createApp } from 'vue';
 
 Drupal.behaviors.searchOverlay = {
   attach(context) {
-    const el = context.querySelector?.('#js-search-overlay') || document.getElementById('js-search-overlay');
+    const el = context.querySelector?.('#js-search-overlay')
+      || document.getElementById('js-search-overlay');
 
     if (!el || el.dataset.vued) return;
 
     el.dataset.vued = 'true';
 
-    const app = createApp({
+    createApp({
       data() {
         return {
-          isOpen: false,
           trapHandler: null,
         };
       },
 
-      watch: {
-        isOpen(val) {
-          const el = document.getElementById('js-search-overlay');
-          if (!el) return;
-
-          el.classList.toggle('search-overlay--open', val);
-          el.setAttribute('aria-hidden', String(!val));
-
-          document.body.classList.toggle('no-scroll', val);
-
-          if (val) {
-            this.enableTrap(el);
-
-            const input = document.getElementById('js-search-overlay-input');
-            if (input) input.focus();
-          } else {
-            this.disableTrap();
-          }
-        },
-      },
-
       mounted() {
         document.addEventListener('searchToggle', this.openSearchOverlay);
+
+        // initial state
+        this.closeOverlay(false);
       },
 
       beforeUnmount() {
@@ -48,14 +30,12 @@ Drupal.behaviors.searchOverlay = {
 
       methods: {
         openSearchOverlay() {
-          this.isOpen = true;
-        },
-
-        open() {
           const root = document.getElementById('js-search-overlay');
           if (!root) return;
 
+          root.classList.add('search-overlay--open');
           root.setAttribute('aria-hidden', 'false');
+
           document.body.classList.add('no-scroll');
 
           this.enableTrap(root);
@@ -63,26 +43,31 @@ Drupal.behaviors.searchOverlay = {
           const input = document.getElementById('js-search-overlay-input');
           if (input) input.focus();
 
+          // IMPORTANT: re-init Cludo AFTER DOM is visible
           if (window.CludoSearch?.registerSearchFormElement) {
             window.CludoSearch.registerSearchFormElement('#overlay-cludo-search-form');
           }
         },
 
         closeSearchOverlay() {
-          this.isOpen = false;
+          this.closeOverlay(true);
         },
 
-        close() {
+        closeOverlay(focusToggle = true) {
           const root = document.getElementById('js-search-overlay');
           if (!root) return;
 
+          root.classList.remove('search-overlay--open');
           root.setAttribute('aria-hidden', 'true');
+
           document.body.classList.remove('no-scroll');
 
           this.disableTrap();
 
-          const toggle = document.querySelector('.js-search-toggle');
-          if (toggle) toggle.focus();
+          if (focusToggle) {
+            const toggle = document.querySelector('.js-search-toggle');
+            if (toggle) toggle.focus();
+          }
         },
 
         enableTrap(root) {
@@ -94,7 +79,7 @@ Drupal.behaviors.searchOverlay = {
 
           this.trapHandler = (e) => {
             if (e.key === 'Escape') {
-              this.closeSearchOverlay();
+              this.closeOverlay();
               return;
             }
 
@@ -121,8 +106,6 @@ Drupal.behaviors.searchOverlay = {
           }
         },
       },
-    });
-
-    app.mount(el);
+    }).mount(el);
   },
 };
