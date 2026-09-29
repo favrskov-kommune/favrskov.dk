@@ -1,0 +1,24 @@
+uuid: 9b001010-0f0f-4bb6-b9fc-0fc98fc39368
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.block_content.field_text
+    - block_content.type.timeline
+    - filter.format.basic_html
+  module:
+    - text
+id: block_content.timeline.field_text
+field_name: field_text
+entity_type: block_content
+bundle: timeline
+label: Tekst
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

@@ -1,0 +1,6 @@
+<div {{ attributes.addClass('content-card-preview') }}>
+  <strong>{{ card_title }}</strong>
+  <div>{{ card_date }}</div>
+  {% if card_type %}<div>{{ card_type }}</div>{% endif %}
+  {% if card_has_status %}<div>{{ content.field_timeline_status }}</div>{% endif %}
+</div>

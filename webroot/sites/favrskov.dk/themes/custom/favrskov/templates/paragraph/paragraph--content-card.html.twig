@@ -1,0 +1,17 @@
+{% embed '@molecules/content-card/content-card.twig' with {
+  attributes: attributes,
+  date: card_date,
+  type: card_type,
+  title: card_title,
+  text: content.field_text,
+  image: content.field_image,
+  link: content.field_cta,
+  status: content.field_timeline_status,
+  status_style: status_style,
+  has_image: card_has_image,
+  has_text: card_has_text,
+  has_link: card_has_link,
+  has_status: card_has_status,
+  text_id: card_text_id
+} only %}
+{% endembed %}

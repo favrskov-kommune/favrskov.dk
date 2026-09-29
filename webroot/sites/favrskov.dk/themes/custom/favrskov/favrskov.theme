@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\Core\Url;
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
 
@@ -189,6 +190,141 @@ function favrskov_preprocess_block__inline_block__slideshow(array &$variables) {
       }
     }
   }
+}
+
+/**
+ * Format a standalone timeline month and year with an initial capital.
+ */
+function favrskov_timeline_date_label(?string $date): string {
+  if (!$date) {
+    return '';
+  }
+
+  $timestamp = (new \DateTimeImmutable($date, new \DateTimeZone('UTC')))->getTimestamp();
+  $label = \Drupal::service('date.formatter')->format($timestamp, 'custom', 'F Y', 'UTC');
+  return ucfirst($label);
+}
+
+/**
+ * Prepare the date navigation for a timeline block.
+ */
+function favrskov_preprocess_block__inline_block__timeline(array &$variables) {
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables['elements']['content']['#block_content'];
+  $variables['timeline_title'] = $block->get('field_headline')->value;
+  $variables['timeline_has_intro'] = !$block->get('field_text')->isEmpty();
+  $variables['timeline_layout'] = $block->get('field_timeline_layout')->value === 'vertical' ? 'vertical' : 'horizontal';
+  $variables['timeline_nav'] = [];
+  $variables['timeline_statuses'] = [];
+  $seen_statuses = [];
+  foreach ($block->get('field_timeline_cards')->referencedEntities() as $delta => $card) {
+    $date = $card->get('field_timeline_date')->value;
+    $variables['timeline_nav'][] = [
+      'id' => 'timeline-' . $block->uuid() . '-card-' . $delta,
+      'date' => $date ? favrskov_timeline_date_label($date) : (string) t('Date pending'),
+      'title' => $card->get('field_title')->value,
+    ];
+
+    $term = $card->get('field_timeline_status')->entity;
+    if (!$term) {
+      continue;
+    }
+
+    $access = $term->access('view', NULL, TRUE);
+    CacheableMetadata::createFromObject($access)->applyTo($variables['content']);
+    if (!$access->isAllowed() || isset($seen_statuses[$term->id()])) {
+      continue;
+    }
+    $seen_statuses[$term->id()] = TRUE;
+
+    $background = $term->get('field_status_background_color')->value;
+    $text_color = $term->get('field_status_text_color')->value;
+    $background = $background && preg_match('/^#[0-9a-fA-F]{6}$/', $background) ? $background : '';
+    $text_color = $text_color && preg_match('/^#[0-9a-fA-F]{6}$/', $text_color) ? $text_color : '';
+    $outlined = $background && strcasecmp($background, '#FFFFFF') === 0 && $text_color;
+    $variables['timeline_statuses'][] = [
+      'label' => $term->label(),
+      'color' => $outlined ? $text_color : $background,
+      'outlined' => (bool) $outlined,
+    ];
+    CacheableMetadata::createFromObject($term)->applyTo($variables['content']);
+  }
+}
+
+/**
+ * Give timeline cards stable targets for the vertical date navigation.
+ */
+function favrskov_preprocess_field__field_timeline_cards(array &$variables) {
+  $block = $variables['element']['#object'] ?? NULL;
+  if (!$block || $block->getEntityTypeId() !== 'block_content' || $block->bundle() !== 'timeline') {
+    return;
+  }
+
+  foreach ($variables['items'] as $delta => &$item) {
+    $item['timeline_anchor'] = 'timeline-' . $block->uuid() . '-card-' . $delta;
+    $item['timeline_status_color'] = '';
+
+    $card = $block->get('field_timeline_cards')->get($delta)->entity;
+    $term = $card ? $card->get('field_timeline_status')->entity : NULL;
+    if (!$term || !$term->access('view')) {
+      continue;
+    }
+
+    $color = $term->get('field_status_background_color')->value;
+    if ($color && preg_match('/^#[0-9a-fA-F]{6}$/', $color)) {
+      $item['timeline_status_color'] = $color;
+      CacheableMetadata::createFromObject($term)->applyTo($item['content']);
+    }
+  }
+}
+
+/**
+ * Style content card CTA links as buttons.
+ */
+function favrskov_preprocess_field__field_cta(array &$variables) {
+  $entity = $variables['element']['#object'] ?? NULL;
+  if (!$entity || $entity->getEntityTypeId() !== 'paragraph' || $entity->bundle() !== 'content_card') {
+    return;
+  }
+
+  foreach ($variables['items'] as &$item) {
+    if (($item['content']['#theme'] ?? NULL) === 'link_with_target') {
+      $item['content']['#theme'] = 'link_with_target__timeline_card';
+    }
+  }
+}
+
+/**
+ * Keep editor-supplied status colours safe for use in CSS custom properties.
+ */
+function favrskov_preprocess_paragraph__content_card(array &$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $variables['card_text_id'] = 'timeline-card-text-' . $paragraph->uuid();
+  $variables['card_title'] = $paragraph->get('field_title')->value;
+  $variables['card_date'] = favrskov_timeline_date_label($paragraph->get('field_timeline_date')->value);
+  $variables['card_type'] = $paragraph->get('field_timeline_type')->value;
+  $variables['card_has_image'] = !$paragraph->get('field_image')->isEmpty();
+  $variables['card_has_text'] = !$paragraph->get('field_text')->isEmpty();
+  $variables['card_has_link'] = !$paragraph->get('field_cta')->isEmpty();
+  $variables['card_has_status'] = FALSE;
+  $variables['status_style'] = '';
+
+  $term = $paragraph->get('field_timeline_status')->entity;
+  if (!$term || !$term->access('view')) {
+    return;
+  }
+  $variables['card_has_status'] = TRUE;
+
+  $styles = [];
+  foreach (['background' => '--timeline-status-background', 'text' => '--timeline-status-text'] as $field => $property) {
+    $value = $term->get('field_status_' . $field . '_color')->value;
+    if ($value && preg_match('/^#[0-9a-fA-F]{6}$/', $value)) {
+      $styles[] = $property . ': ' . $value;
+    }
+  }
+  $variables['status_style'] = implode('; ', $styles);
+  CacheableMetadata::createFromObject($term)->applyTo($variables['content']);
 }
 
 /**

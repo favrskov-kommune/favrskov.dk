@@ -1,0 +1,10 @@
+uuid: 3985d038-727b-4215-b1ce-df69d0b161ed
+langcode: da
+status: true
+dependencies: {  }
+id: content_card
+label: Indholdskort
+icon_uuid: null
+icon_default: null
+description: 'Kort til en tidslinje.'
+behavior_plugins: {  }

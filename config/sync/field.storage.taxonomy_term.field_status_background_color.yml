@@ -1,0 +1,21 @@
+uuid: 32f11a68-2a20-4f92-824e-600bb31ee762
+langcode: da
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_status_background_color
+field_name: field_status_background_color
+entity_type: taxonomy_term
+type: string
+settings:
+  max_length: 7
+  case_sensitive: false
+  is_ascii: true
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -24,8 +24,8 @@
     "build:dev": "npm-run-all -l cleanup build:css-dev build:webpack-dev build:sprites build:fonts build:images",
     "build:css": "cross-env NODE_ENV=production postcss $npm_package_config_CSS_FILEMATCH --dir $npm_package_config_CSS_DIST --base $npm_package_config_CSS_BASE --config config/postcss.config.js",
     "build:css-dev": "cross-env postcss $npm_package_config_CSS_FILEMATCH --dir $npm_package_config_CSS_DIST --base $npm_package_config_CSS_BASE --config config/postcss.config.js",
-    "build:webpack": "fileMatch=$npm_package_config_WEBPACK_FILEMATCH webpack --config config/webpack.config.js --output-path $npm_package_config_WEBPACK_DIST --context $npm_package_config_WEBPACK_BASE --mode production",
-    "build:webpack-dev": "fileMatch=$npm_package_config_WEBPACK_FILEMATCH webpack --config config/webpack.config.js --output-path $npm_package_config_WEBPACK_DIST --context $npm_package_config_WEBPACK_BASE --mode development",
+    "build:webpack": "cross-env fileMatch=$npm_package_config_WEBPACK_FILEMATCH webpack --config config/webpack.config.js --output-path $npm_package_config_WEBPACK_DIST --context $npm_package_config_WEBPACK_BASE --mode production",
+    "build:webpack-dev": "cross-env fileMatch=$npm_package_config_WEBPACK_FILEMATCH webpack --config config/webpack.config.js --output-path $npm_package_config_WEBPACK_DIST --context $npm_package_config_WEBPACK_BASE --mode development",
     "build:fonts": "cross-env-shell copyfiles -u 2 $npm_package_config_FONTS_FILEMATCH $npm_package_config_FONTS_DIST -V",
     "build:sprites": "node config/sprite.js -i $npm_package_config_SPRITES_FILEMATCH -o $npm_package_config_SPRITES_DIST",
     "build:images": "node config/imagemin.js -i $npm_package_config_IMAGES_FILEMATCH -o $npm_package_config_IMAGES_DIST",
@@ -99,6 +99,7 @@
     "hoverintent": "^2.2.1",
     "lodash": "^4.17.21",
     "novicell-lazyload": "^2.2.0",
+    "swiper": "^12.2.0",
     "vue": "^2.6.14"
   }
 }
