@@ -9,12 +9,18 @@
     display: block;
     width: 100%;
     height: auto;
+    max-height: 360px;
+    object-fit: cover;
   }
 
   &__body {
     flex: 1;
     min-width: 0;
     padding: 28px;
+
+    @media (--viewport-sm-max) {
+      padding: 22px;
+    }
   }
 
   &__meta {
@@ -61,6 +67,10 @@
     &.is-expanded {
       max-height: none;
     }
+
+    @media print {
+      max-height: none;
+    }
   }
 
   &__text > :last-child {
@@ -83,6 +93,10 @@
     &[aria-expanded="true"] .timeline-card__more-label {
       display: none;
     }
+
+    @media print {
+      display: none;
+    }
   }
 
   &__link {
@@ -95,51 +109,36 @@
     }
   }
 
-  .timeline--horizontal &__image {
-    flex: 0 0 42%;
-  }
-
-  @media (--viewport-md-min) {
-    .timeline--horizontal & {
+  .timeline--horizontal & {
+    @media (--viewport-md-min) {
       flex-direction: row;
     }
+  }
 
-    .timeline--horizontal &__image {
+  .timeline--horizontal &__image {
+    flex: 0 0 42%;
+
+    @media (--viewport-md-min) {
       overflow: hidden;
     }
+  }
 
-    .timeline--horizontal &__image :is(div, picture) {
+  .timeline--horizontal &__image :is(div, picture) {
+    @media (--viewport-md-min) {
       height: 100%;
     }
+  }
 
-    .timeline--horizontal &__image picture {
+  .timeline--horizontal &__image picture {
+    @media (--viewport-md-min) {
       display: block;
     }
+  }
 
-    .timeline--horizontal &__image img {
+  .timeline--horizontal &__image img {
+    @media (--viewport-md-min) {
       height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  @media (--viewport-sm-max) {
-    &__body {
-      padding: 22px;
-    }
-
-    .timeline--vertical &__image img {
-      max-height: 360px;
-      object-fit: cover;
-    }
-  }
-
-  @media print {
-    .timeline.is-initialized &__text {
       max-height: none;
-    }
-
-    &__read-more {
-      display: none;
     }
   }
 }

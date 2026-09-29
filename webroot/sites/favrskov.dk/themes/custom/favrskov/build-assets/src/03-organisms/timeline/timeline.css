@@ -6,12 +6,24 @@
   background: var(--color-gray-secondary);
   color: var(--theme-color);
 
+  @media (--viewport-md-min) {
+    padding: 48px;
+  }
+
+  @media (--viewport-sm-max) {
+    padding: 24px 18px;
+  }
+
   &__header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 24px;
     margin-bottom: 32px;
+
+    @media (--viewport-sm-max) {
+      display: block;
+    }
   }
 
   &__headline {
@@ -29,6 +41,14 @@
     border: 1px solid var(--timeline-line);
     border-radius: 50px;
     background: var(--color-white);
+
+    @media (--viewport-sm-max) {
+      margin-top: 20px;
+    }
+
+    @media print {
+      display: none !important;
+    }
   }
 
   &__layout-button {
@@ -55,12 +75,40 @@
 
   &__body {
     font-size: var(--base-font-size);
+
+    @media print {
+      display: block !important;
+    }
+  }
+
+  &__cards {
+    @media print {
+      overflow: visible;
+    }
+
+    .swiper-wrapper {
+      @media print {
+        display: block !important;
+        height: auto !important;
+        transform: none !important;
+      }
+
+      &::before {
+        @media print {
+          display: none;
+        }
+      }
+    }
   }
 
   &__dates {
     position: relative;
     width: 100%;
     margin-bottom: 22px;
+
+    @media print {
+      display: none !important;
+    }
 
     .swiper-wrapper {
       align-items: center;
@@ -132,6 +180,18 @@
 
   &__slide {
     height: auto;
+
+    @media print {
+      width: 100% !important;
+      margin-bottom: 20px;
+    }
+
+    &::before,
+    &::after {
+      @media print {
+        display: none;
+      }
+    }
   }
 
   &__controls {
@@ -140,6 +200,10 @@
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
+
+    @media print {
+      display: none !important;
+    }
   }
 
   &__arrow {
@@ -221,6 +285,10 @@
 
   &__vertical-nav {
     display: none;
+
+    @media print {
+      display: none !important;
+    }
   }
 
   &--vertical {
@@ -238,6 +306,10 @@
 
       @media (--viewport-md-min) {
         gap: 24px;
+      }
+
+      @media (--viewport-ms-max) {
+        display: block;
       }
     }
 
@@ -260,6 +332,13 @@
         padding-bottom: 50px;
         transform: none !important;
 
+        @media (--viewport-sm-max) {
+          box-sizing: border-box;
+          gap: 24px;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
         &::before {
           position: absolute;
           top: 0;
@@ -268,6 +347,10 @@
           width: 2px;
           background: var(--timeline-line);
           content: '';
+
+          @media (--viewport-sm-max) {
+            left: 6px;
+          }
         }
       }
     }
@@ -278,12 +361,26 @@
       width: calc(50% - 28px) !important;
       scroll-margin-top: 128px;
 
+      @media (--viewport-sm-max) {
+        width: 100% !important;
+        scroll-margin-top: 80px;
+      }
+
       &:nth-child(odd) .timeline-card {
         border-right: 4px solid var(--timeline-status-background, var(--color-primary));
+
+        @media (--viewport-sm-max) {
+          border-right: 0;
+          border-left: 4px solid var(--timeline-status-background, var(--color-primary));
+        }
       }
 
       &:nth-child(even) {
         align-self: flex-end;
+
+        @media (--viewport-sm-max) {
+          align-self: auto;
+        }
 
         .timeline-card {
           border-left: 4px solid var(--timeline-status-background, var(--color-primary));
@@ -301,11 +398,20 @@
         border-radius: 50%;
         background: var(--timeline-status-background, var(--color-primary));
         content: '';
+
+        @media (--viewport-sm-max) {
+          right: auto;
+          left: -29px;
+        }
       }
 
       &:nth-child(even)::before {
         right: auto;
         left: -33px;
+
+        @media (--viewport-sm-max) {
+          left: -29px;
+        }
       }
 
       &::after {
@@ -316,11 +422,22 @@
         height: 2px;
         background: var(--timeline-status-background, var(--color-primary));
         content: '';
+
+        @media (--viewport-sm-max) {
+          right: auto;
+          left: -24px;
+          width: 24px;
+        }
       }
 
       &:nth-child(even)::after {
         right: auto;
         left: -28px;
+
+        @media (--viewport-sm-max) {
+          left: -24px;
+          width: 24px;
+        }
       }
     }
 
@@ -336,6 +453,10 @@
       padding: 12px 8px;
       border: 1px solid var(--timeline-line);
       background: var(--color-white);
+
+      @media (--viewport-ms-max) {
+        display: none;
+      }
     }
   }
 
@@ -460,106 +581,6 @@
 
     .timeline__slide {
       width: 100%;
-    }
-  }
-
-  @media (--viewport-md-min) {
-    padding: 48px;
-  }
-
-  @media (--viewport-sm-max) {
-    padding: 24px 18px;
-
-    &__header {
-      display: block;
-    }
-
-    &__layout-switch {
-      margin-top: 20px;
-    }
-
-    &--vertical .timeline__cards .swiper-wrapper {
-      box-sizing: border-box;
-      gap: 24px;
-      padding-left: 30px;
-      padding-right: 30px;
-
-      &::before {
-        left: 6px;
-      }
-    }
-
-    &--vertical .timeline__slide {
-      width: 100% !important;
-      scroll-margin-top: 80px;
-
-      &:nth-child(odd) .timeline-card {
-        border-right: 0;
-        border-left: 4px solid var(--timeline-status-background, var(--color-primary));
-      }
-
-      &:nth-child(even) {
-        align-self: auto;
-      }
-
-      &::before,
-      &:nth-child(even)::before {
-        right: auto;
-        left: -29px;
-      }
-
-      &::after,
-      &:nth-child(even)::after {
-        right: auto;
-        left: -24px;
-        width: 24px;
-      }
-    }
-  }
-
-  @media (--viewport-ms-max) {
-    &--vertical {
-      .timeline__body {
-        display: block;
-      }
-
-      .timeline__vertical-nav {
-        display: none;
-      }
-    }
-  }
-
-  @media print {
-    &__layout-switch,
-    &__dates,
-    &__controls,
-    &__vertical-nav {
-      display: none !important;
-    }
-
-    &__body {
-      display: block !important;
-    }
-
-    &__cards {
-      overflow: visible;
-
-      .swiper-wrapper {
-        display: block !important;
-        height: auto !important;
-        transform: none !important;
-      }
-    }
-
-    &__cards .swiper-wrapper::before,
-    &__slide::before,
-    &__slide::after {
-      display: none;
-    }
-
-    &__slide {
-      width: 100% !important;
-      margin-bottom: 20px;
     }
   }
 }
