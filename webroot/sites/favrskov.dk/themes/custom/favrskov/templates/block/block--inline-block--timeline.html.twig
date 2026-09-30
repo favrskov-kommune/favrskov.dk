@@ -1,0 +1,15 @@
+{% embed '@organisms/timeline/timeline.twig' with {
+  attributes: attributes,
+  headline: timeline_title,
+  intro: content.field_text,
+  has_intro: timeline_has_intro,
+  cards: content.field_timeline_cards,
+  nav_items: timeline_nav,
+  status_items: timeline_statuses,
+  layout: timeline_layout
+} %}
+  {% block block_content %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,79 @@
+{{ attach_library('favrskov/timeline') }}
+
+<section {{ (attributes|default(create_attribute())).addClass('timeline', 'js-timeline').addClass('timeline--' ~ (layout|default('horizontal'))).setAttribute('data-layout', layout|default('horizontal')) }}>
+  {% block block_content %}{% endblock %}
+
+  <div class="timeline__header">
+    <div class="timeline__intro">
+      {% if headline %}<h2 class="timeline__headline">{{ headline }}</h2>{% endif %}
+      {% if has_intro %}<div class="timeline__description">{{ intro }}</div>{% endif %}
+    </div>
+    <div class="timeline__layout-switch" role="group" aria-label="{{ 'Timeline layout'|t }}">
+      <button class="timeline__layout-button" type="button" data-timeline-layout="horizontal" aria-pressed="{{ layout == 'horizontal' ? 'true' : 'false' }}">{{ 'Horizontal'|t }}</button>
+      <button class="timeline__layout-button" type="button" data-timeline-layout="vertical" aria-pressed="{{ layout == 'vertical' ? 'true' : 'false' }}">{{ 'Vertical'|t }}</button>
+    </div>
+  </div>
+
+  {% if nav_items %}
+    <div class="timeline__body">
+      <div class="timeline__dates swiper js-timeline-dates" aria-label="{{ 'Timeline dates'|t }}">
+        <div class="swiper-wrapper">
+          {% for item in nav_items %}
+            <div class="swiper-slide timeline__date-slide">
+              <button class="timeline__date-button" type="button" aria-label="{{ item.date }}: {{ item.title }}" data-timeline-date-index="{{ loop.index0 }}">
+                <span class="timeline__date-dot" aria-hidden="true"></span>
+                {% set date_parts = item.date|split(' ') %}
+                <span class="timeline__date-label">
+                  <span class="timeline__date-month">{{ date_parts[0]|slice(0, 3) }}</span>
+                  <span class="timeline__date-year">{{ date_parts[1]|default('') }}</span>
+                </span>
+              </button>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <nav class="timeline__vertical-nav" aria-label="{{ 'Datoer i tidslinjen'|t }}">
+        <span class="timeline__vertical-nav-title">{{ 'Tidslinje'|t }}</span>
+        <ol class="timeline__vertical-nav-list">
+          {% for item in nav_items %}
+            <li>
+              <a class="timeline__vertical-link" href="#{{ item.id }}" data-timeline-anchor-index="{{ loop.index0 }}" aria-label="{{ item.title }}: {{ item.date }}"{% if loop.first %} aria-current="location"{% endif %}>
+                <span class="timeline__vertical-dot" aria-hidden="true"></span>
+                <span class="timeline__vertical-tooltip">
+                  <span>{{ item.title }}</span>
+                  <span class="timeline__vertical-tooltip-date">{{ item.date }}</span>
+                </span>
+              </a>
+            </li>
+          {% endfor %}
+        </ol>
+      </nav>
+
+      <div class="timeline__content">
+        <div class="timeline__cards swiper js-timeline-cards" aria-label="{{ 'Timeline cards'|t }}">
+          <div class="swiper-wrapper">{{ cards }}</div>
+        </div>
+        <div class="timeline__controls">
+          <button class="timeline__arrow js-timeline-prev" type="button" aria-label="{{ 'Previous card'|t }}"><span aria-hidden="true">←</span></button>
+          <span class="timeline__position js-timeline-position" aria-live="polite" aria-atomic="true" aria-label="{{ 'Slide @current of @total'|t({'@current': 1, '@total': nav_items|length}) }}">1/{{ nav_items|length }}</span>
+          <button class="timeline__arrow js-timeline-next" type="button" aria-label="{{ 'Next card'|t }}"><span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </div>
+
+    {% if status_items %}
+      <div class="timeline__legend">
+        <h3 class="timeline__legend-title">{{ 'Forklaring'|t }}</h3>
+        <ul class="timeline__legend-list">
+          {% for status in status_items %}
+            <li class="timeline__legend-item">
+              <span class="timeline__legend-dot{% if status.outlined %} timeline__legend-dot--outlined{% endif %}"{% if status.color %} style="--timeline-legend-color: {{ status.color }}"{% endif %} aria-hidden="true"></span>
+              <span>{{ status.label }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  {% endif %}
+</section>

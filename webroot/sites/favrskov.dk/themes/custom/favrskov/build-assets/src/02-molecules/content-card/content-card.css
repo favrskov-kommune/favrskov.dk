@@ -1,0 +1,144 @@
+.timeline-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-white);
+
+  &__image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    object-fit: cover;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+    padding: 28px;
+
+    @media (--viewport-sm-max) {
+      padding: 22px;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 18px;
+    margin-bottom: 16px;
+    font-size: var(--base-font-size-small);
+    font-weight: 700;
+
+    .field {
+      display: inline;
+    }
+  }
+
+  &__type {
+    padding: 6px 12px;
+    border-radius: 50px;
+    background: var(--color-gray-secondary);
+    color: var(--color-gray-darker);
+  }
+
+  &__status {
+    padding: 6px 12px;
+    border-radius: 50px;
+    background: var(--timeline-status-background, var(--color-gray));
+    color: var(--timeline-status-text, var(--color-black));
+  }
+
+  &__title {
+    margin-bottom: 18px;
+    font-size: var(--base-font-size-xlarge);
+  }
+
+  &__text {
+    line-height: 1.5;
+  }
+
+  .timeline.is-initialized &__text {
+    max-height: 9em;
+    overflow: hidden;
+
+    &.is-expanded {
+      max-height: none;
+    }
+
+    @media print {
+      max-height: none;
+    }
+  }
+
+  &__text > :last-child {
+    margin-bottom: 0;
+  }
+
+  &__read-more {
+    margin-top: 12px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 700;
+    font-size: var(--base-font-size-small);
+
+    &[hidden],
+    &[aria-expanded="false"] .timeline-card__less-label,
+    &[aria-expanded="true"] .timeline-card__more-label {
+      display: none;
+    }
+
+    @media print {
+      display: none;
+    }
+  }
+
+  &__link {
+    margin-top: 22px;
+    font-weight: 700;
+
+    a {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+  }
+
+  .timeline--horizontal & {
+    @media (--viewport-md-min) {
+      flex-direction: row;
+    }
+  }
+
+  .timeline--horizontal &__image {
+    flex: 0 0 42%;
+
+    @media (--viewport-md-min) {
+      overflow: hidden;
+    }
+  }
+
+  .timeline--horizontal &__image :is(div, picture) {
+    @media (--viewport-md-min) {
+      height: 100%;
+    }
+  }
+
+  .timeline--horizontal &__image picture {
+    @media (--viewport-md-min) {
+      display: block;
+    }
+  }
+
+  .timeline--horizontal &__image img {
+    @media (--viewport-md-min) {
+      height: 100%;
+      max-height: none;
+    }
+  }
+}

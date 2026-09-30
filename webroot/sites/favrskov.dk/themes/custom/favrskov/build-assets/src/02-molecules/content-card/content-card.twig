@@ -1,0 +1,21 @@
+{{ attach_library('favrskov/content-card') }}
+
+<article {{ (attributes|default(create_attribute())).addClass('timeline-card') }}>
+  {% if has_image %}<div class="timeline-card__image">{{ image }}</div>{% endif %}
+  <div class="timeline-card__body">
+    <div class="timeline-card__meta">
+      {% if date %}<div class="timeline-card__date">{{ date }}</div>{% endif %}
+      {% if type %}<div class="timeline-card__type">{{ type }}</div>{% endif %}
+      {% if has_status %}<div class="timeline-card__status"{% if status_style %} style="{{ status_style }}"{% endif %}>{{ status }}</div>{% endif %}
+    </div>
+    {% if title %}<h3 class="timeline-card__title">{{ title }}</h3>{% endif %}
+    {% if has_text %}
+      <div class="timeline-card__text js-timeline-card-text" id="{{ text_id }}">{{ text }}</div>
+      <button class="timeline-card__read-more js-timeline-read-more" type="button" aria-expanded="false" aria-controls="{{ text_id }}" hidden>
+        <span class="timeline-card__more-label">{{ 'Read more'|t }}</span>
+        <span class="timeline-card__less-label">{{ 'Read less'|t }}</span>
+      </button>
+    {% endif %}
+    {% if has_link %}<div class="timeline-card__link">{{ link }}</div>{% endif %}
+  </div>
+</article>

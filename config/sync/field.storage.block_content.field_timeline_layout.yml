@@ -1,0 +1,27 @@
+uuid: a848cef3-ebb3-4e57-a1c5-8039c27cbe5d
+langcode: da
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_timeline_layout
+field_name: field_timeline_layout
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: horizontal
+      label: Vandret
+    -
+      value: vertical
+      label: Lodret
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

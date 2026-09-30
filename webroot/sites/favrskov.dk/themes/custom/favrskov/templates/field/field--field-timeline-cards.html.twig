@@ -1,0 +1,8 @@
+{% for item in items %}
+  <div
+    id="{{ item.timeline_anchor }}"
+    class="swiper-slide timeline__slide"
+    tabindex="-1"
+    {% if item.timeline_status_color %}style="--timeline-status-background: {{ item.timeline_status_color }}"{% endif %}
+  >{{ item.content }}</div>
+{% endfor %}

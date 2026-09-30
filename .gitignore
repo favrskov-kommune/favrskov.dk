@@ -75,6 +75,7 @@ webroot/sites/default*
 webroot/themes/README.txt
 
 *.env
+.DS_Store
 */node_modules
 .idea/
 logs/*

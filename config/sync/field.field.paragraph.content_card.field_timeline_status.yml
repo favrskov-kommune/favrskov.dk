@@ -1,0 +1,29 @@
+uuid: 14d967ac-5bc3-4c61-8527-44179ccc2c6d
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_timeline_status
+    - paragraphs.paragraphs_type.content_card
+    - taxonomy.vocabulary.timeline_status
+id: paragraph.content_card.field_timeline_status
+field_name: field_timeline_status
+entity_type: paragraph
+bundle: content_card
+label: Status
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      timeline_status: timeline_status
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
