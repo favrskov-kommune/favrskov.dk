@@ -1,166 +1,146 @@
-import Vue from 'vue';
-
-require('../../../config/vue.config')(Vue);
+import { createApp } from 'vue';
 
 Drupal.behaviors.burgerMenu = {
   attach(context) {
-    const burgerMenu = document.getElementById('js-burger-menu');
+    const root = document.getElementById('js-burger-menu');
+    const burgerBtn = document.getElementById('js-burger');
+
+    if (!root || root.classList.contains('loaded')) return;
+
+    root.classList.add('loaded');
+
     const showSubNavigationClass = 'burger-menu-list--expanded';
-    if (!burgerMenu || burgerMenu.classList.contains('loaded')) {
-      return;
-    }
-    burgerMenu.classList.add('loaded');
+    const focusableSelector = 'button, input, a';
 
-    const focuseAbleHtmlElements = 'button, input, a';
+    function setTabIndex(el, value) {
+      if (!el) return;
 
-    function addTabindex(element) {
-      element.setAttribute('tabindex', 0);
-      const children = element.querySelectorAll(focuseAbleHtmlElements);
-      children.forEach((child) => {
-        child.setAttribute('tabindex', 0);
+      el.setAttribute('tabindex', value);
+
+      el.querySelectorAll(focusableSelector).forEach((child) => {
+        child.setAttribute('tabindex', value);
       });
     }
 
-    function negativeTabindex(element) {
-      element.setAttribute('tabindex', -1);
-      const children = element.querySelectorAll(focuseAbleHtmlElements);
-      children.forEach((child) => {
-        child.setAttribute('tabindex', -1);
-      });
-    }
+    function trapTab(e, first, last) {
+      if (e.key !== 'Tab') return;
 
-    function addAriahidden(element) {
-      element.setAttribute('aria-hidden', 'true');
-      const children = element.querySelectorAll(focuseAbleHtmlElements);
-      children.forEach((child) => {
-        child.setAttribute('aria-hidden', 'true');
-      });
-    }
-
-    function removeAriahidden(element) {
-      element.setAttribute('aria-hidden', 'false');
-      const children = element.querySelectorAll(focuseAbleHtmlElements);
-      children.forEach((child) => {
-        child.setAttribute('aria-hidden', 'false');
-      });
-    }
-
-    function addTabFocus(element) {
-      addTabindex(element);
-      removeAriahidden(element);
-      const focusableElements = element.querySelectorAll('button, input, a');
-      if (focusableElements.length === 0) {
-        return;
-      }
-      const firstFocusableElement = focusableElements[0];
-      const lastFocusableElement = focusableElements[focusableElements.length - 1];
-      const KEYCODE_TAB = 9;
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
-          if (e.shiftKey) {
-            // If Shift + Tab
-            if (document.activeElement === firstFocusableElement) {
-              lastFocusableElement.focus();
-              e.preventDefault();
-            }
-          } else if (document.activeElement === lastFocusableElement) {
-            firstFocusableElement.focus();
-            e.preventDefault();
-          }
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          last?.focus();
+          e.preventDefault();
         }
-      });
+      } else {
+        if (document.activeElement === last) {
+          first?.focus();
+          e.preventDefault();
+        }
+      }
     }
 
-    function removeTabFocus(element) {
-      negativeTabindex(element);
-      addAriahidden(element);
-      document.removeEventListener('keydown', this.handleEsc);
-    }
-
-    negativeTabindex(burgerMenu);
-    addAriahidden(burgerMenu);
-
-    const vm = new Vue({
-      delimiters: ['${', '}'],
-      el: burgerMenu,
-      data: {
-        isOpen: false,
+    createApp({
+      data() {
+        return {
+          isOpen: false,
+          keydownHandler: null,
+        };
       },
+
+      watch: {
+        isOpen(value) {
+          const menu = document.getElementById('js-burger-menu');
+          if (!menu) return;
+
+          if (value) {
+            menu.classList.add('burger-menu--open');
+            menu.setAttribute('aria-hidden', 'false');
+          } else {
+            menu.classList.remove('burger-menu--open');
+            menu.setAttribute('aria-hidden', 'true');
+          }
+        },
+      },
+
       mounted() {
-        const burger = document.getElementById('js-burger');
-        if (burger) {
-          burger.addEventListener('click', () => {
+        if (burgerBtn) {
+          burgerBtn.addEventListener('click', () => {
             this.openBurgerMenu();
           });
         }
       },
+
       methods: {
         triggerSubNavigation(e) {
           e.preventDefault();
+
           const trigger = e.currentTarget;
           const parent = trigger.closest('.js-burger-menu-list-item--expandable');
-          // this.hideSubNavigations(parent);
-          const expandbutton = trigger.closest('.burger-menu-list-item__expand-trigger');
-          if (expandbutton.getAttribute('aria-expanded') === 'false') {
-            expandbutton.setAttribute('aria-expanded', 'true');
-          } else {
-            expandbutton.setAttribute('aria-expanded', 'false');
-          }
+          const btn = trigger.closest('.burger-menu-list-item__expand-trigger');
+
+          if (!btn || !parent) return;
+
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+
           parent.classList.toggle(showSubNavigationClass);
         },
-        openBurgerMenu() {
-          const burgerMenu = document.getElementById('js-burger-menu'); /* eslint-disable-line */
-          this.isOpen = true;
-          document
-            .querySelector('#js-burger-menu')
-            .removeAttribute('aria-hidden');
-          document
-            .querySelector('#js-burger-menu')
-            .setAttribute('aria-hidden', 'false');
-          document.body.classList.add('no-scroll');
-          document.addEventListener('keydown', this.handleEsc);
-          addTabFocus(burgerMenu);
-          document.querySelector('.burger-menu__close').focus();
-        },
-        closeBurgerMenu() {
-          const burgerMenu = document.getElementById('js-burger-menu'); /* eslint-disable-line */
-          this.isOpen = false;
-          document.querySelector('#js-burger').focus();
-          document.removeEventListener('keydown', this.handleEsc);
-          document.removeEventListener('click', this.handleClickOutside);
-          document
-            .querySelector('#js-burger-menu')
-            .removeAttribute('aria-hidden');
-          document
-            .querySelector('#js-burger-menu')
-            .setAttribute('aria-hidden', 'true');
-          document.body.classList.remove('no-scroll');
-          removeTabFocus(burgerMenu);
-        },
-        hideSubNavigations(parent) {
-          const items = document.querySelectorAll('.js-burger-menu-list-item--expandable');
-          for (let i = 0; i < items.length; i += 1) {
-            if (parent !== items[i]) {
-              items[i].classList.remove(showSubNavigationClass);
-            }
-          }
-        },
-        handleEsc(e) {
-          if (e.keyCode === 27) {
-            this.closeBurgerMenu();
-          }
-        },
-        handleClickOutside(e) {
-          const burgerMenuElem = document.getElementById('js-burger-menu');
-          const burgerElem = document.getElementById('js-burger');
-          const isClickInside = burgerMenuElem.contains(e.target) || burgerElem.contains(e.target);
 
-          if (!isClickInside) {
-            this.closeBurgerMenu();
+        openBurgerMenu() {
+          this.isOpen = true;
+
+          const menu = document.getElementById('js-burger-menu');
+          if (!menu) return;
+
+          document.body.classList.add('no-scroll');
+
+          setTabIndex(menu, 0);
+
+          const focusables = menu.querySelectorAll(focusableSelector);
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+
+          this.keydownHandler = (e) => {
+            if (e.key === 'Escape') {
+              this.closeBurgerMenu();
+              return;
+            }
+            trapTab(e, first, last);
+          };
+
+          document.addEventListener('keydown', this.keydownHandler);
+
+          const closeBtn = menu.querySelector('.burger-menu__close');
+          closeBtn?.focus();
+        },
+
+        closeBurgerMenu() {
+          this.isOpen = false;
+
+          const menu = document.getElementById('js-burger-menu');
+          if (menu) {
+            setTabIndex(menu, -1);
           }
+
+          document.body.classList.remove('no-scroll');
+
+          if (this.keydownHandler) {
+            document.removeEventListener('keydown', this.keydownHandler);
+            this.keydownHandler = null;
+          }
+
+          burgerBtn?.focus();
+        },
+
+        hideSubNavigations(parent) {
+          document
+            .querySelectorAll('.js-burger-menu-list-item--expandable')
+            .forEach((item) => {
+              if (item !== parent) {
+                item.classList.remove(showSubNavigationClass);
+              }
+            });
         },
       },
-    });
+    }).mount(root);
   },
 };

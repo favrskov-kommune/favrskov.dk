@@ -1,121 +1,111 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 
-require('../../../config/vue.config')(Vue);
+Drupal.behaviors.searchOverlay = {
+  attach(context) {
+    const el = context.querySelector?.('#js-search-overlay')
+      || document.getElementById('js-search-overlay');
 
-document.addEventListener('DOMContentLoaded', () => {
-  const searchOverlay = document.getElementById('js-search-overlay');
-  if (!searchOverlay) {
-    return;
-  }
+    if (!el || el.dataset.vued) return;
 
-  const focuseAbleHtmlElements = 'button, input, a';
+    el.dataset.vued = 'true';
 
-  function addTabindex(element) {
-    element.setAttribute('tabindex', 0);
-    const children = element.querySelectorAll(focuseAbleHtmlElements);
-    children.forEach((child) => {
-      child.setAttribute('tabindex', 0);
-    });
-  }
+    createApp({
+      data() {
+        return {
+          trapHandler: null,
+        };
+      },
 
-  function negativeTabindex(element) {
-    element.setAttribute('tabindex', -1);
-    const children = element.querySelectorAll(focuseAbleHtmlElements);
-    children.forEach((child) => {
-      child.setAttribute('tabindex', -1);
-    });
-  }
+      mounted() {
+        document.addEventListener('searchToggle', this.openSearchOverlay);
 
-  function addAriahidden(element) {
-    element.setAttribute('aria-hidden', 'true');
-    const children = element.querySelectorAll(focuseAbleHtmlElements);
-    children.forEach((child) => {
-      child.setAttribute('aria-hidden', 'true');
-    });
-  }
+        // initial state
+        this.closeOverlay(false);
+      },
 
-  function removeAriahidden(element) {
-    element.setAttribute('aria-hidden', 'false');
-    const children = element.querySelectorAll(focuseAbleHtmlElements);
-    children.forEach((child) => {
-      child.setAttribute('aria-hidden', 'false');
-    });
-  }
+      beforeUnmount() {
+        document.removeEventListener('searchToggle', this.openSearchOverlay);
+        this.disableTrap();
+      },
 
-  function addTabFocus(element) {
-    addTabindex(element);
-    removeAriahidden(element);
-    const focusableElements = element.querySelectorAll('button, input, a');
-    if (focusableElements.length === 0) {
-      return;
-    }
-    const firstFocusableElement = focusableElements[0];
-    const lastFocusableElement = focusableElements[focusableElements.length - 1];
-    const KEYCODE_TAB = 9;
+      methods: {
+        openSearchOverlay() {
+          const root = document.getElementById('js-search-overlay');
+          if (!root) return;
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
-        if (e.shiftKey) {
-          // If Shift + Tab
-          if (document.activeElement === firstFocusableElement) {
-            lastFocusableElement.focus();
-            e.preventDefault();
+          root.classList.add('search-overlay--open');
+          root.setAttribute('aria-hidden', 'false');
+
+          document.body.classList.add('no-scroll');
+
+          this.enableTrap(root);
+
+          const input = document.getElementById('js-search-overlay-input');
+          if (input) input.focus();
+
+          // IMPORTANT: re-init Cludo AFTER DOM is visible
+          if (window.CludoSearch?.registerSearchFormElement) {
+            window.CludoSearch.registerSearchFormElement('#overlay-cludo-search-form');
           }
-        } else if (document.activeElement === lastFocusableElement) {
-          firstFocusableElement.focus();
-          e.preventDefault();
-        }
-      }
-    });
-  }
+        },
 
-  function removeTabFocus(element) {
-    negativeTabindex(element);
-    addAriahidden(element);
-    document.removeEventListener('keydown', this.handleEsc);
-  }
+        closeSearchOverlay() {
+          this.closeOverlay(true);
+        },
 
-  negativeTabindex(searchOverlay);
-  addAriahidden(searchOverlay);
+        closeOverlay(focusToggle = true) {
+          const root = document.getElementById('js-search-overlay');
+          if (!root) return;
 
-  const vm = new Vue({
-    delimiters: ['${', '}'],
-    el: searchOverlay,
-    data: {
-      isOpen: false,
-    },
-    mounted() {
-      // Run function on `searchToggle` event
-      document.addEventListener('searchToggle', () => {
-        this.openSearchOverlay();
-      });
-    },
-    methods: {
-      openSearchOverlay() {
-        const searchOverlayEl = document.getElementById('js-search-overlay');
-        const searchOverlayInput = document.getElementById('js-search-overlay-input');
-        searchOverlayInput.focus();
-        this.isOpen = true;
-        document.body.classList.add('no-scroll');
-        document.addEventListener('keydown', this.handleEsc);
-        CludoSearch.registerSearchFormElement('#overlay-cludo-search-form');
-        searchOverlayInput.focus();
-        addTabFocus(searchOverlayEl);
+          root.classList.remove('search-overlay--open');
+          root.setAttribute('aria-hidden', 'true');
+
+          document.body.classList.remove('no-scroll');
+
+          this.disableTrap();
+
+          if (focusToggle) {
+            const toggle = document.querySelector('.js-search-toggle');
+            if (toggle) toggle.focus();
+          }
+        },
+
+        enableTrap(root) {
+          const focusables = root.querySelectorAll('button, input, a');
+          if (!focusables.length) return;
+
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+
+          this.trapHandler = (e) => {
+            if (e.key === 'Escape') {
+              this.closeOverlay();
+              return;
+            }
+
+            if (e.key !== 'Tab') return;
+
+            if (e.shiftKey && document.activeElement === first) {
+              last.focus();
+              e.preventDefault();
+            }
+
+            if (!e.shiftKey && document.activeElement === last) {
+              first.focus();
+              e.preventDefault();
+            }
+          };
+
+          document.addEventListener('keydown', this.trapHandler);
+        },
+
+        disableTrap() {
+          if (this.trapHandler) {
+            document.removeEventListener('keydown', this.trapHandler);
+            this.trapHandler = null;
+          }
+        },
       },
-      closeSearchOverlay() {
-        this.isOpen = false;
-        const searchOverlayEl = document.getElementById('js-search-overlay');
-        document.querySelector('.js-search-toggle').focus();
-        removeTabFocus(searchOverlayEl);
-        document.removeEventListener('keydown', this.handleEsc);
-        document.body.classList.remove('no-scroll');
-        document.getElementById('js-search-toggle').focus();
-      },
-      handleEsc(e) {
-        if (e.keyCode === 27) {
-          this.closeSearchOverlay();
-        }
-      },
-    },
-  });
-});
+    }).mount(el);
+  },
+};
