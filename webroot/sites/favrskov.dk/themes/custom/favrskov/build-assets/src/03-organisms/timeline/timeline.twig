@@ -20,13 +20,14 @@
         <div class="swiper-wrapper">
           {% for item in nav_items %}
             <div class="swiper-slide timeline__date-slide">
-              <button class="timeline__date-button" type="button" aria-label="{{ item.date }}: {{ item.title }}" data-timeline-date-index="{{ loop.index0 }}">
-                <span class="timeline__date-dot" aria-hidden="true"></span>
+              <button class="timeline__date-button" type="button" aria-label="{{ item.date }}{% if item.type %}, {{ item.type }}{% endif %}: {{ item.title }}" data-timeline-date-index="{{ loop.index0 }}">
                 {% set date_parts = item.date|split(' ') %}
                 <span class="timeline__date-label">
                   <span class="timeline__date-month">{{ date_parts[0]|slice(0, 3) }}</span>
                   <span class="timeline__date-year">{{ date_parts[1]|default('') }}</span>
                 </span>
+                <span class="timeline__date-dot" aria-hidden="true"></span>
+                {% if item.type %}<span class="timeline__date-type">{{ item.type }}</span>{% endif %}
               </button>
             </div>
           {% endfor %}
@@ -38,11 +39,12 @@
         <ol class="timeline__vertical-nav-list">
           {% for item in nav_items %}
             <li>
-              <a class="timeline__vertical-link" href="#{{ item.id }}" data-timeline-anchor-index="{{ loop.index0 }}" aria-label="{{ item.title }}: {{ item.date }}"{% if loop.first %} aria-current="location"{% endif %}>
+              <a class="timeline__vertical-link" href="#{{ item.id }}" data-timeline-anchor-index="{{ loop.index0 }}" aria-label="{{ item.title }}: {{ item.date }}{% if item.type %}, {{ item.type }}{% endif %}"{% if loop.first %} aria-current="location"{% endif %}>
                 <span class="timeline__vertical-dot" aria-hidden="true"></span>
                 <span class="timeline__vertical-tooltip">
                   <span>{{ item.title }}</span>
                   <span class="timeline__vertical-tooltip-date">{{ item.date }}</span>
+                  {% if item.type %}<span class="timeline__vertical-tooltip-type">{{ item.type }}</span>{% endif %}
                 </span>
               </a>
             </li>

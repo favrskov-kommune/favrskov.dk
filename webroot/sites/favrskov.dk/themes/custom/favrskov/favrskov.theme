@@ -222,6 +222,7 @@ function favrskov_preprocess_block__inline_block__timeline(array &$variables) {
     $variables['timeline_nav'][] = [
       'id' => 'timeline-' . $block->uuid() . '-card-' . $delta,
       'date' => $date ? favrskov_timeline_date_label($date) : (string) t('Date pending'),
+      'type' => $card->get('field_timeline_type')->value,
       'title' => $card->get('field_title')->value,
     ];
 
