@@ -64,18 +64,5 @@
       </div>
     </div>
 
-    {% if status_items %}
-      <div class="timeline__legend">
-        <h3 class="timeline__legend-title">{{ 'Forklaring'|t }}</h3>
-        <ul class="timeline__legend-list">
-          {% for status in status_items %}
-            <li class="timeline__legend-item">
-              <span class="timeline__legend-dot{% if status.outlined %} timeline__legend-dot--outlined{% endif %}"{% if status.color %} style="--timeline-legend-color: {{ status.color }}"{% endif %} aria-hidden="true"></span>
-              <span>{{ status.label }}</span>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
   {% endif %}
 </section>

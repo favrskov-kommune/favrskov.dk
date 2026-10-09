@@ -215,8 +215,6 @@ function favrskov_preprocess_block__inline_block__timeline(array &$variables) {
   $variables['timeline_has_intro'] = !$block->get('field_text')->isEmpty();
   $variables['timeline_layout'] = $block->get('field_timeline_layout')->value === 'vertical' ? 'vertical' : 'horizontal';
   $variables['timeline_nav'] = [];
-  $variables['timeline_statuses'] = [];
-  $seen_statuses = [];
   foreach ($block->get('field_timeline_cards')->referencedEntities() as $delta => $card) {
     $date = $card->get('field_timeline_date')->value;
     $variables['timeline_nav'][] = [
@@ -225,30 +223,6 @@ function favrskov_preprocess_block__inline_block__timeline(array &$variables) {
       'type' => $card->get('field_timeline_type')->value,
       'title' => $card->get('field_title')->value,
     ];
-
-    $term = $card->get('field_timeline_status')->entity;
-    if (!$term) {
-      continue;
-    }
-
-    $access = $term->access('view', NULL, TRUE);
-    CacheableMetadata::createFromObject($access)->applyTo($variables['content']);
-    if (!$access->isAllowed() || isset($seen_statuses[$term->id()])) {
-      continue;
-    }
-    $seen_statuses[$term->id()] = TRUE;
-
-    $background = $term->get('field_status_background_color')->value;
-    $text_color = $term->get('field_status_text_color')->value;
-    $background = $background && preg_match('/^#[0-9a-fA-F]{6}$/', $background) ? $background : '';
-    $text_color = $text_color && preg_match('/^#[0-9a-fA-F]{6}$/', $text_color) ? $text_color : '';
-    $outlined = $background && strcasecmp($background, '#FFFFFF') === 0 && $text_color;
-    $variables['timeline_statuses'][] = [
-      'label' => $term->label(),
-      'color' => $outlined ? $text_color : $background,
-      'outlined' => (bool) $outlined,
-    ];
-    CacheableMetadata::createFromObject($term)->applyTo($variables['content']);
   }
 }
 

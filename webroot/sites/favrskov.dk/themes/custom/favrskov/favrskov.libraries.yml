@@ -179,7 +179,7 @@ content-card:
       build-assets/dist/css/02-molecules/content-card/content-card.css: {}
 
 timeline:
-  version: 1.0.27
+  version: 1.0.28
   css:
     theme:
       build-assets/dist/js/03-organisms/timeline/timeline.css: {}
