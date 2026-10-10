@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "55e10928ff2d6fcc3905f07d8e1a6605",
+    "content-hash": "42c4a6b4b0978070a2de3fc80958a260",
     "packages": [
         {
             "name": "algolia/places",
@@ -3190,7 +3190,7 @@
                     "homepage": "https://www.drupal.org/user/214652"
                 },
                 {
-                    "name": "Frans",
+                    "name": "frans",
                     "homepage": "https://www.drupal.org/user/514222"
                 },
                 {
@@ -4680,32 +4680,32 @@
         },
         {
             "name": "drupal/paragraphs",
-            "version": "1.19.0",
+            "version": "1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/paragraphs.git",
-                "reference": "8.x-1.19"
+                "reference": "8.x-1.23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.19.zip",
-                "reference": "8.x-1.19",
-                "shasum": "831a81a11eac419e8410db45efef5b283c4d117c"
+                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.23.zip",
+                "reference": "8.x-1.23",
+                "shasum": "999a66b51360006f9ead6e01b0ad8c087ca828f9"
             },
             "require": {
-                "drupal/core": "^10.2 || ^11",
+                "drupal/core": "^10.3 || ^11",
                 "drupal/entity_reference_revisions": "~1.3"
             },
             "require-dev": {
-                "drupal/block_field": "1.x-dev",
-                "drupal/diff": "1.x-dev",
-                "drupal/entity_browser": "2.x-dev",
-                "drupal/entity_usage": "2.x-dev",
+                "drupal/block_field": "^1",
+                "drupal/diff": "^1 || ^2",
+                "drupal/entity_browser": "^2",
+                "drupal/entity_usage": "^2 || ^5",
                 "drupal/feeds": "^3",
-                "drupal/field_group": "3.x-dev",
-                "drupal/inline_entity_form": "3.x-dev",
+                "drupal/field_group": "^4",
+                "drupal/inline_entity_form": "^3",
                 "drupal/paragraphs-paragraphs_library": "*",
-                "drupal/replicate": "1.x-dev",
+                "drupal/replicate": "^1",
                 "drupal/search_api": "^1",
                 "drupal/search_api_db": "*"
             },
@@ -4715,8 +4715,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.19",
-                    "datestamp": "1740907076",
+                    "version": "8.x-1.23",
+                    "datestamp": "1786629882",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5212,29 +5212,26 @@
         },
         {
             "name": "drupal/role_delegation",
-            "version": "1.3.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/role_delegation.git",
-                "reference": "8.x-1.3"
+                "reference": "8.x-1.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/role_delegation-8.x-1.3.zip",
-                "reference": "8.x-1.3",
-                "shasum": "e03d9c82d509a2630750e50a3452bd70ca1c55a6"
+                "url": "https://ftp.drupal.org/files/projects/role_delegation-8.x-1.6.zip",
+                "reference": "8.x-1.6",
+                "shasum": "792971461a3b86cb8f6937d0eecd3745899bb7bf"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11"
             },
-            "require-dev": {
-                "drupal/action": "^0.2"
-            },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.3",
-                    "datestamp": "1726236826",
+                    "version": "8.x-1.6",
+                    "datestamp": "1769768673",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5254,6 +5251,10 @@
                 {
                     "name": "benjy",
                     "homepage": "https://www.drupal.org/user/1852732"
+                },
+                {
+                    "name": "dieterholvoet",
+                    "homepage": "https://www.drupal.org/user/3567222"
                 },
                 {
                     "name": "jeroent",
@@ -6042,17 +6043,17 @@
         },
         {
             "name": "drupal/webform",
-            "version": "6.2.9",
+            "version": "6.2.12",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform.git",
-                "reference": "6.2.9"
+                "reference": "6.2.12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-6.2.9.zip",
-                "reference": "6.2.9",
-                "shasum": "650752c3cc6d0144c6f378b8d25d45c083e23600"
+                "url": "https://ftp.drupal.org/files/projects/webform-6.2.12.zip",
+                "reference": "6.2.12",
+                "shasum": "ec49eefc3d3c1fe34e6290f46fb810595a8edf95"
             },
             "require": {
                 "drupal/core": "^10.2",
@@ -6060,7 +6061,7 @@
             },
             "require-dev": {
                 "drupal/address": "1.x-dev",
-                "drupal/bootstrap": "3.x-dev",
+                "drupal/bootstrap": "^3.0",
                 "drupal/captcha": "^1 || ^2",
                 "drupal/chosen": "3.0.x-dev",
                 "drupal/ckeditor": "1.0.x-dev",
@@ -6071,6 +6072,7 @@
                 "drupal/entity_print": "2.x-dev",
                 "drupal/group": "1.x-dev",
                 "drupal/hal": "1 - 2",
+                "drupal/honeypot": "^2.0",
                 "drupal/jquery_ui": "1.x-dev",
                 "drupal/jquery_ui_button": "2.x-dev",
                 "drupal/jquery_ui_checkboxradio": "2.x-dev",
@@ -6102,8 +6104,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.2.9",
-                    "datestamp": "1733851063",
+                    "version": "6.2.12",
+                    "datestamp": "1790179457",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7561,7 +7563,8 @@
             "version": "1.6.0",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_28QfWS/novicellcontent_hierarchy-1-6-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_28QfWS/novicellcontent_hierarchy-1-6-0.zip",
+                "shasum": "a696924135524b4122b8fd83c8e948dc11ac3acc"
             },
             "require": {
                 "drupal/pathauto": "~1.0",
@@ -7582,7 +7585,8 @@
             "version": "1.3.0",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_q7pRf/novicelldrupalpremiumtheme-1-3-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_q7pRf/novicelldrupalpremiumtheme-1-3-0.zip",
+                "shasum": "a819fffccc5174ce0ea41f88c6104d8c48ee49bb"
             },
             "type": "drupal-theme",
             "license": [
@@ -7595,7 +7599,8 @@
             "version": "1.2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_20LAjW/novicelldynamic_key_value-1-2-1.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_20LAjW/novicelldynamic_key_value-1-2-1.zip",
+                "shasum": "8a55ef6f237332b11390e6b5acd983a205673944"
             },
             "require": {
                 "drupal/color_field": "^3.0"
@@ -7615,7 +7620,8 @@
             "version": "1.1.0",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1ewFRI/novicellie_warning-1-1-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_1ewFRI/novicellie_warning-1-1-0.zip",
+                "shasum": "03baa184a061a0ec6e75b7ac833ce67f4a321d7b"
             },
             "type": "drupal-module",
             "license": [
@@ -7632,7 +7638,8 @@
             "version": "1.1.0",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_l3cEU/novicellmedia_icons-1-1-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_l3cEU/novicellmedia_icons-1-1-0.zip",
+                "shasum": "b41aefe7da074668ec32a418bed559efc8dda67e"
             },
             "require": {
                 "ext-simplexml": "*"
@@ -7652,7 +7659,8 @@
             "version": "1.2.0",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_P3NOV/novicellpremium_core-1-2-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_P3NOV/novicellpremium_core-1-2-0.zip",
+                "shasum": "1605019eda6368c52ddec4436a5ec46adaa99efc"
             },
             "type": "drupal-module",
             "license": [
@@ -7669,7 +7677,8 @@
             "version": "1.3.6",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_17mezI/novicellpremium_profile-1-3-6.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_17mezI/novicellpremium_profile-1-3-6.zip",
+                "shasum": "674d3b15179573ad6523328aa6b3aec172ef62f6"
             },
             "type": "drupal-profile",
             "license": [
@@ -7683,7 +7692,8 @@
             "version": "1.2.0",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1sExIe/novicellpremium_search-1-2-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_1sExIe/novicellpremium_search-1-2-0.zip",
+                "shasum": "757f79368b45002fb095c0df61acee1ff81f982d"
             },
             "require": {
                 "drupal/search_api": "^1.0",
@@ -7704,7 +7714,8 @@
             "version": "1.2.2",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_qeXMG/novicellpremium_tools-1-2-2.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_qeXMG/novicellpremium_tools-1-2-2.zip",
+                "shasum": "8864f94b95939ebdfc013a3f472db1e8ed002698"
             },
             "type": "drupal-module",
             "license": [
@@ -7721,7 +7732,8 @@
             "version": "1.0.3",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1JNPJg/novicellstatus_feed-1-0-3.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_1JNPJg/novicellstatus_feed-1-0-3.zip",
+                "shasum": "fcc5ecb1526754d1f5d07f3b6652a09727e9ee90"
             },
             "require": {
                 "drupal/core": "^9.1 || ^10"
@@ -7741,7 +7753,8 @@
             "version": "1.1.0",
             "dist": {
                 "type": "zip",
-                "url": "https://packages.drupal.dk/php/~/up/ver_1Lymup/novicellstyles-1-1-0.zip"
+                "url": "https://packages.drupal.dk/php/~/up/ver_1Lymup/novicellstyles-1-1-0.zip",
+                "shasum": "9a8e7aec5313973baf62266126658117564736aa"
             },
             "type": "drupal-module",
             "license": [
@@ -8717,16 +8730,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.12.8",
+            "version": "v0.12.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "85057ceedee50c49d4f6ecaff73ee96adb3b3625"
+                "reference": "ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/85057ceedee50c49d4f6ecaff73ee96adb3b3625",
-                "reference": "85057ceedee50c49d4f6ecaff73ee96adb3b3625",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1",
+                "reference": "ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1",
                 "shasum": ""
             },
             "require": {
@@ -8734,18 +8747,19 @@
                 "ext-tokenizer": "*",
                 "nikic/php-parser": "^5.0 || ^4.0",
                 "php": "^8.0 || ^7.4",
-                "symfony/console": "^7.0 || ^6.0 || ^5.0 || ^4.0 || ^3.4",
-                "symfony/var-dumper": "^7.0 || ^6.0 || ^5.0 || ^4.0 || ^3.4"
+                "symfony/console": "^8.0 || ^7.0 || ^6.0 || ^5.0 || ^4.0 || ^3.4",
+                "symfony/var-dumper": "^8.0 || ^7.0 || ^6.0 || ^5.0 || ^4.0 || ^3.4"
             },
             "conflict": {
                 "symfony/console": "4.4.37 || 5.3.14 || 5.3.15 || 5.4.3 || 5.4.4 || 6.0.3 || 6.0.4"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.2"
+                "bamarni/composer-bin-plugin": "^1.2",
+                "composer/class-map-generator": "^1.6"
             },
             "suggest": {
+                "composer/class-map-generator": "Improved tab completion performance with better class discovery.",
                 "ext-pcntl": "Enabling the PCNTL extension makes PsySH a lot happier :)",
-                "ext-pdo-sqlite": "The doc command requires SQLite to work.",
                 "ext-posix": "If you have PCNTL, you'll want the POSIX extension as well."
             },
             "bin": [
@@ -8776,12 +8790,11 @@
             "authors": [
                 {
                     "name": "Justin Hileman",
-                    "email": "justin@justinhileman.info",
-                    "homepage": "http://justinhileman.com"
+                    "email": "justin@justinhileman.info"
                 }
             ],
             "description": "An interactive shell for modern PHP.",
-            "homepage": "http://psysh.org",
+            "homepage": "https://psysh.org",
             "keywords": [
                 "REPL",
                 "console",
@@ -8790,9 +8803,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.12.8"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.12.24"
             },
-            "time": "2025-03-16T03:05:19+00:00"
+            "time": "2026-06-29T15:41:09+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -11838,12 +11851,12 @@
             "version": "v5.6.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
+                "url": "https://github.com/phpdotenv/phpdotenv.git",
                 "reference": "a59a13791077fe3d44f90e7133eb68e7d22eaff2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/a59a13791077fe3d44f90e7133eb68e7d22eaff2",
+                "url": "https://api.github.com/repos/phpdotenv/phpdotenv/zipball/a59a13791077fe3d44f90e7133eb68e7d22eaff2",
                 "reference": "a59a13791077fe3d44f90e7133eb68e7d22eaff2",
                 "shasum": ""
             },
@@ -12397,14 +12410,14 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1",
+        "php": "^8.3",
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-simplexml": "*"
     },
     "platform-dev": {},
     "platform-overrides": {
-        "php": "8.1"
+        "php": "8.3.0"
     },
     "plugin-api-version": "2.9.0"
 }
