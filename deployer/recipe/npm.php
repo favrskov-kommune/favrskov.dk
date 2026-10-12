@@ -10,7 +10,11 @@ namespace Deployer;
 desc('Run npm commands');
 task('deploy:npm:install', function () {
   if(get('use_npm', false)) {
-    run('cd {{theme_exec_path_absolute}} && npm ci && npm run build:prod');
+    $command = 'cd {{theme_exec_path_absolute}}';
+    if (get('nvm_dir', false)) {
+      $command .= ' && . {{nvm_dir}}/nvm.sh --no-use && nvm use';
+    }
+    run($command . ' && npm ci && npm run build:prod');
   }
 })
   ->hidden();

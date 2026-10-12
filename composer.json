@@ -29,7 +29,7 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-simplexml": "*",
@@ -49,10 +49,10 @@
         "drupal/config_filter": "^2.6",
         "drupal/config_ignore": "^3.1",
         "drupal/config_split": "^2.0",
-        "drupal/core-composer-scaffold": "^10.0",
-        "drupal/core-project-message": "^10.0",
-        "drupal/core-recommended": "^10.4",
-        "drupal/core-vendor-hardening": "^10.0",
+        "drupal/core-composer-scaffold": "^10.6.18",
+        "drupal/core-project-message": "^10.6.18",
+        "drupal/core-recommended": "^10.6.18",
+        "drupal/core-vendor-hardening": "^10.6.18",
         "drupal/editor_advanced_link": "^2.2",
         "drupal/entity_clone": "^2.0",
         "drupal/entity_hierarchy": "^3.3",
@@ -75,7 +75,7 @@
         "drupal/metatag": "^2.0",
         "drupal/moderated_content_bulk_publish": "^2.0",
         "drupal/noreferrer": "^2.0",
-        "drupal/paragraphs": "^1.0",
+        "drupal/paragraphs": "^1.23",
         "drupal/paragraphs_asymmetric_translation_widgets": "^1.0",
         "drupal/path_redirect_import": "^2.0",
         "drupal/pathauto": "^1.0",
@@ -83,7 +83,7 @@
         "drupal/redirect": "^1.0",
         "drupal/redis": "^1.8",
         "drupal/responsive_table_filter": "^2.0",
-        "drupal/role_delegation": "^1.1",
+        "drupal/role_delegation": "^1.6",
         "drupal/scheduled_transitions": "^2.3",
         "drupal/search_api": "^1.0",
         "drupal/search_api_exclude_entity": "^1.0",
@@ -96,7 +96,7 @@
         "drupal/symfony_mailer": "^1.4",
         "drupal/token": "^1.13",
         "drupal/view_unpublished": "^1.0",
-        "drupal/webform": "^6.2",
+        "drupal/webform": "~6.2.12",
         "drupal/webp": "^1.0.0-beta5",
         "drush/drush": "^12.4",
         "drupal/atoms": "^1.0.1",
@@ -127,7 +127,7 @@
     "prefer-stable": true,
     "config": {
         "platform": {
-            "php": "8.1"
+            "php": "8.3.0"
         },
         "optimize-autoloader": true,
         "sort-packages": true,
@@ -148,6 +148,7 @@
         ]
     },
     "extra": {
+        "composer-exit-on-patch-failure": true,
         "drupal-scaffold": {
             "allowed-packages": [
                 "drupal/core"
@@ -214,7 +215,7 @@
                 "(#2862044) Default weight value is not saved, unless default entity is not specified too": "https://www.drupal.org/files/issues/2023-10-10/entity_hierarchy_2862044_default-weight_22.patch"
             },
             "drupal/paragraphs": {
-                "(#3090200) Paragraph access check using incorrect revision of its parent, leading to issues editing and viewing paragraphs when content moderation is involved": "https://www.drupal.org/files/issues/2020-07-08/access-controll-issue-3090200-22.patch",
+                "(#3090200) Resolve the correct parent revision for Paragraphs access checks": "patches/paragraphs-parent-revision-3090200.patch",
                 "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2023-07-20/2901390-9-109.patch"
             },
             "drupal/webform": {
