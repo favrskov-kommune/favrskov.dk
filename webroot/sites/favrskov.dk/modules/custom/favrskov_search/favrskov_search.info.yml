@@ -2,7 +2,7 @@ name: Favrskov search
 description: Favrskov søgefunktioner
 package: Favrskov
 type: module
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^10.6 || ^11
 
 interface translation project: favrskov_search
 interface translation server pattern: modules/custom/favrskov_search/translations/%language.po

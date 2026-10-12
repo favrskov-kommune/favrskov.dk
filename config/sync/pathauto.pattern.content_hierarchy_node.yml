@@ -2,17 +2,20 @@ uuid: a32a55be-72e8-4d00-b63c-1a3715db100a
 langcode: da
 status: true
 dependencies:
+  config:
+    - node.type.area
+    - node.type.page
+    - node.type.parcelling
   module:
     - node
 id: content_hierarchy_node
 label: 'Content Hierarchy pattern'
 type: 'canonical_entities:node'
-pattern: '[node:ancestors-joined-path]/[node:title]'
+pattern: '/[node:ancestors-joined-path]/[node:title]'
 selection_criteria:
   3f413d48-dbcb-4a8b-963a-3f33b9dfc6dd:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 3f413d48-dbcb-4a8b-963a-3f33b9dfc6dd
     context_mapping:
       node: node
     bundles:

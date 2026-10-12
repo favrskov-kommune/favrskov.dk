@@ -21,6 +21,9 @@ class LayoutBuilder extends LayoutBuilderOrg {
 
     $remove_element = $element['remove'];
     $configure_element = $element['configure'];
+    // Keep hover titles when Premium Gin displays these controls as icons.
+    $remove_element['#attributes']['title'] = $remove_element['#title'];
+    $configure_element['#attributes']['title'] = $configure_element['#title'];
     $section = $section_storage->getSection($delta);
     $layout = $section->getLayout();
     $layout_settings = $section->getLayoutSettings();
@@ -45,8 +48,8 @@ class LayoutBuilder extends LayoutBuilderOrg {
         '#value' => t('Section (@type): @label', ['@type' => $layout_definition->getLabel(), '@label' => $label]),
         '#access' => $layout instanceof PluginFormInterface,
       ],
-      'remove' => $remove_element,
       'configure' => $configure_element,
+      'remove' => $remove_element,
     ];
 
     return $element;

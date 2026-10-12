@@ -2,17 +2,18 @@ uuid: 89aa5e2b-054d-4056-8f9b-fcb74128c00f
 langcode: da
 status: true
 dependencies:
+  config:
+    - node.type.news
   module:
     - node
 id: nyheder
 label: Nyheder
 type: 'canonical_entities:node'
-pattern: 'nyheder/[node:title]'
+pattern: '/nyheder/[node:title]'
 selection_criteria:
   c1a722b4-0bcd-49d5-95ba-614cf6166c94:
     id: 'entity_bundle:node'
     negate: false
-    uuid: c1a722b4-0bcd-49d5-95ba-614cf6166c94
     context_mapping:
       node: node
     bundles:
