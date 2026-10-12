@@ -1,0 +1,68 @@
+uuid: 5f2d7762-9363-47d6-be2a-f951c419e5d8
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.timeline
+    - field.field.block_content.timeline.field_headline
+    - field.field.block_content.timeline.field_text
+    - field.field.block_content.timeline.field_timeline_cards
+    - field.field.block_content.timeline.field_timeline_layout
+  module:
+    - options
+    - paragraphs
+    - text
+id: block_content.timeline.default
+targetEntityType: block_content
+bundle: timeline
+mode: default
+content:
+  field_headline:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_timeline_cards:
+    type: entity_reference_paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: Indholdskort
+      title_plural: Indholdskort
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: content_card
+    third_party_settings: {  }
+  field_timeline_layout:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

@@ -107,4 +107,10 @@ a.button {
       color: var(--color-white);
     }
   }
+
+  &--small {
+    min-height: var(--button-small-height);
+    padding: var(--theme-button-small-padding);
+    font-size: var(--base-font-size-small);
+  }
 }

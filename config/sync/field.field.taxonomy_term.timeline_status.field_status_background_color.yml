@@ -1,0 +1,19 @@
+uuid: 0d35d0d5-07b3-4d27-9ce6-bcba43ae8161
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_status_background_color
+    - taxonomy.vocabulary.timeline_status
+id: taxonomy_term.timeline_status.field_status_background_color
+field_name: field_status_background_color
+entity_type: taxonomy_term
+bundle: timeline_status
+label: Baggrundsfarve
+description: 'HEX-farve i formatet #RRGGBB.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

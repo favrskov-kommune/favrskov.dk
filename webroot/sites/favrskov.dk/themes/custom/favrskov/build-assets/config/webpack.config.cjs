@@ -3,7 +3,7 @@ const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
 const TerserPlugin = require('terser-webpack-plugin');
 const BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mode = argv.mode || 'development';
@@ -53,24 +53,12 @@ module.exports = {
   plugins: plugins,
   resolve: {
     alias: {
-      vue: 'vue/dist/vue.js',
+      vue: 'vue/dist/vue.esm-bundler.js',
       'flickity': path.resolve(__dirname, '../node_modules/flickity'),
     }
   },
   module: {
     rules: [
-      {
-        // Enfore ensures that eslint-loader runs before babel or any other loaders.
-        enforce: 'pre',
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          emitWarning: true,
-          failonError: false,
-          fix: true,
-        }
-      },
       {
         test: /\.css$/i,
         use: [
@@ -84,7 +72,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                config: path.resolve(__dirname, 'postcss.config.js'),
+                config: path.resolve(__dirname, 'postcss.config.cjs'),
               },
             }
           }

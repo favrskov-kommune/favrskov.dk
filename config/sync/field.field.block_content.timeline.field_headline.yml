@@ -1,0 +1,19 @@
+uuid: c8aae7c5-3207-4589-84cf-fec2cc5bd2a5
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.block_content.field_headline
+    - block_content.type.timeline
+id: block_content.timeline.field_headline
+field_name: field_headline
+entity_type: block_content
+bundle: timeline
+label: Titel
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,31 @@
+uuid: 41644b1a-709b-42f4-9e9c-c9800a105c9f
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.block_content.field_timeline_cards
+    - block_content.type.timeline
+    - paragraphs.paragraphs_type.content_card
+  module:
+    - entity_reference_revisions
+id: block_content.timeline.field_timeline_cards
+field_name: field_timeline_cards
+entity_type: block_content
+bundle: timeline
+label: Indholdskort
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      content_card: content_card
+    negate: 0
+    target_bundles_drag_drop:
+      content_card:
+        weight: 1
+        enabled: true
+field_type: entity_reference_revisions

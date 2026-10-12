@@ -1,0 +1,21 @@
+uuid: 83dc066e-57d8-4d44-a2fe-063fde3dcf14
+langcode: da
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_timeline_type
+field_name: field_timeline_type
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

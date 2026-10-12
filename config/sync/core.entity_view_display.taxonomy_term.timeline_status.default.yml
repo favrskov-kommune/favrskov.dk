@@ -1,0 +1,32 @@
+uuid: c65643df-d540-47e0-95ec-9ce95499c1f6
+langcode: da
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.timeline_status
+    - field.field.taxonomy_term.timeline_status.field_status_background_color
+    - field.field.taxonomy_term.timeline_status.field_status_text_color
+id: taxonomy_term.timeline_status.default
+targetEntityType: taxonomy_term
+bundle: timeline_status
+mode: default
+content:
+  field_status_background_color:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_status_text_color:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  description: true
+  langcode: true

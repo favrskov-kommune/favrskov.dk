@@ -1,0 +1,23 @@
+uuid: 104e38d0-b46d-4391-80f8-6b63e9bfc574
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.block_content.field_timeline_layout
+    - block_content.type.timeline
+  module:
+    - options
+id: block_content.timeline.field_timeline_layout
+field_name: field_timeline_layout
+entity_type: block_content
+bundle: timeline
+label: Standardvisning
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: horizontal
+default_value_callback: ''
+settings: {  }
+field_type: list_string

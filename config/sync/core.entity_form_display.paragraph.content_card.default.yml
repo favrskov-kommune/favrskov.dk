@@ -1,0 +1,86 @@
+uuid: 7bb43d07-ee5d-4943-8014-2c0a8dc3b8da
+langcode: da
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.content_card
+    - field.field.paragraph.content_card.field_timeline_date
+    - field.field.paragraph.content_card.field_timeline_type
+    - field.field.paragraph.content_card.field_title
+    - field.field.paragraph.content_card.field_text
+    - field.field.paragraph.content_card.field_image
+    - field.field.paragraph.content_card.field_cta
+    - field.field.paragraph.content_card.field_timeline_status
+  module:
+    - datetime
+    - media_library
+    - options
+    - premium_tools
+    - text
+id: paragraph.content_card.default
+targetEntityType: paragraph
+bundle: content_card
+mode: default
+content:
+  field_cta:
+    type: link_with_target
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      target_blank: 0
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 4
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_timeline_date:
+    type: datetime_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_timeline_status:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_timeline_type:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  status: true
+  uid: true

@@ -1,0 +1,81 @@
+uuid: 5cf2e752-378c-4243-b49d-7f3ff61b290d
+langcode: da
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.content_card
+    - field.field.paragraph.content_card.field_timeline_date
+    - field.field.paragraph.content_card.field_timeline_type
+    - field.field.paragraph.content_card.field_title
+    - field.field.paragraph.content_card.field_text
+    - field.field.paragraph.content_card.field_image
+    - field.field.paragraph.content_card.field_cta
+    - field.field.paragraph.content_card.field_timeline_status
+  module:
+    - datetime
+    - premium_tools
+    - text
+id: paragraph.content_card.default
+targetEntityType: paragraph
+bundle: content_card
+mode: default
+content:
+  field_cta:
+    type: link_with_target
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: 1_column_flex_height
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_timeline_date:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F Y'
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_timeline_status:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_timeline_type:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

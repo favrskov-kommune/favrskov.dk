@@ -1,0 +1,9 @@
+uuid: 3275f55b-f995-4634-95af-ac6732e426af
+langcode: da
+status: true
+dependencies: {  }
+name: Status
+vid: timeline_status
+description: 'Status for indholdskort i tidslinjer.'
+weight: 0
+new_revision: false

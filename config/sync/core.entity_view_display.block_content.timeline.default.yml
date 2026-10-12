@@ -1,0 +1,46 @@
+uuid: 64dfcb69-a2b1-4236-a682-0987f60ce940
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.timeline
+    - field.field.block_content.timeline.field_headline
+    - field.field.block_content.timeline.field_text
+    - field.field.block_content.timeline.field_timeline_cards
+    - field.field.block_content.timeline.field_timeline_layout
+  module:
+    - entity_reference_revisions
+    - text
+id: block_content.timeline.default
+targetEntityType: block_content
+bundle: timeline
+mode: default
+content:
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_timeline_cards:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_timeline_layout: true
+  langcode: true
+  search_api_excerpt: true

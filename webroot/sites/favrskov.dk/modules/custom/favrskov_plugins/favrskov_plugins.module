@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Site-specific field validation.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function favrskov_plugins_entity_bundle_field_info_alter(array &$fields, EntityTypeInterface $entity_type, $bundle) {
+  if ($entity_type->id() !== 'taxonomy_term' || $bundle !== 'timeline_status') {
+    return;
+  }
+
+  foreach (['field_status_background_color', 'field_status_text_color'] as $field_name) {
+    if (isset($fields[$field_name])) {
+      $fields[$field_name]->addPropertyConstraints('value', [
+        'Regex' => [
+          'pattern' => '/^#[0-9a-fA-F]{6}$/D',
+          'message' => 'Use a six-digit HEX colour, such as #006e73.',
+        ],
+      ]);
+    }
+  }
+}

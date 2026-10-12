@@ -1,0 +1,24 @@
+uuid: 3b75172e-7384-420a-ba19-b437c4291fcd
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.content_card
+    - filter.format.basic_html
+  module:
+    - text
+id: paragraph.content_card.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: content_card
+label: Tekst
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long
