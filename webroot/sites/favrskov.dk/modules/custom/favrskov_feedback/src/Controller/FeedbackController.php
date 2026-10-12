@@ -1,6 +1,7 @@
 <?php
 namespace Drupal\favrskov_feedback\Controller;
 
+use Drupal\atoms\Atom;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Controller\ControllerBase;
@@ -46,7 +47,7 @@ class FeedbackController extends ControllerBase {
   public function form($answer) {
     $response = new AjaxResponse();
 
-    $webform = atom_view('feedback.' . $answer . '.form')->toValue();
+    $webform = Atom::getView('feedback.' . $answer . '.form')->toValue();
     if (empty($webform)) {
       return $response->setStatusCode(204);
     } else {

@@ -150,6 +150,23 @@ function premium_theme_helper_views_pre_render(ViewExecutable $view) {
  *   Form id.
  */
 function premium_theme_helper_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  if (isset($form['actions']['move_sections']) && \Drupal::moduleHandler()->moduleExists('gin_lb')) {
+    // The core reorder patch supplies a link; Gin LB styles submit buttons.
+    $classes = $form['actions']['move_sections']['#attributes']['class'] ?? [];
+    $form['actions']['move_sections']['#attributes']['class'] = array_merge(
+      array_values(array_diff($classes, ['button'])),
+      ['glb-button']
+    );
+    $form['#attached']['library'][] = 'premium_theme_helper/gin-lb-compat';
+
+    // Keep the visual order and keyboard navigation in the same sequence.
+    foreach (['revert', 'preview_toggle', 'move_sections', 'discard_changes', 'submit'] as $weight => $action) {
+      if (isset($form['actions'][$action])) {
+        $form['actions'][$action]['#weight'] = $weight;
+      }
+    }
+  }
+
   if (in_array($form_id, [
     'layout_builder_add_block',
     'layout_builder_update_block',

@@ -570,6 +570,7 @@ class ParcelImportService {
     try {
       $nids = \Drupal::entityQuery('node')
         ->condition('type', 'area')
+        ->accessCheck(FALSE)
         ->execute();
       $nodes = Node::loadMultiple($nids);
       foreach ($nodes as $node) {
@@ -587,6 +588,7 @@ class ParcelImportService {
     try {
       $nids = \Drupal::entityQuery('node')
         ->condition('type', 'parcelling')
+        ->accessCheck(FALSE)
         ->execute();
       $nodes = Node::loadMultiple($nids);
       foreach ($nodes as $node) {
@@ -604,6 +606,7 @@ class ParcelImportService {
     try {
       $pids = \Drupal::entityQuery('paragraph')
         ->condition('type', 'parcel')
+        ->accessCheck(FALSE)
         ->execute();
       $paragraphs = Paragraph::loadMultiple($pids);
       foreach ($paragraphs as $paragraph) {

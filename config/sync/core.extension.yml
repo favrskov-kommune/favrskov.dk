@@ -50,6 +50,7 @@ module:
   filter: 0
   focal_point: 0
   ftf_parcelling: 0
+  gin_lb: 0
   gin_toolbar: 0
   help: 0
   honeypot: 0
@@ -69,6 +70,7 @@ module:
   link: 0
   linkit: 0
   locale: 0
+  mailer_transport: 0
   mailsystem: 0
   media: 0
   media_icons: 0
@@ -94,6 +96,7 @@ module:
   phpass: 0
   premium_cdn_video: 0
   premium_core: 0
+  premium_gin: 0
   premium_theme_helper: 0
   premium_tools: 0
   promote_disable: 0

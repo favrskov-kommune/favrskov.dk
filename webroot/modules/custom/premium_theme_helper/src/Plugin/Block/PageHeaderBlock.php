@@ -8,7 +8,7 @@ use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Psr\Log\LoggerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\TypedData\Exception\MissingDataException;
 use Drupal\paragraphs\Entity\Paragraph;
@@ -60,14 +60,14 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
    *   Title resolver.
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The current route match.
-   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
+   * @param \Psr\Log\LoggerInterface $logger
    *   Logger.
    * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
    *   Request stack.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   Entity type manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, TitleResolverInterface $titleResolver, RouteMatchInterface $routeMatch, LoggerChannelFactoryInterface $logger, RequestStack $requestStack, EntityTypeManagerInterface $entityTypeManager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, TitleResolverInterface $titleResolver, RouteMatchInterface $routeMatch, LoggerInterface $logger, RequestStack $requestStack, EntityTypeManagerInterface $entityTypeManager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $routeMatch, $logger);
     $this->titleResolver = $titleResolver;
     $this->requestStack = $requestStack;
@@ -82,8 +82,8 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
     $routeMatch = $container->get('current_route_match');
     /** @var \Drupal\Core\Controller\TitleResolverInterface $titleResolver */
     $titleResolver = $container->get('title_resolver');
-    /** @var \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger */
-    $logger = $container->get('logger.factory');
+    /** @var \Psr\Log\LoggerInterface $logger */
+    $logger = $container->get('logger.channel.premium_theme_helper');
     /** @var \Symfony\Component\HttpFoundation\RequestStack $request_stack */
     $request_stack = $container->get('request_stack');
     /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager */
