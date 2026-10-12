@@ -31,6 +31,7 @@ hosts:
     deploy_path: /var/www/favrskov.dk
     hostname: '81.95.247.233'
     remote_user: favrskov
+    nvm_dir: '~/.nvm'
     disable_slack: true
   staging:
     <<: *base
