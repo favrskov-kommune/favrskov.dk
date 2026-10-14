@@ -109,7 +109,6 @@ module:
   siteimprove: 0
   status_feed: 0
   styles: 0
-  swiftmailer: 0
   symfony_mailer: 0
   system: 0
   taxonomy: 0
