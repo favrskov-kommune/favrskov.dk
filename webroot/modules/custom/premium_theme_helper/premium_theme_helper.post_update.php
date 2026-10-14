@@ -7,6 +7,38 @@
 
 use Drupal\Core\Utility\UpdateException;
 use Drupal\symfony_mailer\Entity\MailerTransport;
+use Drupal\user\Entity\Role;
+
+/**
+ * Replace File Delete UI with core file deletion, retaining role permissions.
+ */
+function premium_theme_helper_post_update_replace_file_delete_ui(&$sandbox = NULL) {
+  if (\Drupal::moduleHandler()->moduleExists('file_delete_ui')) {
+    // Drupal core provides file deletion and this permission from version 10.1.
+    $roles = array_filter(Role::loadMultiple(), static fn (Role $role) => $role->hasPermission('delete any file'));
+    $role_ids = array_keys($roles);
+    \Drupal::service('module_installer')->uninstall(['file_delete_ui']);
+
+    // Uninstall removes permissions declared by the module. Restore the core
+    // equivalent on the affected roles after reloading their current settings.
+    foreach (Role::loadMultiple($role_ids) as $role) {
+      $role->grantPermission('delete any file')->save();
+    }
+  }
+
+  return t('File Delete UI has been uninstalled; core file deletion permissions have been retained.');
+}
+
+/**
+ * Use Claro for Layout Builder modals before upgrading to Drupal 11.
+ */
+function premium_theme_helper_post_update_use_claro_for_layout_builder_modal(&$sandbox = NULL) {
+  \Drupal::configFactory()->getEditable('layout_builder_modal.settings')
+    ->set('theme_display', 'claro')
+    ->save();
+
+  return t('Layout Builder modals now use Claro.');
+}
 
 /**
  * Switch mail delivery to Symfony Mailer before removing SwiftMailer code.
