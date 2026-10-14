@@ -47,7 +47,12 @@ class FeedbackController extends ControllerBase {
   public function form($answer) {
     $response = new AjaxResponse();
 
-    $webform = Atom::getView('feedback.' . $answer . '.form')->toValue();
+    $form_atom = Atom::getView('feedback.' . $answer . '.form');
+    if (!$form_atom->getAtom()) {
+      return $response->setStatusCode(204);
+    }
+
+    $webform = $form_atom->toValue();
     if (empty($webform)) {
       return $response->setStatusCode(204);
     } else {
