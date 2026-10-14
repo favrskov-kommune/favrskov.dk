@@ -7,40 +7,12 @@
  * Run with: drush php:script scripts/drupal11-pre-upgrade.php
  */
 
-use Drupal\symfony_mailer\Entity\MailerTransport;
 use Drupal\user\Entity\Role;
 
-$module_handler = \Drupal::moduleHandler();
 $config_factory = \Drupal::configFactory();
 
-if ($module_handler->moduleExists('swiftmailer')) {
-  if (!$module_handler->moduleExists('symfony_mailer')) {
-    // The install hook imports the existing SwiftMailer SMTP transport.
-    \Drupal::service('module_installer')->install(['symfony_mailer']);
-  }
-
-  $transport_id = $config_factory->get('symfony_mailer.settings')->get('default_transport');
-  if (!$transport_id || !MailerTransport::load($transport_id)) {
-    throw new \RuntimeException('Configure a Symfony Mailer transport before removing SwiftMailer.');
-  }
-
-  // Symfony Mailer handles both its own builders and legacy hook_mail() calls.
-  // Remove stale plugin IDs before uninstalling the old mail module.
-  $config_factory->getEditable('mailsystem.settings')
-    ->set('defaults.sender', 'php_mail')
-    ->set('defaults.formatter', 'php_mail')
-    ->clear('modules.swiftmailer')
-    ->save();
-
-  foreach ($config_factory->listAll('symfony_mailer.mailer_policy.') as $name) {
-    $policy = $config_factory->getEditable($name);
-    if ($policy->get('configuration.mailer_wrap_and_convert')) {
-      $policy->set('configuration.mailer_wrap_and_convert.swiftmailer', FALSE)->save();
-    }
-  }
-
-  \Drupal::service('module_installer')->uninstall(['swiftmailer']);
-  print "Removed SwiftMailer; preserved the Symfony Mailer transport.\n";
+if (array_key_exists('swiftmailer', $config_factory->get('core.extension')->get('module') ?? [])) {
+  throw new \RuntimeException('Deploy feature/FAVRDK-447 and complete its database updates and configuration import before preparing Drupal 11. SwiftMailer is still installed.');
 }
 
 if (\Drupal::moduleHandler()->moduleExists('file_delete_ui')) {

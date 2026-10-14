@@ -12,6 +12,10 @@ Composer fails if a configured patch cannot be applied.
 
 ## Updating locally
 
+Deploy `feature/FAVRDK-447` first and complete its database updates and
+configuration import. That Drupal 10 deployment enables Symfony Mailer and
+uninstalls SwiftMailer while its Composer package is still available.
+
 For the first upgrade from Drupal 10.6, back up the database and migrate DDEV's
 database while still on the Drupal 10 branch:
 
@@ -21,9 +25,10 @@ ddev utility migrate-database mariadb:10.11
 ```
 
 After checking out the Drupal 11 branch, run the preparation script **before
-Composer replaces the Drupal 10 dependencies**. It removes SwiftMailer and the
-obsolete File Delete UI module, preserving the Symfony Mailer transport and
-file deletion permissions:
+Composer replaces the Drupal 10 dependencies**. It removes the obsolete File
+Delete UI module while preserving file deletion permissions, and switches the
+Layout Builder modal theme to Claro. It refuses to proceed while SwiftMailer
+is still installed:
 
 ```sh
 ddev drush php:script scripts/drupal11-pre-upgrade.php
@@ -44,6 +49,10 @@ Review changes with `ddev drush config:status`, then import the upgrade's
 configuration with `ddev drush config:import -y` and rebuild caches.
 
 ## Deployment
+
+Deploy the Drupal 10 mail migration from `feature/FAVRDK-447` first, including
+`drush updatedb -y` and configuration import. Verify mail delivery before
+proceeding to Drupal 11.
 
 Ensure PHP and the database meet the requirements above and back up the target
 database. For the first Drupal 11 deployment, run
