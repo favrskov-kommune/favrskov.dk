@@ -36,7 +36,7 @@
         "cweagans/composer-patches": "^1.6.5",
         "drupal/admin_toolbar": "^3.0",
         "drupal/allowed_formats": "^3.0",
-        "drupal/atoms": "^1.0.1",
+        "drupal/atoms": "^1.1.0",
         "drupal/autosave_form": "^1.0",
         "drupal/color_field": "^3.0",
         "drupal/components": "^3.0",
