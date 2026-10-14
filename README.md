@@ -29,14 +29,3 @@ Back up the target database before deploying, install the committed lock file
 with `composer install --no-dev`, then run `drush updatedb -y` and
 `drush cache:rebuild`. Use the existing deployment process for configuration
 imports after checking the target environment's configuration differences.
-
-## Preparing mail delivery for Drupal 11
-
-Deploy this Drupal 10 release before the Drupal 11 release. `drush updatedb -y`
-runs the mail migration: it enables Symfony Mailer if needed, verifies the
-default transport, and uninstalls SwiftMailer. Import configuration afterwards
-so the old mail plugin settings are not restored.
-
-SwiftMailer remains in Composer for this deployment so its uninstall hooks are
-available. The Drupal 11 release removes the package. Verify mail delivery after
-this deployment before proceeding to Drupal 11.
