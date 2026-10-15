@@ -1,8 +1,7 @@
 name: 'Promote Disable'
 description: 'Allows a user to disable the ''Promote to front page'' option when creating nodes.'
 package: Other
-core: 8.x
-core_version_requirement: ^8 || ^9 || ^10
+core_version_requirement: ^10.6 || ^11
 type: module
 configure: promote_disable.form
 

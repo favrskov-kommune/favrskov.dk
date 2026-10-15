@@ -2,10 +2,10 @@
 
 ## Requirements
 
-This Drupal 10 project requires PHP 8.3 or later within PHP 8.x. Composer resolves
-dependencies against PHP 8.3.0, and DDEV uses PHP 8.3 with the `drupal10` project
-type. Ensure the active hosting environment also uses PHP 8.3 before installing
-this lock file. The legacy `.docker` and Azure pipeline setup is unused.
+This Drupal 11 project requires PHP 8.3 or later within PHP 8.x and MariaDB 10.6
+or later (or another database version supported by Drupal 11). Composer resolves
+dependencies against PHP 8.3.0. DDEV uses PHP 8.3, MariaDB 10.11 and the `drupal11`
+project type. The legacy `.docker` and Azure pipeline setup is unused.
 
 Include the `patches` directory when building or deploying the project.
 Composer fails if a configured patch cannot be applied.

@@ -7,7 +7,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Routing\Route;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Route entity base.
@@ -26,7 +26,7 @@ abstract class RouteEntityBaseBlock extends BlockBase implements ContainerFactor
   /**
    * Logger.
    *
-   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
+   * @var \Psr\Log\LoggerInterface
    */
   protected $logger;
 
@@ -41,13 +41,13 @@ abstract class RouteEntityBaseBlock extends BlockBase implements ContainerFactor
    *   The plugin definition.
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   Route match.
-   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
+   * @param \Psr\Log\LoggerInterface $logger
    *   Logger.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, RouteMatchInterface $routeMatch, LoggerChannelFactoryInterface $logger) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, RouteMatchInterface $routeMatch, LoggerInterface $logger) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->routeMatch = $routeMatch;
-    $this->logger = $logger->get('premium_theme_helper');
+    $this->logger = $logger;
   }
 
   /**
@@ -56,8 +56,8 @@ abstract class RouteEntityBaseBlock extends BlockBase implements ContainerFactor
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     /** @var \Drupal\Core\Routing\RouteMatchInterface $routeMatch */
     $routeMatch = $container->get('current_route_match');
-    /** @var \Drupal\Core\Plugin\ContainerFactoryPluginInterface $logger */
-    $logger = $container->get('logger.factory');
+    /** @var \Psr\Log\LoggerInterface $logger */
+    $logger = $container->get('logger.channel.premium_theme_helper');
     return new static($configuration, $plugin_id, $plugin_definition, $routeMatch, $logger);
   }
 

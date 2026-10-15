@@ -1,0 +1,31 @@
+/* Preserve Gin icon contrast against the site's frontend link colors. */
+#layout-builder .layout-builder__section--header :is(.layout-builder__link--configure, .layout-builder__link--remove) {
+  color: var(--gin-color-text, #222330);
+}
+
+/* Reset frontend link sizing and decoration for the Gin reorder control. */
+#gin_sidebar #edit-move-sections {
+  min-height: 0;
+  background-image: none;
+}
+
+#gin_sidebar #edit-move-sections::before,
+#gin_sidebar #edit-move-sections::after {
+  content: none;
+}
+
+/* Wrap translated actions within the compact Gin bar. */
+body #gin_sidebar #edit-actions {
+  flex-wrap: wrap;
+  width: auto;
+  white-space: normal;
+}
+
+body #gin_sidebar #edit-actions > * {
+  max-width: 100%;
+}
+
+body #gin_sidebar #edit-actions .glb-button {
+  white-space: normal;
+  text-align: center;
+}
