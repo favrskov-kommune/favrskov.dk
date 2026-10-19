@@ -201,7 +201,8 @@
         },
         "patches": {
             "drupal/core": {
-                "(#3080606) [PP-1] Reorder Layout Builder sections": "https://www.drupal.org/files/issues/2025-09-26/3080606-128-11.1.x.patch"
+                "(#3080606) [PP-1] Reorder Layout Builder sections": "https://www.drupal.org/files/issues/2025-09-26/3080606-128-11.1.x.patch",
+                "(#3589365) Render dblog messages containing NULL placeholders": "patches/drupal-dblog-null-placeholders-3589365.patch"
             },
             "drupal/autosave_form": {
                 "(#3355495) PHP 8.2 deprecation issue with AutosaveFormBuilder": "https://www.drupal.org/files/issues/2023-04-20/autosave_form-dynamic-property-deprecation.patch"
