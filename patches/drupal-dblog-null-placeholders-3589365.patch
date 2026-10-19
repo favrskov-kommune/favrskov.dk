@@ -1,0 +1,34 @@
+Source: https://git.drupalcode.org/project/drupal/-/merge_requests/15715.diff
+Issue: https://www.drupal.org/project/drupal/issues/3589365
+Adapted for Drupal 11.4.10, preserving the Views array cast per comment #14.
+Only log display is changed; stored data and global HTML escaping are unchanged.
+
+diff --git a/core/modules/dblog/src/Controller/DbLogController.php b/core/modules/dblog/src/Controller/DbLogController.php
+--- a/core/modules/dblog/src/Controller/DbLogController.php
++++ b/core/modules/dblog/src/Controller/DbLogController.php
+@@ -365,6 +365,11 @@
+       }
+       // Message to translate with injected variables.
+       else {
++        // Preserve evidence of invalid placeholders without breaking log display.
++        $variables = array_map(static function ($value) {
++          return $value ?? 'NULL';
++        }, $variables);
++
+         // Ensure backtrace strings are properly formatted.
+         if (isset($variables['@backtrace_string'])) {
+           $variables['@backtrace_string'] = new FormattableMarkup(
+diff --git a/core/modules/dblog/src/Plugin/views/field/DblogMessage.php b/core/modules/dblog/src/Plugin/views/field/DblogMessage.php
+--- a/core/modules/dblog/src/Plugin/views/field/DblogMessage.php
++++ b/core/modules/dblog/src/Plugin/views/field/DblogMessage.php
+@@ -60,6 +60,10 @@
+ 
+     if ($this->options['replace_variables']) {
+       $variables = unserialize($this->getvalue($values, 'variables'));
++      // Preserve evidence of invalid placeholders without breaking log display.
++      $variables = array_map(static function ($value) {
++        return $value ?? 'NULL';
++      }, (array) $variables);
+       return new FormattableMarkup($value, (array) $variables);
+     }
+     else {

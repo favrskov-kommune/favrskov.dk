@@ -128,6 +128,52 @@ function favrskov_preprocess_block__inline_block__branding_spot(array &$variable
  */
 function favrskov_preprocess_paragraph__basic_hero(array &$variables) {
   $variables['is_front_page_header'] = \Drupal::service('path.matcher')->isFrontPage();
+  _favrskov_prepare_hero_media($variables);
+}
+
+/**
+ * Prepare background media for inline hero paragraphs.
+ */
+function favrskov_preprocess_paragraph__inline_hero(array &$variables) {
+  _favrskov_prepare_hero_media($variables);
+}
+
+/**
+ * Build hero media independently of the paragraph's field display settings.
+ */
+function _favrskov_prepare_hero_media(array &$variables) {
+  $variables['media_image'] = [];
+  $variables['media'] = [];
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+  if (!$paragraph->hasField('field_background') || $paragraph->get('field_background')->isEmpty()) {
+    return;
+  }
+
+  $media = $paragraph->get('field_background')->entity;
+  if (!$media) {
+    return;
+  }
+
+  $media = \Drupal::service('entity.repository')->getTranslationFromContext($media);
+  $access = $media->access('view', NULL, TRUE);
+  CacheableMetadata::createFromRenderArray($variables)
+    ->addCacheableDependency($media)
+    ->addCacheableDependency($access)
+    ->applyTo($variables);
+  if (!$access->isAllowed()) {
+    return;
+  }
+
+  $view_builder = \Drupal::entityTypeManager()->getViewBuilder('media');
+  if ($media->bundle() === 'image') {
+    $variables['media_image'] = $view_builder->view($media, 'hero');
+  }
+  elseif (in_array($media->bundle(), ['remote_video', 'cdn_video'], TRUE)) {
+    // The hero view mode supplies the thumbnail; default supplies the player.
+    $variables['media_image'] = $view_builder->view($media, 'hero');
+    $variables['media'] = $view_builder->view($media, 'default');
+  }
 }
 
 /**
