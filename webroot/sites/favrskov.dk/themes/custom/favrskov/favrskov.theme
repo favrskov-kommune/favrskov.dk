@@ -129,6 +129,7 @@ function favrskov_preprocess_block__inline_block__branding_spot(array &$variable
 function favrskov_preprocess_paragraph__basic_hero(array &$variables) {
   $variables['is_front_page_header'] = \Drupal::service('path.matcher')->isFrontPage();
   _favrskov_prepare_hero_media($variables);
+  _favrskov_prepare_hero_cta($variables);
 }
 
 /**
@@ -136,6 +137,43 @@ function favrskov_preprocess_paragraph__basic_hero(array &$variables) {
  */
 function favrskov_preprocess_paragraph__inline_hero(array &$variables) {
   _favrskov_prepare_hero_media($variables);
+  _favrskov_prepare_hero_cta($variables);
+}
+
+/**
+ * Prepare the CTA expected by both hero templates.
+ */
+function _favrskov_prepare_hero_cta(array &$variables) {
+  $variables['link'] = [];
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+  if (!$paragraph->hasField('field_cta') || $paragraph->get('field_cta')->isEmpty()) {
+    return;
+  }
+
+  $field = $paragraph->get('field_cta');
+  $access = $field->access('view', NULL, TRUE);
+  CacheableMetadata::createFromRenderArray($variables)
+    ->addCacheableDependency($access)
+    ->applyTo($variables);
+  if (!$access->isAllowed()) {
+    return;
+  }
+
+  $button = $field->first();
+  if (!$button || $button->title === NULL || $button->title === '') {
+    return;
+  }
+
+  $url = $button->getUrl()->toString(TRUE);
+  CacheableMetadata::createFromRenderArray($variables)
+    ->addCacheableDependency($url)
+    ->applyTo($variables);
+  $variables['link'] = [
+    'title' => $button->title,
+    'url' => $url->getGeneratedUrl(),
+    'target' => $button->target_blank ? '_blank' : '',
+  ];
 }
 
 /**
