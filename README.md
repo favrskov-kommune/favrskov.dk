@@ -29,11 +29,3 @@ Back up the target database before deploying, install the committed lock file
 with `composer install --no-dev`, then run `drush updatedb -y` and
 `drush cache:rebuild`. Use the existing deployment process for configuration
 imports after checking the target environment's configuration differences.
-
-## Recent log messages fail after upgrading to Drupal 11
-
-A stored log entry with a NULL placeholder can crash `/admin/reports/dblog`.
-The core patch for [Drupal issue #3589365](https://www.drupal.org/project/drupal/issues/3589365)
-renders these values as the literal `NULL` in the overview and detail pages.
-It preserves the log records and normal HTML escaping. Review this temporary
-patch when upgrading core and remove it once core includes a suitable fix.
