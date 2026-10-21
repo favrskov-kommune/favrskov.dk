@@ -6,7 +6,7 @@ use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Psr\Log\LoggerInterface;
 use Drupal\Core\TypedData\Exception\MissingDataException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -41,10 +41,10 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
    *   The breadcrumb manager.
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The current route match.
-   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
+   * @param \Psr\Log\LoggerInterface $logger
    *   Logger.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, BreadcrumbBuilderInterface $breadcrumb_manager, RouteMatchInterface $routeMatch, LoggerChannelFactoryInterface $logger) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, BreadcrumbBuilderInterface $breadcrumb_manager, RouteMatchInterface $routeMatch, LoggerInterface $logger) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $routeMatch, $logger);
     $this->breadcrumbManager = $breadcrumb_manager;
   }
@@ -57,8 +57,8 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
     $routeMatch = $container->get('current_route_match');
     /** @var \Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface $breadcrumb */
     $breadcrumb = $container->get('breadcrumb');
-    /** @var \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger */
-    $logger = $container->get('logger.factory');
+    /** @var \Psr\Log\LoggerInterface $logger */
+    $logger = $container->get('logger.channel.premium_theme_helper');
     return new static($configuration, $plugin_id, $plugin_definition, $breadcrumb, $routeMatch, $logger);
   }
 

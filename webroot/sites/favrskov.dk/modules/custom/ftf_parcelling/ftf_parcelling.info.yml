@@ -1,7 +1,7 @@
 name: 'Parcelling'
 type: module
 description: 'Provides functionality for handling parcels'
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^10.6 || ^11
 version: 1.0.0
 package: 'Favrskov'
 dependencies: {  }

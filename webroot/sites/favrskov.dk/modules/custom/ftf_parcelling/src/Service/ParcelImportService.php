@@ -505,15 +505,22 @@ class ParcelImportService {
    * Get identifiers for all parcelling data currently known to the system
    */
   private function fetchCurrentDataIdentifiers() {
-    $boligpage = Atom::getView('parcelling.bolig')->getData();
-    $erhvervpage = Atom::getView('parcelling.erhverv')->getData();
-    $storparcelpage = Atom::getView('parcelling.storparcel')->getData();
+    // Entity atoms normalize both single IDs and lists to target_ids.
+    $boligpage = Atom::getView('parcelling.bolig')->getValues()['target_ids'];
+    $erhvervpage = Atom::getView('parcelling.erhverv')->getValues()['target_ids'];
+    $storparcelpage = Atom::getView('parcelling.storparcel')->getValues()['target_ids'];
 
     $identifiers = [
       'bolig' => ['nid' => reset($boligpage), 'areas' => [], 'feed' => 'https://webkort.favrskov.dk/spatialmap?page=grundsalg-get-parcel'],
       'erhverv' => ['nid' => reset($erhvervpage), 'areas' => [], 'feed' => 'https://webkort.favrskov.dk/spatialmap?page=grundsalg-get-erhverv'],
       'storparcel' => ['nid' => reset($storparcelpage), 'areas' => [], 'feed' => 'https://webkort.favrskov.dk/spatialmap?page=grundsalg-get-storparcel'],
     ];
+
+    foreach ($identifiers as $type => $identifier) {
+      if (empty($identifier['nid']) || !is_numeric($identifier['nid']) || !Node::load($identifier['nid'])) {
+        throw new \RuntimeException('Configure a valid node reference for the parcelling.' . $type . ' atom before running the parcel import.');
+      }
+    }
 
     $ch_query = $this->database->select('content_hierarchy', 'ch');
     $ch_query->condition('ch.entity_id', array_column($identifiers, 'nid'), 'IN');
@@ -570,6 +577,7 @@ class ParcelImportService {
     try {
       $nids = \Drupal::entityQuery('node')
         ->condition('type', 'area')
+        ->accessCheck(FALSE)
         ->execute();
       $nodes = Node::loadMultiple($nids);
       foreach ($nodes as $node) {
@@ -587,6 +595,7 @@ class ParcelImportService {
     try {
       $nids = \Drupal::entityQuery('node')
         ->condition('type', 'parcelling')
+        ->accessCheck(FALSE)
         ->execute();
       $nodes = Node::loadMultiple($nids);
       foreach ($nodes as $node) {
@@ -604,6 +613,7 @@ class ParcelImportService {
     try {
       $pids = \Drupal::entityQuery('paragraph')
         ->condition('type', 'parcel')
+        ->accessCheck(FALSE)
         ->execute();
       $paragraphs = Paragraph::loadMultiple($pids);
       foreach ($paragraphs as $paragraph) {

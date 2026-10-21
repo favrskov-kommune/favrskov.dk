@@ -1,6 +1,12 @@
 import getVideoId from 'get-video-id';
 
+const youtubePlayers = new WeakMap();
+
 const loadYoutubeIframeSrc = () => {
+  if (window.YT && window.YT.Player) {
+    window.onYouTubePlayerAPIReady();
+    return;
+  }
   if (document.getElementById('youtube-player')) {
     return;
   }
@@ -12,6 +18,7 @@ const loadYoutubeIframeSrc = () => {
 };
 
 function onPlayerReady(event) {
+  event.target.mute();
   event.target.playVideo();
 }
 
@@ -21,11 +28,10 @@ function onPlayerStateChange(event) {
   }
 }
 
-const stopVideo = (element, oldSrc, newSrc) => {
+const stopVideo = (element, oldSrc) => {
   const iframe = element.querySelector('iframe');
   const video = element.querySelector('video');
   if (iframe) {
-    const iframeSrc = iframe.src;
     iframe.src = oldSrc;
   }
   if (video) {
@@ -33,15 +39,14 @@ const stopVideo = (element, oldSrc, newSrc) => {
   }
 };
 
-const startVideo = (element, oldSrc, newSrc) => {
+const startVideo = (element, newSrc) => {
   const iframe = element.querySelector('iframe');
   const video = element.querySelector('video');
   if (iframe) {
-    const iframeSrc = iframe.src;
     iframe.src = newSrc;
   }
   if (video) {
-    video.play();
+    video.play().catch(() => {});
   }
 };
 
@@ -54,16 +59,16 @@ window.onYouTubePlayerAPIReady = function onYouTubePlayerAPIReady() {
   for (let i = 0; i < heros.length; i += 1) {
     const currentHero = heros[i];
     const iframe = currentHero.querySelector('iframe');
-    if (iframe) {
+    if (iframe && !youtubePlayers.has(iframe)) {
       const { videoId } = currentHero.querySelector('iframe').dataset;
       if (videoId) {
-        const player = new window.YT.Player(`oembed_video_id_${videoId}`, {
+        youtubePlayers.set(iframe, new window.YT.Player(iframe, {
           videoId,
           events: {
             onReady: onPlayerReady,
             onStateChange: onPlayerStateChange,
           },
-        });
+        }));
       }
     }
   }
@@ -95,21 +100,26 @@ Drupal.behaviors.hero = {
           // Drupal gives us eg:
           // media/oembed?url=https%3A//www.youtube.com/watch%3Fv%3DaE2vilQu7BQ&max_width=0&...
           // But we want the https://www.youtube.com/embed/ version so we can talk with Youtube API.
-          const cleanUrl = decodeURIComponent(newSrc.replace('/media/oembed?url=', ''));
-          if (oldSrc.indexOf('youtube') > -1) {
+          const iframeUrl = new URL(oldSrc, window.location.href);
+          const videoUrl = iframeUrl.searchParams.get('url') || iframeUrl.href;
+          const { id, service } = getVideoId(videoUrl);
+          if (id && service === 'youtube') {
             isYoutube = true;
-            const { id } = getVideoId(cleanUrl.replace(cleanUrl.substr(cleanUrl.indexOf('&'), cleanUrl.length), ''));
-            iframe.setAttribute('id', `oembed_video_id_${id}`);
             iframe.dataset.videoId = id;
             const { origin } = window.location;
             newSrc = `https://www.youtube.com/embed/${id}?mute=1&controls=0&showinfo=0&autohide=1&background=1&playsinline=1&origin=${origin}&enablejsapi=1`;
-          } else if (oldSrc.indexOf('vimeo') > -1) {
-            const { id } = getVideoId(cleanUrl.replace(cleanUrl.substr(cleanUrl.indexOf('&'), cleanUrl.length), ''));
-            newSrc = `https://player.vimeo.com/video/${id}?api=true&autoplay=1&mute=1&loop=1&autopause=0&controls=0&showinfo=0&autohide=1&background=1`;
-          } else if (oldSrc.indexOf('cloudflarestream') > -1) {
-            newSrc = `${oldSrc}?autoplay=true&muted=true&loop=true`;
+          } else if (id && service === 'vimeo') {
+            newSrc = `https://player.vimeo.com/video/${id}?api=true&autoplay=1&muted=1&loop=1&autopause=0&controls=0&showinfo=0&autohide=1&background=1`;
+          } else if (iframeUrl.hostname.includes('cloudflarestream')) {
+            iframeUrl.searchParams.set('autoplay', 'true');
+            iframeUrl.searchParams.set('muted', 'true');
+            iframeUrl.searchParams.set('loop', 'true');
+            newSrc = iframeUrl.href;
           } else {
-            newSrc = `${oldSrc}&api=true&autoplay=1&mute=1&loop=1&autopause=0&controls=0&showinfo=0&autohide=1&background=1`;
+            iframeUrl.searchParams.set('autoplay', '1');
+            iframeUrl.searchParams.set('mute', '1');
+            iframeUrl.searchParams.set('loop', '1');
+            newSrc = iframeUrl.href;
           }
           iframe.setAttribute('src', newSrc);
           iframe.setAttribute('allow', 'autoplay; fullscreen');
@@ -124,20 +134,24 @@ Drupal.behaviors.hero = {
           video.controls = false;
           video.setAttribute('aria-hidden', 'true');
           iframeWrapper.classList.add('active');
+          video.play().catch(() => {});
         }
         if (isYoutube) {
           loadYoutubeIframeSrc();
         }
 
+        if (!iframeVideoButton) {
+          continue;
+        }
         iframeVideoButton.addEventListener('click', () => {
           if (iframeVideoButton.classList.contains('video-stopped')) {
             iframeVideoButton.classList.remove('video-stopped');
             iframeVideoButton.setAttribute('aria-label', 'Stop video');
-            startVideo(iframeWrapper, oldSrc, newSrc);
+            startVideo(iframeWrapper, newSrc);
           } else {
             iframeVideoButton.classList.add('video-stopped');
             iframeVideoButton.setAttribute('aria-label', 'Afspil video');
-            stopVideo(iframeWrapper, oldSrc, newSrc);
+            stopVideo(iframeWrapper, oldSrc);
           }
         });
       }

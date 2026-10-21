@@ -1,0 +1,22 @@
+uuid: 04d2a586-803a-4cfd-91d5-6e5df8be55b1
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.parcelling
+id: node.parcelling.promote
+field_name: promote
+entity_type: node
+bundle: parcelling
+label: 'Forfremmet til forside'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean

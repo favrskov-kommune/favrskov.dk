@@ -1,0 +1,4 @@
+services:
+  logger.channel.premium_theme_helper:
+    parent: logger.channel_base
+    arguments: ['premium_theme_helper']
