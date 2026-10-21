@@ -1,29 +1,31 @@
-# README #
+# Favrskov.dk
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Requirements
 
-### What is this repository for? ###
+This Drupal 10 project requires PHP 8.3 or later within PHP 8.x. Composer resolves
+dependencies against PHP 8.3.0, and DDEV uses PHP 8.3 with the `drupal10` project
+type. Ensure the active hosting environment also uses PHP 8.3 before installing
+this lock file. The legacy `.docker` and Azure pipeline setup is unused.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Include the `patches` directory when building or deploying the project.
+Composer fails if a configured patch cannot be applied.
 
-### How do I get set up? ###
+## Updating locally
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+With an existing local database and site settings:
 
-### Contribution guidelines ###
+```sh
+ddev restart
+ddev export-db --file=/tmp/favrskov-before-update.sql.gz
+ddev composer install
+ddev drush updatedb -y
+ddev drush cache:rebuild
+ddev drush status
+```
 
-* Writing tests
-* Code review
-* Other guidelines
+## Deployment
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Back up the target database before deploying, install the committed lock file
+with `composer install --no-dev`, then run `drush updatedb -y` and
+`drush cache:rebuild`. Use the existing deployment process for configuration
+imports after checking the target environment's configuration differences.
