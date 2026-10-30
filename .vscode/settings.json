@@ -1,0 +1,20 @@
+{
+  "files.associations": {
+    "**/themes/custom/favrskov/build-assets/src/**/*.css": "postcss"
+  },
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "stylelint.validate": ["css", "postcss"],
+  "[postcss]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": "explicit"
+    }
+  }
+}

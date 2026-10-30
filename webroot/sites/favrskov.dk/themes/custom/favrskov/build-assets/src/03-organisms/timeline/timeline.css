@@ -47,6 +47,7 @@
     }
 
     @media print {
+      /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
       display: none !important;
     }
   }
@@ -77,6 +78,7 @@
     font-size: var(--base-font-size);
 
     @media print {
+      /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
       display: block !important;
     }
   }
@@ -88,8 +90,11 @@
 
     .swiper-wrapper {
       @media print {
+        /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
         display: block !important;
+        /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
         height: auto !important;
+        /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
         transform: none !important;
       }
 
@@ -109,6 +114,7 @@
     margin-bottom: 22px;
 
     @media print {
+      /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
       display: none !important;
     }
 
@@ -192,6 +198,7 @@
     height: auto;
 
     @media print {
+      /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
       width: 100% !important;
       margin-bottom: 20px;
     }
@@ -212,6 +219,7 @@
     margin-top: 20px;
 
     @media print {
+      /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
       display: none !important;
     }
   }
@@ -244,6 +252,7 @@
     display: none;
 
     @media print {
+      /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
       display: none !important;
     }
   }
@@ -284,9 +293,11 @@
         flex-direction: column;
         gap: 32px;
         width: 100%;
+        /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
         height: auto !important;
         padding-top: 50px;
         padding-bottom: 50px;
+        /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
         transform: none !important;
 
         @media (--viewport-sm-max) {
@@ -315,10 +326,12 @@
     .timeline__slide {
       position: relative;
       flex: none;
+      /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
       width: calc(50% - 28px) !important;
       scroll-margin-top: 128px;
 
       @media (--viewport-sm-max) {
+        /* stylelint-disable-next-line declaration-no-important -- Override Swiper and component styles for print or vertical layouts. */
         width: 100% !important;
         scroll-margin-top: 80px;
       }

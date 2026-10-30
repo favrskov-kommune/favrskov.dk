@@ -32,14 +32,16 @@ const ParcelGroup = {
       <h2>{{ title }}</h2>
 
       <div class="parcels__elements">
-        <slot />
+        <div class="row">
+          <slot />
 
-        <div
-          v-if="showText && hideText"
-          class="parcels__toggle-text"
-          @click="toggleParcelsGroup"
-        >
-          {{ toggleText }}
+          <div
+            v-if="showText && hideText"
+            class="parcels__toggle-text"
+            @click="toggleParcelsGroup"
+          >
+            {{ toggleText }}
+          </div>
         </div>
       </div>
     </div>
