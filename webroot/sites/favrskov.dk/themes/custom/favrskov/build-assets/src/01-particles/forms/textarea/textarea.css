@@ -25,18 +25,22 @@
     border-color: var(--color-gray);
   }
 
+  /* stylelint-disable-next-line selector-no-vendor-prefix -- Retain placeholder styling in legacy browsers. */
   &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: currentColor;
   }
 
+  /* stylelint-disable-next-line selector-no-vendor-prefix -- Retain placeholder styling in legacy browsers. */
   &::-moz-placeholder { /* Firefox 19+ */
     color: currentColor;
   }
 
+  /* stylelint-disable-next-line selector-no-vendor-prefix -- Retain placeholder styling in legacy browsers. */
   &:-ms-input-placeholder { /* IE 10+ */
     color: currentColor;
   }
 
+  /* stylelint-disable-next-line selector-no-vendor-prefix -- Retain placeholder styling in legacy browsers. */
   &:-moz-placeholder { /* Firefox 18- */
     color: currentColor;
   }

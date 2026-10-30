@@ -10,10 +10,12 @@
     background-color: var(--theme-background-color);
   }
 
+  /* stylelint-disable-next-line selector-max-class -- Keep the exclusions and their existing selector specificity. */
   a:not(.button):not(.pager__link):not(.appetiser--small a):not(.inline-navigation__link-list-item):not(.breadcrumb__link):not(.branding-spot__overlay--links a) {
     color: var(--theme-link-color);
   }
 
+  /* stylelint-disable-next-line selector-max-class -- Keep the exclusions and their existing selector specificity. */
   .button:not(.button--red):not(.button--green):not(.button--gray):not(.button--white) {
     background-color: var(--theme-button-background-color);
     color: var(--theme-button-color);
@@ -159,17 +161,21 @@
 }
 
 .background-douce {
+  /* stylelint-disable-next-line declaration-no-important -- Background utilities must override component theme backgrounds. */
   background-color: var(--color-gray) !important;
 }
 
 .background-mint {
+  /* stylelint-disable-next-line declaration-no-important -- Background utilities must override component theme backgrounds. */
   background-color: var(--color-light-mint) !important;
 }
 
 .background-white {
+  /* stylelint-disable-next-line declaration-no-important -- Background utilities must override component theme backgrounds. */
   background-color: var(--color-white) !important;
 }
 
 .background-grayblue {
+  /* stylelint-disable-next-line declaration-no-important -- Background utilities must override component theme backgrounds. */
   background-color: var(--color-secondary-light) !important;
 }

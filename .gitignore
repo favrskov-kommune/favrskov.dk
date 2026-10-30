@@ -52,6 +52,7 @@ webroot/sites/simpletest
 # Since we are using drupal-scaffold the files are create on composer-update
 # so there is no reason to save them in version-control.
 .editorconfig
+!webroot/sites/favrskov.dk/themes/custom/favrskov/build-assets/.editorconfig
 .gitattributes
 webroot/.csslintrc
 webroot/.eslintignore

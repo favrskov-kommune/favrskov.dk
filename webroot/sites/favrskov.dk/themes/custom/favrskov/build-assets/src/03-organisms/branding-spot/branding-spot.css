@@ -140,6 +140,7 @@
         text-decoration: none;
         display: block;
         hyphens: auto;
+        /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- Preserve existing word wrapping and intrinsic sizing in legacy browsers. */
         word-break: break-word;
 
         @media (--viewport-lg-min) {

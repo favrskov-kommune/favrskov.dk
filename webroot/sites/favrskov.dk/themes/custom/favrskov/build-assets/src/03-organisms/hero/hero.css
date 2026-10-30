@@ -79,6 +79,7 @@
     z-index: 4;
     height: 100vh;
     hyphens: auto;
+    /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- Preserve existing word wrapping and intrinsic sizing in legacy browsers. */
     word-break: break-word;
     max-height: var(--hero-max-height);
     font-size: var(--base-font-size);

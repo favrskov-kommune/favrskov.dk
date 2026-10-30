@@ -6,6 +6,13 @@ module.exports = {
   map: env !== 'production' ? { inline: false } : false,
 
   plugins: [
+    // Lint the source before imports and custom media alter its structure.
+    require('stylelint')({
+      ignoreFiles: [
+        `${config.root_folder}/../../node_modules/**/*.css`,
+      ],
+    }),
+
     require('postcss-nested-import')({
       resolve: (id) => path.resolve(__dirname, '../src', id),
     }),
@@ -17,12 +24,6 @@ module.exports = {
     }),
 
     require('postcss-custom-media')(),
-
-    require('stylelint')({
-      ignoreFiles: [
-        `${config.root_folder}/../../node_modules/**/*.css`,
-      ],
-    }),
 
     require('postcss-nested'),
 
