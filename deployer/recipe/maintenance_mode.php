@@ -8,6 +8,8 @@ task('deploy:maintenance_mode:enable', function () {
     run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush vset --exact maintenance_mode 1");
     run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush cc all");
   } else {
+    // Rebuild routes for the current code before a command that fully bootstraps Drupal.
+    run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush cr");
     run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush sset system.maintenance_mode 1");
     run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush cr");
   }
@@ -21,6 +23,8 @@ task('deploy:maintenance_mode:disable', function () {
     run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush vset --exact maintenance_mode 0");
     run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush cc all");
   } else {
+    // A rollback can leave route caches from a different release.
+    run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush cr");
     run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush sset system.maintenance_mode 0");
     run("cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush cr");
   }
