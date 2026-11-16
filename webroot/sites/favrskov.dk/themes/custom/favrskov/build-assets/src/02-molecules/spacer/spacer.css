@@ -9,6 +9,10 @@
   padding: 0;
   margin: 0;
 
+  &.layout-builder-block {
+    border: 2px dashed rgb(0 0 0 / 25%);
+  }
+
   &--small {
     height: var(--container-spacing);
   }
