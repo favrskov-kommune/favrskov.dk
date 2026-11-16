@@ -9,6 +9,7 @@ require 'maintenance_mode.php';
 require 'drupal_updates.php';
 require 'slack.php';
 require 'database_backup.php';
+require 'rollback.php';
 
 // if drupal core version is not set in config.yml, we use 8 as default
 set('drupal_core_version', 8);
@@ -92,7 +93,7 @@ task('deploy:first', [
 // Perform rollback tasks on failed deploys
 task('deploy:failed', [
   'deploy:db:rollback',
-  'rollback',
+  'deploy:rollback',
   'deploy:maintenance_mode:disable',
   'deploy:unlock',
   'slack:notify:failed'
