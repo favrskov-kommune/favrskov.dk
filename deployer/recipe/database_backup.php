@@ -20,7 +20,8 @@ task('deploy:db:dump', function () {
   } else {
     $command_cache_clear = 'cr';
   }
-  run('cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush '.$command_cache_clear.' && vendor/drush/drush/drush sql-dump --extra-dump=--column-statistics=0 --structure-tables-list=cache,cache_* > ' . $current_sql_backup);
+  // Let Drush select the dump client without MySQL-specific column-statistics options.
+  run('cd {{drush_exec_path_absolute}} && vendor/drush/drush/drush '.$command_cache_clear.' && vendor/drush/drush/drush sql-dump --structure-tables-list=cache,cache_* > ' . $current_sql_backup);
 })
   ->hidden();
 

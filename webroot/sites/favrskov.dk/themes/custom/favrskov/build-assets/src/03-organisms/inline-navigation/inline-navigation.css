@@ -145,6 +145,7 @@
       font-size: var(--base-font-size-xlarge);
       width: 100%;
       hyphens: auto;
+      /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- Preserve existing word wrapping and intrinsic sizing in legacy browsers. */
       word-break: break-word;
 
       @media (--viewport-ms-max) {
@@ -165,6 +166,7 @@
       text-decoration: none;
       width: 100%;
       hyphens: auto;
+      /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- Preserve existing word wrapping and intrinsic sizing in legacy browsers. */
       word-break: break-word;
 
       & .inline-navigation-item__arrow {
@@ -233,12 +235,15 @@
   @media print {
     .flickity-viewport {
       overflow: visible;
+      /* stylelint-disable-next-line declaration-no-important -- Print layout must override Flickity inline positioning and dimensions. */
       height: auto !important;
     }
 
     .flickity-slider {
       position: relative;
+      /* stylelint-disable-next-line declaration-no-important -- Print layout must override Flickity inline positioning and dimensions. */
       left: auto !important;
+      /* stylelint-disable-next-line declaration-no-important -- Print layout must override Flickity inline positioning and dimensions. */
       transform: translateX(0) !important;
       display: flex;
       height: auto;

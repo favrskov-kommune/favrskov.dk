@@ -41,5 +41,6 @@ section > div,
 
 .local-tasks-wrapper,
 .si-toggle-container {
+  /* stylelint-disable-next-line declaration-no-important -- Print visibility must override application and third-party styles. */
   display: none !important;
 }

@@ -55,6 +55,7 @@ function premium_theme_helper_theme(): array {
     'breadcrumb' => [
       'variables' => [
         'links' => [],
+        'attributes' => [],
         'narrow' => [],
         'breadcrumb_json_data' => [],
       ],

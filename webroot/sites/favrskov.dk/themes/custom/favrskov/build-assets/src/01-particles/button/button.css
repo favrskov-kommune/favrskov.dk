@@ -8,6 +8,7 @@
   background-position-x: center;
 }
 
+/* stylelint-disable-next-line selector-class-pattern -- Keep the existing preview class name. */
 .styles--preview--button,
 .button,
 a.button {

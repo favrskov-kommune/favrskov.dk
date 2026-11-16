@@ -405,6 +405,7 @@
     font-family: var(--base-font-family);
     font-weight: var(--base-font-weight);
     hyphens: auto;
+    /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- Preserve existing word wrapping and intrinsic sizing in legacy browsers. */
     word-break: break-word;
 
     @media (--viewport-md-min) {
@@ -439,6 +440,7 @@
     font-size: var(--base-font-size);
     line-height: 1.2;
     hyphens: auto;
+    /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- Preserve existing word wrapping and intrinsic sizing in legacy browsers. */
     word-break: break-word;
 
     @media (--viewport-sm-min) {

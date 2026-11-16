@@ -23,6 +23,7 @@
 
   .form-actions {
     margin-top: 15px;
+    /* stylelint-disable-next-line declaration-no-important -- Preserve the Drupal form action font-size override. */
     font-size: .7em !important;
 
     .button + .button {

@@ -51,7 +51,6 @@
     position: absolute;
     top: 0;
     z-index: 1;
-    background: linear-gradient(270deg, rgba(0, 0, 0, .1), hsla(0, 0, 100%, 0));
     right: 0;
     will-change: transform;
     display: none;
@@ -67,7 +66,6 @@
     position: absolute;
     top: 0;
     z-index: 1;
-    background: linear-gradient(90deg, rgba(0, 0, 0, .1), hsla(0, 0, 100%, 0));
     left: 0;
     will-change: transform;
     display: none;
