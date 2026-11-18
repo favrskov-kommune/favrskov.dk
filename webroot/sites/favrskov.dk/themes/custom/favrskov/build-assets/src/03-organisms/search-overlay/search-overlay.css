@@ -27,6 +27,11 @@
     justify-content: flex-start;
     font-size: var(--base-font-size);
 
+    &:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 4px;
+    }
+
     .icon--close {
       width: 60px;
       height: 60px;

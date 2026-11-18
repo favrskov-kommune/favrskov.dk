@@ -1,0 +1,15 @@
+Ensure URL lists serialize as JSON arrays even when deduplication leaves
+non-sequential keys. The overlay expects individual URL strings, not an object.
+
+diff --git a/src/SiteimproveUtils.php b/src/SiteimproveUtils.php
+--- a/src/SiteimproveUtils.php
++++ b/src/SiteimproveUtils.php
+@@ -207,7 +207,7 @@
+    */
+   public function getSiteimproveSettings(array $url, $type, $auto = TRUE) {
+     return [
+-      'url' => $url,
++      'url' => array_values($url),
+       'auto' => $auto,
+     ];
+   }

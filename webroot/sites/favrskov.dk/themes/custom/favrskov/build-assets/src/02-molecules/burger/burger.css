@@ -4,6 +4,12 @@
  */
 
 .burger {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +19,15 @@
   width: 50%;
   height: 100%;
   text-decoration: none;
+
+  &[type="button"] {
+    appearance: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+  }
 
   &__lines {
     margin-top: -1px;

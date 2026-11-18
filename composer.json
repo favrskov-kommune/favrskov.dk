@@ -213,6 +213,9 @@
             "drupal/paragraphs": {
                 "(#3090200) Resolve the correct parent revision for Paragraphs access checks": "patches/paragraphs-parent-revision-3090200.patch",
                 "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2023-07-20/2901390-9-109.patch"
+            },
+            "drupal/siteimprove": {
+                "Preserve URL lists as JSON arrays after deduplication": "patches/siteimprove-url-list-json-array.patch"
             }
         }
     }

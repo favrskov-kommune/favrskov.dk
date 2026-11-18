@@ -1,10 +1,10 @@
 {{ attach_library('favrskov/burger') }}
 
-<a href="#" class="burger" id="js-burger" aria-label="Menu" aria-haspopup="menu">
-  <div class="burger__lines">
+<button type="button" class="burger" id="js-burger" aria-label="Menu" aria-controls="js-burger-menu" aria-expanded="false">
+  <span class="burger__lines" aria-hidden="true">
     <span></span>
     <span></span>
     <span></span>
-  </div>
-  <div class="burger__label">{{ 'Menu'|t }}</div>
-</a>
+  </span>
+  <span class="burger__label">{{ 'Menu'|t }}</span>
+</button>
