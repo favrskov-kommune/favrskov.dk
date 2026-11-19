@@ -43,10 +43,10 @@
         "drupal/config_filter": "^2.6",
         "drupal/config_ignore": "^3.1",
         "drupal/config_split": "^2.0",
-        "drupal/core-composer-scaffold": "^11.4.11",
-        "drupal/core-project-message": "^11.4.11",
-        "drupal/core-recommended": "^11.4.11",
-        "drupal/core-vendor-hardening": "^11.4.11",
+        "drupal/core-composer-scaffold": "^11.4.13",
+        "drupal/core-project-message": "^11.4.13",
+        "drupal/core-recommended": "^11.4.13",
+        "drupal/core-vendor-hardening": "^11.4.13",
         "drupal/editor_advanced_link": "^2.2",
         "drupal/entity_clone": "^2.0",
         "drupal/entity_hierarchy": "^3.3",
@@ -213,6 +213,9 @@
             "drupal/paragraphs": {
                 "(#3090200) Resolve the correct parent revision for Paragraphs access checks": "patches/paragraphs-parent-revision-3090200.patch",
                 "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2023-07-20/2901390-9-109.patch"
+            },
+            "drupal/siteimprove": {
+                "Preserve URL lists as JSON arrays after deduplication": "patches/siteimprove-url-list-json-array.patch"
             }
         }
     }

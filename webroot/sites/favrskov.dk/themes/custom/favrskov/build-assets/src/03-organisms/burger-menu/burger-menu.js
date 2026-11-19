@@ -10,31 +10,39 @@ Drupal.behaviors.burgerMenu = {
     root.classList.add('loaded');
 
     const showSubNavigationClass = 'burger-menu-list--expanded';
-    const focusableSelector = 'button, input, a';
+    const focusableSelector = 'a[href], button, input, select, textarea, [tabindex], [contenteditable="true"]';
 
-    function setTabIndex(el, value) {
-      if (!el) return;
-
-      el.setAttribute('tabindex', value);
-
-      el.querySelectorAll(focusableSelector).forEach((child) => {
-        child.setAttribute('tabindex', value);
+    function getFocusableElements() {
+      return Array.from(root.querySelectorAll(focusableSelector)).filter((el) => {
+        const { visibility } = window.getComputedStyle(el);
+        return el.tabIndex >= 0
+          && !el.matches(':disabled')
+          && !el.closest('[inert]')
+          && el.getClientRects().length > 0
+          && visibility !== 'hidden'
+          && visibility !== 'collapse';
       });
     }
 
-    function trapTab(e, first, last) {
+    function trapTab(e) {
       if (e.key !== 'Tab') return;
 
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          last?.focus();
-          e.preventDefault();
-        }
-      } else {
-        if (document.activeElement === last) {
-          first?.focus();
-          e.preventDefault();
-        }
+      // Submenus can change which controls are visible while the menu is open.
+      const focusables = getFocusableElements();
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (!first) return;
+
+      if (!focusables.includes(document.activeElement)) {
+        (e.shiftKey ? last : first).focus();
+        e.preventDefault();
+      } else if (e.shiftKey && document.activeElement === first) {
+        last.focus();
+        e.preventDefault();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        first.focus();
+        e.preventDefault();
       }
     }
 
@@ -46,22 +54,9 @@ Drupal.behaviors.burgerMenu = {
         };
       },
 
-      watch: {
-        isOpen(value) {
-          const menu = document.getElementById('js-burger-menu');
-          if (!menu) return;
-
-          if (value) {
-            menu.classList.add('burger-menu--open');
-            menu.setAttribute('aria-hidden', 'false');
-          } else {
-            menu.classList.remove('burger-menu--open');
-            menu.setAttribute('aria-hidden', 'true');
-          }
-        },
-      },
-
       mounted() {
+        setTabIndex(root, -1);
+
         if (burgerBtn) {
           burgerBtn.addEventListener('click', () => {
             this.openBurgerMenu();
@@ -86,40 +81,38 @@ Drupal.behaviors.burgerMenu = {
         },
 
         openBurgerMenu() {
+          if (this.isOpen) return;
+
+          root.inert = false;
+          root.classList.add('burger-menu--open');
           this.isOpen = true;
-
-          const menu = document.getElementById('js-burger-menu');
-          if (!menu) return;
-
+          burgerBtn?.setAttribute('aria-expanded', 'true');
           document.body.classList.add('no-scroll');
-
-          setTabIndex(menu, 0);
-
-          const focusables = menu.querySelectorAll(focusableSelector);
-          const first = focusables[0];
-          const last = focusables[focusables.length - 1];
 
           this.keydownHandler = (e) => {
             if (e.key === 'Escape') {
+              e.preventDefault();
               this.closeBurgerMenu();
               return;
             }
-            trapTab(e, first, last);
+            trapTab(e);
           };
 
           document.addEventListener('keydown', this.keydownHandler);
 
-          const closeBtn = menu.querySelector('.burger-menu__close');
-          closeBtn?.focus();
+          this.$nextTick(() => {
+            if (this.isOpen) root.querySelector('.burger-menu__close')?.focus();
+          });
         },
 
         closeBurgerMenu() {
-          this.isOpen = false;
+          // Move focus out before making the menu unavailable.
+          burgerBtn?.focus();
+          root.inert = true;
+          root.classList.remove('burger-menu--open');
 
-          const menu = document.getElementById('js-burger-menu');
-          if (menu) {
-            setTabIndex(menu, -1);
-          }
+          this.isOpen = false;
+          burgerBtn?.setAttribute('aria-expanded', 'false');
 
           document.body.classList.remove('no-scroll');
 
@@ -127,8 +120,6 @@ Drupal.behaviors.burgerMenu = {
             document.removeEventListener('keydown', this.keydownHandler);
             this.keydownHandler = null;
           }
-
-          burgerBtn?.focus();
         },
 
         hideSubNavigations(parent) {

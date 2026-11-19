@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   for (let i = 0; i < searchOverlayTriggers.length; i += 1) {
     searchOverlayTriggers[i].addEventListener('click', () => {
-      const event = new CustomEvent('searchToggle');
+      const event = new CustomEvent('searchToggle', {
+        detail: { trigger: searchOverlayTriggers[i] },
+      });
       document.dispatchEvent(event);
     });
   }

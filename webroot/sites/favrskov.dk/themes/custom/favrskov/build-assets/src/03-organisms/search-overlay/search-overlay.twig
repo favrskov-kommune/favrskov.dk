@@ -1,7 +1,7 @@
 {{ attach_library('favrskov/search-overlay') }}
 
-<div class="search-overlay" id="js-search-overlay" aria-hidden="true" tabindex="-1">
-  <button type="button" @click="closeSearchOverlay()" class="search-overlay__close">
+<div class="search-overlay" id="js-search-overlay" inert>
+  <button type="button" @click="closeSearchOverlay()" class="search-overlay__close" aria-label="{{ 'Close (Esc)'|t }}">
     {% include '@particles/svg-icon/svg-icon.twig' with {
       'attributes': '',
       'svgIconName': 'close'
