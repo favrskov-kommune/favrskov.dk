@@ -1,6 +1,6 @@
 {{ attach_library('favrskov/burger-menu') }}
 
-<nav :class="{ 'burger-menu--open': isOpen }" class="burger-menu" id="js-burger-menu" aria-hidden="true" tabindex="-1">
+<nav class="burger-menu" id="js-burger-menu" inert>
   <button @click="closeBurgerMenu()" class="burger-menu__close" type="button">
     <div class="burger-menu__close-label">{{ 'Close (Esc)'|t }}</div>
     {% include '@particles/svg-icon/svg-icon.twig' with {

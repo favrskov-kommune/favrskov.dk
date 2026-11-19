@@ -13,6 +13,7 @@ Drupal.behaviors.searchOverlay = {
       data() {
         return {
           trapHandler: null,
+          returnFocus: null,
         };
       },
 
@@ -29,12 +30,14 @@ Drupal.behaviors.searchOverlay = {
       },
 
       methods: {
-        openSearchOverlay() {
+        openSearchOverlay(event) {
           const root = document.getElementById('js-search-overlay');
-          if (!root) return;
+          if (!root || root.classList.contains('search-overlay--open')) return;
 
+          this.returnFocus = event?.detail?.trigger || document.querySelector('.js-search-toggle');
+          root.inert = false;
           root.classList.add('search-overlay--open');
-          root.setAttribute('aria-hidden', 'false');
+          this.setExpanded(true);
 
           document.body.classList.add('no-scroll');
 
@@ -57,40 +60,61 @@ Drupal.behaviors.searchOverlay = {
           const root = document.getElementById('js-search-overlay');
           if (!root) return;
 
-          root.classList.remove('search-overlay--open');
-          root.setAttribute('aria-hidden', 'true');
+          // Return focus before making the overlay unavailable.
+          if (focusToggle) {
+            const toggle = this.returnFocus || document.querySelector('.js-search-toggle');
+            toggle?.focus();
+          }
 
+          root.inert = true;
+          root.classList.remove('search-overlay--open');
+          this.setExpanded(false);
           document.body.classList.remove('no-scroll');
 
           this.disableTrap();
+          this.returnFocus = null;
+        },
 
-          if (focusToggle) {
-            const toggle = document.querySelector('.js-search-toggle');
-            if (toggle) toggle.focus();
-          }
+        setExpanded(expanded) {
+          document.querySelectorAll('.js-search-toggle').forEach((toggle) => {
+            toggle.setAttribute('aria-expanded', String(expanded));
+          });
         },
 
         enableTrap(root) {
-          const focusables = root.querySelectorAll('button, input, a');
-          if (!focusables.length) return;
-
-          const first = focusables[0];
-          const last = focusables[focusables.length - 1];
+          this.disableTrap();
 
           this.trapHandler = (e) => {
             if (e.key === 'Escape') {
+              e.preventDefault();
               this.closeOverlay();
               return;
             }
 
             if (e.key !== 'Tab') return;
 
-            if (e.shiftKey && document.activeElement === first) {
+            // Cludo can add or hide controls after the overlay has opened.
+            const focusables = Array.from(root.querySelectorAll('a[href], button, input, select, textarea, [tabindex], [contenteditable="true"]')).filter((control) => {
+              const { visibility } = window.getComputedStyle(control);
+              return control.tabIndex >= 0
+                && !control.matches(':disabled')
+                && !control.closest('[inert]')
+                && control.getClientRects().length > 0
+                && visibility !== 'hidden'
+                && visibility !== 'collapse';
+            });
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+
+            if (!first) return;
+
+            if (!focusables.includes(document.activeElement)) {
+              (e.shiftKey ? last : first).focus();
+              e.preventDefault();
+            } else if (e.shiftKey && document.activeElement === first) {
               last.focus();
               e.preventDefault();
-            }
-
-            if (!e.shiftKey && document.activeElement === last) {
+            } else if (!e.shiftKey && document.activeElement === last) {
               first.focus();
               e.preventDefault();
             }

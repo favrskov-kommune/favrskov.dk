@@ -167,7 +167,16 @@
     font-weight: var(--base-font-weight);
 
     & p {
-      margin-bottom: 30px;
+      margin-bottom: 12px;
+    }
+
+    /* Keep the telephone link inline with its surrounding contact text. */
+    & p > a:only-child:not([href^="tel:"]) {
+      display: inline-flex;
+      align-items: center;
+      min-width: 44px;
+      min-height: 44px;
+      max-width: 100%;
     }
   }
 
@@ -179,10 +188,11 @@
 
     .icon {
       position: absolute;
-      top: 0;
+      top: 50%;
       left: 0;
       width: 30px;
       height: 33px;
+      transform: translateY(-50%);
     }
   }
 

@@ -11,7 +11,7 @@
   <div{{ (not attributes ? create_attribute() : attributes).addClass(classes) }}>
 {% endif %}
   {% block block_content %}{% endblock %}
-  <ul class="inline-navigation__list {{ is_slider ? 'js-inline-navigation-slider' }}">
+  <div class="inline-navigation__list {{ is_slider ? 'js-inline-navigation-slider' }}">
     {% block content %}
       {% for item in items %}
         {% include '@molecules/inline-navigation-item/inline-navigation-item.twig' with {
@@ -22,7 +22,7 @@
         } %}
       {% endfor %}
     {% endblock %}
-  </ul>
+  </div>
   {% block pager %}
     {% include '@organisms/pager/pager.twig' with {
       'items': pager_items

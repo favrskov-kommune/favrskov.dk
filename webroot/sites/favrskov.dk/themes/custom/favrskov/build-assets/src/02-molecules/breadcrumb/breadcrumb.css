@@ -4,14 +4,13 @@
  */
 .breadcrumb {
   position: relative;
-  padding: 30px 0;
   font-size: var(--base-font-size-small);
 
   &__items {
     position: relative;
     z-index: 1;
     margin: 0;
-    padding: 0;
+    padding: 30px 0;
   }
 
   &__item {

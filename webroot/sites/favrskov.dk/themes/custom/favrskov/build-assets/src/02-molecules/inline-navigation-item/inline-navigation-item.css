@@ -402,6 +402,7 @@
   &__title {
     margin-bottom: 30px;
     font-size: var(--base-font-size-large);
+    line-height: 1.2;
     font-family: var(--base-font-family);
     font-weight: var(--base-font-weight);
     hyphens: auto;
@@ -465,7 +466,7 @@
     margin-top: auto;
     font-size: var(--base-font-size);
     font-weight: 300;
-    opacity: .6;
+    color: var(--color-gray-darker);
 
     @media (--viewport-md-min) {
       font-size: var(--base-font-size-medium);
