@@ -52,7 +52,7 @@ body.gin--horizontal-toolbar header.header {
 
   @media (--viewport-lg-min) {
     &__inner {
-      margin-top: calc(var(--meta-menu-height) - 1px);
+      margin-top: var(--meta-menu-height);
     }
   }
 

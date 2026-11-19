@@ -55,6 +55,8 @@ Drupal.behaviors.burgerMenu = {
       },
 
       mounted() {
+        setTabIndex(root, -1);
+
         if (burgerBtn) {
           burgerBtn.addEventListener('click', () => {
             this.openBurgerMenu();

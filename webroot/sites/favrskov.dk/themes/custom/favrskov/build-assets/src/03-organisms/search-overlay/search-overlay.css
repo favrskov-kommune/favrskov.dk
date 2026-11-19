@@ -41,6 +41,12 @@
       padding: 15px;
       margin-bottom: 10px;
     }
+
+
+    &:focus {
+      outline: 1px solid white;
+      outline-offset: 2px;
+    }
   }
 
   &__close-label {
