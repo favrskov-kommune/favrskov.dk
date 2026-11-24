@@ -19,12 +19,16 @@
       <div class="timeline__dates swiper js-timeline-dates" aria-label="{{ 'Timeline dates'|t }}">
         <div class="swiper-wrapper">
           {% for item in nav_items %}
+            {% set item_label = [item.date, item.type, item.title]|filter(value => value is not empty)|join(', ') %}
+            {% set fallback_label = 'Timeline card @number'|t({'@number': loop.index}) %}
             <div class="swiper-slide timeline__date-slide">
-              <button class="timeline__date-button" type="button" aria-label="{{ item.date }}{% if item.type %}, {{ item.type }}{% endif %}: {{ item.title }}" data-timeline-date-index="{{ loop.index0 }}">
-                {% set date_parts = item.date|split(' ') %}
+              <button class="timeline__date-button" type="button" aria-label="{{ item_label ?: fallback_label }}" data-timeline-date-index="{{ loop.index0 }}">
                 <span class="timeline__date-label">
-                  <span class="timeline__date-month">{{ date_parts[0]|slice(0, 3) }}</span>
-                  <span class="timeline__date-year">{{ date_parts[1]|default('') }}</span>
+                  {% if item.date %}
+                    {% set date_parts = item.date|split(' ') %}
+                    <span class="timeline__date-month">{{ date_parts[0]|slice(0, 3) }}</span>
+                    <span class="timeline__date-year">{{ date_parts[1]|default('') }}</span>
+                  {% endif %}
                 </span>
                 <span class="timeline__date-dot" aria-hidden="true"></span>
                 {% if item.type %}<span class="timeline__date-type">{{ item.type }}</span>{% endif %}
@@ -38,13 +42,16 @@
         <span class="timeline__vertical-nav-title">{{ 'Tidslinje'|t }}</span>
         <ol class="timeline__vertical-nav-list">
           {% for item in nav_items %}
+            {% set item_label = [item.title, item.date, item.type]|filter(value => value is not empty)|join(', ') %}
+            {% set fallback_label = 'Timeline card @number'|t({'@number': loop.index}) %}
             <li>
-              <a class="timeline__vertical-link" href="#{{ item.id }}" data-timeline-anchor-index="{{ loop.index0 }}" aria-label="{{ item.title }}: {{ item.date }}{% if item.type %}, {{ item.type }}{% endif %}"{% if loop.first %} aria-current="location"{% endif %}>
+              <a class="timeline__vertical-link" href="#{{ item.id }}" data-timeline-anchor-index="{{ loop.index0 }}" aria-label="{{ item_label ?: fallback_label }}"{% if loop.first %} aria-current="location"{% endif %}>
                 <span class="timeline__vertical-dot" aria-hidden="true"></span>
                 <span class="timeline__vertical-tooltip">
-                  <span>{{ item.title }}</span>
-                  <span class="timeline__vertical-tooltip-date">{{ item.date }}</span>
+                  {% if item.title %}<span>{{ item.title }}</span>{% endif %}
+                  {% if item.date %}<span class="timeline__vertical-tooltip-date">{{ item.date }}</span>{% endif %}
                   {% if item.type %}<span class="timeline__vertical-tooltip-type">{{ item.type }}</span>{% endif %}
+                  {% if not item_label %}<span>{{ fallback_label }}</span>{% endif %}
                 </span>
               </a>
             </li>

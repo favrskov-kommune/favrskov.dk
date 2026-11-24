@@ -304,7 +304,7 @@ function favrskov_preprocess_block__inline_block__timeline(array &$variables) {
     $date = $card->get('field_timeline_date')->value;
     $variables['timeline_nav'][] = [
       'id' => 'timeline-' . $block->uuid() . '-card-' . $delta,
-      'date' => $date ? favrskov_timeline_date_label($date) : (string) t('Date pending'),
+      'date' => favrskov_timeline_date_label($date),
       'type' => $card->get('field_timeline_type')->value,
       'title' => $card->get('field_title')->value,
     ];
