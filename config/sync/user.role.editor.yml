@@ -29,6 +29,7 @@ dependencies:
     - taxonomy.vocabulary.link_lists
     - taxonomy.vocabulary.media_categories
     - taxonomy.vocabulary.news_categories
+    - taxonomy.vocabulary.timeline_status
     - workflows.workflow.editorial
   module:
     - atoms
@@ -115,6 +116,7 @@ permissions:
   - 'create terms in link_lists'
   - 'create terms in media_categories'
   - 'create terms in news_categories'
+  - 'create terms in timeline_status'
   - 'create url aliases'
   - 'create video media'
   - 'create webform'
@@ -156,6 +158,7 @@ permissions:
   - 'delete terms in link_lists'
   - 'delete terms in media_categories'
   - 'delete terms in news_categories'
+  - 'delete terms in timeline_status'
   - 'edit any area content'
   - 'edit any audio media'
   - 'edit any cdn_video media'
@@ -189,6 +192,7 @@ permissions:
   - 'edit terms in link_lists'
   - 'edit terms in media_categories'
   - 'edit terms in news_categories'
+  - 'edit terms in timeline_status'
   - 'edit webform assets'
   - 'rebuild node access permissions'
   - 'reschedule scheduled transitions node hearing_page'
