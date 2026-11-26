@@ -53,17 +53,17 @@
       {{ page.header }}
     {% endblock %}
 
-    {% block pageheader %}
-      {{ page.pageheader }}
-    {% endblock %}
-
-    {% block page_breadcrumb %}
-      {{ page.breadcrumb }}
-    {% endblock %}
-
     {% block page_main %}
       <main role="main" vocab="http://schema.org" typeof="WebPageElement" property="mainContentOfPage">
         <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+        {% block pageheader %}
+          {{ page.pageheader }}
+        {% endblock %}
+
+        {% block page_breadcrumb %}
+          {{ page.breadcrumb }}
+        {% endblock %}
+
         <div class="layout-content">
           {{ page.content }}
         </div>{# /.layout-content #}

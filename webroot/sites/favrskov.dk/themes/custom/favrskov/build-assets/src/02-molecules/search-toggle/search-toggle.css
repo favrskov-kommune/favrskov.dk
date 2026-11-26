@@ -4,6 +4,12 @@
  */
 
 .search-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
   cursor: pointer;
   flex-shrink: 0;
   flex-grow: 0;
@@ -14,6 +20,15 @@
   justify-content: center;
   text-decoration: none;
   border-right: solid 1px var(--header-border-color);
+
+  &[type="button"] {
+    appearance: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+  }
 
   @media (--viewport-lg-min) {
     height: 100%;
@@ -41,7 +56,7 @@
     font-weight: var(--base-font-weight);
     font-size: var(--base-font-size-medium);
     text-transform: uppercase;
-    color: var(--color-gray-medium);
+    color: var(--color-gray-darker);
 
     @media (--viewport-md-max) {
       font-size: var(--base-font-size-small);

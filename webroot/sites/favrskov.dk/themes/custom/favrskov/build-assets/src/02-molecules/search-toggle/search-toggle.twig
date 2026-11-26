@@ -1,9 +1,9 @@
 {{ attach_library('favrskov/search-toggle') }}
 
-<a href="#" class="search-toggle js-search-toggle">
+<button type="button" class="search-toggle js-search-toggle" aria-label="{{ 'Search'|t }}" aria-controls="js-search-overlay" aria-expanded="false">
   {% include '@particles/svg-icon/svg-icon.twig' with {
-    'attributes': '',
+    'attributes': create_attribute().setAttribute('aria-hidden', 'true'),
     'svgIconName': 'search'
   } %}
-  <div class="search-toggle__label">{{ 'Search'|t }}</div>
-</a>
+  <span class="search-toggle__label">{{ 'Search'|t }}</span>
+</button>
