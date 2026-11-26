@@ -43,10 +43,10 @@
         "drupal/config_filter": "^2.6",
         "drupal/config_ignore": "^3.1",
         "drupal/config_split": "^2.0",
-        "drupal/core-composer-scaffold": "^11.4.13",
-        "drupal/core-project-message": "^11.4.13",
-        "drupal/core-recommended": "^11.4.13",
-        "drupal/core-vendor-hardening": "^11.4.13",
+        "drupal/core-composer-scaffold": "^11.4.14",
+        "drupal/core-project-message": "^11.4.14",
+        "drupal/core-recommended": "^11.4.14",
+        "drupal/core-vendor-hardening": "^11.4.14",
         "drupal/editor_advanced_link": "^2.2",
         "drupal/entity_clone": "^2.0",
         "drupal/entity_hierarchy": "^3.3",
@@ -141,6 +141,10 @@
         "classmap": [
             "scripts/composer/ScriptHandler.php"
         ]
+    },
+    "scripts": {
+        "post-install-cmd": ["rm -f webroot/core/install.php"],
+        "post-update-cmd": ["rm -f webroot/core/install.php"]
     },
     "extra": {
         "composer-exit-on-patch-failure": true,
